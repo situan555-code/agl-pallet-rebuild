@@ -46,3 +46,6 @@ hard-gate attempts" predates the Section E rebaseline (2% full-page pixel
 → advisory, height gate → 15%) and should not be read as still-open height
 failures — pixel-diff status for these pages is untouched by this session
 and still advisory-only per Section E.
+
+### Footer — dropped Bahlr agency credit (2026-09-13)
+Operator request: remove “This is Bahlr website” and any link to bahlr.com. Copyright line is AGL-only.

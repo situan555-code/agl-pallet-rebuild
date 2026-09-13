@@ -83,11 +83,7 @@ export function Footer() {
       </div>
 
       <p className="mx-auto mt-16 max-w-[1440px] text-body text-white/70">
-        {footer.copyright.prefix}
-        <a href={footer.copyright.agencyHref} target="_blank" rel="noopener" className="underline">
-          {footer.copyright.agencyLabel}
-        </a>
-        {footer.copyright.suffix}
+        {footer.copyright.text}
       </p>
     </footer>
   );
