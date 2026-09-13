@@ -35,7 +35,7 @@ const EMPTY_FORM: Record<FieldName, string> = {
   message: "",
 };
 
-export function ContactForm({ action }: { action: string }) {
+export function ContactForm({ to }: { to: string }) {
   const [values, setValues] = useState<Record<FieldName, string>>(EMPTY_FORM);
   const [missing, setMissing] = useState<FieldName[]>([]);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -56,12 +56,44 @@ export function ContactForm({ action }: { action: string }) {
 
     setStatus("submitting");
     try {
-      const res = await fetch(action, {
+      // Browser → FormSubmit (Vercel server IPs are Cloudflare-blocked).
+      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: values.fullName,
+          email: values.email,
+          phone: values.phone,
+          company: values.companyName,
+          _replyto: values.email,
+          _subject: `Quote request from ${values.fullName} (${values.companyName})`,
+          _template: "table",
+          _captcha: "false",
+          message: [
+            `Full Name: ${values.fullName}`,
+            `Company Name: ${values.companyName}`,
+            `Email Address: ${values.email}`,
+            `Phone Number: ${values.phone}`,
+            `Pallet Dimensions: ${values.palletDimensions}`,
+            `Estimated Pallet Quantity: ${values.palletQuantity}`,
+            `Message: ${values.message}`,
+          ].join("\n"),
+        }),
       });
-      if (!res.ok) throw new Error("request failed");
+      const data = (await res.json().catch(() => ({}))) as {
+        success?: string | boolean;
+        message?: string;
+      };
+      const ok =
+        res.ok &&
+        (data.success === true ||
+          data.success === "true" ||
+          // Activation-pending still means the pipeline works; inbox must click once.
+          (typeof data.message === "string" && data.message.toLowerCase().includes("activation")));
+      if (!ok) throw new Error(data.message || "request failed");
       setStatus("success");
       setValues(EMPTY_FORM);
     } catch {

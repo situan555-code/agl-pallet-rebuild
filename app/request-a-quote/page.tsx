@@ -24,7 +24,7 @@ export default function RequestAQuote() {
           </p>
           <h1 className="mt-4 text-display-1">{pageContent.hero.heading}</h1>
           <p className="mt-6 max-w-2xl text-body">{pageContent.hero.body}</p>
-          <ContactForm action="/api/quote" />
+          <ContactForm to={process.env.CONTACT_TO_EMAIL?.trim() || "sales@aglpallet.com"} />
         </div>
       </section>
 

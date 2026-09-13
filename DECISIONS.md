@@ -617,3 +617,8 @@ is reversed.
 Operator: "ignore the key for form, lets do it our own way." Switched
 `/api/quote` from Resend to FormSubmit.co/ajax using existing
 `CONTACT_TO_EMAIL`. No new secret. Silent success-without-send removed.
+
+## 2026-09-13 — quote form: browser FormSubmit (not Vercel→FormSubmit)
+Server-side FormSubmit from Vercel returns Cloudflare 403. ContactForm now
+POSTs from the browser to FormSubmit using CONTACT_TO_EMAIL (fallback
+sales@aglpallet.com). First inbox must click FormSubmit's Activate link.
