@@ -15,18 +15,18 @@ repository"). `git init`'d fresh, branch named `main`, local (repo-only,
 not `--global`) `user.name`/`user.email` set to make the initial commit
 possible — no prior identity existed anywhere on this machine.
 
-## Vercel — stealth rename (2026-09-13 ~12:46 AM ET)
+## Vercel — stealth preview (2026-09-13)
 
-Project renamed **`agl-rebuild` → `nx7k-lab-m4`**. Vercel Authentication (SSO) re-enabled.
-Removed public aliases so these 404:
-- https://agl-rebuild.vercel.app
-- https://agl-rebuild-situan555-codes-projects.vercel.app
+Project renamed **`agl-rebuild` → `nx7k-lab-m4`**. Public aliases removed:
+- `https://agl-rebuild.vercel.app` → **404**
+- team production alias also removed so it is not world-readable
 
-**Private preview (SSO — team login):** production alias will be under `nx7k-lab-m4` after the current deploy finishes.
+**SSO-gated preview URL** (Vercel team login required):
+https://nx7k-lab-m4-grlzd14oy-situan555-codes-projects.vercel.app
 
-Footer: Bahlr agency credit + `bahlr.com` link removed (AGL copyright only). No Bahler analytics found in the rebuild.
-
-DNS for aglpallet.com still untouched.
+Footer: Bahlr credit + `bahlr.com` link removed. No Bahler analytics in the rebuild.
+GitHub private: https://github.com/situan555-code/agl-pallet-rebuild
+DNS for aglpallet.com untouched.
 
 
 ## Performance — before/after
