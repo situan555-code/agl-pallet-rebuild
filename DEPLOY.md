@@ -82,3 +82,7 @@ session — Phase 5's scope was push + deploy, not verify/repair.
 - Project domain `agl-rebuild.vercel.app` was removed so prod deploys stop auto-aliasing it.
   Keep yanking that alias if it ever reappears. Public URL: `https://nx7k-lab-m4.vercel.app`.
 - `trailingSlash: true` so audited `/path/` URLs do not 308.
+
+## 2026-09-13 — GitHub auto-deploy reconnected
+`vercel git connect https://github.com/situan555-code/agl-pallet-rebuild.git`
+linked project `nx7k-lab-m4` to the private repo (production branch `main`).
