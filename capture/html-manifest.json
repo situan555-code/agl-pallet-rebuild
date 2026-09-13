@@ -1,0 +1,204 @@
+[
+  {
+    "path": "/",
+    "slug": "home",
+    "html": "capture/home.html",
+    "css": [
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/all.css",
+        "local": "all.css"
+      },
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css",
+        "local": "v4-shims.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/font-awesome/v7.2.0/css/svg-with-js.css",
+        "local": "svg-with-js.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/useanyfont/uaf.css?ver=1784701956",
+        "local": "uaf.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/9/et-divi-dynamic-tb-73-9.css?ver=1784712819",
+        "local": "et-divi-dynamic-tb-73-9.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/9/et-core-unified-tb-73-deferred-9.min.css?ver=1784712820",
+        "local": "et-core-unified-tb-73-deferred-9.min.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17",
+        "local": "mediaelementplayer-legacy.min.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.1",
+        "local": "wp-mediaelement.min.css"
+      }
+    ]
+  },
+  {
+    "path": "/about/",
+    "slug": "about",
+    "html": "capture/about.html",
+    "css": [
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/all.css",
+        "local": "all.css"
+      },
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css",
+        "local": "v4-shims.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/font-awesome/v7.2.0/css/svg-with-js.css",
+        "local": "svg-with-js.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/useanyfont/uaf.css?ver=1784701956",
+        "local": "uaf.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/261/et-divi-dynamic-tb-73-261.css?ver=1784735487",
+        "local": "et-divi-dynamic-tb-73-261.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/261/et-core-unified-tb-73-deferred-261.min.css?ver=1784735487",
+        "local": "et-core-unified-tb-73-deferred-261.min.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17",
+        "local": "mediaelementplayer-legacy.min.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.1",
+        "local": "wp-mediaelement.min.css"
+      }
+    ]
+  },
+  {
+    "path": "/industries-served/",
+    "slug": "industries-served",
+    "html": "capture/industries-served.html",
+    "css": [
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/all.css",
+        "local": "all.css"
+      },
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css",
+        "local": "v4-shims.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/useanyfont/uaf.css?ver=1784701956",
+        "local": "uaf.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/font-awesome/v7.2.0/css/svg-with-js.css",
+        "local": "svg-with-js.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/230/et-divi-dynamic-tb-73-230.css?ver=1784861358",
+        "local": "et-divi-dynamic-tb-73-230.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/230/et-core-unified-tb-73-deferred-230.min.css?ver=1784861358",
+        "local": "et-core-unified-tb-73-deferred-230.min.css"
+      }
+    ]
+  },
+  {
+    "path": "/logistics-process/",
+    "slug": "logistics-process",
+    "html": "capture/logistics-process.html",
+    "css": [
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/all.css",
+        "local": "all.css"
+      },
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css",
+        "local": "v4-shims.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/font-awesome/v7.2.0/css/svg-with-js.css",
+        "local": "svg-with-js.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/useanyfont/uaf.css?ver=1784701956",
+        "local": "uaf.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/239/et-core-unified-tb-73-deferred-239.min.css?ver=1784873759",
+        "local": "et-core-unified-tb-73-deferred-239.min.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/239/et-divi-dynamic-tb-73-239.css?ver=1784873758",
+        "local": "et-divi-dynamic-tb-73-239.css"
+      }
+    ]
+  },
+  {
+    "path": "/products/",
+    "slug": "products",
+    "html": "capture/products.html",
+    "css": [
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/all.css",
+        "local": "all.css"
+      },
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css",
+        "local": "v4-shims.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/font-awesome/v7.2.0/css/svg-with-js.css",
+        "local": "svg-with-js.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/useanyfont/uaf.css?ver=1784701956",
+        "local": "uaf.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/222/et-divi-dynamic-tb-73-222.css?ver=1784767125",
+        "local": "et-divi-dynamic-tb-73-222.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/222/et-core-unified-tb-73-deferred-222.min.css?ver=1784767125",
+        "local": "et-core-unified-tb-73-deferred-222.min.css"
+      }
+    ]
+  },
+  {
+    "path": "/request-a-quote/",
+    "slug": "request-a-quote",
+    "html": "capture/request-a-quote.html",
+    "css": [
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/all.css",
+        "local": "all.css"
+      },
+      {
+        "url": "https://use.fontawesome.com/releases/v7.2.0/css/v4-shims.css",
+        "local": "v4-shims.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/font-awesome/v7.2.0/css/svg-with-js.css",
+        "local": "svg-with-js.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/uploads/useanyfont/uaf.css?ver=1784701956",
+        "local": "uaf.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/91/et-core-unified-tb-73-deferred-91.min.css?ver=1784712858",
+        "local": "et-core-unified-tb-73-deferred-91.min.css"
+      },
+      {
+        "url": "https://aglpallet.com/wp-content/et-cache/91/et-divi-dynamic-tb-73-91.css?ver=1784712857",
+        "local": "et-divi-dynamic-tb-73-91.css"
+      }
+    ]
+  }
+]

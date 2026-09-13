@@ -1,0 +1,6 @@
+capture/
+reference/
+assets/
+screenshots/
+.next/
+node_modules/

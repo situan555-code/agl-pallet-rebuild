@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(vercel *)",
+      "Read", "Write", "Edit", "Glob", "Grep"
+    ],
+    "deny": ["Bash(rm -rf *)", "Bash(sudo *)"]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "sample": "FOR MANUFACTURERS",
+  "px": 48,
+  "original": {
+    "width": 564,
+    "capHeight": 33
+  },
+  "candidates": {
+    "Bungee 700": {
+      "width": 552.421875,
+      "capHeight": 32,
+      "widthDeltaPct": "-2.1",
+      "capHeightDeltaPct": "-3.0"
+    },
+    "Bungee 900": {
+      "width": 552.421875,
+      "capHeight": 32,
+      "widthDeltaPct": "-2.1",
+      "capHeightDeltaPct": "-3.0"
+    },
+    "Anton 700": {
+      "width": 552.421875,
+      "capHeight": 32,
+      "widthDeltaPct": "-2.1",
+      "capHeightDeltaPct": "-3.0"
+    },
+    "Anton 900": {
+      "width": 552.421875,
+      "capHeight": 32,
+      "widthDeltaPct": "-2.1",
+      "capHeightDeltaPct": "-3.0"
+    },
+    "Fredoka 700": {
+      "width": 505,
+      "capHeight": 34,
+      "widthDeltaPct": "-10.5",
+      "capHeightDeltaPct": "3.0"
+    },
+    "Fredoka 900": {
+      "width": 505,
+      "capHeight": 34,
+      "widthDeltaPct": "-10.5",
+      "capHeightDeltaPct": "3.0"
+    },
+    "Big Shoulders 700": {
+      "width": 386,
+      "capHeight": 39,
+      "widthDeltaPct": "-31.6",
+      "capHeightDeltaPct": "18.2"
+    },
+    "Big Shoulders 900": {
+      "width": 408,
+      "capHeight": 39,
+      "widthDeltaPct": "-27.7",
+      "capHeightDeltaPct": "18.2"
+    }
+  }
+}

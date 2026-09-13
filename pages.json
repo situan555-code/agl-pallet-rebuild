@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/",
+    "title": "AGL Pallet - For Manufacturers Who Can’t Afford Disruption",
+    "description": "AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.",
+    "canonical": "https://aglpallet.com/"
+  },
+  {
+    "path": "/about/",
+    "title": "About - AGL Pallet",
+    "description": null,
+    "canonical": "https://aglpallet.com/about/"
+  },
+  {
+    "path": "/industries-served/",
+    "title": "Industries Served - AGL Pallet",
+    "description": null,
+    "canonical": "https://aglpallet.com/industries-served/"
+  },
+  {
+    "path": "/logistics-process/",
+    "title": "Logistics & Process - AGL Pallet",
+    "description": null,
+    "canonical": "https://aglpallet.com/logistics-process/"
+  },
+  {
+    "path": "/products/",
+    "title": "Products - AGL Pallet",
+    "description": null,
+    "canonical": "https://aglpallet.com/products/"
+  },
+  {
+    "path": "/request-a-quote/",
+    "title": "Request a Quote - AGL Pallet",
+    "description": null,
+    "canonical": "https://aglpallet.com/request-a-quote/"
+  }
+]

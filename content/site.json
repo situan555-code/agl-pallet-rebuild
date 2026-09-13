@@ -1,0 +1,40 @@
+{
+  "logo": {
+    "src": "/assets/agl_pallet_logo-light.svg",
+    "width": 112,
+    "height": 50,
+    "alt": "AGL Pallet"
+  },
+  "nav": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Logistics & Process", "href": "/logistics-process/" },
+    { "label": "Industries Served", "href": "/industries-served/" },
+    { "label": "Products", "href": "/products/" }
+  ],
+  "ctaNav": { "label": "Contact Us", "href": "/request-a-quote/" },
+  "footer": {
+    "blurb": "AGL Pallet works with manufacturers and high-volume operators to source, coordinate, and deliver truckload quantities of pallets—combining industry experience, trusted suppliers, and end-to-end logistics to keep production moving without unnecessary complexity.",
+    "navHeading": "Navigation",
+    "servicesHeading": "Services",
+    "servicesNav": [
+      { "label": "Stock Pallets", "href": "/products/#stock-pallet" },
+      { "label": "Engineered Pallet Solutions", "href": "/products/#eng-pallet-solutions" },
+      { "label": "Crates & Dunnage", "href": "/products/#crates-dunnage" },
+      { "label": "Shipping Blocks", "href": "/products/#shipping-blocks" }
+    ],
+    "contactHeading": "Get in Touch",
+    "contact": { "phone": "234-286-0402", "email": "sales@aglpallet.com" },
+    "socialHeading": "Follow Us",
+    "social": {
+      "facebook": "https://www.facebook.com/profile.php?id=61584727225727",
+      "linkedin": "https://www.linkedin.com/company/aglpallet/"
+    },
+    "copyright": {
+      "prefix": "Copyright © 2026 AGL Pallet. All Rights Reserved. This is ",
+      "agencyLabel": "Bahlr",
+      "agencyHref": "https://bahlr.com/",
+      "suffix": " website."
+    }
+  }
+}

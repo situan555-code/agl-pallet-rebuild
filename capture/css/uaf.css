@@ -1,0 +1,13 @@
+				@font-face {
+					font-family: 'cofopeshka550';
+					src: url('/wp-content/uploads/useanyfont/1865CoFoPeshka550.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/1865CoFoPeshka550.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.cofopeshka550{font-family: 'cofopeshka550' !important;}
+
+						h1, h2, h3, h4, h5, h6{
+					font-family: 'cofopeshka550' !important;
+				}
+		

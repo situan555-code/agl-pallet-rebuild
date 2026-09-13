@@ -1,0 +1,13 @@
+{
+  "sitemapIndexUrl": "https://aglpallet.com/sitemap_index.xml",
+  "childSitemaps": [
+    "https://aglpallet.com/page-sitemap.xml"
+  ],
+  "sitemapPageCount": 6,
+  "navFooterLinkCount": 6,
+  "discrepancies": {
+    "inNavFooterNotInSitemap": [],
+    "inSitemapNotInNavFooter": []
+  },
+  "robotsTxt": "# START YOAST BLOCK\n# ---------------------------\nUser-agent: *\nDisallow:\n\nSitemap: https://aglpallet.com/sitemap_index.xml\n# ---------------------------\n# END YOAST BLOCK"
+}

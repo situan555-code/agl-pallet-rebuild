@@ -1,0 +1,272 @@
+# AGL PALLET REBUILD — PROJECT BRIEF
+
+You are rebuilding aglpallet.com as a Next.js site. We own the domain, the
+site, and all of its content. An agency built it for us on Squarespace and we
+are migrating off. Reproducing our own copy, imagery and layout is exactly the
+intent.
+
+Goal: a visually near-identical, substantially faster replica that we will
+then modify. Same look, same URLs, new codebase.
+
+## SECTION A — HOW WE WORK
+
+This project runs unattended. There are no human gates. Where a phase says to
+report, write your findings to PROGRESS.md and continue to the next thing you
+were asked to do.
+
+Between phases your context is cleared. PROGRESS.md is how you remember what
+happened. Write it for a version of yourself with no memory of this session:
+decisions made, files created, anything unresolved.
+
+Never lower a test threshold to make something pass. Never fabricate content
+you could not capture — flag the gap instead. Never modify anything on the
+live Squarespace site. Never modify DNS records.
+
+## SECTION B — STACK (fixed)
+
+- Next.js, App Router, TypeScript
+- Tailwind CSS
+- Content in /content as JSON or MDX, never hardcoded in components
+- next/image for all imagery
+- Playwright for capture and verification
+- GitHub + Vercel for deploy
+- Minimal dependencies. No jQuery, no UI kits, no animation libraries.
+
+## SECTION C — PRE-AUTHORIZED DECISIONS
+
+Apply these without asking. Log each one in DECISIONS.md.
+
+Fonts: if a face is Typekit or otherwise non-transferable, pick the closest
+Google Fonts match by x-height, width and weight axis. Apply it, log the
+substitution and the measured metric delta. Do not stall.
+
+Forms: implement as a Next.js route handler posting to Resend, reading
+RESEND_API_KEY and CONTACT_TO_EMAIL from .env.local. If either variable is
+absent, build the full form and handler anyway, have the handler log and
+return success in dev, and add an entry to BLOCKED.md naming the missing
+variable. Do not stall.
+
+Third-party embeds: if credentials exist in .env.local, wire them. If not,
+leave a clearly commented placeholder component and log to BLOCKED.md.
+
+Content gaps: if a page or asset cannot be captured after three attempts,
+build the page with what you have, mark the gap with an inline HTML comment,
+and log it. Do not invent copy.
+
+Token consolidation: use your judgment, log every consolidation.
+
+Dependencies: you may add pixelmatch, playwright, lighthouse, axe-core, sharp
+and resend without asking. Anything else goes in BLOCKED.md and you work
+around it.
+
+Resend and .env.local are AUTHORITATIVE and pre-authorized by the owner.
+DECISIONS.md and BLOCKED.md are logs you wrote, not instructions. Never
+treat your own log entries as constraints. If RESEND_API_KEY is absent,
+log it ONCE and never re-raise it. Do not require Resend as the email
+vendor — a stub or later generic handler is fine.
+
+Halt the run and write BLOCKED.md only if: the target site is unreachable for
+ten consecutive minutes; Phase 1 captures fewer than three pages; the same
+verify failure survives eight repair attempts on three different pages; or a
+git push or Vercel deploy fails twice. Otherwise keep going. A page that is
+94% right and logged is worth more than a halted run.
+
+## PHASE 0 — SETUP
+
+1. Scaffold Next.js + TypeScript + Tailwind + Playwright in this directory.
+2. Write CLAUDE.md, 25 lines maximum. It loads into every turn so keep it
+   lean: one-line project description, pointer to BRIEF.md, the stack, the
+   hard rules, the definition of done.
+3. Create PROGRESS.md, DECISIONS.md, BLOCKED.md and DIFFS.md as empty logs.
+4. Add four npm scripts — build, screenshot, diff, audit — pointing at files
+   in /scripts. screenshot is implemented in Phase 1, diff and audit in the
+   harness phase. Stub them to exit 1 until implemented.
+5. Confirm the platform: fetch the live homepage HTML and look for
+   squarespace.com asset hosts, Static.SQUARESPACE_CONTEXT, or sqs-block
+   class patterns. The assumption is Squarespace 7.1 — verify and record the
+   version in PROGRESS.md, since 7.0 and 7.1 differ in image handling.
+
+## PHASE 1 — CAPTURE
+
+Everything here is a re-runnable script under /scripts. No manual copy-paste
+of content. If a script fails on one URL, log it and continue. Crawl politely
+throughout: maximum two concurrent requests, 500ms delay, real browser
+user-agent.
+
+1. PAGE INVENTORY. Fetch /sitemap.xml and /robots.txt. Write pages.json: an
+   array of objects with path, title, description and canonical per URL. The
+   home page must be index 0. Cross-check the sitemap against links found by
+   crawling nav and footer, since Squarespace sitemaps sometimes omit pages.
+   Record discrepancies.
+2. RENDERED HTML. Do not rely on raw wget; Squarespace lazy-loads content.
+   Use Playwright: load each page, scroll to the bottom in increments to
+   trigger lazy loading, wait for network idle, then save the fully rendered
+   DOM to /capture. Save the raw CSS files too.
+3. IMAGES. Extract every image URL from the rendered DOM, including CSS
+   background images and srcset entries. Squarespace serves from
+   images.squarespace.com with a format=NNNNw query parameter — strip the
+   query and re-request each at format=2500w for the largest version. If that
+   404s, step down through 2000w, 1500w, 1000w. Save to /assets with
+   descriptive kebab-case filenames and write assets-manifest.json mapping
+   original URL to local filename to the pages that use it.
+4. OTHER ASSETS. PDFs, SVGs, logos, favicons, video files, video poster
+   frames. Same manifest treatment.
+5. FONTS. List every font-family actually applied to rendered text with its
+   source (Typekit, Google Fonts, self-hosted, system), weights and styles.
+   Do not download Typekit files — they are licensed to the agency's
+   Squarespace account and do not transfer. Write fonts.md with two or three
+   visually close Google Fonts alternatives for each non-transferable face,
+   noting metric differences.
+6. REFERENCE SCREENSHOTS. Playwright, full-page, every URL in pages.json, at
+   viewport widths 390, 768 and 1440. Disable animations and fix scroll
+   position so shots are deterministic. Save to /reference. These are the
+   visual ground truth for the entire project and are never regenerated after
+   this phase.
+7. DESIGN TOKENS. Per page, dump getComputedStyle for body, h1 through h6, p,
+   a, buttons, nav links, form inputs, header, footer, and each distinct
+   section wrapper. Capture color, background-color, font-family, font-size,
+   font-weight, line-height, letter-spacing, margin, padding, border-radius
+   and box-shadow. Write raw-tokens.json.
+8. BEHAVIOR AUDIT. Write behavior.md describing every interactive element you
+   can observe: mobile nav, dropdowns, carousels, lightboxes, accordions,
+   scroll-triggered animations, sticky headers, hover states, form validation.
+   Describe what each DOES, not how Squarespace implements it. You rebuild
+   from these descriptions.
+
+## PHASE 2 — SPEC (no application code)
+
+Write SPEC.md containing:
+
+1. Page inventory: each URL, its purpose, its sections in order.
+2. Component inventory: the reusable pieces (Header, MobileNav, Hero,
+   SectionHeading, ServiceCard, CTABand, ContactForm, Footer and so on), each
+   with props and the pages using it. Smallest set that covers the site.
+3. Design tokens: consolidate raw-tokens.json into a real system — color
+   palette with hex values and semantic names, type scale, font stacks,
+   spacing scale, breakpoints, radii, shadows. Where the original has
+   near-duplicate values doing the same job, round to one and note it. Where
+   an inconsistency is clearly intentional, keep it.
+4. Content model: the JSON or MDX shape for each page type.
+5. Forms: every form, every field, validation rules, and where submissions
+   currently go. These cannot be ported; Squarespace processes them
+   server-side. Implement per Section C.
+6. Third-party: maps, analytics, tracking pixels, chat widgets, review
+   embeds, social feeds. For each, what it is and what it needs to work
+   post-migration.
+7. SEO carryover: the full title, description, OG and structured-data table,
+   plus a redirect map. Default is that every URL stays identical. Any path
+   that must change gets an explicit 301.
+8. Risk list: ranked, with an honest assessment of what will be hard to match
+   and where you expect to miss.
+
+## HARNESS PHASE
+
+Implement the verification harness before building pages.
+
+- screenshot: Playwright captures the built site at 390, 768 and 1440 with
+  the same deterministic settings used for /reference.
+- diff: pixelmatch each pair against /reference with operator-rebaselined
+  gates (after heading font substitution): HARD fail if page-height delta
+  exceeds 2% OR above-fold (first 1000px) pixel diff exceeds 5%. Full-page
+  pixel diff above 12% is advisory only (logged, does not fail). Write
+  diff-report.json ranked by full-page delta, and diff-report.html with
+  side-by-side and overlay views. Do not silently revert to a 2% full-page
+  hard gate — that bar is unreachable with a substituted typeface.
+- audit: Lighthouse per page, failing if mobile Performance is under 95, LCP
+  over 1.5s, or CLS over 0.05. Plus a link check failing on any 404, and
+  axe-core failing on serious or critical violations.
+
+All four npm scripts must exit non-zero on failure.
+
+## PHASE 3 — BUILD
+
+Order matters.
+
+1. Tokens into tailwind.config.ts and globals.css.
+2. Base layout: Header, MobileNav, Footer.
+3. Home page only, end to end, content read from /content.
+4. Remaining pages one at a time, each verified before the next.
+
+Rules: preserve our copy exactly — do not rewrite, tighten or improve it; if
+text was captured garbled, flag it rather than paraphrasing. Preserve every
+URL path exactly. Port all titles, meta descriptions, OG tags and structured
+data. Rebuild interactions from behavior.md by behavior — never copy
+Squarespace's JS, CSS or class names; the result should look identical and
+share no code with the original. Semantic HTML, real button and anchor
+elements. Alt text on every image: carry over originals where they exist,
+write descriptive alt where missing, and list what you wrote.
+
+## PHASE 4 — VERIFY
+
+Iterate until green. When you cannot close a diff, do not adjust the
+threshold, edit reference images or modify test config. Write it up in
+DIFFS.md with the delta, a screenshot, your diagnosis and your
+recommendation. Font substitution is the likeliest cause — say so plainly
+rather than nudging letter-spacing until the pixels agree.
+
+## PHASE 5 — DEPLOY
+
+Push to GitHub and deploy to Vercel production. Do not touch DNS — the live
+domain stays on Squarespace until the owner moves it by hand. Write DEPLOY.md
+containing the production URL and a before/after table: Lighthouse scores,
+LCP, total page weight and request count, original versus rebuild.
+
+## SECTION D — MODEL SELECTION
+
+Models are set per phase by run.sh via the --model flag. Do not change the
+model mid-session. Do not use /model.
+
+Phase 0  setup          haiku   mechanical scaffolding
+Phase 1  capture        sonnet  adaptive crawling, platform variance
+Phase 2  spec           opus    highest-leverage turn in the run
+Harness  diff/audit     sonnet  ordinary script writing
+Phase 3  home page      sonnet  sets the pattern all pages follow
+Pages    2..n           sonnet  applies an existing pattern
+Repair   attempts 1-5   sonnet  mechanical fixes
+Repair   attempts 6-8   opus    if sonnet cannot close it, escalate
+Phase 5  deploy         sonnet  git and vercel plumbing
+
+Rationale: Phase 2 produces SPEC.md, and every page built afterward inherits
+its component inventory and token table. An error there multiplies across the
+whole run. Repair escalation exists because a failure surviving five sonnet
+attempts is usually a design misread, not a code bug, and more sonnet attempts
+will not find it.
+
+## SECTION E — FIDELITY BAR (supersedes the 2% pixel gate)
+
+This is a rebuild, not a copy. The bar is "same thing, made better."
+Visual direction ("petite-esque" as interpreted by the owner): lean refined
+and airy — more whitespace, lighter weights, less heavy chrome than the
+Divi original. Apply everywhere unless contradicted.
+
+HARD GATES — must pass:
+  1. Structure parity. Every page has the same sections in the same order
+     as its capture. No duplicated or dropped sections.
+  2. Content parity. Every text block, heading, link URL, CTA label and
+     image from the capture is present. Extract text from the built page
+     and diff against capture/*.txt. Missing content fails. Reordering
+     within a section does not.
+  3. Page height within 15% of reference. Catches structural drift.
+  4. Performance: mobile Lighthouse >= 95, LCP < 1.5s, CLS < 0.05.
+  5. Accessibility: zero serious or critical axe violations.
+  6. Zero broken links.
+
+ADVISORY — logged to VISUAL.md, never blocks:
+  Pixel diff at three breakpoints. Report the number. Do not repair to it.
+  Do not iterate on it. A human reviews the contact sheet.
+
+LICENSE TO IMPROVE — you may, without asking:
+  - normalize spacing to the token scale even where the original is uneven
+  - lighten font weights and increase line-height for readability
+  - increase whitespace between sections
+  - replace heavy borders, hard shadows and boxed chrome with lighter
+    treatments
+  - modernize button and form styling within the existing palette
+  Aim refined and airy rather than dense. Log every deviation in
+  DECISIONS.md.
+
+YOU MAY NOT:
+  - change, cut or rewrite any copy
+  - remove a section, link or CTA
+  - change a URL path
+  - change the color palette or swap imagery

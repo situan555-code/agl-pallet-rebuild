@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "eyebrow": "About",
+    "heading": "Experience, Accountability, and Real-World Perspective",
+    "paragraphs": [
+      "AGL Pallet was built to bring structure and reliability to an industry that often operates without it.",
+      "In high-volume manufacturing environments, pallet supply is often treated as a commodity — until something goes wrong. Missed deliveries, inconsistent quality, and unpredictable pricing can quickly disrupt production and shipping schedules. AGL was founded to address those challenges directly, applying operational discipline and supply chain awareness to an area that too often lacks both."
+    ],
+    "video": "/assets/agl_home_video.mp4"
+  },
+  "whoAglServes": {
+    "eyebrow": "Who AGL Serves",
+    "heading": "Fair-Market Sourcing. Realistic Expectations. Long-Term Partnerships.",
+    "paragraphs": [
+      "We believe strong supplier relationships and honest communication create better outcomes for manufacturers. AGL doesn’t chase unrealistic pricing at the expense of reliability. We design pallet solutions that balance cost, quality, and long-term sustainability — protecting both production schedules and supplier partnerships.",
+      "Short-term cost cutting often leads to long-term instability. Instead of pursuing unsustainable pricing models, we focus on fair-market sourcing strategies that allow suppliers to maintain quality standards and consistent output. When suppliers are stable, our clients benefit from dependable capacity and predictable lead times."
+    ],
+    "image": "/assets/about_page-single_point_sidepic.jpg",
+    "imageSide": "right",
+    "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+  },
+  "video": {
+    "src": "/assets/agl_home_video.mp4",
+    "controls": false,
+    "autoPlay": true,
+    "muted": true,
+    "loop": true
+  },
+  "industries": {
+    "eyebrow": "How it Works",
+    "heading": "Built for Demanding Industrial Environments",
+    "theme": "dark",
+    "cards": [
+      {
+        "icon": "/assets/about-building-materials-icon.svg",
+        "heading": "Building Materials",
+        "body": "Heavy, dense, and often irregular loads require pallets engineered for strength and load distribution. We support manufacturers and distributors of lumber, stone, roofing materials, and construction components with durable solutions designed to withstand demanding handling conditions and outdoor storage environments."
+      },
+      {
+        "icon": "/assets/about-pharmacy-icon.svg",
+        "heading": "Pharmaceuticals",
+        "body": "In regulated environments where cleanliness, consistency, and traceability matter, pallet integrity plays a critical role. We help pharmaceutical manufacturers maintain compliant, dependable material handling systems that support sensitive product transport and controlled warehouse operations."
+      },
+      {
+        "icon": "/assets/about-plastics-icon.svg",
+        "heading": "Plastics",
+        "body": "Plastic product manufacturers often manage high production volumes and rapid distribution cycles. Our pallet solutions are designed to support lightweight but bulk shipments, automated handling systems, and efficient stacking configurations that maximize storage density."
+      },
+      {
+        "icon": "/assets/about-chemicals-icon.svg",
+        "heading": "Chemicals",
+        "body": "Chemical manufacturers require packaging solutions capable of supporting heavy drums, containers, and bulk materials. We deliver pallets and structural components engineered for strength, stability, and performance under demanding industrial conditions."
+      },
+      {
+        "icon": "/assets/abouts-fb-icon.svg",
+        "heading": "Food & Beverage",
+        "body": "High-throughput food and beverage operations depend on reliable material handling to maintain distribution timelines. Our solutions support consistent load performance, warehouse efficiency, and repeatable handling processes across regional supply chains."
+      },
+      {
+        "heading": "Build a More Reliable Supply Plan",
+        "body": "Plastic product manufacturers often manage high production volumes and rapid distribution cycles. Our pallet solutions are designed to support lightweight but bulk shipments, automated handling systems, and efficient stacking configurations that maximize storage density.",
+        "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+      }
+    ]
+  },
+  "singlePointOfContact": {
+    "eyebrow": "Single Point of Contact",
+    "heading": "One Call. Full Accountability.",
+    "paragraphs": [
+      "AGL Pallet serves manufacturers and distribution-focused businesses across building materials, pharmaceuticals, plastics, chemicals, and food and beverage—organizations where pallet reliability directly impacts production and shipping.",
+      "We work with owners, COOs, purchasing teams, and warehouse leaders at both regional and multinational operations that require truckload quantities on a recurring basis.  If consistent pallet supply is critical to keeping your operation running, AGL is built to support you."
+    ],
+    "image": "/assets/home_about_photo.jpg",
+    "imageSide": "left",
+    "cta": { "label": "Get In Touch", "href": "/request-a-quote/" }
+  },
+  "ctaBand": {
+    "eyebrow": "Get In Touch",
+    "heading": "Let’s Talk About Your Pallet Needs",
+    "body": "Whether you’re sourcing pallets daily or planning for upcoming demand, AGL Pallet is ready to support your operation.",
+    "backgroundImage": "/assets/get_in_touch_cta_banner_bg-1-scaled.jpg",
+    "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+  }
+}

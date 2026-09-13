@@ -1,0 +1,97 @@
+{
+  "hero": {
+    "eyebrow": "Reliable Pallet Sourcing",
+    "heading": "For Manufacturers Who Can’t Afford Disruption",
+    "body": "AGL Pallet works with manufacturers and high-volume operators to source, coordinate, and deliver truckload quantities of pallets—combining industry experience, trusted suppliers, and end-to-end logistics to keep production moving without unnecessary complexity.",
+    "image": "/assets/home_header_image.jpg",
+    "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+  },
+  "sections": [
+    {
+      "type": "textWithImage",
+      "eyebrow": "What AGL Pallet Does",
+      "heading": "A Single Point of Contact for Pallet Supply",
+      "paragraphs": [
+        "AGL Pallet is a pallet brokerage serving manufacturers across food and beverage, pharmaceutical, building materials, and industrial sectors. We work directly with trusted pallet manufacturers to source and deliver truckload quantities of pallets, managing third-party logistics and coordination so customers don’t have to.",
+        "By acting as a single, accountable point of contact, AGL ensures pallet supply aligns with production schedules, volume needs, and operational realities—reducing complexity and keeping material moving without disruption."
+      ],
+      "image": "/assets/home_about_photo.jpg",
+      "imageSide": "left"
+    },
+    {
+      "type": "statBand",
+      "stats": [
+        { "value": "99%", "label": "On-Time Delivery" },
+        { "value": "12+", "label": "Years Industry Experience" }
+      ]
+    },
+    {
+      "type": "video",
+      "src": "/assets/agl_home_video.mp4",
+      "controls": true,
+      "autoPlay": false,
+      "muted": true,
+      "loop": true
+    },
+    {
+      "type": "textWithImage",
+      "eyebrow": "Why AGL Exists",
+      "heading": "Built From Inside the Manufacturing World",
+      "paragraphs": [
+        "AGL Pallet was built from firsthand experience on the manufacturing side, including navigating capacity constraints, material shortages, and pricing volatility during high-pressure periods like COVID. That background shapes how we operate today—knowing when to push for efficiency, when to push back to protect production, and how to design fit-for-purpose pallet solutions without creating unnecessary complexity.",
+        "The result is a more transparent, realistic approach that protects timelines, supplier relationships, and manufacturing continuity."
+      ],
+      "image": "/assets/why_agl_exist_sidepic.jpg",
+      "imageSide": "right",
+      "edgeShape": "right"
+    },
+    {
+      "type": "textWithImage",
+      "eyebrow": "Who AGL Serves",
+      "heading": "Serving High-Volume, High-Expectation Operations",
+      "paragraphs": [
+        "AGL Pallet serves manufacturers and distribution-focused businesses across building materials, pharmaceuticals, plastics, chemicals, and food and beverage—organizations where pallet reliability directly impacts production and shipping.",
+        "We work with owners, COOs, purchasing teams, and warehouse leaders at both regional and multinational operations that require truckload quantities on a recurring basis. If consistent pallet supply is critical to keeping your operation running, AGL is built to support you."
+      ],
+      "image": "/assets/who_agl_is_sidepic.jpg",
+      "imageSide": "left",
+      "edgeShape": "left",
+      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+    },
+    {
+      "type": "processSteps",
+      "eyebrow": "How it Works",
+      "heading": "A Straightforward, Dependable Process",
+      "steps": [
+        {
+          "icon": "/assets/how_it_works_01_icon.svg",
+          "heading": "Understand Your Needs",
+          "body": "We start by understanding your volume requirements, pallet specifications, and delivery timelines so sourcing aligns with your production and shipping demands."
+        },
+        {
+          "icon": "/assets/how_it_works_02_icon.svg",
+          "heading": "Reliable Manufacturer Network",
+          "body": "AGL coordinates with proven pallet manufacturers that have the capacity and capability to meet your needs without compromising quality or reliability."
+        },
+        {
+          "icon": "/assets/how_it_works_03_icon.svg",
+          "heading": "Handle Logistics End-to-End",
+          "body": "We manage third-party transportation and logistics, ensuring pallets arrive where and when they’re needed—without added complexity on your end."
+        },
+        {
+          "icon": "/assets/how_it_works_04_icon.svg",
+          "heading": "Ongoing Support & Coordination",
+          "body": "As demand, schedules, or conditions change, we adjust sourcing and logistics to maintain consistent supply and protect continuity."
+        }
+      ]
+    },
+    {
+      "type": "ctaBand",
+      "eyebrow": "Get In Touch",
+      "heading": "Let’s Talk About Your Pallet Needs",
+      "body": "Whether you’re sourcing pallets daily or planning for upcoming demand, AGL Pallet is ready to support your operation.",
+      "backgroundImage": "/assets/get_in_touch_cta_banner_bg-1-scaled.jpg",
+      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+    }
+  ]
+}

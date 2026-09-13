@@ -1,0 +1,166 @@
+{
+  "fontFileRequests": [
+    "https://aglpallet.com/wp-content/themes/Divi/core/admin/fonts/modules/all/modules.woff",
+    "https://aglpallet.com/wp-content/uploads/useanyfont/1865CoFoPeshka550.woff2",
+    "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZFhiA.woff2",
+    "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZFhiA.woff2",
+    "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZFhiA.woff2",
+    "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZFhiA.woff2",
+    "https://use.fontawesome.com/releases/v7.2.0/webfonts/fa-brands-400.woff2",
+    "https://use.fontawesome.com/releases/v7.2.0/webfonts/fa-solid-900.woff2"
+  ],
+  "usageBySelector": {
+    "body": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      }
+    ],
+    "h1": [
+      {
+        "fontFamily": "cofopeshka550",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      }
+    ],
+    "h2": [
+      {
+        "fontFamily": "cofopeshka550",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 5
+      }
+    ],
+    "h5": [
+      {
+        "fontFamily": "cofopeshka550",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 2
+      }
+    ],
+    "p": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "600",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "cofopeshka550, Georgia, \"Times New Roman\", serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ],
+    "a": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "600",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Helvetica, Arial",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ],
+    "nav a": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "600",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      },
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "500",
+        "fontStyle": "normal",
+        "seenOnPages": 6
+      }
+    ],
+    "h3": [
+      {
+        "fontFamily": "cofopeshka550",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 2
+      }
+    ],
+    "h4": [
+      {
+        "fontFamily": "cofopeshka550",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ],
+    "button": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "700",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ],
+    "input": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ],
+    "textarea": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ],
+    "label": [
+      {
+        "fontFamily": "Inter, Helvetica, Arial, Lucida, sans-serif",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "seenOnPages": 1
+      }
+    ]
+  }
+}

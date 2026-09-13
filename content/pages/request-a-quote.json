@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "eyebrow": "Request a Quote",
+    "heading": "Contact AGL Pallet",
+    "body": "If you’re looking for a reliable partner to source and coordinate pallet supply, we’d be glad to connect. Reach out using the form below, and someone from AGL Pallet will follow up promptly."
+  },
+  "contactInfo": [
+    {
+      "icon": "/assets/phone_icon.svg",
+      "hoverIcon": "/assets/phone_icon_hover.svg",
+      "label": "Phone Number",
+      "value": "234-286-0402",
+      "href": "tel:2342860402"
+    },
+    {
+      "icon": "/assets/email_icon.svg",
+      "hoverIcon": "/assets/email_icon_hover.svg",
+      "label": "Email Address",
+      "value": "sales@aglpallet.com",
+      "href": "mailto:sales@aglpallet.com"
+    },
+    {
+      "icon": "/assets/message_icon.svg",
+      "hoverIcon": "/assets/message_icon_hover.svg",
+      "label": "Text",
+      "value": "234-286-0402",
+      "href": "sms:2342860402"
+    }
+  ]
+}
