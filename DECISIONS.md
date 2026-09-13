@@ -612,3 +612,8 @@ is reversed.
   without an explicit written operator answer; no-reply ≠ decision.
 - Keep trailingSlash + FadeIn opacity-0 fixes — real visitor wins, not just
   score theater.
+
+## 2026-09-13 — quote mail via FormSubmit (no Resend)
+Operator: "ignore the key for form, lets do it our own way." Switched
+`/api/quote` from Resend to FormSubmit.co/ajax using existing
+`CONTACT_TO_EMAIL`. No new secret. Silent success-without-send removed.

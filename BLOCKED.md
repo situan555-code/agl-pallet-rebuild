@@ -183,3 +183,9 @@ establish a CLI session, or set `VERCEL_TOKEN` (and, once a project exists,
 `VERCEL_ORG_ID`/`VERCEL_PROJECT_ID`) as environment variables available to
 future sessions. Full detail and the exact commands to run afterward are in
 DEPLOY.md.
+
+## 2026-09-13 — quote form uses FormSubmit (no Resend)
+Operator: ignore Resend key; DIY delivery. `app/api/quote/route.ts` now posts
+through FormSubmit using `CONTACT_TO_EMAIL` only. Refuses with 503 if that
+env var is missing (no more silent log-and-ok). First live submit may need
+one activation click in the CONTACT_TO inbox.

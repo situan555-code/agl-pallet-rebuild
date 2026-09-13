@@ -21,7 +21,12 @@ const REQUIRED_FIELDS: (keyof QuoteRequest)[] = [
 ];
 
 export async function POST(request: Request) {
-  const body = (await request.json()) as Partial<QuoteRequest>;
+  let body: Partial<QuoteRequest>;
+  try {
+    body = (await request.json()) as Partial<QuoteRequest>;
+  } catch {
+    return NextResponse.json({ error: "invalid json" }, { status: 400 });
+  }
 
   for (const field of REQUIRED_FIELDS) {
     if (!body[field] || body[field]!.trim() === "") {
@@ -29,22 +34,24 @@ export async function POST(request: Request) {
     }
   }
 
-  const { RESEND_API_KEY, CONTACT_TO_EMAIL } = process.env;
-
-  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL) {
-    console.log("[quote] RESEND_API_KEY or CONTACT_TO_EMAIL not set — logging submission instead of sending:", body);
-    return NextResponse.json({ ok: true });
+  const to = process.env.CONTACT_TO_EMAIL?.trim();
+  if (!to) {
+    console.error("[quote] CONTACT_TO_EMAIL not set — refusing silent drop");
+    return NextResponse.json({ error: "mail not configured" }, { status: 503 });
   }
 
-  const { Resend } = await import("resend");
-  const resend = new Resend(RESEND_API_KEY);
-
-  const { error } = await resend.emails.send({
-    from: "AGL Pallet Website <quotes@aglpallet.com>",
-    to: CONTACT_TO_EMAIL,
-    replyTo: body.email,
-    subject: `Quote request from ${body.fullName} (${body.companyName})`,
-    text: [
+  // DIY delivery: FormSubmit needs only the destination email (no API key).
+  // First production submit may require one activation click in that inbox.
+  const payload = {
+    name: body.fullName,
+    email: body.email,
+    phone: body.phone,
+    company: body.companyName,
+    _replyto: body.email,
+    _subject: `Quote request from ${body.fullName} (${body.companyName})`,
+    _template: "table",
+    _captcha: "false",
+    message: [
       `Full Name: ${body.fullName}`,
       `Company Name: ${body.companyName}`,
       `Email Address: ${body.email}`,
@@ -53,12 +60,31 @@ export async function POST(request: Request) {
       `Estimated Pallet Quantity: ${body.palletQuantity}`,
       `Message: ${body.message}`,
     ].join("\n"),
+  };
+
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
   });
 
-  if (error) {
-    console.error("[quote] Resend send failed:", error);
+  const text = await res.text();
+  let parsed: { success?: string; message?: string; error?: string } = {};
+  try {
+    parsed = JSON.parse(text) as typeof parsed;
+  } catch {
+    /* non-JSON error page */
+  }
+
+  if (!res.ok) {
+    console.error("[quote] FormSubmit failed:", res.status, text.slice(0, 500));
     return NextResponse.json({ error: "send failed" }, { status: 502 });
   }
 
+  // FormSubmit returns 200 with success message; activation-pending still 200.
+  console.log("[quote] FormSubmit accepted:", parsed.success || parsed.message || "ok");
   return NextResponse.json({ ok: true });
 }
