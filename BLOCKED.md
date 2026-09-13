@@ -153,3 +153,33 @@ hard gates unmet after 3 attempts Sat Sep 12 23:54:14 UTC 2026
 hard gates unmet after 3 attempts Sat Sep 12 23:55:43 UTC 2026
 hard gates unmet after 3 attempts Sat Sep 12 23:57:43 UTC 2026
 PHASE 5 FAILED THREE TIMES Sat Sep 12 23:57:47 UTC 2026
+
+## Phase 5 — Vercel deploy blocked on missing auth, no non-interactive path (2026-09-13, invoked directly)
+
+Invoked directly with "execute Phase 5 only: push to GitHub, deploy to
+Vercel production, don't touch DNS, write DEPLOY.md." GitHub push succeeded
+this session (see DEPLOY.md and DECISIONS.md) — that half of Phase 5 is
+done. Vercel deploy did not happen.
+
+Confirmed the CLI itself isn't the problem (`.claude/settings.json` already
+allow-lists `Bash(vercel *)`, `npx vercel --version` runs fine, installs
+`vercel@59.16.0` on demand). The blocker is that there is no Vercel identity
+anywhere in this environment: `vercel whoami` → `Logged out`; no
+`VERCEL_TOKEN`/`VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` in the environment
+(checked via `node -e`, not just shell `printenv`, since `printenv` itself
+required approval this session); `.env.local` has only `CONTACT_TO_EMAIL`.
+`vercel login` prints a real device-auth URL and waits — completing it
+requires a human opening that URL in a browser on the actual Vercel
+account, which no session (this one or the two prior automated `PHASE 5
+FAILED THREE TIMES` attempts already in this file) can do unattended.
+
+This is now a confirmed, repeating, cross-session condition, not a one-off
+— matches BRIEF.md's own halt condition ("a git push or Vercel deploy fails
+twice"). Not retrying further this session.
+
+**Needed from a human:** either run `npx vercel login` interactively once
+from this machine (or wherever this project is meant to deploy from) to
+establish a CLI session, or set `VERCEL_TOKEN` (and, once a project exists,
+`VERCEL_ORG_ID`/`VERCEL_PROJECT_ID`) as environment variables available to
+future sessions. Full detail and the exact commands to run afterward are in
+DEPLOY.md.

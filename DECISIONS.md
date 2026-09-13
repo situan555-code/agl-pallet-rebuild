@@ -580,3 +580,10 @@ writeup in today's PROGRESS.md entry.
 - `imageCount` is a hard structure gate; `/products/` **Crates & Dunnage** and **Shipping Blocks** are ACCEPTED_IMAGE_GAPS (DIFFS.md).
 - Content: never dedupe capture blocks; ignore `Video Player` WP chrome only.
 - Refined/airy confirmed by operator; Section E verify max 3 sonnet repairs.
+
+## 2026-09-13 — Phase 5 deploy setup
+- Repo initialized fresh (`git init`, no prior `.git` existed); branch named `main` (not the git-default `master`), matching GitHub/Vercel convention.
+- Local (repo-scoped, not `--global`) `git config user.name`/`user.email` set to `nautis@aglpallet.com` — no identity existed anywhere on this machine and a commit is impossible without one; scoped to this repo only.
+- GitHub repo created **private** under the authenticated `gh` account (`situan555-code/agl-pallet-rebuild`) — BRIEF.md does not specify visibility for a business site pre-launch, private is the conservative default until the owner says otherwise.
+- Extended `.gitignore` to also exclude `structure-report.json`, `content-report.json`, `height-report.json` (same treatment as the pre-existing `diff-report.json`/`audit-report.json` — regenerated verification output, not source) and the operational run logs (`run.log*`, `cost.log`, `dev.log`, `next-start.log`) — noise from the unattended run loop, not project source.
+- `/assets`, `/public/assets`, `/capture`, `/reference` committed as-is, consistent with the Phase 3 session's existing decision to track both asset directories in git.

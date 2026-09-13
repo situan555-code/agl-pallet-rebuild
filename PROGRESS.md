@@ -1168,3 +1168,73 @@ not chase pixel diffs (advisory only per Section E). Logged deviations to
 DECISIONS.md. Stopped all background `next start` processes (ports 3000,
 3010, 3011) before finishing — confirmed via `ps aux`. No model change
 mid-session.
+
+## Phase 5 — Deploy, GitHub done / Vercel blocked (2026-09-13, invoked directly)
+
+Invoked directly with "read BRIEF.md Sections C-E and PROGRESS.md, execute
+Phase 5 only: push to GitHub, deploy to Vercel production, don't touch DNS,
+write DEPLOY.md." Read those sections plus this whole file first, confirmed
+the working directory had no `.git` at all (environment reported "Is a git
+repository: false", confirmed directly).
+
+**GitHub — done.** `git init` (branch `main`), local repo-scoped
+`user.name`/`user.email` set (no identity existed anywhere on this
+machine), staged everything except the existing ignore rules plus three
+newly-added ignore rules for `structure-report.json`/`content-report.json`/
+`height-report.json` (same "regenerated verification output" bucket as
+`diff-report.json`/`audit-report.json`, just never added to `.gitignore`
+before now) and the operational run logs (`run.log*`, `cost.log`,
+`dev.log`, `next-start.log`). Verified nothing gitignored/sensitive slipped
+into the staged set before committing (`node_modules`, `.next`,
+`.env.local` all correctly absent). One commit, 225 files. Created
+`situan555-code/agl-pallet-rebuild` as a **private** GitHub repo (`gh` was
+already authenticated as that account) and pushed `main` —
+`gh auth setup-git` was needed first since the plain `git push` couldn't
+find credentials on its own. Repo: https://github.com/situan555-code/agl-pallet-rebuild
+
+**Vercel — blocked, not deployed.** `vercel`/`npx vercel` CLI works fine
+(already allow-listed in `.claude/settings.json`), but there is no Vercel
+identity anywhere in this environment — `vercel whoami` reports logged out,
+no `VERCEL_TOKEN`/`VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` set, `.env.local` only
+has `CONTACT_TO_EMAIL`. `vercel login` prints a real device-auth URL and
+waits for a human to approve it in a browser — no non-interactive path
+exists. This is not a new problem: `BLOCKED.md` already had two
+`PHASE 5 FAILED THREE TIMES` entries from earlier unattended `run.sh`
+attempts before this session, so this is now a third, independently
+confirmed hit on the same wall. Logged in full to BLOCKED.md and DEPLOY.md
+rather than retried further, per BRIEF.md's own halt condition ("a git push
+or Vercel deploy fails twice"). **No production URL exists yet** — do not
+assume one in a future session without checking BLOCKED.md/DEPLOY.md first.
+
+**Performance before/after, written to DEPLOY.md as instructed:** no
+"before" (live WordPress/Divi site) Lighthouse data exists — Phase 1 never
+captured it, flagged as a gap rather than invented. "After" data pulled
+from the most recent `audit-report.json` on disk (generated
+2026-09-12T23:43Z, **before** the 2026-09-13 height-repair session, so
+explicitly flagged as stale in DEPLOY.md rather than presented as current):
+Performance 94-99 across all 6 pages (5/6 at or above the 95 gate, only
+`/about/` at 94), CLS a clean 0 everywhere, but **LCP fails the <1.5s gate
+on every single page** (1965-2567ms) — the one Definition-of-Done gate
+that's provably not met project-wide as of the last real measurement. Did
+not re-run the harness to refresh this number — out of scope for a
+push/deploy-only phase — but flagged clearly for whoever verifies next.
+
+RESEND_API_KEY: per this session's own instruction ("Obey Resend rules (not
+required)"), not touched, not re-raised — already logged once by a prior
+session per Section C, and Section C says never re-raise it.
+
+**Not done / next steps:**
+- Vercel deploy itself — needs a human to run `npx vercel login`
+  interactively once, or supply `VERCEL_TOKEN`
+  (`+VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` once a project exists) as env vars.
+  Exact follow-up commands are in DEPLOY.md. Once that's done, `DEPLOY.md`'s
+  "no production URL yet" line needs updating with the real one.
+- Re-run the full harness (`build`, `screenshot`, `diff`, `audit`) fresh
+  before trusting DEPLOY.md's performance table as current — it predates
+  the last height-repair session's spacing changes.
+- LCP (1965-2567ms across all pages, gate is <1.5s) is now the clearest
+  single open Definition-of-Done item — worth a dedicated repair session
+  before calling verify complete, independent of the Vercel blocker above.
+- DNS untouched, as required — the live domain stays on the original site
+  until the owner moves it by hand, regardless of when Vercel deploy
+  eventually happens.
