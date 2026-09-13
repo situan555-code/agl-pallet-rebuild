@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 
 type FieldName =
   | "fullName"
@@ -36,73 +37,48 @@ const EMPTY_FORM: Record<FieldName, string> = {
 };
 
 export function ContactForm({ to }: { to: string }) {
+  const searchParams = useSearchParams();
   const [values, setValues] = useState<Record<FieldName, string>>(EMPTY_FORM);
   const [missing, setMissing] = useState<FieldName[]>([]);
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+
+  useEffect(() => {
+    if (searchParams.get("sent") === "1") setStatus("success");
+  }, [searchParams]);
 
   function handleChange(name: FieldName, value: string) {
     setValues((prev) => ({ ...prev, [name]: value }));
   }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     const empty = FIELDS.filter((f) => values[f.name].trim() === "").map((f) => f.name);
     setMissing(empty);
     if (empty.length > 0) {
-      setStatus("idle");
+      e.preventDefault();
       return;
     }
-
     setStatus("submitting");
-    try {
-      // Browser → FormSubmit (Vercel server IPs are Cloudflare-blocked).
-      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: values.fullName,
-          email: values.email,
-          phone: values.phone,
-          company: values.companyName,
-          _replyto: values.email,
-          _subject: `Quote request from ${values.fullName} (${values.companyName})`,
-          _template: "table",
-          _captcha: "false",
-          message: [
-            `Full Name: ${values.fullName}`,
-            `Company Name: ${values.companyName}`,
-            `Email Address: ${values.email}`,
-            `Phone Number: ${values.phone}`,
-            `Pallet Dimensions: ${values.palletDimensions}`,
-            `Estimated Pallet Quantity: ${values.palletQuantity}`,
-            `Message: ${values.message}`,
-          ].join("\n"),
-        }),
-      });
-      const data = (await res.json().catch(() => ({}))) as {
-        success?: string | boolean;
-        message?: string;
-      };
-      const ok =
-        res.ok &&
-        (data.success === true ||
-          data.success === "true" ||
-          // Activation-pending still means the pipeline works; inbox must click once.
-          (typeof data.message === "string" && data.message.toLowerCase().includes("activation")));
-      if (!ok) throw new Error(data.message || "request failed");
-      setStatus("success");
-      setValues(EMPTY_FORM);
-    } catch {
-      setStatus("error");
-    }
+    // Native POST continues to FormSubmit (no preventDefault).
   }
 
+  const nextUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/request-a-quote/?sent=1`
+      : "https://nx7k-lab-m4.vercel.app/request-a-quote/?sent=1";
+
   return (
-    <form noValidate onSubmit={handleSubmit} className="mt-8 max-w-2xl">
+    <form
+      noValidate
+      action={`https://formsubmit.co/${encodeURIComponent(to)}`}
+      method="POST"
+      onSubmit={handleSubmit}
+      className="mt-8 max-w-2xl"
+    >
+      <input type="hidden" name="_subject" value="AGL Pallet website quote request" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value={nextUrl} />
+
       {missing.length > 0 && (
         <div className="mb-6 rounded-input border border-red-500 bg-red-500/10 p-4 text-white">
           <p className="font-semibold">Please, fill in the following fields:</p>
@@ -119,11 +95,6 @@ export function ContactForm({ to }: { to: string }) {
           Thanks — your message has been sent. Someone from AGL Pallet will follow up promptly.
         </p>
       )}
-      {status === "error" && (
-        <p className="mb-6 rounded-input border border-red-500 bg-red-500/10 p-4 text-white">
-          Something went wrong sending your message. Please try again.
-        </p>
-      )}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {FIELDS.map((field) => {
@@ -132,6 +103,13 @@ export function ContactForm({ to }: { to: string }) {
             isInvalid ? "border-red-500" : "border-transparent"
           }`;
           const wrapperClass = field.type === "textarea" ? "sm:col-span-2" : undefined;
+          // FormSubmit reads the `name` attribute.
+          const submitName =
+            field.name === "fullName"
+              ? "name"
+              : field.name === "companyName"
+                ? "company"
+                : field.name;
           return (
             <label key={field.name} className={wrapperClass}>
               <span className="mb-2 block text-white text-button font-semibold">
@@ -139,6 +117,8 @@ export function ContactForm({ to }: { to: string }) {
               </span>
               {field.type === "textarea" ? (
                 <textarea
+                  name={submitName}
+                  required
                   rows={5}
                   className={inputClass}
                   value={values[field.name]}
@@ -146,6 +126,8 @@ export function ContactForm({ to }: { to: string }) {
                 />
               ) : (
                 <input
+                  name={submitName}
+                  required
                   type={field.type}
                   inputMode={field.type === "tel" ? "tel" : undefined}
                   className={inputClass}

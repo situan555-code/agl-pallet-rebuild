@@ -622,3 +622,8 @@ Operator: "ignore the key for form, lets do it our own way." Switched
 Server-side FormSubmit from Vercel returns Cloudflare 403. ContactForm now
 POSTs from the browser to FormSubmit using CONTACT_TO_EMAIL (fallback
 sales@aglpallet.com). First inbox must click FormSubmit's Activate link.
+
+## 2026-09-13 — quote form: native FormSubmit POST
+AJAX smoke test showed no UI outcome. Switched ContactForm to a native
+HTML POST to formsubmit.co with `_next` back to `/request-a-quote/?sent=1`.
+Page is `force-dynamic` so CONTACT_TO_EMAIL is not baked at build time.
