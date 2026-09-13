@@ -15,47 +15,21 @@ repository"). `git init`'d fresh, branch named `main`, local (repo-only,
 not `--global`) `user.name`/`user.email` set to make the initial commit
 possible — no prior identity existed anywhere on this machine.
 
-## Vercel — BLOCKED, not deployed
+## Vercel — deployed (2026-09-13 ~12:24 AM ET)
 
-**No production URL exists yet.** This is the third recorded attempt to
-reach this step — `BLOCKED.md` already has two prior "PHASE 5 FAILED THREE
-TIMES" entries from earlier unattended `run.sh` loop attempts, and this
-session hit the identical wall on a direct, human-invoked attempt.
+Authenticated as `situan555-code` (Hobby team `situan555-codes-projects`).
+Disabled Vercel Authentication (SSO) on the project so the preview is public.
 
-Checked, in order, before concluding this was a real blocker rather than a
-skill issue:
-- `vercel`/`npx vercel` — CLI installs fine (`59.16.0`), confirmed `.claude/settings.json`
-  already allow-lists `Bash(vercel *)`, so it's not a permissions gate.
-- `vercel whoami` → `Logged out`.
-- `VERCEL_TOKEN` / `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID` env vars → all unset
-  (checked via `node -e "process.env..."`, not just shell `printenv`, since
-  `printenv` itself needed approval this session).
-- `.env.local` has only `CONTACT_TO_EMAIL` (Resend-related, per Section C) —
-  no Vercel credential of any kind anywhere on disk.
-- `vercel login` → prints a real device-auth URL
-  (`https://vercel.com/oauth/device?user_code=...`) and waits for someone to
-  open it in a browser and approve. There is no account, token, or
-  non-interactive path available in this session to complete that — it
-  requires a human with access to the target Vercel account.
+**Production URLs (public):**
+- https://agl-rebuild.vercel.app
+- https://agl-rebuild-situan555-codes-projects.vercel.app
 
-Per BRIEF.md's own halt condition ("a git push or Vercel deploy fails twice"),
-and given this is now confirmed unresolved across multiple independent
-sessions (not a transient glitch), this is logged to BLOCKED.md rather than
-retried further.
+**Ready deployment:** https://agl-rebuild-rmj2bq2yo-situan555-codes-projects.vercel.app
 
-**Needed from a human:** run `npx vercel login` (or `vercel login`)
-interactively once from this machine/account to establish a session, or
-supply a `VERCEL_TOKEN` (plus `VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` once a
-project exists) in the environment. Once either is in place, deploy with:
+DNS was **not** touched — `aglpallet.com` still points at WordPress until you cut over by hand.
 
-```
-npx vercel link   # first time only, links this repo to a Vercel project
-npx vercel --prod # production deploy
-```
+GitHub: https://github.com/situan555-code/agl-pallet-rebuild (`main`).
 
-DNS was not touched and will not be until the owner points it at Vercel by
-hand, per BRIEF.md's hard rule — this applies regardless of whether the
-Vercel deploy itself has happened yet.
 
 ## Performance — before/after
 
