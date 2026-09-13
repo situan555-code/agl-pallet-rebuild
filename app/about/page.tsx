@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import about from "@/content/pages/about.json";
 import { TextWithSideImage } from "@/components/TextWithSideImage";
 import { EmbeddedVideo } from "@/components/EmbeddedVideo";
@@ -17,14 +18,14 @@ export default function About() {
   return (
     <main>
       <section className="relative flex min-h-[500px] items-center overflow-hidden pt-[119px]">
-        <video
-          src={about.hero.video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
+        <Image
+          src="/assets/home_header_lcp.jpg"
+          alt=""
+          fill
+          priority
+          unoptimized
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-brand-green/50" />
         <div className="relative mx-auto max-w-[1440px] px-6 py-16 text-white">

@@ -24,11 +24,16 @@
 
 @layer utilities {
   .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
+    opacity: 1;
+    transform: translateY(0);
     transition:
       opacity 0.6s ease-out,
       transform 0.6s ease-out;
+  }
+
+  .fade-in.fade-pending:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(16px);
   }
 
   .fade-in.is-visible {

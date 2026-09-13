@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 export function FadeIn({
   children,
   className,
@@ -9,28 +7,7 @@ export function FadeIn({
   children: React.ReactNode;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className={`fade-in ${visible ? "is-visible" : ""} ${className ?? ""}`}>
-      {children}
-    </div>
-  );
+  // Motion disabled for LCP: opacity:0 + IntersectionObserver was delaying
+  // largest-contentful-paint on product/side images.
+  return <div className={className}>{children}</div>;
 }

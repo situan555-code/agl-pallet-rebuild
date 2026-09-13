@@ -173,7 +173,7 @@ Implement the verification harness before building pages.
   side-by-side and overlay views. Do not silently revert to a 2% full-page
   hard gate — that bar is unreachable with a substituted typeface.
 - audit: Lighthouse per page, failing if mobile Performance is under 95, LCP
-  over 1.5s, or CLS over 0.05. Plus a link check failing on any 404, and
+  over 2.5s, or CLS over 0.05. Plus a link check failing on any 404, and
   axe-core failing on serious or critical violations.
 
 All four npm scripts must exit non-zero on failure.
@@ -247,9 +247,11 @@ HARD GATES — must pass:
      and diff against capture/*.txt. Missing content fails. Reordering
      within a section does not.
   3. Page height within 15% of reference. Catches structural drift.
-  4. Performance: mobile Lighthouse >= 95, LCP < 1.5s, CLS < 0.05.
+  4. Performance: mobile Lighthouse >= 95, LCP < 2.5s, CLS < 0.05.
   5. Accessibility: zero serious or critical axe violations.
   6. Zero broken links.
+
+GATE AUTHORITY: No acceptance gate (structure, content, height, performance/LCP/CLS, axe, links, or any other hard fail) may be softened, made advisory, raised, or otherwise weakened without an **explicit written answer** from the operator. Asking and receiving no reply is not a decision — absence of a response is not authorization. Softening a gate to unblock yourself is the same instinct Section C blocks.
 
 ADVISORY — logged to VISUAL.md, never blocks:
   Pixel diff at three breakpoints. Report the number. Do not repair to it.

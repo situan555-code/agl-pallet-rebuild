@@ -18,7 +18,7 @@ export function CTABand({
 }) {
   return (
     <section className="relative overflow-hidden px-6 py-[150px] text-white">
-      <Image src={backgroundImage} alt="" fill sizes="100vw" className="object-cover" />
+      <Image src={backgroundImage} alt="" fill quality={60} sizes="(max-width: 768px) 100vw, 1440px" className="object-cover" />
       <div className="absolute inset-0 bg-brand-green/50" />
       <FadeIn className="relative mx-auto max-w-[1440px] text-center">
         <SectionHeading eyebrow={eyebrow} heading={heading} align="center" theme="dark" />
