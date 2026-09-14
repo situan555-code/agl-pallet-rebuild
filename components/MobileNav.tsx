@@ -16,7 +16,7 @@ export function MobileNav({
   if (!isOpen) return null;
 
   return (
-    <nav className="w-full bg-brand-green nav:hidden">
+    <nav className="fixed inset-x-0 top-[82px] bottom-0 z-40 overflow-y-auto bg-brand-green nav:hidden">
       {navItems.map((item) => (
         <Link
           key={item.href}

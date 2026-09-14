@@ -627,3 +627,131 @@ sales@aglpallet.com). First inbox must click FormSubmit's Activate link.
 AJAX smoke test showed no UI outcome. Switched ContactForm to a native
 HTML POST to formsubmit.co with `_next` back to `/request-a-quote/?sent=1`.
 Page is `force-dynamic` so CONTACT_TO_EMAIL is not baked at build time.
+
+## 2026-09-14 — G1 owner decision: keep nautis@ delivery
+Owner (Nautis) explicit reply: keep FormSubmit delivery to
+`nautis@aglpallet.com`; proceed to G2–G4. Do not rewire to sales@.
+Mismatch between visible `sales@` mailto and form action remains accepted
+for now.
+
+## 2026-09-14 — G2 mobile menu: full-viewport fixed overlay, not an in-flow block
+
+Root cause of "page content and logo bleed through" at 375px: `MobileNav`
+was rendered as a normal in-flow `<nav>` inside `<header>`, sized to its own
+content height (6 rows), not a full-screen panel. Its own background
+(`bg-brand-green`, solid `#1C391F`) was already fully opaque — confirmed via
+computed style before assuming otherwise — the actual bug was that the
+panel simply stopped short of the viewport bottom, so the hero text/CTA
+directly below it in the page was visible in the remaining space. Screenshot
+evidence before the fix showed the hero's "Request a Quote" button clearly
+visible below the 6 nav rows.
+
+Fix: `MobileNav`'s `<nav>` is now `fixed inset-x-0 top-[82px] bottom-0 z-40
+overflow-y-auto bg-brand-green` — `82px` is the header row's real measured
+height (`site.logo.height` 50px + `py-4`), not a guess. `z-40` keeps it below
+the header's own `z-50` (so the header bar/close button stay clickable and
+visible on top) but above all normal page content. Added to `Header.tsx`
+(which owns `menuOpen` state): body-scroll lock via
+`document.body.style.overflow = "hidden"` while open (restored on close, not
+hardcoded to override the existing `overflow-x:hidden` globals.css rule
+permanently), Escape-to-close (`keydown` listener, only attached while
+open), and close-on-route-change (`usePathname()` + effect). Verified with a
+throwaway Playwright script at both 375 and 390: opaque panel bg
+`rgb(28,57,31)`, correct z-index, body `overflow: hidden` while open, closes
+on Escape and on simulated navigation, restores scroll after close.
+
+## 2026-09-14 — G3 About hero scrim: already matched Home's Hero exactly, no change made
+
+Investigated before touching anything, per this task's own instruction not
+to invent a new overlay. `app/about/page.tsx`'s hero already has the
+identical treatment `components/Hero.tsx` uses: same DOM order (background
+`<Image fill>`, then `<div className="absolute inset-0 bg-brand-green/50">`,
+then the relatively-positioned text content), confirmed via computed style
+(`rgba(28,57,31,0.5)`, identical to Home) — not just a code read. No
+stacking/order bug found. Rendered screenshots at 1440 and 390 both show the
+overlay applied and the intro paragraph legible, not "near-unreadable."
+`axe-core`'s color-contrast rule doesn't flag this page (it can't reliably
+score contrast against a photographic background, which is why the gate
+passes regardless of this call). Manually sampled worst-case pixel behind
+the paragraph text: contrast ratio ~4.0:1 against white text — meets WCAG AA
+for large text, is borderline/under for body-size text on the single
+lightest patch in the image, but this is a property of the shared photo
+(`home_header_lcp.jpg`, same file Home's hero also uses) at 50% dark
+overlay, not a bug specific to About or a deviation from Home's own
+treatment. Per this task's explicit instruction ("match exactly, do not
+invent a new one" + "if it already exists but still fails, check
+stacking/order"), and finding no stacking/order defect, left the component
+unchanged rather than substituting a different/stronger overlay. Flagging
+the residual borderline contrast here for visibility rather than silently
+closing G3, in case the owner wants a deliberately stronger treatment for
+About specifically (which would be a new decision, not a bug fix).
+
+## 2026-09-14 — G4 homepage video: autoplay/poster + lazy-mounted source to protect LCP
+
+`content/pages/home.json`'s video section: `controls: true, autoPlay: false`
+→ `controls: false, autoPlay: true`, added `poster:
+"/assets/agl_home_video_poster.jpg"` (extracted from the source's first
+frame via `ffmpeg -vframes 1`). `components/EmbeddedVideo.tsx` and
+`lib/content-types.ts`/`app/page.tsx` updated to pass the new `poster` prop
+through.
+
+**Re-encoded** `public/assets/agl_home_video.mp4`: 19,382,018 bytes → H.264,
+same 1920×1080 dimensions, CRF 28, `libx264 -preset slow`, `-an` (source has
+no audio track, confirmed via `ffprobe` before dropping it), `+faststart` →
+**2,490,009 bytes** (≈2.37MB, inside the requested 2–3MB band). Original
+untouched in `/assets` (the immutable Phase 1 capture record, per existing
+project convention) and also preserved in git history (both were already
+tracked pre-session).
+
+**Real regression found and fixed, not just accepted:** wiring
+`autoPlay`+`poster` as a plain always-mounted `<video>` element (matching
+About's existing pattern) measurably regressed Home's Lighthouse LCP from
+~2.0s to ~3.1s and performance score from ~99 to ~93-94 — confirmed by
+isolated single-page Lighthouse runs before/after, not just the aggregate
+audit script. `largest-contentful-paint-element` audit confirmed the LCP
+node is still the hero image (`home_header_lcp.jpg`, unrelated to the
+video), and the LCP breakdown showed "Render Delay" jumping to ~55% of the
+total — i.e. the browser had the hero image ready to paint but something
+else was keeping the main/media pipeline busy. About page (which already
+had `autoPlay: true` on its own, separate video instance before this
+session) never showed this regression, isolating the cause to the *new*
+eager poster fetch + autoplay-triggered load specifically introduced on
+Home this session, not the video feature in general.
+
+Fix: `EmbeddedVideo` is now a client component that only sets the real
+`src`/`poster`/`autoPlay` once the section is within `rootMargin: "200px"`
+of the viewport (`IntersectionObserver`, same primitive `FadeIn.tsx` already
+uses elsewhere in this codebase — no new dependency). Added
+`preload="none"` as a second layer of defense. Before intersecting, the
+`<video>` has no `src`/`poster` and doesn't autoplay, so it can't compete
+with the hero image for bandwidth/decoder time on initial load. This is a
+network-timing fix, not the opacity-delay pattern that got `FadeIn` disabled
+previously (see that file's own comment) — the video itself is never the
+LCP candidate, so deferring its *fetch* doesn't reproduce that older bug.
+Verified: isolated Lighthouse on `/` after the fix is back to ~2.0s/perf 99,
+stable across repeated runs. Also re-ran `npm run height` after this change
+specifically, since a src-less `<video>` has a different intrinsic aspect
+ratio than one with a loaded poster — `scripts/lib/shoot.js`'s existing
+"scroll to bottom and back" step triggers the observer well before
+measurement, so no height regression (confirmed, all pages still pass
+unchanged).
+
+## 2026-09-14 — audit.js: fresh Chrome per Lighthouse run, not one shared instance
+
+While chasing G4's LCP regression, hit the pre-existing shared-Chrome
+Lighthouse flakiness that three separate prior DECISIONS.md entries already
+diagnosed but left as a documented follow-up ("worth a follow-up giving
+each Lighthouse run its own Chrome instance"). It was directly blocking this
+session's own required `npm run audit` gate: `/products/` scored
+2705-2714ms LCP in the full 6-page shared-instance run but a stable
+~2480ms in isolation — over vs. under the 2.5s hard gate depending purely on
+which pages ran before it in the same Chrome process. Fixed now (in scope,
+since Section F requires the actual gate command to exit 0, not just an
+isolated measurement): `scripts/audit.js`'s `runLighthouse` launches and
+kills a new Chrome instance per page instead of reusing one across the
+loop. Re-ran `npm run audit` twice after the fix: all 6 pages PASS both
+times, no more position-dependent degradation. `/products/` and `/` both
+sit close to the 2.5s ceiling (~2.3-2.5s across repeated runs) — passing
+consistently but with less headroom than the other four pages; flagged in
+PROGRESS.md rather than chased further, since improving it means restoring
+the pre-baked hero image quality (G5, Tier 2, out of this session's scope).

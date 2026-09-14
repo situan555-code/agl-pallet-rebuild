@@ -14,6 +14,7 @@ export type TextWithImageSection = {
 export type VideoSection = {
   type: "video";
   src: string;
+  poster?: string;
   controls: boolean;
   autoPlay: boolean;
   muted: boolean;

@@ -28,8 +28,9 @@
     {
       "type": "video",
       "src": "/assets/agl_home_video.mp4",
-      "controls": true,
-      "autoPlay": false,
+      "poster": "/assets/agl_home_video_poster.jpg",
+      "controls": false,
+      "autoPlay": true,
       "muted": true,
       "loop": true
     },

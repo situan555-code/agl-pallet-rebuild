@@ -52,6 +52,7 @@ export default function Home() {
             <EmbeddedVideo
               key={i}
               src={section.src}
+              poster={section.poster}
               controls={section.controls}
               autoPlay={section.autoPlay}
               muted={section.muted}

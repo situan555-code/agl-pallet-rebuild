@@ -272,3 +272,108 @@ YOU MAY NOT:
   - remove a section, link or CTA
   - change a URL path
   - change the color palette or swap imagery
+
+## SECTION F — GATE AUTHORITY (supersedes any prior softening)
+
+No hard gate may be softened, made advisory, or removed without an explicit
+written instruction from the owner in the run prompt. Silence is not
+authorization. If you believe a gate is wrong, log the argument in BLOCKED.md,
+keep the gate, and continue. You may not ask and then proceed on no reply.
+
+Current gates: structure PASS, content PASS, height within 15%, mobile
+Lighthouse Performance >= 95, CLS < 0.05, zero serious/critical axe, zero
+broken links. LCP hard gate is 2.5s — not advisory, not 1.5s.
+
+## SECTION G — PRE-CUTOVER PUNCH LIST
+
+The visual review found defects the harness cannot detect. Structure and
+content gates verify presence, not correctness. Treat this list as the
+authority on quality; the gates remain the authority on regressions.
+
+### TIER 1 — blocks DNS cutover
+
+G1. FORM INVESTIGATION — do this first, report before touching it.
+The quote form was believed unwired. It is not. Determine and report: the
+exact endpoint it posts to, what third-party service that is, where
+submissions are currently delivered, whether nautis@aglpallet.com appears
+anywhere in client-visible source or markup, and whether captcha is
+disabled. Report findings to PROGRESS.md and STOP. Do not rewire it until
+the owner responds.
+
+G2. MOBILE MENU — panel is see-through at 375px; page content and the logo
+bleed through. Give the panel a fully opaque background at the correct
+z-index above the header, lock body scroll while open (overflow:hidden),
+add an Escape-to-close handler, and close on route change. Verify at 375px
+and 390px.
+
+G3. ABOUT HERO SCRIM — the intro paragraph sits on a busy photo with no
+overlay and is near-unreadable. Apply the same dark overlay treatment the
+homepage hero uses. Match it exactly; do not invent a new one.
+
+G4. HOMEPAGE VIDEO BLOCK — currently a bare <video controls> with no
+poster, reading as an unfinished placeholder. Add autoplay, remove
+controls, add a poster frame extracted from the first frame, keep
+muted/loop/playsinline. Re-encode the source from 18.9MB to 2-3MB (H.264,
+reasonable CRF, same dimensions). Report before/after size.
+
+### TIER 2 — after Tier 1 passes gates
+
+G5. IMAGE RESOLUTION — hero is a 640px JPEG in a 1009px slot; product and
+CTA images are 512px rendered at 457px. Soft on retina. This is fallout
+from the earlier LCP work: quality was lowered and a small static hero was
+prebaked to chase a 1.5s gate that no longer exists. Restore 2x sources
+and raise quality to ~75. The 2.5s LCP gate has room for this — re-verify
+after.
+
+G6. LAZY-LOAD PLACEHOLDERS — lazy images currently show flat dark-green
+rectangles mid-scroll, worst on Products. Add blur placeholders or LQIP.
+This completes the earlier FadeIn opacity fix, which removed the hiding
+without replacing it.
+
+G7. ALT TEXT — 7 of 9 images on the quote page have empty alt. Empty alt
+is valid for decorative images only, which is why axe passes. Audit every
+image site-wide: decorative stays empty, everything else gets descriptive
+alt. List what you wrote in DECISIONS.md.
+
+### TIER 3 — post-cutover, do not start before DNS
+
+G8. scroll-margin-top on section headings — headlines clip against the
+64px fixed header at some scroll positions.
+
+G9. CTA label consolidation — "Request a Quote", "Get Pricing" and
+"Contact Us" all target /request-a-quote/. Pick one label, use it
+everywhere including the nav pill.
+
+G10. Section padding rhythm — vertical spacing differs page to page.
+Normalize to the token scale. About has ~250px dead space below the
+Request a Quote button.
+
+G11. Industries cards — white on near-white mint with no separation. Add
+a subtle border or shadow, increase icon size relative to card, and
+equalize card heights despite varying copy length.
+
+G12. Stats band — two stats (99%, 12+) spread across a full-width green
+band with huge gutters. Tighten the container. Do not invent a third
+statistic.
+
+G13. Clipped accent blocks — offset green rectangles behind Products
+photos get cut at the viewport edge and read as rendering artifacts.
+
+G14. Lead-paragraph style — Products has a bold lead paragraph no other
+page has. Either promote it to a real token-level style used consistently
+or remove it.
+
+### NOT AN AGENT TASK — do not attempt
+
+The photo library. The same stock pallet photo appears three times on
+Products, and a log-loader shot represents both Crates & Dunnage and
+Fair-Market Sourcing. Aspect ratios and color grading are inconsistent.
+This requires real photography of the business and is owner-owned. Do not
+substitute new stock images, do not generate images, do not crop or
+recolor to compensate. Leave as-is and note it in DECISIONS.md.
+
+### STANDING RULES FOR THIS PASS
+
+Do not change any copy. Do not change URL paths. Do not change the color
+palette. Do not remove sections, links, or CTAs. Every deviation from the
+captured original gets logged in DECISIONS.md.

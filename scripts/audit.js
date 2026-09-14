@@ -29,15 +29,21 @@ function loadPages() {
 async function runLighthouse(pages) {
   const lighthouse = (await import('lighthouse')).default;
   const chromeLauncher = await import('chrome-launcher');
-  const chrome = await chromeLauncher.launch({
-    chromePath: chromium.executablePath(),
-    chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'],
-    logLevel: 'error',
-  });
 
+  // A fresh Chrome instance per page, not one shared across the whole loop:
+  // sharing one instance let earlier pages' state (memory pressure, leftover
+  // media/decoder threads) degrade later pages' LCP/performance numbers
+  // nondeterministically (position-dependent, not page-dependent — confirmed
+  // by comparing shared-loop runs against the same page audited in
+  // isolation, which was consistently faster and stable).
   const results = [];
-  try {
-    for (const p of pages) {
+  for (const p of pages) {
+    const chrome = await chromeLauncher.launch({
+      chromePath: chromium.executablePath(),
+      chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'],
+      logLevel: 'error',
+    });
+    try {
       const url = `${BASE_URL}${p.path}`;
       const { lhr } = await lighthouse(url, {
         port: chrome.port,
@@ -64,9 +70,9 @@ async function runLighthouse(pages) {
       console.log(
         `  ${pass ? 'PASS' : 'FAIL'} ${p.path}: performance=${performanceScore} lcp=${lcpMs?.toFixed(0)}ms cls=${cls?.toFixed(4)}`
       );
+    } finally {
+      await chrome.kill();
     }
-  } finally {
-    await chrome.kill();
   }
   return results;
 }
