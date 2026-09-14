@@ -1,101 +1,86 @@
 {
   "hero": {
-    "eyebrow": "Reliable Pallet Sourcing",
-    "heading": "For Manufacturers Who Can’t Afford Disruption",
-    "body": "AGL Pallet works with manufacturers and high-volume operators to source, coordinate, and deliver truckload quantities of pallets—combining industry experience, trusted suppliers, and end-to-end logistics to keep production moving without unnecessary complexity.",
+    "eyebrow": "Pallets move the world. We move pallets.",
+    "heading": "Never one mill between you and your line.",
+    "body": "AGL Pallet sources new, custom, and engineered pallets from a network of family-run mills across the Midwest and Mid-Atlantic — and manages the freight on every order. Same-day quotes. No minimums. More than one qualified source on every spec we sell.",
     "image": "/assets/home_header_image.jpg",
-    "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+    "buttons": [
+      { "label": "Request a quote", "href": "/request-a-quote/", "variant": "pill-light" },
+      { "label": "Supply pallets to AGL", "href": "/partners/suppliers/", "variant": "ghost-light" },
+      { "label": "Haul for AGL", "href": "/partners/carriers/", "variant": "ghost-light" }
+    ]
   },
-  "sections": [
-    {
-      "type": "textWithImage",
-      "eyebrow": "What AGL Pallet Does",
-      "heading": "A Single Point of Contact for Pallet Supply",
-      "paragraphs": [
-        "AGL Pallet is a pallet brokerage serving manufacturers across food and beverage, pharmaceutical, building materials, and industrial sectors. We work directly with trusted pallet manufacturers to source and deliver truckload quantities of pallets, managing third-party logistics and coordination so customers don’t have to.",
-        "By acting as a single, accountable point of contact, AGL ensures pallet supply aligns with production schedules, volume needs, and operational realities—reducing complexity and keeping material moving without disruption."
-      ],
-      "image": "/assets/home_about_photo.jpg",
-      "alt": "Stacked wood pallets outdoors against a blue sky.",
-      "imageSide": "left"
-    },
-    {
-      "type": "statBand",
-      "stats": [
-        { "value": "99%", "label": "On-Time Delivery" },
-        { "value": "12+", "label": "Years Industry Experience" }
-      ]
-    },
-    {
-      "type": "video",
-      "src": "/assets/agl_home_video.mp4",
-      "poster": "/assets/agl_home_video_poster.jpg",
-      "controls": false,
-      "autoPlay": true,
-      "muted": true,
-      "loop": true
-    },
-    {
-      "type": "textWithImage",
-      "eyebrow": "Why AGL Exists",
-      "heading": "Built From Inside the Manufacturing World",
-      "paragraphs": [
-        "AGL Pallet was built from firsthand experience on the manufacturing side, including navigating capacity constraints, material shortages, and pricing volatility during high-pressure periods like COVID. That background shapes how we operate today—knowing when to push for efficiency, when to push back to protect production, and how to design fit-for-purpose pallet solutions without creating unnecessary complexity.",
-        "The result is a more transparent, realistic approach that protects timelines, supplier relationships, and manufacturing continuity."
-      ],
-      "image": "/assets/why_agl_exist_sidepic.jpg",
-      "alt": "Close-up view of stacked wood pallets against a blue sky.",
-      "imageSide": "right",
-      "edgeShape": "right"
-    },
-    {
-      "type": "textWithImage",
-      "eyebrow": "Who AGL Serves",
-      "heading": "Serving High-Volume, High-Expectation Operations",
-      "paragraphs": [
-        "AGL Pallet serves manufacturers and distribution-focused businesses across building materials, pharmaceuticals, plastics, chemicals, and food and beverage—organizations where pallet reliability directly impacts production and shipping.",
-        "We work with owners, COOs, purchasing teams, and warehouse leaders at both regional and multinational operations that require truckload quantities on a recurring basis. If consistent pallet supply is critical to keeping your operation running, AGL is built to support you."
-      ],
-      "image": "/assets/who_agl_is_sidepic.jpg",
-      "alt": "Stacked sawn lumber blocks marked with blue production numbers.",
-      "imageSide": "left",
-      "edgeShape": "left",
-      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
-    },
-    {
-      "type": "processSteps",
-      "eyebrow": "How it Works",
-      "heading": "A Straightforward, Dependable Process",
-      "steps": [
-        {
-          "icon": "/assets/how_it_works_01_icon.svg",
-          "heading": "Understand Your Needs",
-          "body": "We start by understanding your volume requirements, pallet specifications, and delivery timelines so sourcing aligns with your production and shipping demands."
-        },
-        {
-          "icon": "/assets/how_it_works_02_icon.svg",
-          "heading": "Reliable Manufacturer Network",
-          "body": "AGL coordinates with proven pallet manufacturers that have the capacity and capability to meet your needs without compromising quality or reliability."
-        },
-        {
-          "icon": "/assets/how_it_works_03_icon.svg",
-          "heading": "Handle Logistics End-to-End",
-          "body": "We manage third-party transportation and logistics, ensuring pallets arrive where and when they’re needed—without added complexity on your end."
-        },
-        {
-          "icon": "/assets/how_it_works_04_icon.svg",
-          "heading": "Ongoing Support & Coordination",
-          "body": "As demand, schedules, or conditions change, we adjust sourcing and logistics to maintain consistent supply and protect continuity."
-        }
-      ]
-    },
-    {
-      "type": "ctaBand",
-      "eyebrow": "Get In Touch",
-      "heading": "Let’s Talk About Your Pallet Needs",
-      "body": "Whether you’re sourcing pallets daily or planning for upcoming demand, AGL Pallet is ready to support your operation.",
-      "backgroundImage": "/assets/get_in_touch_cta_banner_bg-1-scaled.jpg",
-      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
-    }
-  ]
+  "capability": {
+    "cards": [
+      { "heading": "Same-day quotes", "body": "Send a spec and a quantity before lunch, get a number back the same day." },
+      { "heading": "No minimums", "body": "One truckload or forty. Order size doesn't decide whether we pick up the phone." },
+      { "heading": "Freight on every order", "body": "We book and track the truck. One number covers the pallets and the delivery." }
+    ]
+  },
+  "whatWeDo": {
+    "eyebrow": "What we do",
+    "heading": "One number for the spec, the pallets, and the truck.",
+    "paragraphs": [
+      "AGL is a pallet brokerage. We don't own a mill and we don't own trucks. What we own is the coordination: we qualify the shops that build well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them.",
+      "When something moves — a spec change, a volume spike, a mill running behind — you hear it from us before it becomes your problem. That's the job."
+    ]
+  },
+  "differentiators": {
+    "cards": [
+      {
+        "eyebrow": "01",
+        "heading": "You hear it from us first",
+        "body": "Proactive updates, not status requests. If a load slips, the call comes from us with the fix already in motion — not from your receiving dock at 6am."
+      },
+      {
+        "eyebrow": "02",
+        "heading": "More than one mill per spec",
+        "body": "Every spec we sell has multiple qualified shops behind it. No single facility, no single region, no single point of failure between a lumber market and your line."
+      },
+      {
+        "eyebrow": "03",
+        "heading": "We've run the floor",
+        "body": "AGL was built by people who bought pallets from the manufacturing side. We know which corners cost money later and which specs are overbuilt for the job."
+      }
+    ]
+  },
+  "pledge": {
+    "eyebrow": "The pledge",
+    "heading": "We will never own a mill.",
+    "paragraphs": [
+      "After the COVID lumber shock, a lot of pallet brokers bought factories. Volume that had run through family mills for years quietly moved to the broker's own plants. It left both sides wary — mills don't trust a broker who competes with them, and buyers don't trust a broker who became a manufacturer.",
+      "AGL doesn't own manufacturing and has no intention of ever owning it. We grow by coordinating more, not by building plants. That's why good mills give us capacity, and it's why there's always more than one shop that can build your spec."
+    ],
+    "cta": { "label": "Read the pledge", "href": "/the-pledge/" }
+  },
+  "partnerSplit": {
+    "cards": [
+      {
+        "eyebrow": "For mills & shops",
+        "heading": "We buy pallets. We'll never build them.",
+        "body": "Steady recurring volume, paid on time, from a broker with no plant of its own to feed.",
+        "cta": { "label": "Supply pallets to AGL", "href": "/partners/suppliers/" }
+      },
+      {
+        "eyebrow": "For carriers",
+        "heading": "Freight on every order means we always need capacity.",
+        "body": "Regional lanes across the Midwest and Mid-Atlantic, moving pallets from mill to plant.",
+        "cta": { "label": "Haul for AGL", "href": "/partners/carriers/" }
+      }
+    ]
+  },
+  "whoWeAre": {
+    "eyebrow": "Who we are",
+    "heading": "Built by people who were on the other side of the dock.",
+    "paragraphs": [
+      "AGL started in North Canton, Ohio in January 2026, run by people who spent years buying pallets for manufacturers — living through capacity crunches, material shortages, and pricing whiplash from the receiving end. That's why the company is built the way it is."
+    ],
+    "cta": { "label": "Meet the team", "href": "/who-we-are/" },
+    "imageToken": "TBD-PHOTO-BROCK"
+  },
+  "ctaBand": {
+    "heading": "Let's talk about your pallet supply.",
+    "body": "Send a spec and a quantity, or just call and describe the problem.",
+    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
+  }
 }

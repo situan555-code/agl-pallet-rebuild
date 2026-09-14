@@ -1,60 +1,50 @@
 {
   "hero": {
     "eyebrow": "Products",
-    "heading": "Pallet & Material Handling Solutions",
-    "body": "Designed to match your operational needs — not generic assumptions."
+    "heading": "Pallet and material handling solutions",
+    "body": "Specced to your load, sourced through mills qualified to build it."
   },
-  "productBlocks": [
+  "lines": [
     {
-      "id": "stock-pallet",
-      "heading": "Stock Pallets",
-      "tagline": "Reliable, high-volume supply sourced through trusted manufacturers to meet recurring demand without unnecessary customization or delay.",
-      "body": "Our stock pallets are designed for businesses that value consistency, speed, and cost efficiency. With standardized dimensions and proven load performance, they’re ideal for warehousing, retail distribution, logistics, and export operations. Every pallet is produced under strict quality controls to ensure durability, structural integrity, and dependable performance across multiple handling cycles.",
-      "image": "/assets/product_page-stock_pallets_sidepic-1-1.jpg",
-      "alt": "Stacked wood pallets against a blue sky.",
-      "imageSide": "left",
-      "edgeShape": "left",
-      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+      "id": "stock-pallets",
+      "heading": "Stock pallets",
+      "copy": "Standard footprints for recurring volume, with multiple qualified sources behind each spec so a single mill's backlog doesn't become your shortage."
     },
     {
-      "id": "eng-pallet-solutions",
-      "heading": "Engineered Pallet Solutions",
-      "tagline": "Using Pallet Design System (PDS) methodology, AGL designs pallets precisely tailored to your load requirements, weight capacities, and operational conditions — without overbuilding or overspending.",
-      "body": "Every supply chain has unique demands. From dynamic loads in transit to static warehouse storage and racking systems, engineered pallets ensure optimal performance under real-world conditions. Through detailed analysis of product weight, stacking patterns, handling methods, and environmental factors, we develop pallet specifications that maximize strength while minimizing unnecessary material usage.",
-      "image": "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
-      "alt": "A forklift loading wood pallets onto a flatbed trailer.",
-      "imageSide": "right",
-      "edgeShape": "right",
-      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+      "id": "custom-engineered",
+      "heading": "Custom & engineered",
+      "copy": "Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. Links to `/custom-engineered`.",
+      "cta": { "label": "Custom & engineered", "href": "/custom-engineered/" }
     },
     {
-      "id": "crates-dunnage",
-      "heading": "Crates & Dunnage",
-      "tagline": "Custom and stock crate solutions designed for secure transport and specialized shipping needs.",
-      "body": "When products require added protection beyond standard palletization, our crates and dunnage systems provide the structural support and containment necessary for safe transit. Whether shipping heavy equipment, sensitive components, or high-value goods, we deliver solutions engineered to minimize movement, absorb impact, and withstand demanding logistics conditions.",
-      "image": "/assets/product_page-stock_pallets_sidepic.jpg",
-      "alt": "A log loader machine lifting logs at an outdoor lumber yard.",
-      "imageSide": "left",
-      "edgeShape": "left",
-      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+      "id": "crates",
+      "heading": "Crates",
+      "copy": "Custom and stock crating for equipment, components, and high-value goods that need containment beyond palletization."
+    },
+    {
+      "id": "dunnage",
+      "heading": "Dunnage",
+      "copy": "Blocking, bracing, and fill to keep a load from moving in transit. New standalone line — currently bundled with crates."
     },
     {
       "id": "shipping-blocks",
-      "heading": "Shipping Blocks",
-      "tagline": "Supplemental material handling components designed to enhance stability and support palletized and specialized loads.",
-      "body": "Shipping blocks play a critical role in reinforcing load integrity during storage, handling, and transport. Whether used to elevate products, create spacing for forklift access, stabilize irregular items, or distribute weight more evenly, these components improve safety and reduce the risk of damage throughout the supply chain.",
-      "image": "/assets/product_page-stock_pallets_sidepic-1.jpg",
-      "alt": "Stacked wood pallets against a blue sky.",
-      "imageSide": "right",
-      "edgeShape": "right",
-      "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+      "heading": "Shipping blocks",
+      "copy": "Supplemental components that elevate, space, and stabilize palletized and irregular loads."
+    },
+    {
+      "id": "stakes",
+      "heading": "Stakes",
+      "copy": "New line — missing from the live site entirely. Stakes for loads that need vertical containment on a flat deck."
     }
   ],
+  "producerVoice": [
+    "Every shop we source from is qualified on build consistency before we place volume with them",
+    "We spec the pallet to your load, then source the shop set up to build it",
+    "we write the spec with you"
+  ],
   "ctaBand": {
-    "eyebrow": "Get In Touch",
-    "heading": "Let’s Talk About Your Pallet Needs",
-    "body": "Whether you’re sourcing pallets daily or planning for upcoming demand, AGL Pallet is ready to support your operation.",
-    "backgroundImage": "/assets/get_in_touch_cta_banner_bg-1-scaled.jpg",
-    "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
+    "heading": "Let's talk about your pallet supply.",
+    "body": "Send a spec and a quantity, or just call and describe the problem.",
+    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
   }
 }

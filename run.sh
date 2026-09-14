@@ -25,10 +25,10 @@ check () {
        && [[ -f raw-tokens.json && -f behavior.md ]] ;;
     2) [[ -f SPEC.md && $(wc -l < SPEC.md) -ge 80 ]] ;;
     h) grep -q '"diff"' package.json && grep -q '"audit"' package.json \
-       && grep -q '"structure"' package.json && grep -q '"content"' package.json \
        && grep -q '"height"' package.json \
-       && ! grep -q 'not implemented yet' scripts/structure.js \
-       && ! grep -q 'not implemented yet' scripts/content.js ;;
+       && grep -q '"copy-verbatim"' package.json && grep -q '"banned-words"' package.json \
+       && grep -q '"tokens"' package.json && grep -q '"numbers"' package.json \
+       && grep -q '"color"' package.json && grep -q '"routes"' package.json ;;
     3) npm run build ;;
     5) [[ -f DEPLOY.md ]] && grep -qi "http" DEPLOY.md ;;
   esac
@@ -65,16 +65,23 @@ phase () {
 }
 
 verify () {
+  # SPEC_V1.md / BRIEF.md Section H0: structure.js and content.js are
+  # retired from the verify loop (capture-diffing against the old
+  # WordPress site is no longer the target). copy-verbatim/banned-words/
+  # tokens/numbers/color/routes are the new hard gates, alongside the
+  # unchanged height/audit. diff.js stays advisory-only (pixel deltas).
   for i in $(seq 1 3); do
-    npm run build && npm run structure && npm run content \
+    npm run build && npm run copy-verbatim && npm run banned-words \
+      && npm run tokens && npm run numbers && npm run color && npm run routes \
       && npm run height && npm run audit && { npm run diff || true; return 0; }
     echo "--- repair attempt $i [sonnet] ---"
-    ask sonnet "Read BRIEF.md Section E, DIFFS.md (accepted gaps), structure-report.json, content-report.json and
-      audit-report.json. Fix the failures. Per Section E, ignore
-      diff-report.json entirely — pixel deltas are advisory.
-      Do NOT chase /products/ Crates & Dunnage or Shipping Blocks missing side images (DIFFS accepted).
-      On /about/ and /industries-served/, duplicated card copy is real on the live site — do not treat a known duplicate as missing content.
-      Prefer structure/content/height/audit fixes; refined/airy layout OK."
+    ask sonnet "Read BRIEF.md Section H and SPEC_V1.md, and
+      copy-verbatim-report.json, banned-words-report.json, tokens-report.json,
+      numbers-report.json, color-report.json, routes-report.json, height-report.json
+      and audit-report.json. Fix the failures. SPEC_V1.md section 4 copy is
+      verbatim — do not paraphrase, expand, or add transitional sentences to
+      close a copy-verbatim gap. Ignore diff-report.json entirely — pixel
+      deltas are advisory."
   done
   echo "hard gates unmet after 3 attempts $(date)" >> BLOCKED.md
   return 1

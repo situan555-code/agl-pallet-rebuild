@@ -1,18 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 
-type ButtonVariant = "pill-light" | "pill-dark";
+type ButtonVariant = "pill-light" | "pill-dark" | "ghost-light" | "ghost-dark";
 
 const variantClasses: Record<ButtonVariant, string> = {
   "pill-light":
     "bg-white text-brand-green hover:bg-surface active:bg-surface-alt",
   "pill-dark":
     "bg-brand-green text-white hover:bg-ink active:brightness-90",
+  "ghost-light":
+    "bg-transparent border border-white text-white hover:bg-white/10 active:bg-white/20",
+  "ghost-dark":
+    "bg-transparent border border-brand-green text-brand-green hover:bg-brand-green/5 active:bg-brand-green/10",
 };
 
 const arrowIcon: Record<ButtonVariant, string> = {
   "pill-light": "/assets/circle_arrow_dark.svg",
   "pill-dark": "/assets/circle_arrow.svg",
+  "ghost-light": "/assets/circle_arrow.svg",
+  "ghost-dark": "/assets/circle_arrow_dark.svg",
 };
 
 export function Button({
@@ -29,7 +35,7 @@ export function Button({
       href={href}
       prefetch={false}
       className={`relative inline-block rounded-full py-[15px] pl-[18px] pr-[50px] text-button font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
-        variant === "pill-light"
+        variant.endsWith("light")
           ? "focus-visible:outline-white"
           : "focus-visible:outline-brand-green"
       } ${variantClasses[variant]}`}

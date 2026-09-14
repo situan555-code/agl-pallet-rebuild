@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "eyebrow": "Custom & engineered",
+    "heading": "Odd size, oversize, overweight, or nothing standard about it.",
+    "body": [
+      "Most of what we quote isn't a stock 48×40. It's a skid for a forging that runs nine thousand pounds, a crate for an elevator assembly, cut stock to a rail spec, or a mixed-spec program where four plants each need something different off the same order.",
+      "A single mill will usually quote what its equipment likes to build. We start from what the load actually does — weight, whether it's racked or floor-stacked, how many times it gets handled, whether it ships overseas — and then find the shop set up to build it."
+    ]
+  },
+  "whereCustomPays": {
+    "heading": "Where custom usually pays for itself",
+    "items": [
+      { "lead": "Overbuilt standard specs.", "body": "Plenty of operations are buying more pallet than the load needs because the spec was set years ago for a heavier product." },
+      { "lead": "Racking versus floor stacking.", "body": "Static, dynamic, and racking are three separate load ratings, and the racking number is the one that gets missed." },
+      { "lead": "Mixed programs.", "body": "Multiple specs, staggered releases, several ship-to addresses — the coordination a single mill struggles with is the part we're built for." }
+    ]
+  },
+  "ctaBand": {
+    "heading": "Let's talk about your pallet supply.",
+    "body": "Send a spec and a quantity, or just call and describe the problem.",
+    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
+  }
+}

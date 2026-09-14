@@ -1,31 +1,17 @@
-import type { Metadata } from "next";
 import home from "@/content/pages/home.json";
-import type { HomeSection } from "@/lib/content-types";
 import { Hero } from "@/components/Hero";
-import { TextWithSideImage } from "@/components/TextWithSideImage";
-import { StatBand } from "@/components/StatBand";
-import { EmbeddedVideo } from "@/components/EmbeddedVideo";
-import { ProcessStepGrid } from "@/components/ProcessStepGrid";
+import { TrioGrid } from "@/components/TrioGrid";
+import { ProseBlock } from "@/components/ProseBlock";
 import { CTABand } from "@/components/CTABand";
+import { TbdImage } from "@/components/TbdImage";
+import { pageMeta } from "@/lib/seo";
+import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "AGL Pallet - For Manufacturers Who Can't Afford Disruption",
-  description: 'AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.',
-  alternates: { canonical: '/' },
-  openGraph: {
-    type: 'website',
-    url: '/',
-    title: "AGL Pallet - For Manufacturers Who Can't Afford Disruption",
-    description: 'AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.',
-    images: ["/assets/agl_social_share.jpg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AGL Pallet - For Manufacturers Who Can't Afford Disruption",
-    description: 'AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.',
-    images: ["/assets/agl_social_share.jpg"],
-  },
-};
+export const metadata: Metadata = pageMeta(
+  'AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers',
+  'AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.',
+  '/',
+);
 
 export default function Home() {
   return (
@@ -35,65 +21,61 @@ export default function Home() {
         heading={home.hero.heading}
         body={home.hero.body}
         image={home.hero.image}
-        cta={home.hero.cta}
+        buttons={home.hero.buttons as { label: string; href: string; variant: "pill-light" | "ghost-light" }[]}
       />
 
-      {(home.sections as HomeSection[]).map((section, i) => {
-        if (section.type === "textWithImage") {
-          return (
-            <TextWithSideImage
-              key={i}
-              eyebrow={section.eyebrow}
-              heading={section.heading}
-              paragraphs={section.paragraphs}
-              image={section.image}
-              alt={section.alt}
-              imageSide={section.imageSide}
-              edgeShape={section.edgeShape}
-              cta={section.cta}
-            />
-          );
-        }
-        if (section.type === "statBand") {
-          return <StatBand key={i} stats={section.stats} />;
-        }
-        if (section.type === "video") {
-          return (
-            <EmbeddedVideo
-              key={i}
-              src={section.src}
-              poster={section.poster}
-              controls={section.controls}
-              autoPlay={section.autoPlay}
-              muted={section.muted}
-              loop={section.loop}
-            />
-          );
-        }
-        if (section.type === "processSteps") {
-          return (
-            <ProcessStepGrid
-              key={i}
-              eyebrow={section.eyebrow}
-              heading={section.heading}
-              steps={section.steps}
-            />
-          );
-        }
-        if (section.type === "ctaBand") {
-          return (
-            <CTABand
-              key={i}
-              eyebrow={section.eyebrow}
-              heading={section.heading}
-              body={section.body}
-              backgroundImage={section.backgroundImage}
-              cta={section.cta}
-            />
-          );
-        }
-        return null;
-      })}
+      <section className="section-y px-6">
+        <div className="mx-auto max-w-[1440px]">
+          <TrioGrid cards={home.capability.cards} />
+        </div>
+      </section>
+
+      <section className="section-y px-6 bg-surface-alt">
+        <div className="mx-auto max-w-[1440px]">
+          <ProseBlock
+            eyebrow={home.whatWeDo.eyebrow}
+            heading={home.whatWeDo.heading}
+            paragraphs={home.whatWeDo.paragraphs}
+          />
+        </div>
+      </section>
+
+      <section className="section-y px-6">
+        <div className="mx-auto max-w-[1440px]">
+          <TrioGrid cards={home.differentiators.cards} />
+        </div>
+      </section>
+
+      <section className="section-y px-6 bg-surface-alt">
+        <div className="mx-auto max-w-[1440px]">
+          <ProseBlock
+            eyebrow={home.pledge.eyebrow}
+            heading={home.pledge.heading}
+            paragraphs={home.pledge.paragraphs}
+            cta={home.pledge.cta}
+          />
+        </div>
+      </section>
+
+      <section className="section-y px-6">
+        <div className="mx-auto max-w-[1440px]">
+          <TrioGrid cards={home.partnerSplit.cards} />
+        </div>
+      </section>
+
+      <section className="section-y overflow-hidden px-6 bg-surface-alt">
+        <div className="mx-auto grid max-w-[1440px] items-start gap-10 nav:grid-cols-2 nav:gap-12">
+          <ProseBlock
+            eyebrow={home.whoWeAre.eyebrow}
+            heading={home.whoWeAre.heading}
+            paragraphs={home.whoWeAre.paragraphs}
+            cta={home.whoWeAre.cta}
+          />
+          <TbdImage token={home.whoWeAre.imageToken} caption="Founder portrait" />
+        </div>
+      </section>
+
+      <CTABand heading={home.ctaBand.heading} body={home.ctaBand.body} cta={home.ctaBand.cta} />
     </main>
   );
 }

@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "eyebrow": "For carriers",
+    "heading": "Freight on every order means we always need capacity.",
+    "body": "AGL manages the truck on every load we sell. Pallets move from family mills in Eastern Ohio and Western Pennsylvania out to manufacturing plants across the Midwest and Mid-Atlantic — regional, repeatable, and mostly the same lanes week to week.",
+    "cta": { "label": "Get set up as a carrier", "href": "#carrier-form" }
+  },
+  "offer": {
+    "heading": "What the freight looks like",
+    "items": [
+      { "lead": "Regional and repeatable.", "body": "Mill to plant across OH, PA, WV, IN, MI, and IL. Not one-off long haul." },
+      { "lead": "Loads that recur.", "body": "Our customers order on a schedule, so the lanes come back." },
+      { "lead": "One dispatcher.", "body": "Brandon books and tracks every load. You get a person, not a portal." },
+      { "lead": "Paid on agreed terms.", "body": "{{TBD-CARRIER-TERMS}}" }
+    ]
+  },
+  "openQuestions": {
+    "heading": "Still being confirmed",
+    "items": [
+      "Lanes: {{TBD-CARRIER-LANES}}",
+      "Equipment: {{TBD-CARRIER-EQUIPMENT}}",
+      "Insurance: {{TBD-CARRIER-INSURANCE}}"
+    ]
+  }
+}

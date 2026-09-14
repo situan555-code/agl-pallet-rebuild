@@ -273,3 +273,83 @@ previously cleared for Tier 2. Production URL audit PASSes all six pages
 (worst home 2234ms on reconfirm). Not a product blocker — deploy Tier 3/4
 then re-audit prod.
 
+
+## 2026-09-14 — Phase C: supplier and carrier forms built, not deliverable
+
+`/partners/suppliers#supplier-form` and `/partners/carriers#carrier-form`
+are fully built (all fields per SPEC_V1.md §5.2/§5.3, validation, the
+`{{TBD-EMAIL-SUPPLIER}}`/`{{TBD-EMAIL-CARRIER}}` destination shown visibly
+near the submit button) but **do not send anywhere**. There is no real
+address to wire — FormSubmit requires one in its action URL, and inventing
+one is explicitly forbidden. Submitting either form (once required fields
+are filled) shows a client-side "not sent — the destination above isn't
+configured yet" message; nothing is transmitted. Needed from a human:
+Larry's real supplier-relations inbox and Brandon's real carrier-setup
+inbox (or one shared address for both, if that's simpler operationally).
+
+The carrier form's Certificate of Insurance file upload field is built and
+usable (a visitor can pick a file) but is never included in the form
+submission — it has no `name` attribute, so even once the destination
+above is resolved, the file itself still won't transmit until this form
+relay grows real file-upload handling (FormSubmit's free tier doesn't
+support attachments in the way this project uses it). Per BRIEF.md §H3:
+"do not substitute a different service" — left as a visible, honest
+non-functional field rather than swapping in some other upload mechanism.
+
+## 2026-09-14 — Phase E: verify gates blocked by a stale `next start` process, and this session can't restart it
+
+All five Phase E routes (`/the-pledge`, `/custom-engineered`, `/products`
+rewrite, `/industries`, `/how-we-work`) are built and `npm run build`
+compiles all of them cleanly (18/18 static pages, confirmed in terminal
+output, `.next/BUILD_ID` timestamp 14:47). But a `next-server` process
+(PID 4061582) that was already running on :3000 from *before* this
+session's build (started 14:35, serving the prior pre-Phase-E `.next`
+output) is still up. `scripts/lib/devserver.js`'s `ensureServer()` only
+starts a fresh server when nothing answers at `BASE_URL` — since the old
+one still answers, every gate script (`copy-verbatim`, `banned-words`,
+`tokens`, `numbers`, `routes`) reuses it and sees the *old* build: the
+four brand-new routes 404 and `/products` fails against its pre-rewrite
+four-line content, none of which reflects this phase's actual work.
+
+Tried to fix it two ways, both returned "This command requires approval"
+from the Bash tool rather than executing: `kill 4061582` (to let
+`ensureServer` restart it), and pointing the gates at a fresh port via
+`SCREENSHOT_BASE_URL=http://localhost:3100 npm run copy-verbatim` (to let
+`ensureServer` spawn a brand-new `next start` on an unused port instead of
+touching the stale one). Per "do not re-attempt the exact same tool call"
+after a denial, did not keep hammering either approach.
+
+Content correctness was instead self-verified by running
+`scripts/lib/spec-copy.js`'s actual parser against SPEC_V1.md §§4.6–4.10
+directly (`node -e '...parseSpecCopy...'`) and diffing its exact extracted
+strings against every JSON content file this phase added — all Phase E
+copy blocks match character-for-character (see DECISIONS.md for the two
+known, pre-existing-pattern false-fail categories this will still show:
+three §4.8 table-cell build-annotations parsed as if they were copy, and
+two producer-voice-verb scanner false positives). `npm run build`'s own
+type/compile pass is real and did run to completion.
+
+Needed from a human: kill the stale PID 4061582 (or just reboot/restart
+the sandbox's persistent dev server), then re-run
+`npm run copy-verbatim && npm run banned-words && npm run tokens && npm run numbers && npm run routes`
+against the current build to get real gate output for Phase E. Until then,
+the "VERIFY" section of PROGRESS.md for this phase is based on the spec-parser
+self-check described above, not a live gate run.
+
+
+## Phase E/F closeout — stale `:3000` cleared (2026-09-14)
+
+Prior BLOCKED entry ("Phase E: verify gates blocked by a stale `next start`")
+is resolved: process killed, fresh `npm run build` + `next start -p 3000`,
+all 12 routes 200, copy-verbatim 12/12, redirects 3/3 × 301.
+
+### Still open (not blockers for §9 function, not fixed this phase)
+
+- **`banned-words` FAIL** — scanner FPs on spec-verbatim copy / `<!DOCTYPE`
+  / HTML entities / required `→` arrows / "storage conditions" / "elevate"
+  in §4.8. Needs human call or gate precision — **not** copy rewrites.
+- **`color` FAIL** — `#1c391f` inside unused legacy SVG icons under
+  `public/assets/`. CSS and Tailwind token are `#162619` only.
+- **`{{TBD-ADDRESS}}` / JSON-LD** — waiting on real address before emitting
+  LocalBusiness JSON-LD (§3).
+- **`{{TBD-SOCIAL-URLS}}`** — Follow Us omitted until resolved.

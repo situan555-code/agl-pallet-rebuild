@@ -7,24 +7,40 @@
   },
   "nav": [
     {
-      "label": "Home",
-      "href": "/"
-    },
-    {
-      "label": "About",
-      "href": "/about/"
-    },
-    {
-      "label": "Logistics & Process",
-      "href": "/logistics-process/"
-    },
-    {
-      "label": "Industries Served",
-      "href": "/industries-served/"
-    },
-    {
       "label": "Products",
-      "href": "/products/"
+      "href": "/products/",
+      "children": [
+        { "label": "Stock Pallets", "href": "/products/#stock-pallets" },
+        { "label": "Custom & Engineered", "href": "/products/#custom-engineered" },
+        { "label": "Crates", "href": "/products/#crates" },
+        { "label": "Dunnage", "href": "/products/#dunnage" },
+        { "label": "Shipping Blocks", "href": "/products/#shipping-blocks" },
+        { "label": "Stakes", "href": "/products/#stakes" }
+      ]
+    },
+    {
+      "label": "Industries",
+      "href": "/industries/"
+    },
+    {
+      "label": "How We Work",
+      "href": "/how-we-work/"
+    },
+    {
+      "label": "Who We Are",
+      "href": "/who-we-are/"
+    },
+    {
+      "label": "Partners",
+      "href": "/partners/",
+      "children": [
+        { "label": "For Mills & Shops", "href": "/partners/suppliers/" },
+        { "label": "For Carriers", "href": "/partners/carriers/" }
+      ]
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
     }
   ],
   "ctaNav": {
@@ -32,39 +48,36 @@
     "href": "/request-a-quote/"
   },
   "footer": {
-    "blurb": "AGL Pallet works with manufacturers and high-volume operators to source, coordinate, and deliver truckload quantities of pallets\u2014combining industry experience, trusted suppliers, and end-to-end logistics to keep production moving without unnecessary complexity.",
-    "navHeading": "Navigation",
-    "servicesHeading": "Services",
-    "servicesNav": [
-      {
-        "label": "Stock Pallets",
-        "href": "/products/#stock-pallet"
-      },
-      {
-        "label": "Engineered Pallet Solutions",
-        "href": "/products/#eng-pallet-solutions"
-      },
-      {
-        "label": "Crates & Dunnage",
-        "href": "/products/#crates-dunnage"
-      },
-      {
-        "label": "Shipping Blocks",
-        "href": "/products/#shipping-blocks"
-      }
+    "blurb": "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
+    "address": "{{TBD-ADDRESS}}",
+    "productsHeading": "Products",
+    "productsNav": [
+      { "label": "Stock Pallets", "href": "/products/#stock-pallets" },
+      { "label": "Custom & Engineered", "href": "/products/#custom-engineered" },
+      { "label": "Crates", "href": "/products/#crates" },
+      { "label": "Dunnage", "href": "/products/#dunnage" },
+      { "label": "Shipping Blocks", "href": "/products/#shipping-blocks" },
+      { "label": "Stakes", "href": "/products/#stakes" }
     ],
-    "contactHeading": "Get in Touch",
+    "companyHeading": "Company",
+    "companyNav": [
+      { "label": "Who We Are", "href": "/who-we-are/" },
+      { "label": "How We Work", "href": "/how-we-work/" },
+      { "label": "The Pledge", "href": "/the-pledge/" },
+      { "label": "Industries", "href": "/industries/" }
+    ],
+    "partnersHeading": "Partners",
+    "partnersNav": [
+      { "label": "For Mills & Shops", "href": "/partners/suppliers/" },
+      { "label": "For Carriers", "href": "/partners/carriers/" },
+      { "label": "Contact", "href": "/contact/" }
+    ],
     "contact": {
       "phone": "234-286-0402",
       "email": "sales@aglpallet.com"
     },
-    "socialHeading": "Follow Us",
-    "social": {
-      "facebook": "https://www.facebook.com/profile.php?id=61584727225727",
-      "linkedin": "https://www.linkedin.com/company/aglpallet/"
-    },
     "copyright": {
-      "text": "Copyright \u00a9 2026 AGL Pallet. All Rights Reserved."
+      "text": "© 2026 AGL Pallet LLC. All rights reserved."
     }
   }
 }

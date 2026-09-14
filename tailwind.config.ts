@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#002920",
-        "brand-green": "#1C391F",
+        "brand-green": "#162619",
         surface: "#ECFBF6",
         "surface-alt": "#F4F5F4",
         "eyebrow-ink": "#423A2F",

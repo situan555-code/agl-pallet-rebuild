@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "eyebrow": "Who we are",
+    "heading": "We were the ones waiting on the pallets.",
+    "paragraphs": [
+      "AGL Pallet was built from the manufacturing side of the dock — by people who spent years specifying, buying, and waiting on pallets while a production schedule ran regardless. Capacity crunches. Material shortages. Price moves that arrived with no warning and no explanation.",
+      "That's the experience the company is built out of, and it's why AGL is a brokerage rather than a plant."
+    ]
+  },
+  "founderStory": {
+    "eyebrow": "From Brock Lundeen, Owner",
+    "heading": "Why I built it this way",
+    "paragraphs": [
+      "I spent years on the buying side, and the pattern never changed: the pallet was the cheapest thing on the line and the fastest way to stop it. When supply got tight, the vendors who kept me running weren't the biggest — they were the ones who called me before I had to call them.",
+      "So AGL is built around two things I couldn't get reliably as a buyer. More than one qualified shop behind every spec, so a single mill's bad week isn't my problem. And a person who answers, who knows what's on the truck, and who tells me early when it isn't going to work.",
+      "The other decision was structural. We don't own a mill and we never will. I've watched what happens to the family shops when a broker buys a plant, and I'd rather have their capacity and their trust."
+    ],
+    "imageToken": "TBD-PHOTO-BROCK"
+  },
+  "team": {
+    "eyebrow": "The people who answer",
+    "heading": "Seven people, and you'll know which one is yours.",
+    "body": "AGL runs with a small team on purpose. Sourcing, freight, and the account are three people who sit near each other, not three queues in three systems.",
+    "items": [
+      { "lead": "Brock", "body": "Owner. Commercial, supply, and the last call on anything hard." },
+      { "lead": "Brandon", "body": "Logistics. Books the freight and tracks the loads." },
+      { "lead": "Larry", "body": "Supplier Relations. Qualifies the mills and knows their machine constraints." },
+      { "lead": "Beau", "body": "Operations." },
+      { "lead": "Colton", "body": "Finance. Why the mills get paid on time." },
+      { "lead": "Jeff", "body": "IT." },
+      { "lead": "Nautis", "body": "Marketing." }
+    ]
+  },
+  "values": {
+    "eyebrow": "How we operate",
+    "cards": [
+      { "heading": "Trust", "body": "We don't compete with our suppliers and we don't surprise our customers." },
+      { "heading": "Responsiveness", "body": "Same-day quotes, and the bad news travels as fast as the good." },
+      { "heading": "Operational excellence", "body": "The spec is right, the truck is booked, the paperwork matches." },
+      { "heading": "Accountability", "body": "One name on your account. When it goes wrong, that's who calls." }
+    ]
+  },
+  "faith": {
+    "eyebrow": "What we're built on",
+    "heading": "AGL is a Christ-centered company.",
+    "paragraphs": [
+      "It shapes how we deal with people more than what we sell. Mills get paid when we said we'd pay them. Customers get told what we can and can't do, including when the honest answer costs us the order. Nobody gets squeezed because we happen to have leverage that week.",
+      "We don't think that makes us a better vendor than anyone else, and we won't ask you to care about it. It's just who we are, and it's why the company runs the way it does."
+    ]
+  },
+  "whereWeAre": {
+    "eyebrow": "North Canton, Ohio",
+    "body": "Our supplier network is centered in Eastern Ohio and Western Pennsylvania and it's growing. We serve manufacturers across Michigan, Illinois, Indiana, Pennsylvania, Ohio, and West Virginia — the Midwest and Mid-Atlantic, and expanding as new mills come on.",
+    "addressToken": "TBD-ADDRESS"
+  }
+}

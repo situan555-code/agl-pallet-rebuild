@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "eyebrow": "Industries",
+    "heading": "Where AGL works",
+    "body": "Operations where the pallet is load-bearing infrastructure, not a line item."
+  },
+  "industries": [
+    { "heading": "Building materials", "body": "Lumber, stone, roofing, and construction components. Heavy, dense, often irregular, and frequently stored outdoors." },
+    { "heading": "Chemicals & coatings", "body": "Drums, totes, and bulk containers where load stability isn't optional." },
+    { "heading": "Refractories, foundry, glass & clay", "body": "Extreme point loads and weights most standard specs aren't rated for." },
+    { "heading": "Shipping, distribution & 3PL", "body": "High throughput, multiple ship-to points, and mixed specs across sites." },
+    { "heading": "Metal fabrication & forging", "body": "Engineered skids and crates for parts that outweigh the pallet several times over." },
+    { "heading": "Energy & industrial", "body": "Oil, gas, and electrical equipment, including export crating." },
+    { "heading": "Plastics & packaging", "body": "High volume, fast cycles, and automated handling." },
+    { "heading": "Food & beverage", "body": "Throughput operations where a late load stops a line." }
+  ],
+  "ctaBand": {
+    "heading": "Let's talk about your pallet supply.",
+    "body": "Send a spec and a quantity, or just call and describe the problem.",
+    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
+  }
+}

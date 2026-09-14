@@ -3,16 +3,15 @@ import "./globals.css";
 import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { LocalBusinessJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aglpallet.com"),
   title: {
-    default: "AGL Pallet",
+    default: "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
     template: "%s",
   },
   description:
-    "AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.",
+    "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
   applicationName: "AGL Pallet",
   icons: {
     icon: [
@@ -38,7 +37,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1C391F",
+  themeColor: "#162619",
 };
 
 export default function RootLayout({
@@ -49,7 +48,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${anton.variable}`}>
       <body>
-        <LocalBusinessJsonLd />
         <Header />
         {children}
         <Footer />

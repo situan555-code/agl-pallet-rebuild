@@ -1,0 +1,72 @@
+{
+  "quote": {
+    "id": "quote-form",
+    "subject": "AGL Pallet website quote request",
+    "autoresponse": "Thanks for reaching out to AGL Pallet. We received your spec and will come back to you the same day.",
+    "submitLabel": "Send the spec",
+    "successMessage": "Got it. We'll come back to you the same day.",
+    "fields": [
+      { "name": "name", "label": "Name", "type": "text", "required": true },
+      { "name": "company", "label": "Company", "type": "text", "required": true },
+      { "name": "email", "label": "Email", "type": "email", "required": true },
+      { "name": "phone", "label": "Phone", "type": "tel", "required": false },
+      { "name": "spec", "label": "Pallet size or spec", "type": "text", "required": true },
+      { "name": "quantity", "label": "Quantity and frequency", "type": "text", "required": true },
+      { "name": "shipTo", "label": "Ship-to city and state", "type": "text", "required": true },
+      { "name": "targetDate", "label": "Target date", "type": "date", "required": false },
+      { "name": "notes", "label": "Notes", "type": "textarea", "required": false }
+    ]
+  },
+  "supplier": {
+    "id": "supplier-form",
+    "subject": "AGL Pallet — supplier inquiry",
+    "submitLabel": "Send it over",
+    "successMessage": "Thanks. Larry handles supplier relationships and will follow up.",
+    "destinationToken": "TBD-EMAIL-SUPPLIER",
+    "fields": [
+      { "name": "shopName", "label": "Shop name", "type": "text", "required": true },
+      { "name": "cityState", "label": "City and state", "type": "text", "required": true },
+      { "name": "contactName", "label": "Contact name", "type": "text", "required": true },
+      { "name": "email", "label": "Email", "type": "email", "required": true },
+      { "name": "phone", "label": "Phone", "type": "tel", "required": false },
+      { "name": "equipmentFit", "label": "What your equipment runs well", "type": "textarea", "required": true },
+      { "name": "weeklyCapacity", "label": "Approximate weekly capacity", "type": "text", "required": false },
+      { "name": "specsBuilt", "label": "Specs you build", "type": "textarea", "required": false },
+      { "name": "leadTime", "label": "Typical lead time", "type": "text", "required": false },
+      { "name": "heatTreat", "label": "Heat treat on site", "type": "select", "required": false, "options": ["Yes", "No", "Not sure"] }
+    ]
+  },
+  "carrier": {
+    "id": "carrier-form",
+    "subject": "AGL Pallet — carrier setup",
+    "submitLabel": "Get set up",
+    "successMessage": "Thanks. Brandon books our freight and will be in touch.",
+    "destinationToken": "TBD-EMAIL-CARRIER",
+    "fields": [
+      { "name": "carrierName", "label": "Carrier name", "type": "text", "required": true },
+      { "name": "mcNumber", "label": "MC number", "type": "text", "required": true },
+      { "name": "dotNumber", "label": "DOT number", "type": "text", "required": true },
+      { "name": "contactName", "label": "Contact name", "type": "text", "required": true },
+      { "name": "email", "label": "Email", "type": "email", "required": true },
+      { "name": "phone", "label": "Phone", "type": "tel", "required": true },
+      { "name": "equipmentType", "label": "Equipment type", "type": "select", "required": true, "options": ["Dry van", "Flatbed", "Both", "Other"] },
+      { "name": "lanes", "label": "Lanes you run", "type": "textarea", "required": true },
+      { "name": "truckCount", "label": "Number of trucks", "type": "number", "required": false },
+      { "name": "coi", "label": "Certificate of insurance", "type": "file", "required": false, "disableSubmission": true, "helpText": "PDF, JPG, or PNG, max 10MB. Not transmitted by this form yet — file upload isn't wired to a destination until the address above is confirmed." }
+    ]
+  },
+  "general": {
+    "id": "general-form",
+    "subject": "AGL Pallet website message",
+    "autoresponse": "Thanks for reaching out to AGL Pallet. We received your message and will get back to you.",
+    "submitLabel": "Send",
+    "successMessage": "Thanks — we'll get back to you.",
+    "fields": [
+      { "name": "name", "label": "Name", "type": "text", "required": true },
+      { "name": "company", "label": "Company", "type": "text", "required": true },
+      { "name": "email", "label": "Email", "type": "email", "required": true },
+      { "name": "phone", "label": "Phone", "type": "tel", "required": false },
+      { "name": "message", "label": "Message", "type": "textarea", "required": true }
+    ]
+  }
+}

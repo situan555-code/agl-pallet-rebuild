@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import pageContent from "@/content/pages/request-a-quote.json";
-import { ContactForm } from "@/components/ContactForm";
+import forms from "@/content/forms.json";
+import { Form, type FormDestination } from "@/components/Form";
 import { ContactInfoStrip } from "@/components/ContactInfoStrip";
 
 export const metadata: Metadata = {
-  title: 'Request a Quote - AGL Pallet',
-  description: 'Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.',
-  alternates: { canonical: '/request-a-quote/' },
+  title: "Request a Quote — AGL Pallet",
+  description: "Send a spec and a quantity and we will come back the same day. No minimums.",
+  alternates: { canonical: "/request-a-quote/" },
   openGraph: {
-    type: 'article',
-    url: '/request-a-quote/',
-    title: 'Request a Quote - AGL Pallet',
-    description: 'Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.',
+    type: "article",
+    url: "/request-a-quote/",
+    title: "Request a Quote — AGL Pallet",
+    description: "Send a spec and a quantity and we will come back the same day. No minimums.",
     images: ["/assets/agl_social_share.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: 'Request a Quote - AGL Pallet',
-    description: 'Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.',
+    title: "Request a Quote — AGL Pallet",
+    description: "Send a spec and a quantity and we will come back the same day. No minimums.",
     images: ["/assets/agl_social_share.jpg"],
   },
 };
@@ -26,11 +27,17 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default function RequestAQuote() {
-  // Public sales inbox on the live site; CONTACT_TO_EMAIL overrides when set at runtime.
   const to =
     process.env.CONTACT_TO_EMAIL?.trim() ||
     pageContent.contactInfo.find((i) => i.href.startsWith("mailto:"))?.href.replace("mailto:", "") ||
     "sales@aglpallet.com";
+
+  const destination: FormDestination = {
+    kind: "formsubmit",
+    email: to,
+    subject: forms.quote.subject,
+    autoresponse: forms.quote.autoresponse,
+  };
 
   return (
     <main>
@@ -45,7 +52,14 @@ export default function RequestAQuote() {
           <h1 className="mt-4 text-display-1">{pageContent.hero.heading}</h1>
           <p className="mt-6 max-w-2xl text-body">{pageContent.hero.body}</p>
           <Suspense fallback={null}>
-            <ContactForm to={to} />
+            <Form
+              id={forms.quote.id}
+              fields={forms.quote.fields as never}
+              destination={destination}
+              submitLabel={forms.quote.submitLabel}
+              successMessage={forms.quote.successMessage}
+              source="/request-a-quote/"
+            />
           </Suspense>
         </div>
       </section>

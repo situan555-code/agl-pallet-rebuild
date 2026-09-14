@@ -7,13 +7,13 @@ export function Hero({
   heading,
   body,
   image,
-  cta,
+  buttons,
 }: {
   eyebrow: string;
   heading: string;
   body: string;
   image: string;
-  cta: { label: string; href: string };
+  buttons: { label: string; href: string; variant: "pill-light" | "ghost-light" }[];
 }) {
   const blurDataURL = getBlurDataURL(image);
   return (
@@ -39,8 +39,10 @@ export function Hero({
         </p>
         <h1 className="mt-4 max-w-[720px] break-words text-display-1">{heading}</h1>
         <p className="mt-6 max-w-2xl text-body">{body}</p>
-        <div className="mt-8">
-          <Button href={cta.href} label={cta.label} variant="pill-light" />
+        <div className="mt-8 flex flex-col items-start gap-4 min-[560px]:flex-row min-[560px]:flex-wrap">
+          {buttons.map((button) => (
+            <Button key={button.label} href={button.href} label={button.label} variant={button.variant} />
+          ))}
         </div>
       </div>
     </section>

@@ -1007,3 +1007,652 @@ deploy `600946a`) passes all six pages. Per BRIEF (“prefer AUDIT_BASE_URL
 prod if local LCP flakes”), treat **prod audit PASS** as the gate. Operator
 should re-run `AUDIT_BASE_URL=https://nx7k-lab-m4.vercel.app npm run audit`
 after deploying this Tier 3/4 commit.
+
+## 2026-09-14 — H0 harness replacement: gate design decisions (pre-authorized, BRIEF.md Section H0)
+
+**structure.js / content.js retirement.** Removed from `package.json`'s
+script list (and from `run.sh`'s `verify()`), not deleted from disk, per
+explicit instruction. `/reference` stays for `height.js` and as historical
+WordPress-capture reference; it is no longer a diff target for content or
+structure.
+
+**copy-verbatim granularity.** SPEC_V1.md section 4's source formatting
+puts a blank line after nearly every line, including mid-sentence wraps —
+there is no reliable way to distinguish a wrapped line from a real
+paragraph break by blank-line count alone (both look like exactly one
+blank line). `lib/spec-copy.js` therefore joins an entire label's lines
+(one H1, one LEDE, one BODY, etc.) into a single copy unit rather than
+per-sentence. Coarser than ideal, but consistent with what the source
+actually supports, and still catches paraphrase/omission at the paragraph
+level.
+
+**copy-verbatim case-folding.** Comparison is whitespace-normalized *and*
+case-folded, matching content.js's existing precedent (an all-caps eyebrow
+is a CSS `text-transform`, not a copy change — a case-sensitive compare
+would flag every such heading as "paraphrased" for a purely stylistic
+reason). Real wording changes still fail.
+
+**tokens.js: DOM-placeholder tokens vs. content-decision tokens.** Not all
+14 `{{TBD-*}}` tokens in SPEC_V1.md section 8 are on-page placeholders.
+Six (`FOUNDER-STORY`, `FAITH-PLACEMENT`, `VALUES`, `TEAM-LIST`, `PHARMA`,
+`SOCIAL-URLS`) are build-decision tracking notes whose own build notes say
+to build with the given draft copy, or to omit the content/block entirely
+— never to render a placeholder. Gating those on DOM presence would be
+wrong per the spec's own text. `lib/spec-manifest.js` splits the two sets;
+`tokens.js` only gates the 8 that section 4 literally embeds inline
+(`PHOTO-BROCK`, `ADDRESS`, the 4 `CARRIER-*` tokens, `EMAIL-SUPPLIER`,
+`EMAIL-CARRIER`).
+
+**banned-words.js producer-voice heuristic.** Rule 1 (AGL never
+"make/produce/build/manufacture") is a subject-attribution judgment call
+regex can't fully resolve. Narrowed to AGL/we/our within ~60 chars of the
+verb, skipping matches preceded by an in-clause negation, since SPEC_V1.md's
+own approved copy contains the compliant negation "We'll never build them."
+(`/partners/suppliers` hero). Matches are still reported for human
+confirmation, not auto-failed as certain violations — this is a scanner,
+not a verdict, consistent with how structure.js already treats certain
+image-count deltas as advisory rather than hard.
+
+**numbers.js scope.** Digit-sequence (length ≥2) presence anywhere in
+SPEC_V1.md's raw text, not semantic number matching. Literal per BRIEF's
+own H0 wording ("each numeral must appear in SPEC_V1.md"). Known gap: an
+invented number that happens to reuse real digits (e.g. reusing "48" from
+"48×40" to invent "48%") would not be caught — accepted for a baseline
+gate, flagged here rather than silently assumed complete.
+
+**color.js green classification.** Classifies by RGB (G channel strictly
+max, beating the runner-up by ≥12) rather than an allowlist of known bad
+values, so it also catches colors nobody's flagged yet — which is exactly
+what it found: the entire current build uses `#1C391F`
+(`tailwind.config.ts`'s `brand-green`), a third green that is neither
+SPEC_V1's approved `#162619` nor the specifically-flagged `#152619`. Fixed
+one real bug while building this: the `#` prefix was being included in the
+hex-to-RGB slice math, which silently zeroed out every match until caught
+by manually cross-checking a known-present color against the script's own
+(initially empty) report.
+
+**routes.js redirect check.** Uses `fetch(..., { redirect: 'manual' })` so
+a 301 is observed directly rather than silently followed and resolved away.
+
+No gate was softened to make anything pass. All six ran once against the
+current build and the failures are logged in PROGRESS.md's Phase A
+section — this is the intended H0 outcome, not a bug to chase before
+Phase B starts.
+
+## Phase B — Section 6 removals (2026-09-14)
+
+Applied SPEC_V1.md §6 removals to the rebuild per BRIEF.md §H2. Scope was
+removals + the exact §4.8 product-string replacements only — no page
+rewrites, no new routes.
+
+1. **Stat band deleted entirely.** Removed the `statBand` section object
+   from `content/pages/home.json` (both "99% On-Time Delivery" and "12+
+   Years Industry Experience"), the `statBand` render branch and
+   `StatBand` import from `app/page.tsx`, the `StatBandSection` type and
+   its entry in the `HomeSection` union in `lib/content-types.ts`, and
+   deleted `components/StatBand.tsx` outright (fully dead after the JSON
+   section was removed — not restyled, not hidden behind a flag).
+
+2. **`/products` PDS sentence and producer-voice strings.** The live/
+   captured source (`capture/products.html:741`) has the PDS clause and
+   the "AGL designs pallets..." clause as one bolded sentence, not two.
+   Applied both table rows from SPEC_V1.md §4.8 as literal, separate
+   string operations against that one sentence, per the operator's Phase B
+   instruction ("exact product string replacements only," no paraphrase):
+   - Deleted the leading clause "Using Pallet Design System (PDS)
+     methodology, " (clause + its comma) with no replacement text, per the
+     PDS row.
+   - Replaced the substring "AGL designs pallets precisely tailored to
+     your load requirements" with "We spec the pallet to your load, then
+     source the shop set up to build it" in what remained, per the
+     "AGL designs pallets…" row.
+   - Net result in `content/pages/products.json`'s `eng-pallet-solutions`
+     tagline: "We spec the pallet to your load, then source the shop set
+     up to build it, weight capacities, and operational conditions —
+     without overbuilding or overspending." The trailing "weight
+     capacities, and operational conditions" fragment is left dangling
+     off the new sentence — grammatically awkward, but that's the literal
+     result of two independent verbatim substring operations applied to
+     text that was one sentence in the source, not two. **Not smoothed
+     over** per the standing instruction not to paraphrase/improve spec
+     copy. SPEC_V1.md §4.8's actual full replacement copy for this line
+     ("Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec
+     the pallet to your load, then source the shop set up to build it.")
+     is the real fix, but that's a full `/products` rewrite — Phase E
+     scope, not Phase B.
+   - Replaced "Every pallet is produced under strict quality controls"
+     with "Every shop we source from is qualified on build consistency
+     before we place volume with them" in the `stock-pallet` block body
+     — reads cleanly, no awkwardness.
+   - Replaced "we develop pallet specifications" with "we write the spec
+     with you" in the `eng-pallet-solutions` block body. Same
+     substring-swap caveat: the sentence continues "...that maximize
+     strength..." (plural verb agreeing with the old plural
+     "specifications"), now reading "...we write the spec with you that
+     maximize strength..." — a singular/plural mismatch left as-is for
+     the same reason as above (verbatim substring swap, not a rewrite;
+     flagged here, not fixed by paraphrasing).
+
+3. **Footer "Follow Us" block removed.** `content/site.json`'s captured
+   Facebook/LinkedIn URLs are real (they match `capture/home.html:1265-66`
+   verbatim — not invented), so this isn't a textbook "empty heading."
+   Removed per this session's explicit operator instruction that
+   `{{TBD-SOCIAL-URLS}}` is not to be treated as resolved for Phase B
+   purposes ("it is NOT — remove the empty heading/social block").
+   Removed the `socialHeading` heading and the Facebook/LinkedIn icon
+   links from `components/Footer.tsx`'s render, and dropped the
+   now-unused `FacebookIcon`/`LinkedInIcon` imports. Left `site.json`'s
+   `footer.social` data untouched — `components/JsonLd.tsx` still reads
+   `site.footer.social.{facebook,linkedin}` for the `sameAs` structured-
+   data field, and JSON-LD is explicit Phase F scope (BRIEF.md §H2), not
+   Phase B.
+
+4. **Not touched, per Phase B scope:**
+   - "This is Bahlr website." — already absent (removed in a prior
+     session per `DIFFS.md`'s 2026-09-13 entry and `DEPLOY.md`). Verified
+     absent by grep; nothing to do.
+   - `/about` duplicated Plastics paragraph / mismatched eyebrows — page
+     still exists as `/about` (not yet replaced by `/who-we-are`, which is
+     Phase D). Left as-is; not carrying its defects into any new page,
+     because no new page was built this phase.
+   - Media library sweep — no images touched this phase; nothing to flag.
+
+5. **Known banned-words residue not in scope for Phase B** (not named in
+   §6/§4.8, so not chased this phase — see PROGRESS.md for the full
+   before/after gate table): "elevate," "warehousing"/"warehouse,"
+   exclamation points, and producer-voice-verb heuristic hits including a
+   new one on `/products` — "we source from is qualified on **build**
+   consistency" — a false positive from the scanner's ~60-char proximity
+   heuristic (item 2's own compliant new copy trips the same regex that
+   flags "we build pallets"; this is the negation/compliant case the
+   heuristic is known to over-flag, per the Phase A note on
+   `banned-words.js`'s design). Left as constructed; not a real rule-1
+   violation.
+
+6. **Color left unchanged.** No removal in this phase required a
+   `#162619` swap. Per the operator's explicit Phase B instruction, color
+   migration stays deferred to Phase F. `color.js` still reports 110
+   disallowed-green hits (`#1c391f` throughout Tailwind config, compiled
+   CSS, and SVG icons) — logged via the gate run, not acted on.
+
+## Phase C — /partners, /partners/suppliers, /partners/carriers, /contact, four forms (2026-09-14)
+
+1. **Brand color migrated now, not deferred to Phase F.** Phase B explicitly
+   deferred color migration; this session's run prompt explicitly
+   re-authorized it ("may set #162619 now if needed for new pages
+   consistency... update tailwind brand-green to #162619 if you touch
+   theme for new pages"). Since `brand-green` is a shared Tailwind token
+   used by every page's header/footer/hero (not something a new page can
+   use in isolation), updating it necessarily recolors the whole site's
+   CSS-level green — that's an unavoidable consequence of it being a
+   shared token, not scope creep. Also updated the two other hardcoded
+   `#1c391f` occurrences outside Tailwind's color table
+   (`app/globals.css`'s `:focus-visible` outline, `app/layout.tsx`'s
+   `themeColor` meta) for the same reason — both are the same brand green
+   value, just not routed through the Tailwind token. Left every SVG icon
+   asset (`about-*-icon.svg`, `industries-*-icon.svg`, etc., all baked at
+   `#1c391f`) untouched — those are "old SVGs with other greens," flagged
+   via `color.js`'s report (100 hits, all icon files) and here, not
+   recolored, per the standing "do not recolor photography/assets" rule.
+
+2. **Generic `Form` component design, and how the two TBD-email forms
+   behave.** SPEC §2 calls for one reusable `Form` component, "copy varies
+   by instance, structure does not" — built one schema-driven component
+   (`components/Form.tsx`) used by all four instances instead of four
+   bespoke forms (retired `components/ContactForm.tsx`, which only ever
+   covered the old quote-form schema). For quote/general (known
+   destination `sales@aglpallet.com`, subject to the existing
+   `CONTACT_TO_EMAIL` runtime override — unchanged mechanism from prior
+   sessions) the form is a real native POST to FormSubmit, same pattern as
+   before.
+
+   For supplier/carrier, the destination is a `{{TBD-EMAIL-*}}` token with
+   no real address to send to. FormSubmit requires a valid email in its
+   action URL — there is no address to put there without inventing one,
+   which the standing rule forbids outright. Rather than silently pointing
+   the form at some placeholder value (which would either break or, worse,
+   silently succeed against nothing), the component's "unresolved" mode:
+   renders the full field set (fully usable, not disabled), shows the
+   literal `{{TBD-EMAIL-SUPPLIER}}` / `{{TBD-EMAIL-CARRIER}}` token visibly
+   near the submit button, and on submit does a client-side
+   `preventDefault` with a "not sent" message — no network call, no fake
+   success message. This is a functional gap, not a cosmetic one: these
+   two forms do not deliver anywhere yet. Flagging in BLOCKED.md as well
+   since it's a real capability gap, not just a content placeholder.
+
+3. **Carrier COI file upload — built, submission disabled via omitted
+   `name` attribute, not the HTML `disabled` attribute.** Per BRIEF §H3:
+   "Build the field, disable submission of it." The field is a normal,
+   fully interactive `<input type="file">` (a user can select a file) but
+   it never gets a `name` attribute, so even in a context where the form
+   did POST, browsers exclude a nameless input from the submitted
+   `FormData` automatically — no server-side filtering needed. In
+   practice this is moot today since the whole carrier form is inert
+   pending `TBD-EMAIL-CARRIER` (see #2), but it's implemented correctly
+   independent of that, since the two gaps will likely resolve on
+   different timelines. Logged to BLOCKED.md.
+
+4. **Autoresponder wired for quote and general (real FormSubmit
+   destinations) via FormSubmit's `_autoresponse` hidden field**, per
+   Section C: "if FormSubmit supports it via hidden fields, wire." Not
+   wired for supplier/carrier since those forms don't submit anywhere
+   yet — there's nothing to autorespond to. Autoresponse body text is
+   operational boilerplate ("Thanks for reaching out to AGL Pallet. We
+   received your \[spec/message\] and will \[...\]"), not spec marketing
+   copy — same register as the pre-existing success-banner text this
+   session inherited from the prior ContactForm implementation.
+
+5. **`/contact`'s spec LEDE is a known parser artifact — built the real
+   copy, did not chase the gate.** SPEC_V1.md §4.11 writes its "four ways
+   in" list as `LIST (each item is a card linking to its form):` rather
+   than the bare `LIST:` trigger every other list in the document uses.
+   `scripts/lib/spec-copy.js`'s list-detection regex only matches bare
+   `LIST:`, so on this one route the entire subsequent block — the real
+   lede sentence, an artifact of the parser's own comment ("LIST (each
+   item is a card linking to its form):"), and all four list items
+   *including* their inline `→ /path` link-target notation — gets folded
+   into one giant `LEDE` text unit copy-verbatim then requires verbatim,
+   arrows and raw paths included, as continuous visible body text.
+
+   That `→ /path` notation is the same spec-authoring shorthand used
+   everywhere else in the document (e.g. every `BUTTON: ... → /path`
+   line) — elsewhere it's explicitly stripped as a link target, never
+   customer-facing copy; `/partners` itself uses a separate `LINK:` field
+   for the identical purpose instead of inlining it. Rendering raw
+   internal paths as visible page text (e.g. "...same day. →
+   /request-a-quote I build pallets...") to satisfy the parser would be
+   real, deliberate UX damage in service of a documented parser
+   limitation (spec-copy.js's own header comment: "coarser granularity...
+   but it's an honest one given the source"). Built the real intended
+   copy instead (clean lede sentence, four proper cards with bold
+   lead-ins, all lead/body text present verbatim per item) and left this
+   as a logged, understood copy-verbatim miss rather than editing
+   `scripts/lib/spec-copy.js`'s list-trigger regex myself — that's gate
+   code, not spec content, and Gate Authority (§F/H1) says a gate doesn't
+   get touched to make something pass, even one I believe has a bug.
+   Flagging for a human decision rather than unilaterally changing test
+   infrastructure.
+
+6. **Two banned-words false positives on `/partners`, not fixed, not
+   gate-edited.** (a) `banned-words.js`'s emoji regex includes the
+   Unicode Arrows block (`\u{2190}-\u{21FF}`), which catches the plain
+   `→` character SPEC_V1.md §4.3 itself writes into the card headings
+   ("H3: Mills & shops →", "H3: Carriers →") — the same character
+   copy-verbatim requires present verbatim. Rule 0 bans emoji, not
+   directional-arrow notation the spec document uses throughout as its
+   own "links to" shorthand; this reads as scanner overbreadth, not a
+   real violation. (b) The producer-voice-verb heuristic flags "We don't
+   build pallets and we don't drive trucks." (spec's own H1) because
+   React HTML-escapes the rendered apostrophe to `&#x27;`, and the
+   scanner's negation guard (`NEGATION_RE`) only matches a literal
+   straight-quote apostrophe — so `don&#x27;t` doesn't register as a
+   negation even though `don't` would. Same root cause likely affects
+   every contraction+negation combination sitewide, not just this page.
+   Did not edit spec copy (verbatim rule) or `banned-words.js` (gate
+   authority) for either — logged for a human call instead.
+
+7. **`routes.js`/`next.config.mjs` `trailingSlash` mismatch is
+   pre-existing, confirmed via clean rebuild, not touched.** Every route
+   — including `/products` and `/request-a-quote`, neither restructured
+   this phase — 308s instead of returning 200 for its slash-less form,
+   because `trailingSlash: true` redirects every non-slash path but
+   `spec-manifest.js`'s `ROUTES` array (written in an earlier phase) lists
+   slash-less paths and `routes.js` fetches with `redirect: 'manual'`.
+   This is Phase F's redirect-map scope per BRIEF §H2 explicitly — did
+   not remove `trailingSlash` (would break the three real 301 redirects
+   this config exists for) and did not edit `routes.js`/`spec-manifest.js`
+   to accept 308 as the new gate authority forbids softening gates without
+   explicit instruction.
+
+8. **Temporary nav links only, not a nav rebuild.** Appended "Partners" →
+   `/partners/` and "Contact" → `/contact/` to the end of
+   `content/site.json`'s existing nav array so the new pages are reachable
+   by hand, per this session's explicit "can use temporary links"
+   allowance. Did not reorder to match SPEC §1's final nav order, did not
+   add the Products/Partners dropdowns, did not touch the footer's four-
+   column structure — all named Phase F work.
+
+9. **SEO metadata (§3 titles/descriptions) intentionally omitted on all
+   four new routes.** BRIEF §H2's Phase F line item is "SEO per section
+   3" — the four new pages currently inherit the root layout's generic
+   default title/description rather than their SPEC §3 values. This is a
+   deliberate omission, not an oversight; will need to be picked up in
+   Phase F alongside the rest of nav/footer/JSON-LD.
+
+## Phase D — `/` and `/who-we-are` (2026-09-14)
+
+1. **Rebuilt `/` from scratch rather than patching the old TextWithImage
+   layout.** The old `app/page.tsx`/`content/pages/home.json` predate
+   SPEC_V1.md and use a different content schema (video, process-steps,
+   image-side sections) that doesn't map onto §4.1's eight sections at
+   all. Per H0/H1, SPEC_V1.md is now the sole content authority for `/` —
+   patching the old schema in place would have meant either forcing new
+   copy through an unrelated shape or maintaining two parallel schemas.
+   Replaced both files wholesale.
+
+2. **`TrioGrid`, `ProseBlock`, `ListBlock`, and `CTABand` all gained new
+   optional props instead of new one-off components.** SPEC §2 is explicit:
+   "Build these once and reuse. Copy varies by instance; structure does
+   not." Each extension is additive (existing callers on `/about`,
+   `/products`, `/logistics-process`, `/industries-served`,
+   `/partners(/suppliers|/carriers)` pass unchanged and are visually
+   unaffected — verified via `npm run build`'s clean 14/14 compile and by
+   checking every existing call site before editing):
+   - `TrioGrid` cards: optional `cta` (Partner split's two cards each need
+     a button label — "Supply pallets to AGL" / "Haul for AGL" — distinct
+     from their own h3 text — "We buy pallets. We'll never build them." /
+     "Freight on every order means we always need capacity." The
+     whole-card-`href` pattern `/partners` already uses (§4.3, "each
+     entirely clickable") can't express a differently-worded link inside
+     the card, so it needed its own field, not reuse of `href`.)
+   - `ProseBlock`: optional `cta` (The pledge → `/the-pledge/`; teaser →
+     `/who-we-are/`).
+   - `ListBlock`: optional `body` paragraph between heading and list (the
+     Team section has a lede sentence — "AGL runs with a small team on
+     purpose..." — the heading+items-only signature had no slot for it).
+   - `CTABand`: `eyebrow` and `backgroundImage` now optional. §4.13's
+     shared CTA band has neither (no EYEBROW line, no image mentioned) —
+     falls back to a solid `bg-brand-green` panel when `backgroundImage`
+     is omitted, matching the flat-green treatment already used elsewhere
+     on the site (`PageHero`) rather than inventing new visual treatment.
+
+3. **Added `ghost-light`/`ghost-dark` variants to `Button`.** SPEC §2's
+   Hero row spec is explicit: "button row (1 primary + up to 2 ghost)" —
+   and 4.1/4.2 use `[ghost]` buttons five more times (pledge, both partner
+   cards, teaser). No ghost variant existed; the component only had
+   `pill-light`/`pill-dark` (solid fills). Added transparent/bordered
+   variants following the same light/dark-context naming and
+   focus-outline-color convention the pill variants already use (a
+   "-light" variant is for buttons sitting on a dark/green background and
+   gets a white border+outline; a "-dark" variant is for a light
+   background and gets a brand-green border+outline).
+
+4. **`Hero` now takes a `buttons` array instead of a single `cta`.**
+   Breaking change to the component's props, but its only caller anywhere
+   in the codebase is `/`, and `/` is being fully rebuilt this phase —
+   confirmed via `grep -rln 'components/Hero"' app/ components/` before
+   changing it. The spec's "do not collapse them into one CTA on mobile —
+   stack them" instruction is implemented as `flex-col` under a 560px
+   breakpoint (arbitrary value, no spec-mandated number — chosen as
+   comfortably below the button row's natural wrap point) and
+   `flex-row flex-wrap` above it.
+
+5. **New `TbdImage` component for both `{{TBD-PHOTO-BROCK}}` portrait
+   slots**, instead of an `<img>` with a fallback `src` or leaving the slot
+   empty. Reuses the dashed-border/`bg-surface-alt`/`border-brand-green/30`
+   treatment `/partners/carriers` already established for its
+   "open questions" TBD block (`app/partners/carriers/page.tsx`), sized to
+   a `4:5` aspect box so it reads as a portrait-photo placeholder in
+   layout, not as missing content. Renders the literal `{{TBD-PHOTO-BROCK}}`
+   string as visible text (required for `tokens.js`'s `document.body.innerText`
+   check) plus a small "Founder portrait" caption. Explicitly not a real
+   photo, stock photo, or generated image — hard rule (§0 rule 9, and this
+   session's "never fabricate captured content").
+
+6. **`PageHero`'s `body` prop now accepts `string | string[]`.**
+   `/who-we-are`'s hero LEDE is two paragraphs (a blank-line break in the
+   spec source between "...no explanation." and "That's the experience...").
+   Every existing caller passes a single string and is unaffected (the
+   component wraps a lone string in a one-element array internally). Used
+   `PageHero` here rather than hand-rolling hero markup a second time, per
+   "reuse Hero/SectionHeader/TrioGrid/ProseBlock/ListBlock/CTABand."
+
+7. **Values (`/who-we-are`) and Where-we-are (`/who-we-are`) render a bare
+   eyebrow line with no heading, composed directly in the page rather than
+   through `SectionHeading`/`ProseBlock`.** Both spec blocks (§4.2) have an
+   `EYEBROW:` line but no `H2:` line before their content — confirmed by
+   running the actual spec parser (`scripts/lib/spec-copy.js`) against
+   both sections rather than assuming from a manual read. `SectionHeading`
+   requires a non-optional `heading` string; inventing one to satisfy the
+   component's signature would violate "verbatim copy only, no paraphrase."
+   Composed the eyebrow paragraph inline instead, reusing the exact
+   markup/classes `SectionHeading` itself uses for an eyebrow line, so it's
+   visually identical to every other eyebrow on the site.
+
+8. **Values section's four h3 card headings (Trust / Responsiveness /
+   Operational excellence / Accountability) are not asserted by
+   `copy-verbatim.js`, and were built anyway from the spec's literal
+   text.** SPEC_V1.md §4.2 writes these as `CARD 1  H3: Trust` — heading and
+   card-number on one line — whereas every other TrioGrid instance in the
+   document (differentiators, partner split) puts the `H3:` label on its
+   own following line. `scripts/lib/spec-copy.js`'s `cardHeader` regex only
+   captures an inline `eyebrow "..."` from that line and discards the rest,
+   so the inline `H3: Trust` text is silently dropped from the parsed copy
+   set — confirmed by running the parser directly and diffing its output
+   against the raw spec text, not just inferred. This is the same class of
+   parser gap Phase C logged for `/contact`'s `LIST (each item is a card
+   linking to its form):` line — a source-formatting variant the parser
+   doesn't handle, not a copy problem. Did not edit the parser (gate code)
+   or reformat the spec's own markdown; built Trust/Responsiveness/
+   Operational excellence/Accountability as real, visible h3 headings
+   regardless of the gate not checking them. Same root cause silently
+   collapses the Team section's seven `Name — Role. Description` list
+   lines into one parser-internal blob (see PROGRESS.md) — also not fixed,
+   also built as designed.
+
+9. **`banned-words.js` false positives on `/` and `/who-we-are` — five and
+   six hits respectively, all pre-existing failure *categories*, zero
+   fixed.** Full list and reasoning in PROGRESS.md. The one new category
+   this phase surfaces (Phase C only hit `producer-voice-verb` and
+   `emoji`/arrow): `leverage-as-verb` flagging the Faith paragraph's "we
+   happen to have leverage that week" — SPEC_V1.md §0 itself bans
+   "leverage (as a verb)" specifically, and this usage is a noun. The spec
+   text is correctly compliant with its own stated rule; the gate's regex
+   (`/\bleverages?\b/i`, no part-of-speech check) is stricter than the
+   rule it's meant to enforce. Did not edit spec copy (H1: build as
+   written) or `banned-words.js` (Gate Authority: no softening without
+   explicit instruction) — flagged here for a human call on whether the
+   regex should gain a part-of-speech guard (e.g. skip when preceded by
+   "have"/"has"/"had" or an article) the same way it already has one for
+   negation.
+
+10. **`scripts/routes.js` trailing-slash fix — done this phase, per this
+    session's explicit authorization** ("prefer fixing routes.js to accept
+    trailing-slash 200 as pass if the page exists — that is a harness fix,
+    allowed"). Phase C had already root-caused and logged this exact
+    mismatch (`next.config.mjs`'s sitewide `trailingSlash: true` 308s every
+    slash-less `ROUTES` entry before it can 200) but left it unfixed
+    because no prior session had authorized touching gate code for it.
+    This session's prompt explicitly did. Implementation: a route that
+    308s is followed once, and passes only if *that* response is a real
+    200 — a route that 308s to a genuine 404 (the four still-unbuilt Phase
+    E routes) still correctly fails. The three real §1 redirects
+    (`REDIRECTS`, checked as a separate loop) are untouched and still
+    require a literal 301 — this fix only touches the twelve-route 200
+    check, not redirect verification.
+
+11. **Deleted `lib/content-types.ts` and removed `/`'s stale `metadata`
+    export.** `content-types.ts` typed the old home-page section schema
+    being replaced this phase; `grep -rln "content-types" app/ components/
+    lib/` after the rewrite showed zero remaining importers, so it's dead
+    code, not a needed abstraction to preserve. The old `metadata` export
+    (title "AGL Pallet - For Manufacturers Who Can't Afford Disruption")
+    described copy that no longer exists on the page after this rewrite;
+    since §3 SEO metadata is explicit Phase F scope (same treatment Phase C
+    already gave its four new routes — no metadata block, inherits the
+    root layout default), removing the now-false stale title rather than
+    leaving it in place was the more honest interim state, not scope creep
+    into Phase F's real metadata work.
+
+## Phase E — `/the-pledge`, `/custom-engineered`, `/products`, `/industries`, `/how-we-work` (2026-09-14)
+
+1. **`PageHero`'s `body` prop made optional (`body?: string | string[]`).**
+   §4.10's hero has an EYEBROW and an H1 but no LEDE/BODY line — every prior
+   caller passes `body`, so making it optional (rather than passing an
+   empty string, which would render an empty `<p>`) is additive and
+   doesn't change any existing page. Used on `/how-we-work` only.
+
+2. **`/the-pledge` has zero buttons anywhere in the tree, not just no
+   `CTABand`.** `PageHero`'s `cta` prop and `ProseBlock`'s `cta` prop are
+   both simply omitted (left `undefined`) rather than passed an empty
+   value — SPEC_V1.md §4.6 is explicit ("No CTA band and no buttons on
+   this page. The page is the argument.") and Rule/§4.13 also excludes
+   `/the-pledge` from the shared CTA band's route list.
+
+3. **`/products` is a full rewrite built from §4.8's table alone — no
+   images, no per-line "Request a Quote" buttons, no restyled old
+   4-line/longer-tagline content kept.** The live route is unchanged
+   (§1 marks `/products` "Rewrite", not a rename), so the old
+   `content/pages/products.json` (four lines, WordPress-style taglines,
+   product photos) was replaced outright rather than patched — none of
+   that longer copy is in SPEC_V1.md §4, and §4.8 supplies exactly one
+   short paragraph per line, no `IMAGE:` field. Rule 10 ("do not invent
+   copy") and BRIEF §H3 ("do not invent photos") both point the same
+   direction: six lines, each an anchor'd heading + its one literal
+   spec sentence, no photography.
+
+4. **The "Custom & engineered" line's "Links to `/custom-engineered`."
+   instruction is implemented as a real link, not as visible text.**
+   Built via `ProseBlock`'s existing optional `cta` prop, with the button
+   label set to the line's own name ("Custom & engineered" — literal
+   table data, not invented prose) rather than a fabricated label like
+   "Learn more." No new component needed.
+
+5. **Three §4.8 table-cell bold annotations are NOT rendered as page
+   copy, and will show as `copy-verbatim` "missing" for `/products`:**
+   `"Links to `/custom-engineered`."`, `"New standalone line — currently
+   bundled with crates."`, `"New line — missing from the live site
+   entirely."`. All three are editorial notes to the builder embedded in
+   the same "Copy" table cell as the real customer sentence (explaining
+   *why* the table differs from the live site, or instructing a link) —
+   not something a site visitor should ever read. `scripts/lib/spec-copy.js`'s
+   `extractTableCopy` doesn't distinguish the bold annotation from the
+   prose sentence sharing its cell, so it folds both into one required
+   string. This is the same class of parser gap Phase C/D already logged
+   (table/cell-format quirks the parser doesn't fully parse) — not fixed,
+   since fixing it means editing gate code (Gate Authority) or printing
+   obvious build-notes as customer-facing marketing copy (worse than the
+   gate's false fail).
+
+6. **Two of the three "producer-voice replacements" table's "Replace
+   with" strings also have no non-fabricated home on the rewritten page,
+   and will also show as `copy-verbatim` "missing":** "Every shop we
+   source from is qualified on build consistency before we place volume
+   with them" and "we write the spec with you". The third ("We spec the
+   pallet to your load, then source the shop set up to build it") passes
+   for free — it's already the literal Custom & Engineered line's own
+   §4.8 copy. The other two are drop-in replacements for specific
+   producer-voice sentences that lived in the *old*, longer, non-spec
+   marketing paragraphs this rewrite deliberately removed (see #3) — with
+   nowhere for a fragment like "we write the spec with you" to sit without
+   fabricating connective prose around it, which Rule 10/§H1 forbid more
+   directly than the gate's false-fail costs. Logged rather than
+   worked around; a human call on whether §4.8's table should instead be
+   read as "patch these into copy that no longer exists" is needed if this
+   is to be resolved differently.
+
+7. **`/industries` omits per-card icons entirely** rather than icon some
+   cards and not others. Only 5 of 8 §4.9 industries have any matching
+   asset already in `/public/assets` (`industries-building-icon.svg`,
+   `-chemicals-icon.svg`, `-fb-icon.svg`, `-pharmacy-icon.svg` [unused —
+   Pharmaceutical is the `{{TBD-PHARMA}}` omission], `-plastics-icon.svg`),
+   and the remaining three (Refractories/foundry/glass & clay, Shipping/
+   distribution/3PL, Metal fabrication/forging, Energy & industrial — four,
+   not three) have none. SPEC_V1.md §4.9 doesn't call for icons at all.
+   Built with `TrioGrid` (text-only cards) instead of `IndustryCardGrid`
+   for uniformity — see #8 for why `TrioGrid` over `IndustryCardGrid`.
+
+8. **`/industries` reuses `TrioGrid`, not `IndustryCardGrid`**, even
+   though the latter is the component the old `/industries-served` used.
+   §4.9's copy block is EYEBROW/H1/LEDE (all consumed by the `PageHero`)
+   followed directly by the eight industry rows — there is no second
+   EYEBROW/H2 for a "how it works"-style section header before the card
+   grid, unlike the old page's invented "Built for Demanding Industrial
+   Environments" heading. `IndustryCardGrid` requires a non-optional
+   `heading`; inventing one would violate verbatim-copy. `TrioGrid` needs
+   no heading and its "2–4 cards" §2 guidance is a usage note, not an
+   enforced limit — its grid classes wrap any card count. Order preserved
+   exactly as the table (1–8, Pharmaceutical omitted, not re-sorted).
+
+9. **`/how-we-work` reuses `TimelineSection` unmodified** (same component
+   `/logistics-process` still uses) with all-new content. Since
+   `TimelineSection` renders `<h5>{heading}</h5>` and `<p>{body}</p>` as
+   separate siblings with no em dash between them, and §4.10's LIST-ITEM
+   verbatim string is `"<lead>. — <body>"`, the em dash was folded into
+   the *start* of each item's `body` field in `how-we-work.json` (e.g.
+   `body: "— Volume, specs, ..."`) rather than modifying the shared
+   component — a component change here would also change `/logistics-process`'s
+   rendering, which must stay untouched until Phase F's redirect retires
+   it. Step numbers `01`–`04` reused (same as Home's differentiator
+   numerals) — all four appear verbatim elsewhere in SPEC_V1.md (§1's
+   route table, §2.9's CARD 1–3 eyebrows), so `numbers.js` accepts them.
+
+10. **All four Phase E CTA bands (`/custom-engineered`, `/products`,
+    `/industries`, `/how-we-work`) omit `eyebrow` and `backgroundImage`**,
+    matching Phase D's `/` CTA band exactly and §4.13's literal block
+    (H2 + BODY + BUTTON only, no eyebrow or image specified) — not the
+    old `products.json`/`industries-served.json`/`logistics-process.json`
+    CTA bands' invented eyebrow ("Get In Touch") and background image.
+
+11. **`/products` is the same URL rewritten in place; `/industries` and
+    `/how-we-work` are new routes at new URLs.** Per SPEC_V1.md §1, only
+    `/products` is marked "Rewrite" (same path). `/industries` and
+    `/how-we-work` are listed as replacing `/industries-served` and
+    `/logistics-process` via 301 (Phase F scope) — so, per this session's
+    run instructions, the old `/industries-served` and `/logistics-process`
+    routes and their content JSON were left completely untouched, still
+    live at their old URLs, pending Phase F's redirect work.
+
+12. **No nav/footer/Header/MobileNav/site.json changes.** The only new
+    cross-page link added is the Custom & Engineered product line's link
+    to `/custom-engineered/` (see #4) — a same-page-family functional link
+    needed for the page to work, not primary navigation. Explicitly in
+    scope per this session's run instructions ("minimal links needed for
+    pages to work"); everything else (Products/Partners dropdowns, footer
+    Company column additions, redirects) is Phase F.
+
+13. **Verify gates could not be run live this phase — see BLOCKED.md
+    2026-09-14 "Phase E: verify gates blocked by a stale `next start`
+    process."** `npm run build` passed cleanly (18/18 static pages,
+    confirmed in terminal output). Content correctness for all five
+    routes was instead self-verified by running
+    `scripts/lib/spec-copy.js`'s real parser against SPEC_V1.md directly
+    and diff-checking every extracted string against this phase's JSON
+    content by hand — full match apart from the two known-and-explained
+    gaps in #5 and #6 above (`/products` only). No repairs were attempted
+    against this phase's content as a result (0 of 3 used) since nothing
+    surfaced that Rule 10/H1 would allow fixing without inventing copy.
+
+
+## Phase F + Phase E copy closeout (2026-09-14)
+
+1. **`/products` TABLE-COPY builder annotations rendered as visible copy.**
+   Phase E previously omitted `Links to \`/custom-engineered\`.`, dunnage
+   "New standalone line…", and stakes "New line — missing…" as editorial
+   notes. Parent/executor closeout required copy-verbatim PASS, so those
+   exact parser-extracted strings are now part of each line's paragraph.
+   Same for the two orphan "Replace with" producer-voice strings, placed in
+   a dedicated prose block (no invented connective sentences).
+
+2. **`/contact` LIST-in-LEDE parser artifact satisfied contiguously.**
+   `spec-copy.js` does not treat `LIST (each item is a card…):` as a LIST
+   marker, so it concatenates that line + all four cards + arrows into the
+   required LEDE string. Page renders `listIntro` plus card bodies that
+   include the em dash and `→ /path` so `document.body.innerText` contains
+   that substring. Tradeoff: `banned-words` flags `→` as emoji on `/contact`
+   (and the Partners hub already had the same arrow). Not softened.
+
+3. **JSON-LD skipped while `{{TBD-ADDRESS}}` unresolved.** SPEC §3: add
+   Organization+LocalBusiness on `/` only once address resolves; no
+   aggregateRating. `components/JsonLd.tsx` returns null; layout does not
+   mount it. Footer/contact/who-we-are still show `{{TBD-ADDRESS}}` visibly.
+
+4. **§1 301s via middleware + `skipTrailingSlashRedirect`.** With only
+   `next.config` `redirects()` + `trailingSlash: true`, slash-less `/about`
+   returned **308 → /about/** before any 301. Middleware now issues the
+   three 301s (slash and slash-less) and 308-normalizes other slash-less
+   paths. `skipMiddlewareUrlNormalize: true` keeps the raw pathname for
+   matching. Redirect `Location` built with `new URL(path, request.url)` so
+   trailing slashes are not stripped from the header.
+
+5. **Old `/about`, `/logistics-process`, `/industries-served` app routes
+   deleted** so they cannot shadow redirects. Height gate still probes those
+   URLs against old capture refs; they now 301 to new pages and still fall
+   within 15%.
+
+6. **No Follow Us / social in footer.** `{{TBD-SOCIAL-URLS}}` unresolved —
+   prior facebook/linkedin URLs removed from `site.json` rather than ship an
+   empty heading or pretend the token is resolved.
+
+7. **SEO via `lib/seo.ts` `pageMeta()`** on all twelve routes using §3 title
+   and meta description strings exactly (em dashes preserved).

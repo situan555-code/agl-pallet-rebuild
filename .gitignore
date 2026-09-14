@@ -38,3 +38,9 @@ npm-debug.log*
 next-env.d.ts
 .env.local
 .vercel
+/copy-verbatim-report.json
+/banned-words-report.json
+/tokens-report.json
+/numbers-report.json
+/color-report.json
+/routes-report.json

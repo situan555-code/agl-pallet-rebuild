@@ -8,10 +8,15 @@ import site from "@/content/site.json";
 import { HamburgerIcon, CloseIcon } from "@/components/icons";
 import { MobileNav } from "@/components/MobileNav";
 
+type NavChild = { label: string; href: string };
+type NavItem = { label: string; href: string; children?: NavChild[] };
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const nav = site.nav as NavItem[];
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,12 +27,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close on route change.
   useEffect(() => {
     setMenuOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
 
-  // Lock body scroll while the panel is open.
   useEffect(() => {
     if (!menuOpen) return;
     const previousOverflow = document.body.style.overflow;
@@ -37,7 +41,6 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  // Escape-to-close.
   useEffect(() => {
     if (!menuOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -64,16 +67,53 @@ export function Header() {
         </Link>
 
         <nav className="hidden nav:flex nav:items-center nav:gap-8">
-          {site.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              prefetch={false}
-              className="text-nav-link font-semibold text-white transition-opacity hover:opacity-80 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-sm"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {nav.map((item) =>
+            item.children?.length ? (
+              <div
+                key={item.href}
+                className="relative"
+                onMouseEnter={() => setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <Link
+                  href={item.href}
+                  prefetch={false}
+                  className="text-nav-link font-semibold text-white transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-sm"
+                  aria-expanded={openDropdown === item.label}
+                  aria-haspopup="true"
+                  onFocus={() => setOpenDropdown(item.label)}
+                >
+                  {item.label}
+                </Link>
+                {openDropdown === item.label && (
+                  <div className="absolute left-0 top-full z-50 min-w-[220px] pt-2">
+                    <ul className="rounded-lg bg-brand-green py-2 shadow-lg ring-1 ring-white/10">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            prefetch={false}
+                            className="block px-4 py-2 text-nav-link font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                prefetch={false}
+                className="text-nav-link font-semibold text-white transition-opacity hover:opacity-80 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-sm"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
           <Link
             href={site.ctaNav.href}
             prefetch={false}
@@ -95,7 +135,7 @@ export function Header() {
       </div>
 
       <MobileNav
-        navItems={site.nav}
+        navItems={nav}
         ctaHref={site.ctaNav.href}
         ctaLabel={site.ctaNav.label}
         isOpen={menuOpen}

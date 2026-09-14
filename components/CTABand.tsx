@@ -11,26 +11,34 @@ export function CTABand({
   backgroundImage,
   cta,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   heading: string;
   body: string;
-  backgroundImage: string;
+  backgroundImage?: string;
   cta: { label: string; href: string };
 }) {
-  const blurDataURL = getBlurDataURL(backgroundImage);
+  const blurDataURL = backgroundImage ? getBlurDataURL(backgroundImage) : undefined;
   return (
-    <section className="section-y-cta relative overflow-hidden px-6 text-white">
-      <Image
-        src={backgroundImage}
-        alt=""
-        fill
-        quality={75}
-        sizes="100vw"
-        className="object-cover"
-        placeholder={blurDataURL ? "blur" : undefined}
-        blurDataURL={blurDataURL}
-      />
-      <div className="absolute inset-0 bg-brand-green/50" />
+    <section
+      className={`section-y-cta relative overflow-hidden px-6 text-white ${
+        backgroundImage ? "" : "bg-brand-green"
+      }`}
+    >
+      {backgroundImage && (
+        <>
+          <Image
+            src={backgroundImage}
+            alt=""
+            fill
+            quality={75}
+            sizes="100vw"
+            className="object-cover"
+            placeholder={blurDataURL ? "blur" : undefined}
+            blurDataURL={blurDataURL}
+          />
+          <div className="absolute inset-0 bg-brand-green/50" />
+        </>
+      )}
       <FadeIn className="relative mx-auto max-w-[1440px] text-center">
         <SectionHeading eyebrow={eyebrow} heading={heading} align="center" theme="dark" />
         <p className="mx-auto mt-6 max-w-2xl text-body">{body}</p>

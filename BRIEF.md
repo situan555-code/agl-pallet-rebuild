@@ -409,3 +409,101 @@ G18 Metadata/OG. G19 LocalBusiness schema. G20 robots/sitemap/favicon/manifest.
 G21 Custom 404. G22 prefers-reduced-motion. G23 Dead code (incl. /api/quote stub).
 
 Standing: log deviations in DECISIONS.md; unblockables in BLOCKED.md.
+
+## SECTION H — SPEC V1 REBUILD
+
+SPEC_V1.md is now the authority for content, routes, and copy. Where it
+conflicts with BRIEF.md or with the captured original site, SPEC_V1.md
+wins. The captured WordPress site is no longer the target; it is
+historical reference only.
+
+### H0 — HARNESS REPLACEMENT (do this first, before any page work)
+
+The structure and content gates currently diff against /reference and
+/capture. That is now wrong: the spec deliberately replaces the captured
+copy and adds six new routes. Replace them.
+
+RETIRE: content.js in its capture-diffing form. structure.js in its
+capture-diffing form. Keep /reference on disk for the redirect map only.
+
+BUILD these gate scripts. Each exits non-zero on failure and writes a JSON
+report:
+
+  copy-verbatim.js — For every page, extract the copy blocks from
+  SPEC_V1.md section 4 and assert each appears in the built page character
+  for character after whitespace normalization. Paraphrase is a failure.
+  This is the most important gate in the run.
+
+  banned-words.js — Scan all rendered HTML, meta tags, alt text, JSON-LD,
+  and form labels for: the banned word list in SPEC_V1.md section 0; the
+  producer-voice verbs make/produce/build/manufacture where the subject is
+  AGL; warehousing/storage/inventory/VMI; recycled/used/reconditioned;
+  national/nationwide; PDS/Pallet Design System; any certification name
+  from rule 5; the string "This is Bahlr website."; exclamation points;
+  emoji. Report file, line, and matched string.
+
+  tokens.js — Assert every {{TBD-*}} in SPEC_V1.md section 8 that belongs
+  on a built page renders as a visible placeholder in the DOM. Assert no
+  {{TBD-*}} has been silently replaced with prose. Both directions fail.
+
+  numbers.js — Extract every numeral from rendered pages. Assert each
+  appears in SPEC_V1.md. Flags invented statistics. Phone number, address
+  token, dates and dimensions from the spec pass; anything else fails.
+
+  color.js — Assert #162619 is the only green in compiled CSS and inline
+  styles. Flag #152619 or any other green with file and line.
+
+  routes.js — Assert all twelve routes in section 1 return 200 and all
+  three redirects return 301 to the correct target.
+
+KEEP unchanged: height.js, audit.js (perf/CLS/axe/links), LCP gate 2.5s.
+
+### H1 — GATE AUTHORITY
+
+Section F still applies. No gate may be softened without explicit written
+owner instruction. Silence is not authorization.
+
+Copy is verbatim. If a spec copy block seems awkward, wrong, or
+incomplete, you build it as written and log the observation in
+DECISIONS.md. You may not improve, tighten, expand, or add transitional
+sentences. This overrides any instinct toward better prose.
+
+### H2 — BUILD ORDER
+
+Follow SPEC_V1.md section 7, amended: its Phase 1 says apply removals to
+the live site. The live site is WordPress and out of scope. Apply all
+section 6 removals to the rebuild instead.
+
+  Phase A — H0 harness scripts. No page work.
+  Phase B — Section 6 removals applied to existing pages. Delete the
+            99% and 12+ stat band entirely (do not restyle it; earlier
+            work tightened that band and it is now removed). Strip the
+            Bahlr string and the empty Follow Us heading.
+  Phase C — /partners, /partners/suppliers, /partners/carriers, /contact,
+            and all four forms. Suppliers page first — it is the
+            contractual deliverable.
+  Phase D — / and /who-we-are.
+  Phase E — /custom-engineered, /products, /industries, /how-we-work.
+  Phase F — Nav, footer, redirects, SEO per section 3, JSON-LD, and the
+            full section 9 acceptance checklist.
+
+Run the verify loop after every phase. Max 3 repairs per phase.
+
+### H3 — KNOWN CONSTRAINTS, DO NOT SOLVE CREATIVELY
+
+Form destinations for supplier and carrier are TBD tokens. Build the forms
+with the full field schema from section 5, wire the two known destinations,
+and render the unknown ones as visible placeholders. Do not invent
+addresses.
+
+The carrier form specifies a file upload for a certificate of insurance.
+The current form relay does not handle file uploads. Build the field,
+disable submission of it, and log to BLOCKED.md. Do not substitute a
+different service.
+
+Photography is owner-owned. Do not substitute, generate, crop, or recolor
+images. Where the spec calls for a photo that does not exist, render the
+TBD token.
+
+Media library sweep: flag any image of uncertain origin in BLOCKED.md
+rather than shipping it. Do not attempt to determine provenance yourself.

@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "eyebrow": "For mills and shops",
+    "heading": "We buy pallets. We'll never build them.",
+    "body": "AGL is a brokerage with no plant of its own and no intention of ever having one. When we bring you volume, we're not building a book to move in-house in three years. We don't have anywhere to move it to.",
+    "cta": { "label": "Tell us what you build", "href": "#supplier-form" }
+  },
+  "offer": {
+    "heading": "What working with AGL looks like",
+    "items": [
+      { "lead": "Recurring volume, not spot scraps.", "body": "We're placing programs for manufacturers who order every week, not chasing one-off loads." },
+      { "lead": "Paid when we said we'd pay.", "body": "Terms are terms. If that's the thing that's burned you before, ask us about it directly." },
+      { "lead": "Zero channel conflict.", "body": "We will never own manufacturing and we will never compete with you for your own accounts." },
+      { "lead": "Work that fits your machines.", "body": "We ask what your equipment runs well before we send you a spec, not after you've quoted it." },
+      { "lead": "We handle the freight.", "body": "You build. We book the truck and deal with the delivery window." }
+    ]
+  },
+  "ask": {
+    "heading": "What we need from you",
+    "paragraphs": [
+      "Consistent build quality against the spec, honest lead times — including when they slip — and a phone call when something changes. That's most of it. We qualify shops on whether the pallets are right and whether we hear the truth early, not on being the cheapest quote in the file."
+    ]
+  }
+}
