@@ -12,7 +12,7 @@ export function ProcessStepGrid({
   steps: { icon: string; heading: string; body: string }[];
 }) {
   return (
-    <section className="bg-brand-green px-6 py-[85px] text-white">
+    <section className="section-y bg-brand-green px-6 text-white">
       <div className="mx-auto max-w-[1440px]">
         <SectionHeading eyebrow={eyebrow} heading={heading} align="center" theme="dark" />
         <div className="mt-12 grid gap-10 nav:grid-cols-4">

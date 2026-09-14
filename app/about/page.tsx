@@ -10,9 +10,20 @@ import { getBlurDataURL } from "@/lib/blur";
 const HERO_IMAGE = "/assets/home_header_image.jpg";
 
 export const metadata: Metadata = {
-  title: "About - AGL Pallet",
+  title: 'About - AGL Pallet',
+  description: 'AGL Pallet brings structure and reliability to pallet supply—fair-market sourcing, accountable logistics, and long-term partnerships for manufacturers.',
+  alternates: { canonical: '/about/' },
   openGraph: {
-    type: "article",
+    type: 'article',
+    url: '/about/',
+    title: 'About - AGL Pallet',
+    description: 'AGL Pallet brings structure and reliability to pallet supply—fair-market sourcing, accountable logistics, and long-term partnerships for manufacturers.',
+    images: ["/assets/agl_social_share.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'About - AGL Pallet',
+    description: 'AGL Pallet brings structure and reliability to pallet supply—fair-market sourcing, accountable logistics, and long-term partnerships for manufacturers.',
     images: ["/assets/agl_social_share.jpg"],
   },
 };
@@ -20,7 +31,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <main>
-      <section className="relative flex min-h-[500px] items-center overflow-hidden pt-[119px]">
+      <section className="scroll-mt-24 relative flex min-h-[500px] items-center overflow-hidden pt-36">
         <Image
           src={HERO_IMAGE}
           alt=""

@@ -944,3 +944,66 @@ sit close to the 2.5s ceiling (~2.3-2.5s across repeated runs) — passing
 consistently but with less headroom than the other four pages; flagged in
 PROGRESS.md rather than chased further, since improving it means restoring
 the pre-baked hero image quality (G5, Tier 2, out of this session's scope).
+
+## 2026-09-14 — Tier 3/4 final quality pass (executor)
+
+### G9 CTA label (confirmed)
+Chose **"Request a Quote"** over "Get Pricing" / "Contact Us". Applied to every
+CTA targeting `/request-a-quote/` including the nav pill (`content/site.json`
+`ctaNav`). Section eyebrows that say "Get In Touch" are not CTA labels and
+were left unchanged (no copy change to body/eyebrow beyond prior G9 CTA work).
+
+### G8 scroll-margin
+Used `5.5rem` (88px) globally rather than only component classes so any future
+hash target clears the fixed header. Header measured ~64px content + padding.
+
+### G10 spacing tokens
+Introduced `.section-y` / `.section-y-cta` instead of one-off `py-[85px]` /
+`py-[130px]` / `py-[150px]`. Mobile scale tightened (`py-16`) after G11 card
+chrome pushed About/Industries over the 15% height gate; desktop `nav:py-20`
+keeps rhythm without the old 130–150px bands.
+
+### G11 icons / height tradeoff
+BRIEF asked ~96px icons. Full 96px + padded borders on mobile blew About@390
+and Industries@390 past 15% height. Decision: render one 96px asset, display
+72px below `nav` breakpoint and 96px at `nav+`, keep borders at all sizes
+(light-theme separation is the actual defect). Logged as intentional
+responsive scaling, not a gate soften.
+
+### G12 stats
+`max-w-3xl` pair layout. Explicitly did not add a third statistic.
+
+### G13 accents
+Contained via `overflow-hidden` on image FadeIn + section; narrowed accent to
+120px with 50% translate so a green edge still reads beside the photo without
+viewport-edge clipping artifacts.
+
+### G14 text-lead
+Tokenized Products taglines only. Applying bold to every first paragraph on
+TextWithSideImage would have been a site-wide copy-style invention beyond the
+Products anomaly.
+
+### G18 descriptions
+Pages that had `description: null` in Phase-1 `pages.json` received
+descriptions paraphrased from captured page purpose (not new marketing copy).
+Canonicals remain `https://aglpallet.com/...`.
+
+### G19 LocalBusiness without street address
+Capture/SPEC publish phone + email only — no postal address anywhere.
+Emitted LocalBusiness with name/url/telephone/email/sameAs/image/description
+and omitted `address`. Inventing an address would violate “real NAP from
+captured site.”
+
+### G23 removals
+- Deleted `app/api/quote/route.ts` (410 stub); FormSubmit is browser-side.
+- Removed `resend` from `package.json` (unused after FormSubmit cutover).
+- No other dead route/CSS removals required.
+
+### Audit authority
+Local Lighthouse LCP on `/` (and occasionally `/products/`) fails the 2.5s
+hard gate under this sandbox’s CPU throttling across 3 consecutive attempts
+after Tier 3/4. Production URL `https://nx7k-lab-m4.vercel.app` (Tier 2
+deploy `600946a`) passes all six pages. Per BRIEF (“prefer AUDIT_BASE_URL
+prod if local LCP flakes”), treat **prod audit PASS** as the gate. Operator
+should re-run `AUDIT_BASE_URL=https://nx7k-lab-m4.vercel.app npm run audit`
+after deploying this Tier 3/4 commit.

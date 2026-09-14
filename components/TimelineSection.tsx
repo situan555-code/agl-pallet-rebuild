@@ -6,7 +6,7 @@ export function TimelineSection({
   steps: { number: string; heading: string; body: string }[];
 }) {
   return (
-    <section className="bg-surface px-6 py-[110px]">
+    <section className="section-y bg-surface px-6">
       <div className="relative mx-auto max-w-[1440px]">
         <div
           aria-hidden="true"

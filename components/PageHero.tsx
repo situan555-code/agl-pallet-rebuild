@@ -8,7 +8,7 @@ export function PageHero({
   body: string;
 }) {
   return (
-    <section className="bg-brand-green px-6 pb-16 pt-[152px] text-center text-white">
+    <section className="scroll-mt-24 bg-brand-green px-6 pb-16 pt-36 text-center text-white">
       <div className="mx-auto max-w-[800px]">
         <p className="text-eyebrow font-semibold uppercase tracking-wide">
           <span aria-hidden="true" className="mr-2 font-bold">

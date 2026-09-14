@@ -17,7 +17,7 @@ export function Hero({
 }) {
   const blurDataURL = getBlurDataURL(image);
   return (
-    <section className="relative overflow-hidden pt-[144px]">
+    <section className="scroll-mt-24 relative overflow-hidden pt-36">
       <Image
         src={image}
         alt=""
@@ -30,7 +30,7 @@ export function Hero({
         blurDataURL={blurDataURL}
       />
       <div className="absolute inset-0 bg-brand-green/50" />
-      <div className="relative mx-auto max-w-[1440px] px-6 pt-8 pb-[162px] text-white">
+      <div className="relative mx-auto max-w-[1440px] px-6 pt-8 pb-40 text-white">
         <p className="text-eyebrow font-semibold uppercase tracking-wide">
           <span aria-hidden="true" className="mr-2 font-bold">
             /

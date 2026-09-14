@@ -10,13 +10,13 @@ type ContactInfoItem = {
 
 export function ContactInfoStrip({ items }: { items: ContactInfoItem[] }) {
   return (
-    <section className="mx-auto max-w-[1440px] px-6 py-[100px]">
+    <section className="section-y mx-auto max-w-[1440px] px-6">
       <div className="grid grid-cols-1 gap-8 nav:grid-cols-3">
         {items.map((item) => (
           <a
             key={item.label}
             href={item.href}
-            className="group flex flex-col items-center gap-4 rounded-input bg-surface-alt p-8 text-center"
+            className="group flex flex-col items-center gap-4 rounded-input bg-surface-alt p-8 text-center transition-shadow hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
           >
             <span className="relative block h-12 w-12">
               <Image

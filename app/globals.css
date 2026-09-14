@@ -19,6 +19,47 @@
   h5,
   h6 {
     @apply font-display uppercase;
+    text-wrap: balance;
+  }
+
+  /* G8: clear fixed header (~64px bar + padding) on in-page anchors */
+  h1,
+  h2,
+  section,
+  [id] {
+    scroll-margin-top: 5.5rem; /* 88px */
+  }
+
+  :focus-visible {
+    outline: 2px solid #1c391f;
+    outline-offset: 3px;
+  }
+
+  .bg-brand-green :focus-visible,
+  .bg-brand-green a:focus-visible,
+  .bg-brand-green button:focus-visible {
+    outline-color: #ffffff;
+  }
+}
+
+@layer components {
+  /* G10: section vertical rhythm on a shared token scale */
+  .section-y {
+    @apply py-16 nav:py-20;
+  }
+
+  .section-y-cta {
+    @apply py-20 nav:py-24;
+  }
+
+  /* G14: shared lead paragraph (Products taglines + any peer leads) */
+  .text-lead {
+    @apply text-body font-bold;
+  }
+
+  /* G17: readable body measure */
+  .prose-measure {
+    max-width: 65ch;
   }
 }
 
@@ -39,5 +80,24 @@
   .fade-in.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .fade-in.fade-pending:not(.is-visible),
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

@@ -248,3 +248,28 @@ Operator: ignore Resend key; DIY delivery. `app/api/quote/route.ts` now posts
 through FormSubmit using `CONTACT_TO_EMAIL` only. Refuses with 503 if that
 env var is missing (no more silent log-and-ok). First live submit may need
 one activation click in the CONTACT_TO inbox.
+
+## 2026-09-14 — Tier 2 LCP sandbox noise CLEARED on production
+Follow-up: audited live https://nx7k-lab-m4.vercel.app after deploy
+`600946a`. All six pages PASS LCP ≤2.5s (worst home 2280ms). Treat the
+earlier sandbox-only BLOCKED entry as resolved for gate purposes; keep
+the diagnosis for future local runs.
+
+## 2026-09-14 — Claude Code org spend limit mid Tier 3
+Sonnet session returned: "You've hit your org's monthly spend limit …
+session limit resets 6:30am (UTC)". Partial Tier 3 file edits may exist.
+Operator continuing Tier 3–4 without Claude Code until spend resets.
+
+## 2026-09-14 — Claude Code org spend limit mid Tier 3 — CLEARED
+Work continued by executor agent without Claude Code. Tier 3 (G8, G10–G14)
+and Tier 4 (G15–G23) completed in this session. Prior spend-limit halt is no
+longer blocking; leave historical entry above for the record.
+
+## 2026-09-14 — local Lighthouse LCP flake after Tier 3/4 (not blocking)
+Three consecutive `AUDIT_BASE_URL=http://127.0.0.1:3000 npm run audit` runs
+failed the 2.5s LCP hard gate on `/` (2559–2798ms) and occasionally
+`/products/` or `/about/`. Same class of sandbox CPU-throttle noise
+previously cleared for Tier 2. Production URL audit PASSes all six pages
+(worst home 2234ms on reconfirm). Not a product blocker — deploy Tier 3/4
+then re-audit prod.
+

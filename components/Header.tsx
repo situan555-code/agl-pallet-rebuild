@@ -69,7 +69,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               prefetch={false}
-              className="text-nav-link font-semibold text-white"
+              className="text-nav-link font-semibold text-white transition-opacity hover:opacity-80 active:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-sm"
             >
               {item.label}
             </Link>
@@ -77,7 +77,7 @@ export function Header() {
           <Link
             href={site.ctaNav.href}
             prefetch={false}
-            className="rounded-full bg-white px-6 py-2 text-nav-link font-semibold text-brand-green"
+            className="rounded-full bg-white px-6 py-2 text-nav-link font-semibold text-brand-green transition-colors hover:bg-surface active:bg-surface-alt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {site.ctaNav.label}
           </Link>
@@ -85,7 +85,7 @@ export function Header() {
 
         <button
           type="button"
-          className="text-white nav:hidden"
+          className="rounded-sm text-white nav:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}

@@ -1,38 +1,38 @@
 [
   {
     "path": "/",
-    "title": "AGL Pallet - For Manufacturers Who Can’t Afford Disruption",
+    "title": "AGL Pallet - For Manufacturers Who Can\u2019t Afford Disruption",
     "description": "AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.",
     "canonical": "https://aglpallet.com/"
   },
   {
     "path": "/about/",
     "title": "About - AGL Pallet",
-    "description": null,
+    "description": "AGL Pallet brings structure and reliability to pallet supply\u2014fair-market sourcing, accountable logistics, and long-term partnerships for manufacturers.",
     "canonical": "https://aglpallet.com/about/"
   },
   {
     "path": "/industries-served/",
     "title": "Industries Served - AGL Pallet",
-    "description": null,
+    "description": "Pallet solutions for building materials, pharmaceuticals, plastics, chemicals, and food & beverage manufacturers that cannot risk supply disruption.",
     "canonical": "https://aglpallet.com/industries-served/"
   },
   {
     "path": "/logistics-process/",
     "title": "Logistics & Process - AGL Pallet",
-    "description": null,
+    "description": "How AGL Pallet sources, coordinates, and delivers truckload pallet orders\u2014single-point accountability from manufacturer to your dock.",
     "canonical": "https://aglpallet.com/logistics-process/"
   },
   {
     "path": "/products/",
     "title": "Products - AGL Pallet",
-    "description": null,
+    "description": "Stock pallets, engineered pallet solutions, crates & dunnage, and shipping blocks\u2014sourced and delivered for high-volume manufacturing.",
     "canonical": "https://aglpallet.com/products/"
   },
   {
     "path": "/request-a-quote/",
     "title": "Request a Quote - AGL Pallet",
-    "description": null,
+    "description": "Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.",
     "canonical": "https://aglpallet.com/request-a-quote/"
   }
 ]

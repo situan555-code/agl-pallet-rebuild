@@ -5,9 +5,20 @@ import { ProductBlock } from "@/components/ProductBlock";
 import { CTABand } from "@/components/CTABand";
 
 export const metadata: Metadata = {
-  title: "Products - AGL Pallet",
+  title: 'Products - AGL Pallet',
+  description: 'Stock pallets, engineered pallet solutions, crates & dunnage, and shipping blocks—sourced and delivered for high-volume manufacturing.',
+  alternates: { canonical: '/products/' },
   openGraph: {
-    type: "article",
+    type: 'article',
+    url: '/products/',
+    title: 'Products - AGL Pallet',
+    description: 'Stock pallets, engineered pallet solutions, crates & dunnage, and shipping blocks—sourced and delivered for high-volume manufacturing.',
+    images: ["/assets/agl_social_share.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'Products - AGL Pallet',
+    description: 'Stock pallets, engineered pallet solutions, crates & dunnage, and shipping blocks—sourced and delivered for high-volume manufacturing.',
     images: ["/assets/agl_social_share.jpg"],
   },
 };

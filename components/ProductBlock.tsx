@@ -31,8 +31,8 @@ export function ProductBlock({
     <FadeIn key="text">
       <h2 className="text-display-2 text-brand-green">{heading}</h2>
       <div className="mt-6 space-y-4">
-        <p className="text-body font-bold">{tagline}</p>
-        <p className="text-body">{body}</p>
+        <p className="text-lead prose-measure">{tagline}</p>
+        <p className="prose-measure text-body">{body}</p>
       </div>
       <div className="mt-8">
         <Button href={cta.href} label={cta.label} />
@@ -41,12 +41,12 @@ export function ProductBlock({
   );
 
   const imageBlock = (
-    <FadeIn key="image" className="relative aspect-[4/3] w-full">
+    <FadeIn key="image" className="relative aspect-[4/3] w-full overflow-hidden">
       {edgeShape && (
         <div
           aria-hidden="true"
-          className={`absolute top-1/2 hidden h-[180px] w-[400px] -translate-y-1/2 bg-brand-green nav:block ${
-            edgeShape === "right" ? "right-[-100px]" : "left-[-100px]"
+          className={`absolute top-1/2 hidden h-[180px] w-[120px] -translate-y-1/2 bg-brand-green nav:block ${
+            edgeShape === "right" ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"
           }`}
         />
       )}
@@ -65,8 +65,8 @@ export function ProductBlock({
   );
 
   return (
-    <section id={id} className="scroll-mt-24 overflow-hidden px-6 py-[75px]">
-      <div className="mx-auto grid max-w-[1440px] items-center gap-12 nav:grid-cols-2">
+    <section id={id} className="section-y overflow-hidden px-6">
+      <div className="mx-auto grid max-w-[1440px] items-start gap-12 nav:grid-cols-2">
         {imageSide === "left" ? [imageBlock, textBlock] : [textBlock, imageBlock]}
       </div>
     </section>

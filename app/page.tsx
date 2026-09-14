@@ -10,10 +10,19 @@ import { CTABand } from "@/components/CTABand";
 
 export const metadata: Metadata = {
   title: "AGL Pallet - For Manufacturers Who Can't Afford Disruption",
-  description:
-    "AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.",
+  description: 'AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.',
+  alternates: { canonical: '/' },
   openGraph: {
-    type: "website",
+    type: 'website',
+    url: '/',
+    title: "AGL Pallet - For Manufacturers Who Can't Afford Disruption",
+    description: 'AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.',
+    images: ["/assets/agl_social_share.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AGL Pallet - For Manufacturers Who Can't Afford Disruption",
+    description: 'AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.',
     images: ["/assets/agl_social_share.jpg"],
   },
 };

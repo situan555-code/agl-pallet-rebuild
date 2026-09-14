@@ -74,7 +74,7 @@
     "image": "/assets/home_about_photo.jpg",
     "alt": "Stacked wood pallets outdoors against a blue sky.",
     "imageSide": "left",
-    "cta": { "label": "Get In Touch", "href": "/request-a-quote/" }
+    "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
   },
   "ctaBand": {
     "eyebrow": "Get In Touch",

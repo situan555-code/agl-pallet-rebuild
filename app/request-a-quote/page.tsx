@@ -5,9 +5,20 @@ import { ContactForm } from "@/components/ContactForm";
 import { ContactInfoStrip } from "@/components/ContactInfoStrip";
 
 export const metadata: Metadata = {
-  title: "Request a Quote - AGL Pallet",
+  title: 'Request a Quote - AGL Pallet',
+  description: 'Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.',
+  alternates: { canonical: '/request-a-quote/' },
   openGraph: {
-    type: "article",
+    type: 'article',
+    url: '/request-a-quote/',
+    title: 'Request a Quote - AGL Pallet',
+    description: 'Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.',
+    images: ["/assets/agl_social_share.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: 'Request a Quote - AGL Pallet',
+    description: 'Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.',
     images: ["/assets/agl_social_share.jpg"],
   },
 };
@@ -23,7 +34,7 @@ export default function RequestAQuote() {
 
   return (
     <main>
-      <section className="bg-brand-green px-6 pb-16 pt-[144px] text-white">
+      <section className="scroll-mt-24 bg-brand-green px-6 pb-16 pt-36 text-white">
         <div className="mx-auto max-w-[1440px]">
           <p className="text-eyebrow font-semibold uppercase tracking-wide">
             <span aria-hidden="true" className="mr-2 font-bold">

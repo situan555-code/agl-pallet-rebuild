@@ -23,7 +23,7 @@ export function MobileNav({
           href={item.href}
           prefetch={false}
           onClick={onNavigate}
-          className="block border-t border-white/20 px-6 py-4 text-nav-link font-semibold text-white"
+          className="block border-t border-white/20 px-6 py-4 text-nav-link font-semibold text-white transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
         >
           {item.label}
         </Link>
@@ -32,7 +32,7 @@ export function MobileNav({
         href={ctaHref}
         prefetch={false}
         onClick={onNavigate}
-        className="block border-t border-white/20 px-6 py-4 text-nav-link font-semibold text-white"
+        className="block border-t border-white/20 px-6 py-4 text-nav-link font-semibold text-white transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
       >
         {ctaLabel}
       </Link>

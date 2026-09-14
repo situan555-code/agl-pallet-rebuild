@@ -1,17 +1,44 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LocalBusinessJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aglpallet.com"),
-  title: "AGL Pallet",
-  description: "AGL Pallet",
+  title: {
+    default: "AGL Pallet",
+    template: "%s",
+  },
+  description:
+    "AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.",
+  applicationName: "AGL Pallet",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     siteName: "AGL Pallet",
     locale: "en_US",
+    type: "website",
+    images: [{ url: "/assets/agl_social_share.jpg", width: 1200, height: 630 }],
   },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/assets/agl_social_share.jpg"],
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#1C391F",
 };
 
 export default function RootLayout({
@@ -22,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${anton.variable}`}>
       <body>
+        <LocalBusinessJsonLd />
         <Header />
         {children}
         <Footer />

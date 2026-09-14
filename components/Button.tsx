@@ -4,8 +4,10 @@ import Image from "next/image";
 type ButtonVariant = "pill-light" | "pill-dark";
 
 const variantClasses: Record<ButtonVariant, string> = {
-  "pill-light": "bg-white text-brand-green",
-  "pill-dark": "bg-brand-green text-white",
+  "pill-light":
+    "bg-white text-brand-green hover:bg-surface active:bg-surface-alt",
+  "pill-dark":
+    "bg-brand-green text-white hover:bg-ink active:brightness-90",
 };
 
 const arrowIcon: Record<ButtonVariant, string> = {
@@ -26,7 +28,11 @@ export function Button({
     <Link
       href={href}
       prefetch={false}
-      className={`relative inline-block rounded-full py-[15px] pl-[18px] pr-[50px] text-button font-bold transition-opacity hover:opacity-90 ${variantClasses[variant]}`}
+      className={`relative inline-block rounded-full py-[15px] pl-[18px] pr-[50px] text-button font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+        variant === "pill-light"
+          ? "focus-visible:outline-white"
+          : "focus-visible:outline-brand-green"
+      } ${variantClasses[variant]}`}
     >
       {label}
       <Image

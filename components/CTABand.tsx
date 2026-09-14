@@ -19,7 +19,7 @@ export function CTABand({
 }) {
   const blurDataURL = getBlurDataURL(backgroundImage);
   return (
-    <section className="relative overflow-hidden px-6 py-[150px] text-white">
+    <section className="section-y-cta relative overflow-hidden px-6 text-white">
       <Image
         src={backgroundImage}
         alt=""

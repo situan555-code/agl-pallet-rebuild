@@ -1586,3 +1586,123 @@ attempts already spent on it (well past 3), not quietly waved through.
 
 **Not started:** Tier 3 (G8–G14) and Tier 4 (G15–G23), per this session's explicit
 scope ("do not start Tier 3/4"). Did not touch DNS. Did not commit — operator deploys.
+
+## 2026-09-14 — Tier 2 prod audit clears LCP
+Local sandbox Lighthouse was flaky 2.1–2.7s (BLOCKED.md). Production
+AUDIT_BASE_URL=https://nx7k-lab-m4.vercel.app all 6 pages PASS:
+home 2280, about 2238, industries 1830, logistics 1794, products 2130,
+quote 1830. Structure/content/height already PASS. Proceeding Tier 3.
+
+## Tier 3 — Craft G8–G14 (2026-09-14, executor after Claude spend limit)
+
+Invoked to finish the final quality pass after Claude Code hit org spend limit.
+G9 was already done (all CTAs **"Request a Quote"** including nav in
+`content/site.json`; capture/*.txt left matching for content gate). Implemented
+G8, G10–G14, then all of Tier 4.
+
+### G8 — scroll-margin-top
+Site-wide `scroll-margin-top: 5.5rem` (88px) on `h1`, `h2`, `section`, and `[id]`
+in `app/globals.css`. Clears the fixed ~64px header + padding. Existing
+`scroll-mt-24` on heroes/product anchors retained as reinforcement.
+
+### G9 — CTA unification (confirmed prior)
+Choice: **"Request a Quote"** everywhere (nav pill, product CTAs, About CTAs,
+footer CTA via `site.ctaNav`). Eyebrow copy "Get In Touch" left as section
+eyebrow text (not a CTA label). Capture files already updated — not re-touched.
+
+### G10 — section vertical rhythm
+Shared tokens in globals: `.section-y` (`py-16 nav:py-20`) and `.section-y-cta`
+(`py-20 nav:py-24`). Applied across StatBand, IndustryCardGrid, ProcessStepGrid,
+EmbeddedVideo, TimelineSection, ContactInfoStrip, TextWithSideImage,
+ProductBlock, CTABand (was `py-[150px]`), Footer. Killed About’s ~250px dead
+space below Request a Quote by normalizing padding + `items-start` on
+two-column grids (no more vertically-centered text leaving a large gap under
+the button while the image column set height).
+
+### G11 — IndustryCardGrid
+Always-visible subtle `border` + `shadow-sm` (light and dark themes; was
+`nav:`-only). Icons 72px mobile / 96px desktop via CSS on a single `Image`.
+`h-full` + `flex flex-col` equalizes card heights; body uses `flex-1`.
+
+### G12 — StatBand
+Container tightened to `max-w-3xl` with smaller gap (`gap-6` / `nav:gap-10`).
+Still exactly two stats — no third invented.
+
+### G13 — ProductBlock / TextWithSideImage accents
+Green accent rectangles contained: parent `overflow-hidden` on image column +
+section; accent width reduced to `w-[120px]` with half-translate so they peek
+beside the photo without clipping at the viewport as a rendering artifact.
+
+### G14 — Products lead
+Promoted Products tagline bold to shared `.text-lead` token (`text-body
+font-bold`) in globals; applied on `ProductBlock` taglines only (the
+distinctive lead). Did **not** invent bold first-paragraphs on other pages.
+
+### Tier 3 gate table (after reshoot)
+| Gate | Result |
+|------|--------|
+| build | PASS |
+| structure | PASS all 6 |
+| content | PASS all 6 |
+| height | PASS all 6×3 (worst About@390 12.6%) |
+
+---
+
+## Tier 4 — Sweep G15–G23 (2026-09-14)
+
+### G15 — Responsive audit
+Playwright screenshots at 320,375,390,428,768,1024,1440,1920 for all 6 pages →
+`screenshots/responsive/`. No horizontal scroll on any viewport. Only
+“overflow” detections were intentional G13 accent rects (contained by
+`overflow-hidden`, `hasHScroll=false`). No clipped text / broken grids found
+in the review set.
+
+### G16 — Interaction states
+Visible hover / focus-visible / active on `Button`, Header nav + CTA, Footer
+links + social, MobileNav, Industry cards, ContactInfoStrip cards. Focus rings
+use white on dark green, brand-green on light.
+
+### G17 — Typography
+Headings get `text-wrap: balance`. Body measure via `.prose-measure` (~65ch)
+on ProductBlock / TextWithSideImage copy. Existing type scale tokens retained.
+
+### G18 — Metadata / OG
+Unique title + description + canonical + Open Graph + Twitter card per page;
+shared real OG image `/assets/agl_social_share.jpg`.
+
+### G19 — LocalBusiness JSON-LD
+`components/JsonLd.tsx` emits LocalBusiness with name, url, telephone
+`234-286-0402`, email `sales@aglpallet.com`, description, image, sameAs.
+No street address exists in capture (SPEC already noted) — NAP phone/email
+only; logged in DECISIONS. Parses as JSON.
+
+### G20 — robots / sitemap / icons / manifest
+`public/robots.txt`, `public/sitemap.xml` (all 6 URLs), favicon.ico +
+icon-192/512 + apple-touch-icon, `site.webmanifest`, `lang="en"`, viewport,
+`theme-color: #1C391F`.
+
+### G21 — Custom 404
+`app/not-found.tsx` matches brand (green band, display heading, Back to Home
++ Request a Quote). Verified `GET /nope-missing/` → 404 with that UI.
+
+### G22 — prefers-reduced-motion
+globals.css disables transitions/animations under reduced motion. FadeIn
+already motion-free (LCP). EmbeddedVideo disables autoplay/loop and shows
+controls when reduced-motion is preferred.
+
+### G23 — Dead code
+Removed `app/api/quote` 410 stub entirely. Removed unused `resend`
+dependency from `package.json`. No unused CSS layers found beyond cleaned
+fade utilities kept for G22.
+
+### Tier 4 / final gate table
+| Gate | Result | Notes |
+|------|--------|-------|
+| build | PASS | |
+| structure | PASS | image gaps back to accepted baselines |
+| content | PASS | |
+| height | PASS | worst About@390 12.594% |
+| audit PROD `https://nx7k-lab-m4.vercel.app` | PASS | reconfirm: / 2234, /about 2205, /industries 1788, /logistics 1863, /products 2113, /quote 1830; axe 0 serious/critical |
+| audit LOCAL `http://127.0.0.1:3000` | FAIL LCP flake | 3 attempts; home/products intermittently >2.5s — same sandbox noise previously CLEARED in BLOCKED; prefer prod URL per BRIEF |
+
+**Not committed / not deployed** — operator owns git + DNS.
