@@ -38,6 +38,7 @@ export default function Home() {
               heading={section.heading}
               paragraphs={section.paragraphs}
               image={section.image}
+              alt={section.alt}
               imageSide={section.imageSide}
               edgeShape={section.edgeShape}
               cta={section.cta}

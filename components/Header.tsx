@@ -54,7 +54,7 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4">
-        <Link href="/" className="shrink-0">
+        <Link href="/" prefetch={false} className="shrink-0">
           <Image
             src={site.logo.src}
             width={site.logo.width}

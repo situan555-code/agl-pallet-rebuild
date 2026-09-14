@@ -23,12 +23,14 @@ export function ContactInfoStrip({ items }: { items: ContactInfoItem[] }) {
                 src={item.icon}
                 alt=""
                 fill
+                sizes="48px"
                 className="object-contain opacity-100 transition-opacity duration-300 group-hover:opacity-0"
               />
               <Image
                 src={item.hoverIcon}
                 alt=""
                 fill
+                sizes="48px"
                 className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
             </span>

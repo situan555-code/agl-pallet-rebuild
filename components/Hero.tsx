@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/Button";
+import { getBlurDataURL } from "@/lib/blur";
 
 export function Hero({
   eyebrow,
@@ -14,6 +15,7 @@ export function Hero({
   image: string;
   cta: { label: string; href: string };
 }) {
+  const blurDataURL = getBlurDataURL(image);
   return (
     <section className="relative overflow-hidden pt-[144px]">
       <Image
@@ -21,9 +23,11 @@ export function Hero({
         alt=""
         fill
         priority
-        unoptimized
+        quality={75}
         sizes="100vw"
         className="object-cover"
+        placeholder={blurDataURL ? "blur" : undefined}
+        blurDataURL={blurDataURL}
       />
       <div className="absolute inset-0 bg-brand-green/50" />
       <div className="relative mx-auto max-w-[1440px] px-6 pt-8 pb-[162px] text-white">

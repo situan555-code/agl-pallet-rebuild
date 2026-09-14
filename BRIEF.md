@@ -377,3 +377,35 @@ recolor to compensate. Leave as-is and note it in DECISIONS.md.
 Do not change any copy. Do not change URL paths. Do not change the color
 palette. Do not remove sections, links, or CTAs. Every deviation from the
 captured original gets logged in DECISIONS.md.
+
+## SECTION G (continued) — FINAL QUALITY PASS (2026-09-14)
+
+Owner-authorized final pass. Work in order. Do not stop between items.
+Run full verify after each tier. All Section F hard gates must pass.
+No gate may be softened. No copy/URL/palette changes. No photo library work.
+
+### TIER 2 — VISUAL FIDELITY
+G5 IMAGE QUALITY — Restore 2x sources site-wide at quality 75. Remove static
+prebaked hero. Correct `sizes` per rendered slot. LCP 2.5s hard: if exceeded,
+do NOT drop quality below 75 or shrink dims — fix via srcset/modern formats/
+fetchpriority/preload on hero only.
+G6 LAZY PLACEHOLDERS — Blur/LQIP on every lazy image; no flat colored rects.
+G7 ALT TEXT — Decorative empty; else descriptive. List additions in DECISIONS.md.
+G3 ABOUT SCRIM (authorized deviation) — About may use darker/gradient scrim
+than Home. Target 4.5:1 contrast on intro paragraph; measure, don't eyeball.
+
+### TIER 3 — CRAFT
+G8 scroll-margin-top on section headings (64px header).
+G9 CTA labels — pick one of Request a Quote / Get Pricing / Contact Us; use everywhere including nav pill; report choice.
+G10 Vertical rhythm — token scale; kill ~250px About dead space.
+G11 Industries cards — border/shadow, larger icons, equal heights.
+G12 Stats band — tighten container; no third stat.
+G13 Clipped accent blocks on Products — contain or remove.
+G14 Lead paragraph on Products — tokenize consistently or remove.
+
+### TIER 4 — SWEEP
+G15 Responsive audit 320–1920. G16 Interaction states. G17 Typography.
+G18 Metadata/OG. G19 LocalBusiness schema. G20 robots/sitemap/favicon/manifest.
+G21 Custom 404. G22 prefers-reduced-motion. G23 Dead code (incl. /api/quote stub).
+
+Standing: log deviations in DECISIONS.md; unblockables in BLOCKED.md.

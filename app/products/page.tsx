@@ -21,7 +21,7 @@ export default function Products() {
         body={products.hero.body}
       />
 
-      {products.productBlocks.map((block) => (
+      {products.productBlocks.map((block, i) => (
         <ProductBlock
           key={block.id}
           id={block.id}
@@ -29,9 +29,11 @@ export default function Products() {
           tagline={block.tagline}
           body={block.body}
           image={block.image}
+          alt={block.alt}
           imageSide={block.imageSide as "left" | "right"}
           edgeShape={block.edgeShape as "left" | "right"}
           cta={block.cta}
+          priority={i === 0}
         />
       ))}
 

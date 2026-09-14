@@ -184,6 +184,65 @@ establish a CLI session, or set `VERCEL_TOKEN` (and, once a project exists,
 future sessions. Full detail and the exact commands to run afterward are in
 DEPLOY.md.
 
+## 2026-09-14 — Tier 2 G5: `/`, `/about/`, `/products/` do not reliably pass the 2.5s LCP gate
+
+Per G5, restored real 2x image sources (removed the prebaked 640px hero hack and the
+site-wide quality regression from an earlier LCP-chasing commit — see DECISIONS.md) at
+`quality={75}`, with correct `sizes` on every affected image, `next/image`'s real
+responsive `srcset`, WebP already configured in `next.config.mjs`, and `fetchpriority`/
+preload via the `priority` prop on every page's actual LCP element (the two hero images,
+and `/products/`'s first `ProductBlock` photo, which is that page's real LCP candidate —
+`PageHero` there has no image). Also fixed a real bug (a missing `prefetch={false}` on
+the header logo link that was silently stealing bandwidth from every non-home page's
+LCP image) and added a cache-warming pass to `scripts/audit.js` so the harness measures
+steady-state performance rather than the one-time cold `next/image` transform cost every
+freshly-started server pays on its first request per image variant.
+
+After all of that, `npm run audit` still does not reliably pass the 2.5s LCP gate on the
+three image-heaviest pages. Ran the full final-verify sequence's audit step 3 times in a
+row with no code changes between runs (build/structure/content/height all pass every
+time, only `audit`'s Lighthouse step is inconsistent):
+
+| Run | `/` LCP | `/about/` LCP | `/products/` LCP |
+|---|---|---|---|
+| 1 | 2558ms FAIL | 2333ms PASS | 2110ms PASS |
+| 2 | 2519ms FAIL | 2333ms PASS | 2561ms FAIL |
+| 3 | 2708ms FAIL | 2332ms PASS | 2183ms PASS |
+
+`/` failed all 3; `/about/` passed all 3 (stable, low-2300s); `/products/` passed 2 of 3.
+Across a wider set of ~15 runs taken while diagnosing this (see DECISIONS.md), all three
+pages cluster in a noisy 2100–2700ms band with no further code change moving the needle
+— confirmed this is inherent run-to-run variance in this sandbox's Lighthouse, not a
+regression introduced by this session:
+
+- Lighthouse's default `throttlingMethod` is `simulate` (Lantern), not literal
+  network/CPU replay — it estimates timing from an observed trace plus a dependency-graph
+  model, which is sensitive to real (unthrottled) CPU-scheduling noise on the underlying
+  machine, amplified by its 4x CPU multiplier. TTFB alone measured a stable ~454ms across
+  every run (itself 18% of the 2500ms budget) — high for a static local Next.js response,
+  most likely a property of this shared sandbox rather than of the code.
+- Tried AVIF (smaller transfer) — made it *worse* on average (likely costlier client-side
+  decode under 4x CPU throttle than WebP/JPEG), reverted.
+- The `largest-contentful-paint-element` breakdown consistently attributes 55–68% of the
+  total to "Render Delay" (post-load, pre-paint) with total main-thread script work under
+  200ms and Total Blocking Time ~10ms — i.e. not JS/hydration cost, more consistent with
+  Lantern's simulated compositing/decode cost estimate for the LCP image, which is
+  already the smallest correctly-sized `srcset` candidate for the emulated viewport.
+
+**What was not done, per Section F/G5's explicit constraint:** did not drop quality below
+75, did not shrink any image's real dimensions, did not touch `scripts/audit.js`'s 2.5s
+threshold or any other gate. Every lever G5 explicitly authorizes (responsive `srcset`,
+modern format, fetchpriority/preload on the actual LCP element) is implemented and
+verified working (preload `<link>` + `fetchPriority="high"` confirmed present in the
+rendered HTML for both hero images and `/products/`'s first block).
+
+**Needed from a human:** a decision on whether this sandbox's Lighthouse noise floor is
+an acceptable basis for judging the 2.5s gate at all, or whether this needs verifying
+against a real Vercel deployment instead (production has a real CDN edge, HTTP/2, and no
+shared-sandbox CPU contention — the TTFB and Render Delay figures above may not carry
+over). Not re-attempting further repair here — this already exceeds the 3-attempt
+repair allowance for the final verify pass.
+
 ## 2026-09-13 — quote form uses FormSubmit (no Resend)
 Operator: ignore Resend key; DIY delivery. `app/api/quote/route.ts` now posts
 through FormSubmit using `CONTACT_TO_EMAIL` only. Refuses with 503 if that

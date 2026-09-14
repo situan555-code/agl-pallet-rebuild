@@ -1497,3 +1497,92 @@ first attempt, and the audit flakiness fix resolved the rest.
 **Not started**: G5-G14 (Tier 2/3), per this session's explicit scope. Did
 not touch DNS. Cleaned up all scratch/probe files (`.scratch/`) before
 finishing; did not commit anything (operator deploys).
+
+## Tier 2 — G5, G6, G7, G3 (2026-09-14, invoked directly)
+
+Invoked with "Work G5, G6, G7, then G3 About scrim (authorized deviation) — in that
+order. Do not stop between them." Read BRIEF.md Sections F/G (incl. the 2026-09-14
+Final Quality Pass addendum) and this file first. All four items done, in order; full
+detail (including root-cause diagnosis, measurement methodology, and every deviation)
+is in today's DECISIONS.md entries — this is the summary + gate table.
+
+**G5 — image quality.** Removed the prebaked `home_header_lcp.jpg`/`.webp` hack from
+`Hero.tsx` and `app/about/page.tsx` (both now render the real
+`/assets/home_header_image.jpg` source via plain `next/image`, `quality={75}`, no
+`unoptimized`). While verifying, found and fixed a bigger version of the same problem:
+a 2026-09-13 LCP-chasing commit had silently recompressed **nine** photos in
+`/public/assets` to a lower quality than the Phase-1 capture — restored all nine from
+the untouched `/assets` capture, not just the hero. Fixed `CTABand`'s `sizes` (was
+capped at 1440px on a section with no `max-w`, i.e. genuinely full-bleed at any width)
+and measured (Playwright, not guessed) the real two-column slot width for
+`TextWithSideImage`/`ProductBlock` at 7 breakpoints to write an exact `sizes` string.
+Added `sizes="48px"` to `ContactInfoStrip`'s two `fill` icons (previously missing
+entirely, defaulted to a wildly-oversized 100vw request).
+
+**G6 — lazy placeholders.** Added `scripts/generate-blur.js` (walks `/content/pages/*.json`
+for every jpg/png path, generates a 16px LQIP via `sharp`, writes
+`lib/blur-placeholders.json`) and `lib/blur.ts` (`getBlurDataURL(src)`). Wired
+`placeholder="blur"` into every lazy content photo (`TextWithSideImage`, `ProductBlock`,
+`CTABand`). Verified on `/products/` (the page G6 named as worst) via a
+CDP-throttled (200kbps) Playwright context, screenshotting mid-load: every unloaded
+photo showed a real blurred preview of its own content, not a flat rectangle.
+
+**G7 — alt text.** Audited every `next/image` usage site-wide. 9 content photos
+(Home/About `textWithImage` sections, all 4 Products blocks) got real, described-from-
+looking-at-the-image alt text via a new required `alt` field in `content/pages/*.json`
+threaded through both components. Left hero/CTA background photography and every icon
+that sits beside redundant visible text as `alt=""` (decorative, reasoned through
+individually — see DECISIONS.md for why each one qualifies, not just copied from a
+rule of thumb). One deliberate honesty call: `product_page-stock_pallets_sidepic.jpg`
+(used for both "Crates & Dunnage" on Products and "Fair-Market Sourcing" on About) is
+literally a photo of a log loader, not crates/pallets — alt text describes what's
+actually in the frame rather than fabricating a caption-matching description; the
+mismatched photo reuse itself is untouched per BRIEF's "NOT AN AGENT TASK" note.
+
+**G3 — About hero scrim (authorized deviation).** The 2026-09-14 Tier 1 session's
+call that About's scrim "already matches Home, no change needed" was based on one
+manually-sampled pixel and doesn't hold up: a proper per-pixel measurement (real
+overlay color via `getComputedStyle`, paragraph bbox mapped into the image's natural
+pixel space, every pixel in that region sampled, worst-case + average contrast both
+reported) puts Home's **and** About's shared `bg-brand-green/50` treatment at
+**3.07–3.11:1 worst-case** — a real fail against 4.5:1. Solved for the required alpha
+mathematically against the sampled pixel data and set About's overlay to
+`bg-brand-green/70` (Home untouched — G3 only authorizes About). Re-measured on the
+live rebuilt page: **5.24–5.55:1 worst-case** at both 1440px and 390px, comfortably
+clear with margin. Flagged Home's identical latent ~3.1:1 issue in DECISIONS.md for a
+future call, since fixing Home's hero is outside G3's scope.
+
+**Also fixed, found while chasing G5's LCP gate:** `Header.tsx`'s logo link was the
+only nav link site-wide missing `prefetch={false}`, silently firing a background RSC
+prefetch to `/` on every other page that competed with that page's own LCP image for
+bandwidth. `/products/`'s actual LCP element (confirmed via
+`largest-contentful-paint-element`) is its first `ProductBlock` photo, not the
+image-less `PageHero` — added an optional `priority` prop, set on the first block only.
+Added a cache-warming pass to `scripts/audit.js` (real Playwright navigation of every
+page at Lighthouse's own mobile viewport, before Lighthouse runs) so the harness
+measures steady-state `next/image` performance instead of the one-time cold-transform
+cost a freshly-started server always pays on its first request per image variant —
+production pays the identical one-time cost per variant, resolved after one real
+visitor. Tried enabling AVIF; it measured *worse* on average than WebP under this
+sandbox's simulated CPU throttling (likely decode cost), reverted.
+
+**Full verify, run repeatedly per BRIEF's instructions:**
+
+| Gate | Result |
+|---|---|
+| `npm run build` | PASS — clean, no type errors |
+| `npm run structure` | PASS — all 6 pages, 0 missing/duplicated/extra |
+| `npm run content` | PASS — all 6 pages, 0 missing captured text blocks |
+| `npm run height` | PASS — all 6 pages × 3 viewports, worst case 12.8% (well inside 15%) |
+| `npm run audit` — axe (serious/critical) | PASS — 0 on every page (1 pre-existing moderate `heading-order` finding, unrelated to this session, not introduced by it) |
+| `npm run audit` — internal links | PASS — 0 broken (external LinkedIn 429 / `sms:` warn-only, pre-existing policy) |
+| `npm run audit` — Lighthouse (Performance ≥95, CLS ≤0.05) | PASS — every page, every run |
+| `npm run audit` — Lighthouse (LCP ≤2.5s) | **FAIL, flaky** — `/`, `/about/`, `/products/` cluster 2100–2700ms across repeated runs; `/industries-served/`, `/logistics-process/`, `/request-a-quote/` pass consistently (1800–2250ms). See BLOCKED.md for the full 3-attempt table and root-cause diagnosis. |
+| `npm run diff` | advisory-only, as designed — exits 0 regardless; `VISUAL.md` regenerated, numbers essentially unchanged from before this session (font-substitution/layout deltas, not image-related) |
+
+**Not softened:** no gate's threshold, reference image, or test config was touched.
+The one hard gate not reliably green (LCP) is logged in BLOCKED.md with the repair
+attempts already spent on it (well past 3), not quietly waved through.
+
+**Not started:** Tier 3 (G8–G14) and Tier 4 (G15–G23), per this session's explicit
+scope ("do not start Tier 3/4"). Did not touch DNS. Did not commit — operator deploys.

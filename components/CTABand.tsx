@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
 import { FadeIn } from "@/components/FadeIn";
+import { getBlurDataURL } from "@/lib/blur";
 
 export function CTABand({
   eyebrow,
@@ -16,9 +17,19 @@ export function CTABand({
   backgroundImage: string;
   cta: { label: string; href: string };
 }) {
+  const blurDataURL = getBlurDataURL(backgroundImage);
   return (
     <section className="relative overflow-hidden px-6 py-[150px] text-white">
-      <Image src={backgroundImage} alt="" fill quality={60} sizes="(max-width: 768px) 100vw, 1440px" className="object-cover" />
+      <Image
+        src={backgroundImage}
+        alt=""
+        fill
+        quality={75}
+        sizes="100vw"
+        className="object-cover"
+        placeholder={blurDataURL ? "blur" : undefined}
+        blurDataURL={blurDataURL}
+      />
       <div className="absolute inset-0 bg-brand-green/50" />
       <FadeIn className="relative mx-auto max-w-[1440px] text-center">
         <SectionHeading eyebrow={eyebrow} heading={heading} align="center" theme="dark" />

@@ -16,6 +16,7 @@
       "Short-term cost cutting often leads to long-term instability. Instead of pursuing unsustainable pricing models, we focus on fair-market sourcing strategies that allow suppliers to maintain quality standards and consistent output. When suppliers are stable, our clients benefit from dependable capacity and predictable lead times."
     ],
     "image": "/assets/about_page-single_point_sidepic.jpg",
+    "alt": "A log loader machine lifting logs at an outdoor lumber yard.",
     "imageSide": "right",
     "cta": { "label": "Request a Quote", "href": "/request-a-quote/" }
   },
@@ -71,6 +72,7 @@
       "We work with owners, COOs, purchasing teams, and warehouse leaders at both regional and multinational operations that require truckload quantities on a recurring basis.  If consistent pallet supply is critical to keeping your operation running, AGL is built to support you."
     ],
     "image": "/assets/home_about_photo.jpg",
+    "alt": "Stacked wood pallets outdoors against a blue sky.",
     "imageSide": "left",
     "cta": { "label": "Get In Touch", "href": "/request-a-quote/" }
   },

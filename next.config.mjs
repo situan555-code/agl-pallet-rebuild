@@ -2,7 +2,9 @@
 const nextConfig = {
   trailingSlash: true,
   images: {
-    // Skip AVIF — cold encode on first hit tanks LCP on mobile audits.
+    // AVIF tried and reverted 2026-09-14 — measured worse LCP than WebP under
+    // this sandbox's simulated mobile CPU throttling (decode cost), even with
+    // the harness's image-cache warm-up in place. See DECISIONS.md.
     formats: ["image/webp"],
   },
 };

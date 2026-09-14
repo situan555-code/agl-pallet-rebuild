@@ -6,6 +6,7 @@ export type TextWithImageSection = {
   heading: string;
   paragraphs: string[];
   image: string;
+  alt: string;
   imageSide: "left" | "right";
   edgeShape?: "left" | "right";
   cta?: CTA;

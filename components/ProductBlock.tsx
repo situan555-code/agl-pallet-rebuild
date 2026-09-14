@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/Button";
 import { FadeIn } from "@/components/FadeIn";
+import { getBlurDataURL } from "@/lib/blur";
 
 export function ProductBlock({
   id,
@@ -8,19 +9,24 @@ export function ProductBlock({
   tagline,
   body,
   image,
+  alt,
   imageSide,
   edgeShape,
   cta,
+  priority,
 }: {
   id: string;
   heading: string;
   tagline: string;
   body: string;
   image: string;
+  alt: string;
   imageSide: "left" | "right";
   edgeShape?: "left" | "right";
   cta: { label: string; href: string };
+  priority?: boolean;
 }) {
+  const blurDataURL = getBlurDataURL(image);
   const textBlock = (
     <FadeIn key="text">
       <h2 className="text-display-2 text-brand-green">{heading}</h2>
@@ -46,10 +52,14 @@ export function ProductBlock({
       )}
       <Image
         src={image}
-        alt=""
+        alt={alt}
         fill
-        sizes="(min-width: 980px) 50vw, 100vw"
+        quality={75}
+        priority={priority}
+        sizes="(min-width: 1488px) 696px, (min-width: 980px) calc(50vw - 48px), calc(100vw - 48px)"
         className="object-cover"
+        placeholder={blurDataURL ? "blur" : undefined}
+        blurDataURL={blurDataURL}
       />
     </FadeIn>
   );

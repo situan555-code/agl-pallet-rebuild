@@ -736,6 +736,195 @@ ratio than one with a loaded poster — `scripts/lib/shoot.js`'s existing
 measurement, so no height regression (confirmed, all pages still pass
 unchanged).
 
+## 2026-09-14 — G5 image quality: restored 2x sources, removed the prebaked-hero hack, fixed `sizes`
+
+**Removed the LCP-era hack.** `Hero.tsx` and `app/about/page.tsx`'s inline hero both used
+`unoptimized` pointed at a prebaked `home_header_lcp.jpg`/`.webp` (640×320, generated
+solely to dodge next/image's on-demand transform cost during an earlier 1.5s-LCP push
+that Section F later reversed). Both now render the real captured source
+(`/assets/home_header_image.jpg`, 1920×960) through plain `next/image` with
+`quality={75}` and no `unoptimized` — real responsive `srcset`, real compression.
+Deleted `public/assets/home_header_lcp.jpg`/`.webp` (unused, not part of the
+Phase 1 capture record — `/assets` never had them, confirmed before deleting).
+
+**Also restored, site-wide (found while verifying G5, not just the hero):** a 2026-09-13
+LCP-chasing commit (`d0aabdf`) had silently recompressed nine `/public/assets` photos to
+a lower quality than the Phase-1 capture in `/assets` (e.g. `home_header_image.jpg`
+439KB→244KB, `get_in_touch_cta_banner_bg-1-scaled.jpg` 418KB→142KB — diffed every file
+in `/assets` against its `/public/assets` counterpart by byte size, not just the ones
+BRIEF.md named, since the hero wasn't the only casualty). Recopied all nine from
+`/assets` (the immutable, untouched capture) over their `/public/assets` duplicates:
+`home_header_image.jpg`, `home_about_photo.jpg`, `why_agl_exist_sidepic.jpg`,
+`who_agl_is_sidepic.jpg`, `about_page-single_point_sidepic.jpg`,
+`get_in_touch_cta_banner_bg-1-scaled.jpg`, `product_page-stock_pallets_sidepic.jpg`,
+`product_page-stock_pallets_sidepic-1.jpg`, `product_page-stock_pallets_sidepic-1-1.jpg`,
+`product_page-engineered_pallet_solutions_sidepic-1.jpg`. `agl_home_video.mp4` also
+differs between the two directories but that's G4's deliberate re-encode, not a
+regression — left untouched.
+
+**`sizes` — measured against the real rendered container, not guessed.** `CTABand`'s
+background image had `quality={60}` and `sizes="(max-width: 768px) 100vw, 1440px"`, but
+its `<section>` has no `max-w` wrapper — the image is genuinely full-bleed at every
+width, so the 1440px cap was silently under-requesting on any viewport wider than
+1488px. Fixed to `quality={75}` / `sizes="100vw"`. For `TextWithSideImage` and
+`ProductBlock` (both: `section.px-6` → `div.mx-auto.max-w-[1440px]` →
+`grid.nav:grid-cols-2.gap-12`), measured the actual rendered column width with a
+throwaway Playwright probe at 390/768/980/1024/1440/1488/1920px rather than
+hand-waving a fraction: results (342/720/442/464/672/696/696) matched
+`calc(50vw - 48px)` below the 1488px content-max-width breakpoint and a flat `696px`
+above it, and `calc(100vw - 48px)` below the `nav` (980px) single-column breakpoint,
+to the pixel. New `sizes`:
+`"(min-width: 1488px) 696px, (min-width: 980px) calc(50vw - 48px), calc(100vw - 48px)"`.
+`ContactInfoStrip`'s two `fill` icon images (`h-12 w-12` box) had no `sizes` at all
+(defaults to `100vw`, wildly oversized for a 48px box) — added `sizes="48px"`.
+
+**Image format: tried AVIF, reverted to WebP-only.** Enabled `images.formats:
+["image/avif","image/webp"]` expecting a real transfer-size win now that the harness
+warms the cache first (see below). Isolated A/B testing (same code, same warm state,
+`images.formats` toggled) showed AVIF made LCP *worse* on average, not better —
+consistent with AVIF's decode being more CPU-expensive than WebP/JPEG client-side,
+which matters under Lighthouse's mobile 4x CPU-throttle simulation even though AVIF's
+transfer bytes are smaller. Reverted to the original `formats: ["image/webp"]`.
+
+**Real bugs found and fixed while chasing the LCP gate (not image quality/dimension
+changes — Section F still applies):**
+- `Header.tsx`'s logo `<Link href="/">` was the one nav link in the whole codebase
+  without `prefetch={false}` (every other nav/footer/CTA link already had it, per the
+  2026-09-12 DECISIONS.md entry). On every non-home page this silently fired a
+  background RSC prefetch to `/` that competed with that page's own LCP image for
+  bandwidth on Lighthouse's throttled connection — confirmed via
+  `lhr.audits['network-requests']`, which showed a `?_rsc=` fetch to `/` on `/about/`.
+  Fixed; measurably dropped `/about/`'s LCP.
+- `/products/`'s actual LCP element was the first `ProductBlock`'s photo
+  (`largest-contentful-paint-element` confirmed it, not the hero — `PageHero` has no
+  image on this page), and it was plain `loading="lazy"` with no preload, "Load Delay"
+  alone accounting for 32% of its LCP. Added an optional `priority` prop to
+  `ProductBlock`, set `priority={i === 0}` in `app/products/page.tsx` — this is "the LCP
+  element" per G5's own fetchpriority/preload allowance, not "the hero" literally,
+  since this page's hero has no photo.
+- `scripts/audit.js` now runs a `warmImageCache()` pass (real Playwright, same 412×823
+  @1.75 DPR viewport Lighthouse's default mobile emulation uses) over every page before
+  Lighthouse runs. next/image transforms + caches each width/format combination on
+  first request; on the freshly-restarted server this harness always audits against,
+  that cold encode added ~100-200ms to the very first hit per unique variant — enough
+  alone to push a marginal LCP over 2.5s on a first-ever run. Production has the exact
+  same one-time cost per variant (resolved after one real visitor, then cached at
+  Vercel's edge); warming here measures steady-state performance instead of a
+  first-request artifact. This is an infra/harness fix, not a change to any image's
+  quality or dimensions.
+
+**Residual, logged honestly rather than fixed by softening anything:** even with all of
+the above, `/`, `/about/`, and `/products/` do not reliably pass the 2.5s LCP gate in
+this sandbox — see BLOCKED.md. No quality was dropped below 75, no dimension was
+shrunk, to work around it.
+
+## 2026-09-14 — G6 lazy placeholders: real LQIP via next/image `placeholder="blur"`
+
+next/image's built-in blur placeholder only auto-generates for statically-imported
+local images; this project's photos are referenced by string path from `/content/*.json`
+(`src="/assets/foo.jpg"`), which next/image can't introspect at build time, so
+`blurDataURL` has to be supplied by hand. Added `scripts/generate-blur.js`: walks every
+`/content/pages/*.json`, collects every string matching `/^\/assets\/.*\.(jpe?g|png)$/`
+(SVG icons excluded — small, vector, load fast enough that a placeholder is pointless),
+downsamples each to 16px wide via `sharp` (already a dependency), and writes
+`lib/blur-placeholders.json` (path → base64 data URI). `lib/blur.ts` exposes
+`getBlurDataURL(src)`. Wired `placeholder="blur"` / `blurDataURL={...}` into every
+lazy content photo: `TextWithSideImage`, `ProductBlock`, `CTABand`'s background image,
+plus the two priority hero images (harmless there, free given the map already exists).
+Re-run `node scripts/generate-blur.js` whenever a `/content` photo is added or replaced.
+
+**Verified, not just wired up:** loaded `/products/` (worst-affected page per G6's own
+description) through a CDP-throttled context (200kbps down, matching a slow connection)
+and screenshotted mid-load. Every not-yet-loaded photo showed a genuine blurred preview
+of its own content (recognizable pallet-stack/forklift shapes, not a flat rectangle) —
+confirmed visually, not just by checking the `background-image: url(data:...)` CSS
+next/image injects. This directly replaces the flat dark-green rectangles G6 described;
+the earlier `FadeIn` opacity-fade removal (2026-09-12 entry) is unrelated and untouched.
+
+## 2026-09-14 — G3 About hero scrim: measured, found the "already matches Home" call was wrong, darkened
+
+The 2026-09-14 G3 entry above concluded About's overlay already matched Home's exactly
+and left it unchanged, based on a single manually-sampled pixel (~4.0:1, "borderline").
+Redid this properly this session: a Playwright probe that (1) takes the *actual*
+rendered overlay color via `getComputedStyle` (no guessing the alpha), (2) maps the
+paragraph's real bounding box into the hero image's natural-pixel coordinates
+(object-cover-aware), (3) samples every pixel in that region (not one), applies the
+real overlay blend per pixel, and (4) reports both worst-case and average contrast
+against white text. Result at `bg-brand-green/50` (Home's value, which About also used):
+**worst-case 3.07–3.11:1 on both pages** — a real fail against 4.5:1, not a pass, and
+not About-specific (Home's own hero has the identical latent issue, out of scope here
+since G3 only authorizes touching About).
+
+G3 explicitly authorizes About using a darker/gradient scrim than Home. Solved for the
+overlay alpha mathematically against the sampled (pre-overlay) pixel data across
+0.5–0.85 in 0.05 steps; `0.65` was the break-even point for the AA body-text floor
+(4.5:1) with no margin, so picked **`0.70`** (`bg-brand-green/50` → `bg-brand-green/70`,
+`app/about/page.tsx` only — `Hero.tsx`/Home untouched, per G3's scope). Re-measured on
+the live rebuilt page at both 1440px and 390px: **worst-case 5.24–5.55:1** on both intro
+paragraphs, comfortably clear of 4.5:1 with margin for the inherent per-pixel noise a
+photographic background has. Flagging Home's own identical ~3.1:1 worst-case for a
+future decision — fixing it wouldn't be a G3 fix (G3 scopes the deviation to About
+only) and BRIEF.md doesn't currently ask for the Home hero to change.
+
+## 2026-09-14 — G7 alt text: site-wide audit
+
+Read every `next/image`/`<Image>` usage in `/components` and `/app` and classified each
+against BRIEF.md's rule (decorative stays empty; everything else gets a real,
+content-describing alt). Actually looked at every content photo (not the icons) before
+writing its alt, to describe what's in the frame rather than what the section title
+implies:
+
+**Given real, descriptive alt (previously all `alt=""`):**
+- `home.json`/`about.json` `textWithImage` sections and `products.json` `productBlocks`
+  gained a required `alt` field, threaded through `TextWithSideImage`/`ProductBlock`
+  (new `alt` prop) from `app/page.tsx`, `app/about/page.tsx`, `app/products/page.tsx`.
+  `lib/content-types.ts`'s `TextWithImageSection` gained `alt: string`.
+  - `home_about_photo.jpg` (Home "What AGL Pallet Does"; About "One Call. Full
+    Accountability.") → "Stacked wood pallets outdoors against a blue sky."
+  - `why_agl_exist_sidepic.jpg` (Home "Built From Inside the Manufacturing World") →
+    "Close-up view of stacked wood pallets against a blue sky."
+  - `who_agl_is_sidepic.jpg` (Home "Serving High-Volume, High-Expectation
+    Operations") → "Stacked sawn lumber blocks marked with blue production numbers."
+  - `about_page-single_point_sidepic.jpg` (About "Fair-Market Sourcing…") → "A log
+    loader machine lifting logs at an outdoor lumber yard."
+  - `product_page-stock_pallets_sidepic-1-1.jpg` (Products, Stock Pallets) →
+    "Stacked wood pallets against a blue sky."
+  - `product_page-engineered_pallet_solutions_sidepic-1.jpg` (Products, Engineered
+    Pallet Solutions) → "A forklift loading wood pallets onto a flatbed trailer."
+  - `product_page-stock_pallets_sidepic.jpg` (Products, Crates & Dunnage) → "A log
+    loader machine lifting logs at an outdoor lumber yard." **This is the same photo as
+    `about_page-single_point_sidepic.jpg`** — it is literally a log loader, not crates or
+    dunnage. Per BRIEF's "NOT AN AGENT TASK" note this mislabeled reuse is owner-owned
+    photo-library debt, not something to fix by substituting a different stock photo —
+    but the alt text describes what the image actually shows rather than fabricating a
+    crates-and-dunnage description to match the caption. Flagging again here so it isn't
+    mistaken for an oversight.
+  - `product_page-stock_pallets_sidepic-1.jpg` (Products, Shipping Blocks) → "Stacked
+    wood pallets against a blue sky." (same reused-stock-photo situation, same honesty
+    call.)
+
+**Confirmed correct as-is, left `alt=""` (decorative — reasoned through each, not
+copied from a template):**
+- Home/About/CTABand background hero photography (`Hero.tsx`, `app/about/page.tsx`
+  inline hero, `CTABand.tsx`'s `backgroundImage`) — atmospheric full-bleed backdrop
+  behind heading/body copy that already carries the page's message; the photo itself
+  adds no information a screen-reader user needs beyond what the adjacent text already
+  states.
+- Every small icon (`ProcessStepGrid`, `IndustryCardGrid`, `Button`'s arrow
+  icon, `ContactInfoStrip`'s phone/email/text icons) — every one sits directly beside
+  (or the icon *is* immediately followed by) visible text stating the same thing
+  ("Phone Number" + the number, a heading repeating the icon's meaning, a button label
+  the arrow only decorates). Per WCAG, alt text on an icon redundant with adjacent
+  visible text should stay empty, not be filled in for its own sake.
+  - `Header`/`Footer` logo (`site.logo.alt`) — already `"AGL Pallet"`, real and correct,
+    untouched.
+- `ContactInfoStrip`'s two `fill` icons per item also gained `sizes="48px"` (G5 cleanup,
+  see above) while auditing this component for G7.
+
+No copy, URL, or palette changes. Full addition/decision list is the two lists above —
+nothing else on the site has an `<Image>`/`next/image` usage this audit missed (grepped
+`next/image`/`<Image` across `/app` and `/components` to build the starting list).
+
 ## 2026-09-14 — audit.js: fresh Chrome per Lighthouse run, not one shared instance
 
 While chasing G4's LCP regression, hit the pre-existing shared-Chrome

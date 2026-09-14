@@ -2,12 +2,14 @@ import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
 import { FadeIn } from "@/components/FadeIn";
+import { getBlurDataURL } from "@/lib/blur";
 
 export function TextWithSideImage({
   eyebrow,
   heading,
   paragraphs,
   image,
+  alt,
   imageSide,
   edgeShape,
   cta,
@@ -16,10 +18,12 @@ export function TextWithSideImage({
   heading: string;
   paragraphs: string[];
   image: string;
+  alt: string;
   imageSide: "left" | "right";
   edgeShape?: "left" | "right";
   cta?: { label: string; href: string };
 }) {
+  const blurDataURL = getBlurDataURL(image);
   const textBlock = (
     <FadeIn key="text">
       <SectionHeading eyebrow={eyebrow} heading={heading} />
@@ -50,10 +54,13 @@ export function TextWithSideImage({
       )}
       <Image
         src={image}
-        alt=""
+        alt={alt}
         fill
-        sizes="(min-width: 980px) 50vw, 100vw"
+        quality={75}
+        sizes="(min-width: 1488px) 696px, (min-width: 980px) calc(50vw - 48px), calc(100vw - 48px)"
         className="object-cover"
+        placeholder={blurDataURL ? "blur" : undefined}
+        blurDataURL={blurDataURL}
       />
     </FadeIn>
   );

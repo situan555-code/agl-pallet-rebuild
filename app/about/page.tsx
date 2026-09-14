@@ -5,6 +5,9 @@ import { TextWithSideImage } from "@/components/TextWithSideImage";
 import { EmbeddedVideo } from "@/components/EmbeddedVideo";
 import { IndustryCardGrid } from "@/components/IndustryCardGrid";
 import { CTABand } from "@/components/CTABand";
+import { getBlurDataURL } from "@/lib/blur";
+
+const HERO_IMAGE = "/assets/home_header_image.jpg";
 
 export const metadata: Metadata = {
   title: "About - AGL Pallet",
@@ -19,15 +22,17 @@ export default function About() {
     <main>
       <section className="relative flex min-h-[500px] items-center overflow-hidden pt-[119px]">
         <Image
-          src="/assets/home_header_lcp.jpg"
+          src={HERO_IMAGE}
           alt=""
           fill
           priority
-          unoptimized
+          quality={75}
           sizes="100vw"
           className="object-cover"
+          placeholder={getBlurDataURL(HERO_IMAGE) ? "blur" : undefined}
+          blurDataURL={getBlurDataURL(HERO_IMAGE)}
         />
-        <div className="absolute inset-0 bg-brand-green/50" />
+        <div className="absolute inset-0 bg-brand-green/70" />
         <div className="relative mx-auto max-w-[1440px] px-6 py-16 text-white">
           <p className="text-eyebrow font-semibold uppercase tracking-wide">
             <span aria-hidden="true" className="mr-2 font-bold">
@@ -49,6 +54,7 @@ export default function About() {
         heading={about.whoAglServes.heading}
         paragraphs={about.whoAglServes.paragraphs}
         image={about.whoAglServes.image}
+        alt={about.whoAglServes.alt}
         imageSide={about.whoAglServes.imageSide as "left" | "right"}
         cta={about.whoAglServes.cta}
       />
@@ -73,6 +79,7 @@ export default function About() {
         heading={about.singlePointOfContact.heading}
         paragraphs={about.singlePointOfContact.paragraphs}
         image={about.singlePointOfContact.image}
+        alt={about.singlePointOfContact.alt}
         imageSide={about.singlePointOfContact.imageSide as "left" | "right"}
         cta={about.singlePointOfContact.cta}
       />
