@@ -25,7 +25,7 @@ export default function Home() {
         buttons={home.hero.buttons as { label: string; href: string; variant: "pill-light" | "ghost-light" }[]}
       />
 
-      <section className="px-6 py-[100px]">
+      <section className="px-6">
         <div className="mx-auto max-w-[1440px]">
           <CapabilityTrio items={home.capability.cards} />
         </div>

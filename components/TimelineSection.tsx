@@ -17,7 +17,7 @@ export function TimelineSection({
             <li key={step.number} className="relative pl-16">
               <div
                 aria-hidden="true"
-                className="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-mint font-display text-[11px] uppercase leading-none text-brand-green ring-4 ring-paper"
+                className="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-mint font-display text-[12px] uppercase leading-none text-brand-green ring-4 ring-paper"
               >
                 {step.number}
               </div>
