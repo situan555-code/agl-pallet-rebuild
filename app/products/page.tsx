@@ -24,7 +24,7 @@ export default function Products() {
         <section
           key={line.id}
           id={line.id}
-          className={`scroll-mt-24 section-y px-6 ${i % 2 === 0 ? "bg-surface" : "bg-white"}`}
+          className={`scroll-mt-24 section-y px-6 ${i > 0 ? "section-hairline" : ""}`}
         >
           <div className="mx-auto max-w-[1440px]">
             <ProseBlock heading={line.heading} paragraphs={[line.copy]} cta={"cta" in line ? line.cta : undefined} />

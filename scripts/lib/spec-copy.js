@@ -106,7 +106,8 @@ function parseLabeledBlock(blockText) {
       continue;
     }
 
-    if (/^LIST:\s*$/.test(line)) {
+    // Bare LIST: or authoring labels like "LIST (each item is a card...):"
+    if (/^LIST(\s*\(.*\))?:\s*$/.test(line)) {
       flush();
       mode = 'list';
       currentLabel = null;
@@ -114,15 +115,27 @@ function parseLabeledBlock(blockText) {
     }
 
     if (mode === 'list') {
-      const itemStart = line.match(/^(.+?[.:])\s+—\s+(.*)$/);
-      if (itemStart || currentLabel !== 'LIST-ITEM') {
-        flush();
-        currentLabel = 'LIST-ITEM';
-        currentParts = [line];
-      } else {
-        currentParts.push(line); // continuation of a wrapped list item
+      // Spec-authoring link targets (same shorthand BUTTON: strips). Not copy.
+      if (/^(?:→|->)\s+\S+/.test(line)) {
+        continue;
       }
-      continue;
+      // A new labeled field ends the list (contact BODY/ADDRESS after LIST).
+      if (/^(EYEBROW|H1|H2|H3|LEDE|BODY|IMAGE|ADDRESS|LINK|BUTTON):/.test(line)) {
+        flush();
+        mode = null;
+        currentLabel = null;
+        // fall through to label parsing below
+      } else {
+        const newItem = /^(?:[A-Z0-9].+?\s+[—–]\s+\S)/.test(line);
+        if (newItem || currentLabel !== 'LIST-ITEM') {
+          flush();
+          currentLabel = 'LIST-ITEM';
+          currentParts = [line];
+        } else {
+          currentParts.push(line); // continuation of a wrapped list item
+        }
+        continue;
+      }
     }
 
     const labelMatch = line.match(/^(EYEBROW|H1|H2|H3|LEDE|BODY|IMAGE|ADDRESS|LINK):\s*(.*)$/);

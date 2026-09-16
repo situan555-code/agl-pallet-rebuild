@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply bg-surface text-ink font-sans text-body;
+    @apply bg-paper text-ink font-sans text-body;
   }
 
   h1,
@@ -60,6 +60,11 @@
   /* G17: readable body measure */
   .prose-measure {
     max-width: 65ch;
+  }
+
+  /* Section J: occasional full-width rule between consecutive paper sections */
+  .section-hairline {
+    @apply border-t border-brand-green/15;
   }
 }
 

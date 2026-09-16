@@ -1721,3 +1721,54 @@ mint/grey steps too close. Explicit classes on every line section (even
 after leak removals: 6 cards → mint/white/mint/white/mint/white). Header,
 nav, footer, dark PageHero, and CTABand unchanged.
 
+## 2026-09-16 — Section J industrial design quality pass
+
+Owner Section J (appended to BRIEF.md; was missing from the repo copy).
+Governing rule: bordered/rounded cards only for a discrete clickable
+choice. Claims, categories, and steps use space, hairlines, and type.
+
+**Color tokens.** Added `paper` `#F7F6F2` as the default page ground
+(`body` in globals.css). Added `mint` `#ECFBF6` as an accent alias.
+Left `surface` at the mint hex so Header/Footer `hover:bg-surface` is
+unchanged (do-not-touch). Mint is no longer used as a full section band
+anywhere that rendered: homepage `bg-surface-alt` stripes, products
+mint/white alternation, who-we-are and suppliers alt bands, timeline
+mint tray, unused EmbeddedVideo section. Consecutive paper sections
+separated by `section-hairline` (`border-brand-green/15`). Green remains
+hero / one mid-page anchor / footer CTA (max three). This supersedes
+the 2026-09-15 "products mint/white only" band decision.
+
+**J1 Contact.** Deleted leaked scaffolding `LIST (each item is a card
+linking to its form):` from `content/pages/contact.json` and the page.
+Stripped inline `→ /path` destination notes from card bodies (same
+authoring shorthand Section I already treats as non-copy). Four
+full-width `RuleList` rows, hairline between, green full-bleed hover,
+arrow +8px. Destinations unchanged.
+
+**J2 Industries.** Replaced 8-box `TrioGrid` with the same `RuleList`
+(name ~28px left, grey body ~55% right, same hover). Categories are
+not links; hover is visual only.
+
+**J3 Homepage capability.** New `CapabilityTrio`: three columns on
+paper, vertical hairlines between columns only, 22px condensed labels,
+hairline gap, grey body, 100px vertical padding. No boxes, no mint tray.
+
+**J4 Homepage 01/02/03.** `TrioGrid variant="proof"`: 2px radius, no
+full border, 3px green top rule, white on paper, 40px display numeral,
+40px padding. Partner-split cards stay boxed (they are clickable
+choices).
+
+**J5 How-we-work.** Single left rail, mint-filled numeral circles on
+the green line, left-aligned content, 80px step gap. No left-right
+alternation.
+
+**Gates.** `spec-copy.js` now recognizes `LIST (...):` as a list marker
+and strips `→ /path` link-target lines so copy-verbatim asserts the
+real customer copy instead of requiring leaked authoring notes. That
+is a parser correction matching the owner's delete-scaffolding
+instruction, not a lowered threshold. `build-note-leak.js` now fails
+on the LIST scaffolding string and visible `→ /` destination notation.
+
+Scaffolding scan: the LIST string was the only leaked label in
+`content/`. No other `LIST (` / `CARD N` / `BUTTON:` strings in JSON.
+

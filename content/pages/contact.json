@@ -3,28 +3,27 @@
     "eyebrow": "Contact",
     "heading": "Tell us which one you are.",
     "lede": "Four ways in, so you don't have to fill in pallet dimensions to ask a question.",
-    "listIntro": "LIST (each item is a card linking to its form):",
     "phoneBody": "Or just call. 234-286-0402 — North Canton, Ohio."
   },
   "cards": [
     {
       "lead": "I need a quote",
-      "body": "— specs and quantity, and we'll come back the same day. → /request-a-quote",
+      "body": "— specs and quantity, and we'll come back the same day.",
       "href": "/request-a-quote/"
     },
     {
       "lead": "I build pallets",
-      "body": "— tell us what your shop runs. → /partners/suppliers#supplier-form",
+      "body": "— tell us what your shop runs.",
       "href": "/partners/suppliers/#supplier-form"
     },
     {
       "lead": "I haul freight",
-      "body": "— get set up as a carrier. → /partners/carriers#carrier-form",
+      "body": "— get set up as a carrier.",
       "href": "/partners/carriers/#carrier-form"
     },
     {
       "lead": "Something else",
-      "body": "— an existing order, a spec question, or anything that isn't the above. → #general-form",
+      "body": "— an existing order, a spec question, or anything that isn't the above.",
       "href": "#general-form"
     }
   ]
