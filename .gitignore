@@ -44,3 +44,4 @@ next-env.d.ts
 /numbers-report.json
 /color-report.json
 /routes-report.json
+/build-note-leak-report.json

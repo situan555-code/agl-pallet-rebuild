@@ -38,7 +38,10 @@ export function Hero({
           {eyebrow}
         </p>
         <h1 className="mt-4 max-w-[720px] break-words text-display-1">{heading}</h1>
-        <p className="mt-6 max-w-2xl text-body">{body}</p>
+        {/* Lede-only scrim: opaque brand-green panel behind body copy only (About G3 used /70 full-hero; local lede panel is opaque so bright pallet stacks cannot punch through) — not the headline. */}
+        <p className="mt-6 max-w-2xl rounded-md bg-brand-green px-4 py-3 text-body">
+          {body}
+        </p>
         <div className="mt-8 flex flex-col items-start gap-4 min-[560px]:flex-row min-[560px]:flex-wrap">
           {buttons.map((button) => (
             <Button key={button.label} href={button.href} label={button.label} variant={button.variant} />

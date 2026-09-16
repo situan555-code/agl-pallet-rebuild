@@ -13,7 +13,7 @@
     {
       "id": "custom-engineered",
       "heading": "Custom & engineered",
-      "copy": "Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. Links to `/custom-engineered`.",
+      "copy": "Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it.",
       "cta": { "label": "Custom & engineered", "href": "/custom-engineered/" }
     },
     {
@@ -24,7 +24,7 @@
     {
       "id": "dunnage",
       "heading": "Dunnage",
-      "copy": "Blocking, bracing, and fill to keep a load from moving in transit. New standalone line — currently bundled with crates."
+      "copy": "Blocking, bracing, and fill to keep a load from moving in transit."
     },
     {
       "id": "shipping-blocks",
@@ -34,13 +34,8 @@
     {
       "id": "stakes",
       "heading": "Stakes",
-      "copy": "New line — missing from the live site entirely. Stakes for loads that need vertical containment on a flat deck."
+      "copy": "Stakes for loads that need vertical containment on a flat deck."
     }
-  ],
-  "producerVoice": [
-    "Every shop we source from is qualified on build consistency before we place volume with them",
-    "We spec the pallet to your load, then source the shop set up to build it",
-    "we write the spec with you"
   ],
   "ctaBand": {
     "heading": "Let's talk about your pallet supply.",

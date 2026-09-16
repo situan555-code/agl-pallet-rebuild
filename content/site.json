@@ -10,12 +10,30 @@
       "label": "Products",
       "href": "/products/",
       "children": [
-        { "label": "Stock Pallets", "href": "/products/#stock-pallets" },
-        { "label": "Custom & Engineered", "href": "/products/#custom-engineered" },
-        { "label": "Crates", "href": "/products/#crates" },
-        { "label": "Dunnage", "href": "/products/#dunnage" },
-        { "label": "Shipping Blocks", "href": "/products/#shipping-blocks" },
-        { "label": "Stakes", "href": "/products/#stakes" }
+        {
+          "label": "Stock Pallets",
+          "href": "/products/#stock-pallets"
+        },
+        {
+          "label": "Custom & Engineered",
+          "href": "/custom-engineered/"
+        },
+        {
+          "label": "Crates",
+          "href": "/products/#crates"
+        },
+        {
+          "label": "Dunnage",
+          "href": "/products/#dunnage"
+        },
+        {
+          "label": "Shipping Blocks",
+          "href": "/products/#shipping-blocks"
+        },
+        {
+          "label": "Stakes",
+          "href": "/products/#stakes"
+        }
       ]
     },
     {
@@ -34,9 +52,19 @@
       "label": "Partners",
       "href": "/partners/",
       "children": [
-        { "label": "For Mills & Shops", "href": "/partners/suppliers/" },
-        { "label": "For Carriers", "href": "/partners/carriers/" }
+        {
+          "label": "For Mills & Shops",
+          "href": "/partners/suppliers/"
+        },
+        {
+          "label": "For Carriers",
+          "href": "/partners/carriers/"
+        }
       ]
+    },
+    {
+      "label": "FAQ",
+      "href": "/faq/"
     },
     {
       "label": "Contact",
@@ -52,25 +80,68 @@
     "address": "{{TBD-ADDRESS}}",
     "productsHeading": "Products",
     "productsNav": [
-      { "label": "Stock Pallets", "href": "/products/#stock-pallets" },
-      { "label": "Custom & Engineered", "href": "/products/#custom-engineered" },
-      { "label": "Crates", "href": "/products/#crates" },
-      { "label": "Dunnage", "href": "/products/#dunnage" },
-      { "label": "Shipping Blocks", "href": "/products/#shipping-blocks" },
-      { "label": "Stakes", "href": "/products/#stakes" }
+      {
+        "label": "Stock Pallets",
+        "href": "/products/#stock-pallets"
+      },
+      {
+        "label": "Custom & Engineered",
+        "href": "/custom-engineered/"
+      },
+      {
+        "label": "Crates",
+        "href": "/products/#crates"
+      },
+      {
+        "label": "Dunnage",
+        "href": "/products/#dunnage"
+      },
+      {
+        "label": "Shipping Blocks",
+        "href": "/products/#shipping-blocks"
+      },
+      {
+        "label": "Stakes",
+        "href": "/products/#stakes"
+      }
     ],
     "companyHeading": "Company",
     "companyNav": [
-      { "label": "Who We Are", "href": "/who-we-are/" },
-      { "label": "How We Work", "href": "/how-we-work/" },
-      { "label": "The Pledge", "href": "/the-pledge/" },
-      { "label": "Industries", "href": "/industries/" }
+      {
+        "label": "Who We Are",
+        "href": "/who-we-are/"
+      },
+      {
+        "label": "How We Work",
+        "href": "/how-we-work/"
+      },
+      {
+        "label": "The Pledge",
+        "href": "/the-pledge/"
+      },
+      {
+        "label": "Industries",
+        "href": "/industries/"
+      },
+      {
+        "label": "FAQ",
+        "href": "/faq/"
+      }
     ],
     "partnersHeading": "Partners",
     "partnersNav": [
-      { "label": "For Mills & Shops", "href": "/partners/suppliers/" },
-      { "label": "For Carriers", "href": "/partners/carriers/" },
-      { "label": "Contact", "href": "/contact/" }
+      {
+        "label": "For Mills & Shops",
+        "href": "/partners/suppliers/"
+      },
+      {
+        "label": "For Carriers",
+        "href": "/partners/carriers/"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact/"
+      }
     ],
     "contact": {
       "phone": "234-286-0402",

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// H0 gate 6: SPEC_V1.md section 1 — all twelve routes return 200, and the
+// H0 gate 6: SPEC_V1.md section 1 — all required routes return 200, and the
 // three named redirects return 301 to the correct target. Manual (non-
 // following) fetches so a 301 is observed directly instead of resolved
 // away by fetch's default redirect-follow behavior.
@@ -93,7 +93,7 @@ async function main() {
     console.error('\nROUTES FAILED: one or more routes/redirects did not match SPEC_V1.md section 1 (see routes-report.json).');
     process.exit(1);
   }
-  console.log('\nAll twelve routes and three redirects match SPEC_V1.md.');
+  console.log('\nAll required routes and three redirects match the SPEC route manifest.');
 }
 
 main().catch((e) => {

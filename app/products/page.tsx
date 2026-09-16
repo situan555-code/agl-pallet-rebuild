@@ -24,23 +24,13 @@ export default function Products() {
         <section
           key={line.id}
           id={line.id}
-          className={`scroll-mt-24 section-y px-6 ${i % 2 === 1 ? "bg-surface-alt" : ""}`}
+          className={`scroll-mt-24 section-y px-6 ${i % 2 === 0 ? "bg-surface" : "bg-white"}`}
         >
           <div className="mx-auto max-w-[1440px]">
-            <ProseBlock heading={line.heading} paragraphs={[line.copy]} cta={line.cta} />
+            <ProseBlock heading={line.heading} paragraphs={[line.copy]} cta={"cta" in line ? line.cta : undefined} />
           </div>
         </section>
       ))}
-
-      <section className="section-y px-6">
-        <div className="prose-measure mx-auto max-w-[1440px] space-y-4">
-          {content.producerVoice.map((line) => (
-            <p key={line} className="text-body">
-              {line}
-            </p>
-          ))}
-        </div>
-      </section>
 
       <CTABand
         heading={content.ctaBand.heading}

@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "eyebrow": "FAQ",
+    "heading": "Questions buyers usually open with.",
+    "body": "Straight answers on pallet type, lead times, order size, and what \"second source\" means when AGL is a brokerage — not a mill."
+  },
+  "items": [
+    {
+      "lead": "Two-way vs four-way pallets",
+      "body": "A two-way pallet takes a forklift or pallet jack from two opposite sides. A four-way takes entry from all four. Which one you need depends on how your dock, racking, and material-handling equipment move the load — not on which one is \"better\" in the abstract. Tell us how the pallet will be handled and we will spec entry accordingly."
+    },
+    {
+      "lead": "Lead times",
+      "body": "Lead time is driven by the mills behind the spec and the freight lane, not by a single plant schedule we own. Stock footprints on recurring volume usually move faster than custom or engineered builds. When you send a spec and a quantity, we come back the same day with availability and a realistic ship window — including when the honest answer is \"not this week.\""
+    },
+    {
+      "lead": "Minimums",
+      "body": "No minimums. One truckload or forty. Order size does not decide whether we pick up the phone. Pricing and lead time still reflect the work, but we do not turn away a workable order because it is small."
+    },
+    {
+      "lead": "Second-source availability",
+      "body": "Every spec we sell has more than one qualified shop behind it. If one mill runs behind, another that already builds the same footprint can take the volume. That is the point of a brokerage that does not own a plant: capacity is coordinated across shops, not trapped in one facility."
+    }
+  ],
+  "ctaBand": {
+    "heading": "Let's talk about your pallet supply.",
+    "body": "Send a spec and a quantity, or just call and describe the problem.",
+    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
+  }
+}

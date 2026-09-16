@@ -353,3 +353,31 @@ all 12 routes 200, copy-verbatim 12/12, redirects 3/3 × 301.
 - **`{{TBD-ADDRESS}}` / JSON-LD** — waiting on real address before emitting
   LocalBusiness JSON-LD (§3).
 - **`{{TBD-SOCIAL-URLS}}`** — Follow Us omitted until resolved.
+
+## 2026-09-15 — Section I / I0 HALT: home_header_image.jpg provenance
+
+`public/assets/home_header_image.jpg` is the WordPress capture file
+(`aglpallet.com/wp-content/uploads/2026/02/home_header_image.jpg` per
+`assets-manifest.json` + `capture/home.html`). Not newly shot for the
+rebuild; no in-repo stock-license record. Owner must decide keep / replace /
+pull before I1+. Also: `SPEC_V2_1.md` missing from repo — needed for I1–I4.
+
+## 2026-09-15 — waiting on SPEC_V2_1.md for Section I (I1–I4)
+
+I0 photo decision resolved (keep WP hero). Still cannot start I1–I4:
+`SPEC_V2_1.md` missing from `~/agl-rebuild`. Prior I0 HALT photo entry
+superseded for “awaiting photo reply”; provenance record remains.
+
+
+## 2026-09-15 — SPEC_V2_1.md wait CLEARED (operator override)
+
+Operator brief explicitly overrides older Section I text that required
+`SPEC_V2_1.md`. That file still does not exist in-repo; I1–I4 were executed
+from `REVIEW_NOTES.md` + the operator brief instead. Prior BLOCKED entries
+"Section I / I0 HALT" (photo) and "waiting on SPEC_V2_1.md" are superseded:
+
+- Photo: keep WP `home_header_image.jpg` (owner decision).
+- I1–I4: completed this session (see PROGRESS / DECISIONS).
+
+No remaining Section I blocker from this agent. Pre-existing non-Section-I
+notes (banned-words FPs, color SVG legacy, TBD address/social) unchanged.

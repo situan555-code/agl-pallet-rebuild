@@ -150,13 +150,27 @@ const SEPARATOR_RE = /^\|?\s*:?-{1,}:?\s*(\|\s*:?-{1,}:?\s*)+\|?$/;
 
 // A handful of "Replace with" cells are build instructions, not literal
 // page copy (4.8's PDS row says "Delete. No replacement." — there is
-// nothing to assert appears on the page for that row).
+// nothing to assert appears on the page for that row). Producer-voice
+// "Replace with" tables are rewrite instructions for banned legacy copy,
+// not customer-facing page blocks — do not require them via copy-verbatim.
 const NON_COPY_CELL_RE = /^delete\.?(\s*no replacement\.?)?$/i;
+
+// SPEC_V1.md mixed authoring annotations into product-line Copy cells.
+// Strip them so copy-verbatim does not re-require leaked build notes.
+const BUILD_NOTE_ANNOTATION_RE =
+  /\s*(?:Links to\s+[`']?\/[^`'.\s]+[`']?\.?|New standalone line\s*[—\-][^|]*)|^(?:New line\s*[—\-]\s*missing from the live site entirely\.?\s*)/gi;
+
+function stripBuildNoteAnnotations(text) {
+  return text
+    .replace(BUILD_NOTE_ANNOTATION_RE, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 function normalizeTableCell(raw) {
   let t = raw.replace(/\*\*/g, '').trim();
   if (/^".*"$/.test(t)) t = t.slice(1, -1).trim(); // strip exact-string quote marks
-  return t;
+  return stripBuildNoteAnnotations(t);
 }
 
 function extractTableCopy(text) {
@@ -172,7 +186,9 @@ function extractTableCopy(text) {
       continue;
     }
     const headerCells = pipeLines[i].split('|').slice(1, -1).map((c) => c.trim().toLowerCase());
-    const colIdx = headerCells.findIndex((c) => c === 'copy' || c === 'replace with');
+    // Only assert "Copy" column cells. Skip "Replace with" (producer-voice
+    // rewrite instructions / orphans), which are not required page copy.
+    const colIdx = headerCells.findIndex((c) => c === 'copy');
     i += 2;
     while (i < pipeLines.length && !SEPARATOR_RE.test(pipeLines[i + 1] || '')) {
       if (colIdx !== -1) {

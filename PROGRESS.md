@@ -2264,3 +2264,118 @@ Executed remaining Phase E copy-verbatim fixes and full Phase F per SPEC_V1.md
 ### Not done
 
 No git commit, deploy, or DNS. JSON-LD deferred on address. SVG `#1c391f` not mass-recolored. `audit` optional, skipped.
+
+## Section I — I0 PHOTO PROVENANCE (HALT) — 2026-09-15
+
+**Status:** STOPPED for owner reply. No site files changed for I1–I4.
+
+### Question
+Where did `/assets/home_header_image.jpg` (live: `public/assets/home_header_image.jpg`) come from — shot new for AGL, licensed stock, or WordPress capture carry-over?
+
+### Evidence (no guessing)
+
+1. **`assets-manifest.json`** entry (rebuild download manifest):
+   - `originalUrl` / `resolvedUrl`: `https://aglpallet.com/wp-content/uploads/2026/02/home_header_image.jpg`
+   - `localFile`: `assets/home_header_image.jpg`
+   - `usedOnPages`: `["/"]`
+   - Same pattern as every other media file in the manifest: pulled from the live WordPress media library during capture.
+
+2. **WordPress capture HTML** (`capture/home.html`): the Divi critical CSS sets  
+   `background-image:url(https://aglpallet.com/wp-content/uploads/2026/02/home_header_image.jpg)` on the home hero section (`et_pb_section_0`).
+
+3. **Byte identity:** `md5` of `assets/home_header_image.jpg` and `public/assets/home_header_image.jpg` are identical (`d083dab35c1826cff6165d89f4d6e97e`). The Next.js site is serving the WP-downloaded file, not a newly shot or separately licensed replacement.
+
+4. **Embedded metadata:** JPEG has no EXIF `APP1` / no copyright / stock-agency strings in the header bytes. That does **not** prove the original photographer; it only means this file carries no license tag we can read. Provenance for *this rebuild* is still “from the WP media library via capture.”
+
+5. **What we can rule out for this rebuild:**
+   - Not shot new for the Next.js / SPEC_V1 rebuild (no new photography step in the build log; file arrived in the capture download set).
+   - No evidence in-repo of a separate stock-license purchase for this filename.
+   - **Confirmed: carried over from the WordPress capture** (AGL’s own WP uploads path as of the capture).
+
+### Legal note (Section 0 rule 9 / Mavin–WRL)
+Carrying the WP hero means we inherit whatever rights (or lack of rights) the WP site had for that asset. This investigation cannot certify that the WP upload was AGL-owned photography vs stock vs third-party. Owner must decide: keep, replace with known-cleared art, or pull until cleared. Operator will **not** source a replacement without instruction.
+
+### Also blocked for later phases
+- **`SPEC_V2_1.md` is not present** in `~/agl-rebuild` as of I0. I1–I4 require it. Owner/operator must place the file before phase i1.
+
+### Next
+Await owner reply on I0 photo handling. Do not start I1/I2/I3/I4 until then.
+
+## Section I — I0 OWNER REPLY — 2026-09-15
+
+**Decision:** Keep the WordPress-captured `home_header_image.jpg` for now and proceed after `SPEC_V2_1.md` is in place.
+
+**Status:** I0 closed for photo handling. I1–I4 still blocked because `SPEC_V2_1.md` is **not** in `~/agl-rebuild` (checked 2026-09-15 after owner reply). Waiting on the file.
+
+## 2026-09-15 — Owner: team names → Brock only
+
+Saved `REVIEW_FINDINGS_2026-09-15.md` (spec-author review, documentation).
+Applied owner instruction: `/who-we-are` team list shows **Brock only**;
+other first names removed. Heading no longer says "Seven people".
+`SPEC_V2_1.md` still missing — I1–I4 not started. I0 photo = keep WP hero.
+
+
+## 2026-09-15 (13:42 EDT) — Section I operator override: I1–I4 executed without SPEC_V2_1.md
+
+Operator brief overrides older Section I text that required `SPEC_V2_1.md`
+(file does not exist). Worked from `REVIEW_NOTES.md` + operator brief.
+Photo: kept WP `home_header_image.jpg`. Did not touch `/partners/carriers`,
+faith on `/who-we-are`, mobile-nav structure, `/the-pledge` (no CTA), or
+Brock-only team list.
+
+### I1 — products build-note leak
+
+- BEFORE screenshot: `/workspace/agl-products-before.png`
+- AFTER screenshot: `/workspace/agl-products-after.png`
+- `content/pages/products.json`: stripped Custom "Links to `/custom-engineered`."
+  (CTA kept), Dunnage "New standalone line — currently bundled with crates.",
+  Stakes leading "New line — missing from the live site entirely. "; removed
+  `producerVoice` array entirely.
+- `app/products/page.tsx`: stopped rendering `producerVoice`.
+- Added `scripts/build-note-leak.js` (scans all SPEC `ROUTES` for leak
+  strings); wired `package.json` `"build-note-leak"` into `verify` after
+  `copy-verbatim`.
+- `scripts/lib/spec-copy.js`: strip build-note annotation patterns from
+  table Copy cells; skip "Replace with" producer-voice rewrite table so
+  copy-verbatim no longer re-requires leaked / orphan strings.
+- Gates: `npm run build` OK; `build-note-leak` PASS (incl. `/faq`);
+  `copy-verbatim` `/products` PASS (sitewide still FAIL only on pre-existing
+  Brock-only `/who-we-are` roster vs SPEC_V1 seven-person list — intentional,
+  do-not-touch).
+
+### I2 — `/faq`
+
+- Added `content/pages/faq.json` + `app/faq/page.tsx` (PageHero, ListBlock,
+  CTABand; SEO via `pageMeta`). Topics: two-way vs four-way, lead times,
+  minimums, second-source. Brokerage voice; no invented emails; no
+  producer-voice.
+- `/faq` added to `scripts/lib/spec-manifest.js` ROUTES (required 200).
+- Footer `companyNav` + primary nav (before Contact). HTTP `/faq/` → 200.
+- `npm run routes` PASS including `/faq`.
+
+### I3 — `/custom-engineered` nav
+
+- `content/site.json` Products dropdown + footer productsNav: Custom &
+  Engineered href → `/custom-engineered/` (was `/products/#custom-engineered`).
+  MobileNav inherits children from same nav data. Present in rendered HTML.
+
+### I4 — home hero lede scrim
+
+- `components/Hero.tsx`: opaque `bg-brand-green` rounded panel behind lede
+  only (headline untouched). Full-hero `/50` overlay unchanged.
+- Measured white-on-panel contrast **15.84:1** (pass vs 4.5:1). See DECISIONS.
+
+### Docs / blocked
+
+- Cleared SPEC_V2_1 wait in BLOCKED.md (operator override). No git commit /
+  deploy.
+
+## 2026-09-15 — Products section bands: mint / white only
+
+Owner item 5: product card sections between PageHero and CTABand must
+alternate strictly two-tone — `bg-surface` (#ECFBF6 mint) and `bg-white`.
+Removed the third shade (`bg-surface-alt` #F4F5F4 light grey) that made
+mint/grey steps too close. Explicit classes on every line section (even
+after leak removals: 6 cards → mint/white/mint/white/mint/white). Header,
+nav, footer, dark PageHero, and CTABand unchanged.
+

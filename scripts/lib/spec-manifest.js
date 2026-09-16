@@ -17,6 +17,7 @@ const ROUTES = [
   '/how-we-work',
   '/contact',
   '/request-a-quote',
+  '/faq',
 ];
 
 // SPEC_V1.md section 1 redirects.

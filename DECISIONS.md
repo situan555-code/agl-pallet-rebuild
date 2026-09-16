@@ -1656,3 +1656,68 @@ rewrites, no new routes.
 
 7. **SEO via `lib/seo.ts` `pageMeta()`** on all twelve routes using §3 title
    and meta description strings exactly (em dashes preserved).
+
+## 2026-09-15 — I0: keep WP home_header_image.jpg
+
+Owner chose: keep WordPress-captured `home_header_image.jpg` for now
+(provenance = WP media library via capture; no new shoot / no separate
+stock license on file for this rebuild). Proceed with Section I once
+`SPEC_V2_1.md` is placed in the repo. Not sourcing a replacement.
+
+## 2026-09-15 — Team list: Brock only (owner override)
+
+Owner directed: remove names of people on the team except Brock from
+`/who-we-are`. Removed Brandon, Larry, Beau, Colton, Jeff, Nautis from
+`content/pages/who-we-are.json`. H2 changed from "Seven people, and you'll
+know which one is yours." to "You'll know which one is yours." so the page
+does not claim seven listed people. Body paragraph left as SPEC structural
+copy (small-team operating model). Overrides Section I I5 "named team
+confirmed correct" and SPEC_V1 {{TBD-TEAM-LIST}} draft roster pending V2.1.
+
+
+## 2026-09-15 — I1 products leak: strip annotations in content + gates, not SPEC_V2_1 rebuild
+
+Operator override: `SPEC_V2_1.md` does not exist; do not wait. Removed the
+five leaked authoring strings from `products.json` / stopped rendering
+`producerVoice`, and taught `spec-copy.js` to (1) strip annotation patterns
+from product-line Copy cells and (2) ignore "Replace with" producer-voice
+rewrite tables so `copy-verbatim` stays green without re-injecting leaks.
+New `build-note-leak` gate fails any SPEC route whose HTML/body still
+contains `Links to /`, `New standalone line`, `New line — missing`, or
+`currently bundled with`.
+
+## 2026-09-15 — I2 /faq built from brief topics (no V2.1 source file)
+
+Wrote FAQ covering two-way vs four-way, lead times, minimums, and
+second-source in existing BRIEF brokerage voice. Placed in primary nav
+(before Contact) and footer company column. Added to ROUTES required-200
+list. No emails invented; no producer-voice verbs with AGL as builder.
+
+## 2026-09-15 — I3 Custom & Engineered nav points at /custom-engineered/
+
+Highest-margin line was only reachable via products-page CTA / hash.
+Changed Products dropdown (and footer products list) href from
+`/products/#custom-engineered` to `/custom-engineered/` so desktop dropdown
+and MobileNav both surface the real route in one click. Hash anchors for
+other product lines unchanged.
+
+## 2026-09-15 — I4 home hero lede-only opaque scrim (15.84:1)
+
+Headline remains on the existing full-hero `bg-brand-green/50` photo
+overlay. Lede alone sits in an opaque `bg-brand-green` (`#162619`) padded
+panel so bright pallet-stack regions cannot punch through a translucent
+local scrim. About G3 used `/70` as a *full-hero* overlay; a local
+translucent panel over the same photo failed worst-case pixel samples on
+glyph AA / bright underlay, so the lede panel is opaque. Measured via
+`getComputedStyle` white text on panel fill: **15.84:1** (AA body floor
+4.5:1). Photo file unchanged: WP `home_header_image.jpg`.
+
+## 2026-09-15 — Products section bands: mint / white only
+
+Owner item 5: product card sections between PageHero and CTABand must
+alternate strictly two-tone — `bg-surface` (#ECFBF6 mint) and `bg-white`.
+Removed the third shade (`bg-surface-alt` #F4F5F4 light grey) that made
+mint/grey steps too close. Explicit classes on every line section (even
+after leak removals: 6 cards → mint/white/mint/white/mint/white). Header,
+nav, footer, dark PageHero, and CTABand unchanged.
+
