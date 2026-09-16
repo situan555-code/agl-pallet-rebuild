@@ -2409,6 +2409,13 @@ from repo BRIEF.md; appended in this PR). Header and footer not restyled.
   leak strings for LIST + `→ /`
 
 ### Verify
-Build + copy-verbatim/build-note-leak/color as available. Responsive
-check at 375 / 768 / 1440 on the five modules.
+- `npm run build` exit 0
+- `copy-verbatim`: `/contact` PASS (9 blocks). `/` `/industries` `/how-we-work` PASS.
+  `/who-we-are` still fails the pre-existing Brock-only vs seven-person SPEC
+  list — not this pass.
+- `build-note-leak` PASS on all routes (LIST string and `→ /` gone).
+- Playwright at 375 / 768 / 1440: Contact 4 rows + green hover;
+  Industries 8 rows + green hover; capability unboxed with between-column
+  hairlines; proof cards 3px top rule / 40px pad / 40px numerals;
+  timeline 4 left-rail steps. Body ground `rgb(247, 246, 242)`.
 
