@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import content from "@/content/pages/contact.json";
 import forms from "@/content/forms.json";
-import { TrioGrid } from "@/components/TrioGrid";
+import { RuleList } from "@/components/RuleList";
 import { Form, type FormDestination } from "@/components/Form";
 
 export const metadata: Metadata = {
@@ -38,17 +38,17 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="section-y px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="mb-8 text-center text-body">{content.hero.listIntro}</p>
-          <TrioGrid
-            cards={content.cards.map((c) => ({
-              heading: c.lead,
-              body: c.body,
-              href: c.href,
-            }))}
-          />
-          <p className="mt-12 text-center text-body">{content.hero.phoneBody}</p>
+      <section className="section-y">
+        <RuleList
+          layout="contact"
+          items={content.cards.map((c) => ({
+            title: c.lead,
+            body: c.body,
+            href: c.href,
+          }))}
+        />
+        <div className="mx-auto mt-12 max-w-[1440px] px-6">
+          <p className="text-center text-body">{content.hero.phoneBody}</p>
           <p className="mt-2 text-center text-body">{"{{TBD-ADDRESS}}"}</p>
         </div>
       </section>

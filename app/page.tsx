@@ -1,6 +1,7 @@
 import home from "@/content/pages/home.json";
 import { Hero } from "@/components/Hero";
 import { TrioGrid } from "@/components/TrioGrid";
+import { CapabilityTrio } from "@/components/CapabilityTrio";
 import { ProseBlock } from "@/components/ProseBlock";
 import { CTABand } from "@/components/CTABand";
 import { TbdImage } from "@/components/TbdImage";
@@ -24,13 +25,13 @@ export default function Home() {
         buttons={home.hero.buttons as { label: string; href: string; variant: "pill-light" | "ghost-light" }[]}
       />
 
-      <section className="section-y px-6">
+      <section className="px-6 py-[100px]">
         <div className="mx-auto max-w-[1440px]">
-          <TrioGrid cards={home.capability.cards} />
+          <CapabilityTrio items={home.capability.cards} />
         </div>
       </section>
 
-      <section className="section-y px-6 bg-surface-alt">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <ProseBlock
             eyebrow={home.whatWeDo.eyebrow}
@@ -40,13 +41,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-y px-6">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
-          <TrioGrid cards={home.differentiators.cards} />
+          <TrioGrid cards={home.differentiators.cards} variant="proof" />
         </div>
       </section>
 
-      <section className="section-y px-6 bg-surface-alt">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <ProseBlock
             eyebrow={home.pledge.eyebrow}
@@ -57,13 +58,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-y px-6">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <TrioGrid cards={home.partnerSplit.cards} />
         </div>
       </section>
 
-      <section className="section-y overflow-hidden px-6 bg-surface-alt">
+      <section className="section-y section-hairline overflow-hidden px-6">
         <div className="mx-auto grid max-w-[1440px] items-start gap-10 nav:grid-cols-2 nav:gap-12">
           <ProseBlock
             eyebrow={home.whoWeAre.eyebrow}

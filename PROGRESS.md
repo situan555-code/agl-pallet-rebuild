@@ -2379,3 +2379,36 @@ mint/grey steps too close. Explicit classes on every line section (even
 after leak removals: 6 cards → mint/white/mint/white/mint/white). Header,
 nav, footer, dark PageHero, and CTABand unchanged.
 
+## 2026-09-16 — Section J industrial design quality pass
+
+Authoritative brief: attached AGL-SECTION-J.md (Section J was missing
+from repo BRIEF.md; appended in this PR). Header and footer not restyled.
+
+### Color
+- Paper `#F7F6F2` is `body` ground. Mint `#ECFBF6` is accent only
+  (button hover via existing `surface` token, timeline numeral fill).
+- Removed mint/grey section stripes on `/`, `/products`, `/who-we-are`,
+  `/partners/suppliers`, `/how-we-work`. Paper + occasional hairline.
+- Green blocks still: PageHero/home hero, one mid-page form or CTABand,
+  footer. Header/footer CSS untouched.
+
+### Modules
+1. `/contact` — LIST scaffolding gone; `→ /path` notes gone from card
+   bodies; four stacked RuleList rows with green hover + sliding SVG
+   arrow (no unicode arrow; banned-words treats `→` as emoji).
+2. `/industries` — rules-only full-width list, 8 rows, same hover.
+3. `/` capability trio — CapabilityTrio, no boxes.
+4. `/` 01/02/03 — proof cards (top rule, big numeral).
+5. `/how-we-work` — left rail timeline.
+
+### Files
+- `components/RuleList.tsx`, `components/CapabilityTrio.tsx`
+- TrioGrid `variant="proof"`; TimelineSection rewrite
+- Tokens: `tailwind.config.ts`, `app/globals.css`
+- `scripts/lib/spec-copy.js` LIST parser; `scripts/build-note-leak.js`
+  leak strings for LIST + `→ /`
+
+### Verify
+Build + copy-verbatim/build-note-leak/color as available. Responsive
+check at 375 / 768 / 1440 on the five modules.
+

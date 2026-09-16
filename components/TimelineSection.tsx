@@ -6,24 +6,24 @@ export function TimelineSection({
   steps: { number: string; heading: string; body: string }[];
 }) {
   return (
-    <section className="section-y bg-surface px-6">
+    <section className="section-y px-6">
       <div className="relative mx-auto max-w-[1440px]">
         <div
           aria-hidden="true"
-          className="absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 bg-brand-green nav:block"
+          className="absolute bottom-0 left-5 top-0 w-px bg-brand-green"
         />
-        <ol className="space-y-12 nav:space-y-0">
-          {steps.map((step, i) => (
-            <li key={step.number} className="relative nav:grid nav:grid-cols-2 nav:gap-x-20 nav:py-16">
+        <ol className="space-y-20">
+          {steps.map((step) => (
+            <li key={step.number} className="relative pl-16">
               <div
                 aria-hidden="true"
-                className="relative z-10 mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full border-4 border-surface bg-brand-green text-button text-white nav:absolute nav:left-1/2 nav:top-1/2 nav:mx-0 nav:mb-0 nav:-translate-x-1/2 nav:-translate-y-1/2"
+                className="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-mint font-display text-[11px] uppercase leading-none text-brand-green ring-4 ring-paper"
               >
                 {step.number}
               </div>
-              <FadeIn className={i % 2 === 0 ? "text-center nav:col-start-1 nav:text-left" : "text-center nav:col-start-2 nav:text-left"}>
+              <FadeIn>
                 <h5 className="text-step-lg text-brand-green">{step.heading}</h5>
-                <p className="mx-auto mt-2 max-w-md text-body text-ink/80 nav:mx-0">{step.body}</p>
+                <p className="mt-2 max-w-2xl text-body text-ink/55">{step.body}</p>
               </FadeIn>
             </li>
           ))}

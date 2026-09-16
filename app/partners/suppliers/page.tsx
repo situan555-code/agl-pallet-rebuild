@@ -34,7 +34,7 @@ export default function PartnersSuppliers() {
         </div>
       </section>
 
-      <section className="section-y px-6 bg-surface-alt">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <ProseBlock heading={content.ask.heading} paragraphs={content.ask.paragraphs} />
         </div>

@@ -15,6 +15,8 @@ const LEAK_STRINGS = [
   'New standalone line',
   'New line — missing',
   'currently bundled with',
+  'LIST (each item is a card linking to its form)',
+  '→ /',
 ];
 
 async function main() {

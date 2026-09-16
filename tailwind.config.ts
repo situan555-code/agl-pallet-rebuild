@@ -11,9 +11,13 @@ const config: Config = {
       colors: {
         ink: "#002920",
         "brand-green": "#162619",
+        paper: "#F7F6F2",
+        mint: "#ECFBF6",
+        // surface remains mint hex so Header/Footer hover fills are unchanged
         surface: "#ECFBF6",
         "surface-alt": "#F4F5F4",
         "eyebrow-ink": "#423A2F",
+        hairline: "rgba(22, 38, 25, 0.18)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Helvetica", "Arial", "sans-serif"],
@@ -24,6 +28,9 @@ const config: Config = {
         "display-2": ["clamp(35px, 32px + 0.62vw, 41px)", { lineHeight: "1.2" }],
         "display-3": ["20px", { lineHeight: "20px" }],
         "display-4": ["14px", { lineHeight: "14px" }],
+        "display-kicker": ["22px", { lineHeight: "1.1", letterSpacing: "0.08em" }],
+        "display-row": ["28px", { lineHeight: "1.15" }],
+        "display-numeral": ["40px", { lineHeight: "1" }],
         "step-sm": ["16px", { lineHeight: "20.8px" }],
         "step-lg": ["25px", { lineHeight: "25px" }],
         body: ["14px", { lineHeight: "23.8px" }],

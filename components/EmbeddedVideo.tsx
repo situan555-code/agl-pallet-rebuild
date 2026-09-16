@@ -51,8 +51,8 @@ export function EmbeddedVideo({
   const shouldAutoPlay = nearViewport && autoPlay && !reduceMotion;
 
   return (
-    <section ref={sectionRef} className="section-y relative bg-surface px-6">
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-surface-alt" aria-hidden="true" />
+    <section ref={sectionRef} className="section-y relative bg-paper px-6">
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-paper" aria-hidden="true" />
       <div className="relative mx-auto max-w-[1000px]">
         <video
           src={nearViewport ? src : undefined}

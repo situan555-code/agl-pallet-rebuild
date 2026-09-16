@@ -601,3 +601,78 @@ These were flagged as landing well. No changes:
     correct. Do not add a CTA to /the-pledge under any circumstance —
     this has now been confirmed correct twice.
 
+## SECTION J — INDUSTRIAL DESIGN QUALITY PASS (owner 2026-09-16)
+
+Design-quality pass: move the site from "clean template" to "high-end
+industrial." One governing rule: a bordered, rounded card is only for a
+discrete choice the user clicks. Claims, categories, and steps get space,
+hairlines, and type — never boxes.
+
+### THREE-COLOR DISCIPLINE (apply first; underlies everything)
+
+- PAPER: warm off-white #F7F6F2 is the default page ground. Most sections
+  sit here and never change color.
+- GREEN: #162619, used only three ways — hero, one mid-page anchor section,
+  footer CTA. Maximum three per page.
+- MINT: demoted to accent only — a hover fill, a tint behind a single pull
+  quote, the fill on a numeral. Never a section background again.
+- Stop alternating section backgrounds on every scroll. Let three or four
+  consecutive sections sit on paper separated by space and the occasional
+  full-width hairline, then one green section as punctuation. Rhythm comes
+  from the pause, not the stripes.
+
+### J1 — CONTACT route menu (priority)
+
+Currently four boxes in a 3+1 grid; the orphan is the tell, and the boxes
+read low-end. Also the literal string "LIST (each item is a card linking
+to its form):" is rendering as body copy — remove it.
+
+Rebuild as four FULL-WIDTH STACKED ROWS, rules-only: hairline between
+rows, no fills, no borders, no radius. Each row: route name in the
+condensed display face on the left, one-line explanation beneath it, and
+an arrow glyph pinned to the far right. On hover the whole row fills green
+edge-to-edge, text and arrow knock out to white, and the arrow slides
+~8px right. Stacking kills the orphan permanently and reads as a
+deliberate menu.
+
+### J2 — INDUSTRIES list
+
+The 8-box wall is the worst module: eight equal boxes are visual static.
+Rebuild as a rules-only list, full width, one industry per row, hairline
+between rows and nothing else. Each row is a two-column split: industry
+name in display face ~28px on the left, description in body grey at ~55%
+width on the right. Same hover as Contact — row fills green, text knocks
+to white, rule vanishes, full-bleed.
+
+### J3 — HOMEPAGE capability trio
+
+Same-day quotes / No minimums / Freight. Remove the boxes and the mint
+tray entirely. Three columns sitting directly on paper, separated by
+full-height vertical hairlines running BETWEEN them, not around them.
+Label in condensed display ~22px uppercase, hairline gap, two lines of
+grey body. ~100px vertical air. Reads as one banded module with dividers,
+not three floating objects.
+
+### J4 — HOMEPAGE 01/02/03 proof block
+
+The one grid that stays carded (parallel arguments). Rebuild: radius to
+0-2px (sharp reads industrial), lose the border, replace with a 3px solid
+green rule on the top edge only, let the white card sit on paper. Numeral
+goes big — 40px+, display face, green, above the heading with real space
+under it. Padding 40px all round.
+
+### J5 — HOW-WE-WORK timeline
+
+Drop left-right alternation; at desktop it leaves dead gutters and
+ping-pongs the eye. Single left rail: thin vertical green line full
+height, step numerals in small filled circles ON the line, all content in
+one left-aligned column to its right, ~80px between steps.
+
+### J CONSTRAINTS
+
+- Do not change any copy except deleting leaked scaffolding strings
+  ("LIST (each item is a card linking to its form):" on Contact, and
+  confirm no similar label leaked elsewhere).
+- Do not touch the dark green header or footer.
+- Verify after each module, then a full responsive pass at 375/768/1440.
+

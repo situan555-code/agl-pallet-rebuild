@@ -29,7 +29,7 @@ export default function WhoWeAre() {
         </div>
       </section>
 
-      <section className="section-y px-6 bg-surface-alt">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <ListBlock
             eyebrow={content.team.eyebrow}
@@ -40,7 +40,7 @@ export default function WhoWeAre() {
         </div>
       </section>
 
-      <section className="section-y px-6">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
             <span aria-hidden="true" className="mr-2 font-bold">
@@ -54,7 +54,7 @@ export default function WhoWeAre() {
         </div>
       </section>
 
-      <section className="section-y px-6 bg-surface-alt">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <ProseBlock
             eyebrow={content.faith.eyebrow}
@@ -64,7 +64,7 @@ export default function WhoWeAre() {
         </div>
       </section>
 
-      <section className="section-y px-6">
+      <section className="section-y section-hairline px-6">
         <div className="mx-auto max-w-[1440px]">
           <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
             <span aria-hidden="true" className="mr-2 font-bold">

@@ -1,6 +1,6 @@
 import content from "@/content/pages/industries.json";
 import { PageHero } from "@/components/PageHero";
-import { TrioGrid } from "@/components/TrioGrid";
+import { RuleList } from "@/components/RuleList";
 import { CTABand } from "@/components/CTABand";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -20,10 +20,14 @@ export default function Industries() {
         body={content.hero.body}
       />
 
-      <section className="section-y px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <TrioGrid cards={content.industries} />
-        </div>
+      <section className="section-y">
+        <RuleList
+          layout="industries"
+          items={content.industries.map((item) => ({
+            title: item.heading,
+            body: item.body,
+          }))}
+        />
       </section>
 
       <CTABand
