@@ -1,0 +1,62 @@
+# AGL Pallet Rebuild — Cursor rules
+# Next.js 14 App Router · TypeScript · Tailwind 3.4 · deploy to Vercel
+# Full context in PROJECT.md and BRIEF.md. Read those before large changes.
+
+## Stack facts (do not re-derive)
+- Next.js 14, App Router. Routes live in app/. Not Vite, not Pages Router.
+- Tailwind 3.4 for all styling. No other CSS framework, no CSS-in-JS.
+- Images via next/image, WebP-only per next.config.mjs.
+- trailingSlash: true — every route resolves with a trailing slash. Write
+  internal links with the trailing slash (/products/, not /products).
+- Content is JSON in content/. UI is in components/. Never hardcode page
+  copy into a component.
+- Package name is nx7k-lab-m4 (matches the Vercel project); don't "fix" it.
+
+## Content rules — these are compliance, not style
+- Page copy is verbatim from SPEC_V1.md. Do not rewrite, tighten, expand,
+  or add transitions. If copy looks wrong, flag it in a comment — do not
+  edit it.
+- AGL is a pallet BROKERAGE, never a manufacturer. Never write make/
+  produce/build/manufacture/our mill/our plant/our factory with AGL as
+  the subject. AGL sources, specs, qualifies, coordinates, supplies.
+- Banned everywhere including alt text, meta, JSON-LD: warehousing/storage/
+  inventory/VMI; certification claims (PDS, ISPM-15, RPA, etc); recycled or
+  used pallets; customer/supplier/competitor names; any number not in
+  SPEC_V1; "national"/"nationwide" (footprint is MI/IL/IN/PA/OH/WV); the
+  SPEC_V1 banned-words list; exclamation points; emoji.
+- {{TBD-*}} tokens render as visible placeholders. Never silently fill one
+  with invented content.
+
+## Design rules
+- One green only: #162619. Never introduce a second green (#152619 in some
+  logo rasters is a known mismatch — do not propagate it).
+- Three grounds only: paper #F7F6F2 (default, most sections), green #162619
+  (punctuation — hero, one mid-page anchor, footer CTA, max 3 per page),
+  mint (accent only — hover fills, numeral fills, one pull-quote tint;
+  never a section background).
+- Do not alternate section backgrounds every scroll. Consecutive sections
+  sit on paper, separated by space and occasional full-width hairlines;
+  green punctuates.
+- Bordered/rounded cards are ONLY for discrete clickable choices. Claims,
+  categories, and steps use space + hairlines, not boxes.
+- Body measure max 70ch. Headings use text-wrap: balance. 16px min gutter.
+  No horizontal scroll at 375px.
+- Visible keyboard focus states. Respect prefers-reduced-motion.
+
+## Quality bar before shipping any change
+Run: npm run verify
+Hard gates: structure + content match SPEC_V1 · height within 15% ·
+CLS < 0.05 · LCP < 2.5s · mobile Lighthouse Perf >= 95 · zero serious/
+critical axe · zero broken links.
+LCP gate is 2.5s — not 1.5s. Do not soften any gate without an explicit
+written instruction from the human. Silence is not authorization.
+
+## Deploy
+- Push to main → Vercel auto-builds. Never touch DNS.
+- The deployed build is the source of truth. Pull before editing — local
+  drift already caused build-note text to leak into /products.
+
+## Log discipline
+- Every deviation from SPEC_V1 → DECISIONS.md.
+- Anything unresolved or blocked → BLOCKED.md.
+- State that must survive a context reset → PROGRESS.md.

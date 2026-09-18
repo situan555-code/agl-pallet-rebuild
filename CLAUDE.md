@@ -1,25 +1,23 @@
 # AGL Pallet Rebuild
 
-Rebuilding aglpallet.com (currently Squarespace) as a visually identical,
-faster Next.js site. Full spec: see BRIEF.md — read it before any phase.
+Rebuild of aglpallet.com (WordPress/Divi → Next.js). Demo: nx7k-lab-m4.vercel.app.
+Authority: PROJECT.md + BRIEF.md + SPEC_V1.md + .cursorrules. Read PROJECT.md
+before large changes.
 
 ## Stack
-Next.js (App Router) + TypeScript + Tailwind. Content in /content (JSON/MDX),
-never hardcoded in components. next/image for all imagery. Playwright for
-capture and verification. GitHub + Vercel for deploy. Minimal deps.
+Next.js 14 App Router + TypeScript + Tailwind 3.4. Content in /content JSON,
+never hardcoded in components. next/image (WebP-only). Package name nx7k-lab-m4.
+trailingSlash: true — link with trailing slashes.
 
 ## Hard rules
-- Never modify the live Squarespace site or DNS.
-- Never lower a test threshold, edit reference images, or modify test config
-  to make something pass. Log unresolved diffs in DIFFS.md instead.
-- Never fabricate captured content; flag gaps with inline HTML comments.
-- Preserve copy and URL paths exactly. Rebuild behavior, never copy
-  Squarespace's JS/CSS/class names.
-- Pre-authorized decisions: BRIEF.md Section C. Apply without asking, log
-  each to DECISIONS.md. Unattended run: log to PROGRESS.md/BLOCKED.md and
-  keep going.
+- Never modify live WordPress/DNS. Never soften verify gates without written
+  human instruction. LCP gate is 2.5s (not 1.5s).
+- Copy verbatim from SPEC_V1.md. AGL is a brokerage, never a manufacturer.
+- One green #162619; grounds paper/green/mint per PROJECT.md. Cards only for
+  clickable choices.
+- Log deviations → DECISIONS.md; blocks → BLOCKED.md; durable state → PROGRESS.md.
+- Driver discipline: one of Cursor / Claude Code at a time on this tree.
 
 ## Definition of done
-All four npm scripts (build, screenshot, diff, audit) exit zero: diff <2%
-per page, mobile Lighthouse Performance ≥95, LCP <1.5s, CLS <0.05, no 404s,
-no serious/critical axe violations.
+npm run verify exits zero (structure/content, height ±15%, CLS <0.05,
+LCP <2.5s, mobile LH Perf ≥95, zero serious/critical axe, zero broken links).
