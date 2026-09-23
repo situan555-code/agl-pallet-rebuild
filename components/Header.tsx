@@ -101,7 +101,7 @@ export function Header() {
           <Link
             href={site.ctaNav.href}
             prefetch={false}
-            className="rounded-full bg-white px-6 py-2.5 text-nav-link font-semibold text-brand-green transition-colors hover:bg-surface active:bg-surface-alt focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="rounded-full bg-cream px-6 py-2.5 text-nav-link font-semibold text-brand-green transition-colors hover:bg-paper active:bg-fog-green/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {site.ctaNav.label}
           </Link>

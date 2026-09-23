@@ -415,3 +415,7 @@ Also still failing, pre-existing and unchanged by this pass:
 
 ### 2026-09-23 who-we-are team
 Owner: filler roster restored (SPEC seven); mostly Brock via founder story + first list item. Re-run copy-verbatim.
+
+## Phase E — color gate vs Palette 03 (2026-09-23 ET)
+
+Owner directed Palette Direction 03 (AGL Green `#1F2A1F`). H0 color gate (`scripts/color.js`) still hard-codes `APPROVED_GREEN = '#162619'`. Gates not softened. Expect color verify FAIL until owner re-baselines approved green (and any SVG debt). Fog `#C4CCC0` / new brand green are outside the old allowlist heuristic.

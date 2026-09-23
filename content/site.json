@@ -126,6 +126,14 @@
       {
         "label": "FAQ",
         "href": "/faq/"
+      },
+      {
+        "label": "Case studies",
+        "href": "/case-studies/"
+      },
+      {
+        "label": "Services",
+        "href": "/services/"
       }
     ],
     "partnersHeading": "Partners",
@@ -148,7 +156,7 @@
       "email": "sales@aglpallet.com"
     },
     "copyright": {
-      "text": "© 2026 AGL Pallet LLC. All rights reserved."
+      "text": "\u00a9 2026 AGL Pallet LLC. All rights reserved."
     }
   }
 }

@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "eyebrow": "Case studies",
+    "heading": "How coordination shows up on the dock.",
+    "body": "Structured examples of how AGL sources, qualifies, and delivers. Metrics and named accounts stay marked {{TBD}} until verified \u2014 we don't invent manufacturer claims."
+  },
+  "intro": {
+    "eyebrow": "What you'll find here",
+    "heading": "Pattern recognition, not vanity numbers.",
+    "paragraphs": [
+      "Each entry below is a structural placeholder for a finished case study: the operating context, the spec problem, the sourcing approach, and the freight plan.",
+      "Until owner-approved copy lands, titles and outcomes use {{TBD}} markers. No fabricated percentages, volumes, or customer logos."
+    ]
+  },
+  "studies": [
+    {
+      "id": "food-packaging-line",
+      "title": "{{TBD-CASE-TITLE}} \u2014 Food packaging line",
+      "summary": "{{TBD-CASE-SUMMARY}} Dual-source stock pallet program with managed inbound freight for a recurring Midwest packaging schedule.",
+      "href": "/case-studies/#food-packaging-line",
+      "image": "/assets/product_page-stock_pallets_sidepic.jpg"
+    },
+    {
+      "id": "engineered-oversize",
+      "title": "{{TBD-CASE-TITLE}} \u2014 Engineered oversize",
+      "summary": "{{TBD-CASE-SUMMARY}} Custom footprint and deck rating sourced through more than one qualified shop, freight booked to a single receiving window.",
+      "href": "/case-studies/#engineered-oversize",
+      "image": "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg"
+    },
+    {
+      "id": "multi-plant-program",
+      "title": "{{TBD-CASE-TITLE}} \u2014 Multi-plant program",
+      "summary": "{{TBD-CASE-SUMMARY}} One brokerage relationship covering staggered plant schedules across regional lanes \u2014 mills and carriers coordinated from a single desk.",
+      "href": "/case-studies/#multi-plant-program",
+      "image": "/assets/home_about_photo.jpg"
+    },
+    {
+      "id": "crate-and-dunnage",
+      "title": "{{TBD-CASE-TITLE}} \u2014 Crate and dunnage",
+      "summary": "{{TBD-CASE-SUMMARY}} Containment package beyond the pallet: crates and dunnage specified with the load, not as an afterthought.",
+      "href": "/case-studies/#crate-and-dunnage",
+      "image": "/assets/about_page-single_point_sidepic.jpg"
+    }
+  ],
+  "ctaBand": {
+    "heading": "Have a supply problem worth documenting?",
+    "body": "If your line needs a dual-source plan or a cleaner freight story, we'll build it quietly \u2014 and publish the write-up only when the facts are cleared.",
+    "cta": {
+      "label": "Request a quote",
+      "href": "/request-a-quote/"
+    }
+  }
+}

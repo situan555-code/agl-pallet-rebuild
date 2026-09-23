@@ -5,7 +5,7 @@ type ButtonVariant = "pill-light" | "pill-dark" | "ghost-light" | "ghost-dark";
 
 const variantClasses: Record<ButtonVariant, string> = {
   "pill-light":
-    "bg-white text-brand-green hover:bg-surface active:bg-surface-alt",
+    "bg-cream text-brand-green hover:bg-paper active:bg-fog-green/40",
   "pill-dark":
     "bg-brand-green text-white hover:bg-ink active:brightness-90",
   "ghost-light":

@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "eyebrow": "Services",
+    "heading": "Sourcing, qualification, and freight — as one desk.",
+    "body": "AGL is a pallet brokerage. We don't own mills and we don't own trucks. These are the coordinated services behind every quote."
+  },
+  "services": [
+    {
+      "id": "spec-sourcing",
+      "eyebrow": "01",
+      "title": "Spec sourcing",
+      "description": "Translate the load into a buildable spec, then place it with shops already qualified to run it — with a backup source on the same footprint."
+    },
+    {
+      "id": "mill-qualification",
+      "eyebrow": "02",
+      "title": "Mill & shop qualification",
+      "description": "We buy from family-run mills and shops that build well. Qualification is ongoing: capacity, consistency, and how they communicate when something slips."
+    },
+    {
+      "id": "managed-freight",
+      "eyebrow": "03",
+      "title": "Managed freight",
+      "description": "Freight is booked and tracked with the order. One number covers the pallets and the delivery window — not a handoff you have to chase."
+    },
+    {
+      "id": "program-coordination",
+      "eyebrow": "04",
+      "title": "Program coordination",
+      "description": "Recurring volume, staggered plants, or seasonal spikes. We hold the schedule across sources so your receiving dock isn't the integration layer."
+    }
+  ],
+  "detail": {
+    "eyebrow": "How engagement works",
+    "heading": "A quote is a plan, not a price scrap.",
+    "paragraphs": [
+      "Send a spec and a quantity — or describe the failure mode you're tired of living with. We come back with sources, a freight path, and the assumptions underneath the number.",
+      "Custom and engineered work follows the same desk: we don't become the manufacturer; we find the shops set up to build the odd size and keep a second option warm."
+    ],
+    "cta": { "label": "Talk through a spec", "href": "/request-a-quote/" }
+  },
+  "ctaBand": {
+    "heading": "Ready for one desk on pallets and freight?",
+    "body": "Same-day quotes when the spec is clear. No minimums. More than one qualified source on every spec we sell.",
+    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
+  }
+}

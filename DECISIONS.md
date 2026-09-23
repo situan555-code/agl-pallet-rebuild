@@ -1791,3 +1791,21 @@ Scaffolding scan: the LIST string was the only leaked label in
 ## 2026-09-23 — /who-we-are team list (owner)
 
 Nautis: put filler in who-we-are but it’s mostly Brock. Restored SPEC_V1 seven-person roster (verbatim roles) with Brock first; founder-story block remains the primary Brock surface. Other names are light SPEC role lines (filler), not expanded bios.
+
+## Phase E — Palette Direction 03 + denser home (Claude Liason executor) — 2026-09-23 ~16:30 ET
+
+**Palette:** Sophisticated Natural applied sitewide.
+- Parchment `#F2EBDD` → `paper` / `--background`
+- Clay `#B9A78F` → `clay` / accent-border
+- AGL Green `#1F2A1F` → `brand-green` / `--primary` (replaces `#162619`)
+- Dark Cocoa `#3B342E` → `ink` / `--foreground`
+- Fog Green `#C4CCC0` → `mint`/`fog-green` / muted (replaces mint `#ECFBF6`)
+- Cream `#FFFDF7` → `cream` / cards
+
+**Color gate:** `scripts/color.js` still only approves `#162619`. New AGL green `#1F2A1F` is *not* classified as "green" by the RGB heuristic (G−runner-up = 11 < 12), so it will not auto-pass as the approved green; gate may still FAIL on legacy SVG hues. **Not softened** — document only. Owner may re-baseline `APPROVED_GREEN` later.
+
+**Hero approach:** Full-bleed layered industrial — adapted from free `service2` full-bleed + `hero1` skeleton. Local `next/image` fill (`home_header_image`), AGL-green gradient vignette (not black SaaS), clay accent rule, optional secondary photo panel, parchment capability strip overlapping the next section for depth. Mid-page: `ImageBand` green wash + `gallery4` product carousel + denser feature splits with local photography.
+
+**New routes:** `/case-studies/`, `/services/` — SPEC-safe / `{{TBD-…}}` structure, linked from footer companyNav only.
+
+**Blocks:** Installed free denser set (hero7, gallery4/6, service2, team2, timeline3, banner2). Wired: gallery4 + rewritten hero1 + ImageBand. Unused demos excluded from tsconfig/tailwind until adapted (fake social icons / stats).

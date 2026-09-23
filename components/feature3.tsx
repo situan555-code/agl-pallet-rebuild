@@ -74,7 +74,7 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
 
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
-    <article className="h-full rounded-sm border-t-[3px] border-brand-green bg-white p-10">
+    <article className="h-full rounded-sm border-t-[3px] border-brand-green bg-cream p-10">
       {item.eyebrow && (
         <p className="font-display text-display-numeral uppercase text-brand-green">{item.eyebrow}</p>
       )}
@@ -105,7 +105,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
     </>
   );
   const cardClass =
-    "group flex h-full flex-col gap-0 rounded-sm border border-brand-green/15 bg-white p-8 transition-colors hover:border-brand-green nav:p-10";
+    "group flex h-full flex-col gap-0 rounded-sm border border-brand-green/15 bg-cream p-8 transition-colors hover:border-brand-green nav:p-10";
   if (item.href && !item.href.startsWith("/")) {
     return (
       <a

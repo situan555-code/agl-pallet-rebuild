@@ -11,7 +11,7 @@ const config: Config = {
     // primitives, retired AGL sections). Scanning them only ships dead CSS
     // on the render-blocking stylesheet. Remove a line when a file is wired
     // into a route. See out/BLOCK-MAP.md.
-    "!./components/{navbar1,navbar5,faq1,team1,service1,case-study1,banner1}.tsx",
+    "!./components/{navbar1,navbar5,faq1,team1,team2,service1,service2,case-study1,banner1,banner2,hero7,gallery6,timeline3}.tsx",
     "!./components/kibo-ui/**",
     "!./components/shadcnblocks/**",
     "!./components/ui/{alert,avatar,badge,breadcrumb,card,context-menu,field,input,label,separator,textarea}.tsx",
@@ -20,15 +20,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#002920",
-        "brand-green": "#162619",
-        paper: "#F7F6F2",
-        mint: "#ECFBF6",
-        // surface remains mint hex so Header/Footer hover fills are unchanged
-        surface: "#ECFBF6",
-        "surface-alt": "#F4F5F4",
-        "eyebrow-ink": "#423A2F",
-        hairline: "rgba(22, 38, 25, 0.18)",
+        // Palette Direction 03 — Sophisticated Natural
+        ink: "#3B342E", // dark cocoa
+        "brand-green": "#1F2A1F", // AGL green
+        paper: "#F2EBDD", // parchment
+        mint: "#C4CCC0", // fog green (legacy token name kept for class compat)
+        clay: "#B9A78F",
+        cream: "#FFFDF7",
+        "fog-green": "#C4CCC0",
+        "dark-cocoa": "#3B342E",
+        surface: "#C4CCC0", // fog green soft fill
+        "surface-alt": "#FFFDF7", // cream elevated
+        "eyebrow-ink": "#3B342E",
+        hairline: "rgba(31, 42, 31, 0.18)",
         // shadcn semantic tokens (RGB channels → AGL paper/green in globals.css)
         border: "rgb(var(--border) / <alpha-value>)",
         input: "rgb(var(--input) / <alpha-value>)",
