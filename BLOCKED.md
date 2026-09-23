@@ -412,3 +412,6 @@ Also still failing, pre-existing and unchanged by this pass:
   "elevate", "AGL was built by people…", partners "→").
 - color: disallowed greens only in legacy `public/assets/*.svg` / `assets/*.svg`
   icons; compiled CSS and rendered HTML clean.
+
+### 2026-09-23 who-we-are team
+Owner: filler roster restored (SPEC seven); mostly Brock via founder story + first list item. Re-run copy-verbatim.

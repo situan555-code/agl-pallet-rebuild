@@ -1787,3 +1787,7 @@ Scaffolding scan: the LIST string was the only leaked label in
 - **SPEC "Lead — body" order.** process1 prefixes the body with "— " when content lacks it, so innerText stays `Lead — body` (copy-verbatim LIST-ITEMs). No auto-numbering (would introduce numerals not in SPEC); plain green marker instead.
 - **Rhythm.** `.section-y` raised to `py-20 nav:py-28`; footer stacks single-column below md (as the previous footer did).
 - **Request a quote.** contact2 is the hero (h1 + form); phone/email/text as feature3 cards (clickable tel/mailto/sms), stacked below the nav breakpoint.
+
+## 2026-09-23 — /who-we-are team list (owner)
+
+Nautis: put filler in who-we-are but it’s mostly Brock. Restored SPEC_V1 seven-person roster (verbatim roles) with Brock first; founder-story block remains the primary Brock surface. Other names are light SPEC role lines (filler), not expanded bios.

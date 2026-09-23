@@ -2442,3 +2442,6 @@ Gate status (local `next start`, 2026-09-23):
 Ops note: a stale `next start` from 2026-09-16 was holding :3000 and served
 new HTML with a dead CSS manifest; killed it. Gates reuse whatever answers on
 :3000 — check `ps` for old next-server before trusting screenshots.
+
+### 2026-09-23 who-we-are team
+Owner: filler roster restored (SPEC seven); mostly Brock via founder story + first list item. Re-run copy-verbatim.
