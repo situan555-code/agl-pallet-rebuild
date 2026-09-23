@@ -2437,7 +2437,7 @@ Gate status (local `next start`, 2026-09-23):
 - color FAIL — only legacy SVG assets; compiled CSS/rendered HTML clean
 - height FAIL on who-we-are / industries / how-we-work / products at 768/1440
   (and 390 for how-we-work, products) — see BLOCKED.md 2026-09-23
-`npm run verify` therefore does not exit 0. Not pushed.
+`npm run verify` therefore does not exit 0. Phase commits pushed to origin/main for Vercel demo deploy (6e5ce4e, af62b8e, f395e75) after green `npm run build` each time — per Nautis 2026-09-23 demo-domain push rule. Full verify still red.
 
 Ops note: a stale `next start` from 2026-09-16 was holding :3000 and served
 new HTML with a dead CSS manifest; killed it. Gates reuse whatever answers on
