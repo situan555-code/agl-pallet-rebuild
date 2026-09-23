@@ -40,6 +40,86 @@
   .bg-brand-green button:focus-visible {
     outline-color: #ffffff;
   }
+  .theme {
+    --font-heading: var(--font-anton);
+    --font-sans: var(--font-inter);
+  }
+  :root {
+    /* AGL tokens as RGB channels for TW3 opacity modifiers (bg-primary/80 etc.) */
+    --background: 247 246 242; /* paper #F7F6F2 */
+    --foreground: 0 41 32; /* ink #002920 */
+    --card: 247 246 242;
+    --card-foreground: 0 41 32;
+    --popover: 247 246 242;
+    --popover-foreground: 0 41 32;
+    --primary: 22 38 25; /* brand-green #162619 */
+    --primary-foreground: 247 246 242;
+    --secondary: 244 245 244; /* surface-alt */
+    --secondary-foreground: 22 38 25;
+    --muted: 236 251 246; /* mint */
+    --muted-foreground: 66 58 47; /* eyebrow-ink */
+    --accent: 236 251 246;
+    --accent-foreground: 22 38 25;
+    --destructive: 153 27 27;
+    --destructive-foreground: 247 246 242;
+    --border: 210 210 205;
+    --input: 210 210 205;
+    --ring: 22 38 25;
+    --chart-1: 22 38 25;
+    --chart-2: 66 58 47;
+    --chart-3: 0 41 32;
+    --chart-4: 244 245 244;
+    --chart-5: 236 251 246;
+    --radius: 0.25rem;
+    --sidebar: 247 246 242;
+    --sidebar-foreground: 0 41 32;
+    --sidebar-primary: 22 38 25;
+    --sidebar-primary-foreground: 247 246 242;
+    --sidebar-accent: 236 251 246;
+    --sidebar-accent-foreground: 22 38 25;
+    --sidebar-border: 22 38 25;
+    --sidebar-ring: 22 38 25;
+  }
+  .dark {
+    --background: 22 38 25;
+    --foreground: 247 246 242;
+    --card: 22 38 25;
+    --card-foreground: 247 246 242;
+    --popover: 22 38 25;
+    --popover-foreground: 247 246 242;
+    --primary: 247 246 242;
+    --primary-foreground: 22 38 25;
+    --secondary: 0 41 32;
+    --secondary-foreground: 247 246 242;
+    --muted: 0 41 32;
+    --muted-foreground: 236 251 246;
+    --accent: 0 41 32;
+    --accent-foreground: 247 246 242;
+    --destructive: 153 27 27;
+    --destructive-foreground: 247 246 242;
+    --border: 247 246 242;
+    --input: 247 246 242;
+    --ring: 247 246 242;
+    --chart-1: 247 246 242;
+    --chart-2: 236 251 246;
+    --chart-3: 244 245 244;
+    --chart-4: 66 58 47;
+    --chart-5: 0 41 32;
+    --sidebar: 22 38 25;
+    --sidebar-foreground: 247 246 242;
+    --sidebar-primary: 247 246 242;
+    --sidebar-primary-foreground: 22 38 25;
+    --sidebar-accent: 0 41 32;
+    --sidebar-accent-foreground: 247 246 242;
+    --sidebar-border: 247 246 242;
+    --sidebar-ring: 247 246 242;
+  }
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+  }
 }
 
 @layer components {

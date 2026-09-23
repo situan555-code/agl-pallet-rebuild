@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +20,56 @@ const config: Config = {
         "surface-alt": "#F4F5F4",
         "eyebrow-ink": "#423A2F",
         hairline: "rgba(22, 38, 25, 0.18)",
+        // shadcn semantic tokens (RGB channels → AGL paper/green in globals.css)
+        border: "rgb(var(--border) / <alpha-value>)",
+        input: "rgb(var(--input) / <alpha-value>)",
+        ring: "rgb(var(--ring) / <alpha-value>)",
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        primary: {
+          DEFAULT: "rgb(var(--primary) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "rgb(var(--secondary) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
+        },
+        destructive: {
+          DEFAULT: "rgb(var(--destructive) / <alpha-value>)",
+          foreground: "rgb(var(--destructive-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "rgb(var(--muted) / <alpha-value>)",
+          foreground: "rgb(var(--muted-foreground) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          foreground: "rgb(var(--accent-foreground) / <alpha-value>)",
+        },
+        popover: {
+          DEFAULT: "rgb(var(--popover) / <alpha-value>)",
+          foreground: "rgb(var(--popover-foreground) / <alpha-value>)",
+        },
+        card: {
+          DEFAULT: "rgb(var(--card) / <alpha-value>)",
+          foreground: "rgb(var(--card-foreground) / <alpha-value>)",
+        },
+        sidebar: {
+          DEFAULT: "rgb(var(--sidebar) / <alpha-value>)",
+          foreground: "rgb(var(--sidebar-foreground) / <alpha-value>)",
+          primary: "rgb(var(--sidebar-primary) / <alpha-value>)",
+          "primary-foreground": "rgb(var(--sidebar-primary-foreground) / <alpha-value>)",
+          accent: "rgb(var(--sidebar-accent) / <alpha-value>)",
+          "accent-foreground": "rgb(var(--sidebar-accent-foreground) / <alpha-value>)",
+          border: "rgb(var(--sidebar-border) / <alpha-value>)",
+          ring: "rgb(var(--sidebar-ring) / <alpha-value>)",
+        },
+      },
+      borderRadius: {
+        input: "4px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Helvetica", "Arial", "sans-serif"],
@@ -39,15 +91,26 @@ const config: Config = {
         "nav-link": ["14px", { lineHeight: "14px" }],
         button: ["14px", { lineHeight: "23.8px" }],
       },
-      borderRadius: {
-        input: "4px",
-      },
       screens: {
         nav: "980px",
       },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
-  plugins: [],
+  plugins: [animate],
 };
 
 export default config;
