@@ -1,7 +1,7 @@
 import content from "@/content/pages/how-we-work.json";
-import { PageHero } from "@/components/PageHero";
-import { TimelineSection } from "@/components/TimelineSection";
-import { CTABand } from "@/components/CTABand";
+import { Hero3 } from "@/components/hero3";
+import { Process1 } from "@/components/process1";
+import { Cta4 } from "@/components/cta4";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -14,15 +14,18 @@ export const metadata: Metadata = pageMeta(
 export default function HowWeWork() {
   return (
     <main>
-      <PageHero eyebrow={content.hero.eyebrow} heading={content.hero.heading} />
+      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} />
 
-      <TimelineSection steps={content.timeline} />
-
-      <CTABand
-        heading={content.ctaBand.heading}
-        body={content.ctaBand.body}
-        cta={content.ctaBand.cta}
+      <Process1
+        className="nav:py-28"
+        steps={content.timeline.map((step) => ({
+          number: step.number,
+          title: step.heading,
+          description: step.body,
+        }))}
       />
+
+      <Cta4 heading={content.ctaBand.heading} description={content.ctaBand.body} button={content.ctaBand.cta} />
     </main>
   );
 }

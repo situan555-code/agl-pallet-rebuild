@@ -125,7 +125,7 @@
 @layer components {
   /* G10: section vertical rhythm on a shared token scale */
   .section-y {
-    @apply py-16 nav:py-20;
+    @apply py-20 nav:py-28;
   }
 
   .section-y-cta {

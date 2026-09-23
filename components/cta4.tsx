@@ -1,84 +1,49 @@
-import { ArrowRight, Check } from "lucide-react";
-import { cn } from "cn";
+// Adapted from @shadcnblocks/cta4 (free). Layout kept: heading + description
+// + primary button on one side, a supporting column on the other. Demo copy
+// and the checklist ("24/7 Support" etc.) removed; the checklist renders only
+// if content supplies items. Runs full-bleed on brand green as the page's
+// closing CTA instead of the demo's muted rounded panel.
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/Button";
 
-import { Button } from "@/components/ui/button";
-
-interface Button {
-  text: string;
-  url: string;
-  icon?: React.ReactNode;
-}
-interface Buttons {
-  primary?: Button;
-  secondary?: Button;
-}
-
-interface CtaSimpleFeaturesProps {
+interface Cta4Props {
+  eyebrow?: string;
   heading: string;
-  description?: string;
-  buttons?: Buttons;
-  features: string[];
+  description: string;
+  button: { label: string; href: string };
+  features?: string[];
   className?: string;
 }
 
-interface Cta4Props extends CtaSimpleFeaturesProps {}
-type Props = Partial<Cta4Props>;
-
-const defaultProps: Cta4Props = {
-  heading: "Call to Action",
-  description:
-    "Get access to our collection of pre-built blocks and components today.",
-  buttons: {
-    primary: {
-      text: "Get Started",
-      url: "#",
-    },
-  },
-  features: [
-    "Easy Integration",
-    "24/7 Support",
-    "Customizable Design",
-    "Scalable Performance",
-    "Hundreds of Blocks",
-  ],
-};
-
-const Cta4 = (props: Props) => {
-  const { heading, description, buttons, features, className } = {
-    ...defaultProps,
-    ...props,
-  };
-
+const Cta4 = ({ eyebrow, heading, description, button, features, className }: Cta4Props) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container mx-auto">
-        <div className="flex justify-center">
-          <div className="max-w-5xl">
-            <div className="flex flex-col items-start justify-between gap-8 rounded-lg bg-muted px-6 py-10 md:flex-row lg:px-20 lg:py-16">
-              <div className="md:w-1/2">
-                <h4 className="mb-1 text-2xl font-bold md:text-3xl">
-                  {heading}
-                </h4>
-                <p className="text-muted-foreground">{description}</p>
-                {buttons?.primary && (
-                  <Button className="mt-6" asChild>
-                    <a href={buttons.primary.url}>
-                      {buttons.primary.text} <ArrowRight className="size-4" />
-                    </a>
-                  </Button>
-                )}
-              </div>
-              <div className="md:w-1/3">
-                <ul className="flex flex-col space-y-2 text-sm font-medium">
-                  {features.map((item, idx) => (
-                    <li className="flex items-center" key={idx}>
-                      <Check className="mr-4 size-4 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+    <section className={cn("section-y-cta bg-brand-green px-6 text-white", className)}>
+      <div className="mx-auto grid max-w-[1440px] items-end gap-8 nav:grid-cols-12 nav:gap-16">
+        <div className="nav:col-span-7">
+          {eyebrow && (
+            <p className="mb-4 text-eyebrow font-semibold uppercase tracking-wide">
+              <span aria-hidden="true" className="mr-2 font-bold">
+                /
+              </span>
+              {eyebrow}
+            </p>
+          )}
+          <h2 className="text-display-2 text-white">{heading}</h2>
+        </div>
+        <div className="border-t border-white/20 pt-6 nav:col-span-5 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">
+          <p className="prose-measure text-body text-white/85">{description}</p>
+          {features && features.length > 0 && (
+            <ul className="mt-6 space-y-2 text-body">
+              {features.map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span aria-hidden="true" className="block h-px w-4 bg-white/60" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="mt-8">
+            <Button href={button.href} label={button.label} variant="pill-light" />
           </div>
         </div>
       </div>

@@ -1,104 +1,53 @@
-import { cn } from "cn";
+"use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-interface FaqItem {
+// Adapted from @shadcnblocks/faq3 (free). Layout kept: centered intro over a
+// single-column accordion. Demo questions/answers and the support panel
+// removed. Every item starts open (type="multiple") so answers are readable
+// and indexable without a click; buyers can still collapse them. Styled with
+// TW3-compatible classes because components/ui/accordion ships TW4 variants.
+import { Plus } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+export interface Faq3Item {
   id: string;
   question: string;
   answer: string;
 }
 
 interface Faq3Props {
+  eyebrow?: string;
   heading: string;
-  description: string;
-  items?: FaqItem[];
-  supportHeading: string;
-  supportDescription: string;
-  supportButtonText: string;
-  supportButtonUrl: string;
+  description?: string;
+  items: Faq3Item[];
   className?: string;
 }
 
-const faqItems = [
-  {
-    id: "faq-1",
-    question: "What is a FAQ?",
-    answer:
-      "A FAQ is a list of frequently asked questions and answers on a particular topic.",
-  },
-  {
-    id: "faq-2",
-    question: "What is the purpose of a FAQ?",
-    answer:
-      "The purpose of a FAQ is to provide answers to common questions and help users find the information they need quickly and easily.",
-  },
-  {
-    id: "faq-3",
-    question: "How do I create a FAQ?",
-    answer:
-      "To create a FAQ, you need to compile a list of common questions and answers on a particular topic and organize them in a clear and easy-to-navigate format.",
-  },
-  {
-    id: "faq-4",
-    question: "What are the benefits of a FAQ?",
-    answer:
-      "The benefits of a FAQ include providing quick and easy access to information, reducing the number of support requests, and improving the overall user experience.",
-  },
-  {
-    id: "faq-5",
-    question: "How should I organize my FAQ?",
-    answer:
-      "You should organize your FAQ in a logical manner, grouping related questions together and ordering them from most basic to more advanced topics.",
-  },
-  {
-    id: "faq-6",
-    question: "How long should FAQ answers be?",
-    answer:
-      "FAQ answers should be concise and to the point, typically a few sentences or a short paragraph is sufficient for most questions.",
-  },
-  {
-    id: "faq-7",
-    question: "Should I include links in my FAQ?",
-    answer:
-      "Yes, including links to more detailed information or related resources can be very helpful for users who want to learn more about a particular topic.",
-  },
-];
-
-const Faq3 = ({
-  heading = "Frequently asked questions",
-  description = "Find answers to common questions about our products. Can't find what you're looking for? Contact our support team.",
-  items = faqItems,
-  className,
-}: Faq3Props) => {
+const Faq3 = ({ eyebrow, heading, description, items, className }: Faq3Props) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container space-y-16">
-        <div className="mx-auto flex max-w-3xl flex-col text-left md:text-center">
-          <h2 className="mb-3 text-3xl font-semibold md:mb-4 lg:mb-6 lg:text-4xl">
-            {heading}
-          </h2>
-          <p className="text-muted-foreground lg:text-lg">{description}</p>
+    <section className={cn("section-y scroll-mt-24 px-6", className)}>
+      <div className="mx-auto grid max-w-[1440px] gap-10 nav:grid-cols-12 nav:gap-16">
+        <div className="nav:col-span-4">
+          <SectionHeading eyebrow={eyebrow} heading={heading} />
+          {description && <p className="prose-measure mt-6 text-body">{description}</p>}
         </div>
         <Accordion
-          type="single"
-          collapsible
-          className="mx-auto w-full lg:max-w-3xl"
+          type="multiple"
+          defaultValue={items.map((item) => item.id)}
+          className="border-t border-brand-green/15 nav:col-span-8"
         >
           {items.map((item) => (
-            <AccordionItem key={item.id} value={item.id}>
-              <AccordionTrigger className="transition-opacity duration-200 hover:no-underline hover:opacity-60">
-                <div className="font-medium sm:py-1 lg:py-2 lg:text-lg">
-                  {item.question}
-                </div>
+            <AccordionItem key={item.id} value={item.id} className="border-b border-brand-green/15">
+              <AccordionTrigger className="group/faq items-center gap-6 rounded-none py-6 text-left hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green [&_[data-slot=accordion-trigger-icon]]:hidden">
+                <span className="font-display text-step-lg uppercase text-brand-green">{item.question}</span>
+                <Plus
+                  aria-hidden="true"
+                  className="ml-auto h-5 w-5 shrink-0 text-brand-green transition-transform duration-200 group-data-[state=open]/faq:rotate-45"
+                />
               </AccordionTrigger>
-              <AccordionContent className="sm:mb-1 lg:mb-2">
-                <div className="text-muted-foreground lg:text-lg">
-                  {item.answer}
-                </div>
+              <AccordionContent className="pb-6">
+                <p className="prose-measure text-body text-ink/80">{item.answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}

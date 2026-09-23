@@ -1,130 +1,61 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { cn } from "cn";
+// Adapted from @shadcnblocks/hero1 (free). Layout kept: copy column + media
+// column on a two-column grid. Demo defaultProps removed: every string comes
+// from content JSON. Restyled to the AGL green ground; image is a local
+// next/image with priority (LCP) instead of the demo CDN <img>.
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/Button";
+import { getBlurDataURL } from "@/lib/blur";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+type Hero1Button = {
+  label: string;
+  href: string;
+  variant: "pill-light" | "ghost-light";
+};
 
-interface Image {
-  src: string;
-  alt: string;
-  srcDark?: string;
-}
-interface Button {
-  text: string;
-  url: string;
-  icon?: React.ReactNode;
-}
-interface Buttons {
-  primary?: Button;
-  secondary?: Button;
-}
-interface Badge {
-  text: string;
-  announcement?: string;
-  url?: string;
-}
-
-interface HeroBasicProps {
-  badge?: Badge;
+interface Hero1Props {
+  eyebrow: string;
   heading: string;
   description: string;
-  buttons?: Buttons;
-  image: Image;
+  buttons: Hero1Button[];
+  image: { src: string; alt: string };
   className?: string;
 }
 
-interface Hero1Props extends HeroBasicProps {}
-type Props = Partial<Hero1Props>;
-
-const defaultProps: Hero1Props = {
-  badge: {
-    text: "Changelog v1.1",
-    announcement: "Check out our latest updates",
-  },
-  heading: "Blocks Built With Shadcn & Tailwind",
-  description:
-    "Finely crafted components built with React, Tailwind and shadcn/ui. Developers can copy and paste these blocks directly into their project.",
-  buttons: {
-    primary: {
-      text: "Browse Components",
-      url: "https://shadcnblocks.com",
-    },
-    secondary: {
-      text: "View GitHub",
-      url: "https://shadcnblocks.com",
-    },
-  },
-  image: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/saas-hero/saas-hero-1-16x9.png",
-    srcDark: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/saas-hero/saas-hero-1-16x9-dark.png",
-    alt: "Hero Image Placeholder",
-  },
-};
-
-const Hero1 = (props: Props) => {
-  const { badge, heading, description, buttons, image, className } = {
-    ...defaultProps,
-    ...props,
-  };
-
+const Hero1 = ({ eyebrow, heading, description, buttons, image, className }: Hero1Props) => {
+  const blurDataURL = getBlurDataURL(image.src);
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container mx-auto">
-        <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
-          <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
-            {badge && (
-              <Badge variant="outline">
-                {badge.text}
-                <ArrowUpRight className="size-4" />
-              </Badge>
-            )}
-            <h1 className="max-w-xl text-4xl font-semibold tracking-tight text-pretty md:text-5xl lg:max-w-3xl lg:text-6xl">
-              {heading}
-            </h1>
-            <p className="max-w-5xl text-balance text-muted-foreground lg:text-xl">
-              {description}
-            </p>
-            <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
-              {buttons?.primary && (
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  <a href={buttons.primary.url}>
-                    {buttons.primary.text}
-                    <ArrowRight className="size-4" />
-                  </a>
-                </Button>
-              )}
-              {buttons?.secondary && (
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto"
-                >
-                  <a href={buttons.secondary.url}>{buttons.secondary.text}</a>
-                </Button>
-              )}
-            </div>
+    <section className={cn("scroll-mt-24 bg-brand-green px-6 pb-16 pt-36 text-white nav:pb-24", className)}>
+      <div className="mx-auto grid max-w-[1440px] items-center gap-12 nav:grid-cols-12 nav:gap-16">
+        <div className="flex flex-col items-start nav:col-span-7">
+          <p className="text-eyebrow font-semibold uppercase tracking-wide">
+            <span aria-hidden="true" className="mr-2 font-bold">
+              /
+            </span>
+            {eyebrow}
+          </p>
+          <h1 className="mt-4 max-w-[720px] break-words text-display-1 nav:text-[56px] nav:leading-[1.1]">
+            {heading}
+          </h1>
+          <p className="prose-measure mt-6 text-body text-white/85">{description}</p>
+          <div className="mt-10 flex flex-col items-start gap-4 min-[560px]:flex-row min-[560px]:flex-wrap">
+            {buttons.map((button) => (
+              <Button key={button.label} href={button.href} label={button.label} variant={button.variant} />
+            ))}
           </div>
-          {image.srcDark ? (
-            <>
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="aspect-video w-full rounded-md border border-border object-cover object-top dark:hidden"
-              />
-              <img
-                src={image.srcDark}
-                alt={image.alt}
-                className="hidden aspect-video w-full rounded-md border border-border object-cover object-top dark:block"
-              />
-            </>
-          ) : (
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="aspect-video w-full rounded-md border border-border object-cover object-top"
-            />
-          )}
+        </div>
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm nav:col-span-5 nav:aspect-[4/5]">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            priority
+            quality={75}
+            sizes="(min-width: 980px) 38vw, 100vw"
+            className="object-cover"
+            placeholder={blurDataURL ? "blur" : undefined}
+            blurDataURL={blurDataURL}
+          />
         </div>
       </div>
     </section>

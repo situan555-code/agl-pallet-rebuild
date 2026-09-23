@@ -1,318 +1,97 @@
-"use client";
+// Adapted from @shadcnblocks/contact2 (free). Layout kept: intro + contact
+// methods in the left column, the form in the right column. The demo's
+// react-hook-form/zod form (which only console.logs) is replaced by a
+// children slot so pages pass the working components/Form.tsx (FormSubmit /
+// unresolved-destination handling). Demo copy, web link, and green-500
+// success styling removed; runs on brand green because Form.tsx is styled
+// for a dark ground.
+import type { ReactNode } from "react";
+import { Mail, MessageSquare, Phone } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { GlobeIcon, LoaderIcon, MailIcon, PhoneIcon } from "lucide-react";
-import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
-import { cn } from "cn";
+export interface Contact2Method {
+  kind: "phone" | "email" | "text";
+  label: string;
+  value: string;
+  href: string;
+}
 
-import { Button } from "@/components/ui/button";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
-interface ContactFormDetailsProps {
+interface Contact2Props {
+  id?: string;
+  eyebrow: string;
   title: string;
-  description: string;
-  phone: string;
-  email: string;
-  web: { label: string; url: string };
-  formSubheading: string;
-  formHeading: string;
-  successMessage: string;
-  submitLabel: string;
-  submittingLabel: string;
+  titleAs?: "h1" | "h2";
+  description?: string;
+  methods?: Contact2Method[];
+  notes?: string[];
+  children: ReactNode;
   className?: string;
 }
 
-interface Contact2Props extends ContactFormDetailsProps {
-  onSubmit?: (data: ContactFormData) => Promise<void>;
-}
-type Props = Partial<Contact2Props>;
+const icons = { phone: Phone, email: Mail, text: MessageSquare };
 
-const defaultProps: Contact2Props = {
-  title: "Contact Us",
-  description: "Building with shadcn/ui and Tailwind? Shadcnblocks ships copy-paste React sections—drop us a line if you need help picking blocks or wiring forms.",
-  phone: "+1 (555) 010-2400",
-  email: "hello@shadcnblocks.com",
-  web: {
-    label: "shadcnblocks.com",
-    url: "https://www.shadcnblocks.com",
-  },
-  formSubheading: "We usually reply within one business day.",
-  formHeading: "Send us a message",
-  successMessage: "Thanks — your message is in our inbox.",
-  submitLabel: "Send message",
-  submittingLabel: "Sending…",
-};
-
-const contactFormSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email"),
-  subject: z.string().min(1, "Subject is required"),
-  message: z.string().min(1, "Message is required"),
-});
-
-type ContactFormData = z.infer<typeof contactFormSchema>;
-
-const Contact2 = (props: Props) => {
-  const {
-    title,
-    description,
-    phone,
-    email,
-    web,
-    formHeading,
-    formSubheading,
-    successMessage,
-    submitLabel,
-    submittingLabel,
-    className,
-    onSubmit,
-  } = { ...defaultProps, ...props };
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  const form = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
-    mode: "onSubmit",
-    reValidateMode: "onSubmit",
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
-  });
-
-  const handleFormSubmit = async (data: ContactFormData) => {
-    try {
-      if (onSubmit) {
-        await onSubmit(data);
-      } else {
-        console.log("Form submitted:", data);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-      }
-      setIsSubmitted(true);
-      setShowSuccess(true);
-      form.reset();
-      setTimeout(() => setShowSuccess(false), 4500);
-      setTimeout(() => setIsSubmitted(false), 5000);
-    } catch {
-      form.setError("root", {
-        message: "Something went wrong. Please try again.",
-      });
-    }
-  };
-
+const Contact2 = ({
+  id,
+  eyebrow,
+  title,
+  titleAs = "h2",
+  description,
+  methods,
+  notes,
+  children,
+  className,
+}: Contact2Props) => {
+  const Title = titleAs;
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container mx-auto">
-        <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
-          <div className="flex flex-1 flex-col gap-10">
-            <div className="flex flex-col gap-4">
-              <h1 className="text-4xl font-semibold tracking-tight text-pretty md:text-5xl lg:text-6xl">
-                {title}
-              </h1>
-              <p className="text-muted-foreground lg:text-xl lg:text-balance">
-                {description}
-              </p>
-            </div>
-            <div className="flex flex-col gap-6">
-              <a
-                href={`tel:${phone}`}
-                className="group flex items-center gap-3"
-              >
-                <PhoneIcon className="size-5 text-muted-foreground" />
-                <span className="group-hover:underline">{phone}</span>
-              </a>
-              <a
-                href={`mailto:${email}`}
-                className="group flex items-center gap-3"
-              >
-                <MailIcon className="size-5 text-muted-foreground" />
-                <span className="group-hover:underline">{email}</span>
-              </a>
-              <a
-                href={web.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${web.label} (opens in new tab)`}
-                className="group flex items-center gap-3"
-              >
-                <GlobeIcon className="size-5 text-muted-foreground" />
-                <span className="group-hover:underline">{web.label}</span>
-              </a>
-            </div>
+    <section id={id} className={cn("section-y scroll-mt-24 bg-brand-green px-6 text-white", className)}>
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-12 nav:flex-row nav:gap-24">
+        <div className="flex flex-col gap-10 nav:w-5/12">
+          <div className="flex flex-col gap-4">
+            <p className="text-eyebrow font-semibold uppercase tracking-wide">
+              <span aria-hidden="true" className="mr-2 font-bold">
+                /
+              </span>
+              {eyebrow}
+            </p>
+            {title && (
+              <Title className={titleAs === "h1" ? "text-display-1" : "text-display-2"}>{title}</Title>
+            )}
+            {description && <p className="prose-measure text-body text-white/85">{description}</p>}
           </div>
-          <div className="flex-1">
-            <form
-              onSubmit={form.handleSubmit(handleFormSubmit)}
-              className="flex flex-col gap-6 rounded-xl bg-muted/50 p-8 md:p-10"
-            >
-              <div className="flex flex-col gap-1">
-                <h2 className="text-xl font-semibold tracking-tight text-balance">
-                  {formHeading}
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                  {formSubheading}
+          {methods && methods.length > 0 && (
+            <ul className="flex flex-col border-t border-white/20">
+              {methods.map((method) => {
+                const Icon = icons[method.kind];
+                return (
+                  <li key={method.label} className="border-b border-white/20">
+                    <a
+                      href={method.href}
+                      className="group flex items-center gap-4 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-white/70" />
+                      <span className="flex flex-col">
+                        <span className="text-eyebrow font-semibold uppercase tracking-wide text-white/70">
+                          {method.label}
+                        </span>
+                        <span className="text-step-sm font-semibold group-hover:underline">{method.value}</span>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          {notes && notes.length > 0 && (
+            <div className="space-y-2">
+              {notes.map((note) => (
+                <p key={note} className="text-body text-white/85">
+                  {note}
                 </p>
-              </div>
-              {isSubmitted && (
-                <div
-                  role="status"
-                  aria-live="polite"
-                  className={cn(
-                    "rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-center transition-opacity duration-500",
-                    showSuccess ? "opacity-100" : "opacity-0",
-                  )}
-                >
-                  <p className="text-sm font-medium text-green-600 dark:text-green-400">
-                    {successMessage}
-                  </p>
-                </div>
-              )}
-              <FieldGroup className="gap-6">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Controller
-                    control={form.control}
-                    name="firstName"
-                    render={({ field, fieldState }) => (
-                      <Field data-invalid={fieldState.invalid}>
-                        <FieldLabel htmlFor={field.name}>
-                          First Name <span className="text-destructive">*</span>
-                        </FieldLabel>
-                        <Input
-                          {...field}
-                          id={field.name}
-                          aria-invalid={fieldState.invalid}
-                          placeholder="Jordan"
-                          className="bg-background"
-                        />
-                        {fieldState.invalid && (
-                          <FieldError errors={[fieldState.error]} />
-                        )}
-                      </Field>
-                    )}
-                  />
-                  <Controller
-                    control={form.control}
-                    name="lastName"
-                    render={({ field, fieldState }) => (
-                      <Field data-invalid={fieldState.invalid}>
-                        <FieldLabel htmlFor={field.name}>
-                          Last Name <span className="text-destructive">*</span>
-                        </FieldLabel>
-                        <Input
-                          {...field}
-                          id={field.name}
-                          aria-invalid={fieldState.invalid}
-                          placeholder="Kim"
-                          className="bg-background"
-                        />
-                        {fieldState.invalid && (
-                          <FieldError errors={[fieldState.error]} />
-                        )}
-                      </Field>
-                    )}
-                  />
-                </div>
-                <Controller
-                  control={form.control}
-                  name="email"
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={field.name}>
-                        Email <span className="text-destructive">*</span>
-                      </FieldLabel>
-                      <Input
-                        {...field}
-                        id={field.name}
-                        type="email"
-                        aria-invalid={fieldState.invalid}
-                        placeholder="you@company.com"
-                        className="bg-background"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-                <Controller
-                  control={form.control}
-                  name="subject"
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={field.name}>
-                        Subject <span className="text-destructive">*</span>
-                      </FieldLabel>
-                      <Input
-                        {...field}
-                        id={field.name}
-                        aria-invalid={fieldState.invalid}
-                        placeholder="Question about blocks"
-                        className="bg-background"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-                <Controller
-                  control={form.control}
-                  name="message"
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <FieldLabel htmlFor={field.name}>
-                        Message <span className="text-destructive">*</span>
-                      </FieldLabel>
-                      <Textarea
-                        {...field}
-                        id={field.name}
-                        aria-invalid={fieldState.invalid}
-                        placeholder="Tell us what you are building…"
-                        rows={4}
-                        className="bg-background"
-                      />
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-                {form.formState.errors.root && (
-                  <p className="text-sm text-destructive">
-                    {form.formState.errors.root.message}
-                  </p>
-                )}
-                <Button
-                  size="lg"
-                  className="w-full"
-                  disabled={form.formState.isSubmitting}
-                >
-                  {form.formState.isSubmitting ? (
-                    <LoaderIcon className="size-4 animate-spin" aria-hidden />
-                  ) : null}
-                  {form.formState.isSubmitting ? submittingLabel : submitLabel}
-                </Button>
-              </FieldGroup>
-            </form>
-          </div>
+              ))}
+            </div>
+          )}
         </div>
+        <div className="min-w-0 nav:flex-1 [&>form]:mt-0">{children}</div>
       </div>
     </section>
   );

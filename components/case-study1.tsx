@@ -1,5 +1,5 @@
 import { GitBranch, Lightbulb } from "lucide-react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {

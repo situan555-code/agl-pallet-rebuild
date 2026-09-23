@@ -1,86 +1,69 @@
-import { cn } from "cn";
-import { Button } from "@/components/ui/button";
+// Adapted from @shadcnblocks/feature1 (free). Layout kept: copy column left,
+// media column right on a two-column grid. Demo defaultProps and CDN image
+// removed. When no media is passed, the right column carries the body copy
+// (heading left, prose right), which is how AGL uses it for text-only
+// sections. Everything renders on paper; no box around the copy.
+import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Button } from "@/components/Button";
 
-interface Image {
-  src: string;
-  alt: string;
-  srcDark?: string;
-}
-interface Button {
-  text: string;
-  url: string;
-  icon?: React.ReactNode;
-}
-interface Buttons {
-  primary?: Button;
-  secondary?: Button;
-}
-
-interface FeatureSingleFocusProps {
+interface Feature1Props {
+  id?: string;
+  eyebrow?: string;
   heading: string;
-  description: string;
-  image: Image;
-  buttons?: Buttons;
+  paragraphs?: string[];
+  cta?: { label: string; href: string };
+  media?: ReactNode;
+  hairline?: boolean;
   className?: string;
 }
 
-type Props = Partial<FeatureSingleFocusProps>;
-
-const defaultProps: FeatureSingleFocusProps = {
-  heading: "Feature blocks ready to ship with shadcn/ui",
-  description:
-    "Shadcnblocks ships production-ready React sections built with Tailwind CSS and shadcn/ui. Pick a block, preview it with your theme, then paste it in or install with the shadcn CLI.",
-  buttons: {
-    secondary: {
-      text: "View feature",
-      url: "https://www.shadcnblocks.com",
-    },
-  },
-  image: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/saas-details/saas-detail-1-1x1.png",
-    alt: "Shadcnblocks section preview in the explorer",
-  },
-};
-
-const Feature1 = (props: Props) => {
-  const { heading, description, image, buttons, className } = {
-    ...defaultProps,
-    ...props,
-  };
-
+function Body({ paragraphs, cta }: Pick<Feature1Props, "paragraphs" | "cta">) {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <h2 className="mb-6 text-4xl font-semibold tracking-tight text-balance lg:text-5xl">
-              {heading}
-            </h2>
-            {description && (
-              <p className="mb-8 max-w-xl text-muted-foreground lg:text-lg">
-                {description}
-              </p>
-            )}
-            <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
-              {buttons?.secondary ? (
-                <Button variant="outline" asChild>
-                  <a
-                    href={buttons.secondary.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {buttons.secondary.text}
-                  </a>
-                </Button>
-              ) : null}
-            </div>
-          </div>
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="aspect-square w-full rounded-lg border border-border object-cover"
-          />
+    <>
+      {paragraphs && paragraphs.length > 0 && (
+        <div className="prose-measure space-y-4">
+          {paragraphs.map((p, i) => (
+            <p key={i} className="text-body">
+              {p}
+            </p>
+          ))}
         </div>
+      )}
+      {cta && (
+        <div className="mt-8">
+          <Button href={cta.href} label={cta.label} variant="ghost-dark" />
+        </div>
+      )}
+    </>
+  );
+}
+
+const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, className }: Feature1Props) => {
+  return (
+    <section id={id} className={cn("section-y scroll-mt-24 overflow-hidden px-6", hairline && "section-hairline", className)}>
+      <div className="mx-auto grid max-w-[1440px] items-start gap-10 nav:grid-cols-12 nav:gap-16">
+        {media ? (
+          <>
+            <div className="nav:col-span-6">
+              <SectionHeading eyebrow={eyebrow} heading={heading} />
+              <div className="mt-6">
+                <Body paragraphs={paragraphs} cta={cta} />
+              </div>
+            </div>
+            <div className="nav:col-span-5 nav:col-start-8">{media}</div>
+          </>
+        ) : (
+          <>
+            <div className="nav:col-span-5">
+              <SectionHeading eyebrow={eyebrow} heading={heading} />
+            </div>
+            <div className="nav:col-span-6 nav:col-start-7 nav:pt-10">
+              <Body paragraphs={paragraphs} cta={cta} />
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

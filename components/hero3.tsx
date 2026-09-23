@@ -1,169 +1,54 @@
-import { ArrowRight, Star } from "lucide-react";
-import { cn } from "cn";
+// Adapted from @shadcnblocks/hero3 (free). Layout kept: two-column grid with
+// the headline column and a second column. AGL inner pages carry no imagery
+// in content JSON, so the second column holds the lede paragraphs and CTA
+// instead of the demo screenshot. Demo reviews/avatars/stars removed.
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/Button";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-
-interface Image {
-  src: string;
-  alt: string;
-  srcDark?: string;
-}
-interface Button {
-  text: string;
-  url: string;
-  icon?: React.ReactNode;
-}
-interface Buttons {
-  primary?: Button;
-  secondary?: Button;
-}
-
-interface HeroBasicProps {
+interface Hero3Props {
+  eyebrow: string;
   heading: string;
-  description: string;
-  buttons?: Buttons;
-  image: Image;
+  description?: string | string[];
+  cta?: { label: string; href: string };
   className?: string;
 }
 
-interface Hero3Props extends HeroBasicProps {
-  reviews?: Hero3Reviews;
-}
-type Props = Partial<Hero3Props>;
-
-const defaultProps: Hero3Props = {
-  heading: "Blocks Built With Shadcn & Tailwind",
-  description: "Finely crafted components built with React, Tailwind and shadcn/ui. Developers can copy and paste these blocks directly into their project.",
-  buttons: {
-    primary: {
-      text: "Browse Components",
-      url: "https://shadcnblocks.com",
-    },
-    secondary: {
-      text: "View GitHub",
-      url: "https://shadcnblocks.com",
-    },
-  },
-  image: {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/saas-hero/saas-hero-1-16x9.png",
-    srcDark: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/saas-hero/saas-hero-1-16x9-dark.png",
-    alt: "Hero Image Placeholder",
-  },
-  reviews: {
-    count: 200,
-    rating: 5.0,
-    avatars: [
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/avatars/avatar1.jpg", alt: "Mia Chen" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/avatars/avatar2.jpg", alt: "Marcus Rivera" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/avatars/avatar3.jpg", alt: "Priya Sharma" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/avatars/avatar4.jpg", alt: "James Okafor" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/image-set/modern/avatars/avatar5.jpg", alt: "Sofia Chen" },
-    ],
-  },
-};
-
-const MAX_REVIEW_AVATARS = 5;
-
-interface Hero3Reviews {
-  count: number;
-  rating: number;
-  avatars: { src: string; alt: string }[];
-}
-
-const Hero3 = (props: Props) => {
-  const { heading, description, buttons, reviews, image, className } = {
-    ...defaultProps,
-    ...props,
-  };
-
-  const reviewAvatars = (reviews?.avatars ?? []).slice(0, MAX_REVIEW_AVATARS);
-
+const Hero3 = ({ eyebrow, heading, description, cta, className }: Hero3Props) => {
+  const paragraphs = description ? (Array.isArray(description) ? description : [description]) : [];
+  const hasAside = paragraphs.length > 0 || Boolean(cta);
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container mx-auto">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center md:ml-auto lg:order-1 lg:items-start lg:text-left">
-            <h1 className="max-w-xl text-4xl font-bold tracking-tight text-pretty lg:max-w-3xl lg:text-6xl xl:text-7xl">
-              {heading}
-            </h1>
-            <p className="max-w-5xl text-balance text-muted-foreground lg:text-xl">
-              {description}
-            </p>
-            {reviews && (
-              <div className="flex w-fit flex-col items-center gap-4 sm:flex-row">
-                <span className="inline-flex items-center -space-x-3">
-                  {reviewAvatars.map((avatar, index) => (
-                    <Avatar
-                      key={index}
-                      className="size-10 bg-background ring-2 ring-background after:hidden"
-                    >
-                      <AvatarImage src={avatar.src} alt={avatar.alt} />
-                    </Avatar>
-                  ))}
-                </span>
-                <div>
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, index) => (
-                      <Star
-                        key={index}
-                        className="size-5 fill-none stroke-amber-500 dark:stroke-amber-400"
-                      />
-                    ))}
-                    <span className="ml-1 font-semibold text-foreground">
-                      {reviews.rating.toFixed(1)}
-                    </span>
-                  </div>
-                  <p className="text-left font-medium text-muted-foreground">
-                    from {reviews.count}+ reviews
-                  </p>
-                </div>
+    <section className={cn("scroll-mt-24 bg-brand-green px-6 pb-16 pt-36 text-white nav:pb-20", className)}>
+      <div
+        className={cn(
+          "mx-auto grid max-w-[1440px] gap-8",
+          hasAside && "nav:grid-cols-12 nav:items-end nav:gap-16"
+        )}
+      >
+        <div className={cn(hasAside && "nav:col-span-6")}>
+          <p className="text-eyebrow font-semibold uppercase tracking-wide">
+            <span aria-hidden="true" className="mr-2 font-bold">
+              /
+            </span>
+            {eyebrow}
+          </p>
+          <h1 className="mt-4 max-w-[760px] text-display-1">{heading}</h1>
+        </div>
+        {hasAside && (
+          <div className="border-t border-white/20 pt-6 nav:col-span-6 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">
+            <div className="prose-measure space-y-4">
+              {paragraphs.map((p, i) => (
+                <p key={i} className="text-body text-white/85">
+                  {p}
+                </p>
+              ))}
+            </div>
+            {cta && (
+              <div className={cn(paragraphs.length > 0 && "mt-8")}>
+                <Button href={cta.href} label={cta.label} variant="pill-light" />
               </div>
             )}
-            <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
-              {buttons?.primary && (
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  <a href={buttons.primary.url}>
-                    {buttons.primary.text}
-                    <ArrowRight className="size-4" />
-                  </a>
-                </Button>
-              )}
-              {buttons?.secondary && (
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="w-full bg-background sm:w-auto dark:bg-background"
-                >
-                  <a href={buttons.secondary.url}>{buttons.secondary.text}</a>
-                </Button>
-              )}
-            </div>
           </div>
-          <div className="flex w-full lg:order-2">
-            {image.srcDark ? (
-              <>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="aspect-video max-h-[600px] w-full rounded-md border border-border object-cover object-top lg:max-h-[800px] dark:hidden"
-                />
-                <img
-                  src={image.srcDark}
-                  alt={image.alt}
-                  className="hidden aspect-video max-h-[600px] w-full rounded-md border border-border object-cover object-top lg:max-h-[800px] dark:block"
-                />
-              </>
-            ) : (
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="aspect-video max-h-[600px] w-full rounded-md border border-border object-cover object-top lg:max-h-[800px]"
-              />
-            )}
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );

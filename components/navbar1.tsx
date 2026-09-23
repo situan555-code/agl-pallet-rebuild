@@ -1,7 +1,7 @@
 "use client";
 
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 
 import {
   Accordion,

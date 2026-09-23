@@ -1,6 +1,6 @@
 import content from "@/content/pages/the-pledge.json";
-import { PageHero } from "@/components/PageHero";
-import { ProseBlock } from "@/components/ProseBlock";
+import { Hero3 } from "@/components/hero3";
+import { Feature2 } from "@/components/feature2";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -13,17 +13,9 @@ export const metadata: Metadata = pageMeta(
 export default function ThePledge() {
   return (
     <main>
-      <PageHero
-        eyebrow={content.hero.eyebrow}
-        heading={content.hero.heading}
-        body={content.hero.body}
-      />
+      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
 
-      <section className="section-y px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <ProseBlock heading={content.position.heading} paragraphs={content.position.paragraphs} />
-        </div>
-      </section>
+      <Feature2 heading={content.position.heading} paragraphs={content.position.paragraphs} />
     </main>
   );
 }

@@ -1,162 +1,87 @@
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
-import { cn } from "cn";
-import {
-  Logo,
-  LogoImageDesktop,
-  LogoImageMobile,
-} from "@/components/shadcnblocks/logo";
+// Adapted from @shadcnblocks/footer2 (free). Layout kept: brand column
+// spanning two tracks of a six-track grid, link sections beside it, and a
+// hairline-separated bottom bar. Demo logo, sections, social icons, and
+// legal links removed — AGL data comes from content/site.json. No social
+// block ({{TBD-SOCIAL-URLS}} is unresolved; SPEC says omit entirely).
+import Link from "next/link";
+import Image from "next/image";
+import { Mail, Phone } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/Button";
 
 interface FooterLink {
-  name: string;
+  label: string;
   href: string;
 }
+
 interface FooterSection {
   title: string;
   links: FooterLink[];
 }
-interface FooterLogo {
-  url: string;
-  src: string;
-  alt: string;
-  title: string;
-}
 
-interface FooterBasicProps {
-  logo?: FooterLogo;
-  description?: string;
-  sections?: FooterSection[];
-  copyright?: string;
-  legalLinks?: FooterLink[];
+interface Footer2Props {
+  logo: { src: string; width: number; height: number; alt: string };
+  description: string;
+  address: string;
+  contact: { phone: string; email: string };
+  cta: FooterLink;
+  sections: FooterSection[];
+  copyright: string;
   className?: string;
 }
 
-interface Footer2Props extends FooterBasicProps {
-  logoClassName?: string;
-}
-type Props = Partial<Footer2Props>;
+const linkClass =
+  "rounded-sm text-link text-white/85 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
-const defaultProps: Footer2Props = {
-  logo: {
-    url: "https://www.shadcnblocks.com",
-    src: "/images/logo/shadcnblocks-logo-word.svg",
-    alt: "logo",
-    title: "Shadcnblocks.com",
-  },
-  description: "Finely crafted blocks built with Shadcn UI.",
-  sections: [
-    {
-      title: "Product",
-      links: [
-        { name: "Overview", href: "#" },
-        { name: "Pricing", href: "#" },
-        { name: "Marketplace", href: "#" },
-        { name: "Features", href: "#" },
-        { name: "Integrations", href: "#" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { name: "About", href: "#" },
-        { name: "Team", href: "#" },
-        { name: "Blog", href: "#" },
-        { name: "Careers", href: "#" },
-        { name: "Contact", href: "#" },
-      ],
-    },
-    {
-      title: "Support",
-      links: [
-        { name: "Help center", href: "#" },
-        { name: "Documentation", href: "#" },
-        { name: "Status", href: "#" },
-        { name: "Community", href: "#" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { name: "Guides", href: "#" },
-        { name: "Templates", href: "#" },
-        { name: "Sales", href: "#" },
-        { name: "Advertise", href: "#" },
-      ],
-    },
-  ],
-  copyright: "© 2024 Shadcnblocks.com. All rights reserved.",
-  legalLinks: [
-    { name: "Terms and Conditions", href: "#" },
-    { name: "Privacy Policy", href: "#" },
-  ],
-};
-
-const MAX_SECTIONS = 4;
-
-const Footer2 = (props: Props) => {
-  const { logo, description, sections, copyright, legalLinks, className } = {
-    ...defaultProps,
-    ...props,
-  };
-
-  const visibleSections = (sections ?? []).slice(0, MAX_SECTIONS);
-
+const Footer2 = ({ logo, description, address, contact, cta, sections, copyright, className }: Footer2Props) => {
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container mx-auto">
-        <footer>
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
-            <div className="col-span-2 mb-8 lg:mb-0">
-              <div className="flex items-center lg:justify-start">
-                <a href={logo?.url}>
-                  <img
-                    src={logo?.src}
-                    alt={logo?.alt}
-                    title={logo?.title}
-                    className="h-7 dark:invert"
-                  />
+    <footer className={cn("bg-brand-green px-6 pb-10 pt-20 text-white nav:pt-24", className)}>
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3 nav:grid-cols-6">
+          <div className="md:col-span-3 nav:col-span-2">
+            <Link href="/" prefetch={false} className="inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
+            </Link>
+            <p className="mt-6 max-w-sm text-body text-white/80">{description}</p>
+            <p className="mt-4 text-body text-white/80">{address}</p>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a href={`tel:${contact.phone.replace(/-/g, "")}`} className={cn(linkClass, "inline-flex items-center gap-2")}>
+                  <Phone aria-hidden="true" className="h-4 w-4" />
+                  {contact.phone}
                 </a>
-              </div>
-              <p className="mt-4 text-sm font-medium text-muted-foreground">
-                {description}
-              </p>
-            </div>
-            {visibleSections.map((section, sectionIdx) => (
-              <div key={sectionIdx}>
-                <h3 className="mb-4 text-sm font-semibold tracking-tight">
-                  {section.title}
-                </h3>
-                <ul className="space-y-4 text-sm text-muted-foreground">
-                  {section.links.map((link, linkIdx) => (
-                    <li
-                      key={linkIdx}
-                      className="font-medium hover:text-primary"
-                    >
-                      <a href={link.href}>{link.name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-col justify-between gap-4 border-t border-border pt-8 text-xs font-medium text-muted-foreground md:flex-row md:items-center">
-            <p>{copyright}</p>
-            <ul className="flex gap-4">
-              {legalLinks?.map((link, linkIdx) => (
-                <li key={linkIdx} className="underline hover:text-primary">
-                  <a href={link.href}>{link.name}</a>
-                </li>
-              ))}
+              </li>
+              <li>
+                <a href={`mailto:${contact.email}`} className={cn(linkClass, "inline-flex items-center gap-2")}>
+                  <Mail aria-hidden="true" className="h-4 w-4" />
+                  {contact.email}
+                </a>
+              </li>
             </ul>
+            <div className="mt-8">
+              <Button href={cta.href} label={cta.label} variant="pill-light" />
+            </div>
           </div>
-        </footer>
+          {sections.map((section, i) => (
+            <div key={section.title} className={cn(i === 0 && "nav:col-start-4")}>
+              <h2 className="mb-6 text-display-4 text-white">{section.title}</h2>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} prefetch={false} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="mt-16 border-t border-white/20 pt-8">
+          <p className="text-body text-white/70">{copyright}</p>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 };
 

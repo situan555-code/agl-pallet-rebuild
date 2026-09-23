@@ -1,7 +1,7 @@
 "use client";
 
 import { Download } from "lucide-react";
-import { cn } from "cn";
+import { cn } from "@/lib/utils";
 
 import {
   ContextMenu,

@@ -1,103 +1,22 @@
-import Link from "next/link";
-import Image from "next/image";
 import site from "@/content/site.json";
-import { Button } from "@/components/Button";
-import { PhoneIcon, EnvelopeIcon } from "@/components/icons";
+import { Footer2 } from "@/components/footer2";
 
 export function Footer() {
   const { footer } = site;
 
   return (
-    <footer className="bg-brand-green px-6 py-20 nav:py-24 text-white">
-      <div className="mx-auto grid max-w-[1440px] gap-16 nav:grid-cols-4">
-        <div>
-          <Image
-            src={site.logo.src}
-            width={site.logo.width}
-            height={site.logo.height}
-            alt={site.logo.alt}
-            className="mb-4"
-          />
-          <p className="text-body text-white/80">{footer.blurb}</p>
-          <p className="mt-4 text-body text-white/80">{footer.address}</p>
-          <ul className="mt-4 space-y-3">
-            <li>
-              <a
-                href={`tel:${footer.contact.phone.replace(/-/g, "")}`}
-                className="flex items-center gap-2 text-link transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-sm"
-              >
-                <PhoneIcon className="h-4 w-4" />
-                {footer.contact.phone}
-              </a>
-            </li>
-            <li>
-              <a
-                href={`mailto:${footer.contact.email}`}
-                className="flex items-center gap-2 text-link transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-sm"
-              >
-                <EnvelopeIcon className="h-4 w-4" />
-                {footer.contact.email}
-              </a>
-            </li>
-          </ul>
-          <div className="mt-6">
-            <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="pill-light" />
-          </div>
-        </div>
-
-        <div>
-          <h4 className="mb-6 text-display-4">{footer.productsHeading}</h4>
-          <ul className="space-y-3">
-            {footer.productsNav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  prefetch={false}
-                  className="text-link transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-sm"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="mb-6 text-display-4">{footer.companyHeading}</h4>
-          <ul className="space-y-3">
-            {footer.companyNav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  prefetch={false}
-                  className="text-link transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-sm"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="mb-6 text-display-4">{footer.partnersHeading}</h4>
-          <ul className="space-y-3">
-            {footer.partnersNav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  prefetch={false}
-                  className="text-link transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white rounded-sm"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <p className="mx-auto mt-16 max-w-[1440px] text-body text-white/70">{footer.copyright.text}</p>
-    </footer>
+    <Footer2
+      logo={site.logo}
+      description={footer.blurb}
+      address={footer.address}
+      contact={footer.contact}
+      cta={site.ctaNav}
+      sections={[
+        { title: footer.productsHeading, links: footer.productsNav },
+        { title: footer.companyHeading, links: footer.companyNav },
+        { title: footer.partnersHeading, links: footer.partnersNav },
+      ]}
+      copyright={footer.copyright.text}
+    />
   );
 }
