@@ -1,7 +1,7 @@
 import Image from "next/image";
 import home from "@/content/pages/home.json";
 import products from "@/content/pages/products.json";
-import { Hero1 } from "@/components/hero1";
+import { Hero115 } from "@/components/hero115";
 import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
@@ -33,12 +33,11 @@ export default function Home() {
 
   return (
     <main>
-      <Hero1
+      <Hero115
         eyebrow={home.hero.eyebrow}
         heading={home.hero.heading}
         description={home.hero.body}
         image={{ src: home.hero.image, alt: "" }}
-        secondaryImage={{ src: "/assets/home_about_photo.jpg", alt: "" }}
         buttons={
           home.hero.buttons as {
             label: string;

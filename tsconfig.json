@@ -35,6 +35,8 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
+    "components/navbar1.tsx",
+    "components/navbar5.tsx",
     "components/banner2.tsx",
     "components/gallery6.tsx",
     "components/hero7.tsx",
