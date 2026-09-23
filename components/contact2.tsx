@@ -19,11 +19,12 @@ export interface Contact2Method {
 interface Contact2Props {
   id?: string;
   eyebrow: string;
-  title: string;
+  title?: string;
   titleAs?: "h1" | "h2";
   description?: string;
   methods?: Contact2Method[];
   notes?: string[];
+  aside?: ReactNode;
   children: ReactNode;
   className?: string;
 }
@@ -38,6 +39,7 @@ const Contact2 = ({
   description,
   methods,
   notes,
+  aside,
   children,
   className,
 }: Contact2Props) => {
@@ -90,6 +92,7 @@ const Contact2 = ({
               ))}
             </div>
           )}
+          {aside}
         </div>
         <div className="min-w-0 nav:flex-1 [&>form]:mt-0">{children}</div>
       </div>

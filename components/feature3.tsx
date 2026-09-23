@@ -17,7 +17,7 @@ export interface Feature3Item {
   id?: string;
   eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
   href?: string;
   cta?: { label: string; href: string };
 }
@@ -32,6 +32,8 @@ interface Feature3Props {
   className?: string;
 }
 
+type ItemHeading = "h2" | "h3";
+
 // Literal class names so Tailwind's scanner sees them.
 // divided: md:grid-cols-2 md:grid-cols-3 md:grid-cols-4
 const columnClass: Record<2 | 3 | 4, string> = {
@@ -40,7 +42,7 @@ const columnClass: Record<2 | 3 | 4, string> = {
   4: "md:grid-cols-2 nav:grid-cols-4",
 };
 
-function DividedItem({ item, index, count }: { item: Feature3Item; index: number; count: number }) {
+function DividedItem({ item, index, count, Heading }: { item: Feature3Item; index: number; count: number; Heading: ItemHeading }) {
   return (
     <div
       className={cn(
@@ -49,17 +51,17 @@ function DividedItem({ item, index, count }: { item: Feature3Item; index: number
         index > 0 && "border-t border-brand-green/20 md:border-l md:border-t-0"
       )}
     >
-      <h3 className="text-display-kicker text-brand-green">{item.title}</h3>
+      <Heading className="text-display-kicker text-brand-green">{item.title}</Heading>
       <span aria-hidden="true" className="mt-4 block h-px w-8 bg-brand-green/40" />
       <p className="mt-4 max-w-sm text-body text-ink/70">{item.description}</p>
     </div>
   );
 }
 
-function RuledItem({ item }: { item: Feature3Item }) {
+function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <div id={item.id} className="scroll-mt-24 border-t border-brand-green/15 pb-4 pt-8">
-      <h3 className="text-display-row text-brand-green">{item.title}</h3>
+      <Heading className="text-display-row text-brand-green">{item.title}</Heading>
       <p className="prose-measure mt-4 text-body text-ink/70">{item.description}</p>
       {item.cta && (
         <div className="mt-6">
@@ -70,38 +72,50 @@ function RuledItem({ item }: { item: Feature3Item }) {
   );
 }
 
-function NumberedItem({ item }: { item: Feature3Item }) {
+function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <article className="h-full rounded-sm border-t-[3px] border-brand-green bg-white p-10">
       {item.eyebrow && (
         <p className="font-display text-display-numeral uppercase text-brand-green">{item.eyebrow}</p>
       )}
-      <h3 className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-6")}>{item.title}</h3>
+      <Heading className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-6")}>{item.title}</Heading>
       <p className="mt-3 text-body text-ink/70">{item.description}</p>
     </article>
   );
 }
 
-function CardItem({ item }: { item: Feature3Item }) {
+function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   const inner = (
     <>
       {item.eyebrow && (
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">{item.eyebrow}</p>
       )}
-      <h3 className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-3")}>{item.title}</h3>
-      <p className="mt-3 text-body text-ink">{item.description}</p>
+      <Heading className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-3")}>{item.title}</Heading>
+      {item.description && <p className="mt-3 text-body text-ink">{item.description}</p>}
       {item.cta && (
         <div className="mt-auto pt-6">
           <Button href={item.cta.href} label={item.cta.label} variant="ghost-dark" />
         </div>
       )}
       {item.href && (
-        <ArrowIcon className="mt-auto h-6 w-6 self-end text-brand-green transition-transform duration-200 motion-safe:group-hover:translate-x-2" />
+        <span className="mt-auto flex justify-end pt-6">
+          <ArrowIcon className="h-6 w-6 text-brand-green transition-transform duration-200 motion-safe:group-hover:translate-x-2" />
+        </span>
       )}
     </>
   );
   const cardClass =
     "group flex h-full flex-col gap-0 rounded-sm border border-brand-green/15 bg-white p-8 transition-colors hover:border-brand-green nav:p-10";
+  if (item.href && !item.href.startsWith("/")) {
+    return (
+      <a
+        href={item.href}
+        className={cn(cardClass, "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
+      >
+        {inner}
+      </a>
+    );
+  }
   return item.href ? (
     <Link
       href={item.href}
@@ -116,6 +130,9 @@ function CardItem({ item }: { item: Feature3Item }) {
 }
 
 const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, className }: Feature3Props) => {
+  // Item titles step down from the section heading; without one they sit
+  // directly under the page h1.
+  const Heading: ItemHeading = heading ? "h3" : "h2";
   const gap =
     variant === "divided" ? "" : variant === "ruled" ? "gap-x-16 gap-y-10" : "gap-8";
   return (
@@ -138,16 +155,20 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
         <div
           className={cn(
             "grid grid-cols-1",
-            variant === "divided" ? `md:grid-cols-${columns}` : columnClass[columns],
+            variant === "divided"
+              ? `md:grid-cols-${columns}`
+              : variant === "card" && columns === 3
+                ? "nav:grid-cols-3"
+                : columnClass[columns],
             gap
           )}
         >
           {features.map((item, index) => {
             if (variant === "divided")
-              return <DividedItem key={item.title} item={item} index={index} count={features.length} />;
-            if (variant === "ruled") return <RuledItem key={item.title} item={item} />;
-            if (variant === "numbered") return <NumberedItem key={item.title} item={item} />;
-            return <CardItem key={item.title} item={item} />;
+              return <DividedItem key={item.title} item={item} index={index} count={features.length} Heading={Heading} />;
+            if (variant === "ruled") return <RuledItem key={item.title} item={item} Heading={Heading} />;
+            if (variant === "numbered") return <NumberedItem key={item.title} item={item} Heading={Heading} />;
+            return <CardItem key={item.title} item={item} Heading={Heading} />;
           })}
         </div>
       </div>

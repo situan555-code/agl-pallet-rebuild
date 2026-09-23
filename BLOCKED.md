@@ -381,3 +381,34 @@ from `REVIEW_NOTES.md` + the operator brief instead. Prior BLOCKED entries
 
 No remaining Section I blocker from this agent. Pre-existing non-Section-I
 notes (banned-words FPs, color SVG legacy, TBD address/social) unchanged.
+
+## 2026-09-23 — Shadcnblocks rebuild: height gate vs split layouts (needs human decision)
+
+`npm run height` compares full-page height to the WordPress reference
+captures (±15%). Block compositions use two-column splits at ≥980px (and
+2-col grids from 768px), so pages are shorter than the old stacked layout.
+After legitimate rhythm tuning (section-y py-20/28, stacked mobile footer):
+
+| Page (pages.json) | 390 | 768 | 1440 |
+|---|---|---|---|
+| / | PASS 10.6% | PASS 4.0% | PASS 9.3% |
+| /about/ → /who-we-are/ | PASS 14.5% | FAIL 26.9% | FAIL 32.2% |
+| /industries-served/ → /industries/ | PASS 12.5% | FAIL 34.8% | FAIL 28.5% |
+| /logistics-process/ → /how-we-work/ | FAIL 21.7% | FAIL 26.7% | FAIL 28.3% |
+| /products/ | FAIL 25.6% | FAIL 40.8% | FAIL 16.5% |
+| /request-a-quote/ | PASS 13.0% | PASS 10.8% | PASS 2.9% |
+
+Not closed by padding sections to hit a number or by reverting to stacked
+single-column pages (either defeats the brief). Gate not edited. Options for
+the owner: (a) accept and re-baseline the height reference to the block
+design, (b) direct specific pages back to stacked layouts, (c) add real
+content/imagery (photography is owner-owned) that restores height.
+
+Also still failing, pre-existing and unchanged by this pass:
+- copy-verbatim `/who-we-are`: 2026-09-15 owner override (Brock-only team,
+  H2 changed) — SPEC still lists seven people.
+- banned-words: regex `!` matches `<!DOCTYPE>` / React `<!-- -->` in raw HTML
+  on every route; remaining hits are verbatim SPEC copy ("storage conditions",
+  "elevate", "AGL was built by people…", partners "→").
+- color: disallowed greens only in legacy `public/assets/*.svg` / `assets/*.svg`
+  icons; compiled CSS and rendered HTML clean.

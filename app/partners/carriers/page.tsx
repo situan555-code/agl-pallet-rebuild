@@ -1,8 +1,9 @@
 import { Suspense } from "react";
 import content from "@/content/pages/partners-carriers.json";
 import forms from "@/content/forms.json";
-import { PageHero } from "@/components/PageHero";
-import { ListBlock } from "@/components/ListBlock";
+import { Hero3 } from "@/components/hero3";
+import { Process1 } from "@/components/process1";
+import { Contact2 } from "@/components/contact2";
 import { Form, type FormDestination } from "@/components/Form";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -20,50 +21,44 @@ const destination: FormDestination = { kind: "unresolved", token: forms.carrier.
 export default function PartnersCarriers() {
   return (
     <main>
-      <PageHero
+      <Hero3
         eyebrow={content.hero.eyebrow}
         heading={content.hero.heading}
-        body={content.hero.body}
+        description={content.hero.body}
         cta={content.hero.cta}
       />
 
-      <section className="section-y px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <ListBlock heading={content.offer.heading} items={content.offer.items} />
-        </div>
-      </section>
+      <Process1
+        heading={content.offer.heading}
+        steps={content.offer.items.map((item) => ({ title: item.lead, description: item.body }))}
+      />
 
-      <section className="mx-auto max-w-[1440px] px-6">
-        <div className="prose-measure rounded-input border border-dashed border-brand-green/30 bg-surface-alt p-6">
-          <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
-            {content.openQuestions.heading}
-          </p>
-          <ul className="mt-3 space-y-1 text-body text-ink">
-            {content.openQuestions.items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="section-y bg-brand-green px-6 text-white">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="text-eyebrow font-semibold uppercase tracking-wide">
-            <span aria-hidden="true" className="mr-2 font-bold">/</span>
-            {content.hero.cta.label}
-          </p>
-          <Suspense fallback={null}>
-            <Form
-              id={forms.carrier.id}
-              fields={forms.carrier.fields as never}
-              destination={destination}
-              submitLabel={forms.carrier.submitLabel}
-              successMessage={forms.carrier.successMessage}
-              source="/partners/carriers/"
-            />
-          </Suspense>
-        </div>
-      </section>
+      <Contact2
+        eyebrow={content.hero.cta.label}
+        aside={
+          <div className="rounded-sm border border-dashed border-white/30 p-6">
+            <p className="text-eyebrow font-semibold uppercase tracking-wide text-white/70">
+              {content.openQuestions.heading}
+            </p>
+            <ul className="mt-3 space-y-1 text-body">
+              {content.openQuestions.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        }
+      >
+        <Suspense fallback={null}>
+          <Form
+            id={forms.carrier.id}
+            fields={forms.carrier.fields as never}
+            destination={destination}
+            submitLabel={forms.carrier.submitLabel}
+            successMessage={forms.carrier.successMessage}
+            source="/partners/carriers/"
+          />
+        </Suspense>
+      </Contact2>
     </main>
   );
 }

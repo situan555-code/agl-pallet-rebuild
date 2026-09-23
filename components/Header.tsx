@@ -64,7 +64,7 @@ export function Header() {
                 item.children?.length ? (
                   <NavigationMenuItem key={item.href}>
                     <NavigationMenuTrigger className={topLevelClass}>{item.label}</NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute left-0 top-full mt-2 w-auto min-w-[240px] rounded-sm bg-brand-green p-2 text-white shadow-lg ring-1 ring-white/10">
+                    <NavigationMenuContent className="absolute left-0 top-full mt-2 w-auto min-w-[240px] !rounded-sm !bg-brand-green p-2 !text-white shadow-lg !ring-1 !ring-white/10">
                       <ul className="flex flex-col">
                         {[{ label: item.label, href: item.href }, ...item.children].map((child, i) => (
                           <li key={child.href} className={cn(i === 1 && "mt-1 border-t border-white/15 pt-1")}>

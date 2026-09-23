@@ -1772,3 +1772,18 @@ on the LIST scaffolding string and visible `→ /` destination notation.
 Scaffolding scan: the LIST string was the only leaked label in
 `content/`. No other `LIST (` / `CARD N` / `BUTTON:` strings in JSON.
 
+
+## 2026-09-23 — Shadcnblocks rebuild: registry, theme, TW3 bridge, block adaptation
+
+- **Registry.** Free `@shadcnblocks` registry only (`https://www.shadcnblocks.com/r/{name}`, no API key). No Pro block was needed; no shelf (Origin/ReUI/Tailark) source used.
+- **Theme.** shadcn semantic CSS vars are RGB channels mapped to AGL: background/card/popover = paper, primary = #162619, foreground = ink, muted/accent = mint, muted-foreground = eyebrow-ink. Legacy tokens (bg-paper, text-ink, bg-brand-green, surface…) unchanged.
+- **TW3 bridge.** Tailwind stays 3.4; no `shadcn/tailwind.css` / `tw-animate-css` import. `components/ui/*` came in with TW4 syntax (`data-open:`, `h-(--var)`, `not-last:`, `**:`) which TW3 drops silently; compositions pass TW3 equivalents (`data-[state=open]:`, `tailwindcss-animate` slide classes) and `!` overrides where the ui class has higher specificity (NavigationMenu content background, accordion icons).
+- **`cn` wrapper.** Stock `cn` classified `text-link`/`text-nav-link`/`text-body` as colors and dropped them when merged with `text-white`. `createCn` from `cn/config` fixed that but shipped ~45 KB of runtime tables to the client and pushed LCP over 2.5s; `lib/utils.ts` instead wraps the precompiled `cn`, pulling AGL size tokens out before merging and appending the last one per variant. Every ui/block file imports `@/lib/utils` instead of `"cn"`.
+- **LCP budget.** Mobile Sheet (Radix Dialog + Accordion) is loaded on first tap (`MobileNav.tsx` → dynamic `MobileNavSheet.tsx`); SSR trigger button stays. Tailwind `content` excludes installed-but-unimported files (demo blocks, unused ui primitives, retired AGL sections) — CSS 65 KB → 48 KB. Remove the exclusion line when a file is wired in.
+- **Heading order.** feature3/process1 item titles render h2 when the block has no section heading (directly under page h1), h3 otherwise.
+- **Block adaptation, not wholesale drop-in.** Used blocks rewritten in place: skeleton kept, demo `defaultProps` deleted (props required → TS error rather than demo copy), CDN images removed, AGL tokens. Details per block in out/BLOCK-MAP.md.
+- **PROJECT.md card rule beats suggested mapping.** feature3 demo boxes every item; AGL boxes only clickable choices, so feature3 has divided/ruled/numbered/card treatments. Industries use ruled (not case-study1, which is hardcoded demo with fake stats). /contact keeps the owner's Section J1 RuleList rows.
+- **FAQ open by default.** faq3 renders every item expanded (type="multiple") so answers are readable/indexable without interaction.
+- **SPEC "Lead — body" order.** process1 prefixes the body with "— " when content lacks it, so innerText stays `Lead — body` (copy-verbatim LIST-ITEMs). No auto-numbering (would introduce numerals not in SPEC); plain green marker instead.
+- **Rhythm.** `.section-y` raised to `py-20 nav:py-28`; footer stacks single-column below md (as the previous footer did).
+- **Request a quote.** contact2 is the hero (h1 + form); phone/email/text as feature3 cards (clickable tel/mailto/sms), stacked below the nav breakpoint.

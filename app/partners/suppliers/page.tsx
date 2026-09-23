@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import content from "@/content/pages/partners-suppliers.json";
 import forms from "@/content/forms.json";
-import { PageHero } from "@/components/PageHero";
-import { ListBlock } from "@/components/ListBlock";
-import { ProseBlock } from "@/components/ProseBlock";
+import { Hero3 } from "@/components/hero3";
+import { Process1 } from "@/components/process1";
+import { Feature1 } from "@/components/feature1";
+import { Contact2 } from "@/components/contact2";
 import { Form, type FormDestination } from "@/components/Form";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -21,43 +22,32 @@ const destination: FormDestination = { kind: "unresolved", token: forms.supplier
 export default function PartnersSuppliers() {
   return (
     <main>
-      <PageHero
+      <Hero3
         eyebrow={content.hero.eyebrow}
         heading={content.hero.heading}
-        body={content.hero.body}
+        description={content.hero.body}
         cta={content.hero.cta}
       />
 
-      <section className="section-y px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <ListBlock heading={content.offer.heading} items={content.offer.items} />
-        </div>
-      </section>
+      <Process1
+        heading={content.offer.heading}
+        steps={content.offer.items.map((item) => ({ title: item.lead, description: item.body }))}
+      />
 
-      <section className="section-y section-hairline px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <ProseBlock heading={content.ask.heading} paragraphs={content.ask.paragraphs} />
-        </div>
-      </section>
+      <Feature1 hairline heading={content.ask.heading} paragraphs={content.ask.paragraphs} />
 
-      <section className="section-y bg-brand-green px-6 text-white">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="text-eyebrow font-semibold uppercase tracking-wide">
-            <span aria-hidden="true" className="mr-2 font-bold">/</span>
-            {content.hero.cta.label}
-          </p>
-          <Suspense fallback={null}>
-            <Form
-              id={forms.supplier.id}
-              fields={forms.supplier.fields as never}
-              destination={destination}
-              submitLabel={forms.supplier.submitLabel}
-              successMessage={forms.supplier.successMessage}
-              source="/partners/suppliers/"
-            />
-          </Suspense>
-        </div>
-      </section>
+      <Contact2 eyebrow={content.hero.cta.label}>
+        <Suspense fallback={null}>
+          <Form
+            id={forms.supplier.id}
+            fields={forms.supplier.fields as never}
+            destination={destination}
+            submitLabel={forms.supplier.submitLabel}
+            successMessage={forms.supplier.successMessage}
+            source="/partners/suppliers/"
+          />
+        </Suspense>
+      </Contact2>
     </main>
   );
 }

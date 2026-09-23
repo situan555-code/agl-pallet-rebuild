@@ -7,6 +7,15 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./content/**/*.{js,ts,jsx,tsx,mdx}",
+    // Installed-but-unimported files (demo Shadcnblocks, unused ui
+    // primitives, retired AGL sections). Scanning them only ships dead CSS
+    // on the render-blocking stylesheet. Remove a line when a file is wired
+    // into a route. See out/BLOCK-MAP.md.
+    "!./components/{navbar1,navbar5,faq1,team1,service1,case-study1,banner1}.tsx",
+    "!./components/kibo-ui/**",
+    "!./components/shadcnblocks/**",
+    "!./components/ui/{alert,avatar,badge,breadcrumb,card,context-menu,field,input,label,separator,textarea}.tsx",
+    "!./components/{Hero,PageHero,CTABand,TrioGrid,CapabilityTrio,ProseBlock,ListBlock,TimelineSection,ContactInfoStrip,TextWithSideImage,IndustryCardGrid,ProcessStepGrid,ProductBlock,EmbeddedVideo,FadeIn}.tsx",
   ],
   theme: {
     extend: {

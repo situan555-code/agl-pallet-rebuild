@@ -2419,3 +2419,26 @@ from repo BRIEF.md; appended in this PR). Header and footer not restyled.
   hairlines; proof cards 3px top rule / 40px pad / 40px numerals;
   timeline 4 left-rail steps. Body ground `rgb(247, 246, 242)`.
 
+
+## 2026-09-23 — Shadcnblocks rebuild Phases A2 / B / C (Claude Code)
+
+Chrome + all 13 routes recomposed from adapted free @shadcnblocks blocks
+(hero1, hero3, feature1–3, process1, cta4, faq3, about3, contact2, footer2;
+navbar1 pattern in Header/MobileNav). Route → block map: out/BLOCK-MAP.md
+(repo /out is gitignored; mirrored to the delegation job's out/).
+Forms unchanged (components/Form.tsx) inside contact2 on /contact,
+/request-a-quote, /partners/suppliers, /partners/carriers.
+
+Gate status (local `next start`, 2026-09-23):
+- build PASS · tokens PASS · numbers PASS · build-note-leak PASS · routes PASS
+- audit PASS (mobile LH perf 98–99, LCP 1.96–2.41s, CLS 0, axe 0 violations, links OK; sms: link WARN only)
+- copy-verbatim FAIL /who-we-are only — pre-existing owner Brock-only override
+- banned-words FAIL — pre-existing (`!` regex hits `<!DOCTYPE>`; SPEC copy)
+- color FAIL — only legacy SVG assets; compiled CSS/rendered HTML clean
+- height FAIL on who-we-are / industries / how-we-work / products at 768/1440
+  (and 390 for how-we-work, products) — see BLOCKED.md 2026-09-23
+`npm run verify` therefore does not exit 0. Not pushed.
+
+Ops note: a stale `next start` from 2026-09-16 was holding :3000 and served
+new HTML with a dead CSS manifest; killed it. Gates reuse whatever answers on
+:3000 — check `ps` for old next-server before trusting screenshots.

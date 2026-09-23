@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import pageContent from "@/content/pages/request-a-quote.json";
 import forms from "@/content/forms.json";
 import { Form, type FormDestination } from "@/components/Form";
-import { ContactInfoStrip } from "@/components/ContactInfoStrip";
+import { Contact2 } from "@/components/contact2";
+import { Feature3 } from "@/components/feature3";
 
 export const metadata: Metadata = {
   title: "Request a Quote — AGL Pallet",
@@ -41,30 +42,34 @@ export default function RequestAQuote() {
 
   return (
     <main>
-      <section className="scroll-mt-24 bg-brand-green px-6 pb-16 pt-36 text-white">
-        <div className="mx-auto max-w-[1440px]">
-          <p className="text-eyebrow font-semibold uppercase tracking-wide">
-            <span aria-hidden="true" className="mr-2 font-bold">
-              /
-            </span>
-            {pageContent.hero.eyebrow}
-          </p>
-          <h1 className="mt-4 text-display-1">{pageContent.hero.heading}</h1>
-          <p className="mt-6 max-w-2xl text-body">{pageContent.hero.body}</p>
-          <Suspense fallback={null}>
-            <Form
-              id={forms.quote.id}
-              fields={forms.quote.fields as never}
-              destination={destination}
-              submitLabel={forms.quote.submitLabel}
-              successMessage={forms.quote.successMessage}
-              source="/request-a-quote/"
-            />
-          </Suspense>
-        </div>
-      </section>
+      <Contact2
+        className="pt-36 nav:pt-40"
+        eyebrow={pageContent.hero.eyebrow}
+        title={pageContent.hero.heading}
+        titleAs="h1"
+        description={pageContent.hero.body}
+      >
+        <Suspense fallback={null}>
+          <Form
+            id={forms.quote.id}
+            fields={forms.quote.fields as never}
+            destination={destination}
+            submitLabel={forms.quote.submitLabel}
+            successMessage={forms.quote.successMessage}
+            source="/request-a-quote/"
+          />
+        </Suspense>
+      </Contact2>
 
-      <ContactInfoStrip items={pageContent.contactInfo} />
+      <Feature3
+        variant="card"
+        columns={3}
+        features={pageContent.contactInfo.map((item) => ({
+          eyebrow: item.label,
+          title: item.value,
+          href: item.href,
+        }))}
+      />
     </main>
   );
 }

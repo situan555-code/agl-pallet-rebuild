@@ -29,6 +29,7 @@ function withLeadDash(text: string) {
 
 const Process1 = ({ id, eyebrow, heading, description, steps, hairline, className }: Process1Props) => {
   const hasIntro = Boolean(heading || description);
+  const ItemHeading = heading ? "h3" : "h2";
   return (
     <section id={id} className={cn("section-y scroll-mt-24 px-6", hairline && "section-hairline", className)}>
       <div className={cn("mx-auto grid max-w-[1440px] grid-cols-1 gap-10", hasIntro && "nav:grid-cols-12 nav:gap-16")}>
@@ -51,7 +52,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, hairline, classNam
                 {step.number ?? <span className="block h-2 w-2 bg-brand-green" />}
               </div>
               <div className="min-w-0">
-                <h3 className="text-step-lg text-brand-green">{step.title}</h3>
+                <ItemHeading className="text-step-lg text-brand-green">{step.title}</ItemHeading>
                 <p className="prose-measure mt-3 text-body text-ink/70">{withLeadDash(step.description)}</p>
               </div>
             </li>

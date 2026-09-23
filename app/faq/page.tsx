@@ -1,7 +1,7 @@
 import content from "@/content/pages/faq.json";
-import { PageHero } from "@/components/PageHero";
-import { ListBlock } from "@/components/ListBlock";
-import { CTABand } from "@/components/CTABand";
+import { Hero3 } from "@/components/hero3";
+import { Faq3 } from "@/components/faq3";
+import { Cta4 } from "@/components/cta4";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -14,23 +14,14 @@ export const metadata: Metadata = pageMeta(
 export default function Faq() {
   return (
     <main>
-      <PageHero
-        eyebrow={content.hero.eyebrow}
-        heading={content.hero.heading}
-        body={content.hero.body}
+      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
+
+      <Faq3
+        heading="Buyer questions"
+        items={content.items.map((item, i) => ({ id: `faq-${i + 1}`, question: item.lead, answer: item.body }))}
       />
 
-      <section className="scroll-mt-24 section-y px-6">
-        <div className="mx-auto max-w-[1440px]">
-          <ListBlock heading="Buyer questions" items={content.items} />
-        </div>
-      </section>
-
-      <CTABand
-        heading={content.ctaBand.heading}
-        body={content.ctaBand.body}
-        cta={content.ctaBand.cta}
-      />
+      <Cta4 heading={content.ctaBand.heading} description={content.ctaBand.body} button={content.ctaBand.cta} />
     </main>
   );
 }
