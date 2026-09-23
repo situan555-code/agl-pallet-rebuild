@@ -37,6 +37,7 @@
     "playwright": "^1.47.0",
     "pngjs": "^7.0.0",
     "postcss": "^8.4.38",
+    "shadcn": "^4.21.0",
     "sharp": "^0.33.4",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.5.0"
