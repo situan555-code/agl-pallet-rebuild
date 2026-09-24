@@ -57,7 +57,9 @@ const BANNED_PATTERNS = [
   { name: 'legacy-copy-produced-quality-controls', re: /every pallet is produced under strict quality controls/i },
   { name: 'legacy-copy-designs-pallets', re: /AGL designs pallets precisely tailored/i },
   { name: 'legacy-copy-develop-specifications', re: /we develop pallet specifications/i },
-  { name: 'exclamation-point', re: /!/ },
+  // Editorial exclamation points. A following letter is Tailwind's
+  // important modifier (`!hidden`), not a bang in copy.
+  { name: 'exclamation-point', re: /!(?![a-zA-Z])/ },
   { name: 'emoji', re: /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}]/u },
 ];
 
@@ -67,8 +69,19 @@ const PRODUCER_VERB_RE =
 
 function stripNoise(html) {
   return html
+    // <!DOCTYPE html> is markup, not an exclamation point in copy. Leaving it
+    // in made every route fail the exclamation-point rule.
+    .replace(/<!DOCTYPE[^>]*>/gi, '')
     .replace(/<script(?![^>]*application\/ld\+json)[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    // React emits <!-- -->, <!--$-->, and <!--/$--> between nodes. Those
+    // are markup, not an exclamation point in copy.
+    .replace(/<!--[\s\S]*?-->/g, '')
+    // React escapes apostrophes to &#x27; in HTML. The negation check looks
+    // for "don't" / "doesn't" as written; decode those entities (and the
+    // curly apostrophe) so a real negation is still a negation.
+    .replace(/&#x27;|&#39;|&apos;/gi, "'")
+    .replace(/\u2019/g, "'");
 }
 
 function scanText(text, lineOffsetLines) {

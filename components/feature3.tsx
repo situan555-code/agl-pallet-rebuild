@@ -53,7 +53,7 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
     >
       <Heading className="text-display-kicker text-brand-green">{item.title}</Heading>
       <span aria-hidden="true" className="mt-4 block h-px w-8 bg-brand-green/40" />
-      <p className="mt-4 max-w-sm text-body text-ink/70">{item.description}</p>
+      <p className="mt-4 max-w-sm text-body text-ink">{item.description}</p>
     </div>
   );
 }
@@ -79,7 +79,7 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
           item.title
         )}
       </Heading>
-      {item.description && <p className="prose-measure mt-4 text-body text-ink/70">{item.description}</p>}
+      {item.description && <p className="prose-measure mt-4 text-body text-ink">{item.description}</p>}
       {item.cta && (
         <div className="mt-6">
           <Button href={item.cta.href} label={item.cta.label} variant="ghost-dark" />
@@ -96,7 +96,7 @@ function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHead
         <p className="font-display text-display-numeral uppercase text-brand-green">{item.eyebrow}</p>
       )}
       <Heading className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-6")}>{item.title}</Heading>
-      <p className="mt-3 text-body text-ink/70">{item.description}</p>
+      <p className="mt-3 text-body text-ink">{item.description}</p>
     </article>
   );
 }

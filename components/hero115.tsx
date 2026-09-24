@@ -3,9 +3,8 @@
 // removed. Driven by content/pages/home.json (SPEC_V1 verbatim). Palette 03.
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Boxes } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button as UiButton } from "@/components/ui/button";
+import { ArrowRightIcon, BoxesIcon } from "@/components/inline-icons";
 import { getBlurDataURL } from "@/lib/blur";
 
 type Hero115Button = {
@@ -56,10 +55,10 @@ const Hero115 = ({
             </div>
 
             <span className="mx-auto flex size-16 items-center justify-center rounded-full border border-clay bg-cream text-brand-green md:size-20">
-              <Boxes className="size-6 md:size-7" aria-hidden="true" />
+              <BoxesIcon className="size-6 md:size-7" />
             </span>
 
-            <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ink/70">
+            <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ink">
               <span aria-hidden="true" className="mr-2 font-bold text-clay">
                 /
               </span>
@@ -76,16 +75,14 @@ const Hero115 = ({
 
             <div className="flex flex-col items-center gap-3 pb-10 pt-3">
               {primary && (
-                <UiButton
-                  size="lg"
-                  asChild
-                  className="h-11 w-full rounded-full bg-brand-green px-6 text-button font-bold text-cream hover:bg-ink sm:w-auto"
+                <Link
+                  href={primary.href}
+                  prefetch={false}
+                  className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-brand-green px-6 text-button font-bold text-cream hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green sm:w-auto"
                 >
-                  <Link href={primary.href} prefetch={false}>
-                    {primary.label}
-                    <ArrowRight className="size-4" aria-hidden="true" />
-                  </Link>
-                </UiButton>
+                  {primary.label}
+                  <ArrowRightIcon className="size-4" />
+                </Link>
               )}
               {rest.length > 0 && (
                 <div className="flex flex-col items-center gap-3 pt-1 min-[560px]:flex-row min-[560px]:flex-wrap min-[560px]:justify-center">
@@ -110,8 +107,8 @@ const Hero115 = ({
               alt={image.alt}
               fill
               priority
-              quality={78}
-              sizes="(min-width: 1024px) 1024px, 100vw"
+              quality={60}
+              sizes="(min-width: 1024px) 960px, calc(100vw - 3rem)"
               className="object-cover object-center"
               placeholder={blurDataURL ? "blur" : undefined}
               blurDataURL={blurDataURL}

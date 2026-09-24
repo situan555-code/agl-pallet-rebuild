@@ -75,12 +75,15 @@ Also confirmed by the same script, and not listed as sitemap URLs: `/llms.txt` a
 | `npm run build-note-leak` | PASS. |
 | `npm run numbers` | PASS. |
 | `npm run routes` | PASS. |
+| `npm run color` | PASS (2026-09-24 Wave A). Greens found: 100, all approved `#162619`, disallowed: 0. |
+| `npm run banned-words` | PASS (2026-09-24 Wave A). All 13 SPEC routes, 0 hits. |
+| `npm run audit` | PASS (2026-09-24 Wave A). See the table under the old failing section, now recorded as the passing run. Thresholds unchanged. |
 
 ### Failing checks
 
 #### `scripts/copy-verbatim.js` — `/partners/carriers`
 
-SPEC list item is not in the rendered page: `Paid on agreed terms. — {{TBD-CARRIER-TERMS}}`. Section 2 stopped rendering `{{TBD-*}}` tokens so the placeholder build guard can pass. The token was not restored.
+Re-run 2026-09-24 after Wave A copy edits. Every SPEC route except `/partners/carriers` passes. The remaining miss is the SPEC list item `Paid on agreed terms. — {{TBD-CARRIER-TERMS}}`. Section 2 stopped rendering `{{TBD-*}}` tokens so the placeholder build guard can pass. The token was not restored. Wave B.
 
 #### `scripts/tokens.js` — visible `{{TBD-*}}` tokens the gate still expects
 
@@ -94,52 +97,17 @@ The gate was not modified. These tokens are in content and are intentionally not
 | `/partners/carriers` | `TBD-CARRIER-LANES`, `TBD-CARRIER-EQUIPMENT`, `TBD-CARRIER-TERMS`, `TBD-CARRIER-INSURANCE`, `TBD-EMAIL-CARRIER` |
 | `/partners/suppliers` | `TBD-EMAIL-SUPPLIER` |
 
-#### `scripts/banned-words.js` — rendered SPEC routes
+#### `scripts/banned-words.js` — cleared in Wave A
 
-Hits are on the rendered HTML (the scanner reports line 1). The exclamation-point hit on every route below is the `!` in `<!DOCTYPE`. Other hits are existing SPEC copy. Resource-library routes are outside this gate's manifest and were not the failures.
+Passing as of 2026-09-24. Real SPEC-route hits were rephrased in brokerage voice and written through to `SPEC_V1.md` so copy-verbatim stays aligned. The scanner now strips `<!DOCTYPE>`, React `<!-- -->` markers, and decodes `&#x27;` so negation (`don't` / `doesn't`) still works. The exclamation rule ignores a `!` that is a Tailwind important modifier (`!hidden`). Thresholds were not changed. The previous hit table is historical and is not the current result.
 
-| Route | Rule | Matched text |
-| --- | --- | --- |
-| `/` | banned-phrase:elevate | elevate |
-| `/` | exclamation-point | ! |
-| `/` | producer-voice-verb | we own is the coordination: we qualify the shops that build |
-| `/` | producer-voice-verb | AGL was built |
-| `/` | producer-voice-verb | We qualify the shops that build |
-| `/` | producer-voice-verb | AGL doesn't own manufacturing |
-| `/` | producer-voice-verb | we are … Built |
-| `/who-we-are` | leverage-as-verb | leverage |
-| `/who-we-are` | exclamation-point | ! |
-| `/who-we-are` | producer-voice-verb | AGL Pallet was built (four times) |
-| `/who-we-are` | producer-voice-verb | AGL is built |
-| `/who-we-are` | producer-voice-verb | we're built |
-| `/who-we-are` | producer-voice-verb | We don't think that makes |
-| `/partners` | exclamation-point | ! |
-| `/partners` | emoji | → |
-| `/partners` | producer-voice-verb | We don't build |
-| `/partners` | producer-voice-verb | AGL only works if the shops that build |
-| `/partners/suppliers` | exclamation-point | ! |
-| `/partners/carriers` | exclamation-point | ! |
-| `/the-pledge` | exclamation-point | ! |
-| `/custom-engineered` | exclamation-point | ! |
-| `/custom-engineered` | producer-voice-verb | We spec to the load, then source the shop set up to build (three times) |
-| `/custom-engineered` | producer-voice-verb | we're built |
-| `/products` | banned-phrase:elevate | elevate |
-| `/products` | exclamation-point | ! |
-| `/industries` | exclamation-point | ! |
-| `/industries` | producer-voice-verb | meta description "Building" immediately after "AGL Pallet" (title, og:description, twitter:description) |
-| `/how-we-work` | warehousing-storage-inventory | storage |
-| `/how-we-work` | exclamation-point | ! |
-| `/contact` | exclamation-point | ! |
-| `/request-a-quote` | exclamation-point | ! |
-| `/faq` | exclamation-point | ! |
+#### `scripts/color.js` — cleared in Wave A
 
-#### `scripts/color.js` — legacy SVG fill `#1c391f`
+Passing as of 2026-09-24. The listed legacy SVGs under both `assets/` and `public/assets/` use fill `#162619`. The run reported 100 greens, 100 approved, 0 disallowed.
 
-Approved green remains `#162619`. 100 disallowed hits, all `#1c391f`, in the WordPress-captured icons. The same files are counted under `assets/` and `public/assets/`. Compiled CSS was not the source of these hits. Icons were not recolored.
+#### `scripts/height.js` — page height vs Phase 1 reference, limit 15% (Wave B, not re-run)
 
-`about-building-materials-icon.svg`, `about-chemicals-icon.svg`, `about-pharmacy-icon.svg`, `about-plastics-icon.svg`, `abouts-fb-icon.svg`, `circle_arrow.svg`, `circle_arrow_dark.svg`, `email_icon.svg`, `email_icon_hover.svg`, `footer_background.svg`, `how_it_works_01_icon.svg`, `how_it_works_02_icon.svg`, `how_it_works_03_icon.svg`, `how_it_works_04_icon.svg`, `industries-building-icon.svg`, `industries-chemicals-icon.svg`, `industries-fb-icon.svg`, `industries-pharmacy-icon.svg`, `industries-plastics-icon.svg`, `message_icon.svg`, `message_icon_hover.svg`, `phone_icon.svg`, `phone_icon_hover.svg`, `timeline_01_icon.svg`, `timeline_02_icon.svg`, `timeline_03_icon.svg`, `timeline_04_icon.svg`.
-
-#### `scripts/height.js` — page height vs Phase 1 reference, limit 15%
+Wave A did not refresh `reference/` or `pages.json` and did not re-run `scripts/height.js`. The table below is the last measured run, from before this wave. Header, font-display, and hero changes in Wave A can move these deltas. Treat the table as the open Wave B failure, not as a fresh measurement.
 
 `pages.json` still lists the WordPress paths. Screenshots were taken of the current build (redirects followed) and compared with `reference/`. These deltas are the redesign against the old capture. Threshold was not changed.
 
@@ -160,15 +128,15 @@ Approved green remains `#162619`. 100 disallowed hits, all `#1c391f`, in the Wor
 
 Within 15%: `/about/` at 390, 768, and 1440; `/industries-served/` at 390; `/request-a-quote/` at 768 and 1440.
 
-#### `scripts/audit.js` — Lighthouse mobile and axe
+#### `scripts/audit.js` — passing run, 2026-09-24 Wave A
 
 Thresholds unchanged: performance ≥ 95, LCP ≤ 2500 ms, CLS ≤ 0.05, zero serious or critical axe violations. CLS is 0 on every audited page. Link check did not fail the gate. `sms:2342860402` on `/request-a-quote/` is a warning only (`hardFail: false`).
 
 | Path | Performance | LCP | Axe |
 | --- | --- | --- | --- |
-| `/` | 90 | 3623 ms | pass |
-| `/about/` | 94 | 3019 ms | serious `color-contrast`, 11 nodes |
-| `/industries-served/` | 97 | 2644 ms | serious `color-contrast`, 8 nodes |
-| `/logistics-process/` | 97 | 2649 ms | serious `color-contrast`, 4 nodes |
-| `/products/` | 95 | 2864 ms | pass |
-| `/request-a-quote/` | 99 | 2187 ms | pass |
+| `/` | 99 | 2259 ms | pass |
+| `/about/` | 98 | 2326 ms | pass |
+| `/industries-served/` | 98 | 2331 ms | pass |
+| `/logistics-process/` | 98 | 2330 ms | pass |
+| `/products/` | 100 | 1812 ms | pass |
+| `/request-a-quote/` | 98 | 2325 ms | pass |

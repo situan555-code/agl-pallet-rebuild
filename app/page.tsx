@@ -5,7 +5,7 @@ import { Hero115 } from "@/components/hero115";
 import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
-import { Gallery4 } from "@/components/gallery4";
+import { Gallery4Loader } from "@/components/Gallery4Loader";
 import { ImageBand } from "@/components/ImageBand";
 import { Cta4 } from "@/components/cta4";
 import { getBlurDataURL } from "@/lib/blur";
@@ -85,12 +85,12 @@ export default function Home() {
       <ImageBand
         eyebrow="How we work"
         heading="Coordination is the product."
-        body="We qualify the shops that build well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them."
+        body="We qualify the shops that supply them well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them."
         image={{ src: "/assets/agl_home_video_poster.jpg", alt: "" }}
         cta={{ label: "See how we work", href: "/how-we-work/" }}
       />
 
-      <Gallery4
+      <Gallery4Loader
         tone="paper"
         eyebrow="Product lines"
         title="Specced to the load. Sourced through mills that can build it."
