@@ -19,6 +19,13 @@
     "heading": "Common questions",
     "items": [
       {
+        "id": "how-many-boxes-fit-on-a-pallet",
+        "question": "How many boxes fit on a pallet?",
+        "answer": [
+          "Cartons per layer times the layers that fit under the height limit, for a column-stacked load with no overhang. The example preset is on [How many boxes fit on a pallet?](/resources/questions/how-many-boxes-fit-on-a-pallet/), and the [boxes per pallet calculator](/resources/pallet-calculators/boxes-per-pallet/) takes your own carton."
+        ]
+      },
+      {
         "id": "are-calculator-results-exact",
         "question": "Are the calculator results exact?",
         "answer": [

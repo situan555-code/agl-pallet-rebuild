@@ -10,6 +10,8 @@
   },
   "pillarsHeading": "Guides",
   "pillarsEyebrow": "Reference",
+  "questionsHeading": "Questions",
+  "questionsEyebrow": "Short answers",
   "pillars": [
     {
       "slug": "gma-pallets-and-grades",

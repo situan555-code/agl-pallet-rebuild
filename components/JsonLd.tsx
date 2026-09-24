@@ -39,25 +39,22 @@ function orgRef() {
   return { "@type": "Organization", name: organization.legalName, url: getSiteUrl() };
 }
 
-export function TechArticleJsonLd({
-  headline,
-  description,
-  path,
-  published,
-  updated,
-}: {
-  headline: string;
-  description: string;
-  path: string;
-  published: string;
-  updated: string;
-}) {
+function articleLikeJsonLd(
+  type: "Article" | "TechArticle",
+  { headline, description, path, published, updated }: {
+    headline: string;
+    description: string;
+    path: string;
+    published: string;
+    updated: string;
+  }
+) {
   const url = getSiteUrl();
   return (
     <JsonLdScript
       data={{
         "@context": "https://schema.org",
-        "@type": "TechArticle",
+        "@type": type,
         headline,
         description,
         url: `${url}${path}`,
@@ -70,6 +67,27 @@ export function TechArticleJsonLd({
       }}
     />
   );
+}
+
+export function TechArticleJsonLd(props: {
+  headline: string;
+  description: string;
+  path: string;
+  published: string;
+  updated: string;
+}) {
+  return articleLikeJsonLd("TechArticle", props);
+}
+
+/** Question pages. Author and reviewedBy stay omitted until authors.json has real names. */
+export function ArticleJsonLd(props: {
+  headline: string;
+  description: string;
+  path: string;
+  published: string;
+  updated: string;
+}) {
+  return articleLikeJsonLd("Article", props);
 }
 
 // Only mount alongside Q&A that is visible on the same page.

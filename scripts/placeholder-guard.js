@@ -36,11 +36,19 @@ function collectRoutes() {
       routes.add("/");
       return;
     }
-    if (rel.includes("[slug]")) {
+    if (rel === "resources/[slug]/page.tsx") {
       for (const pillar of hub.pillars) {
         if (!DEDICATED.has(pillar.slug)) routes.add(pillar.href);
       }
       return;
+    }
+    if (rel === "resources/questions/[slug]/page.tsx") {
+      const questions = JSON.parse(fs.readFileSync(path.join(ROOT, "content/resources/questions.json"), "utf8"));
+      for (const item of questions.items) routes.add(`/resources/questions/${item.slug}/`);
+      return;
+    }
+    if (rel.includes("[slug]")) {
+      throw new Error(`placeholder-guard: unhandled dynamic route ${rel}`);
     }
     const route = `/${rel.replace(/\/page\.tsx$/, "")}/`;
     routes.add(route);
