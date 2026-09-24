@@ -9,6 +9,9 @@ const { equipment, truckload: config, disclaimer } = calculators;
 const EQUIPMENT_IDS = equipment.map((e) => e.id);
 
 export const TRUCKLOAD_TOC = { id: "calculator", label: "Truckload calculator" };
+/** Visible lead under the calculator heading. WebApplication description uses this same sentence. */
+export const TRUCKLOAD_APP_DESCRIPTION =
+  "Pick the equipment and enter your pallet and load. The page recalculates on submit and shows the counts below.";
 export const CALCULATED_TOC = { id: "calculated-counts", label: "Calculated counts" };
 
 const EUR = { l: 47.24, w: 31.5 };
@@ -96,9 +99,7 @@ export function TruckloadCalculator({ params, path }: { params: Params; path: st
 
   return (
     <ArticleSection section={{ id: TRUCKLOAD_TOC.id, heading: "Pallets per truckload calculator" }}>
-      <p className="prose-measure mt-6 text-body text-ink/85">
-        Pick the equipment and enter your pallet and load. The page recalculates on submit and shows the counts below.
-      </p>
+      <p className="prose-measure mt-6 text-body text-ink/85">{TRUCKLOAD_APP_DESCRIPTION}</p>
       <CalcForm action={`${path}#truckload-results`} resetHref={`${path}#calculator`} label="Pallets per truckload calculator">
         <FieldGroup legend="Equipment">
           <SelectField name="eq" label="Trailer or container" value={eqId} options={equipment} wide />

@@ -42,7 +42,7 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
           { name: copy.heading, path: STAMP_DECODER_PATH },
         ]}
       />
-      <WebApplicationJsonLd name={copy.schemaName} description={copy.schemaDescription} path={STAMP_DECODER_PATH} />
+      <WebApplicationJsonLd name={copy.schemaName} description={copy.metaDescription} path={STAMP_DECODER_PATH} />
       <ArticleHeader eyebrow={copy.eyebrow} title={copy.heading} updated={copy.updated} libraryLabel="Resources" crumbs={[{ name: guideTitle, href: guideHref }]} />
 
       <div className="px-6 pb-20 pt-14 nav:pb-28 nav:pt-16">

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { WebApplicationJsonLd } from "@/components/JsonLd";
 import { ResourceArticle } from "@/components/resources/ResourceArticle";
-import { CALCULATED_TOC, CalculatedCounts, TRUCKLOAD_TOC, TruckloadCalculator } from "@/components/resources/TruckloadCalculator";
+import {
+  CALCULATED_TOC,
+  CalculatedCounts,
+  TRUCKLOAD_APP_DESCRIPTION,
+  TRUCKLOAD_TOC,
+  TruckloadCalculator,
+} from "@/components/resources/TruckloadCalculator";
 import { getGuide } from "@/lib/resource-pillars";
 import { pageMeta } from "@/lib/seo";
 
@@ -27,7 +33,7 @@ export default function PalletsPerTruckloadPage({ searchParams }: { searchParams
       schema={
         <WebApplicationJsonLd
           name="Pallets per truckload calculator"
-          description="Estimates loaded and empty pallet counts for dry vans and containers from pallet footprint, height, weight, and payload."
+          description={TRUCKLOAD_APP_DESCRIPTION}
           path={PATH}
         />
       }
