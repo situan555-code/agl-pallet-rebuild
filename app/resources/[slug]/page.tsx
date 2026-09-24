@@ -3,30 +3,35 @@ import { Hero3 } from "@/components/hero3";
 import { Feature1 } from "@/components/feature1";
 import { Cta4 } from "@/components/cta4";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { ResourceArticle } from "@/components/resources/ResourceArticle";
+import { DEDICATED_ROUTES, getGuide } from "@/lib/resource-pillars";
+import { getHubPillar } from "@/lib/resources";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// Wave 0 soft stubs: one template for all twelve pillars so the sitemap
-// never points at a 404. Each wave replaces its stubs with full guides.
+// One SSG template for every hub pillar without its own route folder. A
+// pillar with a guide JSON renders the full article; any other pillar
+// falls back to the Wave 0 soft stub so the sitemap never points at a 404.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return hub.pillars.map((p) => ({ slug: p.slug }));
-}
-
-function getPillar(slug: string) {
-  return hub.pillars.find((p) => p.slug === slug);
+  return hub.pillars.filter((p) => !DEDICATED_ROUTES.includes(p.slug)).map((p) => ({ slug: p.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const pillar = getPillar(params.slug);
+  const guide = getGuide(params.slug);
+  if (guide) return pageMeta(guide.metaTitle, guide.metaDescription, `/resources/${guide.slug}/`);
+  const pillar = getHubPillar(params.slug);
   if (!pillar) return {};
   return pageMeta(`${pillar.title} — AGL Pallet`, pillar.directAnswer, pillar.href);
 }
 
-export default function ResourceStub({ params }: { params: { slug: string } }) {
-  const pillar = getPillar(params.slug);
+export default function ResourcePage({ params }: { params: { slug: string } }) {
+  const guide = getGuide(params.slug);
+  if (guide) return <ResourceArticle pillar={guide} />;
+
+  const pillar = getHubPillar(params.slug);
   if (!pillar) notFound();
   const { stub, cta } = hub;
   return (

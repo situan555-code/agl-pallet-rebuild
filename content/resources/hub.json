@@ -15,7 +15,7 @@
       "slug": "gma-pallets-and-grades",
       "title": "GMA Pallets and Grades",
       "wave": 1,
-      "status": "Coming in Wave 1",
+      "status": "Guide",
       "href": "/resources/gma-pallets-and-grades/",
       "directAnswer": "A GMA pallet is the stringer-style footprint long used across grocery and consumer-goods supply chains in North America. Pallet grades describe lumber quality and condition, but grade names are not standardized across regions or suppliers. Confirming the grade definition in writing before an order ships avoids surprises at the receiving dock."
     },
@@ -23,7 +23,7 @@
       "slug": "heat-treated-pallets-ispm-15",
       "title": "Heat-Treated Pallets and ISPM-15",
       "wave": 1,
-      "status": "Coming in Wave 1",
+      "status": "Guide",
       "href": "/resources/heat-treated-pallets-ispm-15/",
       "directAnswer": "ISPM-15 is the international phytosanitary standard for wood packaging that crosses borders. Compliant pallets are treated, typically by heat, to kill wood pests, then stamped with a mark identifying the treatment and the facility responsible. Buyers shipping for export should confirm the treatment method and stamp requirements with their destination country."
     },
@@ -31,7 +31,7 @@
       "slug": "glossary",
       "title": "Pallet Glossary",
       "wave": 1,
-      "status": "Coming in Wave 1",
+      "status": "Guide",
       "href": "/resources/glossary/",
       "directAnswer": "The pallet glossary defines the terms buyers meet when specifying and shipping on pallets, from deckboards, stringers, and blocks to entry types, grades, and treatment marks. Plain definitions make it easier to write a clear spec, compare quotes on equal terms, and talk through requirements with suppliers and carriers."
     },

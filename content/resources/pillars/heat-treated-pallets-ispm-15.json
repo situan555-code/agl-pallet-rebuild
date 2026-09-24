@@ -1,0 +1,132 @@
+{
+  "slug": "heat-treated-pallets-ispm-15",
+  "eyebrow": "Resource guide · Treatment",
+  "metaTitle": "Heat-Treated Pallets and ISPM-15: HT, MB, and Stamps — AGL Pallet",
+  "metaDescription": "What ISPM-15 requires for wood packaging, how heat treatment (HT) differs from methyl bromide (MB), how to read a treatment stamp, and an export buyer checklist.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "what-is-ispm-15",
+      "heading": "What is ISPM-15?",
+      "paragraphs": [
+        "ISPM 15, \"Regulation of wood packaging material in international trade,\" is an International Standard for Phytosanitary Measures adopted under the [International Plant Protection Convention (IPPC)](https://www.ippc.int/en/publications/640/). It sets out how wood packaging made from raw wood, including pallets, crates, and dunnage, must be treated and marked before it crosses a border, so that wood-boring insects and plant diseases do not travel with the cargo.",
+        "Each country enforces ISPM 15 through its own plant protection agency, known in the standard as an NPPO. In the United States that is the USDA [Animal and Plant Health Inspection Service (APHIS)](https://www.aphis.usda.gov/plant-imports/wood-packaging-material), which requires regulated wood packaging entering the country to be treated and marked, and uses the same standard for exports. For U.S. exports, the [American Lumber Standard Committee (ALSC)](https://alsc.org/wood-packaging-material-program/) accredits the independent inspection agencies that license and monitor treatment facilities.",
+        "Material made from processed wood, such as plywood, oriented strand board, and particleboard, is outside the standard, as are plastic and metal pallets. APHIS lists these as alternatives to regulated wood packaging."
+      ]
+    },
+    {
+      "id": "ht-vs-mb",
+      "heading": "HT vs. MB: treatment methods",
+      "paragraphs": [
+        "ISPM 15 approves a short list of treatments. The mark on the wood carries a code for the one that was used. Heat treatment is the method most buyers in North America see."
+      ],
+      "table": {
+        "caption": "ISPM 15 treatment codes",
+        "columns": ["Code", "Treatment", "What it involves", "Notes for buyers"],
+        "rows": [
+          ["HT", "Heat treatment", "Wood is heated until the core reaches at least 56 °C (133 °F) for 30 continuous minutes", "The most common method for pallets. Done in a kiln or heat chamber."],
+          ["DH", "Dielectric heating", "Microwave or radio-frequency heating to a set temperature through the full wood profile", "Less common; treated the same as HT for compliance purposes."],
+          ["MB", "Methyl bromide fumigation", "Wood is fumigated with methyl bromide gas under set dose and time conditions", "Restricted or banned in many countries because methyl bromide depletes ozone. The IPPC encourages alternatives."],
+          ["SF", "Sulfuryl fluoride fumigation", "Fumigation with sulfuryl fluoride under set conditions", "A newer approved fumigant; check destination acceptance."]
+        ],
+        "note": "Summary for orientation only. Treatment schedules and accepted methods are set in the current ISPM 15 annexes and by each importing country; confirm with the [IPPC text](https://www.ippc.int/en/publications/640/) and your destination's rules."
+      },
+      "after": [
+        "Heat treatment is not the same as kiln drying. HT kills pests at a set core temperature and time; it does not guarantee a target moisture content. If a load is sensitive to moisture or mold, specify kiln-dried lumber or a moisture limit separately from the HT requirement."
+      ]
+    },
+    {
+      "id": "domestic-ht",
+      "heading": "Heat-treated pallets for domestic shipping",
+      "paragraphs": [
+        "Shipments that stay inside the United States do not need ISPM 15 treatment. Buyers still specify HT pallets domestically for a few practical reasons:"
+      ],
+      "list": [
+        "Mixed flows: one pallet spec for a plant that ships both domestic and export orders avoids sorting two stocks.",
+        "Receiver requirements: some customers or industries ask for stamped pallets on every load.",
+        "Resale or reuse: pallets that may later leave the country with another shipper are easier to place if already stamped.",
+        "Pest control: treatment reduces the chance of moving live insects between facilities."
+      ],
+      "after": [
+        "Treatment adds a step at the mill and usually some cost. If none of the reasons above apply, untreated pallets may meet the need; the spec should say which is required."
+      ]
+    },
+    {
+      "id": "reading-the-stamp",
+      "heading": "How to read a treatment stamp",
+      "paragraphs": [
+        "An ISPM 15 mark is a bordered stamp or brand applied to the wood, usually on at least two opposite sides of a pallet. It has to be legible, permanent, and not hand-drawn. Inside the border you should find:"
+      ],
+      "list": [
+        "The IPPC symbol, a stylized wheat-ear logo, on the left.",
+        "A two-letter country code for where the wood was treated, such as US or CA.",
+        "A unique number assigned to the treatment provider or producer under the country's program. U.S. marks usually include the accredited agency's identifier alongside the facility number.",
+        "The treatment code: HT, DH, MB, or SF."
+      ],
+      "after": [
+        "APHIS lists illegible marks, marks without a border, incorrect logos, and unmarked wood among the signs of noncompliant wood packaging that inspectors look for. A photo library of real stamps and a stamp decoder are planned for this guide; until then, a clear photo of the mark sent to the facility's inspection agency is the fastest way to confirm what it means."
+      ]
+    },
+    {
+      "id": "export-checklist",
+      "heading": "Export buyer checklist",
+      "list": [
+        "Confirm the destination country's wood packaging rules, including any treatment it does not accept.",
+        "Specify the treatment code required on the purchase order, usually HT.",
+        "Ask for the mark on at least two opposite sides and in a spot that stays visible when the pallet is loaded.",
+        "Confirm the treating facility is licensed through an accredited agency; for U.S. wood, that is an ALSC-accredited agency.",
+        "Keep dunnage and bracing in mind: wood used to brace cargo is also regulated wood packaging.",
+        "Do not repair or rebuild a stamped pallet with untreated wood; repaired pallets can require retreatment and remarking.",
+        "Keep treatment records or a certificate from the supplier if the importer or forwarder asks for them."
+      ],
+      "after": [
+        "AGL is a pallet brokerage. We are not a treatment facility and hold no treatment certification; the mark comes from the licensed facility that treated the wood. When an export spec calls for a stamp, put it on the quote request so the sourcing mill can confirm it before the order is placed. See the [pallet standards](/resources/pallet-standards/) guide for related specifications."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "what-does-ht-mean",
+        "question": "What does HT mean on a pallet?",
+        "answer": [
+          "HT stands for heat treated. Under ISPM 15, it means the wood was heated until its core reached at least 56 °C (133 °F) for 30 continuous minutes, then marked by a licensed facility. The HT code appears inside the bordered stamp next to the IPPC symbol, the country code, and the facility's unique number."
+        ]
+      },
+      {
+        "id": "what-does-mb-mean",
+        "question": "What does MB mean on a pallet?",
+        "answer": [
+          "MB stands for methyl bromide, a fumigant approved under ISPM 15 for treating wood packaging. Because methyl bromide depletes the ozone layer, many countries restrict or ban it, and the IPPC encourages alternatives. Most pallets built in North America for export today are heat treated and stamped HT instead."
+        ]
+      },
+      {
+        "id": "ht-for-domestic",
+        "question": "Do I need heat-treated pallets for domestic shipping?",
+        "answer": [
+          "No. ISPM 15 applies to wood packaging crossing international borders, so shipments that stay inside the United States do not need it. Buyers still choose HT pallets domestically when a plant ships both domestic and export orders, when a receiver requires stamped pallets, or to limit the movement of pests between facilities."
+        ]
+      },
+      {
+        "id": "ht-vs-kiln-dried",
+        "question": "Is a heat-treated pallet the same as a kiln-dried pallet?",
+        "answer": [
+          "No. Heat treatment is a pest-control step defined by core temperature and time. Kiln drying is a moisture-control step defined by a target moisture content. A pallet can be HT-stamped and still carry moisture, so specify kiln-dried lumber or a moisture limit separately if the load needs it."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "IPPC — ISPM 15: Regulation of wood packaging material in international trade", "href": "https://www.ippc.int/en/publications/640/", "note": "the standard text and annexes" },
+    { "label": "USDA APHIS — Wood Packaging Material", "href": "https://www.aphis.usda.gov/plant-imports/wood-packaging-material", "note": "U.S. import and export requirements, signs of noncompliant marks, exempt materials" },
+    { "label": "American Lumber Standard Committee — Wood Packaging Material Program", "href": "https://alsc.org/wood-packaging-material-program/", "note": "accredited agencies that license U.S. treatment facilities" },
+    { "label": "IPPC — Adopted standards (ISPMs)", "href": "https://www.ippc.int/en/core-activities/standards-setting/ispms/" }
+  ],
+  "related": ["gma-pallets-and-grades", "pallet-standards", "types-of-pallets", "glossary"],
+  "cta": {
+    "heading": "Shipping for export?",
+    "body": "Send the destination, footprint, quantity, and required stamp. We confirm the treatment with the sourcing mill before the order is placed and manage the freight."
+  }
+}

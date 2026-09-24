@@ -1,0 +1,117 @@
+{
+  "slug": "gma-pallets-and-grades",
+  "eyebrow": "Resource guide · Grades",
+  "metaTitle": "GMA Pallets and Pallet Grades Explained — AGL Pallet",
+  "metaDescription": "What a GMA pallet is, what Grade A, B, and C mean, why grade names are not a universal standard, and a spec checklist for buyers of 48×40 stringer pallets.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "what-is-a-gma-pallet",
+      "heading": "What is a GMA pallet?",
+      "paragraphs": [
+        "\"GMA pallet\" is shorthand for the 48 × 40 inch wood stringer pallet that the Grocery Manufacturers Association promoted as a common footprint for North American grocery and consumer-goods shipping. The 48-inch dimension is the stringer length; the 40-inch dimension is the deckboard length. In metric terms that is 1219 × 1016 mm, the North American size listed in [ISO 6780](https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en).",
+        "A typical GMA-style pallet has three stringers running the 48-inch length, top and bottom deckboards running the 40-inch width, and notches cut into the outer and center stringers. The notches let forklift tines enter from all four sides, which is why the design is called partial four-way: a pallet jack still enters only from the two 40-inch ends.",
+        "The name describes a footprint and a construction style, not a single blueprint. Board thickness, board count, species, fasteners, and height all vary from mill to mill unless the buyer writes them into the spec."
+      ],
+      "table": {
+        "caption": "GMA-style pallet at a glance",
+        "columns": ["Attribute", "Typical description", "Why it matters"],
+        "rows": [
+          ["Footprint", "48 × 40 in (1219 × 1016 mm)", "Fits two across a standard 53-foot dry van and most North American racking"],
+          ["Construction", "Stringer, usually three stringers", "Cheaper to build and repair than block construction"],
+          ["Entry", "Partial four-way (notched stringers)", "Forklifts enter four sides; pallet jacks enter two"],
+          ["Decks", "Top and bottom deckboards", "Bottom deck spreads load on conveyors and in stacks"],
+          ["Material", "Hardwood, softwood, or mixed, by region", "Species drives weight, stiffness, and price"]
+        ],
+        "note": "Descriptions are industry-typical, not a guarantee of any single build. Confirm each attribute on the written spec."
+      }
+    },
+    {
+      "id": "grades",
+      "heading": "Grade A vs. Grade B vs. Grade C",
+      "paragraphs": [
+        "Pallet grades are trade labels, not a published standard. No standards body defines \"Grade A\" or \"#1\" for pallets, so the same label can mean different things from one supplier or region to the next. Grades are most often used in the market for pallets that have already been in service, where they describe condition and repair history.",
+        "The descriptions below reflect how the terms are commonly used. Treat them as a starting vocabulary and confirm the actual acceptance criteria with the supplier in writing."
+      ],
+      "table": {
+        "caption": "How grade labels are commonly used (not a formal standard)",
+        "columns": ["Label", "Common usage", "Typical buyer"],
+        "rows": [
+          ["Premium / new", "Built from new lumber to a stated spec; uniform appearance and dimensions", "Retail programs, automation, food and pharma, export"],
+          ["Grade A (#1)", "Structurally sound, minimal repairs, no plated or doubled stringers", "Receivers with conveyors or appearance requirements"],
+          ["Grade B (#2)", "Sound but repaired, often with plated or companion stringers; mixed board widths", "One-way shipments and internal moves"],
+          ["Grade C / economy", "Heavier repair, mixed components; usage varies most at this level", "Low-value or single-trip loads"]
+        ],
+        "note": "Because grade names are not standardized, write the acceptance criteria into the purchase order: allowed repairs, board condition, stringer condition, and dimensions."
+      }
+    },
+    {
+      "id": "new-vs-remanufactured",
+      "heading": "New vs. remanufactured pallets",
+      "paragraphs": [
+        "New pallets are built from new lumber to a specification. Remanufactured pallets are rebuilt from salvaged components, and repaired pallets have had damaged boards or stringers replaced or reinforced. Each has a place in the market, and prices differ accordingly.",
+        "New pallets give the most control over species, dimensions, moisture, fasteners, and treatment, and they are the default for export lanes, automated handling, and receivers with strict appearance rules. AGL sources new pallets only. Qualified mills build them to the buyer's spec. If a program calls for salvaged or repaired pallets, that is outside what AGL supplies."
+      ]
+    },
+    {
+      "id": "spec-checklist",
+      "heading": "Spec checklist for buyers",
+      "paragraphs": [
+        "A grade label alone does not describe a pallet. These are the items a mill needs to quote a 48 × 40 on equal terms with its competitors:"
+      ],
+      "list": [
+        "Footprint and overall height, including which dimension is the stringer length.",
+        "Construction and entry type: stringer or block; two-way, partial four-way, or true four-way.",
+        "Top and bottom deckboard count, thickness, and width; spacing between boards.",
+        "Stringer or block size and notch dimensions.",
+        "Wood species or species group, and any moisture or kiln-dried requirement.",
+        "Fasteners: nail type, length, and pattern.",
+        "Load requirements: static, dynamic, and racked. See [pallet load capacity](/resources/pallet-weight-and-load-capacity/).",
+        "Treatment and marking, such as a heat-treatment stamp for export. See [heat-treated pallets and ISPM-15](/resources/heat-treated-pallets-ispm-15/).",
+        "Receiver requirements: retailer routing-guide rules, pallet exchange programs, or appearance standards.",
+        "Quantity, release schedule, and delivery location, so the quote includes freight."
+      ],
+      "after": [
+        "Terms on this list are defined in the [pallet glossary](/resources/glossary/). For design standards that describe these attributes formally, see [pallet standards](/resources/pallet-standards/)."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "grade-a-vs-grade-b",
+        "question": "What is the difference between Grade A and Grade B pallets?",
+        "answer": [
+          "In common usage, a Grade A (#1) pallet is structurally sound with minimal repairs and no plated or doubled stringers, while a Grade B (#2) pallet is sound but shows repairs, often plated or companion stringers and mixed board widths. The labels are trade conventions rather than a published standard, so confirm the supplier's definition in writing."
+        ]
+      },
+      {
+        "id": "walmart-grade",
+        "question": "What does \"Walmart grade\" pallet mean?",
+        "answer": [
+          "\"Walmart grade\" is a marketing phrase some pallet sellers apply, usually for a clean 48 × 40 GMA-style pallet in good condition. It is not a Walmart-published grade, and AGL does not cite or reproduce any retailer routing guide here. Retailer pallet requirements change and are issued to suppliers directly; check the current requirements through the retailer's supplier documentation before ordering."
+        ]
+      },
+      {
+        "id": "is-gma-a-standard",
+        "question": "Is the GMA pallet an official standard?",
+        "answer": [
+          "The 48 × 40 inch footprint is one of the pallet sizes listed in ISO 6780, and the Grocery Manufacturers Association popularized it for grocery shipping. The construction details, such as board thickness and species, are not fixed by the name. A written spec is what makes two GMA-style pallets interchangeable."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "ISO 6780 — Flat pallets for intercontinental materials handling", "href": "https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en", "note": "principal pallet dimensions, including 1219 × 1016 mm" },
+    { "label": "Woodpack Global (formerly NWPCA)", "href": "https://woodpackglobal.org/", "note": "wood pallet and container industry association" },
+    { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "pallet and unit load research" },
+    { "label": "CHEP — Standard pallet dimensions", "href": "https://www.chep.com/us/en/products/pallets/standard-pallet-sizes", "note": "lists the 48 × 40 in footprint as 1219 × 1016 mm" }
+  ],
+  "related": ["pallet-sizes", "types-of-pallets", "pallet-weight-and-load-capacity", "glossary"],
+  "cta": {
+    "heading": "Quote a 48 × 40 on your spec",
+    "body": "Send the dimensions, deck and stringer details, quantity, and delivery location. We place it with qualified mills and manage the freight on the order."
+  }
+}

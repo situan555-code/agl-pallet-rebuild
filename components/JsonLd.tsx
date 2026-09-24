@@ -40,6 +40,116 @@ export function LocalBusinessJsonLd() {
   return null;
 }
 
+// Resource guides are published under the organization: authors.json holds
+// unconfirmed {{TBD-*}} tokens that must not render, so no Person author.
+function orgRef() {
+  const { organization } = site;
+  return { "@type": "Organization", name: organization.legalName, url: organization.url };
+}
+
+export function TechArticleJsonLd({
+  headline,
+  description,
+  path,
+  published,
+  updated,
+}: {
+  headline: string;
+  description: string;
+  path: string;
+  published: string;
+  updated: string;
+}) {
+  const { url } = site.organization;
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        headline,
+        description,
+        url: `${url}${path}`,
+        mainEntityOfPage: `${url}${path}`,
+        datePublished: published,
+        dateModified: updated,
+        inLanguage: "en-US",
+        author: orgRef(),
+        publisher: orgRef(),
+      }}
+    />
+  );
+}
+
+// Only mount alongside Q&A that is visible on the same page.
+export function FaqPageJsonLd({ items }: { items: { question: string; answer: string }[] }) {
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }}
+    />
+  );
+}
+
+export function DefinedTermSetJsonLd({
+  name,
+  path,
+  terms,
+}: {
+  name: string;
+  path: string;
+  terms: { id: string; term: string; definition: string }[];
+}) {
+  const { url } = site.organization;
+  const setId = `${url}${path}`;
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "DefinedTermSet",
+        "@id": setId,
+        name,
+        url: setId,
+        hasDefinedTerm: terms.map((t) => ({
+          "@type": "DefinedTerm",
+          "@id": `${setId}#${t.id}`,
+          name: t.term,
+          description: t.definition,
+          url: `${setId}#${t.id}`,
+          inDefinedTermSet: setId,
+        })),
+      }}
+    />
+  );
+}
+
+// Only for calculators that actually compute a result on the page.
+export function WebApplicationJsonLd({ name, description, path }: { name: string; description: string; path: string }) {
+  const { url } = site.organization;
+  return (
+    <JsonLdScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name,
+        description,
+        url: `${url}${path}`,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Any",
+        isAccessibleForFree: true,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+        publisher: orgRef(),
+      }}
+    />
+  );
+}
+
 export function BreadcrumbJsonLd({ items }: { items: { name: string; path: string }[] }) {
   const { url } = site.organization;
   return (

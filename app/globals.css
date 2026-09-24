@@ -5,7 +5,9 @@
 @layer base {
   html,
   body {
-    @apply overflow-x-hidden;
+    /* clip, not hidden: hidden on html+body makes body a scroll container
+       and breaks position: sticky (resource TOC, glossary A–Z bar). */
+    overflow-x: clip;
   }
 
   body {
