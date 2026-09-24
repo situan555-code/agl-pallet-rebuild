@@ -1,11 +1,11 @@
 import site from "@/content/site.json";
+import { articlePeopleJsonLd } from "@/lib/authors";
 import { getSiteUrl } from "@/lib/site-url";
 
 /**
- * Organization JSON-LD, mounted sitewide in app/layout.tsx. Deliberately not
- * LocalBusiness: {{TBD-ADDRESS}} is unresolved (SPEC_V1.md §3), so no
- * streetAddress, and no aggregateRating. sameAs is omitted until real social
- * URLs exist ({{TBD-SOCIAL-URLS}}). See DECISIONS.md Wave 0.
+ * Organization JSON-LD, mounted sitewide in app/layout.tsx.
+ * No street address and no LocalBusiness type. sameAs lists only profiles
+ * that exist today (content/site.json). See DECISIONS.md §2.
  */
 
 // Escape "<" so content can never close the <script> element early.
@@ -18,31 +18,22 @@ function JsonLdScript({ data }: { data: object }) {
 }
 
 export function OrganizationJsonLd() {
-  const { organization, footer } = site;
-  return (
-    <JsonLdScript
-      data={{
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: organization.legalName,
-        url: getSiteUrl(),
-        telephone: footer.contact.phone,
-        email: footer.contact.email,
-      }}
-    />
-  );
+  const { organization, footer, logo } = site;
+  const url = getSiteUrl();
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: organization.legalName,
+    url,
+    logo: `${url}${logo.src}`,
+    telephone: footer.contact.phone,
+    email: footer.contact.email,
+    areaServed: "US",
+  };
+  if (organization.sameAs.length > 0) data.sameAs = organization.sameAs;
+  return <JsonLdScript data={data} />;
 }
 
-/**
- * LocalBusiness JSON-LD stays deferred until {{TBD-ADDRESS}} resolves
- * (SPEC_V1.md §3). Do not emit streetAddress / aggregateRating.
- */
-export function LocalBusinessJsonLd() {
-  return null;
-}
-
-// Resource guides are published under the organization: authors.json holds
-// unconfirmed {{TBD-*}} tokens that must not render, so no Person author.
 function orgRef() {
   const { organization } = site;
   return { "@type": "Organization", name: organization.legalName, url: getSiteUrl() };
@@ -74,7 +65,7 @@ export function TechArticleJsonLd({
         datePublished: published,
         dateModified: updated,
         inLanguage: "en-US",
-        author: orgRef(),
+        ...articlePeopleJsonLd(),
         publisher: orgRef(),
       }}
     />

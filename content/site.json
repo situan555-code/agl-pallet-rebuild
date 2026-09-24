@@ -7,7 +7,11 @@
   },
   "organization": {
     "legalName": "AGL Pallet LLC",
-    "url": "https://aglpallet.com"
+    "url": "https://aglpallet.com",
+    "sameAs": [
+      "https://www.linkedin.com/company/aglpallet/",
+      "https://www.facebook.com/profile.php?id=61584727225727"
+    ]
   },
   "nav": [
     {
@@ -100,7 +104,6 @@
   },
   "footer": {
     "blurb": "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
-    "address": "{{TBD-ADDRESS}}",
     "productsHeading": "Products",
     "productsNav": [
       {

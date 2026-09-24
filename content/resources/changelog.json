@@ -1,0 +1,100 @@
+{
+  "gma-pallets-and-grades": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on the 48 × 40 stringer footprint and how grade names are used."
+    }
+  ],
+  "heat-treated-pallets-ispm-15": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on heat treatment, the ISPM-15 mark, and what export buyers confirm."
+    }
+  ],
+  "glossary": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the first glossary of pallet terms."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Expanded the glossary with freight, standards, lumber, and pool terms."
+    }
+  ],
+  "pallet-weight-and-load-capacity": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide comparing third-party weight and load figures. No AGL weighed means."
+    }
+  ],
+  "pallet-sizes": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on common pallet footprints, including where sources disagree on the square size."
+    }
+  ],
+  "skid-vs-pallet": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on how a skid differs from a pallet."
+    }
+  ],
+  "pallet-prices": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on what moves pallet prices, with the BLS price index. No AGL dollar bands."
+    }
+  ],
+  "pallets-per-truckload": [
+    {
+      "date": "2026-09-24",
+      "change": "Published trailer and container counts and the truckload calculator."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Added a pool operator's published empty-pallet stack figure."
+    }
+  ],
+  "pallet-calculators": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the calculators hub and how the planning tools work."
+    }
+  ],
+  "boxes-per-pallet": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the boxes-per-pallet calculator."
+    }
+  ],
+  "pallet-weight-estimator": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the wood pallet weight estimator."
+    }
+  ],
+  "cost-per-trip": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the cost-per-trip calculator. It uses only figures you enter."
+    }
+  ],
+  "types-of-pallets": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on stringer and block pallets, entry, decks, and materials."
+    }
+  ],
+  "pooled-vs-owned-pallets": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide on pooled and owned pallets, with pool operators quoted on ownership. No fee rates."
+    }
+  ],
+  "pallet-standards": [
+    {
+      "date": "2026-09-24",
+      "change": "Published the guide linking pallet standards. The standards text stays with the publishers."
+    }
+  ]
+}

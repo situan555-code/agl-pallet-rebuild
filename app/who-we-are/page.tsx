@@ -23,7 +23,7 @@ export default function WhoWeAre() {
         eyebrow={content.founderStory.eyebrow}
         heading={content.founderStory.heading}
         paragraphs={content.founderStory.paragraphs}
-        media={<TbdImage token={content.founderStory.imageToken} caption="Founder portrait" />}
+        media={<TbdImage caption="Founder portrait" />}
       />
 
       <Process1
@@ -54,7 +54,6 @@ export default function WhoWeAre() {
           {
             label: content.whereWeAre.eyebrow,
             paragraphs: [content.whereWeAre.body],
-            footer: <p className="text-body">{`{{${content.whereWeAre.addressToken}}}`}</p>,
           },
         ]}
       />

@@ -53,7 +53,9 @@ const Process1 = ({ id, eyebrow, heading, description, steps, hairline, classNam
               </div>
               <div className="min-w-0">
                 <ItemHeading className="text-step-lg text-brand-green">{step.title}</ItemHeading>
-                <p className="prose-measure mt-3 text-body text-ink/70">{withLeadDash(step.description)}</p>
+                {step.description.trim() !== "" && (
+                  <p className="prose-measure mt-3 text-body text-ink/70">{withLeadDash(step.description)}</p>
+                )}
               </div>
             </li>
           ))}

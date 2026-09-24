@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMeta(
 
 export const dynamic = "force-dynamic";
 
-const destination: FormDestination = { kind: "unresolved", token: forms.supplier.destinationToken };
+const destination: FormDestination = { kind: "unresolved" };
 
 export default function PartnersSuppliers() {
   return (

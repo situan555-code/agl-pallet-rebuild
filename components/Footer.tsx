@@ -8,7 +8,6 @@ export function Footer() {
     <Footer2
       logo={site.logo}
       description={footer.blurb}
-      address={footer.address}
       contact={footer.contact}
       cta={site.ctaNav}
       sections={[
