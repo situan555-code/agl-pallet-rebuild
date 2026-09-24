@@ -2478,3 +2478,6 @@ Glossary TechArticle added. Prices guide Dataset plus CSV at `/resources/pallet-
 
 ### 2026-09-24 Home hero Limeplay (video only)
 Home hero frame plays local `/assets/agl_home_video.mp4` through the owned Limeplay `VideoPlayer` (`chrome="quiet"`). Poster is `/assets/agl_home_video_poster.jpg` via `DeferredFillImage`. Player chunk is client-only and mounts at ≥40% visibility. Reduced motion stays on the poster until Play. Shaka clears `loop`; quiet controls put it back. Header and nav were not changed. Live aglpallet.com was not fetched. Gates that ran: color, numbers, banned-words, copy-verbatim, schema, routes, tokens, placeholder-guard, build-note-leak PASS. Audit: `/` 98 / 2477 ms / CLS 0; other harness pages 98–99, LCP under 2500 ms, axe 0 serious/critical. `npm run height` is missing-pair in this workspace (`reference/` and `screenshots/` PNGs absent); gate not softened. See DECISIONS.md 2026-09-24 home hero.
+
+### 2026-09-24 Home hero video on mobile
+The quiet player's fallback panel used Tailwind v4 `-z-1`, which this Tailwind 3.4 build drops, so an opaque paper panel covered the `<video>` (blank 3:4 frame on a phone). Fallback is `-z-10`. The hero video is absolute and `object-cover`. Local mp4 re-encoded to square-pixel H.264 Main 1920×1080 with no timecode track. Header/nav untouched. See DECISIONS.md.
