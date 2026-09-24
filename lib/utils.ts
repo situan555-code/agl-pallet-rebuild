@@ -47,3 +47,53 @@ export function cn(...inputs: ClassValue[]): string {
   });
   return [baseCn(filtered), ...aglByPrefix.values()].filter(Boolean).join(" ");
 }
+
+export function getDeviceLanguage() {
+  const primaryLocale = navigator.language;
+  return primaryLocale.split("-")[0];
+}
+
+export function noop() {
+  // noop
+}
+
+// Shaka's player and media elements both expose addEventListener, with
+// different event object types. Keep the callback wide so either can register.
+type MediaListener = (event: never) => void;
+
+export function off(
+  element: EventTarget,
+  events: string | string[],
+  callback: MediaListener
+): EventTarget {
+  if (Array.isArray(events)) {
+    events.forEach((event) => {
+      element.removeEventListener(event, callback as EventListener);
+    });
+  } else {
+    element.removeEventListener(events, callback as EventListener);
+  }
+
+  return element;
+}
+
+export function on(
+  element: EventTarget,
+  events: string | string[],
+  callback: MediaListener
+): EventTarget {
+  if (Array.isArray(events)) {
+    events.forEach((event) => {
+      element.addEventListener(event, callback as EventListener);
+    });
+  } else {
+    element.addEventListener(events, callback as EventListener);
+  }
+
+  return element;
+}
+
+export function toFixedNumber(num: number, digits: number, base = 10) {
+  const pow = Math.pow(base, digits);
+  return Math.round(num * pow) / pow;
+}
