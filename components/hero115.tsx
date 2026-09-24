@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon, BoxesIcon } from "@/components/inline-icons";
-import { DeferredFillImage } from "@/components/DeferredFillImage";
+import { HeroVideo } from "@/components/HeroVideo";
 
 type Hero115Button = {
   label: string;
@@ -22,7 +22,7 @@ interface Hero115Props {
   heading: string;
   description: string;
   buttons: Hero115Button[];
-  image: { src: string; alt: string };
+  video: { src: string; poster: string };
   capabilities?: Capability[];
   className?: string;
 }
@@ -32,7 +32,7 @@ const Hero115 = ({
   heading,
   description,
   buttons,
-  image,
+  video,
   capabilities,
   className,
 }: Hero115Props) => {
@@ -100,13 +100,7 @@ const Hero115 = ({
           </div>
 
           <div className="relative mx-auto aspect-[3/4] h-full max-h-[524px] w-full max-w-5xl overflow-hidden rounded-lg border border-clay/60 shadow-[0_24px_60px_-28px_rgba(31,42,31,0.35)] md:aspect-video">
-            <DeferredFillImage
-              src={image.src}
-              alt={image.alt}
-              quality={60}
-              sizes="(min-width: 1024px) 960px, calc(100vw - 3rem)"
-              className="object-cover object-center"
-            />
+            <HeroVideo src={video.src} poster={video.poster} />
           </div>
         </div>
       </div>

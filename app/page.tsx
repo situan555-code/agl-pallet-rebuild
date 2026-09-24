@@ -37,7 +37,7 @@ export default function Home() {
         eyebrow={home.hero.eyebrow}
         heading={home.hero.heading}
         description={home.hero.body}
-        image={{ src: home.hero.image, alt: "" }}
+        video={{ src: home.hero.video, poster: home.hero.poster }}
         buttons={
           home.hero.buttons as {
             label: string;
