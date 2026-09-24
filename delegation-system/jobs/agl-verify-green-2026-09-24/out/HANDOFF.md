@@ -3,9 +3,9 @@
 **Date:** 2026-09-24
 **Repo:** situan555-code/agl-pallet-rebuild
 **Branch:** `cursor/wave-a-verify-green-a578`
-**SHA:** `320c33fd8ae0bb5fbfe040fe13a085e0a2c50b55`
+**Implementation SHA:** `320c33fd8ae0bb5fbfe040fe13a085e0a2c50b55`
 **Base:** `e3fb32f` (main, resource library §§1–6)
-**PR:** draft, opened from this branch. Do not merge.
+**PR:** https://github.com/situan555-code/agl-pallet-rebuild/pull/8 (draft). Do not merge.
 
 ## Waves
 
