@@ -1,5 +1,17 @@
 # Domain switch runbook
 
+## HARD CONSTRAINT
+
+`aglpallet.com` is live under a prior agency. Until Claude Liason or Nautis/Jerry explicitly lifts this constraint, agents must not:
+
+- Run DNS or WHOIS lookups against `aglpallet.com`.
+- Make any HTTP(S) request, crawl, monitor, or diff against live `aglpallet.com`, including `www.aglpallet.com`.
+- Do Google Search Console or Bing verification, propose DNS TXT records, change CNAME or A records, contact the registrar, or request certificates for that domain.
+
+Canonical, `og:url`, JSON-LD, and sitemap strings that name `https://aglpallet.com/...` in this repo stay as-is. Those strings are URL text only. They are not a network request.
+
+Any runbook step that would require checking the live domain is BLOCKED until the constraint is lifted. Do not improvise. Flag it to Claude Liason.
+
 Checklist for the later decision to serve this Next.js deployment at
 `aglpallet.com`. The indexing gate is host-conditional and already in the
 app. Pointing DNS at the project is the switch. Nothing in this file changes
@@ -33,6 +45,9 @@ done. Before the switch, confirm in the Google Search Console and Bing
 Webmaster accounts that neither `nx7k-lab-m4.vercel.app` nor `aglpallet.com`
 is submitting this Next sitemap. Do not submit the `vercel.app` sitemap.
 
+- robots.txt on nx7k-lab-m4.vercel.app has no Disallow: / — confirmed 2026-09-24.
+- sitemap.xml is not currently submitted to Google Search Console or Bing Webmaster Tools under any host — confirmed 2026-09-24.
+
 ## Vercel default noindex vs this rule
 
 Vercel documents an automatic `X-Robots-Tag: noindex` header (value
@@ -47,7 +62,7 @@ rule in this repo is tied to the hostname.
 | --- | --- | --- |
 | Current Production deployment at `https://nx7k-lab-m4.vercel.app` | Not added. The short alias would otherwise be indexable. | `X-Robots-Tag: noindex, nofollow` and the matching meta tag. This is the rule that governs that host. |
 | Preview alias `https://<deployment>-<team>.vercel.app` | `X-Robots-Tag: noindex` | Same host check: `noindex, nofollow` plus the meta tag. Both can be present. Google combines `X-Robots-Tag` values and keeps the stricter directive, so the URL stays out of the index. |
-| Current Production deployment after `aglpallet.com` is attached, request Host `aglpallet.com` | Not added | Header and meta omitted. Indexable, once you confirm with curl. |
+| Current Production deployment after `aglpallet.com` is attached, request Host `aglpallet.com` | Not added | Header and meta omitted. Indexable, once you confirm with curl (section 2). That curl is **NOT TO BE RUN** while the hard constraint is in force. Post-cutover / after constraint lift only. |
 | Outdated Production deployment URL | Platform adds `noindex` | Host still ends in `.vercel.app`, so this repo also sends `noindex, nofollow`. |
 
 Do not turn off Vercel's preview header to "simplify" this. The hostname rule
@@ -85,7 +100,11 @@ a domain setting, not a code change.
 
 Automatic once the Host header is `aglpallet.com`. Verify. Do not assume.
 
+**NOT TO BE RUN** while the hard constraint is in force. The three commands below hit `https://aglpallet.com`. They are post-cutover / after constraint lift only. Leave them in this runbook for later use.
+
 ```bash
+# NOT TO BE RUN while the hard constraint is in force.
+# Post-cutover / after constraint lift only.
 curl -sI https://aglpallet.com/ | tr -d '\r' | grep -i -E 'HTTP/|x-robots-tag|location:'
 curl -s https://aglpallet.com/ | grep -i 'name="robots"'
 curl -s https://aglpallet.com/ | grep -i -E 'rel="canonical"|og:url'
@@ -140,6 +159,8 @@ grep. For each URL expect `200` (or the known `301`/`308` for the three
 legacy paths), no `X-Robots-Tag` containing `noindex`, and a canonical of
 `https://aglpallet.com` plus the path.
 
+**NOT TO BE RUN** while the hard constraint is in force. Every example below that requests `https://aglpallet.com` is post-cutover / after constraint lift only. Leave the commands in this runbook for later use. The `nx7k-lab-m4.vercel.app` commands in the block further down do not hit the live domain.
+
 - `https://aglpallet.com/`
 - `https://aglpallet.com/products/`
 - `https://aglpallet.com/who-we-are/`
@@ -152,12 +173,14 @@ legacy paths), no `X-Robots-Tag` containing `noindex`, and a canonical of
 - `https://aglpallet.com/robots.txt` (`Allow: /`, no `Disallow: /`, sitemap line is `https://aglpallet.com/sitemap.xml`)
 
 Also confirm `https://aglpallet.com/resources/sell-recycle-pallets/` stays
-`404` and is absent from the sitemap.
+`404` and is absent from the sitemap. That confirm requests the live domain: **NOT TO BE RUN** while the hard constraint is in force. Post-cutover / after constraint lift only.
 
 On the alias, the same paths should still send `X-Robots-Tag: noindex, nofollow`
 and the robots meta, with canonicals that still say `aglpallet.com`.
 
 ```bash
+# NOT TO BE RUN while the hard constraint is in force.
+# Post-cutover / after constraint lift only. These two hit https://aglpallet.com.
 curl -sI https://aglpallet.com/products/
 curl -s https://aglpallet.com/products/ | grep -i -E 'rel="canonical"|og:url|name="robots"'
 curl -sI https://nx7k-lab-m4.vercel.app/products/
@@ -168,6 +191,8 @@ curl -s https://nx7k-lab-m4.vercel.app/sitemap.xml | grep -c vercel.app
 The sitemap `grep -c` should print `0`.
 
 ## 6. Old aglpallet.com content — decision for Nautis and Jerry
+
+Whether any content currently live at aglpallet.com needs to be reconciled, archived, or redirected at cutover is unresolved and requires a decision from Nautis/Jerry before DNS is pointed. Do not investigate the current live site to answer this — flag it, don't resolve it.
 
 The WordPress site is what `aglpallet.com` serves until DNS moves. This Next
 app replaces it. It does not import the WordPress page list.
