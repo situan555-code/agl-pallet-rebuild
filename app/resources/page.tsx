@@ -9,6 +9,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(hub.meta.title, hub.meta.description, "/resources/");
 
+// First ~120 chars of the guide's direct answer, cut at a word boundary.
+function teaser(text: string, max = 120) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.]$/, "")}…`;
+}
+
 export default function ResourcesHub() {
   return (
     <main>
@@ -26,10 +33,16 @@ export default function ResourcesHub() {
       />
 
       <Feature3
-        variant="card"
+        variant="ruled"
+        columns={2}
         eyebrow={hub.pillarsEyebrow}
         heading={hub.pillarsHeading}
-        features={hub.pillars.map((p) => ({ eyebrow: p.status, title: p.title, href: p.href }))}
+        features={hub.pillars.map((p) => ({
+          eyebrow: p.status,
+          title: p.title,
+          href: p.href,
+          description: teaser(p.directAnswer),
+        }))}
       />
 
       <Feature1 hairline heading={hub.authorsNote.heading} paragraphs={[hub.authorsNote.body]} />

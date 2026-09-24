@@ -72,7 +72,22 @@
     },
     {
       "label": "Resources",
-      "href": "/resources/"
+      "href": "/resources/",
+      "overviewLabel": "Resource Library",
+      "children": [
+        { "label": "GMA Pallets and Grades", "href": "/resources/gma-pallets-and-grades/" },
+        { "label": "Heat-Treated Pallets and ISPM-15", "href": "/resources/heat-treated-pallets-ispm-15/" },
+        { "label": "Pallet Glossary", "href": "/resources/glossary/" },
+        { "label": "Pallet Weight and Load Capacity", "href": "/resources/pallet-weight-and-load-capacity/" },
+        { "label": "Pallet Sizes", "href": "/resources/pallet-sizes/" },
+        { "label": "Skid vs. Pallet", "href": "/resources/skid-vs-pallet/" },
+        { "label": "Pallet Prices", "href": "/resources/pallet-prices/" },
+        { "label": "Pallets per Truckload", "href": "/resources/pallets-per-truckload/" },
+        { "label": "Pallet Calculators", "href": "/resources/pallet-calculators/" },
+        { "label": "Types of Pallets", "href": "/resources/types-of-pallets/" },
+        { "label": "Pooled vs. Owned Pallets", "href": "/resources/pooled-vs-owned-pallets/" },
+        { "label": "Pallet Standards", "href": "/resources/pallet-standards/" }
+      ]
     },
     {
       "label": "Contact",

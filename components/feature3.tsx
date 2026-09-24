@@ -58,11 +58,28 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
   );
 }
 
+// With href, the title becomes the link (editorial list row, no box).
 function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
-    <div id={item.id} className="scroll-mt-24 border-t border-brand-green/15 pb-4 pt-8">
-      <Heading className="text-display-row text-brand-green">{item.title}</Heading>
-      <p className="prose-measure mt-4 text-body text-ink/70">{item.description}</p>
+    <div id={item.id} className="group scroll-mt-24 border-t border-brand-green/15 pb-4 pt-8">
+      {item.eyebrow && (
+        <p className="mb-3 text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">{item.eyebrow}</p>
+      )}
+      <Heading className="text-display-row text-brand-green">
+        {item.href ? (
+          <Link
+            href={item.href}
+            prefetch={false}
+            className="inline-flex items-baseline gap-3 rounded-sm underline-offset-[6px] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
+          >
+            {item.title}
+            <ArrowIcon className="h-5 w-5 shrink-0 translate-y-0.5 transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
+          </Link>
+        ) : (
+          item.title
+        )}
+      </Heading>
+      {item.description && <p className="prose-measure mt-4 text-body text-ink/70">{item.description}</p>}
       {item.cta && (
         <div className="mt-6">
           <Button href={item.cta.href} label={item.cta.label} variant="ghost-dark" />

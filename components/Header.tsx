@@ -7,7 +7,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MenuIcon } from "lucide-react";
 import site from "@/content/site.json";
 import { cn } from "@/lib/utils";
@@ -42,9 +42,21 @@ const DARK_LOGO = {
   src: "/assets/agl_pallet_logo-dark.svg",
 };
 
+// Desktop panel width/columns scale with child count so the 12-guide
+// Resources panel stays readable without overflowing the viewport.
+function panelLayout(count: number) {
+  if (count > 8) return { width: "w-[min(40rem,calc(100vw-3rem))] xl:w-[46rem]", grid: "grid-cols-2 xl:grid-cols-3" };
+  if (count > 3) return { width: "w-[26rem]", grid: "grid-cols-2" };
+  return { width: "w-[18rem]", grid: "grid-cols-1" };
+}
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  // Controlled so the menu closes on route change, and so a mouse click on a
+  // trigger that hover already opened doesn't toggle it shut (Radix default).
+  const [menuValue, setMenuValue] = useState("");
+  const pointerType = useRef<string>("");
   const pathname = usePathname();
   const nav = site.nav as NavItem[];
 
@@ -57,6 +69,7 @@ export function Header() {
 
   useEffect(() => {
     setOpen(false);
+    setMenuValue("");
   }, [pathname]);
 
   const isActive = (href: string) => pathname === href || pathname === href.replace(/\/$/, "");
@@ -85,61 +98,92 @@ export function Header() {
           />
         </Link>
 
-        <NavigationMenu className="hidden lg:block" viewport={false} aria-label="Main">
+        <NavigationMenu
+          className="hidden lg:block"
+          viewport={false}
+          aria-label="Main"
+          value={menuValue}
+          onValueChange={setMenuValue}
+          delayDuration={80}
+        >
           <NavigationMenuList className="gap-1">
-            {nav.map((item) =>
-              item.children?.length ? (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuTrigger className="h-10 rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 hover:text-brand-green focus:bg-fog-green/40 data-[state=open]:bg-fog-green/40">
+            {nav.map((item, index) => {
+              if (!item.children?.length) {
+                return (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuLink asChild active={isActive(item.href)}>
+                      <Link
+                        href={item.href}
+                        prefetch={false}
+                        className={cn(
+                          navigationMenuTriggerStyle(),
+                          "h-10 rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 hover:text-brand-green focus:bg-fog-green/40 data-[active]:underline data-[active]:underline-offset-8"
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                );
+              }
+              const layout = panelLayout(item.children.length);
+              // Items in the right half open leftward so panels stay on screen.
+              const alignEnd = index >= nav.length / 2;
+              return (
+                <NavigationMenuItem key={item.href} value={item.href}>
+                  <NavigationMenuTrigger
+                    onPointerDown={(e) => {
+                      pointerType.current = e.pointerType;
+                    }}
+                    onClick={(e) => {
+                      // Mouse users already opened it by hovering; keep it open.
+                      // Keyboard (detail 0) and touch still toggle.
+                      if (e.detail > 0 && pointerType.current === "mouse" && menuValue === item.href) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className="h-10 rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 hover:text-brand-green focus:bg-fog-green/40 data-[state=open]:bg-fog-green/40 data-[state=open]:hover:bg-fog-green/40 data-[state=open]:focus:bg-fog-green/40"
+                  >
                     {item.label}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="absolute left-0 top-full mt-2 min-w-[280px] rounded-sm border border-clay/50 bg-cream p-2 text-ink shadow-lg md:min-w-[420px]">
+                  {/* pt-2 is a transparent hover bridge: no dead gap between
+                      trigger and panel for the pointer to fall through. */}
+                  <NavigationMenuContent className={cn("pt-2", alignEnd ? "left-auto right-0" : "left-0")}>
                     <div
                       className={cn(
-                        "grid gap-1",
-                        item.children.length > 3 ? "grid-cols-2" : "grid-cols-1"
+                        "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-sm border border-clay/60 bg-cream p-2 text-brand-green shadow-lg",
+                        layout.width
                       )}
                     >
                       <NavigationMenuLink asChild>
                         <Link
                           href={item.href}
                           prefetch={false}
-                          className="rounded-sm p-3 font-semibold text-brand-green transition-colors hover:bg-fog-green/40"
+                          className="mb-1 block rounded-sm border-b border-clay/40 p-3 text-sm font-semibold text-brand-green transition-colors hover:bg-fog-green/40 focus:bg-fog-green/40"
                         >
-                          {item.label}
+                          {item.overviewLabel ?? item.label}
                         </Link>
                       </NavigationMenuLink>
-                      {item.children.map((child) => (
-                        <NavigationMenuLink asChild key={child.href}>
-                          <Link
-                            href={child.href}
-                            prefetch={false}
-                            className="rounded-sm p-3 transition-colors hover:bg-fog-green/40"
-                          >
-                            <p className="font-semibold text-brand-green">{child.label}</p>
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
+                      <ul className={cn("grid gap-1", layout.grid)}>
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={child.href}
+                                prefetch={false}
+                                className="block rounded-sm p-3 text-sm font-medium leading-snug text-brand-green transition-colors hover:bg-fog-green/40 focus:bg-fog-green/40"
+                              >
+                                {child.label}
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              ) : (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild active={isActive(item.href)}>
-                    <Link
-                      href={item.href}
-                      prefetch={false}
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "h-10 rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 hover:text-brand-green focus:bg-fog-green/40 data-[active]:underline data-[active]:underline-offset-8"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              )
-            )}
+              );
+            })}
           </NavigationMenuList>
         </NavigationMenu>
 
@@ -183,52 +227,57 @@ export function Header() {
               </SheetTitle>
             </SheetHeader>
             <div className="flex flex-col p-4">
-              <Accordion type="single" collapsible className="mb-2 mt-2">
-                {nav
-                  .filter((item) => item.children?.length)
-                  .map((item) => (
+              {/* Same order as desktop: dropdown items expand in place, flat
+                  links sit between them as plain rows. */}
+              <Accordion type="single" collapsible className="mt-2">
+                {nav.map((item) =>
+                  item.children?.length ? (
                     <AccordionItem key={item.href} value={item.href} className="border-clay/40">
-                      <AccordionTrigger className="text-nav-link font-semibold text-brand-green hover:no-underline">
+                      <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-brand-green hover:no-underline [&_[data-slot=accordion-trigger-icon]]:text-brand-green">
                         {item.label}
                       </AccordionTrigger>
-                      <AccordionContent>
-                        <div className="grid gap-1 md:grid-cols-2">
-                          <SheetClose asChild>
-                            <Link
-                              href={item.href}
-                              prefetch={false}
-                              className="rounded-sm p-3 font-semibold text-brand-green transition-colors hover:bg-fog-green/40"
-                            >
-                              {item.label}
-                            </Link>
-                          </SheetClose>
-                          {item.children!.map((child) => (
-                            <SheetClose asChild key={child.href}>
+                      <AccordionContent className="[&_a]:no-underline">
+                        <ul className="grid gap-1 sm:grid-cols-2">
+                          <li className="sm:col-span-2">
+                            <SheetClose asChild>
                               <Link
-                                href={child.href}
+                                href={item.href}
                                 prefetch={false}
-                                className="rounded-sm p-3 font-semibold text-brand-green transition-colors hover:bg-fog-green/40"
+                                className="block rounded-sm p-3 text-sm font-semibold text-brand-green transition-colors hover:bg-fog-green/40"
                               >
-                                {child.label}
+                                {item.overviewLabel ?? item.label}
                               </Link>
                             </SheetClose>
+                          </li>
+                          {item.children.map((child) => (
+                            <li key={child.href}>
+                              <SheetClose asChild>
+                                <Link
+                                  href={child.href}
+                                  prefetch={false}
+                                  className="block rounded-sm p-3 text-sm font-medium text-brand-green transition-colors hover:bg-fog-green/40"
+                                >
+                                  {child.label}
+                                </Link>
+                              </SheetClose>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </AccordionContent>
                     </AccordionItem>
-                  ))}
-              </Accordion>
-              <div className="flex flex-col gap-4">
-                {nav
-                  .filter((item) => !item.children?.length)
-                  .map((item) => (
+                  ) : (
                     <SheetClose asChild key={item.href}>
-                      <Link href={item.href} prefetch={false} className="font-semibold text-brand-green">
+                      <Link
+                        href={item.href}
+                        prefetch={false}
+                        className="border-b border-clay/40 py-4 text-nav-link font-semibold text-brand-green"
+                      >
                         {item.label}
                       </Link>
                     </SheetClose>
-                  ))}
-              </div>
+                  )
+                )}
+              </Accordion>
               <div className="mt-6 flex flex-col gap-3">
                 <SheetClose asChild>
                   <Button

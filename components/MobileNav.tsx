@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { HamburgerIcon } from "@/components/icons";
 
 type NavChild = { label: string; href: string };
-export type NavItem = { label: string; href: string; children?: NavChild[] };
+export type NavItem = { label: string; href: string; overviewLabel?: string; children?: NavChild[] };
 
 const MobileNavSheet = dynamic(() => import("@/components/MobileNavSheet"), { ssr: false });
 
