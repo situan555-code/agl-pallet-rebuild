@@ -1,0 +1,6 @@
+{
+  "caption": "AGL indicative price bands",
+  "columns": ["Spec", "Quarter", "Indicative band", "Quantity basis"],
+  "rows": [],
+  "note": "Bands are indicative only. A quote on the spec, quantity, and delivery location is the only price AGL stands behind."
+}

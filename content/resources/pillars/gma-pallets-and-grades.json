@@ -11,6 +11,7 @@
       "heading": "What is a GMA pallet?",
       "paragraphs": [
         "\"GMA pallet\" is shorthand for the 48 × 40 inch wood stringer pallet that the Grocery Manufacturers Association promoted as a common footprint for North American grocery and consumer-goods shipping. The 48-inch dimension is the stringer length; the 40-inch dimension is the deckboard length. In metric terms that is 1219 × 1016 mm, the North American size listed in [ISO 6780](https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en).",
+        "The Grocery Manufacturers Association became the [Consumer Brands Association](https://consumerbrandsassociation.org/press-releases/new-consumer-brands-association-forges-modern-path-for-consumer-packaged-goods-industry/) in 2020. The 48 × 40 footprint kept the GMA name in the pallet trade.",
         "A typical GMA-style pallet has three stringers running the 48-inch length, top and bottom deckboards running the 40-inch width, and notches cut into the outer and center stringers. The notches let forklift tines enter from all four sides, which is why the design is called partial four-way: a pallet jack still enters only from the two 40-inch ends.",
         "The name describes a footprint and a construction style, not a single blueprint. Board thickness, board count, species, fasteners, and height all vary from mill to mill unless the buyer writes them into the spec."
       ],
@@ -63,13 +64,13 @@
       "list": [
         "Footprint and overall height, including which dimension is the stringer length.",
         "Construction and entry type: stringer or block; two-way, partial four-way, or true four-way.",
-        "Top and bottom deckboard count, thickness, and width; spacing between boards.",
+        "Top and bottom deckboard count, thickness, and width, including any [lead board](/resources/glossary/#lead-board); spacing between boards; and whether [butted boards](/resources/glossary/#butted-boards) are allowed.",
         "Stringer or block size and notch dimensions.",
         "Wood species or species group, and any moisture or kiln-dried requirement.",
         "Fasteners: nail type, length, and pattern.",
         "Load requirements: static, dynamic, and racked. See [pallet load capacity](/resources/pallet-weight-and-load-capacity/).",
         "Treatment and marking, such as a heat-treatment stamp for export. See [heat-treated pallets and ISPM-15](/resources/heat-treated-pallets-ispm-15/).",
-        "Receiver requirements: retailer routing-guide rules, pallet exchange programs, or appearance standards.",
+        "Receiver requirements: retailer routing-guide rules, [pallet exchange](/resources/glossary/#pallet-exchange) programs, or appearance standards.",
         "Quantity, release schedule, and delivery location, so the quote includes freight."
       ],
       "after": [
@@ -105,6 +106,7 @@
   },
   "sources": [
     { "label": "ISO 6780 — Flat pallets for intercontinental materials handling", "href": "https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en", "note": "principal pallet dimensions, including 1219 × 1016 mm" },
+    { "label": "Consumer Brands Association — launch, formerly the Grocery Manufacturers Association", "href": "https://consumerbrandsassociation.org/press-releases/new-consumer-brands-association-forges-modern-path-for-consumer-packaged-goods-industry/", "note": "January 13, 2020; the association states it was previously the Grocery Manufacturers Association" },
     { "label": "Woodpack Global (formerly NWPCA)", "href": "https://woodpackglobal.org/", "note": "wood pallet and container industry association" },
     { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "pallet and unit load research" },
     { "label": "CHEP — Standard pallet dimensions", "href": "https://www.chep.com/us/en/products/pallets/standard-pallet-sizes", "note": "lists the 48 × 40 in footprint as 1219 × 1016 mm" }

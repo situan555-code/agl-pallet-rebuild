@@ -10,8 +10,8 @@
       "id": "what-is-ispm-15",
       "heading": "What is ISPM-15?",
       "paragraphs": [
-        "ISPM 15, \"Regulation of wood packaging material in international trade,\" is an International Standard for Phytosanitary Measures adopted under the [International Plant Protection Convention (IPPC)](https://www.ippc.int/en/publications/640/). It sets out how wood packaging made from raw wood, including pallets, crates, and dunnage, must be treated and marked before it crosses a border, so that wood-boring insects and plant diseases do not travel with the cargo.",
-        "Each country enforces ISPM 15 through its own plant protection agency, known in the standard as an NPPO. In the United States that is the USDA [Animal and Plant Health Inspection Service (APHIS)](https://www.aphis.usda.gov/plant-imports/wood-packaging-material), which requires regulated wood packaging entering the country to be treated and marked, and uses the same standard for exports. For U.S. exports, the [American Lumber Standard Committee (ALSC)](https://alsc.org/wood-packaging-material-program/) accredits the independent inspection agencies that license and monitor treatment facilities.",
+        "ISPM 15, \"Regulation of wood packaging material in international trade,\" is an International Standard for Phytosanitary Measures adopted under the [International Plant Protection Convention (IPPC)](https://www.ippc.int/en/publications/640/). It sets out how wood packaging made from raw wood, including pallets, crates, and [dunnage](/resources/glossary/#dunnage), must be treated and marked before it crosses a border, so that wood-boring insects and plant diseases do not travel with the cargo.",
+        "Each country enforces ISPM 15 through its own plant protection agency, known in the standard as an NPPO. In the United States that is the USDA [Animal and Plant Health Inspection Service (APHIS)](/resources/glossary/#aphis), which requires regulated wood packaging entering the country to be treated and marked, and uses the same standard for exports. For U.S. exports, the [American Lumber Standard Committee (ALSC)](/resources/glossary/#alsc) accredits the independent inspection agencies that license and monitor treatment facilities.",
         "Material made from processed wood, such as plywood, oriented strand board, and particleboard, is outside the standard, as are plastic and metal pallets. APHIS lists these as alternatives to regulated wood packaging."
       ]
     },
@@ -28,7 +28,7 @@
           ["HT", "Heat treatment", "Wood is heated until the core reaches at least 56 °C (133 °F) for 30 continuous minutes", "The most common method for pallets. Done in a kiln or heat chamber."],
           ["DH", "Dielectric heating", "Microwave or radio-frequency heating to a set temperature through the full wood profile", "Less common; treated the same as HT for compliance purposes."],
           ["MB", "Methyl bromide fumigation", "Wood is fumigated with methyl bromide gas under set dose and time conditions", "Restricted or banned in many countries because methyl bromide depletes ozone. The IPPC encourages alternatives."],
-          ["SF", "Sulfuryl fluoride fumigation", "Fumigation with sulfuryl fluoride under set conditions", "A newer approved fumigant; check destination acceptance."]
+          ["[SF](/resources/glossary/#sf)", "Sulfuryl fluoride fumigation", "Fumigation with sulfuryl fluoride under set conditions", "A newer approved fumigant; check destination acceptance."]
         ],
         "note": "Summary for orientation only. Treatment schedules and accepted methods are set in the current ISPM 15 annexes and by each importing country; confirm with the [IPPC text](https://www.ippc.int/en/publications/640/) and your destination's rules."
       },
@@ -60,9 +60,10 @@
       ],
       "list": [
         "The IPPC symbol, a stylized wheat-ear logo, on the left.",
-        "A two-letter country code for where the wood was treated, such as US or CA.",
-        "A unique number assigned to the treatment provider or producer under the country's program. U.S. marks usually include the accredited agency's identifier alongside the facility number.",
-        "The treatment code: HT, DH, MB, or SF."
+        "A two-letter country code for where the wood was treated, such as US or CA, joined by a hyphen to the producer number (for example, US-1234).",
+        "A unique producer or treatment-provider number under the country's program. U.S. marks usually include the accredited agency's identifier alongside the facility number. APHIS and U.S. Customs and Border Protection resumed enforcing the hyphen between the country code and the producer number on January 1, 2026 ([APHIS program update](https://www.aphis.usda.gov/news/program-update/reminder-suspension-ispm-15-hyphen-requirement-ends-december-31-2025)).",
+        "The treatment code: HT, DH, MB, or SF.",
+        "The code [DUN](/resources/glossary/#dun) when the marked wood is dunnage rather than a pallet, crate, or box."
       ],
       "after": [
         "APHIS lists illegible marks, marks without a border, incorrect logos, and unmarked wood among the signs of noncompliant wood packaging that inspectors look for. A photo library of real stamps and a stamp decoder are planned for this guide; until then, a clear photo of the mark sent to the facility's inspection agency is the fastest way to confirm what it means."
@@ -76,7 +77,8 @@
         "Specify the treatment code required on the purchase order, usually HT.",
         "Ask for the mark on at least two opposite sides and in a spot that stays visible when the pallet is loaded.",
         "Confirm the treating facility is licensed through an accredited agency; for U.S. wood, that is an ALSC-accredited agency.",
-        "Keep dunnage and bracing in mind: wood used to brace cargo is also regulated wood packaging.",
+        "Confirm the country code and producer number on the mark are joined by a hyphen, for example US-1234.",
+        "Keep dunnage and bracing in mind: wood used to brace cargo is regulated wood packaging, and the mark should include the DUN code.",
         "Do not repair or rebuild a stamped pallet with untreated wood; repaired pallets can require retreatment and remarking.",
         "Keep treatment records or a certificate from the supplier if the importer or forwarder asks for them."
       ],
@@ -121,6 +123,7 @@
   "sources": [
     { "label": "IPPC — ISPM 15: Regulation of wood packaging material in international trade", "href": "https://www.ippc.int/en/publications/640/", "note": "the standard text and annexes" },
     { "label": "USDA APHIS — Wood Packaging Material", "href": "https://www.aphis.usda.gov/plant-imports/wood-packaging-material", "note": "U.S. import and export requirements, signs of noncompliant marks, exempt materials" },
+    { "label": "USDA APHIS — Suspension of the ISPM 15 hyphen requirement ends December 31, 2025", "href": "https://www.aphis.usda.gov/news/program-update/reminder-suspension-ispm-15-hyphen-requirement-ends-december-31-2025", "note": "APHIS and CBP resume enforcing the hyphen between the country code and the producer number on January 1, 2026" },
     { "label": "American Lumber Standard Committee — Wood Packaging Material Program", "href": "https://alsc.org/wood-packaging-material-program/", "note": "accredited agencies that license U.S. treatment facilities" },
     { "label": "IPPC — Adopted standards (ISPMs)", "href": "https://www.ippc.int/en/core-activities/standards-setting/ispms/" }
   ],

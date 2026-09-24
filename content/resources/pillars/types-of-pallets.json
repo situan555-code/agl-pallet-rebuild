@@ -54,7 +54,9 @@
         "Double-face, reversible: identical top and bottom decks, so either side can carry the load.",
         "Flush: deckboards end even with the outer stringers or blocks.",
         "Single-wing or double-wing: deckboards extend past the outer stringers on the top deck, or on both decks, for sling or crane handling.",
-        "Solid or closed deck: boards laid with no gaps, or a sheet deck, for small cartons, bags, or loads that must not snag."
+        "Solid or closed deck: boards laid with no gaps, or a sheet deck, for small cartons, bags, or loads that must not snag.",
+        "[Lead boards](/resources/glossary/#lead-board): the outermost top deckboards at each end, often wider or thicker because they take forklift impact.",
+        "[Butted boards](/resources/glossary/#butted-boards): deckboards placed end to end when one board does not span the pallet. Specs often limit or prohibit them."
       ],
       "after": [
         "Deck coverage and board thickness drive both strength and weight. See the [pallet weight estimator](/resources/pallet-calculators/pallet-weight-estimator/) to see how board count changes an estimate."

@@ -260,12 +260,16 @@ export interface CostPerTripInput {
   repairPerTrip: number;
   returnPerTrip: number;
   residual: number;
+  /** Price of a pallet that ships once. Omit when the visitor left it blank. */
+  oneWayPrice?: number;
 }
 
 export function costPerTrip(i: CostPerTripInput) {
   const capitalPerTrip = (i.price - i.residual) / i.trips;
   const perTrip = capitalPerTrip + i.repairPerTrip + i.returnPerTrip;
-  return { capitalPerTrip, perTrip, lifetime: perTrip * i.trips, oneWay: i.price };
+  const oneWay = i.oneWayPrice;
+  const comparison = oneWay === undefined ? undefined : oneWay - perTrip;
+  return { capitalPerTrip, perTrip, lifetime: perTrip * i.trips, oneWay, comparison };
 }
 
 // ---------------------------------------------------------------------------

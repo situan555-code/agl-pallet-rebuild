@@ -23,6 +23,11 @@ export interface ResourceSection {
   list?: string[];
   ordered?: boolean;
   table?: ResourceTable;
+  /**
+   * Backing file in content/resources/data/. The table renders only when that
+   * file has measured or quoted values. An empty file stays a sentence.
+   */
+  dataRef?: string;
   after?: string[];
 }
 
@@ -56,6 +61,16 @@ export function getHubPillar(slug: string): HubPillar | undefined {
 
 export function quoteHref(source: string) {
   return `/request-a-quote/?source=${encodeURIComponent(source)}`;
+}
+
+/**
+ * First complete sentence, for hub and related-guide cards. Abbreviations
+ * such as U.S. are not treated as the end of the sentence.
+ */
+export function firstSentence(text: string) {
+  const masked = text.replace(/\b(?:U\.S|U\.K|No|vs|Dr|St|ft|in|lb|mm)\./g, (m) => m.replace(/\./g, "\u0000"));
+  const match = masked.match(/^[\s\S]*?[.!?](?=\s|$)/);
+  return (match ? match[0] : masked).replace(/\u0000/g, ".").trim();
 }
 
 export function formatDate(iso: string) {

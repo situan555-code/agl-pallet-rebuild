@@ -1,0 +1,6 @@
+{
+  "caption": "AGL weighed pallets",
+  "columns": ["Pallet spec", "Pallets weighed", "Average weight", "Range", "Moisture reading"],
+  "rows": [],
+  "note": "Each figure is a measured weight. Species, board dimensions, and a moisture-meter reading are recorded with the weighing."
+}

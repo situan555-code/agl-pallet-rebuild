@@ -12,7 +12,10 @@ import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components
 import { Byline } from "@/components/resources/Byline";
 import { Changelog, hasChangelog } from "@/components/resources/Changelog";
 import { RichText, plainText } from "@/components/resources/RichText";
+import weighedData from "@/content/resources/data/agl-weighed.json";
+import bandsData from "@/content/resources/data/agl-indicative-bands.json";
 import {
+  firstSentence,
   getHubPillar,
   quoteHref,
   type ResourcePillar,
@@ -21,6 +24,28 @@ import {
   type ResourceSource,
   type ResourceTable,
 } from "@/lib/resources";
+
+const DATA_TABLES: Record<string, ResourceTable> = {
+  "agl-weighed": weighedData,
+  "agl-indicative-bands": bandsData,
+};
+
+/** A backing file with no measured or quoted cells stays hidden. */
+function publishedTable(table: ResourceTable | undefined): ResourceTable | undefined {
+  if (!table) return undefined;
+  const hasValue = table.rows.some((row) =>
+    row.some((cell) => {
+      const value = cell.trim();
+      return value !== "" && value !== "—" && value !== "-" && value.toLowerCase() !== "pending";
+    })
+  );
+  return hasValue ? table : undefined;
+}
+
+function resolveTable(section: Partial<ResourceSection>): ResourceTable | undefined {
+  if (section.dataRef) return publishedTable(DATA_TABLES[section.dataRef]);
+  return section.table;
+}
 
 const MONEY_LINKS = [
   { label: "Stock pallets and products", href: "/products/" },
@@ -164,6 +189,7 @@ function Paragraphs({ items }: { items: string[] }) {
 
 export function ArticleSection({ section, children }: { section: Pick<ResourceSection, "id" | "heading"> & Partial<ResourceSection>; children?: ReactNode }) {
   const ListTag = section.ordered ? "ol" : "ul";
+  const table = resolveTable(section);
   return (
     <section id={section.id} aria-labelledby={`${section.id}-h`} className="scroll-mt-28 border-t border-brand-green/15 pt-10">
       <h2 id={`${section.id}-h`} className="text-display-row text-brand-green">
@@ -181,7 +207,7 @@ export function ArticleSection({ section, children }: { section: Pick<ResourceSe
           </ListTag>
         )}
       </div>
-      {section.table && <DataTable table={section.table} />}
+      {table && <DataTable table={table} />}
       {section.after && (
         <div className="prose-measure mt-6 space-y-4">
           <Paragraphs items={section.after} />
@@ -290,15 +316,9 @@ export function RelatedGuides({ slugs }: { slugs: string[] }) {
       hairline
       eyebrow="Keep reading"
       heading="Related guides"
-      features={pillars.map((p) => ({ title: p.title, href: p.href, description: teaser(p.directAnswer) }))}
+      features={pillars.map((p) => ({ title: p.title, href: p.href, description: firstSentence(p.directAnswer) }))}
     />
   );
-}
-
-function teaser(text: string, max = 120) {
-  if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:.]$/, "")}…`;
 }
 
 /**

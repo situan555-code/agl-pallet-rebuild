@@ -19,7 +19,7 @@
       "heading": "How pallet pooling works",
       "paragraphs": [
         "CHEP describes the cycle on its [How CHEP works](https://www.chep.com/us/en/why-chep/how-chep-works) page: the customer orders pallets, CHEP delivers them (or the customer picks them up at a service center), the customer loads and ships them and reports the shipment, and CHEP picks the pallets up and returns them to a service center, where they are inspected and repaired if necessary.",
-        "CHEP and PECO run closed pools, where the operator keeps ownership and manages returns. Europe also has an open exchange pool: [EPAL](https://www.epal-pallets.org/eu-en/) describes itself as \"the open pallet pool,\" in which licensed Euro pallets are exchanged between trading partners under published terms of exchange."
+        "CHEP and PECO run closed pools, where the operator keeps ownership and manages returns. Europe also has an open exchange pool: [EPAL](https://www.epal-pallets.org/eu-en/) describes itself as \"the open pallet pool,\" in which licensed Euro pallets change hands by [pallet exchange](/resources/glossary/#pallet-exchange) under published terms of exchange."
       ]
     },
     {

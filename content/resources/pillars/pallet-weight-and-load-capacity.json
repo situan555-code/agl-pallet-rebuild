@@ -63,20 +63,11 @@
     },
     {
       "id": "agl-weighed-data",
-      "heading": "AGL weighed data (pending)",
+      "heading": "AGL weighed data",
       "paragraphs": [
-        "AGL plans to publish weights measured on real pallets from the mills we source through, so buyers have a figure tied to a known pallet spec rather than a web range. No measurements are published yet, and the table below stays empty until they are."
+        "AGL plans to weigh pallets from the mills it sources through on a calibrated scale, record species, board dimensions, and a moisture-meter reading, and publish the count, average, and range for each spec."
       ],
-      "table": {
-        "caption": "AGL weighed pallets — measurements pending",
-        "columns": ["Pallet spec", "Pallets weighed", "Average weight", "Range", "Moisture reading", "Status"],
-        "rows": [
-          ["48 × 40 stringer, partial four-way", "—", "—", "—", "—", "Pending"],
-          ["48 × 40 block, true four-way", "—", "—", "—", "—", "Pending"],
-          ["48 × 40 stringer, heat treated", "—", "—", "—", "—", "Pending"]
-        ],
-        "note": "Planned method: weigh each pallet on a calibrated scale, record species, board dimensions, and a moisture-meter reading at the time of weighing, and publish the count, average, and range for each spec. Figures will appear here only after they are measured."
-      }
+      "dataRef": "agl-weighed"
     },
     {
       "id": "load-spec",

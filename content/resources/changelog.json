@@ -3,12 +3,20 @@
     {
       "date": "2026-09-24",
       "change": "Published the guide on the 48 × 40 stringer footprint and how grade names are used."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Short answer names the 48 × 40 inch footprint. Noted the 2020 Consumer Brands Association rename."
     }
   ],
   "heat-treated-pallets-ispm-15": [
     {
       "date": "2026-09-24",
       "change": "Published the guide on heat treatment, the ISPM-15 mark, and what export buyers confirm."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Short answer includes the 56 °C core temperature and 30-minute time. Stamp section adds the hyphen rule and the DUN code."
     }
   ],
   "glossary": [
@@ -19,18 +27,30 @@
     {
       "date": "2026-09-24",
       "change": "Expanded the glossary with freight, standards, lumber, and pool terms."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Added DUN, SF, ALSC, butted boards, and pallet exchange. Each entry keeps its own anchor."
     }
   ],
   "pallet-weight-and-load-capacity": [
     {
       "date": "2026-09-24",
       "change": "Published the guide comparing third-party weight and load figures. No AGL weighed means."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Short answer includes the 33–48 lb published range. Empty weighed-data table stays hidden until the data file has values."
     }
   ],
   "pallet-sizes": [
     {
       "date": "2026-09-24",
       "change": "Published the guide on common pallet footprints, including where sources disagree on the square size."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked the first mention of pallet collar to the glossary."
     }
   ],
   "skid-vs-pallet": [
@@ -43,6 +63,10 @@
     {
       "date": "2026-09-24",
       "change": "Published the guide on what moves pallet prices, with the BLS price index. No AGL dollar bands."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Empty indicative-band table stays hidden until the data file has values. No dollar figures added."
     }
   ],
   "pallets-per-truckload": [
@@ -53,6 +77,10 @@
     {
       "date": "2026-09-24",
       "change": "Added a pool operator's published empty-pallet stack figure."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Short answer includes 26 straight, 30 turned, and about 510 empty. Container rows now show interior height."
     }
   ],
   "pallet-calculators": [
@@ -71,30 +99,50 @@
     {
       "date": "2026-09-24",
       "change": "Published the wood pallet weight estimator."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Noted that the estimate may differ from the shared planning default of 6 in and 37 lb."
     }
   ],
   "cost-per-trip": [
     {
       "date": "2026-09-24",
       "change": "Published the cost-per-trip calculator. It uses only figures you enter."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Added an optional one-way pallet price, a comparison row, and a labeled worked example on first load."
     }
   ],
   "types-of-pallets": [
     {
       "date": "2026-09-24",
       "change": "Published the guide on stringer and block pallets, entry, decks, and materials."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked lead board and butted boards to the glossary."
     }
   ],
   "pooled-vs-owned-pallets": [
     {
       "date": "2026-09-24",
       "change": "Published the guide on pooled and owned pallets, with pool operators quoted on ownership. No fee rates."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked the first mention of pallet exchange to the glossary."
     }
   ],
   "pallet-standards": [
     {
       "date": "2026-09-24",
       "change": "Published the guide linking pallet standards. The standards text stays with the publishers."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Named ANSI MH1-2021 and the 2025 Uniform Standard. ASTM D1185 now points at the 2025 reaffirmation."
     }
   ]
 }

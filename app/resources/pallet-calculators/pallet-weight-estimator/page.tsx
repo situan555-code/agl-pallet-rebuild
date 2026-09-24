@@ -26,6 +26,8 @@ export default function PalletWeightEstimatorPage({ searchParams }: { searchPara
   }));
 
   const r = palletWeight(lines, species, mc);
+  const planning = calculators.truckload.defaults;
+  const planningNote = `Shared planning default: height ${planning.palletH} in and weight ${planning.palletWeight} lb, the same empty-pallet figures the truckload calculator uses. This estimator's own calculation may differ slightly from that shared planning default.`;
 
   return (
     <CalculatorPage content={content}>
@@ -55,7 +57,7 @@ export default function PalletWeightEstimatorPage({ searchParams }: { searchPara
             detail={
               <p>
                 {fmt(r.volumeFt3, 2)} ft³ of wood ({fmt(r.boardFeet, 1)} board feet, actual dimensions) at {fmt(r.density, 1)} lb/ft³ for{" "}
-                {species.label.toLowerCase()} at {fmt(mc)}% moisture. An estimate, not a measured weight.
+                {species.label.toLowerCase()} at {fmt(mc)}% moisture. An estimate, not a measured weight. {planningNote}
               </p>
             }
           />
@@ -79,7 +81,7 @@ export default function PalletWeightEstimatorPage({ searchParams }: { searchPara
         />
         <Disclaimer text={calculators.disclaimer} />
       </section>
-      <NoteList heading="Defaults and where they come from" items={content.defaultNotes} />
+      <NoteList heading="Defaults and where they come from" items={[...content.defaultNotes, planningNote]} />
     </CalculatorPage>
   );
 }

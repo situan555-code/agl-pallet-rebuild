@@ -49,21 +49,11 @@
     },
     {
       "id": "agl-indicative-bands",
-      "heading": "AGL indicative price bands (not yet published)",
+      "heading": "AGL indicative price bands",
       "paragraphs": [
-        "AGL plans to publish quarterly indicative price bands for common specs, drawn from quotes placed through the desk, next to the BLS index. They are not published yet. Until they are, the table below shows the specs that will be tracked and no dollar figures."
+        "AGL plans to publish indicative price bands for common specs, drawn from quotes placed through the desk and labeled with the quarter, spec, and quantity basis they describe, shown next to the BLS index."
       ],
-      "table": {
-        "caption": "AGL indicative bands by quarter — pending",
-        "columns": ["Spec", "Q3 2026 band", "Status", "Today"],
-        "rows": [
-          ["48 × 40 stringer, new, partial four-way", "—", "Pending", "[Request a quote](/request-a-quote/?source=pallet-prices)"],
-          ["48 × 40 block, new, true four-way", "—", "Pending", "[Request a quote](/request-a-quote/?source=pallet-prices)"],
-          ["48 × 40 stringer, heat treated (HT)", "—", "Pending", "[Request a quote](/request-a-quote/?source=pallet-prices)"],
-          ["Custom size or engineered design", "—", "Quote only", "[Request a quote](/request-a-quote/?source=pallet-prices)"]
-        ],
-        "note": "Bands will be indicative only, labeled with the quarter, spec, and quantity basis they describe. A quote on your spec, quantity, and delivery location is the only price AGL stands behind."
-      }
+      "dataRef": "agl-indicative-bands"
     },
     {
       "id": "comparing-quotes",
