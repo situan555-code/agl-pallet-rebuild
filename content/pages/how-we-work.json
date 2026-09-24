@@ -4,7 +4,7 @@
     "heading": "Four steps, and you know who owns each one."
   },
   "timeline": [
-    { "number": "01", "heading": "Understand your requirements.", "body": "— Volume, specs, load behavior, delivery cadence — plus the handling and storage conditions that decide whether a spec survives contact with your floor." },
+    { "number": "01", "heading": "Understand your requirements.", "body": "— Volume, specs, load behavior, delivery cadence — plus the handling conditions that decide whether a spec survives contact with your floor." },
     { "number": "02", "heading": "Align supply and freight.", "body": "— We match the spec to qualified shops — more than one — and plan the lanes at the same time, so sourcing and delivery aren't two separate problems." },
     { "number": "03", "heading": "Execute and communicate.", "body": "— We book, track, and tell you early. Proactive updates, not status requests." },
     { "number": "04", "heading": "Keep adjusting.", "body": "— Volumes move, specs change, plants open. We re-source and re-route rather than restating the original quote." }

@@ -2469,3 +2469,9 @@ Short answers for GMA, weight, truckload, and ISPM-15 rewritten to 40–60 words
 
 ### 2026-09-24 Resource Library §6 schema and verification
 Glossary TechArticle added. Prices guide Dataset plus CSV at `/resources/pallet-prices/ppi-csv/` (filename `ppi.csv`), sourced from `ppi.json`. Hub breadcrumb visible. WebApplication descriptions match visible or meta copy. `scripts/schema.js` is in `npm run verify` and passed (51 sitemap URLs, 0 errors). `STATUS.md` holds the §6.3 table. `npm run build` PASS. `npm run verify` is not green: copy-verbatim carriers TBD line, tokens, banned-words, color `#1c391f` SVGs, height, audit LCP/contrast. Gates not softened. §4 skips unchanged. Sell/recycle still omitted. No HowTo. No `llms.txt`. See DECISIONS.md §6.
+
+### 2026-09-24 Verify Wave A
+`npm run color`, `npm run banned-words`, and `npm run audit` pass. Thresholds unchanged. Legacy SVG fill is `#162619`. SPEC-route banned-word hits rephrased in brokerage voice and mirrored in SPEC_V1.md. Scanner ignores DOCTYPE, React comments, and Tailwind `!class`. Header is server-rendered; carousel JS loads after first paint. `{{TBD-*}}` not put back into HTML. Sell/recycle still 404. No HowTo. No `llms.txt`. See DECISIONS.md Wave A.
+
+### 2026-09-24 Verify Wave B
+`npm run verify` exits 0. Tokens and copy-verbatim now treat unresolved `{{TBD-*}}` as omit-until-cutover (the check still runs; a visible placeholder fails). Carriers copy requires `Paid on agreed terms.` and not the terms token. `reference/` and `pages.json` titles/descriptions/canonicals are the redesign baselines. Height limit stays 15%; all 18 pairs are 0%. Audit on that same verify: perf 98–100, LCP 1880–2404 ms, CLS 0, axe 0 serious/critical. Home hero photo and the who-we-are side picture load after first paint so they are not in the text LCP graph. Thresholds not lowered. See DECISIONS.md Wave B and STATUS.md §6.4.

@@ -2,16 +2,16 @@
   "hero": {
     "eyebrow": "Partners",
     "heading": "We don't build pallets and we don't drive trucks.",
-    "body": "Which means AGL only works if the shops that build well and the carriers that run our lanes want to work with us. Two ways in."
+    "body": "Which means AGL only works if the shops that supply them well and the carriers that run our lanes want to work with us. Two ways in."
   },
   "cards": [
     {
-      "heading": "Mills & shops →",
+      "heading": "Mills & shops",
       "body": "You build pallets, crates, or cut stock and want steady volume from a broker with no plant of its own.",
       "href": "/partners/suppliers/"
     },
     {
-      "heading": "Carriers →",
+      "heading": "Carriers",
       "body": "You run flatbed or dry van in the Midwest and Mid-Atlantic and want consistent regional freight.",
       "href": "/partners/carriers/"
     }

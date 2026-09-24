@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
   'Custom and Engineered Pallets, Crates and Skids — AGL Pallet',
-  'Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up to build it.',
+  'Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job.',
   '/custom-engineered/',
 );
 

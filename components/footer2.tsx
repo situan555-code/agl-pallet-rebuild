@@ -6,7 +6,7 @@
 // Organization JSON-LD.
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
+import { MailIcon, PhoneIcon } from "@/components/inline-icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
 
@@ -46,13 +46,13 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
             <ul className="mt-4 space-y-3">
               <li>
                 <a href={`tel:${contact.phone.replace(/-/g, "")}`} className={cn(linkClass, "inline-flex items-center gap-2")}>
-                  <Phone aria-hidden="true" className="h-4 w-4" />
+                  <PhoneIcon className="h-4 w-4" />
                   {contact.phone}
                 </a>
               </li>
               <li>
                 <a href={`mailto:${contact.email}`} className={cn(linkClass, "inline-flex items-center gap-2")}>
-                  <Mail aria-hidden="true" className="h-4 w-4" />
+                  <MailIcon className="h-4 w-4" />
                   {contact.email}
                 </a>
               </li>

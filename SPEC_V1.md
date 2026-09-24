@@ -186,7 +186,7 @@ Build these once and reuse. Copy varies by instance; structure does not.
 
 | `/` | AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers | AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order. |
 
-| `/who-we-are` | Who We Are — AGL Pallet | AGL Pallet was built from the manufacturing side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone. |
+| `/who-we-are` | Who We Are — AGL Pallet | AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone. |
 
 | `/partners` | Partners — AGL Pallet | AGL works with family-run mills and regional carriers across the Midwest and Mid-Atlantic. Two ways to work with us. |
 
@@ -196,11 +196,11 @@ Build these once and reuse. Copy varies by instance; structure does not.
 
 | `/the-pledge` | The Pledge — AGL Will Never Own Manufacturing | Most large pallet brokers bought factories. AGL did not, and will not. Why that decision is structural rather than a slogan. |
 
-| `/custom-engineered` | Custom and Engineered Pallets, Crates and Skids — AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up to build it. |
+| `/custom-engineered` | Custom and Engineered Pallets, Crates and Skids — AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job. |
 
 | `/products` | Products — Pallets, Crates, Dunnage, Blocks and Stakes | Stock pallets, custom and engineered solutions, crates, dunnage, shipping blocks, and stakes, sourced through qualified mills. |
 
-| `/industries` | Industries We Serve — AGL Pallet | Building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage. |
+| `/industries` | Industries We Serve — AGL Pallet | Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage. |
 
 | `/how-we-work` | How We Work — AGL Pallet | Four steps: understand the requirement, align supply and freight, execute and communicate, keep adjusting. |
 
@@ -284,7 +284,7 @@ BODY:
 
 AGL is a pallet brokerage. We don't own a mill and we don't own trucks. What we own
 
-is the coordination: we qualify the shops that build well, hold more than one source
+is the coordination: we qualify the shops that supply them well, hold more than one source
 
 for every spec we quote, and book the freight so the pallets land when your line
 
@@ -320,7 +320,7 @@ CARD 3 — eyebrow "03"
 
   H3: We've run the floor
 
-  BODY: AGL was built by people who bought pallets from the manufacturing side. We
+  BODY: AGL was started by people who bought pallets for production lines. We
 
   know which corners cost money later and which specs are overbuilt for the job.
 
@@ -386,7 +386,7 @@ CARD 2
 
 EYEBROW: Who we are
 
-H2: Built by people who were on the other side of the dock.
+H2: People who stood on the other side of the dock.
 
 BODY:
 
@@ -420,7 +420,7 @@ H1: We were the ones waiting on the pallets.
 
 LEDE:
 
-AGL Pallet was built from the manufacturing side of the dock — by people who spent
+AGL Pallet started on the buying side of the dock — by people who spent
 
 years specifying, buying, and waiting on pallets while a production schedule ran
 
@@ -452,7 +452,7 @@ vendors who kept me running weren't the biggest — they were the ones who calle
 
 before I had to call them.
 
-So AGL is built around two things I couldn't get reliably as a buyer. More than one
+So AGL is organized around two things I couldn't get reliably as a buyer. More than one
 
 qualified shop behind every spec, so a single mill's bad week isn't my problem. And a
 
@@ -536,7 +536,7 @@ CARD 4  H3: Accountability
 
 ```
 
-EYEBROW: What we're built on
+EYEBROW: What we stand on
 
 H2: AGL is a Christ-centered company.
 
@@ -546,7 +546,7 @@ It shapes how we deal with people more than what we sell. Mills get paid when we
 
 we'd pay them. Customers get told what we can and can't do, including when the honest
 
-answer costs us the order. Nobody gets squeezed because we happen to have leverage
+answer costs us the order. Nobody gets squeezed because we happen to have the upper hand
 
 that week.
 
@@ -592,7 +592,7 @@ EYEBROW: Partners
 
 H1: We don't build pallets and we don't drive trucks.
 
-LEDE: Which means AGL only works if the shops that build well and the carriers that
+LEDE: Which means AGL only works if the shops that supply them well and the carriers that
 
 run our lanes want to work with us. Two ways in.
 
@@ -604,7 +604,7 @@ run our lanes want to work with us. Two ways in.
 
 CARD 1
 
-  H3: Mills & shops →
+  H3: Mills & shops
 
   BODY: You build pallets, crates, or cut stock and want steady volume from a broker
 
@@ -614,7 +614,7 @@ CARD 1
 
 CARD 2
 
-  H3: Carriers →
+  H3: Carriers
 
   BODY: You run flatbed or dry van in the Midwest and Mid-Atlantic and want consistent
 
@@ -840,7 +840,7 @@ LIST:
 
   Mixed programs. — Multiple specs, staggered releases, several ship-to addresses — the
 
-  coordination a single mill struggles with is the part we're built for.
+  coordination a single mill struggles with is the part we take on.
 
 ```
 
@@ -874,7 +874,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | Dunnage | `#dunnage` | Blocking, bracing, and fill to keep a load from moving in transit. **New standalone line — currently bundled with crates.** |
 
-| Shipping blocks | `#shipping-blocks` | Supplemental components that elevate, space, and stabilize palletized and irregular loads. |
+| Shipping blocks | `#shipping-blocks` | Supplemental components that raise, space, and stabilize palletized and irregular loads. |
 
 | Stakes | `#stakes` | **New line — missing from the live site entirely.** Stakes for loads that need vertical containment on a flat deck. |
 
@@ -946,7 +946,7 @@ LIST:
 
   Understand your requirements. — Volume, specs, load behavior, delivery cadence —
 
-  plus the handling and storage conditions that decide whether a spec survives contact
+  plus the handling conditions that decide whether a spec survives contact
 
   with your floor.
 

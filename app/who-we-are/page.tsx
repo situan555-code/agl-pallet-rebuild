@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
   'Who We Are — AGL Pallet',
-  'AGL Pallet was built from the manufacturing side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.',
+  'AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.',
   '/who-we-are/',
 );
 

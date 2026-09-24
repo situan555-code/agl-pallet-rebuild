@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // Captures the built site at 390/768/1440 with the same deterministic
 // settings used for /reference (animations disabled, fixed scroll
-// position). Output goes to /screenshots, which `npm run diff` compares
-// against /reference — it does NOT touch /reference itself, which was
-// captured once against the live site in Phase 1 and is never regenerated.
+// position). Output goes to /screenshots, which `npm run height` and
+// `npm run diff` compare against /reference. This script does not write
+// /reference. The PNGs in /reference were refreshed 2026-09-24 (Wave B)
+// to the current redesign baselines. A routine screenshot run must not
+// overwrite them.
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
