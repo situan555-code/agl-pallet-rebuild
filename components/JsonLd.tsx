@@ -1,4 +1,5 @@
 import site from "@/content/site.json";
+import { getSiteUrl } from "@/lib/site-url";
 
 /**
  * Organization JSON-LD, mounted sitewide in app/layout.tsx. Deliberately not
@@ -24,7 +25,7 @@ export function OrganizationJsonLd() {
         "@context": "https://schema.org",
         "@type": "Organization",
         name: organization.legalName,
-        url: organization.url,
+        url: getSiteUrl(),
         telephone: footer.contact.phone,
         email: footer.contact.email,
       }}
@@ -44,7 +45,7 @@ export function LocalBusinessJsonLd() {
 // unconfirmed {{TBD-*}} tokens that must not render, so no Person author.
 function orgRef() {
   const { organization } = site;
-  return { "@type": "Organization", name: organization.legalName, url: organization.url };
+  return { "@type": "Organization", name: organization.legalName, url: getSiteUrl() };
 }
 
 export function TechArticleJsonLd({
@@ -60,7 +61,7 @@ export function TechArticleJsonLd({
   published: string;
   updated: string;
 }) {
-  const { url } = site.organization;
+  const url = getSiteUrl();
   return (
     <JsonLdScript
       data={{
@@ -106,7 +107,7 @@ export function DefinedTermSetJsonLd({
   path: string;
   terms: { id: string; term: string; definition: string }[];
 }) {
-  const { url } = site.organization;
+  const url = getSiteUrl();
   const setId = `${url}${path}`;
   return (
     <JsonLdScript
@@ -131,7 +132,7 @@ export function DefinedTermSetJsonLd({
 
 // Only for calculators that actually compute a result on the page.
 export function WebApplicationJsonLd({ name, description, path }: { name: string; description: string; path: string }) {
-  const { url } = site.organization;
+  const url = getSiteUrl();
   return (
     <JsonLdScript
       data={{
@@ -151,7 +152,7 @@ export function WebApplicationJsonLd({ name, description, path }: { name: string
 }
 
 export function BreadcrumbJsonLd({ items }: { items: { name: string; path: string }[] }) {
-  const { url } = site.organization;
+  const url = getSiteUrl();
   return (
     <JsonLdScript
       data={{

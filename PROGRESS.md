@@ -2454,3 +2454,6 @@ pallet-prices (BLS PPI chart + table, AGL bands pending), pallets-per-truckload 
 
 ### 2026-09-24 Resource Library Wave 4
 types-of-pallets, pooled-vs-owned-pallets, pallet-standards full guides; glossary 61 → 121 terms; all 12 hub pillars now "Guide". build PASS. Sell/recycle still omitted (404). See DECISIONS.md Wave 4.
+
+### 2026-09-24 Resource Library §1 canonical / noindex
+Host-conditional `X-Robots-Tag` + robots meta for `*.vercel.app` only (`middleware.ts`, `app/layout.tsx`, `lib/host.ts`). Sitemap, canonicals, og:url, JSON-LD absolute URLs from `SITE_URL` (`lib/site-url.ts`, default `https://aglpallet.com`). robots.txt still allows `/`. Runbook: `DOMAIN-SWITCH-RUNBOOK.md`. DNS not changed. Live curl on nx7k-lab-m4.vercel.app is post-deploy. See DECISIONS.md §1.

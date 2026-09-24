@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
-import site from "@/content/site.json";
+import { getSiteUrl } from "@/lib/site-url";
 
 // Search and AI crawlers named explicitly so a later blanket rule cannot
 // silently shut them out. No llms.txt (Resource Library blueprint).
+// Stays permissive on *.vercel.app — do not Disallow: /. The noindex gate is
+// the host-conditional header and meta tag (middleware.ts, app/layout.tsx).
 const ALLOWED_BOTS = [
   "Googlebot",
   "Bingbot",
@@ -23,6 +25,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/" },
       { userAgent: ALLOWED_BOTS, allow: "/" },
     ],
-    sitemap: `${site.organization.url}/sitemap.xml`,
+    sitemap: `${getSiteUrl()}/sitemap.xml`,
   };
 }
