@@ -66,7 +66,7 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
           loading={{ autoplayFirst: play }}
           mediaProps={{
             autoPlay: play,
-            className: "bg-brand-green object-cover",
+            className: "absolute inset-0 h-full w-full min-h-0 min-w-0 bg-brand-green object-cover",
             loop: !reduceMotion,
             muted: true,
             playsInline: true,
