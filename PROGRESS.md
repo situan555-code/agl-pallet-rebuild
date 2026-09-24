@@ -2451,3 +2451,6 @@ robots.ts (AI crawler allowlist), sitemap.ts (28 URLs, no WP paths), /resources/
 
 ### 2026-09-24 Resource Library Wave 3
 pallet-prices (BLS PPI chart + table, AGL bands pending), pallets-per-truckload (published + calculated counts, server-rendered calculator), pallet-calculators hub + boxes-per-pallet, pallet-weight-estimator, cost-per-trip. build PASS; ad-hoc banned-words scan clean on new pages. See DECISIONS.md Wave 3.
+
+### 2026-09-24 Resource Library Wave 4
+types-of-pallets, pooled-vs-owned-pallets, pallet-standards full guides; glossary 61 → 121 terms; all 12 hub pillars now "Guide". build PASS. Sell/recycle still omitted (404). See DECISIONS.md Wave 4.

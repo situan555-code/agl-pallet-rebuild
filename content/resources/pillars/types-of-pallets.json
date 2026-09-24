@@ -1,0 +1,151 @@
+{
+  "slug": "types-of-pallets",
+  "eyebrow": "Resource guide · Construction",
+  "metaTitle": "Types of Pallets: Stringer vs. Block, Entry Types, Decks, and Materials — AGL Pallet",
+  "metaDescription": "The main types of pallets explained: stringer and block construction, two-way and four-way entry, deck styles, wood, plastic, presswood, metal, and corrugated pallets, and how to choose.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "stringer-vs-block",
+      "heading": "Stringer vs. block construction",
+      "paragraphs": [
+        "Almost every wood pallet is one of two constructions. The difference is what holds the decks apart."
+      ],
+      "table": {
+        "caption": "Stringer and block pallets compared",
+        "columns": ["", "Stringer pallet", "Block pallet"],
+        "rows": [
+          ["What holds the decks apart", "Continuous boards (stringers) running the length, usually three on a 48 × 40", "Blocks, usually nine on a 48 × 40, tied together by stringerboards"],
+          ["Entry", "Two-way, or partial four-way when the stringers are notched", "True four-way for forklifts and pallet jacks"],
+          ["Parts and labor", "Fewer parts; simpler to build and repair", "More parts; more labor per pallet"],
+          ["Relative cost", "Lower for the same footprint", "Higher"],
+          ["Where it is common", "One-way and domestic shipping; the GMA 48 × 40", "Pooled programs, automated handling, many export lanes"]
+        ],
+        "note": "Typical characteristics. A heavy stringer design can outperform a light block design; the spec decides, not the category."
+      },
+      "after": [
+        "See [GMA pallets and grades](/resources/gma-pallets-and-grades/) for the 48 × 40 stringer footprint, and [pooled vs. owned pallets](/resources/pooled-vs-owned-pallets/) for the block pallets used in rental pools."
+      ]
+    },
+    {
+      "id": "entry-types",
+      "heading": "Two-way, partial four-way, and true four-way",
+      "table": {
+        "caption": "Pallet entry types",
+        "columns": ["Entry type", "Forklift entry", "Pallet jack entry", "How it is achieved"],
+        "rows": [
+          ["Two-way", "Two opposite ends", "Two opposite ends", "Unnotched stringers"],
+          ["Partial four-way", "All four sides", "Two opposite ends only", "Notches cut in the bottom of the stringers"],
+          ["True four-way", "All four sides", "All four sides", "Blocks with open space between them, and a bottom deck that leaves wheel openings"]
+        ],
+        "note": "Notches let forklift tines in from the side, but pallet jack wheels need an opening in the bottom deck, which a notched stringer pallet does not have on its long sides."
+      },
+      "after": [
+        "Entry matters most at the receiving dock. A distribution center that turns pallets with pallet jacks, or runs automated equipment, may require true four-way entry."
+      ]
+    },
+    {
+      "id": "deck-styles",
+      "heading": "Deck styles",
+      "list": [
+        "Single-face: a top deck only. A skid is the simplest case. See [skid vs. pallet](/resources/skid-vs-pallet/).",
+        "Double-face, nonreversible: top and bottom decks, with the bottom deck lighter or more open than the top. The most common style for stringer pallets.",
+        "Double-face, reversible: identical top and bottom decks, so either side can carry the load.",
+        "Flush: deckboards end even with the outer stringers or blocks.",
+        "Single-wing or double-wing: deckboards extend past the outer stringers on the top deck, or on both decks, for sling or crane handling.",
+        "Solid or closed deck: boards laid with no gaps, or a sheet deck, for small cartons, bags, or loads that must not snag."
+      ],
+      "after": [
+        "Deck coverage and board thickness drive both strength and weight. See the [pallet weight estimator](/resources/pallet-calculators/pallet-weight-estimator/) to see how board count changes an estimate."
+      ]
+    },
+    {
+      "id": "materials",
+      "heading": "Pallet materials",
+      "paragraphs": [
+        "Wood carries most North American freight. Other materials fit specific jobs."
+      ],
+      "table": {
+        "caption": "Pallet materials at a glance",
+        "columns": ["Material", "Where it fits", "Watch for", "ISPM 15 for export"],
+        "rows": [
+          ["Wood (softwood or hardwood)", "General freight, custom sizes, heavy loads, one-way and multi-trip", "Weight and moisture vary; can splinter or mold if stored wet", "Applies: treat and stamp"],
+          ["Plastic", "Closed loops, food and pharma, automated systems", "Higher upfront cost; custom sizes tied to molds; hard to repair", "Not wood, so outside ISPM 15"],
+          ["Presswood (molded wood fiber)", "Light one-way export loads; often nestable", "Lower load ratings; moisture sensitivity", "Processed wood, exempt"],
+          ["Metal (steel or aluminum)", "Very heavy loads, high heat, sanitary or closed-loop uses", "Weight (steel) and cost", "Not wood, so outside ISPM 15"],
+          ["Corrugated paperboard", "Light one-way loads, air freight, displays", "Low strength; weak when wet", "Not wood, so outside ISPM 15"]
+        ],
+        "note": "Export status is summarized from the ISPM 15 scope. Destination countries can add rules; confirm before shipping. See [heat-treated pallets and ISPM-15](/resources/heat-treated-pallets-ispm-15/)."
+      }
+    },
+    {
+      "id": "special-purpose",
+      "heading": "Special-purpose pallets",
+      "list": [
+        "Drum pallets: square footprints such as 48 × 48 or 42 × 42 sized to hold drums. See [pallet sizes](/resources/pallet-sizes/).",
+        "Half and quarter pallets: small footprints for store displays and light loads.",
+        "Export pallets: heat treated and stamped for ISPM 15, sometimes block construction to suit the destination's handling.",
+        "Engineered and heavy-duty pallets: designed to a specific load, rack span, or handling system. See [custom and engineered pallets](/custom-engineered/).",
+        "Crates and skids: for machinery and loads that need protection on all sides or ship on runners."
+      ]
+    },
+    {
+      "id": "choosing",
+      "heading": "Choosing a pallet type",
+      "paragraphs": [
+        "Start from the load and both ends of the trip, not from the pallet:"
+      ],
+      "list": [
+        "What does the unit load weigh, and is the weight even or concentrated?",
+        "How is it handled at the shipping and receiving docks: forklift, pallet jack, conveyor, or automated equipment?",
+        "Will it be stacked or racked, and on what span?",
+        "Does it cross a border?",
+        "Does the pallet come back, or ship once?",
+        "Does the receiver require a specific footprint, entry type, or pool?"
+      ],
+      "after": [
+        "AGL sources new wood pallets: stock and custom stringer and block pallets, engineered skids, and crates, placed with qualified mills. See [products](/products/)."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "stringer-or-block-pallet",
+        "question": "What is the difference between a stringer pallet and a block pallet?",
+        "answer": [
+          "A stringer pallet rests on continuous boards that run its length, so it allows two-way entry, or partial four-way if the stringers are notched. A block pallet rests on blocks, so forklifts and pallet jacks can enter from all four sides. Block pallets cost more and are common in pools and automated handling."
+        ]
+      },
+      {
+        "id": "what-is-a-four-way-pallet",
+        "question": "What is a four-way pallet?",
+        "answer": [
+          "A pallet that forklifts can enter from all four sides. On a notched stringer pallet (partial four-way), pallet jacks still enter only the two ends. On a block pallet (true four-way), both forklifts and pallet jacks enter from every side."
+        ]
+      },
+      {
+        "id": "most-common-pallet-type",
+        "question": "What is the most common type of pallet?",
+        "answer": [
+          "In North America, the 48 × 40 wood stringer pallet, the GMA footprint, is the most common by a wide margin. Block pallets of the same footprint dominate rental pools."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary overview of pallet construction and materials" },
+    { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "research on pallet design and unit load performance" },
+    { "label": "IPPC — ISPM 15", "href": "https://www.ippc.int/en/publications/640/", "note": "scope of wood packaging covered by the standard" },
+    { "label": "USDA APHIS — Wood Packaging Material", "href": "https://www.aphis.usda.gov/plant-imports/wood-packaging-material", "note": "U.S. import rules and materials not regulated as wood packaging" },
+    { "label": "ISO/TC 51 — Pallets for unit load method of materials handling", "href": "https://www.iso.org/committee/48928.html", "note": "ISO pallet vocabulary, dimension, and test standards" },
+    { "label": "CHEP — Pooled wood block pallet, 48 × 40 in", "href": "https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet", "note": "example of a pooled block pallet specification" }
+  ],
+  "related": ["skid-vs-pallet", "gma-pallets-and-grades", "pooled-vs-owned-pallets", "pallet-standards"],
+  "cta": {
+    "heading": "Not sure which type fits?",
+    "body": "Send the load, how it is handled at both ends, and where it ships. We match the construction to qualified mills and manage the freight on the order."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "slug": "pooled-vs-owned-pallets",
+  "eyebrow": "Resource guide · Programs",
+  "metaTitle": "Pooled vs. Owned Pallets: Renting from a Pool or Buying Whitewood — AGL Pallet",
+  "metaDescription": "How pallet pooling works, who owns pooled pallets, how pooled and owned (whitewood) pallets compare, what costs to ask about, and which fits a given lane.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "two-models",
+      "heading": "Two ways to put freight on pallets",
+      "list": [
+        "Pooled (rented): the shipper rents pallets from a pool operator. The pallets move with the product to the receiver, and the pool collects, inspects, repairs, and reissues them. The shipper never owns them.",
+        "Owned: the shipper buys pallets outright. They either ship one way and stay with the receiver, or come back to the shipper in a closed loop. In trade usage, owned pallets that are not part of a pool are often called whitewood pallets."
+      ]
+    },
+    {
+      "id": "how-pooling-works",
+      "heading": "How pallet pooling works",
+      "paragraphs": [
+        "CHEP describes the cycle on its [How CHEP works](https://www.chep.com/us/en/why-chep/how-chep-works) page: the customer orders pallets, CHEP delivers them (or the customer picks them up at a service center), the customer loads and ships them and reports the shipment, and CHEP picks the pallets up and returns them to a service center, where they are inspected and repaired if necessary.",
+        "CHEP and PECO run closed pools, where the operator keeps ownership and manages returns. Europe also has an open exchange pool: [EPAL](https://www.epal-pallets.org/eu-en/) describes itself as \"the open pallet pool,\" in which licensed Euro pallets are exchanged between trading partners under published terms of exchange."
+      ]
+    },
+    {
+      "id": "who-owns-pooled-pallets",
+      "heading": "Who owns a pooled pallet",
+      "paragraphs": [
+        "The pool does. CHEP and PECO, two of the best-known U.S. pools, say so directly:"
+      ],
+      "list": [
+        "[CHEP](https://www.chep.com/us/en/request-blue-pallet-collection-US): \"CHEP owns its pallets and never sells or otherwise relinquishes ownership of them.\" CHEP pallets are blue and marked as CHEP property.",
+        "[PECO](https://pecopallet.com/pallet-recovery/): PECO's red block pallets \"are the property of PECO Pallet,\" and PECO states that \"it is illegal to sell, buy, exchange, or repurpose PECO pallets.\""
+      ],
+      "after": [
+        "In practice, that means pooled pallets that arrive at a dock should go back to the pool through its pickup process, not into a pile of owned pallets or to a pallet buyer. Receivers who mix them in can create problems for themselves and their suppliers. Quotes on this site are for new owned pallets; AGL does not sell or rent pooled pallets."
+      ]
+    },
+    {
+      "id": "comparison",
+      "heading": "Pooled vs. owned at a glance",
+      "table": {
+        "caption": "Pooled and owned pallets compared",
+        "columns": ["Factor", "Pooled (rented)", "Owned (whitewood)"],
+        "rows": [
+          ["Ownership", "Pool operator, always", "Shipper, until the pallet leaves with the load"],
+          ["Upfront cost", "No purchase; rental charges under the pool's contract", "Purchase price per pallet"],
+          ["Specification", "The pool's standard pallet, usually a 48 × 40 block pallet", "Any spec: footprint, construction, deck, treatment"],
+          ["Custom sizes and heavy loads", "Limited to what the pool offers", "Built to the load"],
+          ["Returns", "Pool collects from receivers in its network", "One way, or the shipper arranges its own returns"],
+          ["Tracking and admin", "Shipments reported to the pool; losses may be charged", "Little or none for one-way; more for a closed loop"],
+          ["Receiver acceptance", "Some receivers require or prefer a specific pool", "Accepted where the receiver has no pool requirement"],
+          ["Export", "Depends on the pool's network in the destination country", "Heat treat and stamp to ISPM 15 and ship one way"]
+        ],
+        "note": "Typical characteristics; contracts and receivers vary. No fee rates are shown because pool pricing is quoted per customer."
+      }
+    },
+    {
+      "id": "costs-to-compare",
+      "heading": "Costs to compare",
+      "paragraphs": [
+        "Pool pricing is quoted to each customer; CHEP, for example, invites prospective customers to request a customized quote. Ask each pool, in writing, how it charges for:"
+      ],
+      "list": [
+        "Issuing or delivering pallets to your dock.",
+        "Time or trips: whether pallets are charged per day, per trip, or per issue.",
+        "Transfers to your customers and how those are reported.",
+        "Pallets lost or not accounted for, and pallets damaged beyond normal wear.",
+        "Any minimums, contract length, and audit terms."
+      ],
+      "after": [
+        "For owned pallets, add up purchase price, freight in, repairs, any return freight, and what happens at end of life. The [cost per trip calculator](/resources/pallet-calculators/cost-per-trip/) puts your own figures side by side for a one-way and a multi-trip pallet."
+      ]
+    },
+    {
+      "id": "which-fits",
+      "heading": "Which fits your lanes",
+      "list": [
+        "Receivers that require a pool: follow the requirement. Check routing and supplier guides before choosing.",
+        "High-volume grocery and consumer goods into large distribution centers: pools are common, and many receivers are already in the pool's pickup network.",
+        "Custom sizes, heavy or odd-shaped loads, and machinery: owned pallets or skids built to the load.",
+        "Export: owned pallets, heat treated and stamped, usually one way.",
+        "Short closed loops between your own sites: owned multi-trip pallets can pay back quickly.",
+        "Scattered, low-volume, or unpredictable lanes: one-way owned pallets avoid tracking and loss charges."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "can-you-buy-chep-pallets",
+        "question": "Can you buy CHEP or PECO pallets?",
+        "answer": [
+          "No. CHEP states that it owns its pallets and never sells or otherwise gives up ownership, and PECO states that its pallets are its property and may not be sold, bought, or exchanged. Pooled pallets that reach your dock should be returned through the pool's pickup process."
+        ]
+      },
+      {
+        "id": "what-is-a-whitewood-pallet",
+        "question": "What is a whitewood pallet?",
+        "answer": [
+          "A trade term for an unpainted wood pallet that is not part of a rental pool, owned by whoever bought it. It is usually a 48 × 40 stringer pallet, but the term describes ownership, not a spec."
+        ]
+      },
+      {
+        "id": "is-pooling-cheaper",
+        "question": "Is renting pallets cheaper than buying them?",
+        "answer": [
+          "It depends on lanes, volume, receiver requirements, and how many pallets go missing. Pools quote each customer, so compare a written pool quote against the delivered cost and trips of an owned pallet on the same lanes."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "CHEP — How CHEP works", "href": "https://www.chep.com/us/en/why-chep/how-chep-works", "note": "pooling cycle and customized quotes" },
+    { "label": "CHEP — Returning blue pallets", "href": "https://www.chep.com/us/en/request-blue-pallet-collection-US", "note": "ownership statement and pickup requests" },
+    { "label": "PECO — Red pallet pick-up", "href": "https://pecopallet.com/pallet-recovery/", "note": "ownership statement and pickup requests" },
+    { "label": "EPAL — The open pallet pool", "href": "https://www.epal-pallets.org/eu-en/", "note": "European exchange pool and terms of exchange" },
+    { "label": "CHEP — Renting vs. buying pallets", "href": "https://www.chep.com/us/en/why-chep/more-resources/benefits-pallet-rental", "note": "a pool operator's case for renting" }
+  ],
+  "related": ["types-of-pallets", "pallet-prices", "pallet-calculators", "gma-pallets-and-grades"],
+  "cta": {
+    "heading": "Buying owned pallets?",
+    "body": "Send the spec, quantity, and delivery location. We place new pallets with qualified mills and manage the freight on the order."
+  }
+}

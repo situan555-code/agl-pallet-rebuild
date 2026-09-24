@@ -1,0 +1,120 @@
+{
+  "slug": "pallet-standards",
+  "eyebrow": "Resource guide · Standards",
+  "metaTitle": "Pallet Standards: ISPM 15, ISO 6780, ASTM D1185, ANSI MH1, and More — AGL Pallet",
+  "metaDescription": "A guide to the published pallet standards buyers meet: ISPM 15, APHIS rules, ISO pallet standards, ASTM test methods, ANSI MH1, the Uniform Standard for Wood Pallets, and receiver specs, with where to get each.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "kinds-of-standards",
+      "heading": "Kinds of pallet standards",
+      "paragraphs": [
+        "\"Pallet standard\" can mean several different things. Most fall into one of five groups:"
+      ],
+      "list": [
+        "Phytosanitary rules: how wood packaging is treated and marked to cross borders. Mandatory where a country enforces them.",
+        "Dimensions: principal pallet sizes and tolerances for international handling.",
+        "Test methods: how to measure a pallet's strength, stiffness, and durability so results can be compared.",
+        "Quality and terminology: minimum lumber and assembly requirements, and a shared vocabulary for specs.",
+        "Receiver and pool specifications: requirements set by a retailer, distribution center, or pallet pool for pallets entering its system."
+      ],
+      "after": [
+        "Only the first group is law, and only for shipments that cross a border. Domestic pallet standards are voluntary unless a contract or a receiver makes them binding."
+      ]
+    },
+    {
+      "id": "standards-table",
+      "heading": "Standards buyers meet most",
+      "paragraphs": [
+        "This guide summarizes each standard and links to its publisher. It does not reproduce standard text; buy or download the current edition from the publisher before relying on a clause."
+      ],
+      "table": {
+        "caption": "Common pallet standards and where to get them",
+        "columns": ["Standard", "Publisher", "What it covers", "Access"],
+        "rows": [
+          ["[ISPM 15](https://www.ippc.int/en/publications/640/)", "International Plant Protection Convention (IPPC)", "Treatment (such as HT and MB) and marking of wood packaging in international trade", "Free download"],
+          ["[7 CFR 319.40-3](https://www.ecfr.gov/current/title-7/subtitle-B/chapter-III/part-319/section-319.40-3)", "USDA APHIS (U.S. regulation)", "U.S. import conditions for regulated wood packaging material", "Free on eCFR"],
+          ["[ISO 6780](https://www.iso.org/standard/30524.html)", "International Organization for Standardization (ISO)", "Principal dimensions and tolerances for flat pallets in intercontinental handling", "Purchase"],
+          ["ISO 8611 (parts 1–3)", "[ISO/TC 51](https://www.iso.org/committee/48928.html)", "Test methods and performance requirements for flat pallets", "Purchase"],
+          ["ISO 445", "[ISO/TC 51](https://www.iso.org/committee/48928.html)", "Pallet vocabulary", "Purchase"],
+          ["[ASTM D1185](https://www.astm.org/d1185-98ar17.html)", "ASTM International", "Test methods for pallets and related structures", "Purchase"],
+          ["[ASTM D6253](https://www.astm.org/d6253-16.html)", "ASTM International", "Practice for treatment and marking of wood packaging materials", "Purchase"],
+          ["[ANSI MH1](https://my.mhi.org/s/store#/store/browse/detail/a153h000007tFnkAAE)", "Material Handling Industry trade association, approved through ANSI", "Pallets, slip sheets, and other unit load bases: terminology, dimensions, and test methods", "Purchase"],
+          ["[Uniform Standard for Wood Pallets](https://www.palletcentral.com/packagingstandards)", "Woodpack Global (U.S. wood packaging trade association)", "Minimum quality requirements for the principal types of wood pallets", "From the publisher"],
+          ["[EPAL technical regulations and terms of exchange](https://www.epal-pallets.org/eu-en/)", "European Pallet Association (EPAL)", "Construction, marking, and exchange quality of EPAL pallets", "From the publisher"],
+          ["Receiver or pool specification", "Retailer, distribution center, or pool operator", "Footprint, construction, entry, condition, and labeling for that receiver", "From the receiver"]
+        ],
+        "note": "Publisher pages checked 2026-09-24. Edition years change; confirm the current edition with the publisher. ISO 8611 and ISO 445 are listed on the ISO/TC 51 committee page."
+      }
+    },
+    {
+      "id": "which-applies",
+      "heading": "Which standard applies to your load",
+      "list": [
+        "Exporting, or importing into the United States: ISPM 15 treatment and marking, plus any destination-country rules. U.S. imports fall under APHIS regulations. See [heat-treated pallets and ISPM-15](/resources/heat-treated-pallets-ispm-15/).",
+        "Shipping into a large retailer or distribution center: the receiver's own pallet specification comes first. Woodpack Global's standards page lists several retailer specifications; some are public and some require a member login.",
+        "Shipping on pooled pallets: the pool's specification and rules. See [pooled vs. owned pallets](/resources/pooled-vs-owned-pallets/).",
+        "Container programs and international sizes: ISO 6780 principal dimensions. See [pallet sizes](/resources/pallet-sizes/).",
+        "Racking, automation, or heavy loads: a performance spec backed by a named test method (ASTM D1185 or ISO 8611) and the support condition. See [pallet weight and load capacity](/resources/pallet-weight-and-load-capacity/).",
+        "Everything else: a written spec. Most domestic one-way pallets ship to a spec agreed between buyer and supplier, not to a published standard."
+      ]
+    },
+    {
+      "id": "writing-a-spec",
+      "heading": "Citing a standard in a spec",
+      "list": [
+        "Name the standard and edition or year, not just the number.",
+        "Say which clause or test applies, and the pass criteria, if performance matters.",
+        "Where a standard leaves options open, choose them in the spec: dimensions, entry, deck, and fasteners.",
+        "Do not rely on grade letters as if they were a standard. Grade names are trade usage and vary by supplier. See [GMA pallets and grades](/resources/gma-pallets-and-grades/).",
+        "Ask for evidence that fits the requirement: a treatment stamp for ISPM 15, test data for a rated load, or a sample for a receiver's approval."
+      ],
+      "after": [
+        "Mills build to the spec written on the order. Send the standard and the receiver's spec with a quote request so the AGL quote reflects them."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "is-there-a-us-pallet-standard",
+        "question": "Is there an official U.S. pallet standard?",
+        "answer": [
+          "Not one that is mandatory for domestic shipping. ANSI MH1 and the Uniform Standard for Wood Pallets are voluntary industry standards, and receivers set their own requirements. The mandatory rules are phytosanitary: wood packaging crossing a border must meet ISPM 15, which APHIS enforces for U.S. imports."
+        ]
+      },
+      {
+        "id": "is-gma-a-standard",
+        "question": "Is the GMA pallet a standard?",
+        "answer": [
+          "The 48 × 40 inch GMA footprint is a widely followed convention, and 1219 × 1016 mm (48 × 40 in) is one of the principal dimensions in ISO 6780. Grade terms attached to GMA pallets, such as Grade A or Grade B, are trade usage rather than a published standard."
+        ]
+      },
+      {
+        "id": "where-to-get-pallet-standards",
+        "question": "Where can I get the full text of a pallet standard?",
+        "answer": [
+          "From its publisher. ISPM 15 is a free download from the IPPC, and U.S. regulations are free on eCFR. ISO, ASTM, and ANSI standards are sold by their publishers, and industry and receiver specifications come from the association or receiver that issues them."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "IPPC — ISPM 15: Regulation of wood packaging material in international trade", "href": "https://www.ippc.int/en/publications/640/" },
+    { "label": "eCFR — 7 CFR 319.40-3", "href": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-III/part-319/section-319.40-3", "note": "paragraph (b): regulated wood packaging material" },
+    { "label": "ISO — ISO 6780, flat pallets for intercontinental materials handling", "href": "https://www.iso.org/standard/30524.html" },
+    { "label": "ISO/TC 51 — Pallets for unit load method of materials handling", "href": "https://www.iso.org/committee/48928.html", "note": "committee page listing ISO pallet standards" },
+    { "label": "ASTM D1185 — Test methods for pallets and related structures", "href": "https://www.astm.org/d1185-98ar17.html" },
+    { "label": "ASTM D6253 — Treatment and/or marking of wood packaging materials", "href": "https://www.astm.org/d6253-16.html" },
+    { "label": "ANSI MH1 — Pallets, slip sheets, and other bases for unit loads", "href": "https://my.mhi.org/s/store#/store/browse/detail/a153h000007tFnkAAE", "note": "publisher's store" },
+    { "label": "Woodpack Global — Wood packaging standards", "href": "https://www.palletcentral.com/packagingstandards", "note": "Uniform Standard for Wood Pallets and retailer specifications" },
+    { "label": "EPAL — European Pallet Association", "href": "https://www.epal-pallets.org/eu-en/" }
+  ],
+  "related": ["heat-treated-pallets-ispm-15", "pallet-sizes", "gma-pallets-and-grades", "types-of-pallets"],
+  "cta": {
+    "heading": "Shipping to a spec?",
+    "body": "Send the standard, the receiver's requirements, and the quantity. We place the order with qualified mills and manage the freight on the order."
+  }
+}

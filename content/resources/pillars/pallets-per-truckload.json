@@ -31,6 +31,7 @@
         "rows": [
           ["[Wikipedia, \"Semi-trailer\"](https://en.wikipedia.org/wiki/Semi-trailer) (secondary)", "Standard trailer", "26 pallets", "Pallet footprint and trailer length"],
           ["[Wikipedia, \"Semi-trailer\"](https://en.wikipedia.org/wiki/Semi-trailer) (secondary)", "Double-deck trailer", "40 pallets", "Pallet footprint and trailer length"],
+          ["[CHEP](https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet)", "Trailer, empty CHEP 48 × 40 block pallets", "570 pallets, stacked 19 high", "Trailer length and loading pattern (570 ÷ 19 = 30 stacks)"],
           ["[Wikipedia, \"Intermodal container\"](https://en.wikipedia.org/wiki/Intermodal_container) (secondary)", "20 ft ISO container", "11 EUR pallets (1200 × 800 mm); 15 in a pallet-wide container", "Loading pattern"],
           ["[Wikipedia, \"Intermodal container\"](https://en.wikipedia.org/wiki/Intermodal_container) (secondary)", "40 ft ISO container", "25 EUR pallets; 30 in a pallet-wide container", "Loading pattern"],
           ["[Wikipedia, \"Intermodal container\"](https://en.wikipedia.org/wiki/Intermodal_container) (secondary)", "45 ft ISO container", "27 EUR pallets; 34 in a pallet-wide container", "Loading pattern"]

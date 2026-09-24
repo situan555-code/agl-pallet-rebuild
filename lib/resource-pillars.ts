@@ -6,6 +6,9 @@ import skid from "@/content/resources/pillars/skid-vs-pallet.json";
 import prices from "@/content/resources/pillars/pallet-prices.json";
 import truckload from "@/content/resources/pillars/pallets-per-truckload.json";
 import calculators from "@/content/resources/pillars/pallet-calculators.json";
+import types from "@/content/resources/pillars/types-of-pallets.json";
+import pooled from "@/content/resources/pillars/pooled-vs-owned-pallets.json";
+import standards from "@/content/resources/pillars/pallet-standards.json";
 import { getHubPillar, type ResourcePillar } from "@/lib/resources";
 
 // Full guides, keyed by hub slug. A hub pillar missing here renders the
@@ -20,6 +23,9 @@ const GUIDES: Record<string, Omit<ResourcePillar, "title" | "directAnswer">> = {
   [prices.slug]: prices,
   [truckload.slug]: truckload,
   [calculators.slug]: calculators,
+  [types.slug]: types,
+  [pooled.slug]: pooled,
+  [standards.slug]: standards,
 };
 
 // Slugs served by their own route folder under app/resources/ (glossary

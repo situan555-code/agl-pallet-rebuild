@@ -6,7 +6,7 @@
   "hero": {
     "eyebrow": "Resources",
     "heading": "Pallet Resource Library",
-    "directAnswer": "The AGL Pallet Resource Library is a reference set for buyers who spec, source, and ship on pallets. Each guide opens with a short answer, then works through grades, sizes, heat treatment, load capacity, pricing, and freight. Guides publish in waves; until then, our brokerage desk answers spec questions directly."
+    "directAnswer": "The AGL Pallet Resource Library is a reference set for buyers who spec, source, and ship on pallets. Each guide opens with a short answer, then works through grades, sizes, heat treatment, load capacity, pricing, freight, and standards, and the calculators turn a few inputs into planning estimates. For anything the guides leave open, our brokerage desk answers spec questions directly."
   },
   "pillarsHeading": "Guides",
   "pillarsEyebrow": "Reference",
@@ -87,7 +87,7 @@
       "slug": "types-of-pallets",
       "title": "Types of Pallets",
       "wave": 4,
-      "status": "Coming in Wave 4",
+      "status": "Guide",
       "href": "/resources/types-of-pallets/",
       "directAnswer": "Wood pallets come in two main construction types: stringer pallets, which rest on lengthwise support boards and are common for domestic shipping, and block pallets, which use blocks for true four-way forklift entry. Beyond construction, pallets differ by deck coverage, wood species, treatment, and whether they are standard sizes or custom builds."
     },
@@ -95,7 +95,7 @@
       "slug": "pooled-vs-owned-pallets",
       "title": "Pooled vs. Owned Pallets",
       "wave": 4,
-      "status": "Coming in Wave 4",
+      "status": "Guide",
       "href": "/resources/pooled-vs-owned-pallets/",
       "directAnswer": "Pooled pallets are rented from a pallet pool and returned through the pool's network, while owned pallets are purchased outright and stay with the buyer or move one way with the product. The right choice depends on shipping lanes, return logistics, customer requirements, and how much administrative tracking a team can support."
     },
@@ -103,14 +103,14 @@
       "slug": "pallet-standards",
       "title": "Pallet Standards",
       "wave": 4,
-      "status": "Coming in Wave 4",
+      "status": "Guide",
       "href": "/resources/pallet-standards/",
       "directAnswer": "Pallet standards are published specifications that define dimensions, construction, testing methods, and treatment for wood packaging. They come from industry associations, standards bodies, and international agreements, and large receivers often add their own requirements. Knowing which standard applies to a lane or customer keeps loads from being rejected at the dock."
     }
   ],
   "authorsNote": {
     "heading": "Authors coming",
-    "body": "Each guide will name its author and technical reviewer, with review dates, once they are confirmed. Until a guide publishes, questions about a spec go straight to the brokerage desk."
+    "body": "Each guide will name its author and technical reviewer, with review dates, once they are confirmed. Until then, questions about a spec go straight to the brokerage desk."
   },
   "stub": {
     "eyebrow": "Resource guide",
