@@ -39,7 +39,7 @@
       "slug": "pallet-weight-and-load-capacity",
       "title": "Pallet Weight and Load Capacity",
       "wave": 2,
-      "status": "Coming in Wave 2",
+      "status": "Guide",
       "href": "/resources/pallet-weight-and-load-capacity/",
       "directAnswer": "Pallet weight and load capacity depend on wood species, moisture content, board thickness, and design, so two pallets with the same footprint can differ noticeably. Capacity also changes with how the load is supported: static on the floor, dynamic on a forklift, or racked. A spec that states all three avoids guesswork."
     },
@@ -47,7 +47,7 @@
       "slug": "pallet-sizes",
       "title": "Pallet Sizes",
       "wave": 2,
-      "status": "Coming in Wave 2",
+      "status": "Guide",
       "href": "/resources/pallet-sizes/",
       "directAnswer": "Pallet sizes are set by the product, the trailer, and the receiving customer rather than by one universal standard. North American buyers most often see the GMA footprint, while other industries and export lanes use their own dimensions. Matching pallet size to the load and the truck keeps freight costs predictable."
     },
@@ -55,7 +55,7 @@
       "slug": "skid-vs-pallet",
       "title": "Skid vs. Pallet",
       "wave": 2,
-      "status": "Coming in Wave 2",
+      "status": "Guide",
       "href": "/resources/skid-vs-pallet/",
       "directAnswer": "A skid is a platform with runners and no bottom deck, while a pallet typically adds a bottom deck. Skids are simpler and often used for heavy or stationary loads; pallets add stability and forklift entry options for racking and stacking. The terms are often used interchangeably in everyday shipping."
     },

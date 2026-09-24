@@ -1,5 +1,8 @@
 import gma from "@/content/resources/pillars/gma-pallets-and-grades.json";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
+import weight from "@/content/resources/pillars/pallet-weight-and-load-capacity.json";
+import sizes from "@/content/resources/pillars/pallet-sizes.json";
+import skid from "@/content/resources/pillars/skid-vs-pallet.json";
 import { getHubPillar, type ResourcePillar } from "@/lib/resources";
 
 // Full guides, keyed by hub slug. A hub pillar missing here renders the
@@ -8,6 +11,9 @@ import { getHubPillar, type ResourcePillar } from "@/lib/resources";
 const GUIDES: Record<string, Omit<ResourcePillar, "title" | "directAnswer">> = {
   [gma.slug]: gma,
   [ispm.slug]: ispm,
+  [weight.slug]: weight,
+  [sizes.slug]: sizes,
+  [skid.slug]: skid,
 };
 
 // Slugs served by their own route folder under app/resources/.

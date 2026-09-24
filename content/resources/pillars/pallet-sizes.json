@@ -1,0 +1,118 @@
+{
+  "slug": "pallet-sizes",
+  "eyebrow": "Resource guide · Dimensions",
+  "metaTitle": "Pallet Sizes Chart: 48×40 and Common Pallet Dimensions — AGL Pallet",
+  "metaDescription": "A pallet size chart with the 48×40 GMA footprint, common North American sizes by industry, ISO and European sizes, and how pallet size affects trailer and container fit.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "how-sizes-are-written",
+      "heading": "How pallet sizes are written",
+      "paragraphs": [
+        "In North America, pallet sizes are written length × width in inches, with the stringer length first. A 48 × 40 pallet has 48-inch stringers and 40-inch deckboards. Outside North America, sizes are usually given in millimeters, and the order convention varies, so confirm which dimension is which before quoting.",
+        "Height is a separate figure. Most wood pallets fall around 5 to 6.5 inches tall, depending on board thickness and stringer or block height, and height matters for trailer cube and stacking."
+      ]
+    },
+    {
+      "id": "north-american-sizes",
+      "heading": "Common North American pallet sizes",
+      "paragraphs": [
+        "The 48 × 40 GMA footprint is the most common size in North America by a wide margin. Other sizes persist because they fit a specific product, container, or door."
+      ],
+      "table": {
+        "caption": "Common North American pallet sizes and typical industries",
+        "columns": ["Size (in)", "Size (mm)", "Industries commonly associated"],
+        "rows": [
+          ["48 × 40", "1219 × 1016", "Grocery, consumer goods, and most general freight"],
+          ["42 × 42", "1067 × 1067", "Telecommunications, paint"],
+          ["48 × 48", "1219 × 1219", "Drums"],
+          ["40 × 48", "1016 × 1219", "Military, cement"],
+          ["48 × 42", "1219 × 1067", "Chemical, beverage"],
+          ["40 × 40", "1016 × 1016", "Dairy"],
+          ["48 × 45", "1219 × 1143", "Automotive"],
+          ["44 × 44", "1118 × 1118", "Drums, chemical"],
+          ["36 × 36", "914 × 914", "Beverage"],
+          ["48 × 36", "1219 × 914", "Beverage, shingles, packaged paper"],
+          ["48 × 20", "1219 × 508", "Retail displays (half pallet)"]
+        ],
+        "note": "Industry associations are commonly cited in industry summaries (see the [Wikipedia \"Pallet\" article](https://en.wikipedia.org/wiki/Pallet), which draws on pallet-industry sources). They describe typical use, not rules. Your receiver's requirement always wins."
+      }
+    },
+    {
+      "id": "iso-and-international",
+      "heading": "ISO and international sizes",
+      "paragraphs": [
+        "[ISO 6780](https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en) lists a small set of principal pallet dimensions for intercontinental handling. The 48 × 40 inch footprint (1219 × 1016 mm) is one of them. The others are metric sizes used in Europe, Asia, and Australia."
+      ],
+      "table": {
+        "caption": "Principal international pallet sizes",
+        "columns": ["Size (mm)", "Size (in, approx.)", "Where it is common"],
+        "rows": [
+          ["1219 × 1016", "48 × 40", "North America"],
+          ["1200 × 1000", "47.2 × 39.4", "Europe, Asia"],
+          ["1200 × 800", "47.2 × 31.5", "Europe (EUR / EPAL Euro pallet)"],
+          ["1165 × 1165 or 1140 × 1140", "45.9 × 45.9 or 44.9 × 44.9", "Australia (see note below)"],
+          ["1100 × 1100", "43.3 × 43.3", "Asia"],
+          ["1067 × 1067", "42 × 42", "North America, Europe, Asia"]
+        ],
+        "note": "Metric-to-inch conversions are rounded. Confirm exact dimensions and tolerances in the current edition of ISO 6780 before specifying for a container program."
+      },
+      "after": [
+        "The square Australian size is a known point of disagreement. The Australian standard pallet and pooled pallets such as [CHEP's Australian standard](https://www.chep.com/us/en/products/pallets/standard-pallet-sizes) measure 1165 × 1165 mm, and many summaries list that as the ISO square size. Other references list 1140 × 1140 mm for ISO 6780. The two are not interchangeable in a tight container load, so if a lane depends on the square size, check the standard's current text and the receiver's actual pallet, not a secondary chart."
+      ]
+    },
+    {
+      "id": "fit-and-freight",
+      "heading": "How size affects trailer and container fit",
+      "paragraphs": [
+        "A 48 × 40 pallet loads two across in a standard North American dry van, either with the 40-inch side across the trailer (straight) or the 48-inch side across (turned). Turning pallets usually fits more positions on the floor. For counts by trailer length, see [pallets per truckload](/resources/pallets-per-truckload/).",
+        "ISO shipping containers were not designed around the 48 × 40 footprint, so every pallet size leaves some floor space unused in a container. Metric sizes such as 1200 × 1000 and 1200 × 800 are common in lanes that start or end in Europe and Asia; confirm the receiving country's handling equipment before choosing."
+      ]
+    },
+    {
+      "id": "choosing-a-size",
+      "heading": "Choosing a size",
+      "list": [
+        "Start from the receiver: many retailers and distributors specify the footprint.",
+        "Keep product within the pallet edge; overhang crushes cartons.",
+        "Check racking beam spacing and conveyor widths at both ends.",
+        "Check trailer or container fit for the lane, including height.",
+        "If no standard size fits the product, a custom size is often cheaper than damage. See [custom and engineered pallets](/custom-engineered/)."
+      ],
+      "after": [
+        "A downloadable PDF of this chart is planned; the HTML tables above are the reference version and are free to use with a link back."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "standard-pallet-size",
+        "question": "What is the standard pallet size in the US?",
+        "answer": [
+          "The most common pallet size in the United States is 48 × 40 inches, often called the GMA pallet. It is also one of the sizes listed in ISO 6780. Many other sizes are in regular use, usually because a product, container, or receiver calls for them."
+        ]
+      },
+      {
+        "id": "iso-1140-vs-1165",
+        "question": "Is the ISO square pallet 1140 × 1140 or 1165 × 1165 mm?",
+        "answer": [
+          "References disagree. The Australian standard pallet, including pooled pallets, is 1165 × 1165 mm, and many summaries list that as the ISO square size, while other references list 1140 × 1140 mm. Check the current edition of ISO 6780 and the receiver's actual pallet before specifying."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "ISO 6780 — Flat pallets for intercontinental materials handling", "href": "https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en", "note": "principal dimensions and tolerances" },
+    { "label": "CHEP — Standard pallet dimensions", "href": "https://www.chep.com/us/en/products/pallets/standard-pallet-sizes", "note": "global pooled pallet sizes, including 1219 × 1016 and 1165 × 1165 mm" },
+    { "label": "EPAL — EPAL Euro pallet", "href": "https://www.epal-pallets.org/eu-en/load-carriers/epal-euro-pallet", "note": "1200 × 800 mm specification" },
+    { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary summary of North American sizes by industry" }
+  ],
+  "related": ["gma-pallets-and-grades", "pallets-per-truckload", "pallet-standards", "skid-vs-pallet"],
+  "cta": {
+    "heading": "Need a size that isn't stock?",
+    "body": "Send the dimensions, load, and delivery location. We place standard and custom sizes with qualified mills and manage the freight on the order."
+  }
+}

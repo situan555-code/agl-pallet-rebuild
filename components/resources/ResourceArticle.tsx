@@ -297,10 +297,10 @@ export function ArticleBody({ toc, children }: { toc: { id: string; label: strin
   return (
     <div className="px-6 pb-20 pt-14 nav:pb-28 nav:pt-16">
       <div className="mx-auto grid max-w-[1440px] gap-10 nav:grid-cols-12 nav:gap-16">
-        <aside className="nav:col-span-3">
+        <aside className="min-w-0 nav:col-span-3">
           <Toc items={toc} />
         </aside>
-        <div className="space-y-14 nav:col-span-8 nav:col-start-5">{children}</div>
+        <div className="min-w-0 space-y-14 nav:col-span-8 nav:col-start-5">{children}</div>
       </div>
     </div>
   );

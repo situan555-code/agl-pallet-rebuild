@@ -1,0 +1,103 @@
+{
+  "slug": "skid-vs-pallet",
+  "eyebrow": "Resource guide · Comparison",
+  "metaTitle": "Skid vs. Pallet: Differences, Uses, and Plastic vs. Wood — AGL Pallet",
+  "metaDescription": "The difference between a skid and a pallet, when each makes sense, a side-by-side comparison table, and how plastic pallets compare with wood.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "the-difference",
+      "heading": "The difference in one line",
+      "paragraphs": [
+        "A skid is a single-deck platform on runners, with no bottom deck. A pallet adds a bottom deck, or uses blocks between two decks. In practice, many shippers and carriers say \"skid\" for any pallet, so when it matters, describe the construction instead of relying on the word.",
+        "Skids came first. They were dragged or lifted with early platform trucks; the bottom deck arrived with the forklift, when loads began to be stacked and racked."
+      ]
+    },
+    {
+      "id": "comparison",
+      "heading": "Skid vs. pallet comparison",
+      "table": {
+        "caption": "Skid vs. pallet at a glance",
+        "columns": ["Factor", "Skid", "Pallet"],
+        "rows": [
+          ["Bottom deck", "None; sits on runners", "Yes, or blocks with bottom boards"],
+          ["Entry", "Usually two-way, between runners", "Two-way, partial four-way, or true four-way"],
+          ["Pallet jack use", "Limited; wheels need open floor between runners", "Designed for it on open-entry sides"],
+          ["Stacking loaded units", "Weak; runners concentrate load on the unit below", "Better; bottom deck spreads the load"],
+          ["Racking", "Rarely suitable", "Common, with the right rating"],
+          ["Heavy, concentrated loads", "Strong fit; runners can be sized for machinery", "Possible with an engineered design"],
+          ["Material and cost", "Less lumber for the same footprint", "More lumber; more versatile"],
+          ["Typical uses", "Machinery, castings, equipment that stays put or ships once", "General freight, retail, racking, automated handling"]
+        ],
+        "note": "Typical characteristics. A heavy-duty engineered skid and a light one-way pallet can reverse several of these."
+      }
+    },
+    {
+      "id": "when-to-use-a-skid",
+      "heading": "When a skid makes sense",
+      "list": [
+        "Heavy machinery or castings that ship once and get bolted down.",
+        "Loads lifted by crane or moved on rollers, where runners are an advantage.",
+        "Products that will not be stacked or racked.",
+        "Cost-sensitive one-way shipments where a bottom deck adds nothing."
+      ],
+      "after": [
+        "For loads that outweigh a standard pallet several times over, runner size, spacing, and fasteners should be engineered to the load. See [custom and engineered pallets](/custom-engineered/)."
+      ]
+    },
+    {
+      "id": "plastic-vs-wood",
+      "heading": "Plastic vs. wood pallets",
+      "paragraphs": [
+        "The skid-or-pallet question often comes with a material question. Wood is the default for most North American shipping; plastic has a place in closed loops and sanitary environments."
+      ],
+      "table": {
+        "caption": "Plastic vs. wood pallets",
+        "columns": ["Factor", "Wood", "Plastic"],
+        "rows": [
+          ["Upfront cost", "Lower", "Higher, often by a multiple"],
+          ["Repair", "Boards and stringers can be replaced", "Usually not repairable"],
+          ["Custom sizes", "Easy; mills cut to any footprint", "Tied to molds; custom sizes are costly"],
+          ["Weight consistency", "Varies with species and moisture", "Very consistent"],
+          ["Sanitation", "Porous; can absorb moisture", "Washable; common in food and pharma"],
+          ["ISPM-15 export rules", "Must be treated and stamped", "Exempt"],
+          ["End of life", "Wood is widely reused and repurposed", "Resin can be reground where programs exist"]
+        ],
+        "note": "APHIS lists plastic pallets among materials not subject to its wood packaging regulations. See [heat-treated pallets and ISPM-15](/resources/heat-treated-pallets-ispm-15/)."
+      },
+      "after": [
+        "AGL's line is wood: stock and custom pallets, engineered skids, and crates, sourced through qualified mills. See [products](/products/)."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "is-a-skid-a-pallet",
+        "question": "Is a skid the same as a pallet?",
+        "answer": [
+          "Not strictly. A skid has runners and a top deck but no bottom deck; a pallet adds a bottom deck or uses blocks between two decks. In everyday shipping the words are used interchangeably, so describe the construction on the order if it matters."
+        ]
+      },
+      {
+        "id": "skid-or-pallet-for-machinery",
+        "question": "Should heavy machinery ship on a skid or a pallet?",
+        "answer": [
+          "Heavy machinery often ships on a skid, because runners can be sized to the load and suit crane lifts and rollers. If the unit will be stacked, racked, or moved by pallet jack, a pallet or an engineered design is a better fit."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "USDA APHIS — Wood Packaging Material", "href": "https://www.aphis.usda.gov/plant-imports/wood-packaging-material", "note": "lists plastic pallets among alternatives not subject to WPM regulation" },
+    { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary history of skids and pallets and material comparison" },
+    { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/" }
+  ],
+  "related": ["types-of-pallets", "pallet-sizes", "pallet-weight-and-load-capacity", "glossary"],
+  "cta": {
+    "heading": "Skid, pallet, or crate?",
+    "body": "Send the load, dimensions, and how it is handled at both ends. We place it with a qualified mill and manage the freight on the order."
+  }
+}

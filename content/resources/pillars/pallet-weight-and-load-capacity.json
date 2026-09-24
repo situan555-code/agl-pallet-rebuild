@@ -1,0 +1,131 @@
+{
+  "slug": "pallet-weight-and-load-capacity",
+  "eyebrow": "Resource guide · Load",
+  "metaTitle": "Pallet Weight and Load Capacity: Static, Dynamic, Racked — AGL Pallet",
+  "metaDescription": "How much a wood pallet weighs and how much it can carry, with published third-party figures side by side, why they disagree, and what to put in a load spec.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "what-drives-weight",
+      "heading": "What drives pallet weight",
+      "paragraphs": [
+        "Two pallets with the same 48 × 40 footprint can differ in weight by a wide margin. The main drivers are:"
+      ],
+      "list": [
+        "Wood species. Dense hardwoods such as oak weigh more than softwoods such as Southern Yellow Pine for the same board size.",
+        "Moisture content. Green lumber carries a large share of its weight in water and gets lighter as it dries. A pallet weighed the day it is built can weigh noticeably more than the same pallet weeks later.",
+        "Board count and thickness. More deck coverage and thicker boards add weight and stiffness.",
+        "Construction. Block pallets add blocks and stringerboards; stringer pallets use three continuous stringers.",
+        "Fasteners and repairs. Plates, companion stringers, and extra boards add weight."
+      ],
+      "after": [
+        "Freight is priced partly on weight, so pallet weight shows up in the delivered cost of every load. See [pallets per truckload](/resources/pallets-per-truckload/) for how weight and floor space interact."
+      ]
+    },
+    {
+      "id": "three-ratings",
+      "heading": "Static, dynamic, and racked capacity",
+      "paragraphs": [
+        "\"Load capacity\" means little without the support condition. Pallet designers rate capacity for three situations, and the numbers differ:"
+      ],
+      "table": {
+        "caption": "The three support conditions",
+        "columns": ["Rating", "Support condition", "Relative capacity"],
+        "rows": [
+          ["Static", "Loaded pallet sitting on a flat, solid floor, sometimes with other loads stacked on top", "Highest"],
+          ["Dynamic", "Loaded pallet being lifted and moved by a forklift or pallet jack", "Lower than static"],
+          ["Racked", "Loaded pallet supported only at its edges on rack beams, across the length or the width", "Usually the lowest; depends on span and direction"]
+        ],
+        "note": "Relative order is typical, not universal. Load distribution (even vs. concentrated), stacking height, and rack span all change the answer."
+      },
+      "after": [
+        "Racked capacity also depends on direction. A 48 × 40 pallet racked across its 40-inch width spans a shorter distance than one racked across its 48-inch length, and published ratings often list both spans. If pallets go into racking, state the rack type, beam spacing, and direction in the spec."
+      ]
+    },
+    {
+      "id": "published-figures",
+      "heading": "Published figures, side by side",
+      "paragraphs": [
+        "Weight and capacity figures published online often disagree. That is usually because they describe different pallets, different support conditions, or different moisture states, not because one is wrong. The table below lists figures as each source states them, with the condition attached. It is a comparison of published claims, not AGL test data."
+      ],
+      "table": {
+        "caption": "Third-party pallet weight and load figures, as published",
+        "columns": ["Source", "Pallet described", "Weight stated", "Load figure stated", "Condition attached"],
+        "rows": [
+          ["[Wikipedia, \"Pallet\"](https://en.wikipedia.org/wiki/Pallet) (secondary source)", "Standard 48 × 40 × 6 in wood pallet (GMA)", "About 33–48 lb; GMA pallets \"typically\" 37 lb", "3 short tons static; 1 short ton dynamic", "Static vs. dynamic; no racked figure"],
+          ["[CHEP](https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet)", "Pooled 48 × 40 wood block pallet", "Not stated on product page", "2,800 lb", "Uniformly distributed load in normal operating conditions; stack up to 5 unit loads high, not over 10,000 lb"],
+          ["[PECO](https://www.pecopallet.com/specifications/)", "Pooled 48 × 40 wood block pallet", "Not stated on specifications page", "2,800 lb", "Edge-racked; spans listed for the 40 in and 48 in directions"],
+          ["[EPAL](https://www.epal-pallets.org/eu-en/load-carriers/epal-euro-pallet)", "EPAL Euro pallet, 1200 × 800 mm", "Approx. 25 kg", "1,500 kg safe working load", "Bottom pallet in a stack on a solid, even surface not to exceed 5,500 kg"]
+        ],
+        "note": "Figures copied as published on 2026-09-24 and attributed to each source; follow the link for the current version. Pooled block pallets and a generic stringer pallet are different designs, so their figures are not interchangeable."
+      }
+    },
+    {
+      "id": "agl-weighed-data",
+      "heading": "AGL weighed data (pending)",
+      "paragraphs": [
+        "AGL plans to publish weights measured on real pallets from the mills we source through, so buyers have a figure tied to a known pallet spec rather than a web range. No measurements are published yet, and the table below stays empty until they are."
+      ],
+      "table": {
+        "caption": "AGL weighed pallets — measurements pending",
+        "columns": ["Pallet spec", "Pallets weighed", "Average weight", "Range", "Moisture reading", "Status"],
+        "rows": [
+          ["48 × 40 stringer, partial four-way", "—", "—", "—", "—", "Pending"],
+          ["48 × 40 block, true four-way", "—", "—", "—", "—", "Pending"],
+          ["48 × 40 stringer, heat treated", "—", "—", "—", "—", "Pending"]
+        ],
+        "note": "Planned method: weigh each pallet on a calibrated scale, record species, board dimensions, and a moisture-meter reading at the time of weighing, and publish the count, average, and range for each spec. Figures will appear here only after they are measured."
+      }
+    },
+    {
+      "id": "load-spec",
+      "heading": "Writing a load spec",
+      "paragraphs": [
+        "A mill can design to a load only if the spec states it. Include:"
+      ],
+      "list": [
+        "Unit load weight, including product and packaging.",
+        "Load type: evenly distributed, concentrated, or on a small base such as drums or a machine foot.",
+        "Handling equipment: forklift, pallet jack, conveyor, or automated systems.",
+        "Stacking: how many loads high, on the floor or in trailers.",
+        "Racking: rack type, beam spacing, and which direction the pallet spans.",
+        "Trips: one-way or multi-trip, and expected handling per trip."
+      ],
+      "after": [
+        "For loads that outweigh a standard pallet several times over, an engineered design is usually the right answer. See [custom and engineered pallets](/custom-engineered/)."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "how-much-does-a-pallet-weigh",
+        "question": "How much does a standard 48 × 40 wood pallet weigh?",
+        "answer": [
+          "Published figures for a 48 × 40 wood stringer pallet commonly fall between about 33 and 48 pounds, but species, moisture, and board count move the number substantially. The only reliable weight is one measured on the build you are buying, or stated by the mill for that spec."
+        ]
+      },
+      {
+        "id": "how-much-weight-can-a-pallet-hold",
+        "question": "How much weight can a pallet hold?",
+        "answer": [
+          "It depends on how the pallet is supported. A pallet on the floor carries the most, a pallet on a moving forklift carries less, and a pallet on rack beams usually carries the least. Pooled 48 × 40 block pallets from CHEP and PECO publish 2,800 lb ratings under stated conditions; a generic pallet's rating depends on its design."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "CHEP — Pooled wood block pallet, 48 × 40 in", "href": "https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet", "note": "rating and stacking guidance" },
+    { "label": "PECO — Pallet specifications", "href": "https://www.pecopallet.com/specifications/", "note": "48 × 40 block pallet components and edge-rack rating" },
+    { "label": "EPAL — EPAL Euro pallet product sheet", "href": "https://www.epal-pallets.org/eu-en/load-carriers/epal-euro-pallet", "note": "weight, safe working load, stacking limit" },
+    { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary summary of common weight and capacity figures" },
+    { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "research on pallet and unit load performance" }
+  ],
+  "related": ["pallet-sizes", "pallets-per-truckload", "types-of-pallets", "pallet-calculators"],
+  "cta": {
+    "heading": "Have a heavy or racked load?",
+    "body": "Send the unit load weight, handling, stacking, and racking details. We match the design to mills that can hold it and manage the freight on the order."
+  }
+}
