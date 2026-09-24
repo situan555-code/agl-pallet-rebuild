@@ -1,0 +1,50 @@
+{
+  "metaTitle": "ISPM 15 Stamp Decoder — AGL Pallet",
+  "metaDescription": "Check the format of an ISPM 15 mark: two-letter country code, producer number, the hyphen between them, treatment code, and optional DUN.",
+  "eyebrow": "Resource guide · Stamp decoder",
+  "heading": "ISPM 15 stamp decoder",
+  "summary": "A server-side form that checks the shape of a treatment mark, including the hyphen between the country code and the producer number, and explains each field.",
+  "updated": "2026-09-24",
+  "intro": "Enter the codes printed inside the stamp border. This page checks the format only. It does not look up a licensed facility, and it does not state an AGL price or a measured AGL result.",
+  "exampleNote": "The sample mark written in the heat-treatment guide is a format example. It is not a real facility number and not an AGL measurement.",
+  "photo": {
+    "label": "Stamp photograph placeholder",
+    "body": "No photograph is shown here. AGL has not supplied a photo of a real treatment stamp. This slot is empty on purpose. It is not a stock image and not a stand-in.",
+    "caption": "Real stamp photos stay off this page until AGL sources them."
+  },
+  "form": {
+    "label": "ISPM 15 stamp format check",
+    "submit": "Check the mark",
+    "reset": "Clear the form",
+    "countryLabel": "Country code",
+    "producerLabel": "Producer number",
+    "treatmentLabel": "Treatment code",
+    "treatmentEmpty": "Select a code",
+    "dunLabel": "This mark includes DUN (the wood is dunnage)",
+    "idle": "Nothing is checked until you submit the form."
+  },
+  "errors": {
+    "countryShape": "Enter the two-letter country code on its own.",
+    "countryHyphen": "Take the hyphen out of the country code.",
+    "producerMissing": "Enter the producer number.",
+    "producerShape": "Use letters and digits only in the producer number, up to 16 characters, with no spaces.",
+    "producerHyphen": "Take the hyphen out of the producer number.",
+    "treatment": "Choose a treatment code from the heat-treatment guide."
+  },
+  "result": {
+    "heading": "Format check",
+    "ok": "These fields fit the mark format described in the heat-treatment guide.",
+    "bad": "These fields do not fit that format yet.",
+    "notLookup": "This is a format check only. It does not confirm that a facility exists, and it is not measured AGL data.",
+    "schematicLabel": "Text reading of the fields you entered. Not a photograph.",
+    "symbolNote": "A real stamp also shows the IPPC symbol, a wheat-ear logo, on the left. This page does not draw that logo.",
+    "dunOn": "DUN is included. Use it when the marked wood is dunnage rather than a pallet, crate, or box. DUN is not a treatment code.",
+    "dunOff": "DUN is not included. Add it only when the marked wood is dunnage rather than a pallet, crate, or box."
+  },
+  "related": [
+    { "label": "Heat-treated pallets guide", "href": "/resources/heat-treated-pallets-ispm-15/" },
+    { "label": "Stamp cheat sheet", "href": "/resources/downloads/ispm-15-stamp-cheat-sheet/" }
+  ],
+  "schemaName": "ISPM 15 stamp decoder",
+  "schemaDescription": "Checks the format of an ISPM 15 treatment mark: country code, hyphen, producer number, treatment code, and optional DUN."
+}

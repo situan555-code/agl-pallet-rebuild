@@ -1,0 +1,61 @@
+{
+  "index": {
+    "metaTitle": "Pallet Downloads — AGL Pallet",
+    "metaDescription": "Pallet size chart and ISPM 15 stamp cheat sheet. Each file has a web page with the same text, generated from the guide it comes from.",
+    "eyebrow": "Downloads",
+    "heading": "Downloads",
+    "updated": "2026-09-24",
+    "intro": "Each item below is a web page first. The PDF is generated from the same guide text as that page, so the figures are not kept in a second file.",
+    "hubEyebrow": "Printable",
+    "hubHeading": "Downloads",
+    "pdfLabel": "Download PDF",
+    "guideLabel": "Open the guide",
+    "decoderEyebrow": "Tool",
+    "decoderHeading": "Stamp decoder",
+    "sourcesClosing": "This page repeats guide text and links to the publishers named in that guide. Check the current edition before relying on a specific clause."
+  },
+  "items": [
+    {
+      "slug": "pallet-size-chart",
+      "title": "Pallet size chart",
+      "eyebrow": "Download · Dimensions",
+      "summary": "North American and international pallet footprints from the Pallet Sizes guide, shown on this page and in a PDF that reads those same tables.",
+      "metaDescription": "A pallet size chart of common North American and international footprints, as a page and a PDF generated from the Pallet Sizes guide.",
+      "figuresNote": "The dimensions below are the tables in the Pallet Sizes guide. They are not AGL prices and they are not measured AGL data.",
+      "pdfSourceLine": "Generated from the Pallet Sizes guide tables.",
+      "pdfFilename": "agl-pallet-size-chart.pdf",
+      "guideHref": "/resources/pallet-sizes/",
+      "guideLabel": "Pallet Sizes",
+      "updated": "2026-09-24",
+      "sectionIds": ["how-sizes-are-written", "north-american-sizes", "iso-and-international"],
+      "related": [
+        { "label": "Pallet Sizes guide", "href": "/resources/pallet-sizes/" },
+        { "label": "Pallets per truckload", "href": "/resources/pallets-per-truckload/" }
+      ]
+    },
+    {
+      "slug": "ispm-15-stamp-cheat-sheet",
+      "title": "ISPM 15 stamp cheat sheet",
+      "eyebrow": "Download · Treatment mark",
+      "summary": "A one-page reading of the ISPM 15 mark from the heat-treatment guide, including the hyphen and the DUN code, with the same words on the page and in the PDF.",
+      "metaDescription": "One-page ISPM 15 stamp cheat sheet generated from the heat-treatment guide, covering the mark fields, hyphen, treatment codes, and DUN.",
+      "figuresNote": "The lines below are copied from the heat-treatment guide. They are not measured AGL data, and this page states no AGL price.",
+      "exampleNote": "The sample mark written in the guide text is a format example. It is not a real facility number and not an AGL measurement.",
+      "pdfSourceLine": "Generated from the heat-treatment guide.",
+      "pdfFilename": "agl-ispm-15-stamp-cheat-sheet.pdf",
+      "guideHref": "/resources/heat-treated-pallets-ispm-15/",
+      "guideLabel": "Heat-treated pallets and ISPM 15",
+      "updated": "2026-09-24",
+      "hyphenHeading": "Hyphen and dunnage",
+      "sourceHrefs": [
+        "https://www.ippc.int/en/publications/640/",
+        "https://www.aphis.usda.gov/news/program-update/reminder-suspension-ispm-15-hyphen-requirement-ends-december-31-2025",
+        "https://www.aphis.usda.gov/plant-imports/wood-packaging-material"
+      ],
+      "related": [
+        { "label": "Heat-treated pallets guide", "href": "/resources/heat-treated-pallets-ispm-15/" },
+        { "label": "Stamp decoder", "href": "/resources/heat-treated-pallets-ispm-15/stamp-decoder/" }
+      ]
+    }
+  ]
+}
