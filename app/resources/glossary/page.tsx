@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import glossary from "@/content/resources/glossary.json";
 import hub from "@/content/resources/hub.json";
-import { BreadcrumbJsonLd, DefinedTermSetJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, DefinedTermSetJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
 import { Changelog } from "@/components/resources/Changelog";
 import { ArticleHeader, DirectAnswer, NextSteps, RelatedGuides, ResourceCta } from "@/components/resources/ResourceArticle";
 import { getHubPillar } from "@/lib/resources";
@@ -30,6 +30,13 @@ export default function GlossaryPage() {
           { name: hub.hero.heading, path: "/resources/" },
           { name: pillar.title, path: PATH },
         ]}
+      />
+      <TechArticleJsonLd
+        headline={pillar.title}
+        description={glossary.metaDescription}
+        path={PATH}
+        published={glossary.published}
+        updated={glossary.updated}
       />
       <DefinedTermSetJsonLd name={pillar.title} path={PATH} terms={terms} />
       <ArticleHeader eyebrow={glossary.eyebrow} title={pillar.title} updated={glossary.updated} />

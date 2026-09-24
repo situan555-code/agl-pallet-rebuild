@@ -128,6 +128,7 @@ export function Gallery4({
               return (
                 <CarouselItem key={item.id} className="basis-[85%] pl-4 sm:basis-1/2 nav:basis-1/3">
                   <Link
+                    id={item.id}
                     href={item.href}
                     prefetch={false}
                     className={cn(

@@ -1,5 +1,6 @@
 import site from "@/content/site.json";
 import { articlePeopleJsonLd } from "@/lib/authors";
+import { ppiDatasetLd } from "@/lib/ppi-dataset";
 import { getSiteUrl } from "@/lib/site-url";
 
 /**
@@ -158,6 +159,11 @@ export function WebApplicationJsonLd({ name, description, path }: { name: string
       }}
     />
   );
+}
+
+/** Prices guide PPI table. distribution is the CSV export of content/resources/data/ppi.json. */
+export function DatasetJsonLd() {
+  return <JsonLdScript data={ppiDatasetLd()} />;
 }
 
 export function BreadcrumbJsonLd({ items }: { items: { name: string; path: string }[] }) {

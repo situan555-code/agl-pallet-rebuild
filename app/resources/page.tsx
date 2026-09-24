@@ -26,6 +26,7 @@ export default function ResourcesHub() {
         heading={hub.hero.heading}
         description={hub.hero.directAnswer}
         cta={{ label: hub.cta.label, href: hub.cta.href }}
+        breadcrumb={[{ name: "Home", href: "/" }, { name: hub.hero.heading }]}
       />
 
       <Feature3

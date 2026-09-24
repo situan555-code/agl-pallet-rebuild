@@ -4,8 +4,9 @@
 // it never shares the chart's axis).
 import ppi from "@/content/resources/data/ppi.json";
 import { ArticleSection, DataTable } from "@/components/resources/ResourceArticle";
-import { formatDate } from "@/lib/resources";
 import { fmt } from "@/lib/calculators";
+import { PPI_CSV_PATH, PPI_DATASET_DESCRIPTION } from "@/lib/ppi-dataset";
+import { formatDate } from "@/lib/resources";
 
 type Obs = [string, number];
 
@@ -161,6 +162,16 @@ export function PriceIndex() {
           note: `Averages of monthly, not seasonally adjusted values for series [${pallets.id}](${pallets.href}) and [${lumber.id}](${lumber.href}), retrieved from FRED on ${formatDate(ppi.retrieved)}. BLS revises data up to four months after first publication; the next PPI release is scheduled for ${formatDate(ppi.nextRelease)}.`,
         }}
       />
+      <p className="prose-measure mt-6 text-body text-ink/85">
+        {PPI_DATASET_DESCRIPTION}{" "}
+        <a
+          href={PPI_CSV_PATH}
+          className="font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green"
+        >
+          Download the monthly series (CSV)
+        </a>
+        .
+      </p>
     </ArticleSection>
   );
 }

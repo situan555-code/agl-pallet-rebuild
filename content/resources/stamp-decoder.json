@@ -45,6 +45,5 @@
     { "label": "Heat-treated pallets guide", "href": "/resources/heat-treated-pallets-ispm-15/" },
     { "label": "Stamp cheat sheet", "href": "/resources/downloads/ispm-15-stamp-cheat-sheet/" }
   ],
-  "schemaName": "ISPM 15 stamp decoder",
-  "schemaDescription": "Checks the format of an ISPM 15 treatment mark: country code, hyphen, producer number, treatment code, and optional DUN."
+  "schemaName": "ISPM 15 stamp decoder"
 }
