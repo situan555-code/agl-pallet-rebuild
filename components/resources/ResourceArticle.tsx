@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 import { Cta4 } from "@/components/cta4";
 import { Feature3 } from "@/components/feature3";
 import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
+import { Byline } from "@/components/resources/Byline";
+import { Changelog, hasChangelog } from "@/components/resources/Changelog";
 import { RichText, plainText } from "@/components/resources/RichText";
 import {
-  formatDate,
   getHubPillar,
   quoteHref,
   type ResourcePillar,
@@ -80,9 +81,7 @@ export function ArticleHeader({
           {eyebrow}
         </p>
         <h1 className="mt-4 max-w-[900px] text-display-1">{title}</h1>
-        <p className="mt-6 text-link text-white/75">
-          Published by the AGL Pallet brokerage desk · Updated <time dateTime={updated}>{formatDate(updated)}</time>
-        </p>
+        <Byline updated={updated} />
       </div>
     </section>
   );
@@ -350,6 +349,7 @@ export function ResourceArticle({
     ...after.map((s) => ({ id: s.id, label: s.heading })),
     ...(pillar.questions ? [{ id: "questions", label: pillar.questions.heading }] : []),
     { id: "sources", label: "Sources" },
+    ...(hasChangelog(pillar.slug) ? [{ id: "changelog", label: "Changelog" }] : []),
   ];
   return (
     <main>
@@ -389,6 +389,7 @@ export function ResourceArticle({
         {pillar.questions && <Questions heading={pillar.questions.heading} items={pillar.questions.items} />}
         <Sources items={pillar.sources} />
         <NextSteps />
+        <Changelog slug={pillar.slug} />
       </ArticleBody>
       <RelatedGuides slugs={pillar.related} />
       <ResourceCta heading={pillar.cta.heading} body={pillar.cta.body} source={pillar.slug} />

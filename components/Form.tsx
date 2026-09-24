@@ -16,9 +16,7 @@ export type FormFieldConfig = {
 
 export type FormDestination =
   | { kind: "formsubmit"; email: string; subject: string; autoresponse?: string }
-  | { kind: "unresolved"; token: string };
-
-const PROD_ORIGIN = "https://nx7k-lab-m4.vercel.app";
+  | { kind: "unresolved" };
 
 export function Form({
   id,
@@ -41,10 +39,16 @@ export function Form({
   );
   const [missing, setMissing] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "blocked">("idle");
+  const relativeNext = `${source}?sent=${id}`;
+  const [nextUrl, setNextUrl] = useState(relativeNext);
 
   useEffect(() => {
     if (searchParams.get("sent") === id) setStatus("success");
   }, [searchParams, id]);
+
+  useEffect(() => {
+    setNextUrl(`${window.location.origin}${relativeNext}`);
+  }, [relativeNext]);
 
   function handleChange(name: string, value: string) {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -67,11 +71,6 @@ export function Form({
     setStatus("submitting");
     // Native POST continues to FormSubmit (no preventDefault).
   }
-
-  const nextUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}${source}?sent=${id}`
-      : `${PROD_ORIGIN}${source}?sent=${id}`;
 
   const formAction = destination.kind === "formsubmit" ? `https://formsubmit.co/${encodeURIComponent(destination.email)}` : undefined;
 
@@ -114,9 +113,8 @@ export function Form({
 
       {destination.kind === "unresolved" && (
         <p className="mb-6 rounded-input border border-white/30 bg-white/10 p-4 text-white">
-          Submissions from this form route to <code>{`{{${destination.token}}}`}</code> once that
-          address is confirmed — it isn&apos;t live yet, so this form doesn&apos;t send anywhere
-          right now. Call 234-286-0402 in the meantime.
+          This form is not sending yet. The destination address is not confirmed, so nothing is
+          transmitted. Call 234-286-0402 in the meantime.
         </p>
       )}
 

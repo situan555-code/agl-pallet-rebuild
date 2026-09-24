@@ -14,6 +14,7 @@ import {
   Sources,
 } from "@/components/resources/ResourceArticle";
 import { NoteList } from "@/components/resources/Calculator";
+import { Changelog, hasChangelog } from "@/components/resources/Changelog";
 import { getHubPillar, type ResourceSource } from "@/lib/resources";
 
 const HUB = getHubPillar(calculators.hubSlug)!;
@@ -56,6 +57,7 @@ export function CalculatorPage({ content, children }: { content: CalculatorConte
           { id: "calculator", label: "Calculator" },
           { id: "method", label: "Method" },
           { id: "sources", label: "Sources" },
+          ...(hasChangelog(content.slug) ? [{ id: "changelog", label: "Changelog" }] : []),
         ]}
       >
         <ArticleSection section={{ id: "calculator", heading: "Calculator" }}>{children}</ArticleSection>
@@ -84,6 +86,7 @@ export function CalculatorPage({ content, children }: { content: CalculatorConte
           </ul>
         </section>
         <NextSteps />
+        <Changelog slug={content.slug} />
       </ArticleBody>
       <RelatedGuides slugs={content.related} />
       <ResourceCta heading={hub.cta.heading} body={hub.cta.body} source={content.slug} />

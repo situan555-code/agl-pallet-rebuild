@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import glossary from "@/content/resources/glossary.json";
 import hub from "@/content/resources/hub.json";
 import { BreadcrumbJsonLd, DefinedTermSetJsonLd } from "@/components/JsonLd";
+import { Changelog } from "@/components/resources/Changelog";
 import { ArticleHeader, DirectAnswer, NextSteps, RelatedGuides, ResourceCta } from "@/components/resources/ResourceArticle";
 import { getHubPillar } from "@/lib/resources";
 import { pageMeta } from "@/lib/seo";
@@ -98,6 +99,9 @@ export default function GlossaryPage() {
           <div className="mt-6 nav:grid nav:grid-cols-12 nav:gap-16">
             <div className="nav:col-span-8 nav:col-start-5">
               <NextSteps />
+              <div className="mt-14">
+                <Changelog slug={glossary.slug} />
+              </div>
             </div>
           </div>
         </div>

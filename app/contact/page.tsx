@@ -44,7 +44,7 @@ export default function Contact() {
       <Contact2
         id="general-form"
         eyebrow="Something else"
-        notes={[content.hero.phoneBody, "{{TBD-ADDRESS}}"]}
+        notes={[content.hero.phoneBody]}
       >
         <Suspense fallback={null}>
           <Form

@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
         tone="paper"
         eyebrow="Selected work"
         title="Programs worth the write-up — when the facts are ready."
-        description="Placeholders on purpose. Titles and outcomes stay {{TBD}} until approved. Brokerage story only — we don't pretend to be the mill."
+        description="Structural examples only. Titles and outcomes stay unpublished until approved. Brokerage story only — we don't pretend to be the mill."
         items={data.studies.map((s) => ({
           id: s.id,
           title: s.title,
