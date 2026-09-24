@@ -65,7 +65,7 @@
     },
     "defaultNotes": [
       "Pallet footprint 48 × 40 in: the GMA footprint, the most common size in North America.",
-      "Empty pallet height 6 in and weight 37 lb: within the published range for a 48 × 40 wood stringer pallet (see the weight and load capacity guide). Your pallet may differ.",
+      "Empty pallet height 6 in and weight 37 lb: the shared planning default, within the published range for a 48 × 40 wood stringer pallet (see the weight and load capacity guide). The weight estimator's own calculation from its example board list may differ slightly. Your pallet may differ.",
       "Payload 44,000 lb: a planning assumption. Federal rules cap gross vehicle weight at 80,000 lb on the Interstate system, and the tractor and trailer weight comes out of that. Your carrier sets the real number.",
       "Loaded height 60 in and weight 1,200 lb: example inputs only. Replace them with your unit load.",
       "Clearance 4 in: headroom left above empty stacks for loading. Adjust to your dock practice."
@@ -170,7 +170,7 @@
       "Fasteners, plates, and coatings are not included.",
       "Density varies within a species and from board to board; published specific gravity values are averages.",
       "Moisture changes after a pallet is built. A pallet weighed the day it is built can weigh more than the same pallet weeks later.",
-      "For a figure you can plan freight on, weigh sample pallets from the build you are buying. See [AGL weighed data (pending)](/resources/pallet-weight-and-load-capacity/#agl-weighed-data)."
+      "For a figure you can plan freight on, weigh sample pallets from the build you are buying. See [AGL weighed data](/resources/pallet-weight-and-load-capacity/#agl-weighed-data)."
     ],
     "sources": [
       { "label": "USDA Forest Products Laboratory — Wood Handbook, Chapter 5 (FPL-GTR-190)", "href": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/chapter_05.pdf", "note": "Table 5-3a, specific gravity by species" },
@@ -187,13 +187,22 @@
     "metaDescription": "Work out what a pallet costs per trip over its life from your own purchase price, trips, repair, and return costs, and compare it with a one-way pallet.",
     "directAnswer": "Cost per trip spreads a pallet's purchase price, minus any value left at the end, across the trips it makes, then adds repair and return costs for each trip. A one-way pallet's cost per trip is simply its price. The comparison shows when a sturdier multi-trip pallet pays for itself.",
     "formula": "Cost per trip = (purchase price − residual value) ÷ trips + repair per trip + return per trip",
+    "example": {
+      "note": "Worked example on first load. The dollar figures are sample inputs so the comparison is visible. They are not an AGL price.",
+      "price": 20,
+      "trips": 10,
+      "residual": 2,
+      "repair": 1,
+      "returnFreight": 1,
+      "oneWay": 8
+    },
     "method": [
       "Capital cost per trip: (purchase price − residual value) ÷ expected trips.",
       "Cost per trip: capital cost per trip + average repair cost per trip + return freight and handling per trip.",
-      "One-way comparison: a pallet that ships once and does not come back costs its full price on that trip."
+      "One-way comparison: the optional one-way pallet price is that pallet's cost per trip. The comparison row sets it next to the multi-trip cost per trip."
     ],
     "limits": [
-      "All figures are yours. The calculator has no price data and does not estimate pallet prices; for a price on a spec, [request a quote](/request-a-quote/?source=cost-per-trip).",
+      "The worked example on first load uses sample inputs and is labeled as an example. It is not an AGL price. The calculator has no price data and does not estimate pallet prices; for a price on a spec, [request a quote](/request-a-quote/?source=cost-per-trip).",
       "Losses are not modeled separately. Fold them into expected trips (a pallet lost after three trips made three trips).",
       "Time value of money, tracking, and administration costs are not included.",
       "Pooled (rented) pallets are priced differently, per issue and per day or trip, under the pool's terms. See [pooled vs. owned pallets](/resources/pooled-vs-owned-pallets/)."

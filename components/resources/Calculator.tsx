@@ -15,12 +15,14 @@ export function CalcForm({
   action,
   resetHref,
   submitLabel = "Calculate",
+  resetLabel = "Reset to defaults",
   label,
   children,
 }: {
   action: string;
   resetHref: string;
   submitLabel?: string;
+  resetLabel?: string;
   label: string;
   children: ReactNode;
 }) {
@@ -39,7 +41,7 @@ export function CalcForm({
           prefetch={false}
           className="text-link font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green"
         >
-          Reset to defaults
+          {resetLabel}
         </Link>
       </div>
     </form>

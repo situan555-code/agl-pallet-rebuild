@@ -59,7 +59,7 @@
       "id": "empty-pallets",
       "heading": "Empty pallet loads",
       "paragraphs": [
-        "Empty pallets ship in stacks, one stack per floor position, so the count is floor positions times pallets per stack. A 48 × 40 wood pallet around 6 inches tall stacks roughly 17 high under a 110-inch roof with a few inches of clearance, which puts a turned-loaded 53 ft van in the 500-pallet range.",
+        "Empty pallets ship in stacks, one stack per floor position, so the count is floor positions times pallets per stack. A 48 × 40 wood pallet around 6 inches tall and 37 lb stacks 17 high under a 110-inch roof with 4 inches of clearance, which puts a turned-loaded 53 ft van at about 510 pallets: 30 stacks of 17.",
         "Empty wood pallets are light enough that space, not weight, usually limits the load. Heavier builds, block pallets, and wet lumber change that. Use the calculator with your pallet's measured height and weight."
       ]
     },

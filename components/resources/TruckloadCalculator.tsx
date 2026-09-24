@@ -16,25 +16,54 @@ const EUR = { l: 47.24, w: 31.5 };
 /** Single-stacked floor counts for every preset, from the same math as the calculator. */
 export function CalculatedCounts() {
   const presets = equipment.filter((e) => e.id !== "custom");
+  const d = config.defaults;
   const rows = presets.map((e) => {
     const straight = Math.floor(e.length / 48) * Math.floor(e.width / 40);
     const turned = Math.floor(e.length / 40) * Math.floor(e.width / 48);
     const best = bestFloorPattern(e.length, e.width, 48, 40);
     const eur = bestFloorPattern(e.length, e.width, EUR.l, EUR.w);
-    return [e.label, `${fmt(e.length, 1)} × ${fmt(e.width, 2)}`, fmt(straight), fmt(turned), fmt(best.count), fmt(eur.count)];
+    const empty = emptyLoad({
+      floorL: e.length,
+      floorW: e.width,
+      interiorH: e.height,
+      palletL: 48,
+      palletW: 40,
+      palletH: d.palletH,
+      clearance: d.clearance,
+      palletWeight: d.palletWeight,
+      payload: d.payload,
+    });
+    return [
+      e.label,
+      `${fmt(e.length, 1)} × ${fmt(e.width, 2)} × ${fmt(e.height, 1)}`,
+      fmt(straight),
+      fmt(turned),
+      fmt(best.count),
+      `${fmt(empty.count)} (${empty.perStack} high)`,
+      fmt(eur.count),
+    ];
   });
   return (
     <ArticleSection section={{ id: CALCULATED_TOC.id, heading: "Calculated counts, single-stacked" }}>
       <p className="prose-measure mt-6 text-body text-ink/85">
-        Counts below come from stated interior dimensions and the calculator&rsquo;s method, so they can be checked and reproduced. They
-        are floor positions only: no stacking, no weight limit.
+        Counts below come from stated interior dimensions and the calculator&rsquo;s method, so they can be checked and reproduced. Floor
+        columns are positions only. Interior height is listed because a high-cube container is taller than a standard container with the
+        same floor, which changes the empty-pallet stack even when the floor count does not.
       </p>
       <DataTable
         table={{
-          caption: "Floor positions by equipment, calculated",
-          columns: ["Equipment", "Interior L × W (in)", "48 × 40 straight", "48 × 40 turned", "48 × 40 best pattern", "EUR 1200 × 800 best pattern"],
+          caption: "Floor positions and empty stacks by equipment, calculated",
+          columns: [
+            "Equipment",
+            "Interior L × W × H (in)",
+            "48 × 40 straight",
+            "48 × 40 turned",
+            "48 × 40 best pattern",
+            "Empty 48 × 40, planning default",
+            "EUR 1200 × 800 best pattern",
+          ],
           rows,
-          note: "Best pattern tests all-straight, all-turned, mixed rows, and mixed lanes. Loaders using pinwheel or interlocked patterns sometimes fit more, which is one reason the EUR figures here run below the published counts above. Dimension sources are listed under each preset in the calculator.",
+          note: `Best pattern tests all-straight, all-turned, mixed rows, and mixed lanes. Loaders using pinwheel or interlocked patterns sometimes fit more, which is one reason the EUR figures here run below the published counts above. Empty counts use the shared planning default: 48 × 40 in, ${d.palletH} in tall, ${d.palletWeight} lb, ${d.clearance} in clearance, ${fmt(d.payload)} lb payload. A 40 ft high-cube and a 40 ft standard container share a floor size; the high-cube is taller, so its empty stack is higher. Dimension sources are listed under each preset in the calculator.`,
         }}
       />
     </ArticleSection>

@@ -17,7 +17,7 @@
       "wave": 1,
       "status": "Guide",
       "href": "/resources/gma-pallets-and-grades/",
-      "directAnswer": "A GMA pallet is the stringer-style footprint long used across grocery and consumer-goods supply chains in North America. Pallet grades describe lumber quality and condition, but grade names are not standardized across regions or suppliers. Confirming the grade definition in writing before an order ships avoids surprises at the receiving dock."
+      "directAnswer": "A GMA pallet is a 48 × 40 inch (1219 × 1016 mm) wood stringer pallet used across North American grocery and consumer-goods shipping. The name describes a footprint and a construction style, not a single blueprint. Pallet grades such as A, B, and C are trade labels, not a published standard, so confirm the acceptance criteria in writing."
     },
     {
       "slug": "heat-treated-pallets-ispm-15",
@@ -25,7 +25,7 @@
       "wave": 1,
       "status": "Guide",
       "href": "/resources/heat-treated-pallets-ispm-15/",
-      "directAnswer": "ISPM-15 is the international phytosanitary standard for wood packaging that crosses borders. Compliant pallets are treated, typically by heat, to kill wood pests, then stamped with a mark identifying the treatment and the facility responsible. Buyers shipping for export should confirm the treatment method and stamp requirements with their destination country."
+      "directAnswer": "ISPM-15 is the international rule for wood packaging that crosses a border. Heat treatment, the method most North American export pallets use, means the wood is heated to at least 56 °C at the wood core for 30 continuous minutes, then marked with a bordered stamp. Domestic shipments that stay inside the United States do not require it."
     },
     {
       "slug": "glossary",
@@ -41,7 +41,7 @@
       "wave": 2,
       "status": "Guide",
       "href": "/resources/pallet-weight-and-load-capacity/",
-      "directAnswer": "Pallet weight and load capacity depend on wood species, moisture content, board thickness, and design, so two pallets with the same footprint can differ noticeably. Capacity also changes with how the load is supported: static on the floor, dynamic on a forklift, or racked. A spec that states all three avoids guesswork."
+      "directAnswer": "Published figures for a 48 × 40 wood stringer pallet commonly run about 33–48 lb, and a figure near 37 lb is often cited for a typical build. Species, moisture, and board count move the number. Load capacity depends on support: static on the floor, dynamic on a forklift, or racked on beams."
     },
     {
       "slug": "pallet-sizes",
@@ -73,7 +73,7 @@
       "wave": 3,
       "status": "Guide",
       "href": "/resources/pallets-per-truckload/",
-      "directAnswer": "How many pallets fit on a truckload depends on pallet footprint, pallet height, trailer length, and whether the pallets ship empty in stacks or under product. Weight limits can cap a load before floor space runs out. Planning loads around both space and weight helps avoid partial shipments and extra freight charges."
+      "directAnswer": "For 48 × 40 pallets, a 53 ft dry van takes 26 pallets loaded straight or 30 turned, single-stacked. Empty 48 × 40 wood pallets about 6 in tall and 37 lb come to roughly 510 on that van when turned: 30 stacks of 17. Weight limits and receiver rules can cut a loaded count before the floor is full."
     },
     {
       "slug": "pallet-calculators",
