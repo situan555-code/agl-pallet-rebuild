@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import hub from "@/content/resources/hub.json";
 import calculators from "@/content/resources/calculators.json";
+import { DOWNLOADS_PATH, STAMP_DECODER_PATH, downloadPath, downloadPdfPath, downloads } from "@/lib/download-source";
 import { QUESTIONS_PATH, questionPath, questions } from "@/lib/questions";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -37,6 +38,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...tools,
     QUESTIONS_PATH,
     ...questions.map((item) => questionPath(item.slug)),
+    DOWNLOADS_PATH,
+    ...downloads.map((item) => downloadPath(item.slug)),
+    ...downloads.map((item) => downloadPdfPath(item.slug)),
+    STAMP_DECODER_PATH,
   ];
   return paths.map((path) => ({
     url: `${getSiteUrl()}${path}`,

@@ -4,6 +4,7 @@ import { Feature3 } from "@/components/feature3";
 import { Feature1 } from "@/components/feature1";
 import { Cta4 } from "@/components/cta4";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { DownloadIndexList, StampDecoderHubLink } from "@/components/resources/DownloadPages";
 import { QuestionIndexList } from "@/components/resources/QuestionPage";
 import { firstSentence } from "@/lib/resources";
 import { pageMeta } from "@/lib/seo";
@@ -41,6 +42,9 @@ export default function ResourcesHub() {
       />
 
       <QuestionIndexList eyebrow={hub.questionsEyebrow} heading={hub.questionsHeading} />
+
+      <DownloadIndexList />
+      <StampDecoderHubLink />
 
       <Feature1 hairline heading={hub.authorsNote.heading} paragraphs={[hub.authorsNote.body]} />
 

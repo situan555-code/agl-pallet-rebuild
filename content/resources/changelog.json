@@ -25,6 +25,10 @@
     {
       "date": "2026-09-24",
       "change": "Linked standalone pages for the HT mark and for domestic heat treatment."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Added a stamp cheat sheet and a stamp decoder that read this guide's mark fields, including the hyphen and DUN."
     }
   ],
   "glossary": [
@@ -67,6 +71,10 @@
     {
       "date": "2026-09-24",
       "change": "Linked standalone pages for pallet height and for the square-size disagreement."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Added a size-chart page and PDF that read these tables, so the figures are not kept in a second file."
     }
   ],
   "skid-vs-pallet": [

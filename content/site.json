@@ -91,7 +91,9 @@
         { "label": "Types of Pallets", "href": "/resources/types-of-pallets/" },
         { "label": "Pooled vs. Owned Pallets", "href": "/resources/pooled-vs-owned-pallets/" },
         { "label": "Pallet Standards", "href": "/resources/pallet-standards/" },
-        { "label": "Pallet questions", "href": "/resources/questions/" }
+        { "label": "Pallet questions", "href": "/resources/questions/" },
+        { "label": "Downloads", "href": "/resources/downloads/" },
+        { "label": "Stamp decoder", "href": "/resources/heat-treated-pallets-ispm-15/stamp-decoder/" }
       ]
     },
     {
