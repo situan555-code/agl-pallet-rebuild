@@ -85,21 +85,21 @@
         "id": "how-many-pallets-53-ft-trailer",
         "question": "How many pallets fit on a 53 ft trailer?",
         "answer": [
-          "With 48 × 40 pallets single-stacked, a 53 ft dry van usually takes 26 loaded straight or 30 loaded turned, based on about 630 × 100 inches of usable floor. Double-stacking can double that if the product and the receiver allow it, and weight often caps the load first."
+          "With 48 × 40 pallets single-stacked, a 53 ft dry van usually takes 26 loaded straight or 30 loaded turned, based on about 630 × 100 inches of usable floor. Double-stacking can double that if the product and the receiver allow it, and weight often caps the load first. Straight and turned calculator presets are on [How many pallets fit on a 53 ft trailer?](/resources/questions/how-many-pallets-fit-in-a-53-ft-trailer/)."
         ]
       },
       {
         "id": "how-many-empty-pallets-truckload",
         "question": "How many empty pallets fit on a truckload?",
         "answer": [
-          "For 48 × 40 wood pallets about 6 inches tall, the calculator gives roughly 510 on a turned-loaded 53 ft dry van: 30 stacks of 17. The real number depends on the pallet's height, the trailer's inside height, and how high the loader stacks."
+          "For 48 × 40 wood pallets about 6 inches tall, the calculator gives roughly 510 on a turned-loaded 53 ft dry van: 30 stacks of 17. The real number depends on the pallet's height, the trailer's inside height, and how high the loader stacks. The empty-mode preset is on [How many empty pallets fit on a truckload?](/resources/questions/how-many-empty-pallets-in-a-truckload/)."
         ]
       },
       {
         "id": "pallets-in-a-shipping-container",
         "question": "How many pallets fit in a 40 ft container?",
         "answer": [
-          "A standard 40 ft ISO container is narrower than a trailer, about 91¾ inches inside, so 48 × 40 pallets cannot sit two across when turned. The calculator finds 20 using one straight lane and one turned lane. Wikipedia's summary lists 25 EUR pallets (1200 × 800 mm) for the same box."
+          "A standard 40 ft ISO container is narrower than a trailer, about 91¾ inches inside, so 48 × 40 pallets cannot sit two across when turned. The calculator finds 20 using one straight lane and one turned lane. Wikipedia's summary lists 25 EUR pallets (1200 × 800 mm) for the same box. That preset is on [How many pallets fit in a 40 ft container?](/resources/questions/how-many-pallets-fit-in-a-40-ft-container/)."
         ]
       }
     ]

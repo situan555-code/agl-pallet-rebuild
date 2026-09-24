@@ -1,0 +1,473 @@
+{
+  "crumbs": {
+    "resources": "Resources",
+    "questions": "Questions"
+  },
+  "index": {
+    "eyebrow": "Questions",
+    "heading": "Questions",
+    "updated": "2026-09-24",
+    "metaTitle": "Pallet Questions — AGL Pallet",
+    "metaDescription": "Short answers to common pallet questions: heat treatment, grades, weight, height, trailer fit, and pool ownership, each with one table, diagram, or calculator preset.",
+    "intro": "Short pages for questions buyers ask while they spec a pallet. Each one answers first, then adds one table, diagram, or calculator preset the longer guide does not already show.",
+    "listHeading": "All questions",
+    "relatedEyebrow": "Keep reading",
+    "relatedHeading": "Related questions",
+    "sourcesClosing": "This page summarizes the sources above and links to them. Check the current page or edition before relying on a specific clause."
+  },
+  "items": [
+    {
+      "slug": "what-does-ht-mean-on-a-pallet",
+      "question": "What does HT mean on a pallet?",
+      "eyebrow": "Question · Treatment",
+      "summary": "HT means the wood was heat treated to the ISPM 15 core temperature and time, then marked in the bordered stamp.",
+      "parentSlug": "heat-treated-pallets-ispm-15",
+      "directAnswer": "HT means heat treated. Under ISPM 15, the wood was heated until the core reached at least 56 °C (133 °F) for 30 continuous minutes, then marked by a licensed facility. Those letters sit in the bordered stamp with the IPPC symbol and the producer number. The [heat-treated pallets guide](/resources/heat-treated-pallets-ispm-15/) explains the full mark.",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "ht-stamp",
+        "heading": "Stamp fields, annotated",
+        "lead": "The drawing is a schematic of the fields the heat-treated pallets guide lists. It is not a photograph of a stamp, and US-1234 is that guide's example, not a licensed facility.",
+        "exampleMark": { "facility": "US-1234", "treatment": "HT" },
+        "callouts": [
+          { "label": "Border", "text": "The mark sits inside a border. It has to be legible and permanent, and it is not hand-drawn." },
+          { "label": "IPPC symbol", "text": "A stylized wheat ear on the left. The mark here is a schematic, not the official logo." },
+          { "label": "Country code and producer number", "text": "Joined by a hyphen, as in US-1234. APHIS and U.S. Customs and Border Protection resumed enforcing that hyphen on January 1, 2026." },
+          { "label": "Treatment code", "text": "HT on this example. The same position can read DH, MB, or SF." },
+          { "label": "DUN", "text": "Added when the marked wood is dunnage rather than a pallet, crate, or box. A pallet mark does not need it." }
+        ]
+      },
+      "sources": [
+        { "label": "IPPC — ISPM 15: Regulation of wood packaging material in international trade", "href": "https://www.ippc.int/en/publications/640/", "note": "treatment code HT and the mark" },
+        { "label": "USDA APHIS — Wood Packaging Material", "href": "https://www.aphis.usda.gov/plant-imports/wood-packaging-material", "note": "U.S. rules for the mark" },
+        { "label": "USDA APHIS — Suspension of the ISPM 15 hyphen requirement ends December 31, 2025", "href": "https://www.aphis.usda.gov/news/program-update/reminder-suspension-ispm-15-hyphen-requirement-ends-december-31-2025", "note": "hyphen enforced again on January 1, 2026" },
+        { "label": "American Lumber Standard Committee — Wood Packaging Material Program", "href": "https://alsc.org/wood-packaging-material-program/", "note": "accredited agencies that license U.S. treatment facilities" }
+      ],
+      "related": [
+        "do-i-need-heat-treated-pallets-for-domestic-shipping",
+        "what-is-a-4-way-pallet",
+        "grade-a-vs-grade-b-pallets",
+        "how-much-does-a-pallet-weigh"
+      ]
+    },
+    {
+      "slug": "do-i-need-heat-treated-pallets-for-domestic-shipping",
+      "question": "Do I need heat-treated pallets for domestic shipping?",
+      "eyebrow": "Question · Treatment",
+      "summary": "A shipment that stays inside the United States does not need an ISPM 15 heat-treatment stamp.",
+      "parentSlug": "heat-treated-pallets-ispm-15",
+      "directAnswer": "No. ISPM 15 applies when wood packaging crosses a border, so a shipment that stays inside the United States does not need a heat-treatment stamp. Buyers still specify one when a plant also ships export orders, when a receiver asks for a stamp, or to limit insects between sites. See the [heat-treated pallets guide](/resources/heat-treated-pallets-ispm-15/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "domestic-decision",
+        "heading": "When a domestic load still specifies HT",
+        "lead": "ISPM 15 is a border rule. The table applies it to situations the heat-treated pallets guide already names. It does not add a domestic legal requirement.",
+        "table": {
+          "caption": "Domestic shipping and heat treatment",
+          "columns": ["Situation", "Does ISPM 15 require HT?", "What buyers often specify"],
+          "rows": [
+            ["Wood packaging that crosses a border", "Yes", "Treatment code, usually HT, and a stamp from a licensed facility"],
+            ["Shipment that stays inside the United States", "No", "Untreated wood is allowed unless the buyer chooses otherwise"],
+            ["One spec for a plant that ships both domestic and export", "Not for the domestic leg", "HT on every pallet, so the plant does not keep two stocks"],
+            ["Receiver asks for a stamped pallet", "No. The receiver's rule is separate", "Follow the receiver's written requirement"],
+            ["Pallet may later leave the country with another shipper", "Not for the domestic trip", "HT, so the pallet is easier to place on a later export"],
+            ["Limiting insects moved between facilities", "No", "HT, as a pest-control step, separate from a moisture spec"]
+          ],
+          "note": "Rows follow the heat-treated pallets guide. A receiver can require a stamp even when ISPM 15 does not."
+        }
+      },
+      "sources": [
+        { "label": "IPPC — ISPM 15", "href": "https://www.ippc.int/en/publications/640/", "note": "the rule applies to wood packaging in international trade" },
+        { "label": "USDA APHIS — Wood Packaging Material", "href": "https://www.aphis.usda.gov/plant-imports/wood-packaging-material", "note": "U.S. import and export enforcement" }
+      ],
+      "related": [
+        "what-does-ht-mean-on-a-pallet",
+        "grade-a-vs-grade-b-pallets",
+        "how-many-pallets-fit-in-a-53-ft-trailer",
+        "can-you-buy-chep-pallets"
+      ]
+    },
+    {
+      "slug": "grade-a-vs-grade-b-pallets",
+      "question": "What is the difference between Grade A and Grade B pallets?",
+      "eyebrow": "Question · Grades",
+      "summary": "Grade A and Grade B are trade labels for repair level and stringer condition, not a published standard.",
+      "parentSlug": "gma-pallets-and-grades",
+      "directAnswer": "In common trade usage, Grade A means structurally sound, with minimal repairs and no plated or doubled stringers. Grade B means sound but repaired, often with plated or companion stringers and mixed board widths. Neither label is a published standard, so confirm the written criteria. The [GMA pallets and grades guide](/resources/gma-pallets-and-grades/) is the reference.",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "grade-criteria",
+        "heading": "Grade A and Grade B, side by side",
+        "lead": "The grades guide describes these labels as common trade usage. The columns split that description into criteria. They are not a mill spec or a retailer's written requirement.",
+        "table": {
+          "caption": "Grade A and Grade B in common trade usage",
+          "columns": ["Criterion", "Grade A (#1)", "Grade B (#2)"],
+          "rows": [
+            ["Condition", "Structurally sound", "Sound, but repaired"],
+            ["Repairs", "Minimal repairs", "Repaired"],
+            ["Stringers", "No plated or doubled stringers", "Often plated or companion stringers"],
+            ["Board widths", "Not stated as its own rule in the common-usage summary", "Mixed board widths"],
+            ["Typical buyer", "Receivers with conveyors or appearance requirements", "One-way shipments and internal moves"]
+          ],
+          "note": "Restated from the GMA pallets and grades guide. Not a published standard and not an AGL grade definition. Where that guide does not state a criterion for Grade A, the cell says so."
+        }
+      },
+      "sources": [
+        { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "pallet and unit load research" },
+        { "label": "Woodpack Global (formerly the wood pallet and container association)", "href": "https://woodpackglobal.org/", "note": "wood pallet industry association" },
+        { "label": "ISO 6780 — Flat pallets for intercontinental materials handling", "href": "https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en", "note": "lists the 48 × 40 inch footprint; it does not define Grade A or Grade B" }
+      ],
+      "related": [
+        "what-is-a-4-way-pallet",
+        "how-much-does-a-pallet-weigh",
+        "what-is-the-standard-pallet-height",
+        "can-you-buy-chep-pallets"
+      ]
+    },
+    {
+      "slug": "how-much-does-a-pallet-weigh",
+      "question": "How much does a standard 48 × 40 wood pallet weigh?",
+      "eyebrow": "Question · Weight",
+      "summary": "Published figures for a 48 × 40 wood stringer pallet commonly run about 33–48 lb.",
+      "parentSlug": "pallet-weight-and-load-capacity",
+      "directAnswer": "Published figures for a 48 × 40 wood stringer pallet commonly run about 33–48 lb, and a figure near 37 lb is often cited. Species, moisture, and board count move the number. The preset below is the weight estimator example, not a measured AGL weight. See the [weight and load capacity guide](/resources/pallet-weight-and-load-capacity/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "weight-preset",
+        "heading": "Weight estimator preset",
+        "lead": "The result is the pallet weight estimator's example board list: southern pine (loblolly) at 19% moisture. It is an estimate from published specific gravity, not an AGL weighed mean. Change the boards on the [pallet weight estimator](/resources/pallet-calculators/pallet-weight-estimator/)."
+      },
+      "sources": [
+        { "label": "USDA Forest Products Laboratory — Wood Handbook, Chapter 5 (FPL-GTR-190)", "href": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/chapter_05.pdf", "note": "Table 5-3a, specific gravity by species" },
+        { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary summary of the 33–48 lb range and a typical 37 lb figure" },
+        { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "research on pallet and unit load performance" }
+      ],
+      "related": [
+        "how-much-weight-can-a-pallet-hold",
+        "what-is-the-standard-pallet-height",
+        "how-many-empty-pallets-in-a-truckload",
+        "how-many-boxes-fit-on-a-pallet"
+      ]
+    },
+    {
+      "slug": "how-much-weight-can-a-pallet-hold",
+      "question": "How much weight can a pallet hold?",
+      "eyebrow": "Question · Load",
+      "summary": "How much a pallet can hold depends on whether it sits on the floor, a forklift, or rack beams.",
+      "parentSlug": "pallet-weight-and-load-capacity",
+      "directAnswer": "Capacity depends on support. A pallet on a solid floor carries the most, a pallet on a moving forklift carries less, and a pallet on rack beams usually carries the least. A published rating belongs to one design under stated conditions. The diagram shows the three cases. See the [weight and load capacity guide](/resources/pallet-weight-and-load-capacity/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "support-diagram",
+        "heading": "Static, dynamic, and racked",
+        "lead": "The three drawings match the three support conditions in the weight guide. They show where the pallet is supported. They do not assign a pound rating. Published ratings, including the figures CHEP and PECO state for their own block pallets, stay on the [weight and load capacity guide](/resources/pallet-weight-and-load-capacity/).",
+        "panels": [
+          { "id": "static", "title": "Static", "support": "On a flat, solid floor", "capacity": "Highest" },
+          { "id": "dynamic", "title": "Dynamic", "support": "Lifted and moved by a forklift or pallet jack", "capacity": "Lower than static" },
+          { "id": "racked", "title": "Racked", "support": "Supported only at the edges on rack beams", "capacity": "Usually the lowest" }
+        ],
+        "note": "Relative order is the typical one in the weight guide, not a rating for a specific pallet. Rack span and load distribution change the racked case."
+      },
+      "sources": [
+        { "label": "CHEP — Pooled wood block pallet, 48 × 40 in", "href": "https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet", "note": "a published rating for that pooled design, under its stated conditions" },
+        { "label": "PECO — Pallet specifications", "href": "https://www.pecopallet.com/specifications/", "note": "edge-rack rating for that pooled block pallet" },
+        { "label": "EPAL — EPAL Euro pallet product sheet", "href": "https://www.epal-pallets.org/eu-en/load-carriers/epal-euro-pallet", "note": "safe working load and stacking limit for the Euro pallet" },
+        { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary summary of static and dynamic figures for a generic wood pallet" }
+      ],
+      "related": [
+        "how-much-does-a-pallet-weigh",
+        "what-is-a-4-way-pallet",
+        "how-many-boxes-fit-on-a-pallet",
+        "how-many-pallets-fit-in-a-53-ft-trailer"
+      ]
+    },
+    {
+      "slug": "what-is-the-standard-pallet-height",
+      "question": "What is the standard pallet height?",
+      "eyebrow": "Question · Dimensions",
+      "summary": "Most wood pallets fall around 5 to 6.5 inches, and a 48 × 40 is often described as about 6 inches tall.",
+      "parentSlug": "pallet-sizes",
+      "directAnswer": "There is no single standard pallet height. Most wood pallets fall around 5 to 6.5 inches, and a 48 × 40 wood pallet is often described as about 6 inches tall. Height is the decks plus the stringer or block, and it changes how many loads fit in a trailer. See the [pallet sizes guide](/resources/pallet-sizes/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "height-diagram",
+        "heading": "Where height comes from",
+        "lead": "The stack adds the example board thicknesses from the weight estimator. The total is that example build only, not a standard pallet height. The notes beside it are descriptions already published in this library.",
+        "callouts": [
+          { "label": "Pallet sizes guide", "text": "Most wood pallets fall around 5 to 6.5 inches, depending on board thickness and stringer or block height." },
+          { "label": "Wikipedia, as cited on the weight guide", "text": "Describes a standard 48 × 40 × 6 inch wood pallet. That is one published description, not a tolerance." },
+          { "label": "Shared planning default", "text": "The truckload calculator uses 6 inches for an empty pallet. The estimator's own example can differ, and the drawing shows that example." }
+        ],
+        "note": "The 3½ inch face of the example 1½ × 3½ inch stringer is drawn as the height, which is how a stringer stands. Deckboards in that example are one layer thick, not stacked on each other."
+      },
+      "sources": [
+        { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary description of a 48 × 40 × 6 in wood pallet" },
+        { "label": "USDA Forest Products Laboratory — Wood Handbook, Chapter 5 (FPL-GTR-190)", "href": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/chapter_05.pdf", "note": "specific gravity behind the estimator whose example boards this drawing uses" }
+      ],
+      "related": [
+        "how-much-does-a-pallet-weigh",
+        "how-many-pallets-fit-in-a-53-ft-trailer",
+        "how-many-empty-pallets-in-a-truckload",
+        "how-many-boxes-fit-on-a-pallet"
+      ]
+    },
+    {
+      "slug": "how-many-pallets-fit-in-a-53-ft-trailer",
+      "question": "How many pallets fit on a 53 ft trailer?",
+      "eyebrow": "Question · Freight",
+      "summary": "A 53 ft dry van takes 26 of the 48 × 40 pallets loaded straight or 30 turned, single-stacked.",
+      "parentSlug": "pallets-per-truckload",
+      "directAnswer": "For 48 × 40 pallets, single-stacked, a 53 ft dry van takes 26 loaded straight or 30 turned on the calculator's interior assumptions. Weight, product height, and receiver rules can cut that before the floor is full. The presets below are planning estimates, not a load plan. See [pallets per truckload](/resources/pallets-per-truckload/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "trailer-53",
+        "heading": "Calculator preset: straight and turned",
+        "lead": "Both presets use the truckload calculator's 53 ft dry van and its example loaded unit. Straight means the 48-inch side runs along the trailer. Turned means the 40-inch side does. These are planning estimates, not a carrier load plan. The form is on [pallets per truckload](/resources/pallets-per-truckload/#calculator)."
+      },
+      "sources": [
+        { "label": "Utility Trailer — Dry van specifications", "href": "https://www.utilitytrailer.com/dry-vans/specifications", "note": "53 ft dry van inside width and height" },
+        { "label": "eCFR — 23 CFR 658.17, Weight", "href": "https://www.ecfr.gov/current/title-23/chapter-I/subchapter-G/part-658/section-658.17", "note": "80,000 lb gross vehicle weight limit; payload in the calculator is a planning assumption" },
+        { "label": "Wikipedia — Semi-trailer", "href": "https://en.wikipedia.org/wiki/Semi-trailer", "note": "secondary count of 26 pallets that does not name the footprint or the trailer length" }
+      ],
+      "related": [
+        "how-many-pallets-fit-in-a-40-ft-container",
+        "how-many-empty-pallets-in-a-truckload",
+        "how-many-boxes-fit-on-a-pallet",
+        "what-is-the-standard-pallet-height"
+      ]
+    },
+    {
+      "slug": "how-many-pallets-fit-in-a-40-ft-container",
+      "question": "How many pallets fit in a 40 ft container?",
+      "eyebrow": "Question · Freight",
+      "summary": "The calculator's best simple pattern puts 20 of the 48 × 40 pallets on the floor of a standard 40 ft container.",
+      "parentSlug": "pallets-per-truckload",
+      "directAnswer": "A standard 40 ft ISO container is narrower than a dry van, so 48 × 40 pallets do not sit two across when turned. The calculator's best simple pattern for that interior is 20 pallets, single-stacked, on the example unit load. It is a planning estimate. See [pallets per truckload](/resources/pallets-per-truckload/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "container-40",
+        "heading": "Calculator preset: 40 ft standard container",
+        "lead": "This preset is the truckload calculator on the 40 ft standard ISO container, with the same example unit load. All-straight and all-turned floor counts sit beside the best simple pattern. It is a planning estimate. Open that equipment on the [pallets per truckload calculator](/resources/pallets-per-truckload/?eq=iso40#truckload-results)."
+      },
+      "sources": [
+        { "label": "Wikipedia — Intermodal container", "href": "https://en.wikipedia.org/wiki/Intermodal_container", "note": "interior dimensions used for the 40 ft standard preset, and published EUR pallet counts (secondary)" },
+        { "label": "eCFR — 23 CFR 658.17, Weight", "href": "https://www.ecfr.gov/current/title-23/chapter-I/subchapter-G/part-658/section-658.17", "note": "gross vehicle weight context for the payload assumption" }
+      ],
+      "related": [
+        "how-many-pallets-fit-in-a-53-ft-trailer",
+        "how-many-empty-pallets-in-a-truckload",
+        "is-the-iso-square-pallet-1140-or-1165",
+        "how-many-boxes-fit-on-a-pallet"
+      ]
+    },
+    {
+      "slug": "how-many-empty-pallets-in-a-truckload",
+      "question": "How many empty pallets fit on a truckload?",
+      "eyebrow": "Question · Freight",
+      "summary": "On the shared planning default, a turned 53 ft dry van holds about 510 empty 48 × 40 pallets.",
+      "parentSlug": "pallets-per-truckload",
+      "directAnswer": "Empty 48 × 40 wood pallets ship in stacks. On the shared planning default of 6 inches and 37 lb, the calculator's empty mode for a 53 ft dry van comes to about 510 pallets when turned. Space usually limits that load before weight does. See [pallets per truckload](/resources/pallets-per-truckload/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "empty-truckload",
+        "heading": "Calculator preset: empty pallets",
+        "lead": "Empty mode stacks the shared planning default, 6 inches and 37 lb, on the 53 ft dry van. The count below is the calculator's result, not a tally of a loaded truck. A pool operator's empty count for its own block pallet is a different figure, stated on the truckload guide. Run this preset on the [pallets per truckload calculator](/resources/pallets-per-truckload/#truckload-results)."
+      },
+      "sources": [
+        { "label": "Utility Trailer — Dry van specifications", "href": "https://www.utilitytrailer.com/dry-vans/specifications", "note": "53 ft dry van inside width and height" },
+        { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary source for the weight range that contains the 37 lb planning default" },
+        { "label": "CHEP — Pooled wood block pallet, 48 × 40 in", "href": "https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet", "note": "a different empty-pallet stack figure, for CHEP's block pallet, with trailer length not stated" }
+      ],
+      "related": [
+        "how-many-pallets-fit-in-a-53-ft-trailer",
+        "how-many-pallets-fit-in-a-40-ft-container",
+        "how-much-does-a-pallet-weigh",
+        "what-is-the-standard-pallet-height"
+      ]
+    },
+    {
+      "slug": "how-many-boxes-fit-on-a-pallet",
+      "question": "How many boxes fit on a pallet?",
+      "eyebrow": "Question · Unit load",
+      "summary": "The boxes calculator's example carton comes to 50 cartons on a 48 × 40 pallet.",
+      "parentSlug": "pallet-calculators",
+      "directAnswer": "Boxes per pallet is cartons per layer times the layers that fit under the height limit, column-stacked, with no overhang. The example preset is 50 cartons on a 48 × 40 pallet, not a measured pack. Enter your own carton to replace it. See the [pallet calculators guide](/resources/pallet-calculators/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "boxes-preset",
+        "heading": "Boxes calculator preset",
+        "lead": "The preset is the boxes calculator's example: a 16 × 12 × 10 inch carton on a 48 × 40 pallet, 6 inches tall, under a 60-inch load height. It is an example, not a measured pack-out. Enter your carton on the [boxes per pallet calculator](/resources/pallet-calculators/boxes-per-pallet/)."
+      },
+      "sources": [
+        { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "research on how pallets, packaging, and unit loads interact" },
+        { "label": "ISO 6780 — Flat pallets for intercontinental materials handling", "href": "https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en", "note": "the 48 × 40 inch footprint used as the example deck" }
+      ],
+      "related": [
+        "how-much-weight-can-a-pallet-hold",
+        "what-is-the-standard-pallet-height",
+        "how-many-pallets-fit-in-a-53-ft-trailer",
+        "how-much-does-a-pallet-weigh"
+      ]
+    },
+    {
+      "slug": "what-is-a-4-way-pallet",
+      "question": "What is a four-way pallet?",
+      "eyebrow": "Question · Construction",
+      "summary": "A four-way pallet lets a forklift enter from all four sides, and true four-way also lets a pallet jack.",
+      "parentSlug": "types-of-pallets",
+      "directAnswer": "A four-way pallet lets a forklift enter from all four sides. On a notched stringer pallet, called partial four-way, a pallet jack still enters only the two ends. On a block pallet, called true four-way, jacks enter every side. The diagram shows both. See [types of pallets](/resources/types-of-pallets/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "entry-diagram",
+        "heading": "Entry from the ends and the sides",
+        "lead": "Forklift entry and pallet-jack entry are not the same thing. The drawings use the entry types from the types of pallets guide. Notches let a forklift in from the side; a pallet jack still needs an opening in the bottom deck.",
+        "labels": {
+          "forklift": "Forklift entry",
+          "jack": "Pallet jack entry",
+          "how": "How it is achieved"
+        },
+        "panels": [
+          {
+            "id": "two-way",
+            "title": "Two-way",
+            "forklift": "Two opposite ends",
+            "jack": "Two opposite ends",
+            "how": "Unnotched stringers"
+          },
+          {
+            "id": "partial",
+            "title": "Partial four-way",
+            "forklift": "All four sides",
+            "jack": "Two opposite ends only",
+            "how": "Notches cut in the stringers"
+          },
+          {
+            "id": "true",
+            "title": "True four-way",
+            "forklift": "All four sides",
+            "jack": "All four sides",
+            "how": "Blocks, with openings for jack wheels"
+          }
+        ],
+        "note": "A partial four-way pallet is four-way for a forklift and two-way for a pallet jack. True four-way needs the bottom deck to leave wheel openings."
+      },
+      "sources": [
+        { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary overview of stringer, block, and entry" },
+        { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "research on pallet design" },
+        { "label": "CHEP — Pooled wood block pallet, 48 × 40 in", "href": "https://www.chep.com/us/en/products/pallets/pooled-wood-block-pallet", "note": "an example of a block pallet, which is true four-way" }
+      ],
+      "related": [
+        "grade-a-vs-grade-b-pallets",
+        "what-is-the-standard-pallet-height",
+        "can-you-buy-chep-pallets",
+        "what-does-ht-mean-on-a-pallet"
+      ]
+    },
+    {
+      "slug": "can-you-buy-chep-pallets",
+      "question": "Can you buy CHEP or PECO pallets?",
+      "eyebrow": "Question · Programs",
+      "summary": "CHEP and PECO state that they keep ownership of their pallets and do not sell them.",
+      "parentSlug": "pooled-vs-owned-pallets",
+      "directAnswer": "No. CHEP states that it owns its pallets and never sells or otherwise gives up ownership. PECO states that its red block pallets are its property and may not be sold or bought. Pooled pallets at a dock go back through the pool pickup process. See [pooled vs. owned pallets](/resources/pooled-vs-owned-pallets/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "ownership-table",
+        "heading": "What CHEP and PECO say about ownership",
+        "lead": "The sentences below are the operators' own ownership statements, as quoted on the pooled vs. owned guide. No fee, rental rate, or transfer charge is included.",
+        "table": {
+          "caption": "Ownership statements from the pool operators",
+          "columns": ["Operator", "What the operator states", "Where it is published"],
+          "rows": [
+            [
+              "CHEP",
+              "\"CHEP owns its pallets and never sells or otherwise relinquishes ownership of them.\"",
+              "[Returning blue pallets](https://www.chep.com/us/en/request-blue-pallet-collection-US)"
+            ],
+            [
+              "PECO",
+              "Red block pallets \"are the property of PECO Pallet,\" and \"it is illegal to sell, buy, exchange, or repurpose PECO pallets.\"",
+              "[Red pallet pick-up](https://pecopallet.com/pallet-recovery/)"
+            ]
+          ],
+          "note": "Quotes only, copied as on the pooled vs. owned guide. No fee rates. AGL does not sell or rent pooled pallets. Quotes on this site are for new owned pallets."
+        }
+      },
+      "sources": [
+        { "label": "CHEP — Returning blue pallets", "href": "https://www.chep.com/us/en/request-blue-pallet-collection-US", "note": "ownership statement" },
+        { "label": "PECO — Red pallet pick-up", "href": "https://pecopallet.com/pallet-recovery/", "note": "ownership statement" }
+      ],
+      "related": [
+        "what-is-a-4-way-pallet",
+        "grade-a-vs-grade-b-pallets",
+        "is-the-iso-square-pallet-1140-or-1165",
+        "what-does-ht-mean-on-a-pallet"
+      ]
+    },
+    {
+      "slug": "is-the-iso-square-pallet-1140-or-1165",
+      "question": "Is the ISO square pallet 1140 × 1140 or 1165 × 1165 mm?",
+      "eyebrow": "Question · Dimensions",
+      "summary": "CHEP and many summaries say 1165 × 1165 mm, while other references list 1140 × 1140 mm for ISO 6780.",
+      "parentSlug": "pallet-sizes",
+      "directAnswer": "Sources disagree, and this library does not pick one. CHEP's Australian standard pallet is 1165 × 1165 mm, and many summaries call that the ISO square size. Other references list 1140 × 1140 mm for ISO 6780. The two do not match in a tight container. See the [pallet sizes guide](/resources/pallet-sizes/).",
+      "published": "2026-09-24",
+      "updated": "2026-09-24",
+      "asset": {
+        "id": "iso-disagree",
+        "heading": "Sources that disagree",
+        "lead": "The sizes guide records the disagreement and does not choose a winner. This table lists each source separately. The ISO 6780 table itself is not reproduced here.",
+        "table": {
+          "caption": "Square pallet size, by source, as this library records it",
+          "columns": ["Source", "Figure attributed to it", "What that figure describes"],
+          "rows": [
+            [
+              "[CHEP — Standard pallet dimensions](https://www.chep.com/us/en/products/pallets/standard-pallet-sizes)",
+              "1165 × 1165 mm",
+              "Australian standard pooled pallet, as the sizes guide cites"
+            ],
+            [
+              "[Wikipedia — Pallet](https://en.wikipedia.org/wiki/Pallet) (secondary)",
+              "1165 × 1165 mm",
+              "Australian standard size. Many summaries present this as the ISO square size."
+            ],
+            [
+              "Other references, not named in this library",
+              "1140 × 1140 mm",
+              "Presented as the ISO 6780 square size"
+            ],
+            [
+              "[ISO 6780](https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en)",
+              "Not quoted",
+              "Current principal dimensions. This library does not reproduce the table."
+            ]
+          ],
+          "note": "Recorded with the pallet sizes guide. The two square sizes are not interchangeable in a tight container load. Check the current ISO 6780 text and the receiver's pallet."
+        }
+      },
+      "sources": [
+        { "label": "ISO 6780 — Flat pallets for intercontinental materials handling", "href": "https://www.iso.org/obp/ui/#iso:std:iso:6780:ed-2:v1:en", "note": "publisher page; the dimension table is not copied here" },
+        { "label": "CHEP — Standard pallet dimensions", "href": "https://www.chep.com/us/en/products/pallets/standard-pallet-sizes", "note": "1165 × 1165 mm Australian standard" },
+        { "label": "Wikipedia — Pallet", "href": "https://en.wikipedia.org/wiki/Pallet", "note": "secondary listing of the 1165 mm Australian size" }
+      ],
+      "related": [
+        "how-many-pallets-fit-in-a-40-ft-container",
+        "what-is-the-standard-pallet-height",
+        "can-you-buy-chep-pallets",
+        "how-many-pallets-fit-in-a-53-ft-trailer"
+      ]
+    }
+  ]
+}

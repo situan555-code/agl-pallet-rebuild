@@ -96,10 +96,17 @@
         ]
       },
       {
+        "id": "standard-pallet-height",
+        "question": "What is the standard pallet height?",
+        "answer": [
+          "There is no single standard height. Most wood pallets fall around 5 to 6.5 inches, and a 48 × 40 is often described as about 6 inches tall. A drawing that separates an example build from those descriptions is on [What is the standard pallet height?](/resources/questions/what-is-the-standard-pallet-height/)."
+        ]
+      },
+      {
         "id": "iso-1140-vs-1165",
         "question": "Is the ISO square pallet 1140 × 1140 or 1165 × 1165 mm?",
         "answer": [
-          "References disagree. The Australian standard pallet, including pooled pallets, is 1165 × 1165 mm, and many summaries list that as the ISO square size, while other references list 1140 × 1140 mm. Check the current edition of ISO 6780 and the receiver's actual pallet before specifying."
+          "References disagree. The Australian standard pallet, including pooled pallets, is 1165 × 1165 mm, and many summaries list that as the ISO square size, while other references list 1140 × 1140 mm. Check the current edition of ISO 6780 and the receiver's actual pallet before specifying. A source-by-source table is on [Is the ISO square pallet 1140 × 1140 or 1165 × 1165 mm?](/resources/questions/is-the-iso-square-pallet-1140-or-1165/)."
         ]
       }
     ]

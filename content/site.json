@@ -90,7 +90,8 @@
         { "label": "Pallet Calculators", "href": "/resources/pallet-calculators/" },
         { "label": "Types of Pallets", "href": "/resources/types-of-pallets/" },
         { "label": "Pooled vs. Owned Pallets", "href": "/resources/pooled-vs-owned-pallets/" },
-        { "label": "Pallet Standards", "href": "/resources/pallet-standards/" }
+        { "label": "Pallet Standards", "href": "/resources/pallet-standards/" },
+        { "label": "Pallet questions", "href": "/resources/questions/" }
       ]
     },
     {

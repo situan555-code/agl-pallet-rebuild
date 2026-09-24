@@ -4,6 +4,7 @@ import { Feature3 } from "@/components/feature3";
 import { Feature1 } from "@/components/feature1";
 import { Cta4 } from "@/components/cta4";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { QuestionIndexList } from "@/components/resources/QuestionPage";
 import { firstSentence } from "@/lib/resources";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -38,6 +39,8 @@ export default function ResourcesHub() {
           description: firstSentence(p.directAnswer),
         }))}
       />
+
+      <QuestionIndexList eyebrow={hub.questionsEyebrow} heading={hub.questionsHeading} />
 
       <Feature1 hairline heading={hub.authorsNote.heading} paragraphs={[hub.authorsNote.body]} />
 

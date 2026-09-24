@@ -1901,3 +1901,14 @@ Nautis: put filler in who-we-are but it’s mostly Brock. Restored SPEC_V1 seven
 - **Glossary anchors were already per term** on `b5307eb` (`id` on each entry, DefinedTerm `@id` `${url}#${id}`). Letter sections with no entries were already omitted. A has entries (ANSI MH1, APHIS, ALSC, ASTM D1185, axle weight). Added the missing terms DUN, SF, ALSC, butted boards, and pallet exchange. APHIS, lead board, and pallet collar were already present.
 - **§4–§6 not started.** Sell/recycle stays omitted. No HowTo. No `llms.txt`. Noindex and `SITE_URL` unchanged.
 
+## 2026-09-24 — Resource Library §4: question pages
+
+- **13 standalone pages** under `/resources/questions/[slug]/`, plus an index at `/resources/questions/`. Each page: verbatim question as H1, 40–60 word direct answer linking to the parent guide, one asset the parent does not already show, sources, breadcrumb Home / Resources / Questions / {question}, at most four related questions, quote CTA `?source=q-{slug}`, Article + BreadcrumbList JSON-LD. Canonicals stay on `getSiteUrl()`.
+- **Parent guides keep the short Q&A** and add one link. The long answer and the asset are only on the question page. New short Q&A items were added only where the guide had no question yet (pallet height, boxes per pallet).
+- **Calculator presets are computed**, not typed. They call `lib/calculators.ts` with `calculators.json` defaults. The pages throw at render if the 53 ft counts drift from 26/30, the 40 ft best pattern from 20, the empty preset from 510, the boxes example from 50, or the weight example from 38.4 lb. Those figures are labeled as calculator examples, not AGL prices or measured AGL weights.
+- **Skipped, no page shipped:**
+  - `what-does-mb-mean-on-a-pallet` — the heat-treatment guide already publishes the ISPM 15 treatment-code table (HT, DH, MB, SF). A second table would not be a new asset. Dose, exposure time, and a country-by-country acceptance list are not in this library; filling them in would invent data.
+  - `are-plastic-pallets-better-than-wood` — the skid vs. pallet guide already publishes the plastic-vs-wood comparison table. No measured comparison (weight, life, price) exists here without inventing figures.
+- **Not built, per the directive:** price question pages and retailer-specific requirement pages.
+- **Sitemap** lists the index and each shipped question via `getSiteUrl()`. Placeholder guard now requests those URLs. Sell/recycle stays 404. No HowTo. No `llms.txt`. Host-conditional noindex unchanged.
+

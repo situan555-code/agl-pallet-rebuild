@@ -7,6 +7,10 @@
     {
       "date": "2026-09-24",
       "change": "Short answer names the 48 × 40 inch footprint. Noted the 2020 Consumer Brands Association rename."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked a standalone page that puts Grade A and Grade B side by side."
     }
   ],
   "heat-treated-pallets-ispm-15": [
@@ -17,6 +21,10 @@
     {
       "date": "2026-09-24",
       "change": "Short answer includes the 56 °C core temperature and 30-minute time. Stamp section adds the hyphen rule and the DUN code."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked standalone pages for the HT mark and for domestic heat treatment."
     }
   ],
   "glossary": [
@@ -41,6 +49,10 @@
     {
       "date": "2026-09-24",
       "change": "Short answer includes the 33–48 lb published range. Empty weighed-data table stays hidden until the data file has values."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked standalone pages for pallet weight and for the three support conditions."
     }
   ],
   "pallet-sizes": [
@@ -51,6 +63,10 @@
     {
       "date": "2026-09-24",
       "change": "Linked the first mention of pallet collar to the glossary."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked standalone pages for pallet height and for the square-size disagreement."
     }
   ],
   "skid-vs-pallet": [
@@ -81,12 +97,20 @@
     {
       "date": "2026-09-24",
       "change": "Short answer includes 26 straight, 30 turned, and about 510 empty. Container rows now show interior height."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked standalone pages for the 53 ft, 40 ft, and empty-pallet calculator presets."
     }
   ],
   "pallet-calculators": [
     {
       "date": "2026-09-24",
       "change": "Published the calculators hub and how the planning tools work."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked a standalone page for the boxes-per-pallet example preset."
     }
   ],
   "boxes-per-pallet": [
@@ -123,6 +147,10 @@
     {
       "date": "2026-09-24",
       "change": "Linked lead board and butted boards to the glossary."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked a standalone page with an entry diagram for four-way pallets."
     }
   ],
   "pooled-vs-owned-pallets": [
@@ -133,6 +161,10 @@
     {
       "date": "2026-09-24",
       "change": "Linked the first mention of pallet exchange to the glossary."
+    },
+    {
+      "date": "2026-09-24",
+      "change": "Linked a standalone page that tables the CHEP and PECO ownership statements. No fee rates."
     }
   ],
   "pallet-standards": [

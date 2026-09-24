@@ -58,12 +58,15 @@ export function ArticleHeader({
   title,
   updated,
   crumbs = [],
+  libraryLabel = hub.hero.heading,
 }: {
   eyebrow: string;
   title: string;
   updated: string;
   /** Intermediate breadcrumb links between the library and this page. */
   crumbs?: { name: string; href: string }[];
+  /** Visible label for the /resources/ crumb. Guides keep the library title. */
+  libraryLabel?: string;
 }) {
   return (
     <section className="bg-brand-green px-6 pb-14 pt-36 text-white nav:pb-16">
@@ -78,7 +81,7 @@ export function ArticleHeader({
             <li aria-hidden="true">/</li>
             <li>
               <Link href="/resources/" prefetch={false} className="hover:text-white hover:underline">
-                {hub.hero.heading}
+                {libraryLabel}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
@@ -238,7 +241,7 @@ export function Questions({ heading, items }: { heading: string; items: Resource
   );
 }
 
-export function Sources({ items }: { items: ResourceSource[] }) {
+export function Sources({ items, closing }: { items: ResourceSource[]; closing?: string }) {
   return (
     <section id="sources" aria-labelledby="sources-h" className="scroll-mt-28 border-t border-brand-green/15 pt-10">
       <h2 id="sources-h" className="text-display-row text-brand-green">
@@ -259,8 +262,8 @@ export function Sources({ items }: { items: ResourceSource[] }) {
         ))}
       </ul>
       <p className="prose-measure mt-6 text-[14px] leading-relaxed text-ink/70">
-        Standards bodies own their published text. This guide summarizes and links to them; buy or download the
-        current edition from the publisher before relying on a specific clause.
+        {closing ??
+          "Standards bodies own their published text. This guide summarizes and links to them; buy or download the current edition from the publisher before relying on a specific clause."}
       </p>
     </section>
   );
