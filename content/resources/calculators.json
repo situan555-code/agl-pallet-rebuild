@@ -1,0 +1,207 @@
+{
+  "hubSlug": "pallet-calculators",
+  "disclaimer": "Planning estimates only. Results come from the inputs and stated assumptions, not from a load plan, a carrier, or a mill. Confirm weights, dimensions, and limits with your carrier and receiver before you ship.",
+  "equipment": [
+    {
+      "id": "van53",
+      "label": "53 ft dry van",
+      "length": 630,
+      "width": 100,
+      "height": 110,
+      "note": "Width and height from a published 53 ft dry van specification (inside width 100 in at the wearband, inside height 110½ in at the front). Length 630 in is a planning assumption: the trailer is 53 ft overall, and the nose and door frame take some of that. Measure your equipment."
+    },
+    {
+      "id": "container53",
+      "label": "53 ft domestic container",
+      "length": 629,
+      "width": 98,
+      "height": 107,
+      "note": "Maximum interior 52 ft 5 in × 8 ft 2 in × 8 ft 11 in, as summarized in the Wikipedia \"Intermodal container\" article."
+    },
+    {
+      "id": "iso40hc",
+      "label": "40 ft high-cube ISO container",
+      "length": 472.4,
+      "width": 91.75,
+      "height": 104.5,
+      "note": "Maximum interior 39 ft 4⅜ in × 7 ft 7¾ in × 8 ft 8½ in, as summarized in the Wikipedia \"Intermodal container\" article."
+    },
+    {
+      "id": "iso40",
+      "label": "40 ft standard ISO container",
+      "length": 472.4,
+      "width": 91.75,
+      "height": 92.5,
+      "note": "Maximum interior 39 ft 4⅜ in × 7 ft 7¾ in × 7 ft 8½ in, as summarized in the Wikipedia \"Intermodal container\" article."
+    },
+    {
+      "id": "iso20",
+      "label": "20 ft standard ISO container",
+      "length": 231,
+      "width": 91.75,
+      "height": 92.5,
+      "note": "Maximum interior 19 ft 3 in × 7 ft 7¾ in × 7 ft 8½ in, as summarized in the Wikipedia \"Intermodal container\" article."
+    },
+    {
+      "id": "custom",
+      "label": "Custom (enter interior dimensions)",
+      "length": 630,
+      "width": 100,
+      "height": 110,
+      "note": "Uses the interior length, width, and height you enter."
+    }
+  ],
+  "truckload": {
+    "defaults": {
+      "palletL": 48,
+      "palletW": 40,
+      "palletH": 6,
+      "palletWeight": 37,
+      "clearance": 4,
+      "loadH": 60,
+      "loadWeight": 1200,
+      "maxLevels": 1,
+      "payload": 44000
+    },
+    "defaultNotes": [
+      "Pallet footprint 48 × 40 in: the GMA footprint, the most common size in North America.",
+      "Empty pallet height 6 in and weight 37 lb: within the published range for a 48 × 40 wood stringer pallet (see the weight and load capacity guide). Your pallet may differ.",
+      "Payload 44,000 lb: a planning assumption. Federal rules cap gross vehicle weight at 80,000 lb on the Interstate system, and the tractor and trailer weight comes out of that. Your carrier sets the real number.",
+      "Loaded height 60 in and weight 1,200 lb: example inputs only. Replace them with your unit load.",
+      "Clearance 4 in: headroom left above empty stacks for loading. Adjust to your dock practice."
+    ],
+    "method": [
+      "Floor positions: the calculator tests every pallet straight (the first dimension along the trailer length), every pallet turned, rows of each, and full-length lanes of each, and keeps the pattern that fits the most. Pinwheel or interlocked patterns can sometimes fit one or two more.",
+      "Loaded pallets: floor positions × stack levels, where levels are capped by interior height and by the stacking limit you enter. The count is then capped by payload ÷ unit load weight.",
+      "Empty pallets: floor positions × pallets per stack, where a stack is (interior height − clearance) ÷ pallet height. The count is then capped by payload ÷ empty pallet weight."
+    ]
+  },
+  "tools": [
+    {
+      "slug": "pallets-per-truckload",
+      "title": "Pallets per truckload",
+      "href": "/resources/pallets-per-truckload/#calculator",
+      "summary": "Floor positions, stacked loads, and empty pallet counts for dry vans and containers, capped by height and payload."
+    },
+    {
+      "slug": "boxes-per-pallet",
+      "title": "Boxes per pallet",
+      "href": "/resources/pallet-calculators/boxes-per-pallet/",
+      "summary": "Cartons per layer, layers, and cartons per pallet for a column-stacked load, with an optional weight cap."
+    },
+    {
+      "slug": "pallet-weight-estimator",
+      "title": "Pallet weight estimator",
+      "href": "/resources/pallet-calculators/pallet-weight-estimator/",
+      "summary": "An estimated wood pallet weight from board counts, board sizes, species, and moisture content."
+    },
+    {
+      "slug": "cost-per-trip",
+      "title": "Cost per trip",
+      "href": "/resources/pallet-calculators/cost-per-trip/",
+      "summary": "Your pallet's cost per trip over its life, from your purchase price, trips, repairs, and return freight."
+    }
+  ],
+  "boxesPerPallet": {
+    "slug": "boxes-per-pallet",
+    "title": "Boxes per Pallet Calculator",
+    "eyebrow": "Calculator · Unit load",
+    "metaTitle": "Boxes per Pallet Calculator: Cartons per Layer and per Pallet — AGL Pallet",
+    "metaDescription": "Estimate cartons per layer, layers, and cartons per pallet for a column-stacked load on a 48 × 40 or custom pallet, with an optional weight cap. Results in HTML.",
+    "directAnswer": "Boxes per pallet is cartons per layer times the number of layers that fit under the height limit. Cartons per layer depends on how the carton footprint tiles the pallet deck; layers depend on carton height and the maximum load height your receiver or racking allows. A weight cap can cut the count further.",
+    "defaults": { "palletL": 48, "palletW": 40, "palletH": 6, "boxL": 16, "boxW": 12, "boxH": 10, "maxH": 60 },
+    "defaultNotes": [
+      "Pallet 48 × 40 in, 6 in tall: the GMA footprint at a typical wood pallet height.",
+      "Carton 16 × 12 × 10 in and maximum load height 60 in: example inputs only. Use your carton and your receiver's height limit."
+    ],
+    "method": [
+      "Cartons per layer: the calculator tests every carton in one orientation, every carton turned, rows of each, and lanes of each across the deck, with no overhang, and keeps the best fit.",
+      "Layers: (maximum load height − pallet height) ÷ carton height, rounded down. Every layer uses the same pattern (column stacking).",
+      "Weight cap: if you enter a carton weight and a maximum load weight, the count is capped at maximum load weight ÷ carton weight."
+    ],
+    "limits": [
+      "Column stacking is assumed. Interlocked (brick) patterns trade some compression strength for stability and can change the count.",
+      "No overhang or underhang. Overhang weakens cartons at the edge; underhang wastes deck space.",
+      "Carton compression strength is not modeled. Heavy or tall stacks may crush the bottom layers; check with your packaging supplier.",
+      "The pallet's own load rating is not checked. See the [weight and load capacity guide](/resources/pallet-weight-and-load-capacity/)."
+    ],
+    "sources": [
+      { "label": "Virginia Tech Center for Packaging and Unit Load Design", "href": "https://www.unitload.vt.edu/", "note": "research on how pallets, packaging, and unit loads interact" },
+      { "label": "AGL Pallet — Pallet sizes", "href": "/resources/pallet-sizes/", "note": "common pallet footprints by industry" }
+    ],
+    "related": ["pallet-sizes", "pallet-weight-and-load-capacity", "pallets-per-truckload"]
+  },
+  "weightEstimator": {
+    "slug": "pallet-weight-estimator",
+    "title": "Pallet Weight Estimator",
+    "eyebrow": "Calculator · Weight",
+    "metaTitle": "Pallet Weight Estimator: Wood Pallet Weight from Species and Moisture — AGL Pallet",
+    "metaDescription": "Estimate a wood pallet's weight from board counts and sizes, wood species, and moisture content, using USDA Forest Products Laboratory specific gravity values.",
+    "directAnswer": "A wood pallet's weight is roughly its wood volume times the wood's density, and density depends on species and moisture content. This estimator adds up board volumes, applies a density from USDA Forest Products Laboratory specific gravity values, and returns an estimate. It is not a measured weight.",
+    "defaults": { "species": "loblolly", "mc": 19 },
+    "lines": [
+      { "id": "a", "label": "Stringers or blocks", "qty": 3, "thickness": 1.5, "width": 3.5, "length": 48 },
+      { "id": "b", "label": "Top deckboards", "qty": 7, "thickness": 0.625, "width": 3.5, "length": 40 },
+      { "id": "c", "label": "Bottom deckboards", "qty": 5, "thickness": 0.625, "width": 3.5, "length": 40 },
+      { "id": "d", "label": "Other boards (stringerboards, leads)", "qty": 0, "thickness": 0.75, "width": 3.5, "length": 48 }
+    ],
+    "defaultNotes": [
+      "Board list: an example 48 × 40 stringer build with three 1½ × 3½ in stringers and twelve ⅝ × 3½ in deckboards. It is not a GMA or customer specification. Enter your own bill of materials.",
+      "Moisture content 19%: an example value for dried lumber. Lumber that has not been dried can be far wetter; enter a moisture-meter reading if you have one."
+    ],
+    "species": [
+      { "id": "loblolly", "label": "Southern pine (loblolly)", "sgGreen": 0.47, "sg12": 0.51 },
+      { "id": "douglas-fir", "label": "Douglas-fir (coast)", "sgGreen": 0.45, "sg12": 0.48 },
+      { "id": "eastern-hemlock", "label": "Eastern hemlock", "sgGreen": 0.38, "sg12": 0.40 },
+      { "id": "aspen", "label": "Aspen (quaking)", "sgGreen": 0.35, "sg12": 0.38 },
+      { "id": "yellow-poplar", "label": "Yellow-poplar", "sgGreen": 0.40, "sg12": 0.42 },
+      { "id": "red-maple", "label": "Red maple", "sgGreen": 0.49, "sg12": 0.54 },
+      { "id": "sweetgum", "label": "Sweetgum", "sgGreen": 0.46, "sg12": 0.52 },
+      { "id": "northern-red-oak", "label": "Northern red oak", "sgGreen": 0.56, "sg12": 0.63 },
+      { "id": "white-oak", "label": "White oak", "sgGreen": 0.60, "sg12": 0.68 }
+    ],
+    "speciesNote": "Specific gravity values from the USDA Forest Products Laboratory Wood Handbook (FPL-GTR-190), Table 5-3a, green and 12% moisture columns. Commercial pallet lumber is often sold as species groups, so the mix in a real pallet can vary.",
+    "method": [
+      "Volume: quantity × thickness × width × length for each board line, in cubic inches, then ÷ 1,728 for cubic feet. Enter actual (dressed or rough) dimensions, not nominal sizes.",
+      "Specific gravity at your moisture content: the 12% value at or below 12%, the green value at or above 30% (roughly where wood stops shrinking), and a straight line between.",
+      "Density: 62.4 lb/ft³ (water) × specific gravity × (1 + moisture content ÷ 100). Weight is volume × density."
+    ],
+    "limits": [
+      "Fasteners, plates, and coatings are not included.",
+      "Density varies within a species and from board to board; published specific gravity values are averages.",
+      "Moisture changes after a pallet is built. A pallet weighed the day it is built can weigh more than the same pallet weeks later.",
+      "For a figure you can plan freight on, weigh sample pallets from the build you are buying. See [AGL weighed data (pending)](/resources/pallet-weight-and-load-capacity/#agl-weighed-data)."
+    ],
+    "sources": [
+      { "label": "USDA Forest Products Laboratory — Wood Handbook, Chapter 5 (FPL-GTR-190)", "href": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/chapter_05.pdf", "note": "Table 5-3a, specific gravity by species" },
+      { "label": "USDA Forest Products Laboratory — Wood Handbook, Chapter 4 (FPL-GTR-190)", "href": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/chapter_04.pdf", "note": "moisture content, shrinkage, and density" },
+      { "label": "AGL Pallet — Pallet weight and load capacity", "href": "/resources/pallet-weight-and-load-capacity/", "note": "published weight figures side by side" }
+    ],
+    "related": ["pallet-weight-and-load-capacity", "types-of-pallets", "pallets-per-truckload"]
+  },
+  "costPerTrip": {
+    "slug": "cost-per-trip",
+    "title": "Pallet Cost per Trip Calculator",
+    "eyebrow": "Calculator · Cost",
+    "metaTitle": "Pallet Cost per Trip Calculator: One-Way vs. Multi-Trip Pallets — AGL Pallet",
+    "metaDescription": "Work out what a pallet costs per trip over its life from your own purchase price, trips, repair, and return costs, and compare it with a one-way pallet.",
+    "directAnswer": "Cost per trip spreads a pallet's purchase price, minus any value left at the end, across the trips it makes, then adds repair and return costs for each trip. A one-way pallet's cost per trip is simply its price. The comparison shows when a sturdier multi-trip pallet pays for itself.",
+    "formula": "Cost per trip = (purchase price − residual value) ÷ trips + repair per trip + return per trip",
+    "method": [
+      "Capital cost per trip: (purchase price − residual value) ÷ expected trips.",
+      "Cost per trip: capital cost per trip + average repair cost per trip + return freight and handling per trip.",
+      "One-way comparison: a pallet that ships once and does not come back costs its full price on that trip."
+    ],
+    "limits": [
+      "All figures are yours. The calculator has no price data and does not estimate pallet prices; for a price on a spec, [request a quote](/request-a-quote/?source=cost-per-trip).",
+      "Losses are not modeled separately. Fold them into expected trips (a pallet lost after three trips made three trips).",
+      "Time value of money, tracking, and administration costs are not included.",
+      "Pooled (rented) pallets are priced differently, per issue and per day or trip, under the pool's terms. See [pooled vs. owned pallets](/resources/pooled-vs-owned-pallets/)."
+    ],
+    "sources": [
+      { "label": "AGL Pallet — Pooled vs. owned pallets", "href": "/resources/pooled-vs-owned-pallets/", "note": "how pooled and owned programs differ" },
+      { "label": "AGL Pallet — Pallet prices", "href": "/resources/pallet-prices/", "note": "what moves pallet prices and how to compare quotes" }
+    ],
+    "related": ["pallet-prices", "pooled-vs-owned-pallets", "types-of-pallets"]
+  }
+}

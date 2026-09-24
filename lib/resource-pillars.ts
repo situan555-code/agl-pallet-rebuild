@@ -3,6 +3,9 @@ import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json"
 import weight from "@/content/resources/pillars/pallet-weight-and-load-capacity.json";
 import sizes from "@/content/resources/pillars/pallet-sizes.json";
 import skid from "@/content/resources/pillars/skid-vs-pallet.json";
+import prices from "@/content/resources/pillars/pallet-prices.json";
+import truckload from "@/content/resources/pillars/pallets-per-truckload.json";
+import calculators from "@/content/resources/pillars/pallet-calculators.json";
 import { getHubPillar, type ResourcePillar } from "@/lib/resources";
 
 // Full guides, keyed by hub slug. A hub pillar missing here renders the
@@ -14,10 +17,14 @@ const GUIDES: Record<string, Omit<ResourcePillar, "title" | "directAnswer">> = {
   [weight.slug]: weight,
   [sizes.slug]: sizes,
   [skid.slug]: skid,
+  [prices.slug]: prices,
+  [truckload.slug]: truckload,
+  [calculators.slug]: calculators,
 };
 
-// Slugs served by their own route folder under app/resources/.
-export const DEDICATED_ROUTES = ["glossary"];
+// Slugs served by their own route folder under app/resources/ (glossary
+// layout, charts, or calculators that read query params).
+export const DEDICATED_ROUTES = ["glossary", "pallet-prices", "pallets-per-truckload", "pallet-calculators"];
 
 export function getGuide(slug: string): ResourcePillar | undefined {
   const guide = GUIDES[slug];

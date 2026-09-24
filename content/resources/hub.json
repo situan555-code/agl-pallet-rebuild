@@ -63,7 +63,7 @@
       "slug": "pallet-prices",
       "title": "Pallet Prices",
       "wave": 3,
-      "status": "Coming in Wave 3",
+      "status": "Guide",
       "href": "/resources/pallet-prices/",
       "directAnswer": "Pallet prices move with lumber markets, freight, order volume, and specification. New stock pallets, custom sizes, and heat-treated builds each price differently, and delivered cost often matters more than the unit price. A quote built on a clear spec, quantity, and delivery location is the most reliable way to compare options."
     },
@@ -71,7 +71,7 @@
       "slug": "pallets-per-truckload",
       "title": "Pallets per Truckload",
       "wave": 3,
-      "status": "Coming in Wave 3",
+      "status": "Guide",
       "href": "/resources/pallets-per-truckload/",
       "directAnswer": "How many pallets fit on a truckload depends on pallet footprint, pallet height, trailer length, and whether the pallets ship empty in stacks or under product. Weight limits can cap a load before floor space runs out. Planning loads around both space and weight helps avoid partial shipments and extra freight charges."
     },
@@ -79,7 +79,7 @@
       "slug": "pallet-calculators",
       "title": "Pallet Calculators",
       "wave": 3,
-      "status": "Coming in Wave 3",
+      "status": "Guide",
       "href": "/resources/pallet-calculators/",
       "directAnswer": "Pallet calculators turn a few inputs, such as footprint, load weight, and trailer size, into planning estimates for loads per truck, pallet counts, and freight needs. Estimates are a starting point, not a spec. Real-world results depend on product dimensions, stacking limits, and the receiving customer's requirements."
     },

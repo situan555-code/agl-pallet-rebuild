@@ -2448,3 +2448,6 @@ Owner: filler roster restored (SPEC seven); mostly Brock via founder story + fir
 
 ### 2026-09-24 Wave 0 Resource Library foundation
 robots.ts (AI crawler allowlist), sitemap.ts (28 URLs, no WP paths), /resources/ hub + 12 soft stubs, sitewide Organization JSON-LD, Resources in nav/footer. Sell/recycle omitted. build PASS, copy-verbatim PASS, build-note-leak PASS; banned-words still FAIL (pre-existing `<!DOCTYPE>` `!` hits on SPEC routes). See DECISIONS.md Wave 0.
+
+### 2026-09-24 Resource Library Wave 3
+pallet-prices (BLS PPI chart + table, AGL bands pending), pallets-per-truckload (published + calculated counts, server-rendered calculator), pallet-calculators hub + boxes-per-pallet, pallet-weight-estimator, cost-per-trip. build PASS; ad-hoc banned-words scan clean on new pages. See DECISIONS.md Wave 3.

@@ -1,0 +1,48 @@
+{
+  "slug": "pallet-calculators",
+  "eyebrow": "Resource guide · Tools",
+  "metaTitle": "Pallet Calculators: Truckload, Boxes per Pallet, Weight, Cost per Trip — AGL Pallet",
+  "metaDescription": "Free pallet planning calculators: pallets per truckload, boxes per pallet, wood pallet weight estimate, and cost per trip. Server-rendered results with stated methods and sources.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "how-they-work",
+      "heading": "How these calculators work",
+      "paragraphs": [
+        "Each calculator is a plain form. Enter your figures and submit; the page is recalculated on the server and the result comes back as HTML text and tables, so it can be read, printed, or copied without scripts.",
+        "Every calculator states its method, its default values, and where each default comes from. None of them holds AGL price data or measured AGL weights: defaults are published figures or clearly labeled examples, and the cost calculator uses only the figures you enter."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "are-calculator-results-exact",
+        "question": "Are the calculator results exact?",
+        "answer": [
+          "No. They are planning estimates built on the inputs and the stated method. Real loads change with pallet tolerances, equipment, loading patterns, moisture, and receiver rules. Use the results to plan, then confirm with your carrier, receiver, and supplier."
+        ]
+      },
+      {
+        "id": "why-no-price-calculator",
+        "question": "Is there a pallet price calculator?",
+        "answer": [
+          "Not yet. AGL does not publish dollar price bands until they can be drawn from real quotes. The cost per trip calculator works from your own purchase price, and a quote on your spec gives a delivered price."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "USDA Forest Products Laboratory — Wood Handbook (FPL-GTR-190)", "href": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/chapter_05.pdf", "note": "wood specific gravity used by the weight estimator" },
+    { "label": "Utility Trailer — Dry van specifications", "href": "https://www.utilitytrailer.com/dry-vans/specifications", "note": "53 ft dry van inside width and height" },
+    { "label": "Wikipedia — Intermodal container", "href": "https://en.wikipedia.org/wiki/Intermodal_container", "note": "container interior dimensions (secondary)" },
+    { "label": "eCFR — 23 CFR 658.17, Weight", "href": "https://www.ecfr.gov/current/title-23/chapter-I/subchapter-G/part-658/section-658.17", "note": "80,000 lb gross vehicle weight limit" }
+  ],
+  "related": ["pallets-per-truckload", "pallet-weight-and-load-capacity", "pallet-sizes", "pallet-prices"],
+  "cta": {
+    "heading": "Numbers look right?",
+    "body": "Send the spec, quantity, and delivery location. We place the order with qualified mills and plan the freight around your load."
+  }
+}

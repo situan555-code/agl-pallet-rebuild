@@ -1,0 +1,125 @@
+{
+  "slug": "pallet-prices",
+  "eyebrow": "Resource guide · Pricing",
+  "metaTitle": "Pallet Prices: What Moves Them and the BLS Pallet Price Index — AGL Pallet",
+  "metaDescription": "What drives new wood pallet prices, how delivered cost differs from unit price, the BLS producer price index for wood pallets as an HTML table, and how to compare quotes.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "what-drives-price",
+      "heading": "What drives the price of a pallet",
+      "paragraphs": [
+        "Two pallets with the same footprint can be quoted far apart. The spec and the order explain most of the gap:"
+      ],
+      "list": [
+        "Lumber. Wood is the largest input, and lumber prices can move sharply. Hardwood, softwood, and species groups price differently.",
+        "Board count and thickness. More deckboards, thicker boards, and heavier stringers or blocks mean more wood per pallet.",
+        "Construction. Block pallets use more parts and labor than stringer pallets of the same footprint. See [types of pallets](/resources/types-of-pallets/).",
+        "Treatment. Heat treatment for export adds a kiln step and a stamp. See [heat-treated pallets and ISPM-15](/resources/heat-treated-pallets-ispm-15/).",
+        "Size. Standard footprints run on set-up lines; odd sizes may need custom cutting.",
+        "Quantity and cadence. Full truckloads on a regular schedule usually price better than one-off small orders.",
+        "Freight and location. Distance from the mill to the dock, and whether the load ships full or partial.",
+        "Lead time. Rush orders can cost more, especially when lumber is tight."
+      ]
+    },
+    {
+      "id": "delivered-cost",
+      "heading": "Unit price vs. delivered cost",
+      "paragraphs": [
+        "The number that hits the budget is the delivered cost: pallet price plus freight, divided across the pallets on the load. A lower unit price from a distant mill can cost more delivered than a higher price from a closer one.",
+        "Pallets per load matters here. A truckload of empty 48 × 40 pallets can hold several hundred, so freight per pallet falls as the load fills. See [pallets per truckload](/resources/pallets-per-truckload/) for counts, and the [cost per trip calculator](/resources/pallet-calculators/cost-per-trip/) to compare one-way and multi-trip pallets on your own figures."
+      ]
+    },
+    {
+      "id": "how-the-index-works",
+      "heading": "How the BLS pallet price index works",
+      "paragraphs": [
+        "The U.S. Bureau of Labor Statistics publishes Producer Price Indexes (PPI) that measure the average change over time in the selling prices domestic producers receive. For pallets, the closest series is \"Wood pallets and pallet containers, wood and metal combination\" (FRED series [PCU3219203219205](https://fred.stlouisfed.org/series/PCU3219203219205)), part of the wood container and pallet industry index.",
+        "Three things to keep in mind when reading it:"
+      ],
+      "list": [
+        "It is an index, not a price. The base period (December 2003 = 100) is arbitrary; only the change between two dates carries meaning.",
+        "It measures producer selling prices, before freight and before any reseller. It will not match a delivered quote.",
+        "Recent months are provisional. BLS revises PPI data up to four months after first publication, and the figures are not seasonally adjusted."
+      ],
+      "after": [
+        "Lumber is the main input, so this guide shows the BLS lumber index ([WPU081](https://fred.stlouisfed.org/series/WPU081)) alongside it. The lumber index uses a different base period (1982 = 100), so compare their percentage changes, not their levels."
+      ]
+    },
+    {
+      "id": "agl-indicative-bands",
+      "heading": "AGL indicative price bands (not yet published)",
+      "paragraphs": [
+        "AGL plans to publish quarterly indicative price bands for common specs, drawn from quotes placed through the desk, next to the BLS index. They are not published yet. Until they are, the table below shows the specs that will be tracked and no dollar figures."
+      ],
+      "table": {
+        "caption": "AGL indicative bands by quarter — pending",
+        "columns": ["Spec", "Q3 2026 band", "Status", "Today"],
+        "rows": [
+          ["48 × 40 stringer, new, partial four-way", "—", "Pending", "[Request a quote](/request-a-quote/?source=pallet-prices)"],
+          ["48 × 40 block, new, true four-way", "—", "Pending", "[Request a quote](/request-a-quote/?source=pallet-prices)"],
+          ["48 × 40 stringer, heat treated (HT)", "—", "Pending", "[Request a quote](/request-a-quote/?source=pallet-prices)"],
+          ["Custom size or engineered design", "—", "Quote only", "[Request a quote](/request-a-quote/?source=pallet-prices)"]
+        ],
+        "note": "Bands will be indicative only, labeled with the quarter, spec, and quantity basis they describe. A quote on your spec, quantity, and delivery location is the only price AGL stands behind."
+      }
+    },
+    {
+      "id": "comparing-quotes",
+      "heading": "Comparing pallet quotes",
+      "paragraphs": [
+        "Quotes compare fairly only when they price the same thing. Send every supplier the same spec:"
+      ],
+      "list": [
+        "Footprint, entry type, and construction (stringer or block).",
+        "Deckboard count and thickness, and stringer or block size.",
+        "Grade or condition, stated in words, not only a grade letter. See [GMA pallets and grades](/resources/gma-pallets-and-grades/).",
+        "Treatment and stamp requirements, if any.",
+        "Quantity per order and expected annual volume.",
+        "Delivery address, dock hours, and whether the price is delivered or picked up."
+      ],
+      "after": [
+        "Then compare delivered cost per pallet, lead time, and how the supplier handles a rejected load."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "how-much-does-a-pallet-cost",
+        "question": "How much does a new wood pallet cost?",
+        "answer": [
+          "There is no single price. The spec, lumber market, quantity, and delivery distance each move the number, and the same footprint can be quoted far apart. AGL does not publish dollar figures yet; a quote on your spec and delivery location gives a price you can plan on."
+        ]
+      },
+      {
+        "id": "why-did-pallet-prices-go-up",
+        "question": "Why do pallet prices change so much?",
+        "answer": [
+          "Lumber is the largest input, and lumber prices swing. In the BLS data since 2019, the lumber index peaked in May 2021 and the wood pallet index peaked in April 2022, so pallet prices followed lumber with a lag. Freight, labor, and demand add to the movement."
+        ]
+      },
+      {
+        "id": "what-is-the-pallet-ppi",
+        "question": "What is the pallet producer price index?",
+        "answer": [
+          "It is a monthly Bureau of Labor Statistics index of the prices domestic producers receive for wood pallets and pallet containers. It tracks change over time from a base period and is published through the BLS PPI program and FRED as series PCU3219203219205."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "FRED — PPI by Industry: Wood Pallets and Pallet Containers, Wood and Metal Combination (PCU3219203219205)", "href": "https://fred.stlouisfed.org/series/PCU3219203219205", "note": "U.S. Bureau of Labor Statistics, via the Federal Reserve Bank of St. Louis" },
+    { "label": "FRED — PPI by Industry: Wood Container and Pallet Manufacturing (PCU321920321920)", "href": "https://fred.stlouisfed.org/series/PCU321920321920", "note": "the broader industry index" },
+    { "label": "FRED — PPI by Commodity: Lumber (WPU081)", "href": "https://fred.stlouisfed.org/series/WPU081", "note": "lumber input prices" },
+    { "label": "U.S. Bureau of Labor Statistics — Producer Price Indexes", "href": "https://www.bls.gov/ppi/", "note": "program home, methodology, and revision note" },
+    { "label": "U.S. Bureau of Labor Statistics — PPI release schedule", "href": "https://www.bls.gov/schedule/news_release/ppi.htm", "note": "upcoming release dates" }
+  ],
+  "related": ["pallets-per-truckload", "pallet-calculators", "types-of-pallets", "gma-pallets-and-grades"],
+  "cta": {
+    "heading": "Need a price on a spec?",
+    "body": "Send the footprint, quantity, and delivery location. We place it with qualified mills and quote the delivered cost, freight included."
+  }
+}

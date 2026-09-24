@@ -2,7 +2,7 @@
 // every answer, table, and Q&A passage is in the HTML. Order is fixed by the
 // blueprint: H1, 40–60 word direct answer, H2 sections, visible Q&A,
 // sources, next steps, related guides, quote CTA.
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import hub from "@/content/resources/hub.json";
 import { cn } from "@/lib/utils";
@@ -31,10 +31,13 @@ export function ArticleHeader({
   eyebrow,
   title,
   updated,
+  crumbs = [],
 }: {
   eyebrow: string;
   title: string;
   updated: string;
+  /** Intermediate breadcrumb links between the library and this page. */
+  crumbs?: { name: string; href: string }[];
 }) {
   return (
     <section className="bg-brand-green px-6 pb-14 pt-36 text-white nav:pb-16">
@@ -53,6 +56,16 @@ export function ArticleHeader({
               </Link>
             </li>
             <li aria-hidden="true">/</li>
+            {crumbs.map((c) => (
+              <Fragment key={c.href}>
+                <li>
+                  <Link href={c.href} prefetch={false} className="hover:text-white hover:underline">
+                    {c.name}
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+              </Fragment>
+            ))}
             <li>
               <span aria-current="page" className="text-white">
                 {title}
@@ -310,20 +323,31 @@ export function ResourceCta({ heading, body, source }: { heading: string; body: 
   return <Cta4 heading={heading} description={body} button={{ label: hub.cta.label, href: quoteHref(source) }} />;
 }
 
-/** Full guide from a pillar JSON. `extra` renders after the H2 sections (calculators, charts). */
+/**
+ * Full guide from a pillar JSON. `extra` (calculators, charts) renders after
+ * the section whose id is `extraAfter`, or after all H2 sections if unset.
+ */
 export function ResourceArticle({
   pillar,
   extra,
   extraToc = [],
+  extraAfter,
+  schema,
 }: {
   pillar: ResourcePillar;
   extra?: ReactNode;
   extraToc?: { id: string; label: string }[];
+  extraAfter?: string;
+  schema?: ReactNode;
 }) {
   const path = `/resources/${pillar.slug}/`;
+  const split = extraAfter ? pillar.sections.findIndex((s) => s.id === extraAfter) + 1 : pillar.sections.length;
+  const before = split > 0 ? pillar.sections.slice(0, split) : pillar.sections;
+  const after = pillar.sections.slice(before.length);
   const toc = [
-    ...pillar.sections.map((s) => ({ id: s.id, label: s.heading })),
+    ...before.map((s) => ({ id: s.id, label: s.heading })),
     ...extraToc,
+    ...after.map((s) => ({ id: s.id, label: s.heading })),
     ...(pillar.questions ? [{ id: "questions", label: pillar.questions.heading }] : []),
     { id: "sources", label: "Sources" },
   ];
@@ -351,13 +375,17 @@ export function ResourceArticle({
           }))}
         />
       )}
+      {schema}
       <ArticleHeader eyebrow={pillar.eyebrow} title={pillar.title} updated={pillar.updated} />
       <DirectAnswer text={pillar.directAnswer} />
       <ArticleBody toc={toc}>
-        {pillar.sections.map((s) => (
+        {before.map((s) => (
           <ArticleSection key={s.id} section={s} />
         ))}
         {extra}
+        {after.map((s) => (
+          <ArticleSection key={s.id} section={s} />
+        ))}
         {pillar.questions && <Questions heading={pillar.questions.heading} items={pillar.questions.items} />}
         <Sources items={pillar.sources} />
         <NextSteps />

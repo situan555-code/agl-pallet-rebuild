@@ -1,0 +1,118 @@
+{
+  "slug": "pallets-per-truckload",
+  "eyebrow": "Resource guide · Freight",
+  "metaTitle": "Pallets per Truckload: 53 ft Trailer and Container Counts + Calculator — AGL Pallet",
+  "metaDescription": "How many pallets fit on a 53 ft trailer or in a shipping container, straight vs. turned loading, weight limits, and empty pallet loads, with a free server-side calculator.",
+  "published": "2026-09-24",
+  "updated": "2026-09-24",
+  "sections": [
+    {
+      "id": "what-sets-the-count",
+      "heading": "What sets the count",
+      "paragraphs": [
+        "Four limits decide how many pallets go on one load. Whichever runs out first sets the count:"
+      ],
+      "list": [
+        "Floor space. Pallet footprint against the trailer's usable length and width, and whether pallets are loaded straight or turned.",
+        "Height. Whether loads can be stacked two high under the roof, and whether the product can take the weight of a pallet on top.",
+        "Weight. Legal gross vehicle weight minus the tractor and trailer. Dense product often fills the weight limit with floor space to spare.",
+        "Receiver rules. Some receivers limit stack height, require pallets loaded a certain way, or refuse double-stacked freight."
+      ]
+    },
+    {
+      "id": "published-counts",
+      "heading": "Published counts, as stated",
+      "paragraphs": [
+        "Published pallet counts are easy to find and easy to misread, because many do not say which pallet or which trailer they mean. The figures below are copied as each source states them, with what the source leaves out."
+      ],
+      "table": {
+        "caption": "Published pallet counts, as stated by each source",
+        "columns": ["Source", "Equipment", "Count stated", "What the source does not say"],
+        "rows": [
+          ["[Wikipedia, \"Semi-trailer\"](https://en.wikipedia.org/wiki/Semi-trailer) (secondary)", "Standard trailer", "26 pallets", "Pallet footprint and trailer length"],
+          ["[Wikipedia, \"Semi-trailer\"](https://en.wikipedia.org/wiki/Semi-trailer) (secondary)", "Double-deck trailer", "40 pallets", "Pallet footprint and trailer length"],
+          ["[Wikipedia, \"Intermodal container\"](https://en.wikipedia.org/wiki/Intermodal_container) (secondary)", "20 ft ISO container", "11 EUR pallets (1200 × 800 mm); 15 in a pallet-wide container", "Loading pattern"],
+          ["[Wikipedia, \"Intermodal container\"](https://en.wikipedia.org/wiki/Intermodal_container) (secondary)", "40 ft ISO container", "25 EUR pallets; 30 in a pallet-wide container", "Loading pattern"],
+          ["[Wikipedia, \"Intermodal container\"](https://en.wikipedia.org/wiki/Intermodal_container) (secondary)", "45 ft ISO container", "27 EUR pallets; 34 in a pallet-wide container", "Loading pattern"]
+        ],
+        "note": "Copied as published on 2026-09-24. The calculated table below applies one method to stated interior dimensions so the numbers can be checked."
+      }
+    },
+    {
+      "id": "straight-vs-turned",
+      "heading": "Straight vs. turned loading",
+      "paragraphs": [
+        "A 48 × 40 pallet can go into a trailer two ways. Loaded straight, the 48-inch side runs along the trailer and two pallets sit side by side across 80 inches of the width. Loaded turned, the 40-inch side runs along the trailer and two pallets use 96 inches of the width.",
+        "In a 53 ft dry van with about 100 inches of inside width, turned loading fits 15 rows instead of 13, or 30 pallets instead of 26. The catch is width: turned pallets leave only a few inches of play, so the trailer's inside width at the floor and the pallet's real dimensions both matter. Wide or overhanging loads may not fit turned."
+      ]
+    },
+    {
+      "id": "weight-limits",
+      "heading": "Weight limits",
+      "paragraphs": [
+        "Federal rules cap gross vehicle weight at 80,000 pounds on the Interstate system, with per-axle limits and a bridge formula on top ([23 CFR 658.17](https://www.ecfr.gov/current/title-23/chapter-I/subchapter-G/part-658/section-658.17)). The tractor and trailer come out of that, so usable payload is lower, and the exact figure depends on the equipment. Ask your carrier for the payload on the truck that will haul the load.",
+        "Heavy product often hits the weight limit well before the floor is full. At 1,500 pounds per unit load, 30 pallets would be 45,000 pounds, which can be more than a typical dry van payload allows. Axle weight matters too: weight has to be spread along the trailer, not piled at one end."
+      ]
+    },
+    {
+      "id": "empty-pallets",
+      "heading": "Empty pallet loads",
+      "paragraphs": [
+        "Empty pallets ship in stacks, one stack per floor position, so the count is floor positions times pallets per stack. A 48 × 40 wood pallet around 6 inches tall stacks roughly 17 high under a 110-inch roof with a few inches of clearance, which puts a turned-loaded 53 ft van in the 500-pallet range.",
+        "Empty wood pallets are light enough that space, not weight, usually limits the load. Heavier builds, block pallets, and wet lumber change that. Use the calculator with your pallet's measured height and weight."
+      ]
+    },
+    {
+      "id": "planning-tips",
+      "heading": "Planning a full truckload",
+      "list": [
+        "Measure the real pallet. A pallet listed as 48 × 40 can run slightly over, and a fraction of an inch across two pallets decides whether turned loading fits.",
+        "Confirm the equipment. Inside width varies between trailer models, and refrigerated trailers are narrower inside than dry vans.",
+        "Ask the receiver about stacking and loading rules before quoting a double-stacked load.",
+        "Plan to the payload, not just the floor. A full floor that is over weight has to be split.",
+        "For regular lanes, write the load plan into the order so every shipment arrives the same way."
+      ],
+      "after": [
+        "AGL arranges truckload and partial deliveries on pallet orders; the freight plan is part of the quote. See [request a quote](/request-a-quote/?source=pallets-per-truckload)."
+      ]
+    }
+  ],
+  "questions": {
+    "heading": "Common questions",
+    "items": [
+      {
+        "id": "how-many-pallets-53-ft-trailer",
+        "question": "How many pallets fit on a 53 ft trailer?",
+        "answer": [
+          "With 48 × 40 pallets single-stacked, a 53 ft dry van usually takes 26 loaded straight or 30 loaded turned, based on about 630 × 100 inches of usable floor. Double-stacking can double that if the product and the receiver allow it, and weight often caps the load first."
+        ]
+      },
+      {
+        "id": "how-many-empty-pallets-truckload",
+        "question": "How many empty pallets fit on a truckload?",
+        "answer": [
+          "For 48 × 40 wood pallets about 6 inches tall, the calculator gives roughly 510 on a turned-loaded 53 ft dry van: 30 stacks of 17. The real number depends on the pallet's height, the trailer's inside height, and how high the loader stacks."
+        ]
+      },
+      {
+        "id": "pallets-in-a-shipping-container",
+        "question": "How many pallets fit in a 40 ft container?",
+        "answer": [
+          "A standard 40 ft ISO container is narrower than a trailer, about 91¾ inches inside, so 48 × 40 pallets cannot sit two across when turned. The calculator finds 20 using one straight lane and one turned lane. Wikipedia's summary lists 25 EUR pallets (1200 × 800 mm) for the same box."
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "label": "Utility Trailer — Dry van specifications", "href": "https://www.utilitytrailer.com/dry-vans/specifications", "note": "53 ft dry van inside width and height" },
+    { "label": "Wikipedia — Intermodal container", "href": "https://en.wikipedia.org/wiki/Intermodal_container", "note": "container interior dimensions and EUR pallet counts (secondary)" },
+    { "label": "Wikipedia — Semi-trailer", "href": "https://en.wikipedia.org/wiki/Semi-trailer", "note": "trailer lengths and general pallet counts (secondary)" },
+    { "label": "eCFR — 23 CFR 658.17, Weight", "href": "https://www.ecfr.gov/current/title-23/chapter-I/subchapter-G/part-658/section-658.17", "note": "80,000 lb gross vehicle weight limit" },
+    { "label": "eCFR — 23 CFR 658.15, Width", "href": "https://www.ecfr.gov/current/title-23/chapter-I/subchapter-G/part-658/section-658.15", "note": "102 in vehicle width limit" }
+  ],
+  "related": ["pallet-sizes", "pallet-weight-and-load-capacity", "pallet-calculators", "pallet-prices"],
+  "cta": {
+    "heading": "Planning a truckload?",
+    "body": "Send the pallet spec, quantity, and delivery location. We place the order with qualified mills and plan the freight so the load arrives the way the dock expects."
+  }
+}
