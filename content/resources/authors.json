@@ -1,0 +1,5 @@
+{
+  "note": "Author and reviewer identities are unconfirmed. Do not render bios, credentials, or /resources/authors/ routes until Nautis supplies them. Tokens are not rendered on public pages.",
+  "author": { "role": "Author", "token": "{{TBD-AUTHOR-PDS}}" },
+  "reviewer": { "role": "Technical reviewer", "token": "{{TBD-REVIEWER}}" }
+}

@@ -5,6 +5,10 @@
     "height": 50,
     "alt": "AGL Pallet"
   },
+  "organization": {
+    "legalName": "AGL Pallet LLC",
+    "url": "https://aglpallet.com"
+  },
   "nav": [
     {
       "label": "Products",
@@ -67,6 +71,10 @@
       "href": "/faq/"
     },
     {
+      "label": "Resources",
+      "href": "/resources/"
+    },
+    {
       "label": "Contact",
       "href": "/contact/"
     }
@@ -126,6 +134,10 @@
       {
         "label": "FAQ",
         "href": "/faq/"
+      },
+      {
+        "label": "Resources",
+        "href": "/resources/"
       },
       {
         "label": "Case studies",

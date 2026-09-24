@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Pallet Resource Library — AGL Pallet",
+    "description": "Reference guides for pallet buyers: grades, sizes, heat treatment, load capacity, pricing, and freight, written from a pallet brokerage desk."
+  },
+  "hero": {
+    "eyebrow": "Resources",
+    "heading": "Pallet Resource Library",
+    "directAnswer": "The AGL Pallet Resource Library is a reference set for buyers who spec, source, and ship on pallets. Each guide opens with a short answer, then works through grades, sizes, heat treatment, load capacity, pricing, and freight. Guides publish in waves; until then, our brokerage desk answers spec questions directly."
+  },
+  "pillarsHeading": "Guides",
+  "pillarsEyebrow": "Reference",
+  "pillars": [
+    {
+      "slug": "gma-pallets-and-grades",
+      "title": "GMA Pallets and Grades",
+      "wave": 1,
+      "status": "Coming in Wave 1",
+      "href": "/resources/gma-pallets-and-grades/",
+      "directAnswer": "A GMA pallet is the stringer-style footprint long used across grocery and consumer-goods supply chains in North America. Pallet grades describe lumber quality and condition, but grade names are not standardized across regions or suppliers. Confirming the grade definition in writing before an order ships avoids surprises at the receiving dock."
+    },
+    {
+      "slug": "heat-treated-pallets-ispm-15",
+      "title": "Heat-Treated Pallets and ISPM-15",
+      "wave": 1,
+      "status": "Coming in Wave 1",
+      "href": "/resources/heat-treated-pallets-ispm-15/",
+      "directAnswer": "ISPM-15 is the international phytosanitary standard for wood packaging that crosses borders. Compliant pallets are treated, typically by heat, to kill wood pests, then stamped with a mark identifying the treatment and the facility responsible. Buyers shipping for export should confirm the treatment method and stamp requirements with their destination country."
+    },
+    {
+      "slug": "glossary",
+      "title": "Pallet Glossary",
+      "wave": 1,
+      "status": "Coming in Wave 1",
+      "href": "/resources/glossary/",
+      "directAnswer": "The pallet glossary defines the terms buyers meet when specifying and shipping on pallets, from deckboards, stringers, and blocks to entry types, grades, and treatment marks. Plain definitions make it easier to write a clear spec, compare quotes on equal terms, and talk through requirements with suppliers and carriers."
+    },
+    {
+      "slug": "pallet-weight-and-load-capacity",
+      "title": "Pallet Weight and Load Capacity",
+      "wave": 2,
+      "status": "Coming in Wave 2",
+      "href": "/resources/pallet-weight-and-load-capacity/",
+      "directAnswer": "Pallet weight and load capacity depend on wood species, moisture content, board thickness, and design, so two pallets with the same footprint can differ noticeably. Capacity also changes with how the load is supported: static on the floor, dynamic on a forklift, or racked. A spec that states all three avoids guesswork."
+    },
+    {
+      "slug": "pallet-sizes",
+      "title": "Pallet Sizes",
+      "wave": 2,
+      "status": "Coming in Wave 2",
+      "href": "/resources/pallet-sizes/",
+      "directAnswer": "Pallet sizes are set by the product, the trailer, and the receiving customer rather than by one universal standard. North American buyers most often see the GMA footprint, while other industries and export lanes use their own dimensions. Matching pallet size to the load and the truck keeps freight costs predictable."
+    },
+    {
+      "slug": "skid-vs-pallet",
+      "title": "Skid vs. Pallet",
+      "wave": 2,
+      "status": "Coming in Wave 2",
+      "href": "/resources/skid-vs-pallet/",
+      "directAnswer": "A skid is a platform with runners and no bottom deck, while a pallet typically adds a bottom deck. Skids are simpler and often used for heavy or stationary loads; pallets add stability and forklift entry options for racking and stacking. The terms are often used interchangeably in everyday shipping."
+    },
+    {
+      "slug": "pallet-prices",
+      "title": "Pallet Prices",
+      "wave": 3,
+      "status": "Coming in Wave 3",
+      "href": "/resources/pallet-prices/",
+      "directAnswer": "Pallet prices move with lumber markets, freight, order volume, and specification. New stock pallets, custom sizes, and heat-treated builds each price differently, and delivered cost often matters more than the unit price. A quote built on a clear spec, quantity, and delivery location is the most reliable way to compare options."
+    },
+    {
+      "slug": "pallets-per-truckload",
+      "title": "Pallets per Truckload",
+      "wave": 3,
+      "status": "Coming in Wave 3",
+      "href": "/resources/pallets-per-truckload/",
+      "directAnswer": "How many pallets fit on a truckload depends on pallet footprint, pallet height, trailer length, and whether the pallets ship empty in stacks or under product. Weight limits can cap a load before floor space runs out. Planning loads around both space and weight helps avoid partial shipments and extra freight charges."
+    },
+    {
+      "slug": "pallet-calculators",
+      "title": "Pallet Calculators",
+      "wave": 3,
+      "status": "Coming in Wave 3",
+      "href": "/resources/pallet-calculators/",
+      "directAnswer": "Pallet calculators turn a few inputs, such as footprint, load weight, and trailer size, into planning estimates for loads per truck, pallet counts, and freight needs. Estimates are a starting point, not a spec. Real-world results depend on product dimensions, stacking limits, and the receiving customer's requirements."
+    },
+    {
+      "slug": "types-of-pallets",
+      "title": "Types of Pallets",
+      "wave": 4,
+      "status": "Coming in Wave 4",
+      "href": "/resources/types-of-pallets/",
+      "directAnswer": "Wood pallets come in two main construction types: stringer pallets, which rest on lengthwise support boards and are common for domestic shipping, and block pallets, which use blocks for true four-way forklift entry. Beyond construction, pallets differ by deck coverage, wood species, treatment, and whether they are standard sizes or custom builds."
+    },
+    {
+      "slug": "pooled-vs-owned-pallets",
+      "title": "Pooled vs. Owned Pallets",
+      "wave": 4,
+      "status": "Coming in Wave 4",
+      "href": "/resources/pooled-vs-owned-pallets/",
+      "directAnswer": "Pooled pallets are rented from a pallet pool and returned through the pool's network, while owned pallets are purchased outright and stay with the buyer or move one way with the product. The right choice depends on shipping lanes, return logistics, customer requirements, and how much administrative tracking a team can support."
+    },
+    {
+      "slug": "pallet-standards",
+      "title": "Pallet Standards",
+      "wave": 4,
+      "status": "Coming in Wave 4",
+      "href": "/resources/pallet-standards/",
+      "directAnswer": "Pallet standards are published specifications that define dimensions, construction, testing methods, and treatment for wood packaging. They come from industry associations, standards bodies, and international agreements, and large receivers often add their own requirements. Knowing which standard applies to a lane or customer keeps loads from being rejected at the dock."
+    }
+  ],
+  "authorsNote": {
+    "heading": "Authors coming",
+    "body": "Each guide will name its author and technical reviewer, with review dates, once they are confirmed. Until a guide publishes, questions about a spec go straight to the brokerage desk."
+  },
+  "stub": {
+    "eyebrow": "Resource guide",
+    "noteHeading": "Full guide publishing soon",
+    "noteBody": "This guide is in progress. The full version will cover definitions, buyer checklists, and sourcing considerations. For a spec question today, send it to the desk.",
+    "backLink": {
+      "label": "All resources",
+      "href": "/resources/"
+    }
+  },
+  "cta": {
+    "heading": "Have a spec in hand?",
+    "body": "Send the footprint, quantity, and delivery location. We place it with qualified mills and manage the freight on the order.",
+    "label": "Request a quote",
+    "href": "/request-a-quote/"
+  }
+}

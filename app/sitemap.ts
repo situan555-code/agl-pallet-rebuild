@@ -1,0 +1,36 @@
+import type { MetadataRoute } from "next";
+import site from "@/content/site.json";
+import hub from "@/content/resources/hub.json";
+
+// Every App Router page, with trailing slashes (next.config trailingSlash).
+// Replaces the WordPress-era public/sitemap.xml, which still listed the
+// 301'd /about/, /logistics-process/, and /industries-served/.
+const PAGES = [
+  "/",
+  "/who-we-are/",
+  "/partners/",
+  "/partners/suppliers/",
+  "/partners/carriers/",
+  "/the-pledge/",
+  "/custom-engineered/",
+  "/products/",
+  "/industries/",
+  "/how-we-work/",
+  "/contact/",
+  "/request-a-quote/",
+  "/faq/",
+  "/case-studies/",
+  "/services/",
+  "/resources/",
+];
+
+// Bump when page content changes materially.
+const LAST_MODIFIED = new Date("2026-09-24");
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const paths = [...PAGES, ...hub.pillars.map((p) => p.href)];
+  return paths.map((path) => ({
+    url: `${site.organization.url}${path}`,
+    lastModified: LAST_MODIFIED,
+  }));
+}

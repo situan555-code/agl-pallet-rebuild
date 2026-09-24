@@ -3,6 +3,8 @@ import "./globals.css";
 import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { OrganizationJsonLd } from "@/components/JsonLd";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://aglpallet.com"),
   title: {
@@ -47,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${anton.variable}`}>
       <body>
+        <OrganizationJsonLd />
         <Header />
         {children}
         <Footer />

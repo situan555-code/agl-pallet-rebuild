@@ -2445,3 +2445,6 @@ new HTML with a dead CSS manifest; killed it. Gates reuse whatever answers on
 
 ### 2026-09-23 who-we-are team
 Owner: filler roster restored (SPEC seven); mostly Brock via founder story + first list item. Re-run copy-verbatim.
+
+### 2026-09-24 Wave 0 Resource Library foundation
+robots.ts (AI crawler allowlist), sitemap.ts (28 URLs, no WP paths), /resources/ hub + 12 soft stubs, sitewide Organization JSON-LD, Resources in nav/footer. Sell/recycle omitted. build PASS, copy-verbatim PASS, build-note-leak PASS; banned-words still FAIL (pre-existing `<!DOCTYPE>` `!` hits on SPEC routes). See DECISIONS.md Wave 0.
