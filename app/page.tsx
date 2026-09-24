@@ -6,6 +6,7 @@ import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
 import { Gallery4Loader } from "@/components/Gallery4Loader";
+import { DeferredFillImage } from "@/components/DeferredFillImage";
 import { ImageBand } from "@/components/ImageBand";
 import { Cta4 } from "@/components/cta4";
 import { getBlurDataURL } from "@/lib/blur";
@@ -28,7 +29,6 @@ const PRODUCT_IMAGES: Record<string, string> = {
 };
 
 export default function Home() {
-  const whoBlur = getBlurDataURL("/assets/who_agl_is_sidepic.jpg");
   const whyBlur = getBlurDataURL("/assets/why_agl_exist_sidepic.jpg");
 
   return (
@@ -58,15 +58,12 @@ export default function Home() {
         paragraphs={home.whatWeDo.paragraphs}
         media={
           <div className="relative aspect-[5/6] w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
-            <Image
+            <DeferredFillImage
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
-              fill
               quality={72}
               sizes="(min-width: 980px) 38vw, 100vw"
               className="object-cover"
-              placeholder={whoBlur ? "blur" : undefined}
-              blurDataURL={whoBlur}
             />
           </div>
         }

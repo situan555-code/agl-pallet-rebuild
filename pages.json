@@ -1,38 +1,47 @@
 [
   {
     "path": "/",
-    "title": "AGL Pallet - For Manufacturers Who Can\u2019t Afford Disruption",
-    "description": "AGL Pallet sources and delivers truckload pallet orders through trusted manufacturers with end-to-end logistics support.",
-    "canonical": "https://aglpallet.com/"
+    "title": "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
+    "description": "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
+    "canonical": "https://aglpallet.com/",
+    "baseline": "redesign-2026-09-24"
   },
   {
     "path": "/about/",
-    "title": "About - AGL Pallet",
-    "description": "AGL Pallet brings structure and reliability to pallet supply\u2014fair-market sourcing, accountable logistics, and long-term partnerships for manufacturers.",
-    "canonical": "https://aglpallet.com/about/"
+    "title": "Who We Are — AGL Pallet",
+    "description": "AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.",
+    "canonical": "https://aglpallet.com/who-we-are/",
+    "baseline": "redesign-2026-09-24",
+    "resolvesTo": "/who-we-are/"
   },
   {
     "path": "/industries-served/",
-    "title": "Industries Served - AGL Pallet",
-    "description": "Pallet solutions for building materials, pharmaceuticals, plastics, chemicals, and food & beverage manufacturers that cannot risk supply disruption.",
-    "canonical": "https://aglpallet.com/industries-served/"
+    "title": "Industries We Serve — AGL Pallet",
+    "description": "Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage.",
+    "canonical": "https://aglpallet.com/industries/",
+    "baseline": "redesign-2026-09-24",
+    "resolvesTo": "/industries/"
   },
   {
     "path": "/logistics-process/",
-    "title": "Logistics & Process - AGL Pallet",
-    "description": "How AGL Pallet sources, coordinates, and delivers truckload pallet orders\u2014single-point accountability from manufacturer to your dock.",
-    "canonical": "https://aglpallet.com/logistics-process/"
+    "title": "How We Work — AGL Pallet",
+    "description": "Four steps: understand the requirement, align supply and freight, execute and communicate, keep adjusting.",
+    "canonical": "https://aglpallet.com/how-we-work/",
+    "baseline": "redesign-2026-09-24",
+    "resolvesTo": "/how-we-work/"
   },
   {
     "path": "/products/",
-    "title": "Products - AGL Pallet",
-    "description": "Stock pallets, engineered pallet solutions, crates & dunnage, and shipping blocks\u2014sourced and delivered for high-volume manufacturing.",
-    "canonical": "https://aglpallet.com/products/"
+    "title": "Products — Pallets, Crates, Dunnage, Blocks and Stakes",
+    "description": "Stock pallets, custom and engineered solutions, crates, dunnage, shipping blocks, and stakes, sourced through qualified mills.",
+    "canonical": "https://aglpallet.com/products/",
+    "baseline": "redesign-2026-09-24"
   },
   {
     "path": "/request-a-quote/",
-    "title": "Request a Quote - AGL Pallet",
-    "description": "Contact AGL Pallet to request a quote for truckload pallet sourcing, coordination, and delivery. Call, email, or text our team.",
-    "canonical": "https://aglpallet.com/request-a-quote/"
+    "title": "Request a Quote — AGL Pallet",
+    "description": "Send a spec and a quantity and we will come back the same day. No minimums.",
+    "canonical": "https://aglpallet.com/request-a-quote/",
+    "baseline": "redesign-2026-09-24"
   }
 ]

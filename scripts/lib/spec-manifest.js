@@ -27,13 +27,13 @@ const REDIRECTS = [
   { from: '/industries-served', to: '/industries' },
 ];
 
-// Tokens from section 8 that section 4 embeds literally inline (e.g.
-// "IMAGE: {{TBD-PHOTO-BROCK}}", "ADDRESS: {{TBD-ADDRESS}}", "Paid on agreed
-// terms. — {{TBD-CARRIER-TERMS}}") and section 5/H3 form-destination
-// placeholders. These must render as a literal visible `{{TBD-*}}` string
-// in the DOM on the listed routes — both "never built" and "silently
-// replaced with invented prose" collapse to the same DOM assertion, since
-// there is no ground truth for what replacement prose would look like.
+// Tokens from section 8 that section 4 names inline (photo, address,
+// carrier-offer blanks, form-destination emails). Wave B policy
+// (2026-09-24, Nautis): omit this content until cutover. Do not invent
+// the address, photo, carrier commercial terms, or mailbox. Do not render
+// the raw `{{TBD-*}}` string — placeholder-guard fails the build if `{{`
+// or `TBD` reaches HTML. tokens.js still visits every route below and
+// fails if the literal placeholder is visible.
 const DOM_PLACEHOLDER_TOKENS = {
   'TBD-PHOTO-BROCK': ['/', '/who-we-are'],
   'TBD-ADDRESS': ['/who-we-are', '/contact'],

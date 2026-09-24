@@ -29,6 +29,19 @@ function normalize(s) {
   return s.replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+// Wave B: a spec line may still name an unresolved {{TBD-*}} token. That
+// content is omitted until cutover and must not be required as a raw
+// placeholder. Keep the shipped words (for example "Paid on agreed
+// terms.") and drop the token, including a leading em dash. A line that
+// is only a token has no shipped copy to assert.
+const OMIT_UNTIL_CUTOVER_RE = /\s*[—–-]\s*\{\{TBD-[A-Z0-9-]+\}\}|\{\{TBD-[A-Z0-9-]+\}\}/g;
+
+function shippedExpectation(text) {
+  if (!/\{\{TBD-[A-Z0-9-]+\}\}/.test(text)) return { text, omittedToken: false };
+  const shipped = text.replace(OMIT_UNTIL_CUTOVER_RE, ' ').replace(/\s+/g, ' ').trim();
+  return { text: shipped, omittedToken: true, specText: text };
+}
+
 async function main() {
   const { byRoute, shared } = parseSpecCopy(SPEC_PATH);
   const server = await ensureServer(BASE_URL, ROOT);
@@ -69,17 +82,33 @@ async function main() {
       }
       await page.close();
 
+      const expectations = items.map((item) => ({ ...item, ...shippedExpectation(item.text) }));
+      const omittedTokens = expectations.filter((item) => item.omittedToken);
+      const required = expectations.filter((item) => item.text.length > 0);
       const haystack = normalize(bodyText);
-      const missing = items
+      const missing = required
         .filter((item) => !haystack.includes(normalize(item.text)))
-        .map((item) => ({ label: item.label, text: item.text }));
+        .map((item) => ({
+          label: item.label,
+          text: item.text,
+          ...(item.omittedToken ? { specText: item.specText, policy: 'omit-until-cutover' } : {}),
+        }));
 
+      entry.totalBlocks = required.length;
+      entry.omittedUntilCutover = omittedTokens.map((item) => ({
+        label: item.label,
+        specText: item.specText,
+        requiredText: item.text,
+      }));
       entry.missingCount = missing.length;
       entry.missing = missing;
       entry.status = missing.length === 0 ? 'pass' : 'fail';
       if (entry.status === 'fail') anyFail = true;
 
-      console.log(`  ${entry.status.toUpperCase()} ${route}: ${items.length} copy block(s), ${missing.length} missing/paraphrased`);
+      const omittedNote = omittedTokens.length ? `, ${omittedTokens.length} {{TBD-*}} omitted until cutover` : '';
+      console.log(
+        `  ${entry.status.toUpperCase()} ${route}: ${required.length} copy block(s), ${missing.length} missing/paraphrased${omittedNote}`
+      );
       results.push(entry);
     }
   } finally {

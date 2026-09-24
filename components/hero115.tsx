@@ -1,11 +1,10 @@
 // Adapted from free @shadcnblocks/hero115. Centered copy + concentric clay
 // rings + framed local photo. Demo SaaS dashboard / Wifi / fake KPI byline
 // removed. Driven by content/pages/home.json (SPEC_V1 verbatim). Palette 03.
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon, BoxesIcon } from "@/components/inline-icons";
-import { getBlurDataURL } from "@/lib/blur";
+import { DeferredFillImage } from "@/components/DeferredFillImage";
 
 type Hero115Button = {
   label: string;
@@ -37,7 +36,6 @@ const Hero115 = ({
   capabilities,
   className,
 }: Hero115Props) => {
-  const blurDataURL = getBlurDataURL(image.src);
   const [primary, ...rest] = buttons;
 
   return (
@@ -102,16 +100,12 @@ const Hero115 = ({
           </div>
 
           <div className="relative mx-auto aspect-[3/4] h-full max-h-[524px] w-full max-w-5xl overflow-hidden rounded-lg border border-clay/60 shadow-[0_24px_60px_-28px_rgba(31,42,31,0.35)] md:aspect-video">
-            <Image
+            <DeferredFillImage
               src={image.src}
               alt={image.alt}
-              fill
-              priority
               quality={60}
               sizes="(min-width: 1024px) 960px, calc(100vw - 3rem)"
               className="object-cover object-center"
-              placeholder={blurDataURL ? "blur" : undefined}
-              blurDataURL={blurDataURL}
             />
           </div>
         </div>
