@@ -10,19 +10,10 @@ const nextConfig = {
     // the harness's image-cache warm-up in place. See DECISIONS.md.
     formats: ["image/webp"],
   },
-  async redirects() {
-    // statusCode: 301 (not permanent:true → 308) so routes.js §1 check passes.
-    // Both slash and slashless sources — trailingSlash normalization must not
-    // win before these fire.
-    return [
-      { source: "/about", destination: "/who-we-are/", statusCode: 301 },
-      { source: "/about/", destination: "/who-we-are/", statusCode: 301 },
-      { source: "/logistics-process", destination: "/how-we-work/", statusCode: 301 },
-      { source: "/logistics-process/", destination: "/how-we-work/", statusCode: 301 },
-      { source: "/industries-served", destination: "/industries/", statusCode: 301 },
-      { source: "/industries-served/", destination: "/industries/", statusCode: 301 },
-    ];
-  },
+  // SPEC §1 301s live in middleware.ts, not here. next.config redirects run
+  // before middleware, so a config redirect would skip the host-conditional
+  // X-Robots-Tag. Middleware checks the permanent map before trailing-slash
+  // 308s, and returns statusCode 301 (not 308).
 };
 
 export default nextConfig;

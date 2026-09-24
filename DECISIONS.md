@@ -1871,3 +1871,13 @@ Nautis: put filler in who-we-are but it’s mostly Brock. Restored SPEC_V1 seven
 - **Glossary 61 → 121 terms** (freight, standards, lumber defects, pools, calculator terms), each linking to its guide where one exists.
 - **Truckload guide** adds CHEP's published "570 pallets, stacked 19 high" empty-pallet figure (trailer length not stated).
 - Ad-hoc banned-words scan: zero hits on all Wave 3–4 pages. One pre-existing Wave 1 false positive on the GMA guide ("used in the market for pallets") left untouched.
+
+## 2026-09-24 — Resource Library §1: host-conditional noindex + SITE_URL
+
+- **Noindex is request-time, not an env flag.** `middleware.ts` sets `X-Robots-Tag: noindex, nofollow` when `request.headers.get("host")` ends with `.vercel.app`. `app/layout.tsx` `generateMetadata` calls `headers()` and emits `<meta name="robots" content="noindex, nofollow">` for the same hosts. `aglpallet.com` matches neither. Reading `headers()` opts pages into dynamic rendering so the meta tag follows the live Host after DNS moves, without a rebuild. Middleware still adds the header on statically matched responses (redirects included).
+- **robots.txt stays permissive.** No `Disallow: /` on the Vercel host. A blanket disallow would block crawlers from fetching the noindex tag.
+- **One production origin.** `lib/site-url.ts` `getSiteUrl()` (env `SITE_URL`, default `https://aglpallet.com`) feeds sitemap URLs, `metadataBase` (canonical and og:url), JSON-LD absolute URLs, the robots.txt Sitemap line, and IndexNow. A `*.vercel.app` `SITE_URL` is ignored. `content/site.json` `organization.url` remains the content record of the public site and is no longer read for those generated URLs. Capture scripts under `scripts/` still name the live WordPress origin because they crawl that host; they are not the sitemap generator.
+- **Vercel platform noindex is a different switch.** Documented in `DOMAIN-SWITCH-RUNBOOK.md`: Vercel sends `X-Robots-Tag: noindex` on Preview and outdated Production deployments only. The production alias `nx7k-lab-m4.vercel.app` needs this repo's hostname rule. Both may appear together on preview aliases.
+- **DNS not touched.** IndexNow still no-ops without `INDEXNOW_KEY`. Sitemap is not submitted from this repo.
+- **SPEC §1 301s moved fully into middleware.** `next.config.mjs` `redirects()` ran before middleware, so `/about`, `/logistics-process`, and `/industries-served` never received `X-Robots-Tag`. The same 301 map was already in `middleware.ts` (checked before the trailing-slash 308). Config redirects removed so those responses carry the host rule. Destinations and status code are unchanged (301, not 308).
+
