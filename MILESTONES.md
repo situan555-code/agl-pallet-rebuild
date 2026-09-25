@@ -1,5 +1,13 @@
 # Milestones
 
+## M11 — Phase 8 / R8.4 (ship to main)
+
+- **Date:** 2026-09-25
+- **Tasks:** R1.2–R8.4 on `redesign/main`; R8.4 `npm run verify` green (home LCP 2408ms / Perf 98)
+- **Pages to look at:** `/`, `/faq/`, `/resources/`, `/request-a-quote/`
+- **Skipped / blocked:** Owner TBDs and Resend key still in `BLOCKED.md`. Hero remains poster-only for LCP. DOMAIN-SWITCH-RUNBOOK not run.
+- **Branch:** `redesign/main` merged to `main`
+
 ## M2 — Phase 1 (not shipped to main)
 
 - **Date:** 2026-09-25
