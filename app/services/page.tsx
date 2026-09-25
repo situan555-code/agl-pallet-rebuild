@@ -44,7 +44,7 @@ export default function ServicesPage() {
         paragraphs={data.detail.paragraphs}
         cta={data.detail.cta}
         media={
-          <div className="relative aspect-5/6 w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
+          <div className="relative aspect-5/6 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg"
               alt=""

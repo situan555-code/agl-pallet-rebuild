@@ -129,12 +129,11 @@
 }
 
 @utility section-y {
-  /* G10: section vertical rhythm on a shared token scale */
-  @apply py-20 nav:py-28;
+  @apply py-12 nav:py-16;
 }
 
 @utility section-y-cta {
-  @apply py-20 nav:py-24;
+  @apply py-12 nav:py-16;
 }
 
 @utility text-lead {

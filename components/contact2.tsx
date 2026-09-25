@@ -46,7 +46,7 @@ const Contact2 = ({
 }: Contact2Props) => {
   const Title = titleAs;
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 bg-brand-green px-6 text-white", className)}>
+    <section id={id} className={cn("section-y scroll-mt-24 bg-green px-6 text-bone", className)}>
       <div className="mx-auto flex max-w-[1440px] flex-col gap-12 nav:flex-row nav:gap-24">
         <div className="flex flex-col gap-10 nav:w-5/12">
           <div className="flex flex-col gap-4">
@@ -59,16 +59,16 @@ const Contact2 = ({
             {title && (
               <Title className={titleAs === "h1" ? "text-display-1" : "text-display-2"}>{title}</Title>
             )}
-            {description && <p className="prose-measure text-body text-white/85">{description}</p>}
+            {description && <p className="prose-measure text-body text-bone/85">{description}</p>}
           </div>
           {methods && methods.length > 0 && (
-            <ul className="flex flex-col border-t border-white/20">
+            <ul className="flex flex-col border-t border-bone/20">
               {methods.map((method) => {
                 const Icon = icons[method.kind];
                 return (
-                  <li key={method.label} className="border-b border-white/20">
+                  <li key={method.label} className="border-b border-bone/20">
                     <div className="flex items-center gap-4 py-5">
-                      <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-white/70" />
+                      <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-bone/70" />
                       <CopyValue value={method.value} href={method.href} label={method.label} />
                     </div>
                   </li>
@@ -79,7 +79,7 @@ const Contact2 = ({
           {notes && notes.length > 0 && (
             <div className="space-y-2">
               {notes.map((note) => (
-                <p key={note} className="text-body text-white/85">
+                <p key={note} className="text-body text-bone/85">
                   {note}
                 </p>
               ))}

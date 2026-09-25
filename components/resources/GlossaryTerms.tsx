@@ -46,7 +46,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
                 list.length > 0 ? (
                   <a
                     href={`#letter-${letter}`}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-sm text-sm font-semibold text-ice hover:bg-green"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-input text-sm font-semibold text-ice hover:bg-green"
                   >
                     {letter}
                   </a>

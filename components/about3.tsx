@@ -23,14 +23,14 @@ function StorySection({ section }: { section: About3Section }) {
   return (
     <div className="flex flex-col gap-5">
       {section.label && (
-        <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
+        <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">
           <span aria-hidden="true" className="mr-2 font-bold">
             /
           </span>
           {section.label}
         </p>
       )}
-      {section.title && <h2 className="text-display-2 text-brand-green">{section.title}</h2>}
+      {section.title && <h2 className="text-display-2 text-current">{section.title}</h2>}
       <div className="prose-measure space-y-4">
         {section.paragraphs.map((p, i) => (
           <p key={i} className="text-body">

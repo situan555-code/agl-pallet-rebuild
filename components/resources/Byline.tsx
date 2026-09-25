@@ -6,13 +6,13 @@ export function Byline({ updated }: { updated: string }) {
   const people = realArticlePeople();
   if (!people) {
     return (
-      <p className="mt-6 text-link text-white/75">
+      <p className="mt-6 text-link text-bone/75">
         Published by the AGL Pallet brokerage desk · Updated <time dateTime={updated}>{formatDate(updated)}</time>
       </p>
     );
   }
   return (
-    <p className="mt-6 text-link text-white/75">
+    <p className="mt-6 text-link text-bone/75">
       Written by {people.author.name}, {people.author.role}
       {" · "}
       Reviewed by {people.reviewer.name}, {people.reviewer.credential}

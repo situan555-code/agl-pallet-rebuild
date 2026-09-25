@@ -32,7 +32,7 @@ export function MobileNav(props: {
     <>
       <button
         type="button"
-        className="rounded-sm text-white nav:hidden focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+        className="rounded-input text-bone nav:hidden focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ice"
         aria-label="Open menu"
         aria-haspopup="dialog"
         aria-expanded={open}

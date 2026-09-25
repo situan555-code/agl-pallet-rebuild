@@ -59,7 +59,7 @@ export default async function CostPerTripPage(
       </CalcForm>
 
       <section id="results" aria-labelledby="results-h" aria-live="polite" className="mt-10 scroll-mt-28">
-        <h3 id="results-h" className="text-step-lg text-brand-green">
+        <h3 id="results-h" className="text-step-lg text-current">
           {exampleMode ? "Worked example" : "Results"}
         </h3>
         {exampleMode && <p className="prose-measure mt-4 text-body text-ink/85">{ex.note}</p>}

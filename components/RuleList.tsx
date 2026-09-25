@@ -20,9 +20,9 @@ function RowInner({
 }) {
   const body = stripScaffolding(item.body);
   const titleClass =
-    "font-display text-display-row uppercase text-brand-green transition-colors group-hover:text-white group-focus-within:text-white";
+    "font-display text-display-row uppercase text-current transition-colors group-hover:text-bone group-focus-within:text-bone";
   const bodyClass =
-    "text-body text-ink/55 transition-colors group-hover:text-white group-focus-within:text-white";
+    "text-body text-current/70 transition-colors group-hover:text-bone group-focus-within:text-bone";
 
   if (layout === "industries") {
     return (
@@ -39,7 +39,7 @@ function RowInner({
         <h2 className={titleClass}>{item.title}</h2>
         <p className={`mt-1 ${bodyClass}`}>{body}</p>
       </div>
-      <ArrowIcon className="h-6 w-6 shrink-0 text-brand-green transition-transform duration-200 group-hover:text-white group-focus-within:text-white motion-safe:group-hover:translate-x-2 motion-safe:group-focus-within:translate-x-2" />
+      <ArrowIcon className="h-6 w-6 shrink-0 text-current transition-transform duration-200 group-hover:text-bone group-focus-within:text-bone motion-safe:group-hover:translate-x-2 motion-safe:group-focus-within:translate-x-2" />
     </div>
   );
 }
@@ -64,7 +64,7 @@ export function RuleList({
               <Link
                 href={item.href}
                 prefetch={false}
-                className="block focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white"
+                className="block focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ice"
               >
                 {inner}
               </Link>

@@ -80,7 +80,7 @@ export function PageOpener({
             </div>
             {cta ? (
               <div className="mt-8">
-                <Button href={cta.href} label={cta.label} variant={dark ? "secondary" : "primary"} />
+                <Button href={cta.href} label={cta.label} variant="secondary" />
               </div>
             ) : null}
           </div>

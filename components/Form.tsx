@@ -121,7 +121,7 @@ export function Form({
       <input type="hidden" name="source" value={source} />
 
       {missing.length > 0 && (
-        <div className="mb-6 rounded-input border border-red-500 bg-red-500/10 p-4 text-white">
+        <div className="mb-6 rounded-input border border-red-500 bg-red-500/10 p-4 text-bone">
           <p className="font-semibold">Please, fill in the following fields:</p>
           <ul className="mt-2 list-disc pl-5">
             {missing.map((name) => (
@@ -132,18 +132,18 @@ export function Form({
       )}
 
       {status === "success" && (
-        <p className="mb-6 rounded-input bg-white/10 p-4 text-white">{successMessage}</p>
+        <p className="mb-6 rounded-input bg-bone/10 p-4 text-bone">{successMessage}</p>
       )}
 
       {destination.kind === "unresolved" && (
-        <p className="mb-6 rounded-input border border-white/30 bg-white/10 p-4 text-white">
+        <p className="mb-6 rounded-input border border-bone/30 bg-bone/10 p-4 text-bone">
           This form is not sending yet. The destination address is not confirmed, so nothing is
           transmitted. Call 234-286-0402 in the meantime.
         </p>
       )}
 
       {status === "blocked" && (
-        <p className="mb-6 rounded-input bg-white/10 p-4 text-white">
+        <p className="mb-6 rounded-input bg-bone/10 p-4 text-bone">
           Not sent — the destination above isn&apos;t configured yet.
         </p>
       )}
@@ -161,7 +161,7 @@ export function Form({
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {fields.map((field) => {
           const isInvalid = missing.includes(field.name);
-          const inputClass = `w-full rounded-input border bg-white px-4 py-3 text-ink text-body outline-hidden ${
+          const inputClass = `w-full rounded-input border bg-bone px-4 py-3 text-moss text-body outline-hidden ${
             isInvalid ? "border-red-500" : "border-transparent"
           }`;
           const wrapperClass =
@@ -172,7 +172,7 @@ export function Form({
 
           return (
             <label key={field.name} className={cn(wrapperClass, hidden && "hidden")}>
-              <span className="mb-2 block text-white text-button font-semibold">
+              <span className="mb-2 block text-bone text-button font-semibold">
                 {field.label}
                 {field.required ? "" : " (optional)"}
               </span>
@@ -219,7 +219,7 @@ export function Form({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                 />
               )}
-              {field.helpText && <span className="mt-1 block text-link text-white/70">{field.helpText}</span>}
+              {field.helpText && <span className="mt-1 block text-link text-bone/70">{field.helpText}</span>}
             </label>
           );
         })}

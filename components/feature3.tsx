@@ -51,9 +51,8 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
         index > 0 && "border-t border-brand-green/20 md:border-l md:border-t-0"
       )}
     >
-      <Heading className="text-display-kicker text-brand-green">{item.title}</Heading>
-      <span aria-hidden="true" className="mt-4 block h-px w-8 bg-brand-green/40" />
-      <p className="mt-4 max-w-sm text-body text-ink">{item.description}</p>
+      <Heading className="text-display-kicker text-current">{item.title}</Heading>
+      <p className="mt-4 max-w-sm text-body text-current/80">{item.description}</p>
     </div>
   );
 }
@@ -63,14 +62,14 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
   return (
     <div id={item.id} className="group scroll-mt-24 border-t border-brand-green/15 pb-4 pt-8">
       {item.eyebrow && (
-        <p className="mb-3 text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">{item.eyebrow}</p>
+        <p className="mb-3 text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
       )}
-      <Heading className="text-display-row text-brand-green">
+      <Heading className="text-display-row text-current">
         {item.href ? (
           <Link
             href={item.href}
             prefetch={false}
-            className="inline-flex items-baseline gap-3 rounded-sm underline-offset-[6px] hover:underline focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
+            className="inline-flex items-baseline gap-3 rounded-input underline-offset-[6px] hover:underline focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ice"
           >
             {item.title}
             <ArrowIcon className="h-5 w-5 shrink-0 translate-y-0.5 transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
@@ -79,7 +78,7 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
           item.title
         )}
       </Heading>
-      {item.description && <p className="prose-measure mt-4 text-body text-ink">{item.description}</p>}
+      {item.description && <p className="prose-measure mt-4 text-body text-current/80">{item.description}</p>}
       {item.cta && (
         <div className="mt-6">
           <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
@@ -105,9 +104,9 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
   const inner = (
     <>
       {item.eyebrow && (
-        <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">{item.eyebrow}</p>
+        <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
       )}
-      <Heading className={cn("text-step-lg text-bone", item.eyebrow && "mt-3")}>{item.title}</Heading>
+      <Heading className={cn("text-step-lg leading-snug text-pretty text-current", item.eyebrow && "mt-3")}>{item.title}</Heading>
       {item.description && <p className="mt-3 text-body text-bone/85">{item.description}</p>}
       {item.cta && (
         <div className="mt-auto pt-6">
@@ -116,13 +115,13 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
       )}
       {item.href && (
         <span className="mt-auto flex justify-end pt-6">
-          <ArrowIcon className="h-6 w-6 text-brand-green transition-transform duration-200 motion-safe:group-hover:translate-x-2" />
+          <ArrowIcon className="h-6 w-6 text-ice transition-transform duration-200 motion-safe:group-hover:translate-x-2" />
         </span>
       )}
     </>
   );
   const cardClass =
-    "hover-lift group flex h-full flex-col gap-0 rounded-card border border-smoke bg-green p-8 text-bone nav:p-10";
+    "hover-lift group flex h-full min-h-full flex-col gap-0 rounded-card border border-smoke bg-green p-8 text-bone nav:p-10";
   if (item.href && !item.href.startsWith("/")) {
     return (
       <a
@@ -161,7 +160,7 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
           </div>
         ) : (
           eyebrow && (
-            <p className="mb-8 text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
+            <p className="mb-8 text-eyebrow font-semibold uppercase tracking-wide text-current/70">
               <span aria-hidden="true" className="mr-2 font-bold">
                 /
               </span>
@@ -174,9 +173,10 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
             "grid grid-cols-1",
             variant === "divided"
               ? `md:grid-cols-${columns}`
-              : variant === "card" && columns === 3
+              :             variant === "card" && columns === 3
                 ? "nav:grid-cols-3"
                 : columnClass[columns],
+            variant === "card" && "items-stretch",
             gap
           )}
         >

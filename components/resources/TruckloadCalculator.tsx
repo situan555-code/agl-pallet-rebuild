@@ -127,7 +127,7 @@ export function TruckloadCalculator({ params, path }: { params: Params; path: st
       </p>
 
       <section id="truckload-results" aria-labelledby="truckload-results-h" aria-live="polite" className="mt-10 scroll-mt-28">
-        <h3 id="truckload-results-h" className="text-step-lg text-brand-green">
+        <h3 id="truckload-results-h" className="text-step-lg text-current">
           Results: {eq.label}, {footprint}
         </h3>
         <div className="mt-6 grid gap-8 sm:grid-cols-2">

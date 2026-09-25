@@ -18,7 +18,7 @@ function desktopChildren(item: NavItem) {
 }
 
 const itemClass =
-  "inline-flex h-9 items-center rounded-full px-3 text-nav-link font-semibold text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice";
+  "inline-flex h-8 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-semibold text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice";
 
 export function Header() {
   const nav = site.nav as NavItem[];
@@ -28,18 +28,18 @@ export function Header() {
       <Link
         href="/"
         prefetch={false}
-        className="shrink-0 rounded-sm focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ice"
+        className="shrink-0 border-0 bg-transparent focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ice"
       >
         <Image
           src={LIGHT_LOGO.src}
-          width={LIGHT_LOGO.width}
-          height={LIGHT_LOGO.height}
+          width={80}
+          height={36}
           alt={LIGHT_LOGO.alt}
           priority
         />
       </Link>
 
-      <nav className="hidden min-w-0 lg:block" aria-label="Main">
+      <nav className="hidden min-w-0 xl:block" aria-label="Main">
         <ul className="flex items-center gap-0.5">
           {nav.map((item, index) => {
             const children = desktopChildren(item);
@@ -137,12 +137,12 @@ export function Header() {
         </ul>
       </nav>
 
-      <div className="hidden items-center gap-2 lg:flex">
+      <div className="hidden items-center gap-2 xl:flex">
         <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-gray/40 px-3 text-nav-link font-semibold text-bone hover:bg-smoke" />
         <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
       </div>
 
-      <div className="flex items-center gap-2 lg:hidden">
+      <div className="flex items-center gap-2 xl:hidden">
         <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-gray/40 px-3 text-nav-link font-semibold text-bone" />
         <HeaderMenu nav={nav} logo={LIGHT_LOGO} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
       </div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import home from "@/content/pages/home.json";
 import products from "@/content/pages/products.json";
-import { Hero115 } from "@/components/hero115";
+import { HeroExpand } from "@/components/HeroExpand";
 import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
@@ -40,31 +40,31 @@ export default function Home() {
         href={home.hero.poster}
         fetchPriority="high"
       />
-      <Hero115
+      <HeroExpand
         eyebrow={home.hero.eyebrow}
         heading={home.hero.heading}
         description={home.hero.body}
         video={{ src: home.hero.video, poster: home.hero.poster }}
-        buttons={
-          home.hero.buttons as {
-            label: string;
-            href: string;
-            variant: "primary" | "secondary";
-          }[]
-        }
-        capabilities={home.capability.cards.map((c) => ({
-          heading: c.heading,
-          body: c.body,
-        }))}
+        buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
       />
 
+      <section className="px-6 py-10">
+        <div className="mx-auto grid max-w-[1440px] gap-4 md:grid-cols-3">
+          {home.capability.cards.map((cap) => (
+            <article key={cap.heading} className="hover-lift rounded-card bg-green px-8 py-10 text-bone nav:px-10">
+              <h2 className="text-display-kicker text-current">{cap.heading}</h2>
+              <p className="mt-4 max-w-sm text-body text-current/75">{cap.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <Feature1
-        hairline
         eyebrow={home.whatWeDo.eyebrow}
         heading={home.whatWeDo.heading}
         paragraphs={home.whatWeDo.paragraphs}
         media={
-          <div className="relative aspect-5/6 w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
+          <div className="relative aspect-5/6 w-full overflow-hidden rounded-card">
             <DeferredFillImage
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
@@ -76,10 +76,13 @@ export default function Home() {
         }
       />
 
-      <NetworkBeam left="Qualified mills" center="AGL" right="Your line" />
+      <NetworkBeam
+        mills={["Family-run mills", "Qualified shops", "More than one source"]}
+        center="AGL Pallet"
+        right="Your line"
+      />
 
       <Feature3
-        hairline
         variant="numbered"
         features={home.differentiators.cards.map((c) => ({
           eyebrow: c.eyebrow,
@@ -97,7 +100,6 @@ export default function Home() {
       />
 
       <Gallery4Loader
-        tone="paper"
         eyebrow="Product lines"
         title="Specced to the load. Sourced through mills that can build it."
         description="Stock, custom, crates, dunnage, blocks, and stakes — each with multiple qualified shops behind the specs we sell."
@@ -118,7 +120,6 @@ export default function Home() {
       />
 
       <Feature3
-        hairline
         variant="card"
         columns={2}
         features={home.partnerSplit.cards.map((c) => ({
@@ -130,13 +131,13 @@ export default function Home() {
       />
 
       <Feature1
-        hairline
+        className="surface-light bg-bone text-moss"
         eyebrow={home.whoWeAre.eyebrow}
         heading={home.whoWeAre.heading}
         paragraphs={home.whoWeAre.paragraphs}
         cta={home.whoWeAre.cta}
         media={
-          <div className="relative aspect-4/5 w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/why_agl_exist_sidepic.jpg"
               alt=""

@@ -69,18 +69,18 @@ export function ArticleHeader({
   libraryLabel?: string;
 }) {
   return (
-    <section className="bg-brand-green px-6 pb-14 pt-36 text-white nav:pb-16">
+    <section className="bg-green px-6 pb-14 pt-36 text-bone nav:pb-16">
       <div className="mx-auto max-w-[1440px]">
         <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-2 text-link text-white/75">
+          <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
             <li>
-              <Link href="/" prefetch={false} className="hover:text-white hover:underline">
+              <Link href="/" prefetch={false} className="hover:text-bone hover:underline">
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/resources/" prefetch={false} className="hover:text-white hover:underline">
+              <Link href="/resources/" prefetch={false} className="hover:text-bone hover:underline">
                 {libraryLabel}
               </Link>
             </li>
@@ -88,7 +88,7 @@ export function ArticleHeader({
             {crumbs.map((c) => (
               <Fragment key={c.href}>
                 <li>
-                  <Link href={c.href} prefetch={false} className="hover:text-white hover:underline">
+                  <Link href={c.href} prefetch={false} className="hover:text-bone hover:underline">
                     {c.name}
                   </Link>
                 </li>
@@ -96,7 +96,7 @@ export function ArticleHeader({
               </Fragment>
             ))}
             <li>
-              <span aria-current="page" className="text-white">
+              <span aria-current="page" className="text-bone">
                 {title}
               </span>
             </li>
@@ -195,7 +195,7 @@ export function ArticleSection({ section, children }: { section: Pick<ResourceSe
   const table = resolveTable(section);
   return (
     <section id={section.id} aria-labelledby={`${section.id}-h`} className="scroll-mt-28 border-t border-brand-green/15 pt-10">
-      <h2 id={`${section.id}-h`} className="text-display-row text-brand-green">
+      <h2 id={`${section.id}-h`} className="text-display-row text-current">
         {section.heading}
       </h2>
       <div className="prose-measure mt-6 space-y-4">
@@ -224,13 +224,13 @@ export function ArticleSection({ section, children }: { section: Pick<ResourceSe
 export function Questions({ heading, items }: { heading: string; items: ResourceQuestion[] }) {
   return (
     <section id="questions" aria-labelledby="questions-h" className="scroll-mt-28 border-t border-brand-green/15 pt-10">
-      <h2 id="questions-h" className="text-display-row text-brand-green">
+      <h2 id="questions-h" className="text-display-row text-current">
         {heading}
       </h2>
       <div className="mt-6 divide-y divide-brand-green/15">
         {items.map((q) => (
           <article key={q.id} id={q.id} className="scroll-mt-28 py-6 first:pt-0">
-            <h3 className="text-step-lg text-brand-green">{q.question}</h3>
+            <h3 className="text-step-lg text-current">{q.question}</h3>
             <div className="prose-measure mt-3 space-y-3">
               <Paragraphs items={q.answer} />
             </div>
@@ -244,7 +244,7 @@ export function Questions({ heading, items }: { heading: string; items: Resource
 export function Sources({ items, closing }: { items: ResourceSource[]; closing?: string }) {
   return (
     <section id="sources" aria-labelledby="sources-h" className="scroll-mt-28 border-t border-brand-green/15 pt-10">
-      <h2 id="sources-h" className="text-display-row text-brand-green">
+      <h2 id="sources-h" className="text-display-row text-current">
         Sources and further reading
       </h2>
       <ul className="prose-measure mt-6 space-y-3 text-body text-ink/85">
@@ -272,7 +272,7 @@ export function Sources({ items, closing }: { items: ResourceSource[]; closing?:
 export function NextSteps() {
   return (
     <section aria-labelledby="next-steps-h" className="border-t border-brand-green/15 pt-10">
-      <h2 id="next-steps-h" className="text-display-row text-brand-green">
+      <h2 id="next-steps-h" className="text-display-row text-current">
         Next steps
       </h2>
       <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-body">

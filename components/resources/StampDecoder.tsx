@@ -158,7 +158,7 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <Button type="submit" variant="primary">
+                <Button type="submit" variant="secondary">
                   {copy.form.submit}
                 </Button>
                 <Link href={STAMP_DECODER_PATH} prefetch={false} className={textLinkClass}>

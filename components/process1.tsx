@@ -47,14 +47,14 @@ const Process1 = ({ id, eyebrow, heading, description, steps, hairline, classNam
             >
               <div
                 aria-hidden="true"
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-mint font-display text-[14px] uppercase leading-none text-brand-green"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-input bg-ice font-display text-[14px] uppercase leading-none text-moss"
               >
                 {step.number ?? <span className="block h-2 w-2 bg-brand-green" />}
               </div>
               <div className="min-w-0">
-                <ItemHeading className="text-step-lg text-brand-green">{step.title}</ItemHeading>
+                <ItemHeading className="text-step-lg text-current">{step.title}</ItemHeading>
                 {step.description.trim() !== "" && (
-                  <p className="prose-measure mt-3 text-body text-ink">{withLeadDash(step.description)}</p>
+                  <p className="prose-measure mt-3 text-body text-current/80">{withLeadDash(step.description)}</p>
                 )}
               </div>
             </li>

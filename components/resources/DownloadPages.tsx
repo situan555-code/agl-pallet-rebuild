@@ -126,7 +126,7 @@ export function DownloadArticle({ slug }: { slug: string }) {
           <p>{item.figuresNote}</p>
           {item.exampleNote && <p>{item.exampleNote}</p>}
           <p>
-            <Button href={downloadPdfPath(slug)} label={downloadsIndex.pdfLabel} variant="primary" />
+            <Button href={downloadPdfPath(slug)} label={downloadsIndex.pdfLabel} variant="secondary" />
           </p>
           <p>
             <Link href={item.guideHref} prefetch={false} className={textLinkClass}>
@@ -142,7 +142,7 @@ export function DownloadArticle({ slug }: { slug: string }) {
         <Sources items={sources} closing={downloadsIndex.sourcesClosing} />
         {item.related.length > 0 && (
           <section aria-labelledby="download-related-h" className="border-t border-brand-green/15 pt-10">
-            <h2 id="download-related-h" className="text-display-row text-brand-green">
+            <h2 id="download-related-h" className="text-display-row text-current">
               Related
             </h2>
             <ul className="mt-6 space-y-3 text-body">

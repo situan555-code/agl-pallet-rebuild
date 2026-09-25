@@ -15,7 +15,7 @@ export function CopyValue({
 
   return (
     <span className="flex flex-col">
-      <span className="text-eyebrow font-semibold uppercase tracking-wide text-white/70">{label}</span>
+      <span className="text-eyebrow font-semibold uppercase tracking-wide text-bone/70">{label}</span>
       <a href={href} className="text-step-sm font-semibold hover:underline">
         {value}
       </a>

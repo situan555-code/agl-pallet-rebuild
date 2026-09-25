@@ -36,7 +36,7 @@ export function SearchTrigger({ className }: { className?: string }) {
         }}
       >
         Search
-        <kbd className="ml-2 hidden rounded-sm border border-gray/40 px-1 text-[10px] text-gray nav:inline">⌘K</kbd>
+        <kbd className="ml-2 hidden rounded-input border border-gray/40 px-1 text-[10px] text-gray nav:inline">⌘K</kbd>
       </button>
       {requested ? <SearchDialog open={open} onOpenChange={setOpen} /> : null}
     </>

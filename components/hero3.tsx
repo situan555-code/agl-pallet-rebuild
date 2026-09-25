@@ -24,20 +24,20 @@ const Hero3 = ({ eyebrow, heading, description, cta, breadcrumb, className }: He
       <div className="mx-auto max-w-[1440px] rounded-section bg-green px-6 py-16 nav:px-10 nav:py-20">
         {breadcrumb && breadcrumb.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-10">
-            <ol className="flex flex-wrap items-center gap-2 text-link text-white/75">
+            <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
               {breadcrumb.map((item, i) => (
                 <li key={`${item.name}-${i}`} className="contents">
                   {i > 0 && (
-                    <span aria-hidden="true" className="text-white/75">
+                    <span aria-hidden="true" className="text-bone/75">
                       /
                     </span>
                   )}
                   {item.href && i < breadcrumb.length - 1 ? (
-                    <Link href={item.href} prefetch={false} className="hover:text-white hover:underline">
+                    <Link href={item.href} prefetch={false} className="hover:text-bone hover:underline">
                       {item.name}
                     </Link>
                   ) : (
-                    <span aria-current="page" className="text-white">
+                    <span aria-current="page" className="text-bone">
                       {item.name}
                     </span>
                   )}
@@ -62,10 +62,10 @@ const Hero3 = ({ eyebrow, heading, description, cta, breadcrumb, className }: He
           <h1 className="display mt-4 max-w-[760px] text-display-1">{heading}</h1>
         </div>
         {hasAside && (
-          <div className="border-t border-white/20 pt-6 nav:col-span-6 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">
+          <div className="border-t border-bone/20 pt-6 nav:col-span-6 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">
             <div className="prose-measure space-y-4">
               {paragraphs.map((p, i) => (
-                <p key={i} className="text-body text-white/85">
+                <p key={i} className="text-body text-bone/85">
                   {p}
                 </p>
               ))}

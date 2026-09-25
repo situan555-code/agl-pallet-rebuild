@@ -50,7 +50,7 @@ export default async function PalletWeightEstimatorPage(
       </CalcForm>
 
       <section id="results" aria-labelledby="results-h" aria-live="polite" className="mt-10 scroll-mt-28">
-        <h3 id="results-h" className="text-step-lg text-brand-green">
+        <h3 id="results-h" className="text-step-lg text-current">
           Results
         </h3>
         <div className="mt-6">

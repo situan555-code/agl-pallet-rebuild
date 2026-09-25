@@ -42,8 +42,8 @@ export default function PartnersCarriers() {
         eyebrow={content.hero.cta.label}
         aside={
           openQuestions.length > 0 ? (
-            <div className="rounded-sm border border-dashed border-white/30 p-6">
-              <p className="text-eyebrow font-semibold uppercase tracking-wide text-white/70">
+            <div className="rounded-card border border-dashed border-bone/30 p-6">
+              <p className="text-eyebrow font-semibold uppercase tracking-wide text-bone/70">
                 {content.openQuestions.heading}
               </p>
               <ul className="mt-3 space-y-1 text-body">
