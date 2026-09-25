@@ -1,5 +1,9 @@
 # BLOCKED
 
+## M1 verify (2026-09-25)
+
+`npm run verify` on `redesign/main` after Phase 0: schema/copy/banned-words/tokens/numbers/color/routes passed. `audit` failed Lighthouse LCP on `/` (~2565ms vs 2500ms gate) and once on `/how-we-work/` (2531ms). Quote CLS (0.40) was fixed by reserving form height. Did not merge M1 to `main`. Retry at M2.
+
 Open items (owner-supplied; not engineering work):
 
 - **`{{TBD-ADDRESS}}`** — real address required before LocalBusiness JSON-LD can emit.
