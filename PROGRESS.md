@@ -15,3 +15,4 @@ R1.5 done. Next: M2 verify.
 M2 verify failed home LCP 2563ms (Perf 97). Next: R2.1 (retry verify at M3).
 R2.1–R2.5 done. Next: home/interior/resource/form restyles.
 R3.1–R3.6, R4.1, R5.1/R5.3, R6.2, R7.1/R7.2/R7.4 done on redesign/main. R7.3 behind env. Next: R8.
+R8.4 verify green (home LCP 2408ms / Perf 98). Merging to main.
