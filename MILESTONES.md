@@ -1,5 +1,13 @@
 # Milestones
 
+## M2 — Phase 1 (not shipped to main)
+
+- **Date:** 2026-09-25
+- **Tasks:** R1.1 tokens, R1.2 type, R1.3 buttons, R1.4 Section/grain/dots, R1.5 Reveal
+- **Pages to look at:** `/` (Palette 05, Inter headings, pill buttons, inset-green CTA), `/faq/` (Reveal)
+- **Skipped / blocked:** Home LCP 2563ms (Perf 97). See `BLOCKED.md`. Not merged to `main`.
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M1 — Phase 0 (not shipped to main)
 
 - **Date:** 2026-09-25

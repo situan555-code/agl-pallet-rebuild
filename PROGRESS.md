@@ -12,3 +12,4 @@ R1.2 done. Next: R1.3.
 R1.3 done. Next: R1.4.
 R1.4 done. Next: R1.5.
 R1.5 done. Next: M2 verify.
+M2 verify failed home LCP 2563ms (Perf 97). Next: R2.1 (retry verify at M3).
