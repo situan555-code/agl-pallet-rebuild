@@ -1,5 +1,7 @@
 # AGL Pallet Rebuild — Project Documentation
 
+REDESIGN IN PROGRESS: design rules in this file are superseded by .cursorrules and docs/. Content and compliance rules still apply.
+
 ## What this is
 A rebuild of aglpallet.com. The original was WordPress + Divi. This is a
 ground-up rebuild on Next.js, deployed to Vercel, currently a demo behind

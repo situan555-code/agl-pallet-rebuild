@@ -1,62 +1,70 @@
-# AGL Pallet Rebuild — Cursor rules
-# Next.js 14 App Router · TypeScript · Tailwind 3.4 · deploy to Vercel
-# Full context in PROJECT.md and BRIEF.md. Read those before large changes.
+# AGL Pallet — Cursor rules (REDESIGN)
+# Plan: docs/02-IMPLEMENTATION-PLAN.md. Audit: docs/01-TECHNICAL-AUDIT.md.
+# Do not read archive/ unless told to.
 
-## Stack facts (do not re-derive)
-- Next.js 14, App Router. Routes live in app/. Not Vite, not Pages Router.
-- Tailwind 3.4 for all styling. No other CSS framework, no CSS-in-JS.
-- Images via next/image, WebP-only per next.config.mjs.
-- trailingSlash: true — every route resolves with a trailing slash. Write
-  internal links with the trailing slash (/products/, not /products).
-- Content is JSON in content/. UI is in components/. Never hardcode page
-  copy into a component.
-- Package name is nx7k-lab-m4 (matches the Vercel project); don't "fix" it.
+## Stack (do not re-derive)
+- Next.js App Router, React 19, TypeScript, Tailwind v4 (tokens in app/globals.css @theme).
+  If package.json still shows Next 14 / Tailwind 3, Phase 0 (R0.5) is not done yet.
+- UI sources, in priority order: shadcn/ui core → Magic UI → ReUI → Aceternity (nav only).
+  Animation: motion/react only. No GSAP, no Lenis, no other registries without approval.
+- Icons: lucide-react only.
+- Class merging: `import { cn } from "@/lib/utils"` only.
+- Images: next/image. Video: native <video>, never a player library for background loops.
+- trailingSlash: true — internal links end with a slash (/products/).
+- Package name nx7k-lab-m4 matches Vercel. Don't rename.
 
-## Content rules — these are compliance, not style
-- Page copy is verbatim from SPEC_V1.md. Do not rewrite, tighten, expand,
-  or add transitions. If copy looks wrong, flag it in a comment — do not
-  edit it.
-- AGL is a pallet BROKERAGE, never a manufacturer. Never write make/
-  produce/build/manufacture/our mill/our plant/our factory with AGL as
-  the subject. AGL sources, specs, qualifies, coordinates, supplies.
-- Banned everywhere including alt text, meta, JSON-LD: warehousing/storage/
-  inventory/VMI; certification claims (PDS, ISPM-15, RPA, etc); recycled or
-  used pallets; customer/supplier/competitor names; any number not in
-  SPEC_V1; "national"/"nationwide" (footprint is MI/IL/IN/PA/OH/WV); the
-  SPEC_V1 banned-words list; exclamation points; emoji.
-- {{TBD-*}} tokens render as visible placeholders. Never silently fill one
-  with invented content.
+## Content rules (compliance — unchanged)
+- Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved and override
+  older rules in BRIEF.md/PROJECT.md where they conflict (incl. BRIEF §H3 on form services).
+- Copy lives in content/**.json. Never hardcode copy in components. Never edit content
+  JSON during a design task; flag copy problems in a comment instead.
+- Body copy is verbatim from SPEC_V1.md. Changing heading CASE for presentation is allowed;
+  changing heading WORDS is not.
+- AGL is a pallet BROKERAGE, never a manufacturer. Never write make/produce/build/manufacture/
+  our mill/our plant/our factory with AGL as subject.
+- Banned everywhere (including alt, meta, JSON-LD): warehousing/storage/inventory/VMI;
+  certification claims; recycled/used pallets; customer/supplier/competitor names; any
+  number not in SPEC_V1; "national"/"nationwide"; exclamation points; emoji.
+- {{TBD-*}} tokens render visibly. Never fill them with invented content.
+- Never change routes, H1 text, canonicals, or JSON-LD output.
 
-## Design rules
-- One green only: #162619. Never introduce a second green (#152619 in some
-  logo rasters is a known mismatch — do not propagate it).
-- Three grounds only: paper #F7F6F2 (default, most sections), green #162619
-  (punctuation — hero, one mid-page anchor, footer CTA, max 3 per page),
-  mint (accent only — hover fills, numeral fills, one pull-quote tint;
-  never a section background).
-- Do not alternate section backgrounds every scroll. Consecutive sections
-  sit on paper, separated by space and occasional full-width hairlines;
-  green punctuates.
-- Bordered/rounded cards are ONLY for discrete clickable choices. Claims,
-  categories, and steps use space + hairlines, not boxes.
-- Body measure max 70ch. Headings use text-wrap: balance. 16px min gutter.
-  No horizontal scroll at 375px.
-- Visible keyboard focus states. Respect prefers-reduced-motion.
+## Design rules (NEW — these replace the old port rules)
+- Palette 05 "Premium Dark" ONLY: moss #131913, green #1F2A1F, smoke #2E342F,
+  gray #AEB5AE, bone #ECE8DF, ice #DDE9E2. No other colors, no hue accent (no orange/amber).
+  Emphasis = ice, weight, scale, photography.
+- Marketing pages lead dark (moss ground, green inset cards, smoke surfaces, bone text).
+  Reading pages (articles, glossary, calculators, forms) use bone grounds with moss text.
+- Palette 03 tokens (parchment, cream, fog, mint, clay, cocoa, ink) are retired. Don't use them.
+- Radius: inputs 10px, cards 18px, section containers 28px, buttons full pill.
+  No square corners on cards, images, inputs, tables, menus, or sections.
+- Dark sections are rounded INSET cards with margin, not full-bleed slabs.
+  Full-bleed is allowed only for the home video hero and photo bands.
+- Type: Anton (font-display) ONLY for hero H1s and `.display`. Everything else Inter,
+  sentence case. Uppercase only for small eyebrows. Body 16px.
+- Buttons: `primary` (dark pill) and `secondary` (outline pill), optional arrow. Nothing else.
+- Cards are allowed for features, resources, steps, and choices. Use gaps, soft shadows,
+  and hover lift — not thick borders.
+- Vary page openers (see R4.1). Don't stack identical dark heroes.
+- Body measure max 70ch, text-wrap: balance on headings, 16px min gutter,
+  no horizontal scroll at 375px.
 
-## Quality bar before shipping any change
-Run: npm run verify
-Hard gates: structure + content match SPEC_V1 · height within 15% ·
-CLS < 0.05 · LCP < 2.5s · mobile Lighthouse Perf >= 95 · zero serious/
-critical axe · zero broken links.
-LCP gate is 2.5s — not 1.5s. Do not soften any gate without an explicit
-written instruction from the human. Silence is not authorization.
+## Motion rules
+- Every animated component: "use client", lazy below the fold, respects
+  prefers-reduced-motion (render static), causes no layout shift.
+- Reveals: use the shared <Reveal> (Magic UI Blur Fade). Animate sections, not every element.
+- Border Beam: primary hero CTA only. No particles, cursor effects, or gooey tabs.
 
-## Deploy
-- Push to main → Vercel auto-builds. Never touch DNS.
-- The deployed build is the source of truth. Pull before editing — local
-  drift already caused build-note text to leak into /products.
-
-## Log discipline
-- Every deviation from SPEC_V1 → DECISIONS.md.
-- Anything unresolved or blocked → BLOCKED.md.
-- State that must survive a context reset → PROGRESS.md.
+## How to work
+- This project runs on a fast, low-cost model by default. Stay inside the task: no refactors,
+  no "while I'm here" edits, no rereading large docs you don't need.
+- If the build still fails after your second fix attempt, or you can't meet the task's
+  "Done when", STOP. Report what you tried, the exact error, and your best guess at the cause.
+  Don't keep looping; the owner will rerun the task on a stronger model.
+- One task ID per chat (e.g. R2.1). Touch only the files the task needs.
+- Install registry components via the CLI; adapt them, don't rewrite from scratch.
+- Before finishing: `npm run build`. Before merging a phase: `npm run verify`.
+- Gates: CLS < 0.05, LCP < 2.5s, mobile Lighthouse Perf ≥ 95, zero serious/critical axe,
+  schema/routes/banned-words/numbers green. Never soften a gate without written approval.
+- Commit message starts with the task ID. One driver (Cursor or Claude Code) at a time.
+- Deviations → DECISIONS.md. Blockers → BLOCKED.md. Durable state → PROGRESS.md (keep short).
+- Push to main → Vercel builds. Never touch DNS or the live WordPress site.
