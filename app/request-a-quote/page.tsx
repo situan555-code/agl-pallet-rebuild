@@ -49,16 +49,18 @@ export default function RequestAQuote() {
         titleAs="h1"
         description={pageContent.hero.body}
       >
-        <Suspense fallback={null}>
-          <Form
-            id={forms.quote.id}
-            fields={forms.quote.fields as never}
-            destination={destination}
-            submitLabel={forms.quote.submitLabel}
-            successMessage={forms.quote.successMessage}
-            source="/request-a-quote/"
-          />
-        </Suspense>
+        <div className="min-h-[40rem]">
+          <Suspense fallback={<div className="mt-8 min-h-[40rem]" aria-hidden="true" />}>
+            <Form
+              id={forms.quote.id}
+              fields={forms.quote.fields as never}
+              destination={destination}
+              submitLabel={forms.quote.submitLabel}
+              successMessage={forms.quote.successMessage}
+              source="/request-a-quote/"
+            />
+          </Suspense>
+        </div>
       </Contact2>
 
       <Feature3
