@@ -1,5 +1,25 @@
 # Milestones
 
+## M12 — Owner home review (ship to main)
+
+- **Date:** 2026-09-25
+- **Tasks:** Owner-review items 1–8 on `redesign/main`, then `npm run verify` (home LCP **2336ms** / Perf **98** / CLS 0)
+- **What changed:**
+  1. Headings inherit the surface (`text-current`): bone on moss, moss on bone. `SectionHeading` no longer defaults to a light/green theme. Product card titles inherit. Interior section headings (FAQ, process, about, resources, rule lists) updated the same way. `text-white` replaced with bone tokens on dark chrome.
+  2. `hero115` removed. `HeroExpand` is a sticky scroll-expand video card (Motion `useScroll`, no wheel hijack). Poster is the LCP `next/image`. Native video loads after `window` `load` + `requestIdleCallback`, `muted` then `play()`, fades in on `playing`. Reduced motion = poster only.
+  3. Primary = bone fill / moss text. Used on hero “Request a quote” and nav “Request a Quote”. Other CTAs outline.
+  4. Nav: smaller logo, `xl` desktop links (hamburger earlier), `whitespace-nowrap`, no scrolled logo box, `bg-moss/85` + `backdrop-blur-xl`.
+  5. Network: Magic UI `AnimatedBeam`, three existing labels → AGL Pallet → Your line. Ice glow. Lucide cards. No slider dots. No 500px empty well.
+  6. Capability dashes off; 01/02/03 ice; coordination band is a rounded inset with a lighter overlay and parallax; carousel clips to card radius with ice arrows; pledge heading is large bone; mills/carriers cards stretch equal height; `section-y` tightened; Who We Are sits on bone mid-page.
+  7. Footer is one desktop row (brand/contact/CTA left, three columns right).
+  8. Remaining `clay` / `rounded-sm` / `ring-clay` classes removed from app TSX.
+- **Pages to look at:** `/` first, then `/how-we-work/`, `/who-we-are/`, `/the-pledge/`, `/products/`, `/faq/`
+- **Could not finish / caveats:**
+  - R3.1 WebM encode from the implementation plan was **not** added. The existing MP4 is what verify used. LCP passed, so the video was left in.
+  - Video autoplay and nav wrap were not walked in a real browser this pass — only `npm run verify` (Lighthouse mobile) and TypeScript/build.
+  - Some resource **body** links still use `text-brand-green` / `text-ink` (not section headings). Not part of the six-file Palette 03 class sweep.
+- **Branch:** `redesign/main` merged to `main`
+
 ## M11 — Phase 8 / R8.4 (ship to main)
 
 - **Date:** 2026-09-25
