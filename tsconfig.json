@@ -35,14 +35,6 @@
     ".next/types/**/*.ts"
   ],
   "exclude": [
-    "components/navbar1.tsx",
-    "components/navbar5.tsx",
-    "components/banner2.tsx",
-    "components/gallery6.tsx",
-    "components/hero7.tsx",
-    "components/service2.tsx",
-    "components/team2.tsx",
-    "components/timeline3.tsx",
     "node_modules"
   ]
 }

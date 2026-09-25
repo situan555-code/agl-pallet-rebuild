@@ -1,1 +1,3 @@
-Redesign started. Phase 0 in progress. R0.1 done. Next task: R0.3. Model policy: Grok 4.6 High Fast default, upgrades logged here.
+Redesign started. Phase 0 in progress. Model policy: Grok 4.6 High Fast default, upgrades logged here.
+R0.1 done. Next: R0.3.
+R0.3 done. Next: R0.4.
