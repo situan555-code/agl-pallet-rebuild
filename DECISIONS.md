@@ -16,3 +16,11 @@ Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved (2026-09-
 - Next 16 renamed `middleware.ts` → `proxy.ts` (`export function proxy`). Redirect map and host noindex are unchanged.
 - Removed the upgrade-inserted `export const instant = false` on every route (requires `cacheComponents`, which we did not enable).
 - Restored `next/image` `placeholder="blur"` after the Tailwind tool rewrote those to `blur-sm`.
+
+## R0.7 (2026-09-25)
+
+- Removed `height` (and the unused `diff` script is no longer in `verify`) per D3.
+- Color gate allowlist is Palette 05 moss `#131913` and green `#1F2A1F`.
+- Recolored live `public/assets/*.svg` fills from retired `#162619` to `#1F2A1F` instead of deleting icons the site still serves.
+- Deleted unused WordPress leftover `public/assets/mejs-controls.svg`.
+- Banned-words: also strip `!` inside HTML tags so Tailwind important / markup cannot trip the exclamation rule.

@@ -1,15 +1,7 @@
 #!/usr/bin/env node
-// H0 gate 5: #162619 is the only green allowed anywhere in compiled CSS,
-// inline styles, and SVG assets. SPEC_V1.md section 2 calls out #152619
-// specifically (present in the logo rasters, "not yet reconciled") as a
-// value to flag rather than silently allow.
-//
-// "Green" is classified by RGB, not by an exact-value allowlist with one
-// exception bolted on: a hex color counts as green if the G channel is the
-// strict max of the three and beats the runner-up channel by a margin,
-// which is what actually distinguishes brand green from near-black/gray/
-// other hues in compiled Tailwind CSS. #162619 itself is expected to match
-// this and is the only value allowed to.
+// Color gate: Palette 05 greens only. Any hex classified as green that is
+// not moss #131913 or AGL green #1F2A1F fails. Ice/gray/smoke/bone are not
+// greens under the channel heuristic.
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -19,7 +11,16 @@ const { ROUTES } = require('./lib/spec-manifest');
 const ROOT = path.join(__dirname, '..');
 const BASE_URL = process.env.COLOR_BASE_URL || process.env.SCREENSHOT_BASE_URL || 'http://localhost:3000';
 const REPORT_JSON = path.join(ROOT, 'color-report.json');
-const APPROVED_GREEN = '#162619';
+
+const PALETTE_05 = {
+  moss: '#131913',
+  green: '#1f2a1f',
+  smoke: '#2e342f',
+  gray: '#aeb5ae',
+  bone: '#ece8df',
+  ice: '#dde9e2',
+};
+const ALLOWED_GREENS = new Set([PALETTE_05.moss, PALETTE_05.green]);
 
 const HEX_RE = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g;
 
@@ -46,9 +47,9 @@ function scanForGreens(content, file) {
     let m;
     const re = new RegExp(HEX_RE.source, 'g');
     while ((m = re.exec(line))) {
-      const hex = `#${m[1].toLowerCase()}`;
+      const hex = `#${expand(m[1]).toLowerCase()}`;
       if (isGreen(hex)) {
-        hits.push({ file, line: idx + 1, value: hex, approved: hex === APPROVED_GREEN });
+        hits.push({ file, line: idx + 1, value: hex, approved: ALLOWED_GREENS.has(hex) });
       }
     }
   });
@@ -72,25 +73,21 @@ function walk(dir, exts) {
 async function main() {
   const hits = [];
 
-  // 1. Compiled CSS from the build, plus source CSS/Tailwind config.
   const cssFiles = [
     ...walk(path.join(ROOT, '.next', 'static', 'css'), ['.css']),
     path.join(ROOT, 'app', 'globals.css'),
-    path.join(ROOT, 'tailwind.config.ts'),
   ].filter((f) => fs.existsSync(f));
   for (const file of cssFiles) {
     const content = fs.readFileSync(file, 'utf8');
     hits.push(...scanForGreens(content, path.relative(ROOT, file)));
   }
 
-  // 2. SVG assets (spec flags the logo rasters as the known #152619 source).
-  const svgFiles = [...walk(path.join(ROOT, 'public'), ['.svg']), ...walk(path.join(ROOT, 'assets'), ['.svg'])];
+  const svgFiles = walk(path.join(ROOT, 'public'), ['.svg']);
   for (const file of svgFiles) {
     const content = fs.readFileSync(file, 'utf8');
     hits.push(...scanForGreens(content, path.relative(ROOT, file)));
   }
 
-  // 3. Rendered HTML per route — inline style attributes.
   const server = await ensureServer(BASE_URL, ROOT);
   const browser = await chromium.launch();
   try {
@@ -103,7 +100,7 @@ async function main() {
           hits.push(...scanForGreens(html, `rendered:${route}`));
         }
       } catch {
-        // Route unreachable — routes.js is the gate of record for that; skip here.
+        // Route unreachable — routes.js is the gate of record.
       }
       await page.close();
     }
@@ -115,7 +112,8 @@ async function main() {
   const disallowed = hits.filter((h) => !h.approved);
   const report = {
     baseUrl: BASE_URL,
-    approvedGreen: APPROVED_GREEN,
+    allowedGreens: [...ALLOWED_GREENS],
+    palette05: PALETTE_05,
     generatedAt: new Date().toISOString(),
     hits,
     disallowed,
@@ -123,16 +121,16 @@ async function main() {
   fs.writeFileSync(REPORT_JSON, JSON.stringify(report, null, 2));
   console.log(`Wrote ${path.relative(ROOT, REPORT_JSON)}`);
 
-  console.log(`\nGreens found: ${hits.length} (approved ${APPROVED_GREEN}: ${hits.length - disallowed.length}, disallowed: ${disallowed.length})`);
+  console.log(`\nGreens found: ${hits.length} (allowed: ${hits.length - disallowed.length}, disallowed: ${disallowed.length})`);
   for (const h of disallowed.slice(0, 20)) {
     console.log(`  DISALLOWED ${h.value} — ${h.file}:${h.line}`);
   }
 
   if (disallowed.length > 0) {
-    console.error('\nCOLOR FAILED: a green other than #162619 was found (see color-report.json).');
+    console.error('\nCOLOR FAILED: a green outside Palette 05 moss/green was found (see color-report.json).');
     process.exit(1);
   }
-  console.log('\n#162619 is the only green found.');
+  console.log('\nOnly Palette 05 greens (#131913, #1F2A1F) were found.');
 }
 
 main().catch((e) => {

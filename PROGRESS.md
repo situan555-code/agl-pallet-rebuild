@@ -4,3 +4,4 @@ R0.3 done. Next: R0.4.
 R0.4 done. Next: R0.5.
 R0.5 done. Next: R0.6.
 R0.6 done. Next: R0.7.
+R0.7 done. Next: Phase 0 verify / M1.

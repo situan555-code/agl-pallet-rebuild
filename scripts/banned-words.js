@@ -72,11 +72,14 @@ function stripNoise(html) {
     // <!DOCTYPE html> is markup, not an exclamation point in copy. Leaving it
     // in made every route fail the exclamation-point rule.
     .replace(/<!DOCTYPE[^>]*>/gi, '')
+    .replace(/<!doctype[^>]*>/gi, '')
     .replace(/<script(?![^>]*application\/ld\+json)[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
     // React emits <!-- -->, <!--$-->, and <!--/$--> between nodes. Those
     // are markup, not an exclamation point in copy.
     .replace(/<!--[\s\S]*?-->/g, '')
+    // Bang inside a tag is Tailwind important / markup, not editorial copy.
+    .replace(/<[^>]+>/g, (tag) => tag.replace(/!/g, ''))
     // React escapes apostrophes to &#x27; in HTML. The negation check looks
     // for "don't" / "doesn't" as written; decode those entities (and the
     // curly apostrophe) so a real negation is still a negation.

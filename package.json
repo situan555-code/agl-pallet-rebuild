@@ -17,7 +17,7 @@
     "numbers": "node scripts/numbers.js",
     "color": "node scripts/color.js",
     "routes": "node scripts/routes.js",
-    "verify": "npm run build && npm run schema && npm run copy-verbatim && npm run build-note-leak && npm run banned-words && npm run tokens && npm run numbers && npm run color && npm run routes && npm run height && npm run audit",
+    "verify": "npm run build && npm run schema && npm run copy-verbatim && npm run build-note-leak && npm run banned-words && npm run tokens && npm run numbers && npm run color && npm run routes && npm run audit",
     "build-note-leak": "node scripts/build-note-leak.js",
     "schema": "node scripts/schema.js"
   },
