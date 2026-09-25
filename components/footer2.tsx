@@ -35,7 +35,7 @@ const linkClass =
 
 const Footer2 = ({ logo, description, contact, cta, sections, copyright, className }: Footer2Props) => {
   return (
-    <footer className={cn("bg-brand-green px-6 pb-10 pt-20 text-white nav:pt-24", className)}>
+    <footer className={cn("rounded-t-section bg-green px-6 pb-10 pt-20 text-bone nav:pt-24", className)}>
       <div className="mx-auto max-w-[1440px]">
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3 nav:grid-cols-6">
           <div className="md:col-span-3 nav:col-span-2">
@@ -66,7 +66,7 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
               <h2 className="mb-6 text-display-4 text-white">{section.title}</h2>
               <ul className="space-y-3">
                 {section.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.href} className="last:pb-2">
                     <Link href={link.href} prefetch={false} className={linkClass}>
                       {link.label}
                     </Link>

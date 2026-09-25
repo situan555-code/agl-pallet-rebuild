@@ -1,7 +1,5 @@
 "use client";
 
-// Mobile sheet. Loaded on first tap so Radix Dialog + Accordion stay out of
-// the first-paint bundle (mobile LCP gate).
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -13,6 +11,7 @@ import {
 import { Button } from "@/components/Button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import type { NavItem } from "@/components/MobileNav";
+import { groupResourceChildren } from "@/lib/nav-groups";
 
 export default function HeaderSheet({
   open,
@@ -32,9 +31,9 @@ export default function HeaderSheet({
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
-        side="top"
+        side="right"
         aria-describedby={undefined}
-        className="max-h-screen overflow-auto border-b border-clay/50 bg-paper text-ink"
+        className="flex h-full max-h-screen w-full flex-col overflow-hidden border-l border-smoke bg-moss text-bone sm:max-w-md"
       >
         <SheetHeader>
           <SheetTitle>
@@ -43,57 +42,86 @@ export default function HeaderSheet({
             </Link>
           </SheetTitle>
         </SheetHeader>
-        <div className="flex flex-col p-4">
-          <Accordion type="single" collapsible className="mt-2">
-            {nav.map((item) =>
-              item.children?.length ? (
-                <AccordionItem key={item.href} value={item.href} className="border-clay/40">
-                  <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-brand-green hover:no-underline **:data-[slot=accordion-trigger-icon]:text-brand-green">
-                    {item.label}
-                  </AccordionTrigger>
-                  <AccordionContent className="[&_a]:no-underline">
-                    <ul className="grid gap-1 sm:grid-cols-2">
-                      <li className="sm:col-span-2">
-                        <SheetClose asChild>
-                          <Link
-                            href={item.href}
-                            prefetch={false}
-                            className="block rounded-sm p-3 text-sm font-semibold text-brand-green transition-colors hover:bg-fog-green/40"
-                          >
-                            {item.overviewLabel ?? item.label}
-                          </Link>
-                        </SheetClose>
-                      </li>
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <SheetClose asChild>
-                            <Link
-                              href={child.href}
-                              prefetch={false}
-                              className="block rounded-sm p-3 text-sm font-medium text-brand-green transition-colors hover:bg-fog-green/40"
-                            >
-                              {child.label}
-                            </Link>
-                          </SheetClose>
-                        </li>
-                      ))}
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              ) : (
-                <SheetClose asChild key={item.href}>
-                  <Link
-                    href={item.href}
-                    prefetch={false}
-                    className="border-b border-clay/40 py-4 text-nav-link font-semibold text-brand-green"
-                  >
-                    {item.label}
-                  </Link>
-                </SheetClose>
-              )
-            )}
-          </Accordion>
-          <div className="mt-6 flex flex-col gap-3">
+        <div className="flex min-h-0 flex-1 flex-col">
+          <div className="min-h-0 flex-1 overflow-y-auto px-4">
+            <Accordion type="single" collapsible className="mt-2">
+              {nav.map((item) =>
+                item.children?.length ? (
+                  <AccordionItem key={item.href} value={item.href} className="border-smoke">
+                    <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-bone hover:no-underline **:data-[slot=accordion-trigger-icon]:text-ice">
+                      {item.label}
+                    </AccordionTrigger>
+                    <AccordionContent className="[&_a]:no-underline">
+                      {item.href === "/resources/" ? (
+                        groupResourceChildren(item.children).map((group) =>
+                          group.items.length ? (
+                            <div key={group.name} className="mb-3">
+                              <p className="px-3 text-eyebrow font-semibold uppercase tracking-wide text-ice">
+                                {group.name}
+                              </p>
+                              <ul className="grid gap-1">
+                                {group.items.map((child) => (
+                                  <li key={child.href}>
+                                    <SheetClose asChild>
+                                      <Link
+                                        href={child.href}
+                                        prefetch={false}
+                                        className="block rounded-input p-3 text-sm font-medium text-bone hover:bg-smoke"
+                                      >
+                                        {child.label}
+                                      </Link>
+                                    </SheetClose>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null
+                        )
+                      ) : (
+                        <ul className="grid gap-1">
+                          <li>
+                            <SheetClose asChild>
+                              <Link
+                                href={item.href}
+                                prefetch={false}
+                                className="block rounded-input p-3 text-sm font-semibold text-bone hover:bg-smoke"
+                              >
+                                {item.overviewLabel ?? item.label}
+                              </Link>
+                            </SheetClose>
+                          </li>
+                          {item.children.map((child) => (
+                            <li key={child.href}>
+                              <SheetClose asChild>
+                                <Link
+                                  href={child.href}
+                                  prefetch={false}
+                                  className="block rounded-input p-3 text-sm font-medium text-bone hover:bg-smoke"
+                                >
+                                  {child.label}
+                                </Link>
+                              </SheetClose>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                ) : (
+                  <SheetClose asChild key={item.href}>
+                    <Link
+                      href={item.href}
+                      prefetch={false}
+                      className="border-b border-smoke py-4 text-nav-link font-semibold text-bone"
+                    >
+                      {item.label}
+                    </Link>
+                  </SheetClose>
+                )
+              )}
+            </Accordion>
+          </div>
+          <div className="border-t border-smoke p-4">
             <SheetClose asChild>
               <Button href={ctaHref} label={ctaLabel} variant="primary" />
             </SheetClose>

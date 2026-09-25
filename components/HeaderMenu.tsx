@@ -32,7 +32,7 @@ export function HeaderMenu({
     <>
       <button
         type="button"
-        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-clay/60 bg-cream text-brand-green hover:bg-fog-green/40 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green lg:hidden"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray/40 bg-green text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice lg:hidden"
         aria-label="Open menu"
         aria-haspopup="dialog"
         aria-expanded={open}

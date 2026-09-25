@@ -1,122 +1,151 @@
-// Server-rendered bar. Desktop dropdowns are CSS hover/focus panels so Radix
-// NavigationMenu is not in the first-paint bundle. The mobile sheet loads
-// on tap (HeaderMenu). Scroll-shadow was dropped with the client header;
-// the bar keeps the resting parchment surface.
+// Floating inset pill nav. Desktop dropdowns stay CSS-only so Radix is not
+// in the first-paint bundle. Mobile sheet and search load on demand.
 import Link from "next/link";
 import Image from "next/image";
 import site from "@/content/site.json";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
 import { HeaderMenu } from "@/components/HeaderMenu";
+import { NavFrame } from "@/components/NavFrame";
+import { SearchTrigger } from "@/components/SearchTrigger";
 import type { NavItem } from "@/components/MobileNav";
+import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
 
-const DARK_LOGO = {
-  ...site.logo,
-  src: "/assets/agl_pallet_logo-dark.svg",
-};
+const LIGHT_LOGO = site.logo;
 
-function panelLayout(count: number) {
-  if (count > 8) return { width: "w-[min(40rem,calc(100vw-3rem))] xl:w-184", grid: "grid-cols-2 xl:grid-cols-3" };
-  if (count > 3) return { width: "w-104", grid: "grid-cols-2" };
-  return { width: "w-[18rem]", grid: "grid-cols-1" };
-}
-
-// The certification-claim scanner flags the bare token ISPM-15, including in
-// hrefs. Resource guides that name the standard stay on /resources/; they are
-// not repeated in this server-rendered bar, which is on every SPEC route.
 function desktopChildren(item: NavItem) {
   return (item.children ?? []).filter((child) => !/ispm-15/i.test(child.href + child.label));
 }
 
 const itemClass =
-  "inline-flex h-10 items-center rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
+  "inline-flex h-9 items-center rounded-full px-3 text-nav-link font-semibold text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice";
 
 export function Header() {
   const nav = site.nav as NavItem[];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-paper/90 backdrop-blur-xs">
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-3">
-        <Link
-          href="/"
-          prefetch={false}
-          className="shrink-0 rounded-sm focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
-        >
-          <Image
-            src={DARK_LOGO.src}
-            width={DARK_LOGO.width}
-            height={DARK_LOGO.height}
-            alt={DARK_LOGO.alt}
-            priority
-          />
-        </Link>
+    <NavFrame>
+      <Link
+        href="/"
+        prefetch={false}
+        className="shrink-0 rounded-sm focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ice"
+      >
+        <Image
+          src={LIGHT_LOGO.src}
+          width={LIGHT_LOGO.width}
+          height={LIGHT_LOGO.height}
+          alt={LIGHT_LOGO.alt}
+          priority
+        />
+      </Link>
 
-        <nav className="hidden lg:block" aria-label="Main">
-          <ul className="flex items-center gap-1">
-            {nav.map((item, index) => {
-              const children = desktopChildren(item);
-              const alignEnd = index >= nav.length / 2;
-              if (!children.length) {
-                return (
-                  <li key={item.href}>
-                    <Link href={item.href} prefetch={false} className={itemClass}>
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              }
-              const layout = panelLayout(children.length);
+      <nav className="hidden min-w-0 lg:block" aria-label="Main">
+        <ul className="flex items-center gap-0.5">
+          {nav.map((item, index) => {
+            const children = desktopChildren(item);
+            const alignEnd = index >= nav.length / 2;
+            if (!children.length) {
               return (
-                <li key={item.href} className="group relative">
-                  <Link href={item.href} prefetch={false} className={itemClass} aria-haspopup="true">
+                <li key={item.href}>
+                  <Link href={item.href} prefetch={false} className={itemClass}>
                     {item.label}
                   </Link>
+                </li>
+              );
+            }
+            const isResources = item.href === "/resources/";
+            const groups = isResources ? groupResourceChildren(children) : null;
+            const featured = children.find((c) => c.href === TRUCKLOAD_HREF);
+            return (
+              <li key={item.href} className="group relative">
+                <Link href={item.href} prefetch={false} className={itemClass} aria-haspopup="true">
+                  {item.label}
+                </Link>
+                <div
+                  className={cn(
+                    "invisible absolute top-full z-50 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
+                    alignEnd ? "right-0" : "left-0"
+                  )}
+                >
                   <div
                     className={cn(
-                      "invisible absolute top-full z-50 pt-2 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
-                      alignEnd ? "right-0" : "left-0"
+                      "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-card border border-smoke bg-green p-3 text-bone shadow-lg",
+                      isResources ? "w-[min(44rem,calc(100vw-3rem))]" : "w-[18rem]"
                     )}
                   >
-                    <div
-                      className={cn(
-                        "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-sm border border-clay/60 bg-cream p-2 text-brand-green shadow-lg",
-                        layout.width
-                      )}
+                    <Link
+                      href={item.href}
+                      prefetch={false}
+                      className="mb-2 block rounded-input border-b border-smoke p-3 text-sm font-semibold hover:bg-smoke/60"
                     >
-                      <Link
-                        href={item.href}
-                        prefetch={false}
-                        className="mb-1 block rounded-sm border-b border-clay/40 p-3 text-sm font-semibold text-brand-green transition-colors hover:bg-fog-green/40"
-                      >
-                        {item.overviewLabel ?? item.label}
-                      </Link>
-                      <ul className={cn("grid gap-1", layout.grid)}>
+                      {item.overviewLabel ?? item.label}
+                    </Link>
+                    {groups ? (
+                      <div className="grid gap-4 md:grid-cols-3">
+                        {groups.map((group) =>
+                          group.items.length ? (
+                            <div key={group.name}>
+                              <p className="px-3 text-eyebrow font-semibold uppercase tracking-wide text-ice">
+                                {group.name}
+                              </p>
+                              <ul className="mt-1">
+                                {group.items.map((child) => (
+                                  <li key={child.href}>
+                                    <Link
+                                      href={child.href}
+                                      prefetch={false}
+                                      className="block rounded-input p-2 text-sm font-medium leading-snug hover:bg-smoke/60"
+                                    >
+                                      {child.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null
+                        )}
+                      </div>
+                    ) : (
+                      <ul className="grid gap-1">
                         {children.map((child) => (
                           <li key={child.href}>
                             <Link
                               href={child.href}
                               prefetch={false}
-                              className="block rounded-sm p-3 text-sm font-medium leading-snug text-brand-green transition-colors hover:bg-fog-green/40"
+                              className="block rounded-input p-3 text-sm font-medium leading-snug hover:bg-smoke/60"
                             >
                               {child.label}
                             </Link>
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    )}
+                    {featured ? (
+                      <Link
+                        href={featured.href}
+                        prefetch={false}
+                        className="mt-3 block rounded-card border border-ice/30 bg-moss p-4 text-sm font-semibold hover:bg-smoke"
+                      >
+                        {featured.label}
+                      </Link>
+                    ) : null}
                   </div>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
-        </div>
-
-        <HeaderMenu nav={nav} logo={DARK_LOGO} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
+      <div className="hidden items-center gap-2 lg:flex">
+        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-gray/40 px-3 text-nav-link font-semibold text-bone hover:bg-smoke" />
+        <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
       </div>
-    </header>
+
+      <div className="flex items-center gap-2 lg:hidden">
+        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-gray/40 px-3 text-nav-link font-semibold text-bone" />
+        <HeaderMenu nav={nav} logo={LIGHT_LOGO} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
+      </div>
+    </NavFrame>
   );
 }
