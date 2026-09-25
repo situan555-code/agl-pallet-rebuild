@@ -11,13 +11,15 @@ export function generateStaticParams() {
   return questions.map((item) => ({ slug: item.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const item = getQuestion(params.slug);
   if (!item) return {};
   return pageMeta(`${item.question} — AGL Pallet`, plainText(item.directAnswer), questionPath(item.slug));
 }
 
-export default function QuestionRoute({ params }: { params: { slug: string } }) {
+export default async function QuestionRoute(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const item = getQuestion(params.slug);
   if (!item) notFound();
   return <QuestionArticle item={item} />;

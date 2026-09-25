@@ -62,7 +62,7 @@ function StampDiagram({ item }: { item: QuestionItem }) {
         <div className="grid grid-cols-[auto_1fr] items-center gap-4 sm:gap-6">
           <div className="flex flex-col items-center gap-2">
             <WheatMark />
-            <p className="max-w-[8rem] text-center text-[12px] font-semibold uppercase tracking-wide text-eyebrow-ink">IPPC symbol</p>
+            <p className="max-w-32 text-center text-[12px] font-semibold uppercase tracking-wide text-eyebrow-ink">IPPC symbol</p>
           </div>
           <div className="border-l border-brand-green/30 pl-4 sm:pl-6">
             <p className="font-display text-step-lg uppercase text-brand-green">{mark.facility}</p>

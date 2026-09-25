@@ -31,7 +31,7 @@ interface Footer2Props {
 }
 
 const linkClass =
-  "rounded-sm text-link text-white/85 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "rounded-sm text-link text-white/85 transition-colors hover:text-white focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 const Footer2 = ({ logo, description, contact, cta, sections, copyright, className }: Footer2Props) => {
   return (
@@ -39,7 +39,7 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
       <div className="mx-auto max-w-[1440px]">
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3 nav:grid-cols-6">
           <div className="md:col-span-3 nav:col-span-2">
-            <Link href="/" prefetch={false} className="inline-block rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+            <Link href="/" prefetch={false} className="inline-block rounded-sm focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
               <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
             </Link>
             <p className="mt-6 max-w-sm text-body text-white/80">{description}</p>

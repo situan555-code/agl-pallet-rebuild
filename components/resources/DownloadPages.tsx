@@ -20,10 +20,10 @@ import {
 import { stampDecoderCopy } from "@/lib/stamp-decoder";
 
 const pdfLinkClass =
-  "inline-flex rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
+  "inline-flex rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
 
 const textLinkClass =
-  "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
+  "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
 
 export function DownloadIndexList({
   eyebrow = downloadsIndex.hubEyebrow,

@@ -19,7 +19,10 @@ function comparisonLine(perTrip: number, oneWay: number | undefined) {
   return `One-way is ${usd(Math.abs(delta))} less per trip than the multi-trip pallet.`;
 }
 
-export default function CostPerTripPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
+export default async function CostPerTripPage(
+  props: { searchParams: Promise<Record<string, string | string[] | undefined>> }
+) {
+  const searchParams = await props.searchParams;
   const exampleMode = !hasParams(searchParams);
   const ex = content.example;
   const price = exampleMode ? ex.price : optionalNumParam(searchParams, "price", 0.01, 100000);

@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/site-url";
 // Search and AI crawlers named explicitly so a later blanket rule cannot
 // silently shut them out. No llms.txt (Resource Library blueprint).
 // Stays permissive on *.vercel.app — do not Disallow: /. The noindex gate is
-// the host-conditional header and meta tag (middleware.ts, app/layout.tsx).
+// the host-conditional header and meta tag (proxy.ts, app/layout.tsx).
 const ALLOWED_BOTS = [
   "Googlebot",
   "Bingbot",

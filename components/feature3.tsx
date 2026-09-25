@@ -70,7 +70,7 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
           <Link
             href={item.href}
             prefetch={false}
-            className="inline-flex items-baseline gap-3 rounded-sm underline-offset-[6px] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
+            className="inline-flex items-baseline gap-3 rounded-sm underline-offset-[6px] hover:underline focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
           >
             {item.title}
             <ArrowIcon className="h-5 w-5 shrink-0 translate-y-0.5 transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
@@ -127,7 +127,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
     return (
       <a
         href={item.href}
-        className={cn(cardClass, "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
+        className={cn(cardClass, "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
       >
         {inner}
       </a>
@@ -137,7 +137,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
     <Link
       href={item.href}
       prefetch={false}
-      className={cn(cardClass, "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
+      className={cn(cardClass, "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
     >
       {inner}
     </Link>

@@ -6,7 +6,7 @@ import { Fragment } from "react";
 const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 
 const linkClass =
-  "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
+  "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
 
 export function RichText({ text }: { text: string }) {
   const parts: React.ReactNode[] = [];

@@ -1,6 +1,223 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-ink: #3b342e;
+  --color-brand-green: #1f2a1f;
+  --color-paper: #f2ebdd;
+  --color-mint: #c4ccc0;
+  --color-clay: #b9a78f;
+  --color-cream: #fffdf7;
+  --color-fog-green: #c4ccc0;
+  --color-dark-cocoa: #3b342e;
+  --color-surface: #c4ccc0;
+  --color-surface-alt: #fffdf7;
+  --color-eyebrow-ink: #3b342e;
+  --color-hairline: rgba(31, 42, 31, 0.18);
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  --color-ring: rgb(var(--ring));
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
+
+  --color-destructive: rgb(var(--destructive));
+  --color-destructive-foreground: rgb(var(--destructive-foreground));
+
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+
+  --color-popover: rgb(var(--popover));
+  --color-popover-foreground: rgb(var(--popover-foreground));
+
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+
+  --color-sidebar: rgb(var(--sidebar));
+  --color-sidebar-foreground: rgb(var(--sidebar-foreground));
+  --color-sidebar-primary: rgb(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: rgb(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: rgb(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: rgb(var(--sidebar-accent-foreground));
+  --color-sidebar-border: rgb(var(--sidebar-border));
+  --color-sidebar-ring: rgb(var(--sidebar-ring));
+
+  --radius-input: 4px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: var(--font-inter), Helvetica, Arial, sans-serif;
+  --font-display: var(--font-anton), sans-serif;
+
+  --text-display-1: clamp(40px, 37px + 0.76vw, 48px);
+  --text-display-1--line-height: 1.2;
+  --text-display-2: clamp(35px, 32px + 0.62vw, 41px);
+  --text-display-2--line-height: 1.2;
+  --text-display-3: 20px;
+  --text-display-3--line-height: 20px;
+  --text-display-4: 14px;
+  --text-display-4--line-height: 14px;
+  --text-display-kicker: 22px;
+  --text-display-kicker--line-height: 1.1;
+  --text-display-kicker--letter-spacing: 0.08em;
+  --text-display-row: 28px;
+  --text-display-row--line-height: 1.15;
+  --text-display-numeral: 40px;
+  --text-display-numeral--line-height: 1;
+  --text-step-sm: 16px;
+  --text-step-sm--line-height: 20.8px;
+  --text-step-lg: 25px;
+  --text-step-lg--line-height: 25px;
+  --text-body: 14px;
+  --text-body--line-height: 23.8px;
+  --text-eyebrow: 11px;
+  --text-eyebrow--line-height: 23.8px;
+  --text-eyebrow--letter-spacing: 1px;
+  --text-link: 14px;
+  --text-link--line-height: 23px;
+  --text-nav-link: 14px;
+  --text-nav-link--line-height: 14px;
+  --text-button: 14px;
+  --text-button--line-height: 23.8px;
+
+  --breakpoint-nav: 980px;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility section-y {
+  /* G10: section vertical rhythm on a shared token scale */
+  @apply py-20 nav:py-28;
+}
+
+@utility section-y-cta {
+  @apply py-20 nav:py-24;
+}
+
+@utility text-lead {
+  /* G14: shared lead paragraph (Products taglines + any peer leads) */
+  @apply text-body font-bold;
+}
+
+@utility prose-measure {
+  /* G17: readable body measure */
+  max-width: 65ch;
+}
+
+@utility section-hairline {
+  /* Section J: occasional full-width rule between consecutive paper sections */
+  @apply border-t border-brand-green/15;
+}
+
+@utility fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+
+  &.fade-pending:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    &.fade-pending:not(.is-visible) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    &.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+@utility fade-pending {
+  &.fade-in:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & .fade-in:not(.is-visible) {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+@utility is-visible {
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
 
 @layer base {
   html,
@@ -134,59 +351,8 @@
   }
 }
 
-@layer components {
-  /* G10: section vertical rhythm on a shared token scale */
-  .section-y {
-    @apply py-20 nav:py-28;
-  }
-
-  .section-y-cta {
-    @apply py-20 nav:py-24;
-  }
-
-  /* G14: shared lead paragraph (Products taglines + any peer leads) */
-  .text-lead {
-    @apply text-body font-bold;
-  }
-
-  /* G17: readable body measure */
-  .prose-measure {
-    max-width: 65ch;
-  }
-
-  /* Section J: occasional full-width rule between consecutive paper sections */
-  .section-hairline {
-    @apply border-t border-brand-green/15;
-  }
-}
-
 @layer utilities {
-  .fade-in {
-    opacity: 1;
-    transform: translateY(0);
-    transition:
-      opacity 0.6s ease-out,
-      transform 0.6s ease-out;
-  }
-
-  .fade-in.fade-pending:not(.is-visible) {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  .fade-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .fade-in,
-    .fade-in.fade-pending:not(.is-visible),
-    .fade-in.is-visible {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
 
     *,
     *::before,

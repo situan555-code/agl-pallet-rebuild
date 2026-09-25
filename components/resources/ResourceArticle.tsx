@@ -136,7 +136,7 @@ export function DirectAnswer({ text }: { text: string }) {
 export function DataTable({ table }: { table: ResourceTable }) {
   return (
     <figure className="mt-6">
-      <div role="region" aria-label={table.caption} tabIndex={0} className="overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-green">
+      <div role="region" aria-label={table.caption} tabIndex={0} className="overflow-x-auto focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-brand-green">
         <table className="w-full min-w-[520px] border-collapse text-left text-[15px] leading-snug">
           <caption className="mb-3 caption-top text-left text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
             {table.caption}

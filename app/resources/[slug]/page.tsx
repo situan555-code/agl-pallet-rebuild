@@ -19,7 +19,8 @@ export function generateStaticParams() {
   return hub.pillars.filter((p) => !DEDICATED_ROUTES.includes(p.slug)).map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const guide = getGuide(params.slug);
   if (guide) return pageMeta(guide.metaTitle, guide.metaDescription, `/resources/${guide.slug}/`);
   const pillar = getHubPillar(params.slug);
@@ -27,7 +28,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return pageMeta(`${pillar.title} — AGL Pallet`, pillar.directAnswer, pillar.href);
 }
 
-export default function ResourcePage({ params }: { params: { slug: string } }) {
+export default async function ResourcePage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const guide = getGuide(params.slug);
   if (guide) return <ResourceArticle pillar={guide} />;
 

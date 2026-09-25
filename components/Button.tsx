@@ -34,7 +34,7 @@ export function Button({
     <Link
       href={href}
       prefetch={false}
-      className={`relative inline-block rounded-full py-[15px] pl-[18px] pr-[50px] text-button font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+      className={`relative inline-block rounded-full py-[15px] pl-[18px] pr-[50px] text-button font-bold transition-colors focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 ${
         variant.endsWith("light")
           ? "focus-visible:outline-white"
           : "focus-visible:outline-brand-green"

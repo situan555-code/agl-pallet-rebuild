@@ -10,10 +10,11 @@ export const metadata: Metadata = pageMeta(
   STAMP_DECODER_PATH
 );
 
-export default function StampDecoderRoute({
-  searchParams,
-}: {
-  searchParams: Record<string, string | string[] | undefined>;
-}) {
+export default async function StampDecoderRoute(
+  props: {
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+  }
+) {
+  const searchParams = await props.searchParams;
   return <StampDecoderPage result={decodeStampParams(searchParams)} />;
 }

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { RichText } from "@/components/resources/RichText";
 
 const inputClass =
-  "mt-2 block w-full rounded-input border border-brand-green/30 bg-cream px-3 py-2 text-[16px] text-ink focus-visible:border-brand-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green";
+  "mt-2 block w-full rounded-input border border-brand-green/30 bg-cream px-3 py-2 text-[16px] text-ink focus-visible:border-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green";
 
 const labelClass = "block text-[14px] font-semibold leading-snug text-brand-green";
 
@@ -32,7 +32,7 @@ export function CalcForm({
       <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
         <button
           type="submit"
-          className="rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+          className="rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
         >
           {submitLabel}
         </button>

@@ -48,7 +48,7 @@ export default function HeaderSheet({
             {nav.map((item) =>
               item.children?.length ? (
                 <AccordionItem key={item.href} value={item.href} className="border-clay/40">
-                  <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-brand-green hover:no-underline [&_[data-slot=accordion-trigger-icon]]:text-brand-green">
+                  <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-brand-green hover:no-underline **:data-[slot=accordion-trigger-icon]:text-brand-green">
                     {item.label}
                   </AccordionTrigger>
                   <AccordionContent className="[&_a]:no-underline">

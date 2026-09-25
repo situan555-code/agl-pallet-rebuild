@@ -17,7 +17,7 @@ interface ImageBandProps {
 export function ImageBand({ eyebrow, heading, body, image, cta, className }: ImageBandProps) {
   const blur = getBlurDataURL(image.src);
   return (
-    <section className={cn("relative isolate min-h-[28rem] overflow-hidden scroll-mt-24 nav:min-h-[34rem]", className)}>
+    <section className={cn("relative isolate min-h-112 overflow-hidden scroll-mt-24 nav:min-h-136", className)}>
       <Image
         src={image.src}
         alt={image.alt}
@@ -29,8 +29,8 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
         blurDataURL={blur}
       />
       <div aria-hidden="true" className="absolute inset-0 bg-brand-green/82" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-brand-green via-brand-green/70 to-transparent" />
-      <div className="relative z-10 mx-auto flex min-h-[28rem] max-w-[1440px] items-center px-6 py-20 nav:min-h-[34rem] nav:py-28">
+      <div aria-hidden="true" className="absolute inset-0 bg-linear-to-r from-brand-green via-brand-green/70 to-transparent" />
+      <div className="relative z-10 mx-auto flex min-h-112 max-w-[1440px] items-center px-6 py-20 nav:min-h-136 nav:py-28">
         <div className="max-w-xl">
           {eyebrow && (
             <p className="text-eyebrow font-semibold uppercase tracking-wide text-fog-green">

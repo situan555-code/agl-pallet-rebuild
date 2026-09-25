@@ -138,7 +138,7 @@ export function Gallery4({
                         : "bg-cream ring-clay/40 hover:shadow-[0_20px_40px_-28px_rgba(31,42,31,0.35)]",
                     )}
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-4/3 overflow-hidden">
                       <Image
                         src={item.image}
                         alt=""

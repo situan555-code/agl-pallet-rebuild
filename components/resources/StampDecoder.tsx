@@ -8,12 +8,12 @@ import { getHubPillar } from "@/lib/resources";
 import { stampDecoderCopy, type StampResult } from "@/lib/stamp-decoder";
 
 const inputClass =
-  "mt-2 block w-full rounded-input border border-brand-green/30 bg-cream px-3 py-2 text-[16px] text-ink focus-visible:border-brand-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green";
+  "mt-2 block w-full rounded-input border border-brand-green/30 bg-cream px-3 py-2 text-[16px] text-ink focus-visible:border-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green";
 
 const labelClass = "block text-[14px] font-semibold leading-snug text-brand-green";
 
 const textLinkClass =
-  "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
+  "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
 
 function errorFor(result: StampResult | null, field: StampResult["errors"][number]["field"]) {
   return result?.errors.find((error) => error.field === field);
@@ -147,7 +147,7 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
                     type="checkbox"
                     value="1"
                     defaultChecked={input.dun}
-                    className="mt-1 h-4 w-4 accent-brand-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+                    className="mt-1 h-4 w-4 accent-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
                   />
                   <span>{copy.form.dunLabel}</span>
                 </label>
@@ -159,7 +159,7 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <button
                   type="submit"
-                  className="rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+                  className="rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
                 >
                   {copy.form.submit}
                 </button>

@@ -15,8 +15,8 @@ const DARK_LOGO = {
 };
 
 function panelLayout(count: number) {
-  if (count > 8) return { width: "w-[min(40rem,calc(100vw-3rem))] xl:w-[46rem]", grid: "grid-cols-2 xl:grid-cols-3" };
-  if (count > 3) return { width: "w-[26rem]", grid: "grid-cols-2" };
+  if (count > 8) return { width: "w-[min(40rem,calc(100vw-3rem))] xl:w-184", grid: "grid-cols-2 xl:grid-cols-3" };
+  if (count > 3) return { width: "w-104", grid: "grid-cols-2" };
   return { width: "w-[18rem]", grid: "grid-cols-1" };
 }
 
@@ -28,18 +28,18 @@ function desktopChildren(item: NavItem) {
 }
 
 const itemClass =
-  "inline-flex h-10 items-center rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
+  "inline-flex h-10 items-center rounded-sm bg-transparent px-3 text-nav-link font-semibold text-brand-green hover:bg-fog-green/40 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
 
 export function Header() {
   const nav = site.nav as NavItem[];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-paper/90 backdrop-blur-sm">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-paper/90 backdrop-blur-xs">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-3">
         <Link
           href="/"
           prefetch={false}
-          className="shrink-0 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
+          className="shrink-0 rounded-sm focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green"
         >
           <Image
             src={DARK_LOGO.src}
@@ -114,7 +114,7 @@ export function Header() {
           <Link
             href={site.ctaNav.href}
             prefetch={false}
-            className="inline-flex h-10 items-center rounded-full bg-brand-green px-6 text-nav-link font-semibold text-cream hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+            className="inline-flex h-10 items-center rounded-full bg-brand-green px-6 text-nav-link font-semibold text-cream hover:bg-ink focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
           >
             {site.ctaNav.label}
           </Link>

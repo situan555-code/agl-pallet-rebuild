@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
-  // Hand trailing-slash + §1 301s in middleware so /about returns 301, not 308→/about/.
+  // Hand trailing-slash + §1 301s in proxy.ts so /about returns 301, not 308→/about/.
   skipTrailingSlashRedirect: true,
-  skipMiddlewareUrlNormalize: true,
+  skipProxyUrlNormalize: true,
   images: {
     // AVIF tried and reverted 2026-09-14 — measured worse LCP than WebP under
     // this sandbox's simulated mobile CPU throttling (decode cost), even with

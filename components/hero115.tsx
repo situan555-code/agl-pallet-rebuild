@@ -76,7 +76,7 @@ const Hero115 = ({
                 <Link
                   href={primary.href}
                   prefetch={false}
-                  className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-brand-green px-6 text-button font-bold text-cream hover:bg-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green sm:w-auto"
+                  className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-brand-green px-6 text-button font-bold text-cream hover:bg-ink focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green sm:w-auto"
                 >
                   {primary.label}
                   <ArrowRightIcon className="size-4" />
@@ -89,7 +89,7 @@ const Hero115 = ({
                       key={button.label}
                       href={button.href}
                       prefetch={false}
-                      className="rounded-full border border-brand-green/40 px-5 py-2.5 text-nav-link font-semibold text-brand-green transition-colors hover:bg-brand-green/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+                      className="rounded-full border border-brand-green/40 px-5 py-2.5 text-nav-link font-semibold text-brand-green transition-colors hover:bg-brand-green/5 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
                     >
                       {button.label}
                     </Link>
@@ -99,7 +99,7 @@ const Hero115 = ({
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-[3/4] h-full max-h-[524px] w-full max-w-5xl overflow-hidden rounded-lg border border-clay/60 shadow-[0_24px_60px_-28px_rgba(31,42,31,0.35)] md:aspect-video">
+          <div className="relative mx-auto aspect-3/4 h-full max-h-[524px] w-full max-w-5xl overflow-hidden rounded-lg border border-clay/60 shadow-[0_24px_60px_-28px_rgba(31,42,31,0.35)] md:aspect-video">
             <HeroVideo src={video.src} poster={video.poster} />
           </div>
         </div>

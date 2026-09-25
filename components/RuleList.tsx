@@ -64,7 +64,7 @@ export function RuleList({
               <Link
                 href={item.href}
                 prefetch={false}
-                className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+                className="block focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white"
               >
                 {inner}
               </Link>

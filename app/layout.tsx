@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Same host check as middleware. headers() is request-time, so this meta
   // is absent on aglpallet.com without a rebuild. Next emits the meta tag
   // only; middleware sets the matching X-Robots-Tag header.
-  if (isVercelAppHost(headers().get("host"))) {
+  if (isVercelAppHost((await headers()).get("host"))) {
     metadata.robots = { index: false, follow: false };
   }
 

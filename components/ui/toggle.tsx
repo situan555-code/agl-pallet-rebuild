@@ -39,7 +39,7 @@ const toggleVariants = cva(
           data-[state=on]:hover:bg-primary/10
         `,
         outline: `
-          border border-input bg-transparent shadow-xs
+          border border-input bg-transparent shadow-2xs
           hover:bg-accent hover:text-accent-foreground
         `,
       },

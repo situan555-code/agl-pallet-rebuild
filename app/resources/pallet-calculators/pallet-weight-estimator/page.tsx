@@ -12,7 +12,10 @@ const SPECIES_IDS = content.species.map((s) => s.id);
 
 export const metadata: Metadata = pageMeta(content.metaTitle, content.metaDescription, PATH);
 
-export default function PalletWeightEstimatorPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
+export default async function PalletWeightEstimatorPage(
+  props: { searchParams: Promise<Record<string, string | string[] | undefined>> }
+) {
+  const searchParams = await props.searchParams;
   const speciesId = strParam(searchParams, "sp", SPECIES_IDS, content.defaults.species);
   const species = content.species.find((s) => s.id === speciesId)!;
   const mc = numParam(searchParams, "mc", content.defaults.mc, 6, 150);

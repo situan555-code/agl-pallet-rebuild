@@ -55,7 +55,7 @@ export default function GlossaryPage() {
                   {list.length > 0 ? (
                     <a
                       href={`#letter-${letter}`}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-sm font-display text-[18px] text-brand-green hover:bg-brand-green hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-green"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-sm font-display text-[18px] text-brand-green hover:bg-brand-green hover:text-white focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-brand-green"
                     >
                       {letter}
                     </a>

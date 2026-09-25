@@ -57,7 +57,7 @@ export default function Home() {
         heading={home.whatWeDo.heading}
         paragraphs={home.whatWeDo.paragraphs}
         media={
-          <div className="relative aspect-[5/6] w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
+          <div className="relative aspect-5/6 w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
             <DeferredFillImage
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
@@ -127,7 +127,7 @@ export default function Home() {
         paragraphs={home.whoWeAre.paragraphs}
         cta={home.whoWeAre.cta}
         media={
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-sm ring-1 ring-clay/40">
             <Image
               src="/assets/why_agl_exist_sidepic.jpg"
               alt=""

@@ -68,7 +68,7 @@ const Contact2 = ({
                   <li key={method.label} className="border-b border-white/20">
                     <a
                       href={method.href}
-                      className="group flex items-center gap-4 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      className="group flex items-center gap-4 py-5 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-white/70" />
                       <span className="flex flex-col">

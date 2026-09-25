@@ -47,7 +47,7 @@ const Hero1 = ({
   return (
     <section className={cn("relative scroll-mt-0 text-cream", className)}>
       {/* Full-bleed photographic ground */}
-      <div className="relative isolate min-h-[100svh] overflow-hidden bg-brand-green">
+      <div className="relative isolate min-h-svh overflow-hidden bg-brand-green">
         <Image
           src={image.src}
           alt={image.alt}
@@ -62,16 +62,16 @@ const Hero1 = ({
         {/* Sophisticated Natural vignette — AGL green, not black carnival */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-brand-green/95 via-brand-green/78 to-brand-green/45"
+          className="absolute inset-0 bg-linear-to-r from-brand-green/95 via-brand-green/78 to-brand-green/45"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-brand-green via-brand-green/20 to-brand-green/55"
+          className="absolute inset-0 bg-linear-to-t from-brand-green via-brand-green/20 to-brand-green/55"
         />
         {/* Clay edge hairline at bottom of photo field */}
         <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-clay/40" />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-end px-6 pb-28 pt-36 nav:pb-36 nav:pt-40">
+        <div className="relative z-10 mx-auto flex min-h-svh max-w-[1440px] flex-col justify-end px-6 pb-28 pt-36 nav:pb-36 nav:pt-40">
           <div className="grid items-end gap-10 nav:grid-cols-12 nav:gap-12">
             <div className="nav:col-span-7">
               <p className="text-eyebrow font-semibold uppercase tracking-wide text-fog-green">
@@ -81,7 +81,7 @@ const Hero1 = ({
                 {eyebrow}
               </p>
               <span aria-hidden="true" className="mt-5 block h-0.5 w-14 bg-clay" />
-              <h1 className="mt-6 max-w-[18ch] break-words text-display-1 text-cream nav:text-[56px] nav:leading-[1.08]">
+              <h1 className="mt-6 max-w-[18ch] wrap-break-word text-display-1 text-cream nav:text-[56px] nav:leading-[1.08]">
                 {heading}
               </h1>
               <p className="prose-measure mt-6 text-body text-cream/85">{description}</p>
@@ -94,7 +94,7 @@ const Hero1 = ({
 
             {secondaryImage && (
               <div className="relative hidden nav:col-span-5 nav:block">
-                <div className="relative ml-auto aspect-[4/5] w-full max-w-[380px] overflow-hidden rounded-sm ring-1 ring-clay/35">
+                <div className="relative ml-auto aspect-4/5 w-full max-w-[380px] overflow-hidden rounded-sm ring-1 ring-clay/35">
                   <Image
                     src={secondaryImage.src}
                     alt={secondaryImage.alt}

@@ -11,7 +11,10 @@ const PATH = calculatorPath(content.slug);
 
 export const metadata: Metadata = pageMeta(content.metaTitle, content.metaDescription, PATH);
 
-export default function BoxesPerPalletPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
+export default async function BoxesPerPalletPage(
+  props: { searchParams: Promise<Record<string, string | string[] | undefined>> }
+) {
+  const searchParams = await props.searchParams;
   const d = content.defaults;
   const palletL = numParam(searchParams, "pl", d.palletL, 12, 120);
   const palletW = numParam(searchParams, "pw", d.palletW, 12, 120);

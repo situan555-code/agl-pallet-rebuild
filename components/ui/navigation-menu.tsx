@@ -58,7 +58,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium outline-none transition-all hover:bg-muted focus:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-muted/50 data-[state=open]:hover:bg-muted data-[state=open]:focus:bg-muted"
+  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium outline-hidden transition-all hover:bg-muted focus:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-muted/50 data-[state=open]:hover:bg-muted data-[state=open]:focus:bg-muted"
 )
 
 function NavigationMenuTrigger({
@@ -113,7 +113,7 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full origin-top overflow-hidden rounded-lg bg-popover text-popover-foreground shadow ring-1 ring-foreground/10 duration-100 md:w-[var(--radix-navigation-menu-viewport-width)] data-[state=open]:animate-in data-[state=open]:zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:zoom-out-90",
+          "relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-sm ring-1 ring-foreground/10 duration-100 md:w-(--radix-navigation-menu-viewport-width) data-[state=open]:animate-in data-[state=open]:zoom-in-90 data-[state=closed]:animate-out data-[state=closed]:zoom-out-90",
           className
         )}
         {...props}
@@ -130,7 +130,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex items-center gap-2 rounded-lg p-2 text-sm outline-none transition-all hover:bg-muted focus:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50 data-[active]:bg-muted/50 data-[active]:hover:bg-muted data-[active]:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-2 rounded-lg p-2 text-sm outline-hidden transition-all hover:bg-muted focus:bg-muted focus-visible:ring-2 focus-visible:ring-ring/50 data-active:bg-muted/50 data-active:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -146,7 +146,7 @@ function NavigationMenuIndicator({
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
       className={cn(
-        "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:animate-in data-[state=visible]:fade-in",
+        "top-full z-1 flex h-1.5 items-end justify-center overflow-hidden data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:animate-in data-[state=visible]:fade-in",
         className
       )}
       {...props}

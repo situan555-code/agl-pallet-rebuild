@@ -18,7 +18,10 @@ const PATH = `/resources/${guide.slug}/`;
 
 export const metadata: Metadata = pageMeta(guide.metaTitle, guide.metaDescription, PATH);
 
-export default function PalletsPerTruckloadPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
+export default async function PalletsPerTruckloadPage(
+  props: { searchParams: Promise<Record<string, string | string[] | undefined>> }
+) {
+  const searchParams = await props.searchParams;
   return (
     <ResourceArticle
       pillar={guide}

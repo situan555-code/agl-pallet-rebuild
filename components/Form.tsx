@@ -127,7 +127,7 @@ export function Form({
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {fields.map((field) => {
           const isInvalid = missing.includes(field.name);
-          const inputClass = `w-full rounded-input border bg-white px-4 py-3 text-ink text-body outline-none ${
+          const inputClass = `w-full rounded-input border bg-white px-4 py-3 text-ink text-body outline-hidden ${
             isInvalid ? "border-red-500" : "border-transparent"
           }`;
           const wrapperClass =
