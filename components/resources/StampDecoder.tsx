@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
 import { BreadcrumbJsonLd, WebApplicationJsonLd } from "@/components/JsonLd";
 import { ArticleHeader, ResourceCta } from "@/components/resources/ResourceArticle";
@@ -157,12 +158,9 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <button
-                  type="submit"
-                  className="rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
-                >
+                <Button type="submit" variant="primary">
                   {copy.form.submit}
-                </button>
+                </Button>
                 <Link href={STAMP_DECODER_PATH} prefetch={false} className={textLinkClass}>
                   {copy.form.reset}
                 </Link>

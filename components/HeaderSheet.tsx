@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import type { NavItem } from "@/components/MobileNav";
 
@@ -95,14 +95,7 @@ export default function HeaderSheet({
           </Accordion>
           <div className="mt-6 flex flex-col gap-3">
             <SheetClose asChild>
-              <Button
-                asChild
-                className="h-11 rounded-full bg-brand-green text-nav-link font-semibold text-cream hover:bg-ink"
-              >
-                <Link href={ctaHref} prefetch={false}>
-                  {ctaLabel}
-                </Link>
-              </Button>
+              <Button href={ctaHref} label={ctaLabel} variant="primary" />
             </SheetClose>
           </div>
         </div>

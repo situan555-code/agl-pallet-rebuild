@@ -82,7 +82,7 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
       {item.description && <p className="prose-measure mt-4 text-body text-ink">{item.description}</p>}
       {item.cta && (
         <div className="mt-6">
-          <Button href={item.cta.href} label={item.cta.label} variant="ghost-dark" />
+          <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
         </div>
       )}
     </div>
@@ -111,7 +111,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
       {item.description && <p className="mt-3 text-body text-ink">{item.description}</p>}
       {item.cta && (
         <div className="mt-auto pt-6">
-          <Button href={item.cta.href} label={item.cta.label} variant="ghost-dark" />
+          <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
         </div>
       )}
       {item.href && (

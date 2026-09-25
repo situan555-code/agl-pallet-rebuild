@@ -1,15 +1,15 @@
 // Adapted from free @shadcnblocks/hero115. Centered copy + concentric clay
 // rings + framed local photo. Demo SaaS dashboard / Wifi / fake KPI byline
 // removed. Driven by content/pages/home.json (SPEC_V1 verbatim). Palette 03.
-import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { ArrowRightIcon, BoxesIcon } from "@/components/inline-icons";
+import { BoxesIcon } from "@/components/inline-icons";
+import { Button } from "@/components/Button";
 import { HeroVideo } from "@/components/HeroVideo";
 
 type Hero115Button = {
   label: string;
   href: string;
-  variant?: "pill-light" | "ghost-light" | "pill-dark" | "ghost-dark";
+  variant?: "primary" | "secondary";
 };
 
 type Capability = {
@@ -73,26 +73,18 @@ const Hero115 = ({
 
             <div className="flex flex-col items-center gap-3 pb-10 pt-3">
               {primary && (
-                <Link
-                  href={primary.href}
-                  prefetch={false}
-                  className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-brand-green px-6 text-button font-bold text-cream hover:bg-ink focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green sm:w-auto"
-                >
-                  {primary.label}
-                  <ArrowRightIcon className="size-4" />
-                </Link>
+                <Button href={primary.href} label={primary.label} variant="primary" />
               )}
               {rest.length > 0 && (
                 <div className="flex flex-col items-center gap-3 pt-1 min-[560px]:flex-row min-[560px]:flex-wrap min-[560px]:justify-center">
                   {rest.map((button) => (
-                    <Link
+                    <Button
                       key={button.label}
                       href={button.href}
-                      prefetch={false}
-                      className="rounded-full border border-brand-green/40 px-5 py-2.5 text-nav-link font-semibold text-brand-green transition-colors hover:bg-brand-green/5 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
-                    >
-                      {button.label}
-                    </Link>
+                      label={button.label}
+                      variant="secondary"
+                      arrow={false}
+                    />
                   ))}
                 </div>
               )}

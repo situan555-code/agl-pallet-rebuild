@@ -4,6 +4,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { RichText } from "@/components/resources/RichText";
 
 const inputClass =
@@ -30,12 +31,9 @@ export function CalcForm({
     <form method="get" action={action} aria-label={label} className="mt-6">
       {children}
       <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-        <button
-          type="submit"
-          className="rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
-        >
+        <Button type="submit" variant="primary">
           {submitLabel}
-        </button>
+        </Button>
         <Link
           href={resetHref}
           prefetch={false}

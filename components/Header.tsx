@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import site from "@/content/site.json";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/Button";
 import { HeaderMenu } from "@/components/HeaderMenu";
 import type { NavItem } from "@/components/MobileNav";
 
@@ -111,13 +112,7 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            href={site.ctaNav.href}
-            prefetch={false}
-            className="inline-flex h-10 items-center rounded-full bg-brand-green px-6 text-nav-link font-semibold text-cream hover:bg-ink focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
-          >
-            {site.ctaNav.label}
-          </Link>
+          <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
         </div>
 
         <HeaderMenu nav={nav} logo={DARK_LOGO} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />

@@ -45,7 +45,7 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
           <p className="prose-measure mt-5 text-body text-cream/85">{body}</p>
           {cta && (
             <div className="mt-8">
-              <Button href={cta.href} label={cta.label} variant="pill-light" />
+              <Button href={cta.href} label={cta.label} variant="secondary" />
             </div>
           )}
         </div>

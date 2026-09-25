@@ -58,7 +58,7 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
               </li>
             </ul>
             <div className="mt-8">
-              <Button href={cta.href} label={cta.label} variant="pill-light" />
+              <Button href={cta.href} label={cta.label} variant="secondary" />
             </div>
           </div>
           {sections.map((section, i) => (

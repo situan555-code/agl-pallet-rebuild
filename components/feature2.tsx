@@ -41,7 +41,7 @@ const Feature2 = ({ id, eyebrow, heading, paragraphs, cta, hairline, className }
           </div>
           {cta && (
             <div className="mt-8">
-              <Button href={cta.href} label={cta.label} variant="ghost-dark" />
+              <Button href={cta.href} label={cta.label} variant="secondary" />
             </div>
           )}
         </div>

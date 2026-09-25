@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export type FormFieldConfig = {
   name: string;
@@ -189,13 +190,9 @@ export function Form({
         })}
       </div>
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="mt-8 rounded-full bg-white px-6 py-[15px] text-button font-bold text-brand-green transition-opacity hover:opacity-90 disabled:opacity-60"
-      >
+      <Button type="submit" variant="secondary" className="mt-8" disabled={status === "submitting"}>
         {status === "submitting" ? "Sending…" : submitLabel}
-      </button>
+      </Button>
     </form>
   );
 }

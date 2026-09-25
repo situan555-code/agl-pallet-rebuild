@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/Button";
 import sizes from "@/content/resources/pillars/pallet-sizes.json";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
 import hub from "@/content/resources/hub.json";
@@ -18,9 +19,6 @@ import {
   sheetSources,
 } from "@/lib/download-source";
 import { stampDecoderCopy } from "@/lib/stamp-decoder";
-
-const pdfLinkClass =
-  "inline-flex rounded-full bg-brand-green px-6 py-[13px] text-button font-bold text-white transition-opacity hover:opacity-90 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
 
 const textLinkClass =
   "font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green";
@@ -128,9 +126,7 @@ export function DownloadArticle({ slug }: { slug: string }) {
           <p>{item.figuresNote}</p>
           {item.exampleNote && <p>{item.exampleNote}</p>}
           <p>
-            <a className={pdfLinkClass} href={downloadPdfPath(slug)}>
-              {downloadsIndex.pdfLabel}
-            </a>
+            <Button href={downloadPdfPath(slug)} label={downloadsIndex.pdfLabel} variant="primary" />
           </p>
           <p>
             <Link href={item.guideHref} prefetch={false} className={textLinkClass}>

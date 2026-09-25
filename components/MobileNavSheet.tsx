@@ -9,6 +9,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/Button";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import type { NavItem } from "@/components/MobileNav";
@@ -84,13 +85,7 @@ export default function MobileNavSheet({
         </nav>
         <div className="px-6 py-8">
           <SheetClose asChild>
-            <Link
-              href={ctaHref}
-              prefetch={false}
-              className="block rounded-full bg-white px-6 py-3 text-center text-nav-link font-semibold text-brand-green transition-colors hover:bg-surface focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              {ctaLabel}
-            </Link>
+            <Button href={ctaHref} label={ctaLabel} variant="primary" />
           </SheetClose>
         </div>
       </SheetContent>

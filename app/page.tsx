@@ -48,7 +48,7 @@ export default function Home() {
           home.hero.buttons as {
             label: string;
             href: string;
-            variant: "pill-light" | "ghost-light";
+            variant: "primary" | "secondary";
           }[]
         }
         capabilities={home.capability.cards.map((c) => ({

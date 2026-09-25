@@ -11,7 +11,7 @@ import { getBlurDataURL } from "@/lib/blur";
 type Hero1Button = {
   label: string;
   href: string;
-  variant: "pill-light" | "ghost-light";
+  variant: "primary" | "secondary";
 };
 
 type Capability = {

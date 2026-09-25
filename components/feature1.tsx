@@ -33,7 +33,7 @@ function Body({ paragraphs, cta }: Pick<Feature1Props, "paragraphs" | "cta">) {
       )}
       {cta && (
         <div className="mt-8">
-          <Button href={cta.href} label={cta.label} variant="ghost-dark" />
+          <Button href={cta.href} label={cta.label} variant="secondary" />
         </div>
       )}
     </>

@@ -72,7 +72,7 @@ const Hero3 = ({ eyebrow, heading, description, cta, breadcrumb, className }: He
             </div>
             {cta && (
               <div className={cn(paragraphs.length > 0 && "mt-8")}>
-                <Button href={cta.href} label={cta.label} variant="pill-light" />
+                <Button href={cta.href} label={cta.label} variant="secondary" />
               </div>
             )}
           </div>

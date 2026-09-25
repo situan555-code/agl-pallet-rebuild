@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Button } from "@/components/Button";
 
 export default function NotFound() {
@@ -18,14 +17,8 @@ export default function NotFound() {
             get you pointed in the right direction.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Button href="/" label="Back to Home" variant="pill-light" />
-            <Link
-              href="/request-a-quote/"
-              prefetch={false}
-              className="rounded-full border border-white px-6 py-3 text-button font-bold text-white transition-colors hover:bg-white/10 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Request a Quote
-            </Link>
+            <Button href="/" label="Back to Home" variant="primary" />
+            <Button href="/request-a-quote/" label="Request a Quote" variant="secondary" />
           </div>
         </div>
       </section>

@@ -1,53 +1,33 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import { buttonVariants, type ButtonVariant } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-type ButtonVariant = "pill-light" | "pill-dark" | "ghost-light" | "ghost-dark";
-
-const variantClasses: Record<ButtonVariant, string> = {
-  "pill-light":
-    "bg-cream text-brand-green hover:bg-paper active:bg-fog-green/40",
-  "pill-dark":
-    "bg-brand-green text-white hover:bg-ink active:brightness-90",
-  "ghost-light":
-    "bg-transparent border border-white text-white hover:bg-white/10 active:bg-white/20",
-  "ghost-dark":
-    "bg-transparent border border-brand-green text-brand-green hover:bg-brand-green/5 active:bg-brand-green/10",
-};
-
-const arrowIcon: Record<ButtonVariant, string> = {
-  "pill-light": "/assets/circle_arrow_dark.svg",
-  "pill-dark": "/assets/circle_arrow.svg",
-  "ghost-light": "/assets/circle_arrow.svg",
-  "ghost-dark": "/assets/circle_arrow_dark.svg",
-};
+export type { ButtonVariant };
 
 export function Button({
   href,
   label,
-  variant = "pill-dark",
+  variant = "primary",
+  arrow = true,
 }: {
   href: string;
   label: string;
   variant?: ButtonVariant;
+  arrow?: boolean;
 }) {
   return (
     <Link
       href={href}
       prefetch={false}
-      className={`relative inline-block rounded-full py-[15px] pl-[18px] pr-[50px] text-button font-bold transition-colors focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 ${
-        variant.endsWith("light")
-          ? "focus-visible:outline-white"
-          : "focus-visible:outline-brand-green"
-      } ${variantClasses[variant]}`}
+      className={cn(buttonVariants({ variant, arrow }))}
     >
       {label}
-      <Image
-        src={arrowIcon[variant]}
-        alt=""
-        width={30}
-        height={30}
-        className="absolute right-[10px] top-1/2 -translate-y-1/2"
-      />
+      {arrow ? (
+        <span className="inline-flex size-7 items-center justify-center rounded-full bg-current/10">
+          <ArrowRight className="size-3.5" aria-hidden />
+        </span>
+      ) : null}
     </Link>
   );
 }
