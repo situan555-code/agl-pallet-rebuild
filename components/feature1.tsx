@@ -7,7 +7,6 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
-import { Reveal } from "@/components/Reveal";
 
 interface Feature1Props {
   id?: string;
@@ -44,7 +43,6 @@ function Body({ paragraphs, cta }: Pick<Feature1Props, "paragraphs" | "cta">) {
 const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, className }: Feature1Props) => {
   return (
     <section id={id} className={cn("section-y scroll-mt-24 overflow-hidden px-6", hairline && "section-hairline", className)}>
-      <Reveal>
       <div className="mx-auto grid max-w-[1440px] items-start gap-10 nav:grid-cols-12 nav:gap-16">
         {media ? (
           <>
@@ -67,7 +65,6 @@ const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, clas
           </>
         )}
       </div>
-      </Reveal>
     </section>
   );
 };
