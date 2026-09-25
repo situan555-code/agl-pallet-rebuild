@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export type FormFieldConfig = {
   name: string;
@@ -75,6 +76,28 @@ export function Form({
 
   const formAction = destination.kind === "formsubmit" ? `https://formsubmit.co/${encodeURIComponent(destination.email)}` : undefined;
 
+  const steps =
+    id === "quote-form"
+      ? [
+          { label: "Contact", names: ["name", "company", "email", "phone"] },
+          { label: "Pallet spec", names: ["spec", "quantity"] },
+          { label: "Delivery", names: ["shipTo", "targetDate", "notes"] },
+        ]
+      : id === "supplier-form"
+        ? [
+            { label: "Contact", names: ["shopName", "cityState", "contactName", "email", "phone"] },
+            { label: "Shop", names: ["equipmentFit", "weeklyCapacity", "specsBuilt"] },
+            { label: "Capacity", names: ["leadTime", "heatTreat"] },
+          ]
+        : id === "carrier-form"
+          ? [
+              { label: "Contact", names: ["carrierName", "contactName", "email", "phone"] },
+              { label: "Authority", names: ["mcNumber", "dotNumber", "equipmentType"] },
+              { label: "Lanes", names: ["lanes", "truckCount", "coi"] },
+            ]
+          : null;
+  const [step, setStep] = useState(0);
+
   return (
     <form
       id={id}
@@ -125,6 +148,16 @@ export function Form({
         </p>
       )}
 
+      {steps ? (
+        <ol className="mb-6 flex flex-wrap gap-3 text-eyebrow font-semibold uppercase tracking-wide text-ice">
+          {steps.map((s, i) => (
+            <li key={s.label} className={i === step ? "text-bone" : "text-gray"}>
+              {i + 1} {s.label}
+            </li>
+          ))}
+        </ol>
+      ) : null}
+
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {fields.map((field) => {
           const isInvalid = missing.includes(field.name);
@@ -135,8 +168,10 @@ export function Form({
             field.type === "textarea" || field.type === "file" ? "sm:col-span-2" : undefined;
           const submitName = destination.kind === "formsubmit" && !field.disableSubmission ? field.name : undefined;
 
+          const hidden = steps ? !steps[step].names.includes(field.name) : false;
+
           return (
-            <label key={field.name} className={wrapperClass}>
+            <label key={field.name} className={cn(wrapperClass, hidden && "hidden")}>
               <span className="mb-2 block text-white text-button font-semibold">
                 {field.label}
                 {field.required ? "" : " (optional)"}
@@ -190,9 +225,33 @@ export function Form({
         })}
       </div>
 
-      <Button type="submit" variant="secondary" className="mt-8" disabled={status === "submitting"}>
-        {status === "submitting" ? "Sending…" : submitLabel}
-      </Button>
+      <div className="mt-8 flex flex-wrap gap-3">
+        {steps && step > 0 ? (
+          <Button type="button" variant="secondary" onClick={() => setStep((s) => s - 1)}>
+            Back
+          </Button>
+        ) : null}
+        {steps && step < steps.length - 1 ? (
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={() => {
+              const names = steps[step].names;
+              const empty = fields
+                .filter((f) => names.includes(f.name) && f.required && f.type !== "file" && values[f.name].trim() === "")
+                .map((f) => f.name);
+              setMissing(empty);
+              if (empty.length === 0) setStep((s) => s + 1);
+            }}
+          >
+            Next
+          </Button>
+        ) : (
+          <Button type="submit" variant="secondary" disabled={status === "submitting"}>
+            {status === "submitting" ? "Sending…" : submitLabel}
+          </Button>
+        )}
+      </div>
     </form>
   );
 }

@@ -9,6 +9,7 @@ import { Gallery4Loader } from "@/components/Gallery4Loader";
 import { DeferredFillImage } from "@/components/DeferredFillImage";
 import { ImageBand } from "@/components/ImageBand";
 import { Cta4 } from "@/components/cta4";
+import { NetworkBeam } from "@/components/NetworkBeam";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -74,6 +75,8 @@ export default function Home() {
           </div>
         }
       />
+
+      <NetworkBeam left="Qualified mills" center="AGL" right="Your line" />
 
       <Feature3
         hairline

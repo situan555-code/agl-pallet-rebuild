@@ -8,6 +8,7 @@
 import type { ReactNode } from "react";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CopyValue } from "@/components/CopyValue";
 
 export interface Contact2Method {
   kind: "phone" | "email" | "text";
@@ -66,18 +67,10 @@ const Contact2 = ({
                 const Icon = icons[method.kind];
                 return (
                   <li key={method.label} className="border-b border-white/20">
-                    <a
-                      href={method.href}
-                      className="group flex items-center gap-4 py-5 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    >
+                    <div className="flex items-center gap-4 py-5">
                       <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-white/70" />
-                      <span className="flex flex-col">
-                        <span className="text-eyebrow font-semibold uppercase tracking-wide text-white/70">
-                          {method.label}
-                        </span>
-                        <span className="text-step-sm font-semibold group-hover:underline">{method.value}</span>
-                      </span>
-                    </a>
+                      <CopyValue value={method.value} href={method.href} label={method.label} />
+                    </div>
                   </li>
                 );
               })}

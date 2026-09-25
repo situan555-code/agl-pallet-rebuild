@@ -39,7 +39,7 @@ const Hero115 = ({
   const [primary, ...rest] = buttons;
 
   return (
-    <section className={cn("overflow-hidden bg-paper text-ink", className)}>
+    <section className={cn("overflow-hidden bg-moss text-bone", className)}>
       <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-28 nav:pb-20 nav:pt-32">
         <div className="flex flex-col gap-5">
           <div className="relative isolate flex flex-col gap-5">
@@ -56,7 +56,7 @@ const Hero115 = ({
               <BoxesIcon className="size-6 md:size-7" />
             </span>
 
-            <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ink">
+            <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ice">
               <span aria-hidden="true" className="mr-2 font-bold text-clay">
                 /
               </span>
@@ -67,7 +67,7 @@ const Hero115 = ({
               {heading}
             </h1>
 
-            <p className="prose-measure mx-auto max-w-3xl text-center text-body text-ink/80 md:text-lg">
+            <p className="prose-measure mx-auto max-w-3xl text-center text-body text-bone/80 md:text-lg">
               {description}
             </p>
 
@@ -91,7 +91,7 @@ const Hero115 = ({
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-3/4 h-full max-h-[524px] w-full max-w-5xl overflow-hidden rounded-lg border border-clay/60 shadow-[0_24px_60px_-28px_rgba(31,42,31,0.35)] md:aspect-video">
+          <div className="relative mx-auto aspect-3/4 h-full max-h-[524px] w-full max-w-5xl overflow-hidden rounded-card border border-smoke shadow-lg md:aspect-video">
             <HeroVideo src={video.src} poster={video.poster} />
           </div>
         </div>
@@ -99,12 +99,12 @@ const Hero115 = ({
 
       {capabilities && capabilities.length > 0 && (
         <div className="relative z-20 -mt-8 px-6 pb-6 nav:-mt-12">
-          <div className="mx-auto grid max-w-[1440px] gap-px overflow-hidden rounded-sm bg-clay/40 shadow-[0_24px_60px_-28px_rgba(31,42,31,0.45)] md:grid-cols-3">
+          <div className="mx-auto grid max-w-[1440px] gap-4 md:grid-cols-3">
             {capabilities.map((cap) => (
-              <article key={cap.heading} className="bg-cream px-8 py-10 nav:px-10 nav:py-12">
-                <h2 className="text-display-kicker text-brand-green">{cap.heading}</h2>
-                <span aria-hidden="true" className="mt-4 block h-px w-8 bg-clay" />
-                <p className="mt-4 max-w-sm text-body text-ink/75">{cap.body}</p>
+              <article key={cap.heading} className="hover-lift rounded-card bg-green px-8 py-10 text-bone nav:px-10 nav:py-12">
+                <h2 className="text-display-kicker text-bone">{cap.heading}</h2>
+                <span aria-hidden="true" className="mt-4 block h-px w-8 bg-ice/50" />
+                <p className="mt-4 max-w-sm text-body text-bone/75">{cap.body}</p>
               </article>
             ))}
           </div>

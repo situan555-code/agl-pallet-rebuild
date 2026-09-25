@@ -2,6 +2,7 @@ import calculators from "@/content/resources/calculators.json";
 import { ArticleSection, DataTable } from "@/components/resources/ResourceArticle";
 import { CalcForm, Disclaimer, FieldGroup, NoteList, NumberField, ResultSummary, SelectField } from "@/components/resources/Calculator";
 import { bestFloorPattern, emptyLoad, fmt, numParam, strParam, truckload } from "@/lib/calculators";
+import { TrailerDiagram } from "@/components/resources/TrailerDiagram";
 
 type Params = Record<string, string | string[] | undefined>;
 
@@ -164,6 +165,13 @@ export function TruckloadCalculator({ params, path }: { params: Params; path: st
             ],
             note: `Interior used: ${fmt(floorL, 1)} × ${fmt(floorW, 2)} × ${fmt(interiorH, 1)} in. Payload limit ${fmt(payload)} lb.`,
           }}
+        />
+        <TrailerDiagram
+          floorL={floorL}
+          floorW={floorW}
+          palletL={palletL}
+          palletW={palletW}
+          floor={loaded.floor}
         />
         <Disclaimer text={disclaimer} />
       </section>

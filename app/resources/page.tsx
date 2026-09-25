@@ -30,7 +30,7 @@ export default function ResourcesHub() {
       />
 
       <Feature3
-        variant="ruled"
+        variant="card"
         columns={2}
         eyebrow={hub.pillarsEyebrow}
         heading={hub.pillarsHeading}

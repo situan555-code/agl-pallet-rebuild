@@ -91,12 +91,12 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
 
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
-    <article className="h-full rounded-sm border-t-[3px] border-brand-green bg-cream p-10">
+    <article className="h-full rounded-card bg-green p-10 text-bone">
       {item.eyebrow && (
-        <p className="font-display text-display-numeral uppercase text-brand-green">{item.eyebrow}</p>
+        <p className="font-display text-display-numeral text-ice">{item.eyebrow}</p>
       )}
-      <Heading className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-6")}>{item.title}</Heading>
-      <p className="mt-3 text-body text-ink">{item.description}</p>
+      <Heading className={cn("text-step-lg text-bone", item.eyebrow && "mt-6")}>{item.title}</Heading>
+      <p className="mt-3 text-body text-bone/85">{item.description}</p>
     </article>
   );
 }
@@ -107,8 +107,8 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
       {item.eyebrow && (
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">{item.eyebrow}</p>
       )}
-      <Heading className={cn("text-step-lg text-brand-green", item.eyebrow && "mt-3")}>{item.title}</Heading>
-      {item.description && <p className="mt-3 text-body text-ink">{item.description}</p>}
+      <Heading className={cn("text-step-lg text-bone", item.eyebrow && "mt-3")}>{item.title}</Heading>
+      {item.description && <p className="mt-3 text-body text-bone/85">{item.description}</p>}
       {item.cta && (
         <div className="mt-auto pt-6">
           <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
@@ -122,7 +122,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
     </>
   );
   const cardClass =
-    "group flex h-full flex-col gap-0 rounded-sm border border-brand-green/15 bg-cream p-8 transition-colors hover:border-brand-green nav:p-10";
+    "hover-lift group flex h-full flex-col gap-0 rounded-card border border-smoke bg-green p-8 text-bone nav:p-10";
   if (item.href && !item.href.startsWith("/")) {
     return (
       <a

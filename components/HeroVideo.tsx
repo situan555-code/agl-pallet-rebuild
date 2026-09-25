@@ -1,9 +1,26 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
-/** R0.4: poster only. Native video returns in R3.1. `src` kept so callers stay unchanged. */
-export function HeroVideo({ poster }: { src: string; poster: string }) {
+/** Poster is LCP. Native video starts after mount when motion is allowed. */
+export function HeroVideo({ src, poster }: { src: string; poster: string }) {
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const id = window.requestIdleCallback
+      ? window.requestIdleCallback(() => setPlay(true))
+      : window.setTimeout(() => setPlay(true), 400);
+    return () => {
+      if (window.cancelIdleCallback && typeof id === "number") window.cancelIdleCallback(id);
+      else window.clearTimeout(id);
+    };
+  }, []);
+
   return (
-    <div className="absolute inset-0 bg-brand-green">
+    <div className="absolute inset-0 bg-green">
       <Image
         src={poster}
         alt=""
@@ -13,6 +30,18 @@ export function HeroVideo({ poster }: { src: string; poster: string }) {
         sizes="(min-width: 1024px) 960px, calc(100vw - 3rem)"
         className="object-cover object-center"
       />
+      {play ? (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster={poster}
+          src={src}
+        />
+      ) : null}
     </div>
   );
 }
