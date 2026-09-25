@@ -56,10 +56,10 @@ export function HeroExpand({
         el.muted = true;
         void el.play().catch(() => {});
       };
-      if ("requestIdleCallback" in window) {
+      if (typeof window.requestIdleCallback === "function") {
         window.requestIdleCallback(() => kick());
       } else {
-        window.setTimeout(kick, 1);
+        setTimeout(kick, 1);
       }
     };
 
