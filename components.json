@@ -22,7 +22,6 @@
   "menuColor": "default",
   "menuAccent": "subtle",
   "registries": {
-    "@shadcnblocks": "https://www.shadcnblocks.com/r/{name}",
-    "@limeplay": "https://limeplay.winoffrg.dev/r/{name}.json"
+    "@shadcnblocks": "https://www.shadcnblocks.com/r/{name}"
   }
 }
