@@ -5,3 +5,6 @@ R0.4 done. Next: R0.5.
 R0.5 done. Next: R0.6.
 R0.6 done. Next: R0.7.
 R0.7 done. Next: Phase 0 verify / M1.
+M1 verify failed home LCP on full suite (isolated audit passed). Next: R1.1 (retry verify at M2).
+Helpers done (trailer-layout, search-index, glossary-map). Next: R1.1.
+R1.1 done. Next: R1.2.
