@@ -40,7 +40,7 @@ const Faq3 = ({ eyebrow, heading, description, items, className }: Faq3Props) =>
           {items.map((item) => (
             <AccordionItem key={item.id} value={item.id} className="border-b border-brand-green/15">
               <AccordionTrigger className="group/faq items-center gap-6 rounded-none py-6 text-left hover:no-underline focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green **:data-[slot=accordion-trigger-icon]:hidden!">
-                <span className="font-display text-step-lg uppercase text-brand-green">{item.question}</span>
+                <span className="text-step-lg font-semibold text-brand-green">{item.question}</span>
                 <Plus
                   aria-hidden="true"
                   className="ml-auto h-5 w-5 shrink-0 text-brand-green transition-transform duration-200 group-data-[state=open]/faq:rotate-45"

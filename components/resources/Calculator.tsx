@@ -149,7 +149,7 @@ export function ResultSummary({ label, value, detail }: { label: string; value: 
 export function NoteList({ heading, items }: { heading: string; items: string[] }) {
   return (
     <div className="mt-8">
-      <h3 className="font-display text-step-lg uppercase text-brand-green">{heading}</h3>
+      <h3 className="text-step-lg text-brand-green">{heading}</h3>
       <ul className="prose-measure mt-4 list-disc space-y-2 pl-5 text-body text-ink/85">
         {items.map((item, i) => (
           <li key={i} className="pl-1">

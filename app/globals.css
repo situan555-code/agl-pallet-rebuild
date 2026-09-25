@@ -73,11 +73,13 @@
   --text-step-sm--line-height: 20.8px;
   --text-step-lg: 25px;
   --text-step-lg--line-height: 25px;
-  --text-body: 14px;
-  --text-body--line-height: 23.8px;
+  /* Type scale: body 16/1.6. Anton only via font-display / .display.
+     H2–H6 are Inter semibold. Hero H1s add .display. */
+  --text-body: 16px;
+  --text-body--line-height: 1.6;
   --text-eyebrow: 11px;
-  --text-eyebrow--line-height: 23.8px;
-  --text-eyebrow--letter-spacing: 1px;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.08em;
   --text-link: 14px;
   --text-link--line-height: 23px;
   --text-nav-link: 14px;
@@ -232,8 +234,12 @@
   h4,
   h5,
   h6 {
-    @apply font-display uppercase;
+    @apply font-sans font-semibold tracking-tight;
     text-wrap: balance;
+  }
+
+  .display {
+    @apply font-display uppercase tracking-normal;
   }
 
   /* G8: clear fixed header (~64px bar + padding) on in-page anchors */

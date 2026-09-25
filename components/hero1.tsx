@@ -81,7 +81,7 @@ const Hero1 = ({
                 {eyebrow}
               </p>
               <span aria-hidden="true" className="mt-5 block h-0.5 w-14 bg-clay" />
-              <h1 className="mt-6 max-w-[18ch] wrap-break-word text-display-1 text-cream nav:text-[56px] nav:leading-[1.08]">
+              <h1 className="display mt-6 max-w-[18ch] wrap-break-word text-display-1 text-bone nav:text-[56px] nav:leading-[1.08]">
                 {heading}
               </h1>
               <p className="prose-measure mt-6 text-body text-cream/85">{description}</p>

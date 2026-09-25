@@ -63,7 +63,7 @@ const Hero115 = ({
               {eyebrow}
             </p>
 
-            <h1 className="mx-auto max-w-3xl text-center text-display-1 text-brand-green nav:text-[56px] nav:leading-[1.08]">
+            <h1 className="display mx-auto max-w-3xl text-center text-display-1 text-bone nav:text-[56px] nav:leading-[1.08]">
               {heading}
             </h1>
 

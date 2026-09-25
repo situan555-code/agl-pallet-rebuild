@@ -230,7 +230,7 @@ export function Questions({ heading, items }: { heading: string; items: Resource
       <div className="mt-6 divide-y divide-brand-green/15">
         {items.map((q) => (
           <article key={q.id} id={q.id} className="scroll-mt-28 py-6 first:pt-0">
-            <h3 className="font-display text-step-lg uppercase text-brand-green">{q.question}</h3>
+            <h3 className="text-step-lg text-brand-green">{q.question}</h3>
             <div className="prose-measure mt-3 space-y-3">
               <Paragraphs items={q.answer} />
             </div>

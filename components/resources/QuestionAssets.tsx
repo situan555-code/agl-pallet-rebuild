@@ -132,7 +132,7 @@ function SupportDiagram({ item }: { item: QuestionItem }) {
         {panels.map((panel) => (
           <div key={panel.id} className="border-t border-brand-green/20 pt-4">
             <SupportSketch id={panel.id} />
-            <h3 className="mt-4 font-display text-step-lg uppercase text-brand-green">{panel.title}</h3>
+            <h3 className="mt-4 text-step-lg text-brand-green">{panel.title}</h3>
             <p className="mt-2 text-body text-ink/85">{panel.support}</p>
             <p className="mt-2 text-[14px] font-semibold text-brand-green">{panel.capacity}</p>
           </div>
@@ -241,7 +241,7 @@ function EntryDiagram({ item }: { item: QuestionItem }) {
         {panels.map((panel) => (
           <div key={panel.id} className="border-t border-brand-green/20 pt-4">
             <EntrySketch panel={panel} />
-            <h3 className="mt-4 font-display text-step-lg uppercase text-brand-green">{panel.title}</h3>
+            <h3 className="mt-4 text-step-lg text-brand-green">{panel.title}</h3>
             <dl className="mt-3 space-y-2 text-[14px] leading-snug text-ink/85">
               <div>
                 <dt className="font-semibold text-brand-green">{labels.forklift}</dt>

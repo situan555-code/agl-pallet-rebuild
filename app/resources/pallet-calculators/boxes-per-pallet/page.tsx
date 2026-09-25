@@ -49,7 +49,7 @@ export default async function BoxesPerPalletPage(
       </CalcForm>
 
       <section id="results" aria-labelledby="results-h" aria-live="polite" className="mt-10 scroll-mt-28">
-        <h3 id="results-h" className="font-display text-step-lg uppercase text-brand-green">
+        <h3 id="results-h" className="text-step-lg text-brand-green">
           Results
         </h3>
         <div className="mt-6">
