@@ -8,6 +8,7 @@ import { Feature3 } from "@/components/feature3";
 import { StaticGallery } from "@/components/home/StaticGallery";
 import { StaticImageBand } from "@/components/home/StaticImageBand";
 import { Cta4 } from "@/components/cta4";
+import { NetworkSlot } from "@/components/home/NetworkSlot";
 import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
 import { getBlurDataURL } from "@/lib/blur";
@@ -63,12 +64,19 @@ export default function Home() {
         }
       />
 
-      <StaticNetwork
+      <NetworkSlot
         className="section-rhythm"
         mills={["Family-run mills", "Qualified shops", "More than one source"]}
         center="AGL Pallet"
         right="Your line"
-      />
+      >
+        <StaticNetwork
+          className="section-rhythm"
+          mills={["Family-run mills", "Qualified shops", "More than one source"]}
+          center="AGL Pallet"
+          right="Your line"
+        />
+      </NetworkSlot>
 
       <Feature3
         className="section-rhythm"
