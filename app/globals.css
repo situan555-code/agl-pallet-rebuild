@@ -417,6 +417,58 @@ p.text-eyebrow > span[aria-hidden] {
   }
 }
 
+.nav-frame {
+  padding-top: 0.75rem;
+}
+
+.nav-frame-inner {
+  border-color: transparent;
+  background: transparent;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow: none;
+}
+
+.nav-frame-inner:has([data-nav-menu-trigger][aria-expanded="true"]) {
+  border-color: #2e342f;
+  background: rgb(19 25 19 / 0.85);
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+}
+
+@supports (animation-timeline: scroll()) {
+  .nav-frame {
+    animation: nav-frame-pad linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 16px;
+  }
+
+  .nav-frame-inner {
+    animation: nav-frame-inner linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 16px;
+  }
+}
+
+@keyframes nav-frame-pad {
+  to {
+    padding-top: 0.5rem;
+  }
+}
+
+@keyframes nav-frame-inner {
+  to {
+    border-color: #2e342f;
+    background: rgb(19 25 19 / 0.85);
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(16px);
+  }
+}
+
 /* Desktop hero card grows over the first viewport of scroll, matching the
    old scroll progress (scrollY / innerHeight). view() does not advance while
    the card is position: sticky, so the timeline is the root scroller.

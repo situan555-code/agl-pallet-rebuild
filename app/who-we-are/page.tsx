@@ -1,8 +1,8 @@
 import { BadgeCheck, Clock, Handshake, Settings2 } from "lucide-react";
 import content from "@/content/pages/who-we-are.json";
 import home from "@/content/pages/home.json";
+import Image from "next/image";
 import { Hero3 } from "@/components/hero3";
-import { DeferredFillImage } from "@/components/DeferredFillImage";
 import { Feature1 } from "@/components/feature1";
 import { Process1 } from "@/components/process1";
 import { Feature3 } from "@/components/feature3";
@@ -28,9 +28,10 @@ export default function WhoWeAre() {
         description={content.hero.paragraphs}
         image={
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
-            <DeferredFillImage
+            <Image
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
+              fill
               quality={60}
               sizes="(min-width: 980px) 38vw, calc(100vw - 80px)"
               className="object-cover"

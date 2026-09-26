@@ -5,11 +5,10 @@ import { HeroExpand } from "@/components/HeroExpand";
 import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
-import { Gallery4Loader } from "@/components/Gallery4Loader";
-import { DeferredFillImage } from "@/components/DeferredFillImage";
-import { DeferredImageBand } from "@/components/home/DeferredImageBand";
+import { StaticGallery } from "@/components/home/StaticGallery";
+import { StaticImageBand } from "@/components/home/StaticImageBand";
 import { Cta4 } from "@/components/cta4";
-import { DeferredNetwork } from "@/components/home/DeferredNetwork";
+import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
@@ -20,15 +19,6 @@ export const metadata: Metadata = pageMeta(
   "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
   "/",
 );
-
-const PRODUCT_IMAGES: Record<string, string> = {
-  "stock-pallets": "/assets/product_page-stock_pallets_sidepic.jpg",
-  "custom-engineered": "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
-  crates: "/assets/product_page-stock_pallets_sidepic-1.jpg",
-  dunnage: "/assets/product_page-stock_pallets_sidepic-1-1.jpg",
-  "shipping-blocks": "/assets/about_page-single_point_sidepic.jpg",
-  stakes: "/assets/why_agl_exist_sidepic.jpg",
-};
 
 export default function Home() {
   const whyBlur = getBlurDataURL("/assets/why_agl_exist_sidepic.jpg");
@@ -61,10 +51,11 @@ export default function Home() {
         paragraphs={home.whatWeDo.paragraphs}
         media={
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
-            <DeferredFillImage
+            <Image
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
-              quality={72}
+              fill
+              quality={60}
               sizes="(min-width: 980px) 38vw, 100vw"
               className="object-cover"
             />
@@ -72,7 +63,7 @@ export default function Home() {
         }
       />
 
-      <DeferredNetwork
+      <StaticNetwork
         className="section-rhythm"
         mills={["Family-run mills", "Qualified shops", "More than one source"]}
         center="AGL Pallet"
@@ -89,7 +80,7 @@ export default function Home() {
         }))}
       />
 
-      <DeferredImageBand
+      <StaticImageBand
         className="section-rhythm"
         eyebrow="How we work"
         heading="Coordination is the product."
@@ -98,7 +89,7 @@ export default function Home() {
         cta={{ label: "See how we work", href: "/how-we-work/" }}
       />
 
-      <Gallery4Loader
+      <StaticGallery
         className="section-rhythm"
         eyebrow="Product lines"
         title="Specced to the load. Sourced through mills that can build it."
@@ -108,7 +99,6 @@ export default function Home() {
           title: line.heading,
           description: line.copy,
           href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
-          image: PRODUCT_IMAGES[line.id] ?? "/assets/product_page-stock_pallets_sidepic.jpg",
         }))}
       />
 
