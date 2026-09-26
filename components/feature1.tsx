@@ -49,7 +49,7 @@ const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, clas
           <>
             <div className="nav:col-span-6">
               <SectionHeading eyebrow={eyebrow} heading={heading} />
-              <div className="mt-6">
+              <div className="mt-5">
                 <Body paragraphs={paragraphs} cta={cta} />
               </div>
             </div>

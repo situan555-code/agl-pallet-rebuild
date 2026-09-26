@@ -53,7 +53,7 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
       )}
     >
       <Heading className="text-display-kicker text-current">{item.title}</Heading>
-      <p className="mt-4 max-w-sm text-body text-current/80">{item.description}</p>
+      <p className="mt-5 max-w-sm text-body text-current/80">{item.description}</p>
     </div>
   );
 }
@@ -79,9 +79,9 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
           item.title
         )}
       </Heading>
-      {item.description && <p className="prose-measure mt-4 text-body text-current/80">{item.description}</p>}
+      {item.description && <p className="prose-measure mt-5 text-body text-current/80">{item.description}</p>}
       {item.cta && (
-        <div className="mt-6">
+        <div className="mt-8">
           <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
         </div>
       )}
@@ -95,8 +95,8 @@ function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHead
       {item.eyebrow && (
         <p className="font-display text-display-numeral text-ice">{item.eyebrow}</p>
       )}
-      <Heading className={cn("text-step-lg text-bone", item.eyebrow && "mt-6")}>{item.title}</Heading>
-      <p className="mt-3 text-body text-bone/85">{item.description}</p>
+      <Heading className={cn("text-step-lg text-bone", item.eyebrow && "mt-3")}>{item.title}</Heading>
+      <p className="mt-5 text-body text-bone/85">{item.description}</p>
     </article>
   );
 }
@@ -108,9 +108,9 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
       )}
       <Heading className={cn("text-step-lg leading-snug text-pretty text-current", item.eyebrow && "mt-3")}>{item.title}</Heading>
-      {item.description && <p className="mt-3 text-body text-bone/85">{item.description}</p>}
+      {item.description && <p className="mt-5 text-body text-bone/85">{item.description}</p>}
       {item.cta && (
-        <div className="mt-auto pt-6">
+        <div className="mt-auto pt-8">
           <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
         </div>
       )}

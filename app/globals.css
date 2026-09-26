@@ -132,6 +132,24 @@
   @apply py-12 nav:py-16;
 }
 
+/* Home rhythm (UI audit §2.3). Top padding only, so neighboring sections
+   do not stack into a gap over ~160px. 72px below the nav breakpoint, 112px from it. */
+@utility section-rhythm {
+  padding-top: 72px !important;
+  padding-bottom: 0 !important;
+  @media (min-width: 980px) {
+    padding-top: 112px !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+@utility section-rhythm-end {
+  padding-bottom: 72px !important;
+  @media (min-width: 980px) {
+    padding-bottom: 112px !important;
+  }
+}
+
 @utility section-y-cta {
   @apply py-12 nav:py-16;
 }

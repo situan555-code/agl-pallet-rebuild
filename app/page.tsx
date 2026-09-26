@@ -49,18 +49,19 @@ export default function Home() {
         buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
       />
 
-      <section className="py-10">
+      <section className="section-rhythm">
         <Container className="grid gap-4 md:grid-cols-3">
           {home.capability.cards.map((cap) => (
             <article key={cap.heading} className="hover-lift rounded-card bg-green px-8 py-10 text-bone nav:px-10">
               <h2 className="text-display-kicker text-current">{cap.heading}</h2>
-              <p className="mt-4 max-w-sm text-body text-current/75">{cap.body}</p>
+              <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
             </article>
           ))}
         </Container>
       </section>
 
       <Feature1
+        className="section-rhythm"
         eyebrow={home.whatWeDo.eyebrow}
         heading={home.whatWeDo.heading}
         paragraphs={home.whatWeDo.paragraphs}
@@ -78,12 +79,14 @@ export default function Home() {
       />
 
       <NetworkBeam
+        className="section-rhythm"
         mills={["Family-run mills", "Qualified shops", "More than one source"]}
         center="AGL Pallet"
         right="Your line"
       />
 
       <Feature3
+        className="section-rhythm"
         variant="numbered"
         features={home.differentiators.cards.map((c) => ({
           eyebrow: c.eyebrow,
@@ -93,6 +96,7 @@ export default function Home() {
       />
 
       <ImageBand
+        className="section-rhythm"
         eyebrow="How we work"
         heading="Coordination is the product."
         body="We qualify the shops that supply them well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them."
@@ -101,6 +105,7 @@ export default function Home() {
       />
 
       <Gallery4Loader
+        className="section-rhythm"
         eyebrow="Product lines"
         title="Specced to the load. Sourced through mills that can build it."
         description="Stock, custom, crates, dunnage, blocks, and stakes — each with multiple qualified shops behind the specs we sell."
@@ -114,6 +119,7 @@ export default function Home() {
       />
 
       <Feature2
+        className="section-rhythm"
         eyebrow={home.pledge.eyebrow}
         heading={home.pledge.heading}
         paragraphs={home.pledge.paragraphs}
@@ -121,6 +127,7 @@ export default function Home() {
       />
 
       <Feature3
+        className="section-rhythm"
         variant="card"
         columns={2}
         features={home.partnerSplit.cards.map((c) => ({
@@ -132,7 +139,7 @@ export default function Home() {
       />
 
       <Feature1
-        className="surface-light bg-bone text-moss"
+        className="section-rhythm surface-light bg-bone text-moss"
         eyebrow={home.whoWeAre.eyebrow}
         heading={home.whoWeAre.heading}
         paragraphs={home.whoWeAre.paragraphs}
@@ -154,6 +161,7 @@ export default function Home() {
       />
 
       <Cta4
+        className="section-rhythm section-rhythm-end"
         heading={home.ctaBand.heading}
         description={home.ctaBand.body}
         button={home.ctaBand.cta}

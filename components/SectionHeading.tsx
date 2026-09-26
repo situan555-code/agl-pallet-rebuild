@@ -19,7 +19,7 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className={cn("mt-4 text-display-2 text-current")}>{heading}</h2>
+      <h2 className={cn("mt-3 text-display-2 text-current")}>{heading}</h2>
     </div>
   );
 }

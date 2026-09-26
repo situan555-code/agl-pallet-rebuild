@@ -16,10 +16,10 @@ const Cta4 = ({ eyebrow, heading, description, button, features, className }: Ct
   return (
     <section className={cn("scroll-mt-24 bg-moss py-6 nav:py-8", className)}>
       <div className={cn(containerClass, "grain relative rounded-section bg-green py-16 text-bone nav:py-20")}>
-      <div className="grid items-end gap-8 nav:grid-cols-12 nav:gap-16">
+      <div className="grid items-end gap-5 nav:grid-cols-12 nav:gap-16">
         <div className="nav:col-span-7">
           {eyebrow && (
-            <p className="mb-4 text-eyebrow font-semibold uppercase tracking-wide">
+            <p className="mb-3 text-eyebrow font-semibold uppercase tracking-wide">
               <span aria-hidden="true" className="mr-2 font-bold">
                 /
               </span>

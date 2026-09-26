@@ -67,9 +67,9 @@ export function Gallery4({
                 {eyebrow}
               </p>
             )}
-            <h2 className="mt-4 text-display-2 text-current">{title}</h2>
+            <h2 className="mt-3 text-display-2 text-current">{title}</h2>
             {description && (
-              <p className="prose-measure mt-4 text-body text-current/75">{description}</p>
+              <p className="prose-measure mt-5 text-body text-current/75">{description}</p>
             )}
           </div>
           <div className="flex gap-2">
@@ -120,7 +120,7 @@ export function Gallery4({
                     </div>
                     <div className="flex flex-1 flex-col p-6">
                       <h3 className="text-display-row text-current">{item.title}</h3>
-                      <p className="mt-3 text-body text-current/75">{item.description}</p>
+                      <p className="mt-5 text-body text-current/75">{item.description}</p>
                     </div>
                   </Link>
                 </CarouselItem>
