@@ -1,5 +1,20 @@
 # Milestones
 
+## M22 — Floating mobile menu (shipped to main)
+
+- **Date:** 2026-09-26
+- **What changed:** Open mobile menu is an inset moss/85 panel under the floating pill (`HeaderSheet`, `HeaderMenu`, `NavFrame`). Pill stays visible. Escape, backdrop, and hamburger close it. Focus returns to the hamburger. Panel already loads with `next/dynamic` on first tap.
+- **Diagnosis:** Earlier verify misses were environment noise. Same-session median-of-5 on `main` (`a96b612`) then PR #28 (`accc481`):
+
+| Page | main Perf | main LCP | PR Perf | PR LCP | Δ LCP |
+|---|---:|---:|---:|---:|---:|
+| `/` | 97 | 2668ms | 97 | 2671ms | +3ms |
+| `/about/` | 97 | **2514ms** (fail) | 97 | 2365ms | −149ms |
+
+  Home within 3ms. Current `main` itself missed the `/about/` 2500ms gate. Not a menu-weight regression.
+- **Verify:** passed. Content gates and axe passed. CLS 0. Home median Perf **97**, LCP **2662ms**. Other medians: about 97/2364, industries 99/2188, logistics 98/2190, products 98/2416, quote 98/2275.
+- **Branch:** `redesign/main` merged to `main` ([#28](https://github.com/situan555-code/agl-pallet-rebuild/pull/28))
+
 ## M21 — Remaining UI review Medium and Low fixes (shipped to main)
 
 - **Date:** 2026-09-26

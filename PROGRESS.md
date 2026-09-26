@@ -38,3 +38,4 @@ H3: beams under nodes, edge paths, centered row; stacked ice connectors below 76
 H4: sticky on hero-frame-slot; origin top; 24px under buttons; 1280 100% video 666px in view.
 H5: footer gutters on panels/nav — 16px at 390, 24px at 768/1280.
 M1–M8 and L1–L7 done on redesign/main. Verify passed (home 96 / 2713ms). Merged to main.
+M22: floating mobile menu. Same-session LH vs main was noise (home +3ms; main about failed). Verify passed (home 97 / 2662ms). Merged to main.
