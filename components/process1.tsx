@@ -3,7 +3,9 @@
 // chip, title, and description. Demo steps, lorem ipsum, orange asterisk,
 // and red corner illustration removed. Numbers render only when content
 // supplies them (SPEC numerals); otherwise the chip is a plain green mark.
-// Body text is rendered as stored. A leading em dash is not added here.
+// Body text is rendered as stored. A screen-reader-only " — " sits between
+// the title and the body so the spec line stays one sentence. It is not
+// shown as a visible leading dash.
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
@@ -27,6 +29,10 @@ interface Process1Props {
   layout?: "stack" | "grid" | "team";
   hairline?: boolean;
   className?: string;
+}
+
+function specJoin() {
+  return <span className="sr-only"> — </span>;
 }
 
 function initials(name: string) {
@@ -63,7 +69,10 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                 <div className="min-w-0">
                   <ItemHeading className="text-body font-semibold text-bone">{step.title}</ItemHeading>
                   {step.description.trim() !== "" && (
-                    <p className="mt-1 text-body text-gray">{step.description}</p>
+                    <>
+                      {specJoin()}
+                      <p className="mt-1 text-body text-gray">{step.description}</p>
+                    </>
                   )}
                 </div>
               </li>
@@ -76,7 +85,10 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                 {step.icon ? <IconTile icon={step.icon} /> : null}
                 <ItemHeading className={cn("text-step-lg text-current", step.icon && "mt-5")}>{step.title}</ItemHeading>
                 {step.description.trim() !== "" && (
-                  <p className="prose-measure mt-5 text-body text-gray">{step.description}</p>
+                  <>
+                    {specJoin()}
+                    <p className="prose-measure mt-5 text-body text-gray">{step.description}</p>
+                  </>
                 )}
               </li>
             ))}
@@ -101,7 +113,10 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                 <div className="min-w-0">
                   <ItemHeading className="text-step-lg text-current">{step.title}</ItemHeading>
                   {step.description.trim() !== "" && (
-                    <p className="prose-measure mt-5 text-body text-current/80">{step.description}</p>
+                    <>
+                      {specJoin()}
+                      <p className="prose-measure mt-5 text-body text-current/80">{step.description}</p>
+                    </>
                   )}
                 </div>
               </li>
