@@ -29,3 +29,4 @@ R8.4 verify green (home LCP 2408ms / Perf 98). Merging to main.
 11 done (quote contacts, footer inset). Next: 12.
 12 done (network diagram, CTA columns). Next: 13.
 13 done (type scale, FAQ question). Ship verify failed home LCP. Not merged to main.
+Home LCP split: Perf 97, LCP still ~2650ms (one run 2493). Not two consecutive passes. Not merged to main.

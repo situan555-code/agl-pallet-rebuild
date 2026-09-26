@@ -1,5 +1,20 @@
 # Milestones
 
+## M17 — Home LCP attempt (not shipped)
+
+- **Date:** 2026-09-26
+- **Verify:** not run. Home mobile still misses LCP. After the hero split, four warmed runs were Perf/LCP **97/2644**, **98/2493**, **97/2641**, **97/2669**, CLS 0. Perf is at or above 95. LCP is not under 2500ms on two consecutive runs. Not merged to `main`.
+- **What changed:**
+  1. The hero video no longer has a poster attribute, and the page no longer preloads the raw 212 KB JPG. The optimized poster (`q=60`, `fetchpriority=high`) is the LCP image.
+  2. Network diagram, product carousel, and parallax band load with `next/dynamic` only within about one viewport, over a same-size placeholder.
+  3. Eyebrow, H1, description, and buttons are server HTML. The video card is the client piece. Desktop scroll-scale is a CSS scroll timeline (`scroll(root)` over the first viewport). `view()` does not move while the card is sticky. `motion/react` is off the home first script.
+- **JavaScript:** `next build` does not print per-route sizes. Home's route entry is **134 KB** raw; `/who-we-are/` is **113 KB**. The only home-only chunk is 21 KB (hero video plus the deferred placeholders).
+- **Three largest client scripts on `/`** (raw bytes, shared with every page):
+  1. Next.js App Router bootstrap and react-dom — 229 KB (`196x_tfexoucg.js`, 72 KB on the wire)
+  2. Next.js client router — 155 KB (`43-a3b49lh9_n.js`, 43 KB on the wire)
+  3. core-js polyfill — 113 KB (`0cz1d0mv5g_q7.js`)
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M16 — UI audit tasks 11–13 (not shipped)
 
 - **Date:** 2026-09-26

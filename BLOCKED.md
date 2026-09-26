@@ -1,5 +1,9 @@
 # BLOCKED
 
+## Home LCP after the split (2026-09-26)
+
+Warmed mobile Lighthouse on `/` after removing the duplicate poster, deferring the network diagram, carousel, and parallax band, and taking motion off the hero. The LCP node is the hero poster image, not the description. Four runs: Perf 97 LCP 2644ms, Perf 98 LCP 2493ms, Perf 97 LCP 2641ms, Perf 97 LCP 2669ms, CLS 0. Perf clears 95. LCP does not stay under 2500ms for two runs in a row. Did not merge to `main`. Largest remaining scripts are the shared Next.js runtime, the client router, and the polyfill (see M17).
+
 ## UI audit ship after task 13 (2026-09-26)
 
 `npm run verify` on `redesign/main` after tasks 1–13: schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 86, LCP 4286ms (gate 2500). In the same run `/about/` LCP was 2734ms and `/request-a-quote/` LCP was 2583ms. Isolated retries: home Perf 85, LCP 4358ms (worse); `/about/` Perf 99, LCP 2266ms; `/request-a-quote/` Perf 98, LCP 2413ms, CLS 0. The only miss that stays outside the gate is home LCP/Perf. Did not merge to `main`. Two attempts.
