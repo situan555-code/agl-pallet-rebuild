@@ -27,6 +27,7 @@ interface Contact2Props {
   methods?: Contact2Method[];
   notes?: string[];
   aside?: ReactNode;
+  below?: ReactNode;
   children: ReactNode;
   className?: string;
 }
@@ -42,13 +43,15 @@ const Contact2 = ({
   methods,
   notes,
   aside,
+  below,
   children,
   className,
 }: Contact2Props) => {
   const Title = titleAs;
   return (
     <section id={id} className={cn("section-y scroll-mt-24 bg-moss", className)}>
-      <div className={cn(containerClass, "flex flex-col gap-12 rounded-section bg-green py-16 text-bone nav:flex-row nav:gap-16 nav:py-20")}>
+      <div className={cn(containerClass, "rounded-section bg-green py-16 text-bone nav:py-20")}>
+      <div className="flex flex-col gap-12 nav:flex-row nav:gap-16">
         <div className="flex flex-col gap-10 nav:w-5/12">
           <div className="flex flex-col">
             <p className="text-eyebrow font-semibold uppercase tracking-wide">
@@ -89,6 +92,8 @@ const Contact2 = ({
           {aside}
         </div>
         <div className="min-w-0 nav:flex-1 [&>form]:mt-0">{children}</div>
+      </div>
+      {below}
       </div>
     </section>
   );

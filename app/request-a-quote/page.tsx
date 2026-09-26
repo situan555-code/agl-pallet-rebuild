@@ -4,7 +4,7 @@ import pageContent from "@/content/pages/request-a-quote.json";
 import forms from "@/content/forms.json";
 import { Form, type FormDestination } from "@/components/Form";
 import { Contact2 } from "@/components/contact2";
-import { Feature3 } from "@/components/feature3";
+import { QuoteContacts, type QuoteContactItem } from "@/components/QuoteContacts";
 
 export const metadata: Metadata = {
   title: "Request a Quote — AGL Pallet",
@@ -48,30 +48,32 @@ export default function RequestAQuote() {
         title={pageContent.hero.heading}
         titleAs="h1"
         description={pageContent.hero.body}
+        below={
+          <QuoteContacts
+            items={pageContent.contactInfo.map((item) => ({
+              kind: (item.href.startsWith("mailto:")
+                ? "email"
+                : item.href.startsWith("sms:")
+                  ? "text"
+                  : "phone") as QuoteContactItem["kind"],
+              label: item.label,
+              value: item.value,
+              href: item.href,
+            }))}
+          />
+        }
       >
-        <div className="min-h-[40rem]">
-          <Suspense fallback={<div className="mt-8 min-h-[40rem]" aria-hidden="true" />}>
-            <Form
-              id={forms.quote.id}
-              fields={forms.quote.fields as never}
-              destination={destination}
-              submitLabel={forms.quote.submitLabel}
-              successMessage={forms.quote.successMessage}
-              source="/request-a-quote/"
-            />
-          </Suspense>
-        </div>
+        <Suspense fallback={null}>
+          <Form
+            id={forms.quote.id}
+            fields={forms.quote.fields as never}
+            destination={destination}
+            submitLabel={forms.quote.submitLabel}
+            successMessage={forms.quote.successMessage}
+            source="/request-a-quote/"
+          />
+        </Suspense>
       </Contact2>
-
-      <Feature3
-        variant="card"
-        columns={3}
-        features={pageContent.contactInfo.map((item) => ({
-          eyebrow: item.label,
-          title: item.value,
-          href: item.href,
-        }))}
-      />
     </main>
   );
 }
