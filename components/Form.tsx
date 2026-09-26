@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { AlertCircle } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { FAILURE_PHONE, coiProblem, quoteSchema } from "@/lib/form-schema";
 
 export type FormFieldConfig = {
   name: string;
@@ -37,9 +39,14 @@ export function Form({
   source: string;
 }) {
   const searchParams = useSearchParams();
+  const formRef = useRef<HTMLFormElement>(null);
+  const startedAt = useRef(0);
   const [values, setValues] = useState<Record<string, string>>(
     Object.fromEntries(fields.map((f) => [f.name, ""]))
   );
+  const [website, setWebsite] = useState("");
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [missing, setMissing] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "blocked">("idle");
   const relativeNext = `${source}?sent=${id}`;
@@ -51,18 +58,20 @@ export function Form({
 
   useEffect(() => {
     setNextUrl(`${window.location.origin}${relativeNext}`);
+    startedAt.current = Date.now();
   }, [relativeNext]);
 
   function handleChange(name: string, value: string) {
     setValues((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     const empty = fields
       .filter((f) => f.required && f.type !== "file" && values[f.name].trim() === "")
       .map((f) => f.name);
     setMissing(empty);
-    if (empty.length > 0) {
+    setSendError(null);
+    if (empty.length > 0 || fileError) {
       e.preventDefault();
       return;
     }
@@ -71,8 +80,52 @@ export function Form({
       setStatus("blocked");
       return;
     }
+    if (id !== "quote-form") {
+      setStatus("submitting");
+      return;
+    }
+
+    e.preventDefault();
+    const parsed = quoteSchema.safeParse(values);
+    if (!parsed.success) {
+      setMissing(parsed.error.issues.map((issue) => String(issue.path[0])));
+      return;
+    }
+    if (website) return;
+    if (Date.now() - startedAt.current < 3000) {
+      setSendError("Please wait a moment and send again.");
+      return;
+    }
+
     setStatus("submitting");
-    // Native POST continues to FormSubmit (no preventDefault).
+    try {
+      const response = await fetch("/api/forms/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          id,
+          website,
+          startedAt: startedAt.current,
+          fields: parsed.data,
+        }),
+      });
+      const data = (await response.json()) as { ok?: boolean; fallback?: boolean; error?: string };
+      if (data.ok) {
+        setStatus("success");
+        toast.success(successMessage);
+        return;
+      }
+      if (data.fallback && formRef.current && destination.kind === "formsubmit") {
+        setStatus("idle");
+        formRef.current.submit();
+        return;
+      }
+      setStatus("idle");
+      setSendError(data.error || `Not sent. Call ${FAILURE_PHONE}.`);
+    } catch {
+      setStatus("idle");
+      setSendError(`Not sent. Call ${FAILURE_PHONE}.`);
+    }
   }
 
   const formAction = destination.kind === "formsubmit" ? `https://formsubmit.co/${encodeURIComponent(destination.email)}` : undefined;
@@ -101,6 +154,7 @@ export function Form({
 
   return (
     <form
+      ref={formRef}
       id={id}
       noValidate
       action={formAction}
@@ -108,6 +162,16 @@ export function Form({
       onSubmit={handleSubmit}
       className="mt-8 max-w-2xl"
     >
+      <input
+        type="text"
+        name="website"
+        value={website}
+        onChange={(event) => setWebsite(event.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute h-0 w-0 overflow-hidden opacity-0"
+      />
       {destination.kind === "formsubmit" && (
         <>
           <input type="hidden" name="_subject" value={destination.subject} />
@@ -148,7 +212,16 @@ export function Form({
 
       {status === "blocked" && (
         <p className="mb-6 rounded-input bg-bone/10 p-4 text-bone">
-          Not sent — the destination above isn&apos;t configured yet.
+          Not sent — the destination above isn&apos;t configured yet. Call {FAILURE_PHONE}.
+        </p>
+      )}
+
+      {sendError && (
+        <p className="mb-6 flex items-start gap-2 rounded-input border border-gray/25 bg-smoke p-4 text-bone" role="alert">
+          <AlertCircle className="mt-0.5 size-4 shrink-0 text-ice" aria-hidden />
+          <span>
+            {sendError.includes(FAILURE_PHONE) ? sendError : `${sendError} Call ${FAILURE_PHONE}.`}
+          </span>
         </p>
       )}
 
@@ -226,7 +299,10 @@ export function Form({
                   type="file"
                   accept=".pdf,.jpg,.jpeg,.png"
                   className={inputClass}
-                  onChange={() => {}}
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    setFileError(file ? coiProblem(file) : null);
+                  }}
                 />
               ) : (
                 <input
@@ -238,6 +314,12 @@ export function Form({
                   value={values[field.name]}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                 />
+              )}
+              {field.type === "file" && fileError && (
+                <span className="mt-2 flex items-center gap-2 text-[14px] text-ice">
+                  <AlertCircle className="size-4 shrink-0" aria-hidden />
+                  {fileError}
+                </span>
               )}
               {isInvalid && (
                 <span className="mt-2 flex items-center gap-2 text-[14px] text-ice">

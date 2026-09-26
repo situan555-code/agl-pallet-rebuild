@@ -5,6 +5,7 @@ import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+import { Toaster } from "@/components/Toaster";
 import { isVercelAppHost } from "@/lib/host";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
