@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## UI audit task 12 (2026-09-26)
+
+The network diagram labels stay the short lines already passed into `NetworkBeam` from `app/page.tsx` ("Family-run mills", "Qualified shops", "More than one source", "AGL Pallet", "Your line"). They are not separate fields in `content/pages/home.json`, so they were not copied into content JSON and no new eyebrow was added.
+
 ## UI audit task 8 (2026-09-26)
 
 Leading em dashes are not shown. A screen-reader-only " — " still joins each title to its body so the spec sentence stays intact for the copy gate. These remain in content JSON and were left for the owner:

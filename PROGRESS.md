@@ -27,3 +27,4 @@ R8.4 verify green (home LCP 2408ms / Perf 98). Merging to main.
 9 done (form fields). Next: 10.
 10 done (quote Resend with FormSubmit fallback; domain unverified). Next: 11.
 11 done (quote contacts, footer inset). Next: 12.
+12 done (network diagram, CTA columns). Next: 13.
