@@ -11,6 +11,9 @@
   --color-bone: #ece8df;
   --color-ice: #dde9e2;
   --color-brand-green: #1f2a1f;
+  /* Reading-surface aliases so leftover text-ink utilities stay moss on bone. */
+  --color-ink: #131913;
+  --color-eyebrow-ink: #1f2a1f;
 
   --color-border: var(--border);
   --color-input: var(--input);
