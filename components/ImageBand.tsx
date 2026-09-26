@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { getBlurDataURL } from "@/lib/blur";
 
@@ -14,9 +15,10 @@ interface ImageBandProps {
   image: { src: string; alt: string };
   cta?: { label: string; href: string };
   className?: string;
+  contained?: boolean;
 }
 
-export function ImageBand({ eyebrow, heading, body, image, cta, className }: ImageBandProps) {
+export function ImageBand({ eyebrow, heading, body, image, cta, className, contained }: ImageBandProps) {
   const blur = getBlurDataURL(image.src);
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
@@ -46,7 +48,12 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-r from-moss/70 via-moss/25 to-transparent"
         />
-        <div className="relative z-10 mx-auto flex min-h-96 max-w-[1440px] items-center px-6 py-16 text-bone nav:min-h-120 nav:py-20">
+        <div
+          className={cn(
+            "relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20",
+            contained ? containerClass : "mx-auto max-w-[1440px] px-6"
+          )}
+        >
           <div className="max-w-xl">
             {eyebrow && (
               <p className="text-eyebrow font-semibold uppercase tracking-wide text-ice">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { getBlurDataURL } from "@/lib/blur";
 
@@ -23,6 +24,7 @@ export interface Gallery4Props {
   items: Gallery4Item[];
   className?: string;
   tone?: "paper" | "green";
+  contained?: boolean;
 }
 
 export function Gallery4({
@@ -31,6 +33,7 @@ export function Gallery4({
   description,
   items,
   className,
+  contained,
 }: Gallery4Props) {
   const [api, setApi] = useState<CarouselApi>();
   const [canPrev, setCanPrev] = useState(false);
@@ -54,8 +57,8 @@ export function Gallery4({
   }, [api, sync]);
 
   return (
-    <section className={cn("section-y scroll-mt-24 overflow-hidden px-6 bg-moss text-bone", className)}>
-      <div className="mx-auto max-w-[1440px]">
+    <section className={cn("section-y scroll-mt-24 overflow-hidden bg-moss text-bone", !contained && "px-6", className)}>
+      <div className={contained ? containerClass : "mx-auto max-w-[1440px]"}>
         <div className="mb-8 flex flex-col gap-6 nav:mb-10 nav:flex-row nav:items-end nav:justify-between">
           <div className="max-w-2xl">
             {eyebrow && (

@@ -1,6 +1,7 @@
 // Closing CTA band. Uses Section inset-green + grain (R1.4).
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
+import { containerClass } from "@/components/Container";
 import { Section } from "@/components/Section";
 
 interface Cta4Props {
@@ -10,12 +11,12 @@ interface Cta4Props {
   button: { label: string; href: string };
   features?: string[];
   className?: string;
+  contained?: boolean;
 }
 
-const Cta4 = ({ eyebrow, heading, description, button, features, className }: Cta4Props) => {
-  return (
-    <Section variant="inset-green" grain className={className}>
-      <div className={cn("mx-auto grid max-w-[1440px] items-end gap-8 nav:grid-cols-12 nav:gap-16")}>
+const Cta4 = ({ eyebrow, heading, description, button, features, className, contained }: Cta4Props) => {
+  const grid = (
+      <div className="grid items-end gap-8 nav:grid-cols-12 nav:gap-16">
         <div className="nav:col-span-7">
           {eyebrow && (
             <p className="mb-4 text-eyebrow font-semibold uppercase tracking-wide">
@@ -44,6 +45,21 @@ const Cta4 = ({ eyebrow, heading, description, button, features, className }: Ct
           </div>
         </div>
       </div>
+  );
+
+  if (contained) {
+    return (
+      <section className={cn("scroll-mt-24 bg-moss py-6 nav:py-8", className)}>
+        <div className={cn(containerClass, "grain relative rounded-section bg-green py-16 text-bone nav:py-20")}>
+          {grid}
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <Section variant="inset-green" grain className={className}>
+      <div className="mx-auto max-w-[1440px]">{grid}</div>
     </Section>
   );
 };

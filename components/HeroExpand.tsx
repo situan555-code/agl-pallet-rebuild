@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 
 type HeroButton = {
@@ -71,7 +72,7 @@ export function HeroExpand({
   return (
     <div ref={trackRef} className={cn("relative bg-moss text-bone", reduce ? "" : "h-[165vh]")}>
       <div className={cn("flex flex-col justify-end", reduce ? "relative" : "sticky top-0 min-h-svh")}>
-        <div className="mx-auto w-full max-w-[1440px] px-6 pt-28 pb-8 nav:pt-32">
+        <div className={cn(containerClass, "pt-28 pb-8 nav:pt-32")}>
           <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ice">
             <span aria-hidden="true" className="mr-2 font-bold">
               /
@@ -102,10 +103,11 @@ export function HeroExpand({
           </div>
         </div>
 
+        <div className={containerClass}>
         <motion.div
           className={cn(
-            "relative mx-auto w-full overflow-hidden will-change-transform",
-            reduce && "max-w-[1200px] rounded-card"
+            "relative w-full overflow-hidden will-change-transform",
+            reduce && "rounded-card"
           )}
           style={reduce ? undefined : { scale, borderRadius: radius }}
         >
@@ -137,6 +139,7 @@ export function HeroExpand({
             )}
           </div>
         </motion.div>
+        </div>
       </div>
     </div>
   );

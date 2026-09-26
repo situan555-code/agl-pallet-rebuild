@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Factory, Landmark, Network, Truck } from "lucide-react";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { cn } from "@/lib/utils";
+import { Container } from "@/components/Container";
 
 export function NetworkBeam({
   mills,
@@ -42,7 +43,8 @@ export function NetworkBeam({
   }, []);
 
   return (
-    <section className={cn("px-6 py-10", className)}>
+    <section className={cn("py-10", className)}>
+      <Container>
       <div
         ref={containerRef}
         className="relative mx-auto flex max-w-[1100px] flex-col items-center gap-8 nav:flex-row nav:items-center nav:justify-between nav:gap-6"
@@ -106,6 +108,7 @@ export function NetworkBeam({
           />
         ) : null}
       </div>
+      </Container>
     </section>
   );
 }

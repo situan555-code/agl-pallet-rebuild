@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 
 interface Feature2Props {
@@ -9,12 +10,13 @@ interface Feature2Props {
   cta?: { label: string; href: string };
   hairline?: boolean;
   className?: string;
+  contained?: boolean;
 }
 
-const Feature2 = ({ id, eyebrow, heading, paragraphs, cta, hairline, className }: Feature2Props) => {
+const Feature2 = ({ id, eyebrow, heading, paragraphs, cta, hairline, className, contained }: Feature2Props) => {
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 px-6", hairline && "section-hairline", className)}>
-      <div className="mx-auto grid max-w-[1440px] items-start gap-10 nav:grid-cols-12 nav:gap-16">
+    <section id={id} className={cn("section-y scroll-mt-24", !contained && "px-6", hairline && "section-hairline", className)}>
+      <div className={cn("grid items-start gap-10 nav:grid-cols-12 nav:gap-16", contained ? containerClass : "mx-auto max-w-[1440px]")}>
         <div className="nav:col-span-5">
           {eyebrow && (
             <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">

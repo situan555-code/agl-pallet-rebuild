@@ -9,6 +9,7 @@
 //   card     — bordered card, only for items that link somewhere
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
 import { ArrowIcon } from "@/components/icons";
@@ -30,6 +31,7 @@ interface Feature3Props {
   columns?: 2 | 3 | 4;
   hairline?: boolean;
   className?: string;
+  contained?: boolean;
 }
 
 type ItemHeading = "h2" | "h3";
@@ -145,15 +147,15 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
   );
 }
 
-const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, className }: Feature3Props) => {
+const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, className, contained }: Feature3Props) => {
   // Item titles step down from the section heading; without one they sit
   // directly under the page h1.
   const Heading: ItemHeading = heading ? "h3" : "h2";
   const gap =
     variant === "divided" ? "" : variant === "ruled" ? "gap-x-16 gap-y-10" : "gap-8";
   return (
-    <section className={cn(variant === "divided" ? "px-6" : "section-y px-6", hairline && "section-hairline", className)}>
-      <div className="mx-auto max-w-[1440px]">
+    <section className={cn(variant === "divided" ? "" : "section-y", !contained && "px-6", hairline && "section-hairline", className)}>
+      <div className={contained ? containerClass : "mx-auto max-w-[1440px]"}>
         {heading ? (
           <div className="mb-10 nav:mb-14">
             <SectionHeading eyebrow={eyebrow} heading={heading} />
