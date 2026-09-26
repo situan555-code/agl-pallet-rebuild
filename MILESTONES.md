@@ -1,5 +1,18 @@
 # Milestones
 
+## M20 — High-only UI review fixes (shipped to main)
+
+- **Date:** 2026-09-26
+- **Verify:** passed on the second median-of-5 run. Content gates and axe passed. CLS 0. Home median Perf **98**, LCP **2490ms**. Other medians: about 98/2334, industries 99/2263, logistics 98/2410, products 99/2036, quote 99/2259. First suite missed `/about/` LCP 2803ms.
+- **Highs:**
+  1. H1 — `nx7k-lab-m4.vercel.app` added as a verified alias on project `nx7k-lab-m4`.
+  2. H2 — Article and calculator reading body is a bone inset panel. Calculator inputs 52px, moss/25 border.
+  3. H3 — Network beams under opaque nodes, edge paths, centered row; stacked ice connectors below 768.
+  4. H4 — Sticky on the 16:9 frame slot, `transform-origin: center top`, 24px under the buttons.
+  5. H5 — Footer gutters on panels and the nav pill: 16px at 390, 24px at 768/1280.
+- **Left on the review:** M1–M8 and L1–L7. See `PROGRESS.md`.
+- **Branch:** `redesign/main` merged to `main`
+
 ## M19 — Tasks 1–13 and the LCP pass (shipped to main)
 
 - **Date:** 2026-09-26
