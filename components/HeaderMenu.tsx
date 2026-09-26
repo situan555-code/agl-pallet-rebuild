@@ -32,13 +32,14 @@ export function HeaderMenu({
     <>
       <button
         type="button"
+        data-nav-menu-trigger=""
         className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray/40 bg-green text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice xl:hidden"
-        aria-label="Open menu"
+        aria-label={open ? "Close menu" : "Open menu"}
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => {
           setRequested(true);
-          setOpen(true);
+          setOpen((current) => !current);
         }}
       >
         <MenuIcon className="h-4 w-4" />

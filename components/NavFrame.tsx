@@ -17,7 +17,7 @@ export function NavFrame({ children }: { children: ReactNode }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 flex justify-center transition-[padding] duration-300",
+        "fixed inset-x-0 top-0 z-60 flex justify-center transition-[padding] duration-300",
         insetOuterClass,
         scrolled ? "pt-2" : "pt-3"
       )}
@@ -28,7 +28,7 @@ export function NavFrame({ children }: { children: ReactNode }) {
           "flex w-full max-w-[1280px] items-center justify-between gap-2 rounded-full border text-bone",
           scrolled
             ? "border-smoke bg-moss/85 py-2.5 shadow-md backdrop-blur-[16px]"
-            : "border-transparent bg-transparent py-3 shadow-none"
+            : "border-transparent bg-transparent py-3 shadow-none has-[[data-nav-menu-trigger][aria-expanded=true]]:border-smoke has-[[data-nav-menu-trigger][aria-expanded=true]]:bg-moss/85 has-[[data-nav-menu-trigger][aria-expanded=true]]:py-2.5 has-[[data-nav-menu-trigger][aria-expanded=true]]:shadow-md has-[[data-nav-menu-trigger][aria-expanded=true]]:backdrop-blur-[16px]"
         )}
       >
         {children}

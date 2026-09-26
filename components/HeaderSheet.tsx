@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
@@ -13,11 +12,14 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/comp
 import type { NavItem } from "@/components/MobileNav";
 import { groupResourceChildren } from "@/lib/nav-groups";
 
+function isMenuTrigger(event: { target: EventTarget | null }) {
+  return event.target instanceof Element && Boolean(event.target.closest("[data-nav-menu-trigger]"));
+}
+
 export default function HeaderSheet({
   open,
   onOpenChange,
   nav,
-  logo,
   ctaHref,
   ctaLabel,
 }: {
@@ -31,16 +33,20 @@ export default function HeaderSheet({
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
-        side="right"
+        side="top"
+        showCloseButton={false}
         aria-describedby={undefined}
-        className="flex h-full max-h-screen w-full flex-col overflow-hidden border-l border-smoke bg-moss text-bone sm:max-w-md"
+        overlayClassName="top-[4.5rem]! bg-moss/40"
+        onPointerDownOutside={(event) => {
+          if (isMenuTrigger(event)) event.preventDefault();
+        }}
+        onInteractOutside={(event) => {
+          if (isMenuTrigger(event)) event.preventDefault();
+        }}
+        className="inset-x-4 top-[4.75rem] bottom-auto left-4 right-4 h-auto max-h-[calc(100dvh-5.75rem)] w-auto max-w-none gap-0 overflow-hidden rounded-section border border-smoke bg-moss/85 p-0 text-bone shadow-lg backdrop-blur-[16px] sm:max-w-none md:inset-x-6 md:left-6 md:right-6 data-[side=top]:inset-x-4 data-[side=top]:top-[4.75rem] data-[side=top]:h-auto data-[side=top]:border-smoke md:data-[side=top]:inset-x-6"
       >
-        <SheetHeader>
-          <SheetTitle>
-            <Link href="/" prefetch={false} className="flex items-center gap-2" onClick={() => onOpenChange(false)}>
-              <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
-            </Link>
-          </SheetTitle>
+        <SheetHeader className="sr-only">
+          <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
         <div className="flex min-h-0 flex-1 flex-col">
           <div className="min-h-0 flex-1 overflow-y-auto px-4">
