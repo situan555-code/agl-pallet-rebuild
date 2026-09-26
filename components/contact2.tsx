@@ -52,7 +52,7 @@ const Contact2 = ({
     <section id={id} className={cn("section-y scroll-mt-24 bg-moss", insetOuterClass, className)}>
       <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 text-bone nav:py-20")}>
       <div className="flex flex-col gap-12 nav:flex-row nav:gap-16">
-        <div className="flex flex-col gap-10 nav:w-5/12">
+        <div className="flex flex-col gap-10 nav:sticky nav:top-28 nav:w-5/12 nav:self-start">
           <div className="flex flex-col">
             <p className="text-eyebrow font-semibold uppercase tracking-wide">
               <span aria-hidden="true" className="mr-2 font-bold">

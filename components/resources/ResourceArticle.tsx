@@ -60,6 +60,7 @@ export function ArticleHeader({
   updated,
   crumbs = [],
   libraryLabel = hub.hero.heading,
+  variant = "light-text",
 }: {
   eyebrow: string;
   title: string;
@@ -68,20 +69,22 @@ export function ArticleHeader({
   crumbs?: { name: string; href: string }[];
   /** Visible label for the /resources/ crumb. Guides keep the library title. */
   libraryLabel?: string;
+  variant?: "inset-dark" | "light-text";
 }) {
+  const dark = variant === "inset-dark";
   return (
-    <section className={cn("scroll-mt-24 bg-moss pb-8 pt-28 text-bone nav:pb-10", insetOuterClass)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 nav:py-20")}>
+    <section className={cn("scroll-mt-24 bg-moss pb-0 pt-28", dark ? "text-bone" : "text-moss", insetOuterClass)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "py-16 nav:py-20", dark ? "bg-green text-bone" : "surface-light bg-bone text-moss")}>
         <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
+          <ol className={cn("flex flex-wrap items-center gap-2 text-link", dark ? "text-bone/75" : "text-moss/70")}>
             <li>
-              <Link href="/" prefetch={false} className="hover:text-bone hover:underline">
+              <Link href="/" prefetch={false} className={cn("hover:underline", dark && "hover:text-bone")}>
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/resources/" prefetch={false} className="hover:text-bone hover:underline">
+              <Link href="/resources/" prefetch={false} className={cn("hover:underline", dark && "hover:text-bone")}>
                 {libraryLabel}
               </Link>
             </li>
@@ -89,7 +92,7 @@ export function ArticleHeader({
             {crumbs.map((c) => (
               <Fragment key={c.href}>
                 <li>
-                  <Link href={c.href} prefetch={false} className="hover:text-bone hover:underline">
+                  <Link href={c.href} prefetch={false} className={cn("hover:underline", dark && "hover:text-bone")}>
                     {c.name}
                   </Link>
                 </li>
@@ -97,19 +100,19 @@ export function ArticleHeader({
               </Fragment>
             ))}
             <li>
-              <span aria-current="page" className="text-bone">
+              <span aria-current="page" className={dark ? "text-bone" : "text-moss"}>
                 {title}
               </span>
             </li>
           </ol>
         </nav>
         <p className="mt-8 text-eyebrow font-semibold uppercase tracking-wide">
-          <span aria-hidden="true" className="mr-2 font-bold">
+          <span aria-hidden="true" className={cn("mr-2 font-bold", dark ? "text-ice" : "text-current")}>
             /
           </span>
           {eyebrow}
         </p>
-        <h1 className="mt-3 max-w-[900px] text-display-1">{title}</h1>
+        <h1 className={cn("mt-3 max-w-[900px] text-display-1", dark && "display")}>{title}</h1>
         <Byline updated={updated} />
       </div>
     </section>
@@ -119,7 +122,7 @@ export function ArticleHeader({
 /** Bone reading surface from Short answer through Changelog. Opener stays dark. */
 export function ReadingPanel({ children }: { children: ReactNode }) {
   return (
-    <section className={cn("bg-moss pb-8 nav:pb-10", insetOuterClass)}>
+    <section className={cn("bg-moss pb-8 pt-[72px] nav:pb-10 nav:pt-[112px]", insetOuterClass)}>
       <div className={cn(insetSurfaceClass, insetPadClass, "surface-light bg-bone py-10 text-moss nav:py-14")}>
         {children}
       </div>
@@ -146,17 +149,26 @@ export function DirectAnswer({ text }: { text: string }) {
 }
 
 export function DataTable({ table }: { table: ResourceTable }) {
+  const wide = table.columns.length >= 3;
   return (
     <figure className="mt-6">
-      <div role="region" aria-label={table.caption} tabIndex={0} className="overflow-x-auto focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-brand-green">
-        <table className="w-full min-w-[520px] border-collapse text-left text-[15px] leading-snug">
-          <caption className="mb-3 caption-top text-left text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
-            {table.caption}
-          </caption>
+      <figcaption className="mb-3 text-left text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
+        {table.caption}
+      </figcaption>
+      <div
+        role="region"
+        aria-label={table.caption}
+        tabIndex={0}
+        className={cn(
+          "overflow-x-auto rounded-card focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-brand-green",
+          wide && "table-scroll-fade"
+        )}
+      >
+        <table className={cn("w-full border-collapse text-left text-[15px] leading-snug", wide && "min-w-[520px]")}>
           <thead>
             <tr>
               {table.columns.map((c) => (
-                <th key={c} scope="col" className="border-b-2 border-brand-green py-3 pr-6 align-bottom font-semibold text-brand-green">
+                <th key={c} scope="col" className="sticky top-0 border-b-2 border-brand-green bg-bone py-3 pr-6 align-bottom font-semibold text-brand-green">
                   {c}
                 </th>
               ))}
@@ -164,7 +176,7 @@ export function DataTable({ table }: { table: ResourceTable }) {
           </thead>
           <tbody>
             {table.rows.map((row, r) => (
-              <tr key={r}>
+              <tr key={r} className="odd:bg-moss/4">
                 {row.map((cell, c) =>
                   c === 0 ? (
                     <th key={c} scope="row" className="border-b border-brand-green/15 py-3 pr-6 align-top font-semibold text-ink">
@@ -307,7 +319,12 @@ export function NextSteps() {
 function Toc({ items }: { items: { id: string; label: string }[] }) {
   return (
     <nav aria-label="On this page" className="nav:sticky nav:top-28">
-      <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">On this page</p>
+      <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
+        <span aria-hidden="true" className="mr-2 font-bold text-current">
+          /
+        </span>
+        On this page
+      </p>
       <ol className="mt-4 space-y-2 border-l border-brand-green/20 pl-4 text-link">
         {items.map((item) => (
           <li key={item.id}>

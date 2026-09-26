@@ -99,7 +99,7 @@ export function Gallery4({
             {items.map((item) => {
               const blur = getBlurDataURL(item.image);
               return (
-                <CarouselItem key={item.id} className="basis-[85%] pl-4 sm:basis-1/2 nav:basis-1/3">
+                <CarouselItem key={item.id} className="basis-[85%] pl-4 sm:basis-1/2 lg:basis-[31%]">
                   <Link
                     id={item.id}
                     href={item.href}

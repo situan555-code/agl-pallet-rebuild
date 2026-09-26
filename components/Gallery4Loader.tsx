@@ -53,7 +53,7 @@ function GalleryPlaceholder({ eyebrow, title, description, items, className }: G
                 return (
                   <div
                     key={item.id}
-                    className="min-w-0 shrink-0 grow-0 basis-[85%] pl-4 sm:basis-1/2 nav:basis-1/3"
+                    className="min-w-0 shrink-0 grow-0 basis-[85%] pl-4 sm:basis-1/2 lg:basis-[31%]"
                   >
                     <Link
                       id={item.id}

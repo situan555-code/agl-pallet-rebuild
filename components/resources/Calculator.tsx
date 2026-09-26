@@ -31,7 +31,7 @@ export function CalcForm({
     <form method="get" action={action} aria-label={label} className="mt-6">
       {children}
       <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-        <Button type="submit" variant="secondary">
+        <Button type="submit" variant="primary" className="bg-moss text-bone hover:bg-green">
           {submitLabel}
         </Button>
         <Link

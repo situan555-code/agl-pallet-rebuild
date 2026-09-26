@@ -37,18 +37,4 @@ H2: bone reading panel + 52px moss-border inputs. Contrast labels 14.6:1, result
 H3: beams under nodes, edge paths, centered row; stacked ice connectors below 768.
 H4: sticky on hero-frame-slot; origin top; 24px under buttons; 1280 100% video 666px in view.
 H5: footer gutters on panels/nav — 16px at 390, 24px at 768/1280.
-M1 leftover: last interior panel sits 24px above the footer.
-M2 leftover: suppliers/carriers form left column is an eyebrow over empty green.
-M3 leftover: products page is six bare text rows.
-M4 leftover: main actions still use secondary (cta4, Calculate).
-M5 leftover: How We Work step bodies still show a leading em dash.
-M6 leftover: three-column cards stay cramped at 768.
-M7 leftover: tables at 390 clip with no scroll cue; no zebra/sticky header.
-M8 leftover: page openers are not varied (all inset-dark).
-L1 leftover: hero description widow "sell."
-L2 leftover: opener-to-first-section gap 160–177px.
-L3 leftover: one title in a card row wraps, body starts lower.
-L4 leftover: some eyebrows omit the ice slash.
-L5 leftover: home product carousel shows 2 of 6 cards at ≥1280.
-L6 leftover: suppliers 5th benefit card is orphaned.
-L7 leftover: How We Work steps sit in one narrow column.
+M1–M8 and L1–L7 done on redesign/main. Verify passed (home 96 / 2713ms). Merged to main.

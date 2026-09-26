@@ -44,10 +44,10 @@ export default function Home() {
       />
 
       <section className="section-rhythm">
-        <Container className="grid gap-4 md:grid-cols-3">
+        <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap) => (
             <article key={cap.heading} className="hover-lift rounded-card bg-green px-8 py-10 text-bone nav:px-10">
-              <h2 className="text-display-kicker text-current">{cap.heading}</h2>
+              <h2 className="min-h-[2lh] text-display-kicker text-current lg:min-h-[2lh]">{cap.heading}</h2>
               <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
             </article>
           ))}
@@ -157,7 +157,7 @@ export default function Home() {
       />
 
       <Cta4
-        className="section-rhythm section-rhythm-end"
+        className="section-rhythm"
         heading={home.ctaBand.heading}
         description={home.ctaBand.body}
         button={home.ctaBand.cta}

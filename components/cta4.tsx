@@ -41,7 +41,7 @@ const Cta4 = ({ eyebrow, heading, description, button, features, className }: Ct
             </ul>
           )}
           <div className="mt-8">
-            <Button href={button.href} label={button.label} variant="secondary" />
+            <Button href={button.href} label={button.label} variant="primary" />
           </div>
         </div>
       </div>

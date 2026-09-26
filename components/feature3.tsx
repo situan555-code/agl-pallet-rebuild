@@ -42,7 +42,7 @@ type ItemHeading = "h2" | "h3";
 // divided: md:grid-cols-2 md:grid-cols-3 md:grid-cols-4
 const columnClass: Record<2 | 3 | 4, string> = {
   2: "md:grid-cols-2",
-  3: "md:grid-cols-3",
+  3: "md:grid-cols-2 lg:grid-cols-3",
   4: "md:grid-cols-2 nav:grid-cols-4",
 };
 
@@ -56,7 +56,7 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
       )}
     >
       {item.icon ? <IconTile icon={item.icon} /> : null}
-      <Heading className={cn("text-display-kicker text-current", item.icon && "mt-5")}>{item.title}</Heading>
+      <Heading className={cn("min-h-[2lh] text-display-kicker text-current lg:min-h-[2lh]", item.icon && "mt-5")}>{item.title}</Heading>
       <p className="mt-5 max-w-sm text-body text-current/80">{item.description}</p>
     </div>
   );
@@ -99,7 +99,7 @@ function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHead
       {item.eyebrow && (
         <p className="font-display text-display-numeral text-ice">{item.eyebrow}</p>
       )}
-      <Heading className={cn("text-step-lg text-bone", item.eyebrow && "mt-3")}>{item.title}</Heading>
+      <Heading className={cn("min-h-[2lh] text-step-lg text-bone lg:min-h-[2lh]", item.eyebrow && "mt-3")}>{item.title}</Heading>
       <p className="mt-5 text-body text-bone/85">{item.description}</p>
     </article>
   );
@@ -109,9 +109,14 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
   const inner = (
     <>
       {item.eyebrow && (
-        <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
+        <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">
+          <span aria-hidden="true" className="mr-2 font-bold text-ice">
+            /
+          </span>
+          {item.eyebrow}
+        </p>
       )}
-      <Heading className={cn("text-step-lg leading-snug text-pretty text-current", item.eyebrow && "mt-3")}>{item.title}</Heading>
+      <Heading className={cn("min-h-[2lh] text-step-lg leading-snug text-pretty text-current lg:min-h-[2lh]", item.eyebrow && "mt-3")}>{item.title}</Heading>
       {item.description && <p className="mt-5 text-body text-bone/85">{item.description}</p>}
       {item.cta && (
         <div className="mt-auto pt-8">
@@ -179,7 +184,7 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
             variant === "divided"
               ? `md:grid-cols-${columns}`
               :             variant === "card" && columns === 3
-                ? "nav:grid-cols-3"
+                ? "md:grid-cols-2 lg:grid-cols-3"
                 : columnClass[columns],
             variant === "card" && "items-stretch",
             gap

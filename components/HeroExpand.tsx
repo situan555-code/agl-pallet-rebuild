@@ -35,7 +35,7 @@ export function HeroExpand({
         <h1 className="display mx-auto mt-3 max-w-3xl text-center text-display-1 text-bone nav:text-[56px] nav:leading-[1.08]">
           {heading}
         </h1>
-        <p className="prose-measure mx-auto mt-5 max-w-3xl text-center text-body text-bone/80">
+        <p className="prose-measure mx-auto mt-5 max-w-[46rem] text-pretty text-center text-body text-bone/80">
           {description}
         </p>
         <div className="mt-8 flex flex-col items-center gap-3">
