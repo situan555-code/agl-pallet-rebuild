@@ -28,14 +28,15 @@ export function Header() {
       <Link
         href="/"
         prefetch={false}
-        className="shrink-0 border-0 bg-transparent focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ice"
+        className="shrink-0 border-0 bg-transparent shadow-none ring-0 outline-none hover:bg-transparent hover:ring-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ice"
       >
         <Image
           src={LIGHT_LOGO.src}
-          width={80}
-          height={36}
+          width={65}
+          height={29}
           alt={LIGHT_LOGO.alt}
           priority
+          className="h-[29px] w-auto border-0 bg-transparent shadow-none ring-0 outline-none"
         />
       </Link>
 
