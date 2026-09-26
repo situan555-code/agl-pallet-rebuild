@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { getBlurDataURL } from "@/lib/blur";
 
@@ -30,16 +31,17 @@ export function PageOpener({
   return (
     <section
       className={cn(
-        "scroll-mt-24 px-6 pb-16 pt-36",
-        variant === "light-image" && "surface-light bg-bone text-moss",
-        variant === "light-text" && "surface-light bg-bone text-moss",
-        variant === "inset-dark" && "bg-moss px-4 pt-28"
+        "scroll-mt-24 pb-16 pt-36",
+        variant === "light-image" && cn("surface-light bg-bone text-moss", insetOuterClass),
+        variant === "light-text" && cn("surface-light bg-bone text-moss", insetOuterClass),
+        variant === "inset-dark" && cn("bg-moss pt-28", insetOuterClass)
       )}
     >
       <div
         className={cn(
-          "mx-auto max-w-[1440px]",
-          dark && "rounded-section bg-green px-6 py-16 text-bone nav:px-10"
+          insetSurfaceClass,
+          insetPadClass,
+          dark && "bg-green py-16 text-bone"
         )}
       >
         {breadcrumb && breadcrumb.length > 0 && (

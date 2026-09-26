@@ -6,7 +6,7 @@ import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import hub from "@/content/resources/hub.json";
 import { cn } from "@/lib/utils";
-import { containerClass } from "@/components/Container";
+import { containerClass, insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Cta4 } from "@/components/cta4";
 import { Feature3 } from "@/components/feature3";
 import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
@@ -70,8 +70,8 @@ export function ArticleHeader({
   libraryLabel?: string;
 }) {
   return (
-    <section className="scroll-mt-24 bg-moss pb-8 pt-28 text-bone nav:pb-10">
-      <div className={cn(containerClass, "rounded-section bg-green py-16 nav:py-20")}>
+    <section className={cn("scroll-mt-24 bg-moss pb-8 pt-28 text-bone nav:pb-10", insetOuterClass)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 nav:py-20")}>
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
             <li>

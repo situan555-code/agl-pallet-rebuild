@@ -5,7 +5,7 @@
 // sections. Everything renders on paper; no box around the copy.
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { containerClass } from "@/components/Container";
+import { containerClass, insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
 
@@ -98,8 +98,8 @@ const Feature1 = ({
 
   if (panel) {
     return (
-      <section id={id} className={cn("section-y scroll-mt-24 bg-moss", hairline && "section-hairline", className)}>
-        <div className={cn(containerClass, "surface-light rounded-section bg-bone py-16 text-moss nav:py-20")}>
+      <section id={id} className={cn("section-y scroll-mt-24 bg-moss", insetOuterClass, hairline && "section-hairline", className)}>
+        <div className={cn(insetSurfaceClass, insetPadClass, "surface-light bg-bone py-16 text-moss nav:py-20")}>
           {grid}
         </div>
       </section>

@@ -1,12 +1,12 @@
 import { Button } from "@/components/Button";
-import { containerClass } from "@/components/Container";
+import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { cn } from "@/lib/utils";
 
 export default function NotFound() {
   return (
     <main>
-      <section className="bg-moss pb-8 pt-28 text-center text-bone">
-        <div className={cn(containerClass, "rounded-section bg-green py-16 nav:py-20")}>
+      <section className={cn("bg-moss pb-8 pt-28 text-center text-bone", insetOuterClass)}>
+        <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 nav:py-20")}>
         <div className="mx-auto max-w-[720px]">
           <p className="text-eyebrow font-semibold uppercase tracking-wide">
             <span aria-hidden="true" className="mr-2 font-bold">

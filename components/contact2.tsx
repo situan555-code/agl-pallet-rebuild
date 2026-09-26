@@ -8,7 +8,7 @@
 import type { ReactNode } from "react";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { containerClass } from "@/components/Container";
+import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { CopyValue } from "@/components/CopyValue";
 
 export interface Contact2Method {
@@ -49,8 +49,8 @@ const Contact2 = ({
 }: Contact2Props) => {
   const Title = titleAs;
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 bg-moss", className)}>
-      <div className={cn(containerClass, "rounded-section bg-green py-16 text-bone nav:py-20")}>
+    <section id={id} className={cn("section-y scroll-mt-24 bg-moss", insetOuterClass, className)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 text-bone nav:py-20")}>
       <div className="flex flex-col gap-12 nav:flex-row nav:gap-16">
         <div className="flex flex-col gap-10 nav:w-5/12">
           <div className="flex flex-col">

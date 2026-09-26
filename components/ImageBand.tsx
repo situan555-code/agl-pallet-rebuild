@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
-import { containerClass } from "@/components/Container";
+import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { getBlurDataURL } from "@/lib/blur";
 
@@ -28,8 +28,8 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className={cn("section-rhythm scroll-mt-24 bg-moss", className)}>
-      <div className={cn(containerClass, "relative isolate min-h-96 overflow-hidden rounded-section nav:min-h-120")}>
+    <section ref={ref} className={cn("section-rhythm scroll-mt-24 bg-moss", insetOuterClass, className)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "relative isolate min-h-96 overflow-hidden nav:min-h-120")}>
         <motion.div className="absolute inset-0" style={reduce ? undefined : { y }}>
           <Image
             src={image.src}
