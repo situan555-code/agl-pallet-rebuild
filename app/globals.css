@@ -412,3 +412,49 @@ p.text-eyebrow > span[aria-hidden] {
     --text-display-2--line-height: 52px;
   }
 }
+
+/* Desktop hero card grows over the first viewport of scroll, matching the
+   old scroll progress (scrollY / innerHeight). view() does not advance while
+   the card is position: sticky, so the timeline is the root scroller.
+   Browsers without scroll-timeline support keep the static full-size card. */
+.hero-spacer {
+  height: 0;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .hero-sticky {
+      position: sticky;
+      top: 0;
+    }
+
+    .hero-spacer {
+      height: 100svh;
+    }
+
+    .hero-frame-slot {
+      container-type: inline-size;
+    }
+
+    .hero-frame {
+      --hero-start: calc(min(56cqi, 820px) / 100cqi);
+      transform-origin: center center;
+      transform: scale(var(--hero-start));
+      border-radius: calc(28px / var(--hero-start));
+      animation: hero-frame-grow linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0% 100svh;
+    }
+  }
+}
+
+@keyframes hero-frame-grow {
+  from {
+    transform: scale(var(--hero-start));
+    border-radius: calc(28px / var(--hero-start));
+  }
+  to {
+    transform: scale(1);
+    border-radius: 20px;
+  }
+}

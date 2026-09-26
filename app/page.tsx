@@ -35,12 +35,6 @@ export default function Home() {
 
   return (
     <main>
-      <link
-        rel="preload"
-        as="image"
-        href={home.hero.poster}
-        fetchPriority="high"
-      />
       <HeroExpand
         eyebrow={home.hero.eyebrow}
         heading={home.hero.heading}
