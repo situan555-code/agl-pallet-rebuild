@@ -438,7 +438,7 @@ p.text-eyebrow > span[aria-hidden] {
     }
 
     .hero-frame {
-      --hero-start: calc(min(56cqi, 820px) / 100cqi);
+      --hero-start: 0.56;
       transform-origin: center top;
       transform: scale(var(--hero-start));
       border-radius: calc(28px / var(--hero-start));
