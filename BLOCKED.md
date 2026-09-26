@@ -1,5 +1,9 @@
 # BLOCKED
 
+## UI audit ship after task 13 (2026-09-26)
+
+`npm run verify` on `redesign/main` after tasks 1–13: schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 86, LCP 4286ms (gate 2500). In the same run `/about/` LCP was 2734ms and `/request-a-quote/` LCP was 2583ms. Isolated retries: home Perf 85, LCP 4358ms (worse); `/about/` Perf 99, LCP 2266ms; `/request-a-quote/` Perf 98, LCP 2413ms, CLS 0. The only miss that stays outside the gate is home LCP/Perf. Did not merge to `main`. Two attempts.
+
 ## UI audit ship after task 10 (2026-09-26)
 
 `npm run verify` on `redesign/main` after tasks 1–10: schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 87, LCP 4062ms (gate 2500). Other audited pages passed (LCP ≤2417ms). Isolated Lighthouse retry on `/` was worse (Perf 85, LCP 4359ms). Same home LCP miss as the task 4 and task 7 ships. Did not merge to `main`. Two attempts; not a content-gate miss on the other checks.

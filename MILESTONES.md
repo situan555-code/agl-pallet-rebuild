@@ -1,5 +1,17 @@
 # Milestones
 
+## M16 — UI audit tasks 11–13 (not shipped)
+
+- **Date:** 2026-09-26
+- **Tasks:** 11 quote contact cards and footer, 12 network diagram and CTA, 13 type scale and FAQ question
+- **Verify:** failed. Home LCP **4286ms** / Perf **86** (isolated retry **4358ms** / **85**). Isolated `/about/` LCP **2266ms** / Perf **99** and `/request-a-quote/` LCP **2413ms** / Perf **98**. Axe passed. See `BLOCKED.md`. Not merged to `main`.
+- **What changed:**
+  1. Quote contact cards sit 64px under the form: icon tile, label, value, Call/Email/Text, and a copy control. The footer is a 28px-radius panel with moss margin on every side.
+  2. The network diagram is centered in the container. The AGL node is larger, with a soft ice ring, and the beams are ice in a still. Closing CTA columns share a vertical center.
+  3. H2 is 48/52 desktop and 34/38 mobile. Display tracking is −0.02em. "Two-way vs four-way pallets" is now "Do I need a two-way or four-way pallet?" in the page and in FAQPage JSON-LD.
+- **Pages to look at:** `/`, `/request-a-quote/`, `/faq/`
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M15 — UI audit tasks 8–10 (not shipped)
 
 - **Date:** 2026-09-26
