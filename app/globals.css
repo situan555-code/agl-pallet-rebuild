@@ -201,6 +201,10 @@
   @apply border-t border-brand-green/15;
 }
 
+@utility table-scroll-fade {
+  mask-image: linear-gradient(to right, #000 88%, transparent);
+}
+
 @utility fade-in {
   opacity: 1;
   transform: translateY(0);

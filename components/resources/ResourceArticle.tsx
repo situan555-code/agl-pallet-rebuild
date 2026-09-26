@@ -146,17 +146,26 @@ export function DirectAnswer({ text }: { text: string }) {
 }
 
 export function DataTable({ table }: { table: ResourceTable }) {
+  const wide = table.columns.length >= 3;
   return (
     <figure className="mt-6">
-      <div role="region" aria-label={table.caption} tabIndex={0} className="overflow-x-auto focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-brand-green">
-        <table className="w-full min-w-[520px] border-collapse text-left text-[15px] leading-snug">
-          <caption className="mb-3 caption-top text-left text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
-            {table.caption}
-          </caption>
+      <figcaption className="mb-3 text-left text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
+        {table.caption}
+      </figcaption>
+      <div
+        role="region"
+        aria-label={table.caption}
+        tabIndex={0}
+        className={cn(
+          "overflow-x-auto rounded-card focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-brand-green",
+          wide && "table-scroll-fade"
+        )}
+      >
+        <table className={cn("w-full border-collapse text-left text-[15px] leading-snug", wide && "min-w-[520px]")}>
           <thead>
             <tr>
               {table.columns.map((c) => (
-                <th key={c} scope="col" className="border-b-2 border-brand-green py-3 pr-6 align-bottom font-semibold text-brand-green">
+                <th key={c} scope="col" className="sticky top-0 border-b-2 border-brand-green bg-bone py-3 pr-6 align-bottom font-semibold text-brand-green">
                   {c}
                 </th>
               ))}
@@ -164,7 +173,7 @@ export function DataTable({ table }: { table: ResourceTable }) {
           </thead>
           <tbody>
             {table.rows.map((row, r) => (
-              <tr key={r}>
+              <tr key={r} className="odd:bg-moss/4">
                 {row.map((cell, c) =>
                   c === 0 ? (
                     <th key={c} scope="row" className="border-b border-brand-green/15 py-3 pr-6 align-top font-semibold text-ink">
