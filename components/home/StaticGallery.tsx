@@ -1,5 +1,7 @@
-import Link from "next/link";
 import { containerClass } from "@/components/Container";
+import { CardMedia } from "@/components/CardMedia";
+import { InteractiveCard } from "@/components/InteractiveCard";
+import { CARD_PLACEHOLDER } from "@/lib/product-images";
 import { cn } from "@/lib/utils";
 
 export function StaticGallery({
@@ -12,7 +14,7 @@ export function StaticGallery({
   eyebrow?: string;
   title: string;
   description?: string;
-  items: { id: string; title: string; description: string; href: string }[];
+  items: { id: string; title: string; description: string; href: string; image?: string }[];
   className?: string;
 }) {
   return (
@@ -36,16 +38,13 @@ export function StaticGallery({
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
-            <Link
-              key={item.id}
-              id={item.id}
-              href={item.href}
-              prefetch={false}
-              className="hover-lift flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green p-6"
-            >
-              <h3 className="text-display-row text-current">{item.title}</h3>
-              <p className="mt-5 text-body text-current/75">{item.description}</p>
-            </Link>
+            <InteractiveCard key={item.id} id={item.id} href={item.href}>
+              <CardMedia src={item.image ?? CARD_PLACEHOLDER} />
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
+                <p className="mt-5 text-body text-current/75">{item.description}</p>
+              </div>
+            </InteractiveCard>
           ))}
         </div>
       </div>

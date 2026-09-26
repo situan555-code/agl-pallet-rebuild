@@ -50,6 +50,7 @@ export default function PartnersSuppliers() {
           title: item.lead,
           description: item.body,
           icon: [Repeat, BadgeCheck, ShieldCheck, Settings2, Truck][index],
+          href: item.lead.includes("freight") ? "/partners/carriers/" : item.lead.includes("conflict") ? "/the-pledge/" : "#supplier-form",
         }))}
       />
 

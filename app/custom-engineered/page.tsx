@@ -23,6 +23,7 @@ export default function CustomEngineered() {
           title: item.lead,
           description: item.body,
           icon: [Package, Boxes, Layers][index],
+          href: "/request-a-quote/",
         }))}
       />
 

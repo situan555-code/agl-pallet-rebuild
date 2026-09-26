@@ -11,9 +11,20 @@ import { Cta4 } from "@/components/cta4";
 import { NetworkSlot } from "@/components/home/NetworkSlot";
 import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
+import { CardMedia } from "@/components/CardMedia";
+import { InteractiveCard } from "@/components/InteractiveCard";
+import { CARD_PLACEHOLDER, PRODUCT_IMAGES } from "@/lib/product-images";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
+
+const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"] as const;
+const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
+const DIFFERENTIATOR_IMAGES = [
+  "/assets/who_agl_is_sidepic.jpg",
+  "/assets/about_page-single_point_sidepic.jpg",
+  "/assets/why_agl_exist_sidepic.jpg",
+] as const;
 
 export const metadata: Metadata = pageMeta(
   "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
@@ -36,11 +47,14 @@ export default function Home() {
 
       <section className="section-rhythm">
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {home.capability.cards.map((cap) => (
-            <article key={cap.heading} className="hover-lift rounded-card bg-green px-8 py-10 text-bone nav:px-10">
-              <h2 className="min-h-[2lh] text-display-kicker text-current lg:min-h-[2lh]">{cap.heading}</h2>
-              <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
-            </article>
+          {home.capability.cards.map((cap, index) => (
+            <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
+              <CardMedia src={CARD_PLACEHOLDER} numeral={String(index + 1).padStart(2, "0")} />
+              <div className="flex flex-1 flex-col p-6 nav:p-8">
+                <h2 className="text-[22px] font-semibold leading-snug text-current">{cap.heading}</h2>
+                <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
+              </div>
+            </InteractiveCard>
           ))}
         </Container>
       </section>
@@ -81,10 +95,12 @@ export default function Home() {
       <Feature3
         className="section-rhythm"
         variant="numbered"
-        features={home.differentiators.cards.map((c) => ({
+        features={home.differentiators.cards.map((c, index) => ({
           eyebrow: c.eyebrow,
           title: c.heading,
           description: c.body,
+          href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
+          image: DIFFERENTIATOR_IMAGES[index] ?? CARD_PLACEHOLDER,
         }))}
       />
 
@@ -107,6 +123,7 @@ export default function Home() {
           title: line.heading,
           description: line.copy,
           href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
+          image: PRODUCT_IMAGES[line.id] ?? CARD_PLACEHOLDER,
         }))}
       />
 
@@ -122,11 +139,13 @@ export default function Home() {
         className="section-rhythm"
         variant="card"
         columns={2}
-        features={home.partnerSplit.cards.map((c) => ({
+        features={home.partnerSplit.cards.map((c, index) => ({
           eyebrow: c.eyebrow,
           title: c.heading,
           description: c.body,
+          href: c.cta.href,
           cta: c.cta,
+          image: index === 0 ? PRODUCT_IMAGES["stock-pallets"] : "/assets/home_about_photo.jpg",
         }))}
       />
 

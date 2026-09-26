@@ -21,6 +21,14 @@ export default function HowWeWork() {
           number: step.number,
           title: step.heading,
           description: step.body,
+          href:
+            step.number === "01"
+              ? "/request-a-quote/"
+              : step.number === "02"
+                ? "/services/"
+                : step.number === "03"
+                  ? "/contact/"
+                  : "/request-a-quote/",
         }))}
       />
 

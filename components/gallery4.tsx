@@ -104,7 +104,7 @@ export function Gallery4({
                     id={item.id}
                     href={item.href}
                     prefetch={false}
-                    className="hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green"
+                    className="hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green hover:border-ice focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice"
                   >
                     <div className="relative aspect-4/3 overflow-hidden">
                       <Image
@@ -119,7 +119,7 @@ export function Gallery4({
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
-                      <h3 className="text-display-row text-current">{item.title}</h3>
+                      <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
                       <p className="mt-5 text-body text-current/75">{item.description}</p>
                     </div>
                   </Link>

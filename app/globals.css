@@ -187,14 +187,16 @@
 }
 
 @utility hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   &:hover {
     transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(19, 25, 19, 0.28);
   }
   @media (prefers-reduced-motion: reduce) {
     transition: none;
     &:hover {
       transform: none;
+      box-shadow: none;
     }
   }
 }

@@ -11,12 +11,16 @@ import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
 import { IconTile } from "@/components/IconTile";
 import { SectionHeading } from "@/components/SectionHeading";
+import { CardMedia } from "@/components/CardMedia";
+import { InteractiveCard } from "@/components/InteractiveCard";
 
 export interface Process1Step {
   number?: string;
   title: string;
   description: string;
   icon?: LucideIcon;
+  href?: string;
+  image?: string;
 }
 
 interface Process1Props {
@@ -92,33 +96,34 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
         ) : layout === "grid" ? (
           <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {steps.map((step) => (
-              <li key={step.title} className="rounded-card bg-green p-8 text-bone">
-                {step.icon ? <IconTile icon={step.icon} /> : null}
-                <ItemHeading className={cn("text-step-lg text-current", step.icon && "mt-5")}>{step.title}</ItemHeading>
-                <SpecBody description={step.description} className="prose-measure mt-5 text-body text-gray" />
+              <li key={step.title} className="h-full">
+                <InteractiveCard href={step.href ?? "/request-a-quote/"}>
+                  <CardMedia src={step.image} numeral={step.number} />
+                  <div className="flex flex-1 flex-col p-6">
+                    {step.icon ? <IconTile icon={step.icon} /> : null}
+                    <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && "mt-5")}>
+                      {step.title}
+                    </ItemHeading>
+                    <SpecBody description={step.description} className="prose-measure mt-5 text-body text-gray" />
+                  </div>
+                </InteractiveCard>
               </li>
             ))}
           </ul>
         ) : (
           <ol className="grid w-full grid-cols-1 gap-6 nav:grid-cols-2">
             {steps.map((step) => (
-              <li key={step.title} className="rounded-card bg-green p-8 text-bone">
-                <div className="flex items-start gap-5">
-                  {step.icon ? (
-                    <IconTile icon={step.icon} />
-                  ) : step.number ? (
-                    <span
-                      aria-hidden="true"
-                      className="inline-flex size-11 shrink-0 items-center justify-center rounded-[12px] border border-gray/20 bg-smoke text-[13px] font-semibold text-ice"
-                    >
-                      {step.number}
-                    </span>
-                  ) : null}
-                  <div className="min-w-0">
-                    <ItemHeading className="text-step-lg text-current">{step.title}</ItemHeading>
+              <li key={step.title} className="h-full">
+                <InteractiveCard href={step.href ?? "/request-a-quote/"}>
+                  <CardMedia src={step.image} numeral={step.number} />
+                  <div className="flex flex-1 flex-col p-6">
+                    {step.icon && !step.number ? <IconTile icon={step.icon} /> : null}
+                    <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && !step.number && "mt-5")}>
+                      {step.title}
+                    </ItemHeading>
                     <SpecBody description={step.description} className="prose-measure mt-5 text-body text-bone/80" />
                   </div>
-                </div>
+                </InteractiveCard>
               </li>
             ))}
           </ol>

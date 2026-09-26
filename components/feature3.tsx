@@ -5,8 +5,8 @@
 // treatments:
 //   divided  — single row, vertical hairlines between columns (claims)
 //   ruled    — top hairline per item, multi-row (categories)
-//   numbered — 3px green top rule, display numeral (proof points)
-//   card     — bordered card, only for items that link somewhere
+//   numbered — image/placeholder + ice numeral, whole-card link
+//   card     — bordered image card, whole-card link
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,9 @@ import { IconTile } from "@/components/IconTile";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
 import { ArrowIcon } from "@/components/icons";
+import { CardMedia } from "@/components/CardMedia";
+import { InteractiveCard } from "@/components/InteractiveCard";
+import { CARD_PLACEHOLDER } from "@/lib/product-images";
 
 export interface Feature3Item {
   id?: string;
@@ -23,6 +26,7 @@ export interface Feature3Item {
   description?: string;
   icon?: LucideIcon;
   href?: string;
+  image?: string;
   cta?: { label: string; href: string };
 }
 
@@ -93,65 +97,55 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
   );
 }
 
+function cardHref(item: Feature3Item) {
+  return item.href ?? item.cta?.href ?? "/request-a-quote/";
+}
+
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
-    <article className="h-full rounded-card bg-green p-10 text-bone">
-      {item.eyebrow && (
-        <p className="font-display text-display-numeral text-ice">{item.eyebrow}</p>
-      )}
-      <Heading className={cn("min-h-[2lh] text-step-lg text-bone lg:min-h-[2lh]", item.eyebrow && "mt-3")}>{item.title}</Heading>
-      <p className="mt-5 text-body text-bone/85">{item.description}</p>
-    </article>
+    <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
+      <CardMedia src={item.image ?? CARD_PLACEHOLDER} numeral={item.eyebrow} />
+      <div className="flex flex-1 flex-col p-6 nav:p-8">
+        <Heading className="text-[22px] font-semibold leading-snug text-pretty text-bone">{item.title}</Heading>
+        <p className="mt-5 text-body text-bone/85">{item.description}</p>
+      </div>
+    </InteractiveCard>
   );
 }
 
 function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
-  const inner = (
-    <>
-      {item.eyebrow && (
-        <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">
-          <span aria-hidden="true" className="mr-2 font-bold text-ice">
-            /
+  const href = cardHref(item);
+  return (
+    <InteractiveCard href={href} id={item.id} className="min-h-full">
+      <CardMedia src={item.image ?? CARD_PLACEHOLDER} />
+      <div className="flex flex-1 flex-col p-6 nav:p-8">
+        {item.eyebrow && (
+          <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">
+            <span aria-hidden="true" className="mr-2 font-bold text-ice">
+              /
+            </span>
+            {item.eyebrow}
+          </p>
+        )}
+        <Heading className={cn("text-[22px] font-semibold leading-snug text-pretty text-current", item.eyebrow && "mt-3")}>
+          {item.title}
+        </Heading>
+        {item.description && <p className="mt-5 text-body text-bone/85">{item.description}</p>}
+        {item.cta && (
+          <p className="mt-auto pt-8 text-body font-semibold text-ice">
+            <span className="inline-flex items-center gap-2">
+              {item.cta.label}
+              <ArrowIcon className="h-5 w-5 transition-transform duration-200 motion-safe:group-hover:translate-x-1" />
+            </span>
+          </p>
+        )}
+        {!item.cta && (
+          <span className="mt-auto flex justify-end pt-6">
+            <ArrowIcon className="h-6 w-6 text-ice transition-transform duration-200 motion-safe:group-hover:translate-x-2" />
           </span>
-          {item.eyebrow}
-        </p>
-      )}
-      <Heading className={cn("min-h-[2lh] text-step-lg leading-snug text-pretty text-current lg:min-h-[2lh]", item.eyebrow && "mt-3")}>{item.title}</Heading>
-      {item.description && <p className="mt-5 text-body text-bone/85">{item.description}</p>}
-      {item.cta && (
-        <div className="mt-auto pt-8">
-          <Button href={item.cta.href} label={item.cta.label} variant="secondary" />
-        </div>
-      )}
-      {item.href && (
-        <span className="mt-auto flex justify-end pt-6">
-          <ArrowIcon className="h-6 w-6 text-ice transition-transform duration-200 motion-safe:group-hover:translate-x-2" />
-        </span>
-      )}
-    </>
-  );
-  const cardClass =
-    "hover-lift group flex h-full min-h-full flex-col gap-0 rounded-card border border-smoke bg-green p-8 text-bone nav:p-10";
-  if (item.href && !item.href.startsWith("/")) {
-    return (
-      <a
-        href={item.href}
-        className={cn(cardClass, "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
-      >
-        {inner}
-      </a>
-    );
-  }
-  return item.href ? (
-    <Link
-      href={item.href}
-      prefetch={false}
-      className={cn(cardClass, "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green")}
-    >
-      {inner}
-    </Link>
-  ) : (
-    <div className={cardClass}>{inner}</div>
+        )}
+      </div>
+    </InteractiveCard>
   );
 }
 
@@ -186,7 +180,7 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
               :             variant === "card" && columns === 3
                 ? "md:grid-cols-2 lg:grid-cols-3"
                 : columnClass[columns],
-            variant === "card" && "items-stretch",
+            (variant === "card" || variant === "numbered") && "items-stretch",
             gap
           )}
         >

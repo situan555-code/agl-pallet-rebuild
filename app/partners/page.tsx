@@ -18,7 +18,12 @@ export default function Partners() {
       <Feature3
         variant="card"
         columns={2}
-        features={content.cards.map((c) => ({ title: c.heading, description: c.body, href: c.href }))}
+        features={content.cards.map((c, index) => ({
+          title: c.heading,
+          description: c.body,
+          href: c.href,
+          image: index === 0 ? "/assets/product_page-stock_pallets_sidepic.jpg" : "/assets/home_about_photo.jpg",
+        }))}
       />
     </main>
   );

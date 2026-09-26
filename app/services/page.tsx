@@ -25,9 +25,18 @@ export default function ServicesPage() {
         variant="numbered"
         columns={2}
         features={data.services.map((s) => ({
+          id: s.id,
           eyebrow: s.eyebrow,
           title: s.title,
           description: s.description,
+          href:
+            s.id === "spec-sourcing"
+              ? "/products/"
+              : s.id === "mill-qualification"
+                ? "/partners/suppliers/"
+                : s.id === "managed-freight"
+                  ? "/partners/carriers/"
+                  : "/how-we-work/",
         }))}
       />
       <ImageBand

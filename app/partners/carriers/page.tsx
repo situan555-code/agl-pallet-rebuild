@@ -50,6 +50,7 @@ export default function PartnersCarriers() {
           title: item.lead,
           description: isPlaceholder(item.body) ? "" : item.body,
           icon: [MapPin, Repeat, UserRound, BadgeCheck][index],
+          href: item.lead.includes("dispatcher") ? "/who-we-are/" : "#carrier-form",
         }))}
       />
 
