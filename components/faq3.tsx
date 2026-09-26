@@ -7,6 +7,7 @@
 // TW3-compatible classes because components/ui/accordion ships TW4 variants.
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -27,8 +28,8 @@ interface Faq3Props {
 
 const Faq3 = ({ eyebrow, heading, description, items, className }: Faq3Props) => {
   return (
-    <section className={cn("section-y scroll-mt-24 px-6", className)}>
-      <div className="mx-auto grid max-w-[1440px] gap-10 nav:grid-cols-12 nav:gap-16">
+    <section className={cn("section-y scroll-mt-24", className)}>
+      <div className={cn(containerClass, "grid gap-10 nav:grid-cols-12 nav:gap-16")}>
         <div className="nav:col-span-4">
           <Reveal>
             <SectionHeading eyebrow={eyebrow} heading={heading} />

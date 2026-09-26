@@ -18,7 +18,6 @@ interface Feature1Props {
   media?: ReactNode;
   hairline?: boolean;
   className?: string;
-  contained?: boolean;
 }
 
 function Body({ paragraphs, cta }: Pick<Feature1Props, "paragraphs" | "cta">) {
@@ -42,10 +41,10 @@ function Body({ paragraphs, cta }: Pick<Feature1Props, "paragraphs" | "cta">) {
   );
 }
 
-const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, className, contained }: Feature1Props) => {
+const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, className }: Feature1Props) => {
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 overflow-hidden", !contained && "px-6", hairline && "section-hairline", className)}>
-      <div className={cn("grid items-start gap-10 nav:grid-cols-12 nav:gap-16", contained ? containerClass : "mx-auto max-w-[1440px]")}>
+    <section id={id} className={cn("section-y scroll-mt-24 overflow-hidden", hairline && "section-hairline", className)}>
+      <div className={cn(containerClass, "grid items-start gap-10 nav:grid-cols-12 nav:gap-16")}>
         {media ? (
           <>
             <div className="nav:col-span-6">

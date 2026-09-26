@@ -6,6 +6,7 @@ import { ArticleHeader, ResourceCta } from "@/components/resources/ResourceArtic
 import { RichText } from "@/components/resources/RichText";
 import { QUESTIONS_PATH, questionCrumbs, questionIndex } from "@/lib/questions";
 import { pageMeta } from "@/lib/seo";
+import { containerClass } from "@/components/Container";
 
 export const metadata: Metadata = pageMeta(questionIndex.metaTitle, questionIndex.metaDescription, QUESTIONS_PATH);
 
@@ -25,8 +26,8 @@ export default function QuestionsIndexPage() {
         updated={questionIndex.updated}
         libraryLabel={questionCrumbs.resources}
       />
-      <section className="px-6 pt-14 nav:pt-20">
-        <p className="prose-measure mx-auto max-w-[1440px] text-body text-ink/85">
+      <section className="pt-14 nav:pt-20">
+        <p className={`${containerClass} prose-measure text-body text-ink/85`}>
           <RichText text={questionIndex.intro} />
         </p>
       </section>

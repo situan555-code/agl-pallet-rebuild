@@ -38,7 +38,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
         />
       </label>
 
-      <nav aria-label="Glossary A to Z" className="sticky top-[75px] z-10 -mx-6 mt-10 border-y border-smoke bg-moss px-6 py-3">
+      <nav aria-label="Glossary A to Z" className="sticky top-[75px] z-10 -mx-6 mt-10 border-y border-smoke bg-moss px-6 py-3 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
         <ul className="flex flex-wrap gap-x-1 gap-y-1">
           {byLetter.map(({ letter, terms: list }) => (
             <li key={letter}>

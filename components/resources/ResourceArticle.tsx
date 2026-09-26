@@ -6,6 +6,7 @@ import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import hub from "@/content/resources/hub.json";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Cta4 } from "@/components/cta4";
 import { Feature3 } from "@/components/feature3";
 import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
@@ -69,8 +70,8 @@ export function ArticleHeader({
   libraryLabel?: string;
 }) {
   return (
-    <section className="bg-green px-6 pb-14 pt-36 text-bone nav:pb-16">
-      <div className="mx-auto max-w-[1440px]">
+    <section className="bg-green pb-14 pt-36 text-bone nav:pb-16">
+      <div className={containerClass}>
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
             <li>
@@ -117,8 +118,8 @@ export function ArticleHeader({
 
 export function DirectAnswer({ text }: { text: string }) {
   return (
-    <section aria-labelledby="short-answer" className="px-6 pt-14 nav:pt-20">
-      <div className="mx-auto grid max-w-[1440px] gap-4 nav:grid-cols-12 nav:gap-16">
+    <section aria-labelledby="short-answer" className="pt-14 nav:pt-20">
+      <div className={cn(containerClass, "grid gap-4 nav:grid-cols-12 nav:gap-16")}>
         <p id="short-answer" className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink nav:col-span-3">
           <span aria-hidden="true" className="mr-2 font-bold">
             /
@@ -330,8 +331,8 @@ export function RelatedGuides({ slugs }: { slugs: string[] }) {
  */
 export function ArticleBody({ toc, children }: { toc: { id: string; label: string }[]; children: ReactNode }) {
   return (
-    <div className="px-6 pb-20 pt-14 nav:pb-28 nav:pt-16">
-      <div className="mx-auto grid max-w-[1440px] gap-10 nav:grid-cols-12 nav:gap-16">
+    <div className="pb-20 pt-14 nav:pb-28 nav:pt-16">
+      <div className={cn(containerClass, "grid gap-10 nav:grid-cols-12 nav:gap-16")}>
         <aside className="min-w-0 nav:col-span-3">
           <Toc items={toc} />
         </aside>

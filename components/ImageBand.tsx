@@ -15,10 +15,9 @@ interface ImageBandProps {
   image: { src: string; alt: string };
   cta?: { label: string; href: string };
   className?: string;
-  contained?: boolean;
 }
 
-export function ImageBand({ eyebrow, heading, body, image, cta, className, contained }: ImageBandProps) {
+export function ImageBand({ eyebrow, heading, body, image, cta, className }: ImageBandProps) {
   const blur = getBlurDataURL(image.src);
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
@@ -29,7 +28,7 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className, conta
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className={cn("scroll-mt-24 bg-moss px-4 py-8 nav:px-6", className)}>
+    <section ref={ref} className={cn("scroll-mt-24 bg-moss py-8", className)}>
       <div className="relative isolate min-h-96 overflow-hidden rounded-section nav:min-h-120">
         <motion.div className="absolute inset-0" style={reduce ? undefined : { y }}>
           <Image
@@ -48,12 +47,7 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className, conta
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-r from-moss/70 via-moss/25 to-transparent"
         />
-        <div
-          className={cn(
-            "relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20",
-            contained ? containerClass : "mx-auto max-w-[1440px] px-6"
-          )}
-        >
+        <div className={cn(containerClass, "relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20")}>
           <div className="max-w-xl">
             {eyebrow && (
               <p className="text-eyebrow font-semibold uppercase tracking-wide text-ice">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/icons";
+import { containerClass } from "@/components/Container";
 
 export type RuleListItem = {
   title: string;
@@ -26,7 +27,7 @@ function RowInner({
 
   if (layout === "industries") {
     return (
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-6 py-8 md:flex-row md:items-baseline md:justify-between md:gap-16 md:py-10">
+      <div className={`${containerClass} flex flex-col gap-3 py-8 md:flex-row md:items-baseline md:justify-between md:gap-16 md:py-10`}>
         <h2 className={`${titleClass} md:max-w-[40%]`}>{item.title}</h2>
         <p className={`${bodyClass} md:w-[55%]`}>{body}</p>
       </div>
@@ -34,7 +35,7 @@ function RowInner({
   }
 
   return (
-    <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-8 md:py-10">
+    <div className={`${containerClass} flex items-center justify-between gap-6 py-8 md:py-10`}>
       <div className="min-w-0">
         <h2 className={titleClass}>{item.title}</h2>
         <p className={`mt-1 ${bodyClass}`}>{body}</p>

@@ -5,6 +5,7 @@
 // customer logos and none may be invented. Sections carry content JSON only.
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 
 export interface About3Section {
   label?: string;
@@ -46,8 +47,8 @@ function StorySection({ section }: { section: About3Section }) {
 const About3 = ({ sections, hairline, className }: About3Props) => {
   const [first, second] = sections;
   return (
-    <section className={cn("section-y px-6", hairline && "section-hairline", className)}>
-      <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12">
+    <section className={cn("section-y", hairline && "section-hairline", className)}>
+      <div className={cn(containerClass, "grid gap-16 md:grid-cols-12")}>
         <div className="md:col-span-6 nav:col-span-5">
           <StorySection section={first} />
         </div>

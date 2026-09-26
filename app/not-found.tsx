@@ -1,9 +1,11 @@
 import { Button } from "@/components/Button";
+import { containerClass } from "@/components/Container";
 
 export default function NotFound() {
   return (
     <main>
-      <section className="bg-green px-6 pb-24 pt-36 text-center text-bone">
+      <section className="bg-green pb-24 pt-36 text-center text-bone">
+        <div className={containerClass}>
         <div className="mx-auto max-w-[720px]">
           <p className="text-eyebrow font-semibold uppercase tracking-wide">
             <span aria-hidden="true" className="mr-2 font-bold">
@@ -20,6 +22,7 @@ export default function NotFound() {
             <Button href="/" label="Back to Home" variant="secondary" />
             <Button href="/request-a-quote/" label="Request a Quote" variant="secondary" />
           </div>
+        </div>
         </div>
       </section>
     </main>

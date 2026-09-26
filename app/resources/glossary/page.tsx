@@ -7,6 +7,7 @@ import { ArticleHeader, DirectAnswer, NextSteps, RelatedGuides, ResourceCta } fr
 import { GlossaryTerms } from "@/components/resources/GlossaryTerms";
 import { getHubPillar } from "@/lib/resources";
 import { pageMeta } from "@/lib/seo";
+import { containerClass } from "@/components/Container";
 
 const PATH = "/resources/glossary/";
 const pillar = getHubPillar(glossary.slug)!;
@@ -36,8 +37,8 @@ export default function GlossaryPage() {
       <ArticleHeader eyebrow={glossary.eyebrow} title={pillar.title} updated={glossary.updated} />
       <DirectAnswer text={pillar.directAnswer} />
 
-      <div className="px-6 pb-20 pt-14 nav:pb-28 nav:pt-16">
-        <div className="mx-auto max-w-[1440px]">
+      <div className="pb-20 pt-14 nav:pb-28 nav:pt-16">
+        <div className={containerClass}>
           <p className="prose-measure text-body text-ink/85">
             {glossary.intro} {terms.length} terms.
           </p>

@@ -4,6 +4,7 @@
 // instead of the demo screenshot. Demo reviews/avatars/stars removed.
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 
 interface Hero3Props {
@@ -20,8 +21,8 @@ const Hero3 = ({ eyebrow, heading, description, cta, breadcrumb, className }: He
   const paragraphs = description ? (Array.isArray(description) ? description : [description]) : [];
   const hasAside = paragraphs.length > 0 || Boolean(cta);
   return (
-    <section className={cn("scroll-mt-24 bg-moss px-4 pb-8 pt-28 text-bone nav:pb-10", className)}>
-      <div className="mx-auto max-w-[1440px] rounded-section bg-green px-6 py-16 nav:px-10 nav:py-20">
+    <section className={cn("scroll-mt-24 bg-moss pb-8 pt-28 text-bone nav:pb-10", className)}>
+      <div className={cn(containerClass, "rounded-section bg-green py-16 nav:py-20")}>
         {breadcrumb && breadcrumb.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-10">
             <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">

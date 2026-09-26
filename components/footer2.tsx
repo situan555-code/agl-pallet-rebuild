@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MailIcon, PhoneIcon } from "@/components/inline-icons";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 
 interface FooterLink {
@@ -29,8 +30,8 @@ const linkClass =
 
 const Footer2 = ({ logo, description, contact, cta, sections, copyright, className }: Footer2Props) => {
   return (
-    <footer className={cn("rounded-t-section bg-green px-6 pb-10 pt-16 text-bone nav:pt-20", className)}>
-      <div className="mx-auto max-w-[1440px]">
+    <footer className={cn("rounded-t-section bg-green pb-10 pt-16 text-bone nav:pt-20", className)}>
+      <div className={containerClass}>
         <div className="flex flex-col gap-12 nav:flex-row nav:items-start nav:justify-between nav:gap-16">
           <div className="max-w-md shrink-0">
             <Link

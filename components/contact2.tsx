@@ -8,6 +8,7 @@
 import type { ReactNode } from "react";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { CopyValue } from "@/components/CopyValue";
 
 export interface Contact2Method {
@@ -46,8 +47,8 @@ const Contact2 = ({
 }: Contact2Props) => {
   const Title = titleAs;
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 bg-green px-6 text-bone", className)}>
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-12 nav:flex-row nav:gap-24">
+    <section id={id} className={cn("section-y scroll-mt-24 bg-green text-bone", className)}>
+      <div className={cn(containerClass, "flex flex-col gap-12 nav:flex-row nav:gap-24")}>
         <div className="flex flex-col gap-10 nav:w-5/12">
           <div className="flex flex-col gap-4">
             <p className="text-eyebrow font-semibold uppercase tracking-wide">

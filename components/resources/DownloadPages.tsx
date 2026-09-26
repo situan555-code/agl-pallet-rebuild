@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
 import sizes from "@/content/resources/pillars/pallet-sizes.json";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
 import hub from "@/content/resources/hub.json";
 import { Feature3 } from "@/components/feature3";
+import { containerClass } from "@/components/Container";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { ArticleBody, ArticleHeader, ArticleSection, ResourceCta, Sources } from "@/components/resources/ResourceArticle";
 import { RichText } from "@/components/resources/RichText";
@@ -82,8 +84,8 @@ export function DownloadsIndexPage() {
         updated={downloadsIndex.updated}
         libraryLabel="Resources"
       />
-      <section className="px-6 pt-14 nav:pt-20">
-        <p className="prose-measure mx-auto max-w-[1440px] text-body text-ink/85">
+      <section className="pt-14 nav:pt-20">
+        <p className={cn(containerClass, "prose-measure text-body text-ink/85")}>
           <RichText text={downloadsIndex.intro} />
         </p>
       </section>
@@ -121,8 +123,8 @@ export function DownloadArticle({ slug }: { slug: string }) {
         libraryLabel="Resources"
         crumbs={[{ name: downloadsIndex.heading, href: DOWNLOADS_PATH }]}
       />
-      <section className="px-6 pt-14 nav:pt-20">
-        <div className="prose-measure mx-auto max-w-[1440px] space-y-4 text-body text-ink/85">
+      <section className="pt-14 nav:pt-20">
+        <div className={cn(containerClass, "prose-measure space-y-4 text-body text-ink/85")}>
           <p>{item.figuresNote}</p>
           {item.exampleNote && <p>{item.exampleNote}</p>}
           <p>

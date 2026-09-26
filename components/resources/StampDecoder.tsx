@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { containerClass } from "@/components/Container";
+import { cn } from "@/lib/utils";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
 import { BreadcrumbJsonLd, WebApplicationJsonLd } from "@/components/JsonLd";
 import { ArticleHeader, ResourceCta } from "@/components/resources/ResourceArticle";
@@ -46,8 +48,8 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
       <WebApplicationJsonLd name={copy.schemaName} description={copy.metaDescription} path={STAMP_DECODER_PATH} />
       <ArticleHeader eyebrow={copy.eyebrow} title={copy.heading} updated={copy.updated} libraryLabel="Resources" crumbs={[{ name: guideTitle, href: guideHref }]} />
 
-      <div className="px-6 pb-20 pt-14 nav:pb-28 nav:pt-16">
-        <div className="mx-auto max-w-[1440px] nav:grid nav:grid-cols-12 nav:gap-16">
+      <div className="pb-20 pt-14 nav:pb-28 nav:pt-16">
+        <div className={cn(containerClass, "nav:grid nav:grid-cols-12 nav:gap-16")}>
           <div className="prose-measure space-y-4 text-body text-ink/85 nav:col-span-8 nav:col-start-5">
             <p>{copy.intro}</p>
             <p>{copy.exampleNote}</p>

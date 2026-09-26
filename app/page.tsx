@@ -61,7 +61,6 @@ export default function Home() {
       </section>
 
       <Feature1
-        contained
         eyebrow={home.whatWeDo.eyebrow}
         heading={home.whatWeDo.heading}
         paragraphs={home.whatWeDo.paragraphs}
@@ -85,7 +84,6 @@ export default function Home() {
       />
 
       <Feature3
-        contained
         variant="numbered"
         features={home.differentiators.cards.map((c) => ({
           eyebrow: c.eyebrow,
@@ -95,7 +93,6 @@ export default function Home() {
       />
 
       <ImageBand
-        contained
         eyebrow="How we work"
         heading="Coordination is the product."
         body="We qualify the shops that supply them well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them."
@@ -104,7 +101,6 @@ export default function Home() {
       />
 
       <Gallery4Loader
-        contained
         eyebrow="Product lines"
         title="Specced to the load. Sourced through mills that can build it."
         description="Stock, custom, crates, dunnage, blocks, and stakes — each with multiple qualified shops behind the specs we sell."
@@ -118,7 +114,6 @@ export default function Home() {
       />
 
       <Feature2
-        contained
         eyebrow={home.pledge.eyebrow}
         heading={home.pledge.heading}
         paragraphs={home.pledge.paragraphs}
@@ -126,7 +121,6 @@ export default function Home() {
       />
 
       <Feature3
-        contained
         variant="card"
         columns={2}
         features={home.partnerSplit.cards.map((c) => ({
@@ -138,7 +132,6 @@ export default function Home() {
       />
 
       <Feature1
-        contained
         className="surface-light bg-bone text-moss"
         eyebrow={home.whoWeAre.eyebrow}
         heading={home.whoWeAre.heading}
@@ -161,7 +154,6 @@ export default function Home() {
       />
 
       <Cta4
-        contained
         heading={home.ctaBand.heading}
         description={home.ctaBand.body}
         button={home.ctaBand.cta}

@@ -5,6 +5,7 @@
 // supplies them (SPEC numerals); otherwise the chip is a plain green mark.
 // Descriptions keep the SPEC "Lead — body" reading order in innerText.
 import { cn } from "@/lib/utils";
+import { containerClass } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export interface Process1Step {
@@ -31,8 +32,8 @@ const Process1 = ({ id, eyebrow, heading, description, steps, hairline, classNam
   const hasIntro = Boolean(heading || description);
   const ItemHeading = heading ? "h3" : "h2";
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 px-6", hairline && "section-hairline", className)}>
-      <div className={cn("mx-auto grid max-w-[1440px] grid-cols-1 gap-10", hasIntro && "nav:grid-cols-12 nav:gap-16")}>
+    <section id={id} className={cn("section-y scroll-mt-24", hairline && "section-hairline", className)}>
+      <div className={cn(containerClass, "grid grid-cols-1 gap-10", hasIntro && "nav:grid-cols-12 nav:gap-16")}>
         {hasIntro && (
           <div className="h-fit nav:sticky nav:top-28 nav:col-span-4">
             {heading && <SectionHeading eyebrow={eyebrow} heading={heading} />}
