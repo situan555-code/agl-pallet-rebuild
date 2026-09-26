@@ -7,7 +7,7 @@ import hub from "@/content/resources/hub.json";
 import { Feature3 } from "@/components/feature3";
 import { containerClass } from "@/components/Container";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
-import { ArticleBody, ArticleHeader, ArticleSection, ResourceCta, Sources } from "@/components/resources/ResourceArticle";
+import { ArticleBody, ArticleHeader, ArticleSection, ReadingPanel, ResourceCta, Sources } from "@/components/resources/ResourceArticle";
 import { RichText } from "@/components/resources/RichText";
 import {
   DOWNLOADS_PATH,
@@ -123,8 +123,8 @@ export function DownloadArticle({ slug }: { slug: string }) {
         libraryLabel="Resources"
         crumbs={[{ name: downloadsIndex.heading, href: DOWNLOADS_PATH }]}
       />
-      <section className="pt-14 nav:pt-20">
-        <div className={cn(containerClass, "prose-measure space-y-4 text-body text-ink/85")}>
+      <ReadingPanel>
+        <div className="prose-measure space-y-4 text-body text-moss/85">
           <p>{item.figuresNote}</p>
           {item.exampleNote && <p>{item.exampleNote}</p>}
           <p>
@@ -136,29 +136,29 @@ export function DownloadArticle({ slug }: { slug: string }) {
             </Link>
           </p>
         </div>
-      </section>
-      <ArticleBody toc={toc}>
-        {sections.map((section) => (
-          <ArticleSection key={section.id} section={section} />
-        ))}
-        <Sources items={sources} closing={downloadsIndex.sourcesClosing} />
-        {item.related.length > 0 && (
-          <section aria-labelledby="download-related-h" className="border-t border-brand-green/15 pt-10">
-            <h2 id="download-related-h" className="text-display-row text-current">
-              Related
-            </h2>
-            <ul className="mt-6 space-y-3 text-body">
-              {item.related.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} prefetch={false} className={textLinkClass}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </ArticleBody>
+        <ArticleBody toc={toc}>
+          {sections.map((section) => (
+            <ArticleSection key={section.id} section={section} />
+          ))}
+          <Sources items={sources} closing={downloadsIndex.sourcesClosing} />
+          {item.related.length > 0 && (
+            <section aria-labelledby="download-related-h" className="border-t border-brand-green/15 pt-10">
+              <h2 id="download-related-h" className="text-display-row text-current">
+                Related
+              </h2>
+              <ul className="mt-6 space-y-3 text-body">
+                {item.related.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} prefetch={false} className={textLinkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </ArticleBody>
+      </ReadingPanel>
       <ResourceCta heading={cta.heading} body={cta.body} source={`dl-${slug}`} />
     </main>
   );

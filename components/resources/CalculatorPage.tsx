@@ -9,6 +9,7 @@ import {
   ArticleSection,
   DirectAnswer,
   NextSteps,
+  ReadingPanel,
   RelatedGuides,
   ResourceCta,
   Sources,
@@ -51,43 +52,45 @@ export function CalculatorPage({ content, children }: { content: CalculatorConte
       />
       <WebApplicationJsonLd name={content.title} description={content.metaDescription} path={path} />
       <ArticleHeader eyebrow={content.eyebrow} title={content.title} updated={UPDATED} crumbs={[{ name: HUB.title, href: HUB.href }]} />
-      <DirectAnswer text={content.directAnswer} />
-      <ArticleBody
-        toc={[
-          { id: "calculator", label: "Calculator" },
-          { id: "method", label: "Method" },
-          { id: "sources", label: "Sources" },
-          ...(hasChangelog(content.slug) ? [{ id: "changelog", label: "Changelog" }] : []),
-        ]}
-      >
-        <ArticleSection section={{ id: "calculator", heading: "Calculator" }}>{children}</ArticleSection>
-        <ArticleSection section={{ id: "method", heading: "Method and limits", list: content.method, ordered: true }}>
-          <NoteList heading="What this calculator does not do" items={content.limits} />
-        </ArticleSection>
-        <Sources items={content.sources} />
-        <section aria-labelledby="more-tools-h" className="border-t border-brand-green/15 pt-10">
-          <h2 id="more-tools-h" className="text-display-row text-brand-green">
-            More calculators
-          </h2>
-          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-body">
-            {calculators.tools
-              .filter((t) => t.slug !== content.slug)
-              .map((t) => (
-                <li key={t.slug}>
-                  <Link
-                    href={t.href}
-                    prefetch={false}
-                    className="font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green"
-                  >
-                    {t.title}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-        </section>
-        <NextSteps />
-        <Changelog slug={content.slug} />
-      </ArticleBody>
+      <ReadingPanel>
+        <DirectAnswer text={content.directAnswer} />
+        <ArticleBody
+          toc={[
+            { id: "calculator", label: "Calculator" },
+            { id: "method", label: "Method" },
+            { id: "sources", label: "Sources" },
+            ...(hasChangelog(content.slug) ? [{ id: "changelog", label: "Changelog" }] : []),
+          ]}
+        >
+          <ArticleSection section={{ id: "calculator", heading: "Calculator" }}>{children}</ArticleSection>
+          <ArticleSection section={{ id: "method", heading: "Method and limits", list: content.method, ordered: true }}>
+            <NoteList heading="What this calculator does not do" items={content.limits} />
+          </ArticleSection>
+          <Sources items={content.sources} />
+          <section aria-labelledby="more-tools-h" className="border-t border-brand-green/15 pt-10">
+            <h2 id="more-tools-h" className="text-display-row text-brand-green">
+              More calculators
+            </h2>
+            <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-body">
+              {calculators.tools
+                .filter((t) => t.slug !== content.slug)
+                .map((t) => (
+                  <li key={t.slug}>
+                    <Link
+                      href={t.href}
+                      prefetch={false}
+                      className="font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4 hover:decoration-brand-green"
+                    >
+                      {t.title}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </section>
+          <NextSteps />
+          <Changelog slug={content.slug} />
+        </ArticleBody>
+      </ReadingPanel>
       <RelatedGuides slugs={content.related} />
       <ResourceCta heading={hub.cta.heading} body={hub.cta.body} source={content.slug} />
     </main>

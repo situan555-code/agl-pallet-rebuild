@@ -2,7 +2,7 @@ import hub from "@/content/resources/hub.json";
 import { Feature3 } from "@/components/feature3";
 import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 import { QuestionAsset } from "@/components/resources/QuestionAssets";
-import { ArticleBody, ArticleHeader, ArticleSection, DirectAnswer, ResourceCta, Sources } from "@/components/resources/ResourceArticle";
+import { ArticleBody, ArticleHeader, ArticleSection, DirectAnswer, ReadingPanel, ResourceCta, Sources } from "@/components/resources/ResourceArticle";
 import { plainText } from "@/components/resources/RichText";
 import {
   QUESTIONS_PATH,
@@ -44,13 +44,15 @@ export function QuestionArticle({ item }: { item: QuestionItem }) {
         libraryLabel={questionCrumbs.resources}
         crumbs={[{ name: questionCrumbs.questions, href: QUESTIONS_PATH }]}
       />
-      <DirectAnswer text={item.directAnswer} />
-      <ArticleBody toc={toc}>
-        <ArticleSection section={{ id: "asset", heading: item.asset.heading, paragraphs: [item.asset.lead] }}>
-          <QuestionAsset item={item} />
-        </ArticleSection>
-        <Sources items={item.sources} closing={questionIndex.sourcesClosing} />
-      </ArticleBody>
+      <ReadingPanel>
+        <DirectAnswer text={item.directAnswer} />
+        <ArticleBody toc={toc}>
+          <ArticleSection section={{ id: "asset", heading: item.asset.heading, paragraphs: [item.asset.lead] }}>
+            <QuestionAsset item={item} />
+          </ArticleSection>
+          <Sources items={item.sources} closing={questionIndex.sourcesClosing} />
+        </ArticleBody>
+      </ReadingPanel>
       <RelatedQuestions slugs={item.related} />
       <ResourceCta heading={hub.cta.heading} body={hub.cta.body} source={`q-${item.slug}`} />
     </main>

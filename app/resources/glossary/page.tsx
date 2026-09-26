@@ -3,11 +3,10 @@ import glossary from "@/content/resources/glossary.json";
 import hub from "@/content/resources/hub.json";
 import { BreadcrumbJsonLd, DefinedTermSetJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
 import { Changelog } from "@/components/resources/Changelog";
-import { ArticleHeader, DirectAnswer, NextSteps, RelatedGuides, ResourceCta } from "@/components/resources/ResourceArticle";
+import { ArticleHeader, DirectAnswer, NextSteps, ReadingPanel, RelatedGuides, ResourceCta } from "@/components/resources/ResourceArticle";
 import { GlossaryTerms } from "@/components/resources/GlossaryTerms";
 import { getHubPillar } from "@/lib/resources";
 import { pageMeta } from "@/lib/seo";
-import { containerClass } from "@/components/Container";
 
 const PATH = "/resources/glossary/";
 const pillar = getHubPillar(glossary.slug)!;
@@ -35,11 +34,10 @@ export default function GlossaryPage() {
       />
       <DefinedTermSetJsonLd name={pillar.title} path={PATH} terms={terms} />
       <ArticleHeader eyebrow={glossary.eyebrow} title={pillar.title} updated={glossary.updated} />
-      <DirectAnswer text={pillar.directAnswer} />
-
-      <div className="pb-18 pt-18 nav:pb-28 nav:pt-28">
-        <div className={containerClass}>
-          <p className="prose-measure text-body text-ink/85">
+      <ReadingPanel>
+        <DirectAnswer text={pillar.directAnswer} />
+        <div className="mt-10 border-t border-brand-green/15 pt-10">
+          <p className="prose-measure text-body text-moss/85">
             {glossary.intro} {terms.length} terms.
           </p>
 
@@ -61,7 +59,7 @@ export default function GlossaryPage() {
             </div>
           </div>
         </div>
-      </div>
+      </ReadingPanel>
 
       <RelatedGuides slugs={["gma-pallets-and-grades", "heat-treated-pallets-ispm-15", "types-of-pallets"]} />
       <ResourceCta heading={hub.cta.heading} body={hub.cta.body} source={glossary.slug} />

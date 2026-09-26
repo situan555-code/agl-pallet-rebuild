@@ -6,7 +6,7 @@ import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import hub from "@/content/resources/hub.json";
 import { cn } from "@/lib/utils";
-import { containerClass, insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Cta4 } from "@/components/cta4";
 import { Feature3 } from "@/components/feature3";
 import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
@@ -116,17 +116,28 @@ export function ArticleHeader({
   );
 }
 
+/** Bone reading surface from Short answer through Changelog. Opener stays dark. */
+export function ReadingPanel({ children }: { children: ReactNode }) {
+  return (
+    <section className={cn("bg-moss pb-8 nav:pb-10", insetOuterClass)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "surface-light bg-bone py-10 text-moss nav:py-14")}>
+        {children}
+      </div>
+    </section>
+  );
+}
+
 export function DirectAnswer({ text }: { text: string }) {
   return (
-    <section aria-labelledby="short-answer" className="section-y">
-      <div className={cn(containerClass, "grid gap-4 nav:grid-cols-12 nav:gap-16")}>
-        <p id="short-answer" className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink nav:col-span-3">
+    <section aria-labelledby="short-answer">
+      <div className="grid gap-4 nav:grid-cols-12 nav:gap-16">
+        <p id="short-answer" className="text-eyebrow font-semibold uppercase tracking-wide nav:col-span-3">
           <span aria-hidden="true" className="mr-2 font-bold">
             /
           </span>
           Short answer
         </p>
-        <p className="max-w-[62ch] border-l-[3px] border-brand-green pl-6 text-[20px] leading-[1.6] text-ink nav:col-span-8 nav:col-start-5">
+        <p className="max-w-[62ch] border-l-[3px] border-brand-green pl-6 text-[20px] leading-[1.6] text-moss nav:col-span-8 nav:col-start-5">
           <RichText text={text} />
         </p>
       </div>
@@ -331,8 +342,8 @@ export function RelatedGuides({ slugs }: { slugs: string[] }) {
  */
 export function ArticleBody({ toc, children }: { toc: { id: string; label: string }[]; children: ReactNode }) {
   return (
-    <div className="pb-18 pt-18 nav:pb-28 nav:pt-28">
-      <div className={cn(containerClass, "grid gap-10 nav:grid-cols-12 nav:gap-16")}>
+    <div className="mt-10 border-t border-brand-green/15 pt-10 nav:mt-14 nav:pt-14">
+      <div className="grid gap-10 nav:grid-cols-12 nav:gap-16">
         <aside className="min-w-0 nav:col-span-3">
           <Toc items={toc} />
         </aside>
@@ -401,20 +412,22 @@ export function ResourceArticle({
       )}
       {schema}
       <ArticleHeader eyebrow={pillar.eyebrow} title={pillar.title} updated={pillar.updated} />
-      <DirectAnswer text={pillar.directAnswer} />
-      <ArticleBody toc={toc}>
-        {before.map((s) => (
-          <ArticleSection key={s.id} section={s} />
-        ))}
-        {extra}
-        {after.map((s) => (
-          <ArticleSection key={s.id} section={s} />
-        ))}
-        {pillar.questions && <Questions heading={pillar.questions.heading} items={pillar.questions.items} />}
-        <Sources items={pillar.sources} />
-        <NextSteps />
-        <Changelog slug={pillar.slug} />
-      </ArticleBody>
+      <ReadingPanel>
+        <DirectAnswer text={pillar.directAnswer} />
+        <ArticleBody toc={toc}>
+          {before.map((s) => (
+            <ArticleSection key={s.id} section={s} />
+          ))}
+          {extra}
+          {after.map((s) => (
+            <ArticleSection key={s.id} section={s} />
+          ))}
+          {pillar.questions && <Questions heading={pillar.questions.heading} items={pillar.questions.items} />}
+          <Sources items={pillar.sources} />
+          <NextSteps />
+          <Changelog slug={pillar.slug} />
+        </ArticleBody>
+      </ReadingPanel>
       <RelatedGuides slugs={pillar.related} />
       <ResourceCta heading={pillar.cta.heading} body={pillar.cta.body} source={pillar.slug} />
     </main>

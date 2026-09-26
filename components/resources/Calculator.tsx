@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { RichText } from "@/components/resources/RichText";
 
 const inputClass =
-  "mt-2 block w-full rounded-input border border-brand-green/30 bg-cream px-3 py-2 text-[16px] text-ink focus-visible:border-brand-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-brand-green";
+  "mt-2 block h-[52px] w-full rounded-input border border-moss/25 bg-transparent px-3 text-[16px] text-moss focus-visible:border-moss focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-moss";
 
-const labelClass = "block text-[14px] font-semibold leading-snug text-brand-green";
+const labelClass = "block text-[14px] font-semibold leading-snug text-moss";
 
 export function CalcForm({
   action,
