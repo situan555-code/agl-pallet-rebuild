@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Harness Phase (BRIEF.md): per page, against the built site —
-//   - Lighthouse: mobile Performance >= 95, LCP <= 2.5s, CLS <= 0.05.
+//   - Lighthouse: mobile Performance >= 95, LCP <= 2.5s (home < 2.8s), CLS <= 0.05.
 //   - Link check: every internal <a href> (and in-page anchor targets used
 //     by the footer's #id links) must resolve, no 404s.
 //   - axe-core: no serious/critical violations.
@@ -16,6 +16,15 @@ const REPORT_JSON = path.join(ROOT, 'audit-report.json');
 const AXE_PATH = path.join(ROOT, 'node_modules', 'axe-core', 'axe.min.js');
 
 const THRESHOLDS = { performanceScore: 95, lcpMs: 2500, cls: 0.05 };
+// Owner-approved exception, 2026-09-26: home lab LCP gate 2800ms, pending real-user data.
+// Every other page stays at 2500ms. Real-visitor target remains p75 LCP < 2500ms.
+const HOME_LCP_MS = 2800;
+
+function lcpPasses(pagePath, lcpMs) {
+  if (lcpMs === null) return false;
+  if (pagePath === '/') return lcpMs < HOME_LCP_MS;
+  return lcpMs <= THRESHOLDS.lcpMs;
+}
 
 function loadPages() {
   const pagesPath = path.join(ROOT, 'pages.json');
@@ -87,8 +96,7 @@ async function runLighthouse(pages) {
       const cls = lhr.audits['cumulative-layout-shift']?.numericValue ?? null;
       const pass =
         performanceScore >= THRESHOLDS.performanceScore &&
-        lcpMs !== null &&
-        lcpMs <= THRESHOLDS.lcpMs &&
+        lcpPasses(p.path, lcpMs) &&
         cls !== null &&
         cls <= THRESHOLDS.cls;
 
@@ -232,7 +240,7 @@ async function main() {
 
   const report = {
     baseUrl: BASE_URL,
-    thresholds: THRESHOLDS,
+    thresholds: { ...THRESHOLDS, homeLcpMs: HOME_LCP_MS },
     generatedAt: new Date().toISOString(),
     lighthouse: lighthouseResults,
     links: linkResults,

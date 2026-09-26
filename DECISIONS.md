@@ -1,5 +1,11 @@
 # DECISIONS (redesign)
 
+## Home lab LCP (2026-09-26)
+
+Owner-approved exception, 2026-09-26: home lab LCP gate 2800ms, pending real-user data.
+
+The home page lab gate is LCP < 2800ms, Perf ≥ 95, and CLS < 0.05. Every other page stays at LCP < 2500ms. `@vercel/speed-insights` is on the root layout so real-visitor LCP is measured after launch. The target for real visitors is p75 LCP < 2500ms.
+
 ## UI audit task 13 (2026-09-26)
 
 Owner-approved rewrite in `content/pages/faq.json`: "Two-way vs four-way pallets" is now "Do I need a two-way or four-way pallet?" The answer is unchanged. FAQPage JSON-LD uses the same lead and body.

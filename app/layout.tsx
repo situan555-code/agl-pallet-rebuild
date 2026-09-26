@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { Toaster } from "@/components/Toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { isVercelAppHost } from "@/lib/host";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -69,6 +70,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );
