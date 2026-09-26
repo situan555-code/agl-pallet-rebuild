@@ -39,4 +39,5 @@ H4: sticky on hero-frame-slot; origin top; 24px under buttons; 1280 100% video 6
 H5: footer gutters on panels/nav — 16px at 390, 24px at 768/1280.
 M1–M8 and L1–L7 done on redesign/main. Verify passed (home 96 / 2713ms). Merged to main.
 M22: floating mobile menu. Same-session LH vs main was noise (home +3ms; main about failed). Verify passed (home 97 / 2662ms). Merged to main.
+LCP headroom on `/`, `/about/`, `/request-a-quote/`. Verify passed (home 99 / 2260ms, about 99 / 2109ms, quote 100 / 1809ms). Merging to main.
 H4: --hero-start 0.56 so desktop scroll-grow runs. Verify passed on the second median-of-5 (home 96 / 2712ms). Merged to main.
