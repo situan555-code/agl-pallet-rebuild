@@ -19,6 +19,7 @@ export interface Faq3Item {
 }
 
 interface Faq3Props {
+  id?: string;
   eyebrow?: string;
   heading: string;
   description?: string;
@@ -26,9 +27,9 @@ interface Faq3Props {
   className?: string;
 }
 
-const Faq3 = ({ eyebrow, heading, description, items, className }: Faq3Props) => {
+const Faq3 = ({ id, eyebrow, heading, description, items, className }: Faq3Props) => {
   return (
-    <section className={cn("section-y scroll-mt-24", className)}>
+    <section id={id} className={cn("section-y scroll-mt-24", className)}>
       <div className={cn(containerClass, "grid gap-10 nav:grid-cols-12 nav:gap-16")}>
         <div className="nav:col-span-4">
           <Reveal>

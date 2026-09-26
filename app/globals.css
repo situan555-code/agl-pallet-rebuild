@@ -55,9 +55,9 @@
   --font-display: var(--font-anton), sans-serif;
 
   --text-display-1: clamp(40px, 37px + 0.76vw, 48px);
-  --text-display-1--line-height: 1.2;
-  --text-display-2: clamp(35px, 32px + 0.62vw, 41px);
-  --text-display-2--line-height: 1.2;
+  --text-display-1--line-height: 1.08;
+  --text-display-2: 34px;
+  --text-display-2--line-height: 38px;
   --text-display-3: 20px;
   --text-display-3--line-height: 20px;
   --text-display-4: 14px;
@@ -71,13 +71,13 @@
   --text-display-numeral--line-height: 1;
   --text-step-sm: 16px;
   --text-step-sm--line-height: 20.8px;
-  --text-step-lg: 25px;
-  --text-step-lg--line-height: 25px;
+  --text-step-lg: 24px;
+  --text-step-lg--line-height: 32px;
   /* Type scale: body 16/1.6. Anton only via font-display / .display.
      H2–H6 are Inter semibold. Hero H1s add .display. */
   --text-body: 16px;
   --text-body--line-height: 1.6;
-  --text-eyebrow: 11px;
+  --text-eyebrow: 12px;
   --text-eyebrow--line-height: 1.4;
   --text-eyebrow--letter-spacing: 0.08em;
   --text-link: 14px;
@@ -288,7 +288,9 @@
   }
 
   .display {
-    @apply font-display uppercase tracking-normal;
+    @apply font-display uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
   }
 
   /* G8: clear fixed header (~64px bar + padding) on in-page anchors */
@@ -384,5 +386,21 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+p.text-eyebrow {
+  color: #aeb5ae;
+  letter-spacing: 0.08em;
+}
+
+p.text-eyebrow > span[aria-hidden] {
+  color: #dde9e2;
+}
+
+@media (min-width: 980px) {
+  :root {
+    --text-display-2: 48px;
+    --text-display-2--line-height: 52px;
   }
 }

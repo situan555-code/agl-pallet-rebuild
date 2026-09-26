@@ -1,5 +1,17 @@
 # DECISIONS (redesign)
 
+## UI audit task 13 (2026-09-26)
+
+Owner-approved rewrite in `content/pages/faq.json`: "Two-way vs four-way pallets" is now "Do I need a two-way or four-way pallet?" The answer is unchanged. FAQPage JSON-LD uses the same lead and body.
+
+These other FAQ leads are still topics, not buyer questions. Left for the owner:
+
+- Lead times
+- Minimums
+- Second-source availability
+
+The FAQ meta description still lists "Two-way vs four-way pallets" as a topic. That sentence was not the question, so it was left as written.
+
 ## UI audit task 12 (2026-09-26)
 
 The network diagram labels stay the short lines already passed into `NetworkBeam` from `app/page.tsx` ("Family-run mills", "Qualified shops", "More than one source", "AGL Pallet", "Your line"). They are not separate fields in `content/pages/home.json`, so they were not copied into content JSON and no new eyebrow was added.
