@@ -4,8 +4,8 @@
 // and red corner illustration removed. Numbers render only when content
 // supplies them (SPEC numerals); otherwise the chip is a plain green mark.
 // Body text is rendered as stored. A screen-reader-only " — " sits between
-// the title and the body so the spec line stays one sentence. It is not
-// shown as a visible leading dash.
+// the title and the body so the spec line stays one sentence. A leading
+// em dash in the JSON is hidden visually.
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
@@ -31,9 +31,18 @@ interface Process1Props {
   className?: string;
 }
 
-function specJoin(description: string) {
-  if (/^[—–-]/.test(description.trim())) return null;
-  return <span className="sr-only"> — </span>;
+function visibleDescription(description: string) {
+  return description.replace(/^\s*[—–-]\s*/, "");
+}
+
+function SpecBody({ description, className }: { description: string; className?: string }) {
+  if (description.trim() === "") return null;
+  return (
+    <>
+      <span className="sr-only"> — </span>
+      <p className={className}>{visibleDescription(description)}</p>
+    </>
+  );
 }
 
 function initials(name: string) {
@@ -50,9 +59,15 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
   const ItemHeading = heading ? "h3" : "h2";
   return (
     <section id={id} className={cn("section-y scroll-mt-24", hairline && "section-hairline", className)}>
-      <div className={cn(containerClass, "grid grid-cols-1 gap-10", hasIntro && "nav:grid-cols-12 nav:gap-16")}>
+      <div
+        className={cn(
+          containerClass,
+          "grid grid-cols-1 gap-10",
+          hasIntro && layout === "team" && "nav:grid-cols-12 nav:gap-16"
+        )}
+      >
         {hasIntro && (
-          <div className="h-fit nav:sticky nav:top-28 nav:col-span-4">
+          <div className={cn("h-fit", layout === "team" && "nav:sticky nav:top-28 nav:col-span-4")}>
             {heading && <SectionHeading eyebrow={eyebrow} heading={heading} />}
             {description && <p className="prose-measure mt-5 text-body">{description}</p>}
           </div>
@@ -69,56 +84,40 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                 </span>
                 <div className="min-w-0">
                   <ItemHeading className="text-body font-semibold text-bone">{step.title}</ItemHeading>
-                  {step.description.trim() !== "" && (
-                    <>
-                      {specJoin(step.description)}
-                      <p className="mt-1 text-body text-gray">{step.description}</p>
-                    </>
-                  )}
+                  <SpecBody description={step.description} className="mt-1 text-body text-gray" />
                 </div>
               </li>
             ))}
           </ul>
         ) : layout === "grid" ? (
-          <ul className={cn("grid gap-4 md:grid-cols-2", hasIntro && "nav:col-span-8")}>
+          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {steps.map((step) => (
               <li key={step.title} className="rounded-card bg-green p-8 text-bone">
                 {step.icon ? <IconTile icon={step.icon} /> : null}
                 <ItemHeading className={cn("text-step-lg text-current", step.icon && "mt-5")}>{step.title}</ItemHeading>
-                {step.description.trim() !== "" && (
-                  <>
-                    {specJoin(step.description)}
-                    <p className="prose-measure mt-5 text-body text-gray">{step.description}</p>
-                  </>
-                )}
+                <SpecBody description={step.description} className="prose-measure mt-5 text-body text-gray" />
               </li>
             ))}
           </ul>
         ) : (
-          <ol className={cn("w-full", hasIntro && "nav:col-span-8")}>
+          <ol className="grid w-full grid-cols-1 gap-6 nav:grid-cols-2">
             {steps.map((step) => (
-              <li
-                key={step.title}
-                className="flex flex-col gap-5 border-t border-brand-green/15 py-6 last:border-b md:flex-row md:items-start md:gap-8"
-              >
-                {step.icon ? (
-                  <IconTile icon={step.icon} />
-                ) : step.number ? (
-                  <span
-                    aria-hidden="true"
-                    className="inline-flex size-11 shrink-0 items-center justify-center rounded-[12px] border border-gray/20 bg-smoke text-[13px] font-semibold text-ice"
-                  >
-                    {step.number}
-                  </span>
-                ) : null}
-                <div className="min-w-0">
-                  <ItemHeading className="text-step-lg text-current">{step.title}</ItemHeading>
-                  {step.description.trim() !== "" && (
-                    <>
-                      {specJoin(step.description)}
-                      <p className="prose-measure mt-5 text-body text-current/80">{step.description}</p>
-                    </>
-                  )}
+              <li key={step.title} className="rounded-card bg-green p-8 text-bone">
+                <div className="flex items-start gap-5">
+                  {step.icon ? (
+                    <IconTile icon={step.icon} />
+                  ) : step.number ? (
+                    <span
+                      aria-hidden="true"
+                      className="inline-flex size-11 shrink-0 items-center justify-center rounded-[12px] border border-gray/20 bg-smoke text-[13px] font-semibold text-ice"
+                    >
+                      {step.number}
+                    </span>
+                  ) : null}
+                  <div className="min-w-0">
+                    <ItemHeading className="text-step-lg text-current">{step.title}</ItemHeading>
+                    <SpecBody description={step.description} className="prose-measure mt-5 text-body text-bone/80" />
+                  </div>
                 </div>
               </li>
             ))}
