@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Lighthouse median (2026-09-26)
+
+Owner-approved, 2026-09-26: Lighthouse gate uses the median of 5 sequential runs per page, per Lighthouse CI guidance. Thresholds unchanged.
+
 ## Home lab LCP (2026-09-26)
 
 Owner-approved exception, 2026-09-26: home lab LCP gate 2800ms, pending real-user data.

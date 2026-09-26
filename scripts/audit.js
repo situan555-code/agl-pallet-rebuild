@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // Harness Phase (BRIEF.md): per page, against the built site —
-//   - Lighthouse: mobile Performance >= 95, LCP <= 2.5s (home < 2.8s), CLS <= 0.05.
+//   - Lighthouse: 5 sequential mobile runs. The gate is the median
+//     Performance >= 95 and the median LCP (<= 2.5s, home < 2.8s).
+//     CLS <= 0.05 fails the page if any one of those runs misses.
 //   - Link check: every internal <a href> (and in-page anchor targets used
 //     by the footer's #id links) must resolve, no 404s.
-//   - axe-core: no serious/critical violations.
+//   - axe-core: no serious/critical violations. One run; any violation fails.
 // Writes audit-report.json. Exits non-zero if any page fails any check.
 // Gates may not be softened without an explicit written operator answer.
 const fs = require('fs');
@@ -24,6 +26,17 @@ function lcpPasses(pagePath, lcpMs) {
   if (lcpMs === null) return false;
   if (pagePath === '/') return lcpMs < HOME_LCP_MS;
   return lcpMs <= THRESHOLDS.lcpMs;
+}
+
+// Owner-approved, 2026-09-26: Lighthouse gate uses the median of 5 sequential
+// runs per page, per Lighthouse CI guidance. Thresholds unchanged.
+const LIGHTHOUSE_RUNS = 5;
+
+function median(values) {
+  if (values.length === 0 || values.some((v) => v === null || Number.isNaN(v))) return null;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 1 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 }
 
 function loadPages() {
@@ -79,40 +92,65 @@ async function runLighthouse(pages) {
   // isolation, which was consistently faster and stable).
   const results = [];
   for (const p of pages) {
-    const chrome = await chromeLauncher.launch({
-      chromePath: chromium.executablePath(),
-      chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'],
-      logLevel: 'error',
-    });
-    try {
-      const url = `${BASE_URL}${p.path}`;
-      const { lhr } = await lighthouse(url, {
-        port: chrome.port,
-        onlyCategories: ['performance'],
+    const runs = [];
+    for (let i = 0; i < LIGHTHOUSE_RUNS; i++) {
+      // Fresh Chrome per run. A shared browser let earlier work degrade later
+      // LCP numbers. Runs stay sequential: never overlap a page or a verify step.
+      const chrome = await chromeLauncher.launch({
+        chromePath: chromium.executablePath(),
+        chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'],
         logLevel: 'error',
       });
-      const performanceScore = Math.round((lhr.categories.performance.score ?? 0) * 100);
-      const lcpMs = lhr.audits['largest-contentful-paint']?.numericValue ?? null;
-      const cls = lhr.audits['cumulative-layout-shift']?.numericValue ?? null;
-      const pass =
-        performanceScore >= THRESHOLDS.performanceScore &&
-        lcpPasses(p.path, lcpMs) &&
-        cls !== null &&
-        cls <= THRESHOLDS.cls;
-
-      results.push({
-        path: p.path,
-        performanceScore,
-        lcpMs: lcpMs !== null ? Number(lcpMs.toFixed(0)) : null,
-        cls: cls !== null ? Number(cls.toFixed(4)) : null,
-        pass,
-      });
-      console.log(
-        `  ${pass ? 'PASS' : 'FAIL'} ${p.path}: performance=${performanceScore} lcp=${lcpMs?.toFixed(0)}ms cls=${cls?.toFixed(4)}`
-      );
-    } finally {
-      await chrome.kill();
+      try {
+        const url = `${BASE_URL}${p.path}`;
+        const { lhr } = await lighthouse(url, {
+          port: chrome.port,
+          onlyCategories: ['performance'],
+          logLevel: 'error',
+        });
+        const performanceScore = Math.round((lhr.categories.performance.score ?? 0) * 100);
+        const rawLcp = lhr.audits['largest-contentful-paint']?.numericValue ?? null;
+        const rawCls = lhr.audits['cumulative-layout-shift']?.numericValue ?? null;
+        const run = {
+          performanceScore,
+          lcpMs: rawLcp !== null ? Number(rawLcp.toFixed(0)) : null,
+          cls: rawCls !== null ? Number(rawCls.toFixed(4)) : null,
+        };
+        runs.push(run);
+        console.log(
+          `  ${p.path} ${i + 1}/${LIGHTHOUSE_RUNS}: performance=${run.performanceScore} lcp=${run.lcpMs}ms cls=${run.cls}`
+        );
+      } finally {
+        await chrome.kill();
+      }
     }
+
+    const medianPerformanceScore = median(runs.map((r) => r.performanceScore));
+    const medianLcpMs = median(runs.map((r) => r.lcpMs));
+    const clsPass = runs.every((r) => r.cls !== null && r.cls <= THRESHOLDS.cls);
+    const pass =
+      medianPerformanceScore !== null &&
+      medianPerformanceScore >= THRESHOLDS.performanceScore &&
+      lcpPasses(p.path, medianLcpMs) &&
+      clsPass;
+    const perfList = runs.map((r) => r.performanceScore).join(', ');
+    const lcpList = runs.map((r) => r.lcpMs).join(', ');
+    const clsList = runs.map((r) => r.cls).join(', ');
+
+    results.push({
+      path: p.path,
+      runs,
+      performanceScore: medianPerformanceScore,
+      lcpMs: medianLcpMs,
+      cls: runs.some((r) => r.cls === null) ? null : Math.max(...runs.map((r) => r.cls)),
+      medianPerformanceScore,
+      medianLcpMs,
+      pass,
+    });
+    console.log(
+      `  ${pass ? 'PASS' : 'FAIL'} ${p.path}: median performance=${medianPerformanceScore} lcp=${medianLcpMs}ms`
+    );
+    console.log(`    perf [${perfList}]  lcp [${lcpList}]ms  cls [${clsList}]`);
   }
   return results;
 }
@@ -228,7 +266,7 @@ async function main() {
 
   await warmImageCache(pages);
 
-  console.log('\nLighthouse (mobile performance/LCP/CLS):');
+  console.log(`\nLighthouse (mobile, ${LIGHTHOUSE_RUNS} sequential runs, median Perf and LCP, CLS on any run):`);
   const lighthouseResults = await runLighthouse(pages);
 
   const browser = await chromium.launch();
