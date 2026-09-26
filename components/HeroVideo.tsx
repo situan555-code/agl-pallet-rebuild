@@ -42,7 +42,7 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
   }, [reduce, src]);
 
   return (
-    <div className="hero-frame relative mx-auto w-full overflow-hidden shadow-lg aspect-[4/5] rounded-section md:aspect-video">
+    <div className="hero-frame relative mx-auto w-full overflow-hidden shadow-lg aspect-video rounded-section">
       <Image
         src={poster}
         alt=""
@@ -50,7 +50,7 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
         priority
         fetchPriority="high"
         quality={60}
-        sizes="(min-width: 1280px) 1184px, 100vw"
+        sizes="min(100vw, 828px)"
         className="object-cover object-center"
       />
       {reduce ? null : (
