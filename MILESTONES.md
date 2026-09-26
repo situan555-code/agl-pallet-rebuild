@@ -1,5 +1,17 @@
 # Milestones
 
+## M14 — UI audit tasks 5–7 (not shipped)
+
+- **Date:** 2026-09-26
+- **Tasks:** 5 hero scroll, 6 home spacing, 7 inset panels and text/image
+- **Verify:** failed. Home LCP **3984ms** / Perf **88** (isolated retry **4286ms** / **86**). Other audited pages passed (LCP ≤2190ms). See `BLOCKED.md`. Not merged to `main`.
+- **What changed:**
+  1. Desktop hero video scales from about 56% of the container to full content width over one viewport, then releases. Capability cards stay in flow. Mobile stays a static 4:5 card.
+  2. Home sections use 112px desktop / 72px mobile top padding. Eyebrow to heading 12px, heading to body 20px, body to CTA 32px.
+  3. Bone and full-bleed green slabs are rounded container panels on moss. Text-and-image rows are 4:3 and vertically centered. The home who-we-are teaser puts the image on the left.
+- **Pages to look at:** `/` (hero scroll, who-we-are panel), `/request-a-quote/`, `/resources/gma-pallets-and-grades/`, `/who-we-are/`
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M13 — UI audit tasks 1–4 (not shipped)
 
 - **Date:** 2026-09-26

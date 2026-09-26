@@ -22,4 +22,4 @@ R8.4 verify green (home LCP 2408ms / Perf 98). Merging to main.
 4 done (nav). Next: 5.
 5 done (hero). Next: 6.
 6 done (home spacing). Next: 7.
-7 done (inset panels, text and image). Next: 8. Ship verify pending.
+7 done (inset panels, text and image). Ship verify failed home LCP. Next: 8.
