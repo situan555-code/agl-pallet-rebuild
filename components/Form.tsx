@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -121,8 +122,11 @@ export function Form({
       <input type="hidden" name="source" value={source} />
 
       {missing.length > 0 && (
-        <div className="mb-6 rounded-input border border-red-500 bg-red-500/10 p-4 text-bone">
-          <p className="font-semibold">Please, fill in the following fields:</p>
+        <div className="mb-6 rounded-input border border-gray/25 bg-smoke p-4 text-bone" role="alert">
+          <p className="flex items-center gap-2 font-semibold">
+            <AlertCircle className="size-4 shrink-0 text-ice" aria-hidden />
+            Please, fill in the following fields:
+          </p>
           <ul className="mt-2 list-disc pl-5">
             {missing.map((name) => (
               <li key={name}>{fields.find((f) => f.name === name)?.label}</li>
@@ -149,21 +153,37 @@ export function Form({
       )}
 
       {steps ? (
-        <ol className="mb-6 flex flex-wrap gap-3 text-eyebrow font-semibold uppercase tracking-wide text-ice">
-          {steps.map((s, i) => (
-            <li key={s.label} className={i === step ? "text-bone" : "text-gray"}>
-              {i + 1} {s.label}
-            </li>
-          ))}
-        </ol>
+        <div className="mb-8">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-gray">
+            Step {step + 1} of {steps.length}
+          </p>
+          <ol className="mt-3 flex gap-3">
+            {steps.map((s, i) => (
+              <li key={s.label} className="min-w-0 flex-1">
+                <span className={cn("block h-1 rounded-full", i <= step ? "bg-ice" : "bg-smoke")} />
+                <span
+                  className={cn(
+                    "mt-2 block text-[12px] font-semibold uppercase tracking-[0.08em]",
+                    i === step ? "text-bone" : "text-gray"
+                  )}
+                >
+                  {s.label}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
       ) : null}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {fields.map((field) => {
           const isInvalid = missing.includes(field.name);
-          const inputClass = `w-full rounded-input border bg-bone px-4 py-3 text-moss text-body outline-hidden ${
-            isInvalid ? "border-red-500" : "border-transparent"
-          }`;
+          const inputClass = cn(
+            "w-full rounded-input border border-gray/25 bg-smoke px-4 text-body text-bone outline-hidden",
+            "focus-visible:border-ice focus-visible:ring-2 focus-visible:ring-ice",
+            field.type === "textarea" ? "min-h-32 py-3" : "h-[52px]",
+            isInvalid && "border-ice"
+          );
           const wrapperClass =
             field.type === "textarea" || field.type === "file" ? "sm:col-span-2" : undefined;
           const submitName = destination.kind === "formsubmit" && !field.disableSubmission ? field.name : undefined;
@@ -172,9 +192,9 @@ export function Form({
 
           return (
             <label key={field.name} className={cn(wrapperClass, hidden && "hidden")}>
-              <span className="mb-2 block text-bone text-button font-semibold">
+              <span className="mb-2 block text-body font-semibold text-bone">
                 {field.label}
-                {field.required ? "" : " (optional)"}
+                {field.required ? null : <span className="font-normal text-gray"> (optional)</span>}
               </span>
               {field.type === "textarea" ? (
                 <textarea
@@ -219,7 +239,13 @@ export function Form({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                 />
               )}
-              {field.helpText && <span className="mt-1 block text-link text-bone/70">{field.helpText}</span>}
+              {isInvalid && (
+                <span className="mt-2 flex items-center gap-2 text-[14px] text-ice">
+                  <AlertCircle className="size-4 shrink-0" aria-hidden />
+                  This field is required.
+                </span>
+              )}
+              {field.helpText && <span className="mt-1 block text-link text-gray">{field.helpText}</span>}
             </label>
           );
         })}
@@ -234,7 +260,7 @@ export function Form({
         {steps && step < steps.length - 1 ? (
           <Button
             type="button"
-            variant="secondary"
+            variant="primary"
             onClick={() => {
               const names = steps[step].names;
               const empty = fields
@@ -247,7 +273,7 @@ export function Form({
             Next
           </Button>
         ) : (
-          <Button type="submit" variant="secondary" disabled={status === "submitting"}>
+          <Button type="submit" variant="primary" disabled={status === "submitting"}>
             {status === "submitting" ? "Sending…" : submitLabel}
           </Button>
         )}
