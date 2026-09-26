@@ -19,12 +19,14 @@ function isMenuTrigger(event: { target: EventTarget | null }) {
 export default function HeaderSheet({
   open,
   onOpenChange,
+  onCloseAutoFocus,
   nav,
   ctaHref,
   ctaLabel,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onCloseAutoFocus?: () => void;
   nav: NavItem[];
   logo: { src: string; width: number; height: number; alt: string };
   ctaHref: string;
@@ -37,6 +39,10 @@ export default function HeaderSheet({
         showCloseButton={false}
         aria-describedby={undefined}
         overlayClassName="top-[4.5rem]! bg-moss/40"
+        onCloseAutoFocus={(event) => {
+          event.preventDefault();
+          onCloseAutoFocus?.();
+        }}
         onPointerDownOutside={(event) => {
           if (isMenuTrigger(event)) event.preventDefault();
         }}

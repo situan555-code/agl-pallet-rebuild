@@ -2,7 +2,7 @@
 
 // Trigger only. The sheet chunk loads on the first tap, not at first paint.
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "@/components/inline-icons";
 import type { NavItem } from "@/components/MobileNav";
@@ -22,6 +22,7 @@ export function HeaderMenu({
 }) {
   const [requested, setRequested] = useState(false);
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export function HeaderMenu({
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         data-nav-menu-trigger=""
         className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray/40 bg-green text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice xl:hidden"
@@ -48,6 +50,7 @@ export function HeaderMenu({
         <HeaderSheet
           open={open}
           onOpenChange={setOpen}
+          onCloseAutoFocus={() => triggerRef.current?.focus()}
           nav={nav}
           logo={logo}
           ctaHref={ctaHref}
