@@ -4,6 +4,42 @@ import { cn } from "@/lib/utils";
 const nodeClass =
   "relative z-10 flex items-center gap-3 rounded-card border border-smoke bg-green px-4 py-3 text-bone";
 
+function SourceBeams() {
+  return (
+    <svg
+      aria-hidden
+      className="pointer-events-none z-0 h-auto w-8 shrink-0 self-stretch text-ice"
+      viewBox="0 0 32 100"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M 0 16.7 C 18 16.7 14 50 32 50"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeOpacity="0.9"
+        vectorEffect="nonScalingStroke"
+      />
+      <path
+        d="M 0 50 L 32 50"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeOpacity="0.9"
+        vectorEffect="nonScalingStroke"
+      />
+      <path
+        d="M 0 83.3 C 18 83.3 14 50 32 50"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeOpacity="0.9"
+        vectorEffect="nonScalingStroke"
+      />
+    </svg>
+  );
+}
+
 export function StaticNetwork({
   mills,
   center,
@@ -43,7 +79,7 @@ export function StaticNetwork({
           </div>
         </div>
 
-        <div className="relative mx-auto hidden w-fit items-center gap-8 md:flex">
+        <div className="relative mx-auto hidden w-fit items-center md:flex">
           <div className="flex w-64 flex-col gap-3">
             {labels.map((label) => (
               <div key={label} className={nodeClass}>
@@ -52,12 +88,14 @@ export function StaticNetwork({
               </div>
             ))}
           </div>
+          <SourceBeams />
           <div className="relative z-10 rounded-card border border-ice bg-green px-6 py-5 text-bone shadow-[0_0_28px_rgba(221,233,226,0.35)] ring-4 ring-ice/25">
             <div className="flex items-center gap-3">
               <span className="size-7 shrink-0" aria-hidden />
               <p className="text-lg font-semibold">{center}</p>
             </div>
           </div>
+          <div aria-hidden className="z-0 h-px w-8 shrink-0 bg-ice/90" />
           <div className={nodeClass}>
             <span className="size-5 shrink-0" aria-hidden />
             <p className="text-sm font-semibold">{right}</p>
