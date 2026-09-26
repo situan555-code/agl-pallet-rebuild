@@ -29,7 +29,7 @@ const linkClass =
 
 const Footer2 = ({ logo, description, contact, cta, sections, copyright, className }: Footer2Props) => {
   return (
-    <footer className={cn("bg-moss px-4 py-6 md:px-6", className)}>
+    <footer className={cn("mt-[72px] bg-moss px-4 py-6 md:px-6 nav:mt-[112px]", className)}>
       <div className="mx-auto w-full max-w-[1280px] rounded-section bg-green px-6 pb-10 pt-16 text-bone md:px-8 lg:px-12 nav:pt-20">
         <div className="flex flex-col gap-12 nav:flex-row nav:items-start nav:justify-between nav:gap-16">
           <div className="max-w-md shrink-0">

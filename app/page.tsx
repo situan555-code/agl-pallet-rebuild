@@ -157,7 +157,7 @@ export default function Home() {
       />
 
       <Cta4
-        className="section-rhythm section-rhythm-end"
+        className="section-rhythm"
         heading={home.ctaBand.heading}
         description={home.ctaBand.body}
         button={home.ctaBand.cta}

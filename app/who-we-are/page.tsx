@@ -1,10 +1,12 @@
 import { BadgeCheck, Clock, Handshake, Settings2 } from "lucide-react";
 import content from "@/content/pages/who-we-are.json";
+import home from "@/content/pages/home.json";
 import { Hero3 } from "@/components/hero3";
 import { Feature1 } from "@/components/feature1";
 import { Process1 } from "@/components/process1";
 import { Feature3 } from "@/components/feature3";
 import { About3 } from "@/components/about3";
+import { Cta4 } from "@/components/cta4";
 import { TbdImage } from "@/components/TbdImage";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -63,6 +65,8 @@ export default function WhoWeAre() {
           },
         ]}
       />
+
+      <Cta4 heading={home.ctaBand.heading} description={home.ctaBand.body} button={home.ctaBand.cta} />
     </main>
   );
 }
