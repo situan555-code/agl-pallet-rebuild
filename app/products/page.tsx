@@ -27,7 +27,7 @@ const PRODUCT_IMAGES: Record<string, string> = {
 export default function Products() {
   return (
     <main>
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
+      <Hero3 variant="light-text" eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
 
       <section className="section-y">
         <div className={cn(containerClass, "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3")}>

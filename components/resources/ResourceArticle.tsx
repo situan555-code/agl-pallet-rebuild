@@ -60,6 +60,7 @@ export function ArticleHeader({
   updated,
   crumbs = [],
   libraryLabel = hub.hero.heading,
+  variant = "light-text",
 }: {
   eyebrow: string;
   title: string;
@@ -68,20 +69,22 @@ export function ArticleHeader({
   crumbs?: { name: string; href: string }[];
   /** Visible label for the /resources/ crumb. Guides keep the library title. */
   libraryLabel?: string;
+  variant?: "inset-dark" | "light-text";
 }) {
+  const dark = variant === "inset-dark";
   return (
-    <section className={cn("scroll-mt-24 bg-moss pb-8 pt-28 text-bone nav:pb-10", insetOuterClass)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 nav:py-20")}>
+    <section className={cn("scroll-mt-24 bg-moss pb-0 pt-28", dark ? "text-bone" : "text-moss", insetOuterClass)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "py-16 nav:py-20", dark ? "bg-green text-bone" : "surface-light bg-bone text-moss")}>
         <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
+          <ol className={cn("flex flex-wrap items-center gap-2 text-link", dark ? "text-bone/75" : "text-moss/70")}>
             <li>
-              <Link href="/" prefetch={false} className="hover:text-bone hover:underline">
+              <Link href="/" prefetch={false} className={cn("hover:underline", dark && "hover:text-bone")}>
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/resources/" prefetch={false} className="hover:text-bone hover:underline">
+              <Link href="/resources/" prefetch={false} className={cn("hover:underline", dark && "hover:text-bone")}>
                 {libraryLabel}
               </Link>
             </li>
@@ -89,7 +92,7 @@ export function ArticleHeader({
             {crumbs.map((c) => (
               <Fragment key={c.href}>
                 <li>
-                  <Link href={c.href} prefetch={false} className="hover:text-bone hover:underline">
+                  <Link href={c.href} prefetch={false} className={cn("hover:underline", dark && "hover:text-bone")}>
                     {c.name}
                   </Link>
                 </li>
@@ -97,19 +100,19 @@ export function ArticleHeader({
               </Fragment>
             ))}
             <li>
-              <span aria-current="page" className="text-bone">
+              <span aria-current="page" className={dark ? "text-bone" : "text-moss"}>
                 {title}
               </span>
             </li>
           </ol>
         </nav>
         <p className="mt-8 text-eyebrow font-semibold uppercase tracking-wide">
-          <span aria-hidden="true" className="mr-2 font-bold">
+          <span aria-hidden="true" className={cn("mr-2 font-bold", dark ? "text-ice" : "text-current")}>
             /
           </span>
           {eyebrow}
         </p>
-        <h1 className="mt-3 max-w-[900px] text-display-1">{title}</h1>
+        <h1 className={cn("mt-3 max-w-[900px] text-display-1", dark && "display")}>{title}</h1>
         <Byline updated={updated} />
       </div>
     </section>
@@ -119,7 +122,7 @@ export function ArticleHeader({
 /** Bone reading surface from Short answer through Changelog. Opener stays dark. */
 export function ReadingPanel({ children }: { children: ReactNode }) {
   return (
-    <section className={cn("bg-moss pb-8 nav:pb-10", insetOuterClass)}>
+    <section className={cn("bg-moss pb-8 pt-[72px] nav:pb-10 nav:pt-[112px]", insetOuterClass)}>
       <div className={cn(insetSurfaceClass, insetPadClass, "surface-light bg-bone py-10 text-moss nav:py-14")}>
         {children}
       </div>

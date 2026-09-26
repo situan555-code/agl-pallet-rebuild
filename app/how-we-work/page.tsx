@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMeta(
 export default function HowWeWork() {
   return (
     <main>
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} />
+      <Hero3 variant="light-text" eyebrow={content.hero.eyebrow} heading={content.hero.heading} />
 
       <Process1
         steps={content.timeline.map((step) => ({

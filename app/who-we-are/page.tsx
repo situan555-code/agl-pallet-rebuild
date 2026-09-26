@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { BadgeCheck, Clock, Handshake, Settings2 } from "lucide-react";
 import content from "@/content/pages/who-we-are.json";
 import home from "@/content/pages/home.json";
 import { Hero3 } from "@/components/hero3";
+import { getBlurDataURL } from "@/lib/blur";
 import { Feature1 } from "@/components/feature1";
 import { Process1 } from "@/components/process1";
 import { Feature3 } from "@/components/feature3";
@@ -20,7 +22,24 @@ export const metadata: Metadata = pageMeta(
 export default function WhoWeAre() {
   return (
     <main>
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.paragraphs} />
+      <Hero3
+        variant="light-image"
+        eyebrow={content.hero.eyebrow}
+        heading={content.hero.heading}
+        description={content.hero.paragraphs}
+        image={
+          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
+            <Image
+              src="/assets/who_agl_is_sidepic.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              placeholder={getBlurDataURL("/assets/who_agl_is_sidepic.jpg") ? "blur" : undefined}
+              blurDataURL={getBlurDataURL("/assets/who_agl_is_sidepic.jpg")}
+            />
+          </div>
+        }
+      />
 
       <Feature1
         eyebrow={content.founderStory.eyebrow}

@@ -16,7 +16,7 @@ export default function Faq() {
   return (
     <main>
       <FaqPageJsonLd items={content.items.map((item) => ({ question: item.lead, answer: item.body }))} />
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
+      <Hero3 variant="light-text" eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
 
       <Faq3
         id="questions"
