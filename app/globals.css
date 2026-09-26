@@ -423,22 +423,19 @@ p.text-eyebrow > span[aria-hidden] {
 
 @supports (animation-timeline: scroll()) {
   @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-    .hero-sticky {
-      position: sticky;
-      top: 0;
-    }
-
     .hero-spacer {
       height: 100svh;
     }
 
     .hero-frame-slot {
+      position: sticky;
+      top: calc(50svh - 0.28125 * min(100vw - 96px, 1184px));
       container-type: inline-size;
     }
 
     .hero-frame {
       --hero-start: calc(min(56cqi, 820px) / 100cqi);
-      transform-origin: center center;
+      transform-origin: center top;
       transform: scale(var(--hero-start));
       border-radius: calc(28px / var(--hero-start));
       animation: hero-frame-grow linear both;
