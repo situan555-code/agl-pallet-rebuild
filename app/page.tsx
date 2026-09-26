@@ -7,9 +7,9 @@ import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
 import { Gallery4Loader } from "@/components/Gallery4Loader";
 import { DeferredFillImage } from "@/components/DeferredFillImage";
-import { ImageBand } from "@/components/ImageBand";
+import { DeferredImageBand } from "@/components/home/DeferredImageBand";
 import { Cta4 } from "@/components/cta4";
-import { NetworkBeam } from "@/components/NetworkBeam";
+import { DeferredNetwork } from "@/components/home/DeferredNetwork";
 import { Container } from "@/components/Container";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
@@ -78,7 +78,7 @@ export default function Home() {
         }
       />
 
-      <NetworkBeam
+      <DeferredNetwork
         className="section-rhythm"
         mills={["Family-run mills", "Qualified shops", "More than one source"]}
         center="AGL Pallet"
@@ -95,7 +95,7 @@ export default function Home() {
         }))}
       />
 
-      <ImageBand
+      <DeferredImageBand
         className="section-rhythm"
         eyebrow="How we work"
         heading="Coordination is the product."
