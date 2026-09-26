@@ -23,6 +23,9 @@ export type FormDestination =
   | { kind: "formsubmit"; email: string; subject: string; autoresponse?: string }
   | { kind: "unresolved" };
 
+export const UNRESOLVED_FORM_NOTICE =
+  "This form is not sending yet. The destination address is not confirmed, so nothing is transmitted. Call 234-286-0402 in the meantime.";
+
 export function Form({
   id,
   fields,
@@ -30,6 +33,7 @@ export function Form({
   submitLabel,
   successMessage,
   source,
+  hideDestinationNotice = false,
 }: {
   id: string;
   fields: FormFieldConfig[];
@@ -37,6 +41,7 @@ export function Form({
   submitLabel: string;
   successMessage: string;
   source: string;
+  hideDestinationNotice?: boolean;
 }) {
   const searchParams = useSearchParams();
   const formRef = useRef<HTMLFormElement>(null);
@@ -203,10 +208,9 @@ export function Form({
         <p className="mb-6 rounded-input bg-bone/10 p-4 text-bone">{successMessage}</p>
       )}
 
-      {destination.kind === "unresolved" && (
+      {destination.kind === "unresolved" && !hideDestinationNotice && (
         <p className="mb-6 rounded-input border border-bone/30 bg-bone/10 p-4 text-bone">
-          This form is not sending yet. The destination address is not confirmed, so nothing is
-          transmitted. Call 234-286-0402 in the meantime.
+          {UNRESOLVED_FORM_NOTICE}
         </p>
       )}
 

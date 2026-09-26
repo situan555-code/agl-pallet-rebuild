@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy, Mail, MessageSquare, Phone, type LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { IconTile } from "@/components/IconTile";
 
 export interface QuoteContactItem {
@@ -54,9 +55,15 @@ function CopyButton({ value }: { value: string }) {
   );
 }
 
-export function QuoteContacts({ items }: { items: QuoteContactItem[] }) {
+export function QuoteContacts({
+  items,
+  className,
+}: {
+  items: QuoteContactItem[];
+  className?: string;
+}) {
   return (
-    <ul className="mt-16 grid grid-cols-1 items-start gap-4 nav:grid-cols-3">
+    <ul className={cn("mt-16 grid grid-cols-1 items-start gap-4 nav:grid-cols-3", className)}>
       {items.map((item) => {
         const Icon = icons[item.kind];
         return (
