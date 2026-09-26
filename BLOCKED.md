@@ -1,5 +1,9 @@
 # BLOCKED
 
+## UI audit ship after task 10 (2026-09-26)
+
+`npm run verify` on `redesign/main` after tasks 1–10: schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 87, LCP 4062ms (gate 2500). Other audited pages passed (LCP ≤2417ms). Isolated Lighthouse retry on `/` was worse (Perf 85, LCP 4359ms). Same home LCP miss as the task 4 and task 7 ships. Did not merge to `main`. Two attempts; not a content-gate miss on the other checks.
+
 ## Quote form Resend from-domain (2026-09-26)
 
 Preview POST `/api/forms/` on the task 10 deployment returned 502 `{ ok: false, fallback: true }`. Exact error: `The aglpallet.com domain is not verified. Please, add and verify your domain on https://resend.com/domains`

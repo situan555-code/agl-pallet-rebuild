@@ -1,5 +1,17 @@
 # Milestones
 
+## M15 — UI audit tasks 8–10 (not shipped)
+
+- **Date:** 2026-09-26
+- **Tasks:** 8 markers, 9 form fields, 10 quote Resend
+- **Verify:** failed. Home LCP **4062ms** / Perf **87** (isolated retry **4359ms** / **85**). Other audited pages passed (LCP ≤2417ms). See `BLOCKED.md`. Not merged to `main`.
+- **What changed:**
+  1. List markers are 44px smoke tiles with ice icons. Team rows use a 48px green monogram. The supplier offer is a two-column card grid.
+  2. Form fields are smoke, 52px, radius 10, with an ice focus ring and an icon plus text on errors. Quote, supplier, and carrier forms show a step count.
+  3. The quote form posts to `/api/forms/` (zod, honeypot, 3 second wait, Sonner toast). Resend rejected `aglpallet.com` as an unverified from-domain, so FormSubmit stays as the fallback. Supplier and carrier stay not-sending.
+- **Pages to look at:** `/request-a-quote/`, `/partners/suppliers/`, `/who-we-are/`
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M14 — UI audit tasks 5–7 (not shipped)
 
 - **Date:** 2026-09-26
