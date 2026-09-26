@@ -2,7 +2,7 @@
 
 ## UI audit task 8 (2026-09-26)
 
-Leading em dashes that the component used to prepend were removed. These remain in content JSON and were left for the owner:
+Leading em dashes are not shown. A screen-reader-only " — " still joins each title to its body so the spec sentence stays intact for the copy gate. These remain in content JSON and were left for the owner:
 
 - `content/pages/how-we-work.json` timeline bodies all start with "— ".
 - `content/pages/contact.json` route bodies all start with "— ".
