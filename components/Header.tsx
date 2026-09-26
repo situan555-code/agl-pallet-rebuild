@@ -35,7 +35,6 @@ export function Header() {
           width={65}
           height={29}
           alt={LIGHT_LOGO.alt}
-          priority
           className="h-[29px] w-auto border-0 bg-transparent shadow-none ring-0 outline-none"
         />
       </Link>

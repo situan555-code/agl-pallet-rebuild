@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-export function HeroVideo({ src, poster }: { src: string; poster: string }) {
+export function HeroVideo({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [reduce, setReduce] = useState(false);
@@ -20,54 +19,37 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
   useEffect(() => {
     if (reduce) return;
 
-    const start = () => {
-      const kick = () => {
-        const el = videoRef.current;
-        if (!el) return;
-        el.muted = true;
-        if (el.getAttribute("src") !== src) el.src = src;
-        el.muted = true;
-        void el.play().catch(() => {});
-      };
-      if (typeof window.requestIdleCallback === "function") {
-        window.requestIdleCallback(() => kick());
-      } else {
-        setTimeout(kick, 1);
-      }
+    const kick = () => {
+      const el = videoRef.current;
+      if (!el) return;
+      el.muted = true;
+      if (el.getAttribute("src") !== src) el.src = src;
+      el.muted = true;
+      void el.play().catch(() => {});
     };
-
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start);
-    return () => window.removeEventListener("load", start);
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(() => kick());
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = window.setTimeout(kick, 1);
+    return () => window.clearTimeout(t);
   }, [reduce, src]);
 
+  if (reduce) return null;
+
   return (
-    <div className="hero-frame relative mx-auto w-full overflow-hidden shadow-lg aspect-video rounded-section">
-      <Image
-        src={poster}
-        alt=""
-        fill
-        priority
-        fetchPriority="high"
-        quality={60}
-        sizes="min(100vw, 828px)"
-        className="object-cover object-center"
-      />
-      {reduce ? null : (
-        <video
-          ref={videoRef}
-          className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
-            playing ? "opacity-100" : "opacity-0",
-          )}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          onPlaying={() => setPlaying(true)}
-        />
+    <video
+      ref={videoRef}
+      className={cn(
+        "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
+        playing ? "opacity-100" : "opacity-0",
       )}
-    </div>
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="none"
+      onPlaying={() => setPlaying(true)}
+    />
   );
 }

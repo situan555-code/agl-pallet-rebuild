@@ -16,7 +16,13 @@ type DeferredFillImageProps = {
 export function DeferredFillImage({ src, alt, quality, sizes, className }: DeferredFillImageProps) {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    setShow(true);
+    const kick = () => setShow(true);
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(kick, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = window.setTimeout(kick, 400);
+    return () => window.clearTimeout(t);
   }, []);
   if (!show) return null;
   return <Image src={src} alt={alt} fill quality={quality} sizes={sizes} className={className} />;

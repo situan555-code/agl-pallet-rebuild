@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import pageContent from "@/content/pages/request-a-quote.json";
 import forms from "@/content/forms.json";
-import { Form, type FormDestination } from "@/components/Form";
+import type { FormDestination } from "@/components/Form";
+import { DeferredForm } from "@/components/DeferredForm";
 import { Contact2 } from "@/components/contact2";
 import { QuoteContacts, type QuoteContactItem } from "@/components/QuoteContacts";
 
@@ -24,8 +24,6 @@ export const metadata: Metadata = {
     images: ["/assets/agl_social_share.jpg"],
   },
 };
-
-export const dynamic = "force-dynamic";
 
 export default function RequestAQuote() {
   const to =
@@ -64,8 +62,7 @@ export default function RequestAQuote() {
         }
       >
         <div className="min-h-[36rem] nav:min-h-0">
-        <Suspense fallback={null}>
-          <Form
+          <DeferredForm
             id={forms.quote.id}
             fields={forms.quote.fields as never}
             destination={destination}
@@ -73,7 +70,6 @@ export default function RequestAQuote() {
             successMessage={forms.quote.successMessage}
             source="/request-a-quote/"
           />
-        </Suspense>
         </div>
       </Contact2>
     </main>

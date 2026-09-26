@@ -15,5 +15,7 @@ export const anton = Anton({
   weight: "400",
   variable: "--font-anton",
   display: "optional",
-  preload: true,
+  // Home LCP is the poster image. About/quote LCP is Inter text.
+  // Preloading Anton on every page contended with that first paint.
+  preload: false,
 });
