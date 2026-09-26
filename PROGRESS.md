@@ -20,3 +20,4 @@ R8.4 verify green (home LCP 2408ms / Perf 98). Merging to main.
 2 done (home container). Next: 3.
 3 done (site container). Next: 4.
 4 done (nav). Next: 5.
+5 done (hero). Next: 6.

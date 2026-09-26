@@ -57,16 +57,19 @@ const DISABLE_ANIMATIONS_CSS = `
 // (the moment the sticky panel releases). 100% is still on screen.
 async function heroScrollY(page, pct) {
   return page.evaluate((percent) => {
+    const marked = document.querySelector('[data-hero-track]');
     const h1 = document.querySelector('h1');
-    if (!h1) return { error: 'home h1 not found' };
-    let el = h1.parentElement;
-    let track = null;
-    while (el && el !== document.body && el !== document.documentElement) {
-      if (el.offsetHeight > window.innerHeight + 8) {
-        track = el;
-        break;
+    if (!marked && !h1) return { error: 'home h1 not found' };
+    let track = marked;
+    if (!track && h1) {
+      let el = h1.parentElement;
+      while (el && el !== document.body && el !== document.documentElement) {
+        if (el.offsetHeight > window.innerHeight + 8) {
+          track = el;
+          break;
+        }
+        el = el.parentElement;
       }
-      el = el.parentElement;
     }
     if (!track) return { error: 'hero track taller than the viewport was not found' };
     const top = track.getBoundingClientRect().top + window.scrollY;
