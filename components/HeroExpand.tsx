@@ -25,7 +25,7 @@ export function HeroExpand({
   const [primary, ...rest] = buttons;
 
   return (
-    <div data-hero-track className="hero-track relative bg-moss text-bone">
+    <div data-hero-track className="hero-track relative text-bone">
       <div className={cn(containerClass, "pt-28 pb-6 nav:pt-32")}>
         <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ice">
           <span aria-hidden="true" className="mr-2 font-bold">

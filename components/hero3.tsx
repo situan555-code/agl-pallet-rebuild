@@ -5,10 +5,10 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { containerClass, insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 
-export type Hero3Variant = "inset-dark" | "light-text" | "light-image";
+export type Hero3Variant = "inset-dark" | "light-text" | "light-image" | "flow";
 
 interface Hero3Props {
   eyebrow: string;
@@ -33,6 +33,59 @@ const Hero3 = ({
   className,
 }: Hero3Props) => {
   const paragraphs = description ? (Array.isArray(description) ? description : [description]) : [];
+  if (variant === "flow") {
+    return (
+      <section className={cn("relative scroll-mt-24 bg-transparent pb-0 pt-28 text-bone", className)}>
+        <div className={containerClass}>
+          {breadcrumb && breadcrumb.length > 0 && (
+            <nav aria-label="Breadcrumb" className="mb-10">
+              <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
+                {breadcrumb.map((item, i) => (
+                  <li key={`${item.name}-${i}`} className="contents">
+                    {i > 0 && (
+                      <span aria-hidden="true" className="text-bone/50">
+                        /
+                      </span>
+                    )}
+                    {item.href && i < breadcrumb.length - 1 ? (
+                      <Link href={item.href} prefetch={false} className="hover:text-bone hover:underline">
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <span aria-current="page" className="text-bone">
+                        {item.name}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )}
+          <p className="text-eyebrow font-semibold uppercase tracking-wide">
+            <span aria-hidden="true" className="mr-2 font-bold text-ice">
+              /
+            </span>
+            {eyebrow}
+          </p>
+          <h1 className="display mt-3 max-w-[760px] text-display-1 text-bone">{heading}</h1>
+          {paragraphs.length > 0 && (
+            <div className="prose-measure mt-6 space-y-4">
+              {paragraphs.map((p, i) => (
+                <p key={i} className="text-body text-bone/85">
+                  {p}
+                </p>
+              ))}
+            </div>
+          )}
+          {cta && (
+            <div className={cn(paragraphs.length > 0 && "mt-8")}>
+              <Button href={cta.href} label={cta.label} variant="primary" />
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  }
   const dark = variant === "inset-dark";
   const hasImage = variant === "light-image" && Boolean(image);
   const hasAside = !hasImage && (paragraphs.length > 0 || Boolean(cta));

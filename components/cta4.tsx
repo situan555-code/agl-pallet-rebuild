@@ -14,7 +14,7 @@ interface Cta4Props {
 
 const Cta4 = ({ eyebrow, heading, description, button, features, className }: Cta4Props) => {
   return (
-    <section className={cn("section-rhythm scroll-mt-24 bg-moss", insetOuterClass, className)}>
+    <section className={cn("section-rhythm scroll-mt-24", insetOuterClass, className)}>
       <div className={cn(insetSurfaceClass, insetPadClass, "grain relative overflow-hidden bg-green py-16 text-bone nav:py-20")}>
       <div className="grid items-center gap-5 nav:grid-cols-12 nav:gap-16">
         <div className="nav:col-span-7">

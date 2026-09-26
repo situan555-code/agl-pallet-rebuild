@@ -12,6 +12,10 @@ function stripScaffolding(text: string) {
   return text.replace(/\s*(?:\u2192|->)\s+\S+\s*$/g, "").trim();
 }
 
+function visibleBody(text: string) {
+  return stripScaffolding(text).replace(/^\s*[—–-]\s*/, "");
+}
+
 function RowInner({
   item,
   layout,
@@ -19,9 +23,11 @@ function RowInner({
   item: RuleListItem;
   layout: "contact" | "industries";
 }) {
-  const body = stripScaffolding(item.body);
+  const body = layout === "contact" ? visibleBody(item.body) : stripScaffolding(item.body);
   const titleClass =
-    "font-display text-display-row uppercase text-current transition-colors group-hover:text-bone group-focus-within:text-bone";
+    layout === "contact"
+      ? "font-sans text-display-row font-semibold normal-case text-current"
+      : "font-display text-display-row uppercase text-current transition-colors group-hover:text-bone group-focus-within:text-bone";
   const bodyClass =
     "text-body text-current/70 transition-colors group-hover:text-bone group-focus-within:text-bone";
 
@@ -35,10 +41,13 @@ function RowInner({
   }
 
   return (
-    <div className={`${containerClass} flex items-center justify-between gap-6 py-8 md:py-10`}>
+    <div className="flex items-center justify-between gap-6">
       <div className="min-w-0">
         <h2 className={titleClass}>{item.title}</h2>
-        <p className={`mt-1 ${bodyClass}`}>{body}</p>
+        <p className={`mt-1 ${bodyClass}`}>
+          <span className="sr-only"> — </span>
+          {body}
+        </p>
       </div>
       <ArrowIcon className="h-6 w-6 shrink-0 text-current transition-transform duration-200 group-hover:text-bone group-focus-within:text-bone motion-safe:group-hover:translate-x-2 motion-safe:group-focus-within:translate-x-2" />
     </div>
@@ -48,6 +57,9 @@ function RowInner({
 const rowClass =
   "peer group w-full border-t border-brand-green/15 transition-colors first:border-t-0 hover:border-transparent hover:bg-brand-green focus-within:border-transparent focus-within:bg-brand-green peer-hover:border-transparent peer-focus-within:border-transparent";
 
+const contactRowClass =
+  "group block rounded-card px-4 py-8 transition-colors hover:bg-green focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice md:px-6 md:py-10";
+
 export function RuleList({
   items,
   layout,
@@ -55,6 +67,27 @@ export function RuleList({
   items: RuleListItem[];
   layout: "contact" | "industries";
 }) {
+  if (layout === "contact") {
+    return (
+      <ul className={containerClass}>
+        {items.map((item) => {
+          const inner = <RowInner item={item} layout={layout} />;
+          return (
+            <li key={item.title} className="border-t border-gray/15 first:border-t-0">
+              {item.href ? (
+                <Link href={item.href} prefetch={false} className={contactRowClass}>
+                  {inner}
+                </Link>
+              ) : (
+                <div className={contactRowClass}>{inner}</div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+
   return (
     <ul>
       {items.map((item) => {

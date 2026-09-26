@@ -514,3 +514,128 @@ p.text-eyebrow > span[aria-hidden] {
     border-radius: 20px;
   }
 }
+
+/* Flow prototype (home, who we are): one moss ground, grain behind the type,
+   ice glows that drift on scroll, photo chapters with soft edges. */
+.flow-page {
+  position: relative;
+  isolation: isolate;
+  background: #131913;
+  color: #ece8df;
+}
+
+.flow-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.flow-page > :not(.flow-grain) {
+  position: relative;
+  z-index: 1;
+}
+
+.flow-anchor {
+  position: relative;
+  isolation: isolate;
+}
+
+.flow-glow {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(221 233 226 / 0.08) 0%,
+    rgb(221 233 226 / 0.04) 46%,
+    transparent 72%
+  );
+}
+
+.flow-anchor > :not(.flow-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.flow-glow-hero {
+  width: min(920px, 92vw);
+  height: min(560px, 70vw);
+  top: 4%;
+  left: 6%;
+}
+
+.flow-glow-network {
+  width: min(760px, 84vw);
+  height: 440px;
+  top: 10%;
+  left: 50%;
+  margin-left: min(-380px, -42vw);
+}
+
+.flow-glow-cta {
+  width: min(680px, 78vw);
+  height: 420px;
+  top: -48px;
+  right: 4%;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .flow-glow {
+      animation: flow-glow-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+@keyframes flow-glow-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(28px, 48px, 0);
+  }
+}
+
+.flow-page .flow-hairline,
+.flow-page .section-hairline {
+  border-top: 1px solid rgb(174 181 174 / 0.15);
+}
+
+.photo-chapter {
+  position: relative;
+  height: 520px;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .photo-chapter {
+    height: 640px;
+  }
+}
+
+.photo-chapter-fade {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 180px;
+}
+
+.photo-chapter-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, #131913, transparent);
+}
+
+.photo-chapter-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #131913, transparent);
+}

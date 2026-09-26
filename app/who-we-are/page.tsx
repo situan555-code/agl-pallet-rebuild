@@ -1,7 +1,6 @@
 import { BadgeCheck, Clock, Handshake, Settings2 } from "lucide-react";
 import content from "@/content/pages/who-we-are.json";
 import home from "@/content/pages/home.json";
-import Image from "next/image";
 import { Hero3 } from "@/components/hero3";
 import { Feature1 } from "@/components/feature1";
 import { Process1 } from "@/components/process1";
@@ -9,6 +8,8 @@ import { Feature3 } from "@/components/feature3";
 import { About3 } from "@/components/about3";
 import { Cta4 } from "@/components/cta4";
 import { TbdImage } from "@/components/TbdImage";
+import { FlowAnchor, FlowPage } from "@/components/flow/FlowPage";
+import { PhotoChapter } from "@/components/flow/PhotoChapter";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -20,71 +21,67 @@ export const metadata: Metadata = pageMeta(
 
 export default function WhoWeAre() {
   return (
-    <main>
-      <Hero3
-        variant="light-image"
-        eyebrow={content.hero.eyebrow}
-        heading={content.hero.heading}
-        description={content.hero.paragraphs}
-        image={
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
-            <Image
-              src="/assets/who_agl_is_sidepic.jpg"
-              alt=""
-              fill
-              quality={60}
-              sizes="(min-width: 980px) 38vw, calc(100vw - 80px)"
-              className="object-cover"
-            />
-          </div>
-        }
-      />
+    <FlowPage>
+      <main>
+        <FlowAnchor glow="hero">
+          <Hero3
+            variant="flow"
+            eyebrow={content.hero.eyebrow}
+            heading={content.hero.heading}
+            description={content.hero.paragraphs}
+          />
+        </FlowAnchor>
 
-      <Feature1
-        eyebrow={content.founderStory.eyebrow}
-        heading={content.founderStory.heading}
-        paragraphs={content.founderStory.paragraphs}
-        media={<TbdImage caption="Founder portrait" />}
-      />
+        <PhotoChapter src="/assets/who_agl_is_sidepic.jpg" />
 
-      <Process1
-        layout="team"
-        hairline
-        eyebrow={content.team.eyebrow}
-        heading={content.team.heading}
-        description={content.team.body}
-        steps={content.team.items.map((item) => ({ title: item.lead, description: item.body }))}
-      />
+        <Feature1
+          eyebrow={content.founderStory.eyebrow}
+          heading={content.founderStory.heading}
+          paragraphs={content.founderStory.paragraphs}
+          media={<TbdImage caption="Founder portrait" />}
+        />
 
-      <Feature3
-        hairline
-        variant="divided"
-        columns={4}
-        eyebrow={content.values.eyebrow}
-        className="section-y"
-        features={content.values.cards.map((c, index) => ({
-          title: c.heading,
-          description: c.body,
-          icon: [Handshake, Clock, Settings2, BadgeCheck][index],
-        }))}
-      />
+        <Process1
+          layout="team"
+          hairline
+          eyebrow={content.team.eyebrow}
+          heading={content.team.heading}
+          description={content.team.body}
+          steps={content.team.items.map((item) => ({ title: item.lead, description: item.body }))}
+        />
 
-      <About3
-        hairline
-        sections={[
-          {
-            label: content.faith.eyebrow,
-            title: content.faith.heading,
-            paragraphs: content.faith.paragraphs,
-          },
-          {
-            label: content.whereWeAre.eyebrow,
-            paragraphs: [content.whereWeAre.body],
-          },
-        ]}
-      />
+        <Feature3
+          hairline
+          variant="divided"
+          columns={4}
+          eyebrow={content.values.eyebrow}
+          className="section-y"
+          features={content.values.cards.map((c, index) => ({
+            title: c.heading,
+            description: c.body,
+            icon: [Handshake, Clock, Settings2, BadgeCheck][index],
+          }))}
+        />
 
-      <Cta4 heading={home.ctaBand.heading} description={home.ctaBand.body} button={home.ctaBand.cta} />
-    </main>
+        <About3
+          hairline
+          sections={[
+            {
+              label: content.faith.eyebrow,
+              title: content.faith.heading,
+              paragraphs: content.faith.paragraphs,
+            },
+            {
+              label: content.whereWeAre.eyebrow,
+              paragraphs: [content.whereWeAre.body],
+            },
+          ]}
+        />
+
+        <FlowAnchor glow="cta">
+          <Cta4 heading={home.ctaBand.heading} description={home.ctaBand.body} button={home.ctaBand.cta} />
+        </FlowAnchor>
+      </main>
+    </FlowPage>
   );
 }

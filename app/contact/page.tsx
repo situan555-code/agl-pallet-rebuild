@@ -29,7 +29,7 @@ export default function Contact() {
     <main>
       <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.lede} />
 
-      {/* Section J1 (owner): four full-width ruled rows with green hover — kept over a card grid. */}
+      {/* Contact rows: Inter headings, hover stays inside the content column. */}
       <section className="section-y">
         <RuleList
           layout="contact"
