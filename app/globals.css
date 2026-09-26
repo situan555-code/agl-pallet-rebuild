@@ -129,7 +129,12 @@
 }
 
 @utility section-y {
-  @apply py-12 nav:py-16;
+  padding-top: 72px;
+  padding-bottom: 0;
+  @media (min-width: 980px) {
+    padding-top: 112px;
+    padding-bottom: 0;
+  }
 }
 
 /* Home rhythm (UI audit §2.3). Top padding only, so neighboring sections

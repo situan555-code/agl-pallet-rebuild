@@ -1,11 +1,12 @@
 import { Button } from "@/components/Button";
 import { containerClass } from "@/components/Container";
+import { cn } from "@/lib/utils";
 
 export default function NotFound() {
   return (
     <main>
-      <section className="bg-green pb-24 pt-36 text-center text-bone">
-        <div className={containerClass}>
+      <section className="bg-moss pb-8 pt-28 text-center text-bone">
+        <div className={cn(containerClass, "rounded-section bg-green py-16 nav:py-20")}>
         <div className="mx-auto max-w-[720px]">
           <p className="text-eyebrow font-semibold uppercase tracking-wide">
             <span aria-hidden="true" className="mr-2 font-bold">
@@ -13,7 +14,7 @@ export default function NotFound() {
             </span>
             404
           </p>
-          <h1 className="mt-4 text-display-1">Page Not Found</h1>
+          <h1 className="mt-3 text-display-1">Page Not Found</h1>
           <p className="mx-auto mt-6 max-w-xl text-body text-bone/90">
             That page isn’t in our yard. Head home or request a quote and we’ll
             get you pointed in the right direction.

@@ -22,7 +22,7 @@ interface About3Props {
 
 function StorySection({ section }: { section: About3Section }) {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col">
       {section.label && (
         <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">
           <span aria-hidden="true" className="mr-2 font-bold">
@@ -31,8 +31,8 @@ function StorySection({ section }: { section: About3Section }) {
           {section.label}
         </p>
       )}
-      {section.title && <h2 className="text-display-2 text-current">{section.title}</h2>}
-      <div className="prose-measure space-y-4">
+      {section.title && <h2 className={cn("text-display-2 text-current", section.label && "mt-3")}>{section.title}</h2>}
+      <div className={cn("prose-measure space-y-4", (section.title || section.label) && "mt-5")}>
         {section.paragraphs.map((p, i) => (
           <p key={i} className="text-body">
             {p}

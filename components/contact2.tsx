@@ -47,10 +47,10 @@ const Contact2 = ({
 }: Contact2Props) => {
   const Title = titleAs;
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 bg-green text-bone", className)}>
-      <div className={cn(containerClass, "flex flex-col gap-12 nav:flex-row nav:gap-24")}>
+    <section id={id} className={cn("section-y scroll-mt-24 bg-moss", className)}>
+      <div className={cn(containerClass, "flex flex-col gap-12 rounded-section bg-green py-16 text-bone nav:flex-row nav:gap-16 nav:py-20")}>
         <div className="flex flex-col gap-10 nav:w-5/12">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             <p className="text-eyebrow font-semibold uppercase tracking-wide">
               <span aria-hidden="true" className="mr-2 font-bold">
                 /
@@ -58,9 +58,9 @@ const Contact2 = ({
               {eyebrow}
             </p>
             {title && (
-              <Title className={titleAs === "h1" ? "text-display-1" : "text-display-2"}>{title}</Title>
+              <Title className={cn("mt-3", titleAs === "h1" ? "text-display-1" : "text-display-2")}>{title}</Title>
             )}
-            {description && <p className="prose-measure text-body text-bone/85">{description}</p>}
+            {description && <p className="prose-measure mt-5 text-body text-bone/85">{description}</p>}
           </div>
           {methods && methods.length > 0 && (
             <ul className="flex flex-col border-t border-bone/20">

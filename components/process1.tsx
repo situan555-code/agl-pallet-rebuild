@@ -37,7 +37,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, hairline, classNam
         {hasIntro && (
           <div className="h-fit nav:sticky nav:top-28 nav:col-span-4">
             {heading && <SectionHeading eyebrow={eyebrow} heading={heading} />}
-            {description && <p className="prose-measure mt-6 text-body">{description}</p>}
+            {description && <p className="prose-measure mt-5 text-body">{description}</p>}
           </div>
         )}
         <ol className={cn("w-full", hasIntro && "nav:col-span-8")}>

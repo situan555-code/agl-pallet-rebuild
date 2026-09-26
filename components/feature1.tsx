@@ -16,6 +16,10 @@ interface Feature1Props {
   paragraphs?: string[];
   cta?: { label: string; href: string };
   media?: ReactNode;
+  /** Image column side on wide screens. Consecutive text-and-image sections alternate. */
+  mediaSide?: "left" | "right";
+  /** Bone copy on a rounded inset panel. The page ground stays moss. */
+  panel?: boolean;
   hairline?: boolean;
   className?: string;
 }
@@ -41,31 +45,70 @@ function Body({ paragraphs, cta }: Pick<Feature1Props, "paragraphs" | "cta">) {
   );
 }
 
-const Feature1 = ({ id, eyebrow, heading, paragraphs, cta, media, hairline, className }: Feature1Props) => {
-  return (
-    <section id={id} className={cn("section-y scroll-mt-24 overflow-hidden", hairline && "section-hairline", className)}>
-      <div className={cn(containerClass, "grid items-start gap-10 nav:grid-cols-12 nav:gap-16")}>
-        {media ? (
-          <>
-            <div className="nav:col-span-6">
-              <SectionHeading eyebrow={eyebrow} heading={heading} />
-              <div className="mt-5">
-                <Body paragraphs={paragraphs} cta={cta} />
-              </div>
-            </div>
-            <div className="nav:col-span-5 nav:col-start-8">{media}</div>
-          </>
-        ) : (
-          <>
-            <div className="nav:col-span-5">
-              <SectionHeading eyebrow={eyebrow} heading={heading} />
-            </div>
-            <div className="nav:col-span-6 nav:col-start-7 nav:pt-10">
+const Feature1 = ({
+  id,
+  eyebrow,
+  heading,
+  paragraphs,
+  cta,
+  media,
+  mediaSide = "right",
+  panel = false,
+  hairline,
+  className,
+}: Feature1Props) => {
+  const mediaLeft = mediaSide === "left";
+  const grid = (
+    <div
+      className={cn(
+        "grid gap-10 nav:grid-cols-12 nav:gap-16",
+        media ? "items-center" : "items-start",
+        !panel && containerClass
+      )}
+    >
+      {media ? (
+        <>
+          <div className={cn("nav:col-span-6", mediaLeft && "nav:col-start-7")}>
+            <SectionHeading eyebrow={eyebrow} heading={heading} />
+            <div className="mt-5">
               <Body paragraphs={paragraphs} cta={cta} />
             </div>
-          </>
-        )}
-      </div>
+          </div>
+          <div
+            className={cn(
+              "nav:col-span-5",
+              mediaLeft ? "nav:col-start-1 nav:row-start-1" : "nav:col-start-8"
+            )}
+          >
+            {media}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="nav:col-span-5">
+            <SectionHeading eyebrow={eyebrow} heading={heading} />
+          </div>
+          <div className="nav:col-span-6 nav:col-start-7">
+            <Body paragraphs={paragraphs} cta={cta} />
+          </div>
+        </>
+      )}
+    </div>
+  );
+
+  if (panel) {
+    return (
+      <section id={id} className={cn("section-y scroll-mt-24 bg-moss", hairline && "section-hairline", className)}>
+        <div className={cn(containerClass, "surface-light rounded-section bg-bone py-16 text-moss nav:py-20")}>
+          {grid}
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id={id} className={cn("section-y scroll-mt-24 overflow-hidden", hairline && "section-hairline", className)}>
+      {grid}
     </section>
   );
 };

@@ -28,8 +28,8 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className={cn("scroll-mt-24 bg-moss py-8", className)}>
-      <div className="relative isolate min-h-96 overflow-hidden rounded-section nav:min-h-120">
+    <section ref={ref} className={cn("section-rhythm scroll-mt-24 bg-moss", className)}>
+      <div className={cn(containerClass, "relative isolate min-h-96 overflow-hidden rounded-section nav:min-h-120")}>
         <motion.div className="absolute inset-0" style={reduce ? undefined : { y }}>
           <Image
             src={image.src}
@@ -47,7 +47,7 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-r from-moss/70 via-moss/25 to-transparent"
         />
-        <div className={cn(containerClass, "relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20")}>
+        <div className="relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20">
           <div className="max-w-xl">
             {eyebrow && (
               <p className="text-eyebrow font-semibold uppercase tracking-wide text-ice">

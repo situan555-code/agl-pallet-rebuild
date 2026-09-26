@@ -66,7 +66,7 @@ export default function Home() {
         heading={home.whatWeDo.heading}
         paragraphs={home.whatWeDo.paragraphs}
         media={
-          <div className="relative aspect-5/6 w-full overflow-hidden rounded-card">
+          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <DeferredFillImage
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
@@ -139,13 +139,15 @@ export default function Home() {
       />
 
       <Feature1
-        className="section-rhythm surface-light bg-bone text-moss"
+        className="section-rhythm"
+        panel
+        mediaSide="left"
         eyebrow={home.whoWeAre.eyebrow}
         heading={home.whoWeAre.heading}
         paragraphs={home.whoWeAre.paragraphs}
         cta={home.whoWeAre.cta}
         media={
-          <div className="relative aspect-4/5 w-full overflow-hidden rounded-card">
+          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/why_agl_exist_sidepic.jpg"
               alt=""

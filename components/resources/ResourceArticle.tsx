@@ -70,8 +70,8 @@ export function ArticleHeader({
   libraryLabel?: string;
 }) {
   return (
-    <section className="bg-green pb-14 pt-36 text-bone nav:pb-16">
-      <div className={containerClass}>
+    <section className="scroll-mt-24 bg-moss pb-8 pt-28 text-bone nav:pb-10">
+      <div className={cn(containerClass, "rounded-section bg-green py-16 nav:py-20")}>
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-link text-bone/75">
             <li>
@@ -103,13 +103,13 @@ export function ArticleHeader({
             </li>
           </ol>
         </nav>
-        <p className="mt-10 text-eyebrow font-semibold uppercase tracking-wide">
+        <p className="mt-8 text-eyebrow font-semibold uppercase tracking-wide">
           <span aria-hidden="true" className="mr-2 font-bold">
             /
           </span>
           {eyebrow}
         </p>
-        <h1 className="mt-4 max-w-[900px] text-display-1">{title}</h1>
+        <h1 className="mt-3 max-w-[900px] text-display-1">{title}</h1>
         <Byline updated={updated} />
       </div>
     </section>
@@ -118,7 +118,7 @@ export function ArticleHeader({
 
 export function DirectAnswer({ text }: { text: string }) {
   return (
-    <section aria-labelledby="short-answer" className="pt-14 nav:pt-20">
+    <section aria-labelledby="short-answer" className="section-y">
       <div className={cn(containerClass, "grid gap-4 nav:grid-cols-12 nav:gap-16")}>
         <p id="short-answer" className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink nav:col-span-3">
           <span aria-hidden="true" className="mr-2 font-bold">
@@ -331,7 +331,7 @@ export function RelatedGuides({ slugs }: { slugs: string[] }) {
  */
 export function ArticleBody({ toc, children }: { toc: { id: string; label: string }[]; children: ReactNode }) {
   return (
-    <div className="pb-20 pt-14 nav:pb-28 nav:pt-16">
+    <div className="pb-18 pt-18 nav:pb-28 nav:pt-28">
       <div className={cn(containerClass, "grid gap-10 nav:grid-cols-12 nav:gap-16")}>
         <aside className="min-w-0 nav:col-span-3">
           <Toc items={toc} />

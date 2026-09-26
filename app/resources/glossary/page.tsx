@@ -37,7 +37,7 @@ export default function GlossaryPage() {
       <ArticleHeader eyebrow={glossary.eyebrow} title={pillar.title} updated={glossary.updated} />
       <DirectAnswer text={pillar.directAnswer} />
 
-      <div className="pb-20 pt-14 nav:pb-28 nav:pt-16">
+      <div className="pb-18 pt-18 nav:pb-28 nav:pt-28">
         <div className={containerClass}>
           <p className="prose-measure text-body text-ink/85">
             {glossary.intro} {terms.length} terms.

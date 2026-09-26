@@ -60,7 +60,7 @@ const Hero3 = ({ eyebrow, heading, description, cta, breadcrumb, className }: He
             </span>
             {eyebrow}
           </p>
-          <h1 className="display mt-4 max-w-[760px] text-display-1">{heading}</h1>
+          <h1 className="display mt-3 max-w-[760px] text-display-1">{heading}</h1>
         </div>
         {hasAside && (
           <div className="border-t border-bone/20 pt-6 nav:col-span-6 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">

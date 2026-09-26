@@ -33,7 +33,7 @@ const Faq3 = ({ eyebrow, heading, description, items, className }: Faq3Props) =>
         <div className="nav:col-span-4">
           <Reveal>
             <SectionHeading eyebrow={eyebrow} heading={heading} />
-            {description && <p className="prose-measure mt-6 text-body">{description}</p>}
+            {description && <p className="prose-measure mt-5 text-body">{description}</p>}
           </Reveal>
         </div>
         <Accordion
