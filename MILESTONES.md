@@ -1,5 +1,17 @@
 # Milestones
 
+## M13 — UI audit tasks 1–4 (not shipped)
+
+- **Date:** 2026-09-26
+- **Tasks:** 1 screenshot tool, 2 home container, 3 site-wide container, 4 nav
+- **Verify:** failed. Home LCP **3834ms** / Perf **89** (isolated retry **4360ms** / **85**). Other audited pages passed. See `BLOCKED.md`. Not merged to `main`.
+- **What changed:**
+  1. `npm run shots` writes full-page captures and hero scroll samples to `qa/shots/latest/` (gitignored).
+  2. One content column: max-width 1280px, padding 24 / 32 / 48px. Home, interior pages, articles, and the footer use it. Nav logo and headings share a left edge at 1440 and 1920.
+  3. Header logo is 29px tall, with no box except a keyboard ice ring. The bar is clear at the top and a moss pill (85%, 16px blur, smoke border, soft shadow) after 8px of scroll.
+- **Pages to look at:** `/` (logo and headings), `/who-we-are/`, `/faq/`, `/request-a-quote/`, then scroll any page for the pill.
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M12 — Owner home review (ship to main)
 
 - **Date:** 2026-09-25

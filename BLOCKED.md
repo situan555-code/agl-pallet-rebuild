@@ -1,5 +1,9 @@
 # BLOCKED
 
+## UI audit ship after task 4 (2026-09-26)
+
+`npm run verify` on `redesign/main` after tasks 1–4: schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 89, LCP 3834ms (gate 2500). Other audited pages passed (LCP ≤2413ms). Isolated Lighthouse retry on `/` was worse (Perf 85, LCP 4360ms). LCP node is the hero description paragraph, about 89% render delay. Did not merge to `main`. Two attempts; not a content-gate miss on the other checks.
+
 ## M2 verify (2026-09-25)
 
 `npm run verify` after Phase 1 (two attempts): schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 97 but LCP 2563ms (gate 2500). First attempt was 3079ms / 94 with Reveal on the home Feature1 tree; Reveal moved to FAQ. Other audited pages LCP ≤2187ms. Did not merge M2 to `main`. Retry at M3 (after shell / R2) or R8.2.
