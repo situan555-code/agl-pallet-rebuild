@@ -17,7 +17,7 @@ export function NavFrame({ children }: { children: ReactNode }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-60 flex justify-center transition-[padding] duration-300",
+        "pointer-events-auto fixed inset-x-0 top-0 z-60 flex justify-center transition-[padding] duration-300",
         insetOuterClass,
         scrolled ? "pt-2" : "pt-3"
       )}
