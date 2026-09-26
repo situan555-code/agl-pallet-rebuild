@@ -1,5 +1,12 @@
 # DECISIONS (redesign)
 
+## UI audit task 8 (2026-09-26)
+
+Leading em dashes that the component used to prepend were removed. These remain in content JSON and were left for the owner:
+
+- `content/pages/how-we-work.json` timeline bodies all start with "— ".
+- `content/pages/contact.json` route bodies all start with "— ".
+
 Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved (2026-09-25) and override older BRIEF.md / PROJECT.md design and form-service rules where they conflict.
 
 ## R0.1 / R0.2 (2026-09-25)

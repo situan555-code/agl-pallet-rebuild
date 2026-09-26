@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { BadgeCheck, Repeat, Settings2, ShieldCheck, Truck } from "lucide-react";
 import content from "@/content/pages/partners-suppliers.json";
 import forms from "@/content/forms.json";
 import { Hero3 } from "@/components/hero3";
@@ -30,8 +31,13 @@ export default function PartnersSuppliers() {
       />
 
       <Process1
+        layout="grid"
         heading={content.offer.heading}
-        steps={content.offer.items.map((item) => ({ title: item.lead, description: item.body }))}
+        steps={content.offer.items.map((item, index) => ({
+          title: item.lead,
+          description: item.body,
+          icon: [Repeat, BadgeCheck, ShieldCheck, Settings2, Truck][index],
+        }))}
       />
 
       <Feature1 hairline heading={content.ask.heading} paragraphs={content.ask.paragraphs} />

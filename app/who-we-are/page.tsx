@@ -1,3 +1,4 @@
+import { BadgeCheck, Clock, Handshake, Settings2 } from "lucide-react";
 import content from "@/content/pages/who-we-are.json";
 import { Hero3 } from "@/components/hero3";
 import { Feature1 } from "@/components/feature1";
@@ -27,6 +28,7 @@ export default function WhoWeAre() {
       />
 
       <Process1
+        layout="team"
         hairline
         eyebrow={content.team.eyebrow}
         heading={content.team.heading}
@@ -39,8 +41,12 @@ export default function WhoWeAre() {
         variant="divided"
         columns={4}
         eyebrow={content.values.eyebrow}
-        className="pt-16 nav:pt-20"
-        features={content.values.cards.map((c) => ({ title: c.heading, description: c.body }))}
+        className="section-y"
+        features={content.values.cards.map((c, index) => ({
+          title: c.heading,
+          description: c.body,
+          icon: [Handshake, Clock, Settings2, BadgeCheck][index],
+        }))}
       />
 
       <About3

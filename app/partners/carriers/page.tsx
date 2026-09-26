@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { BadgeCheck, MapPin, Repeat, UserRound } from "lucide-react";
 import content from "@/content/pages/partners-carriers.json";
 import forms from "@/content/forms.json";
 import { Hero3 } from "@/components/hero3";
@@ -32,9 +33,10 @@ export default function PartnersCarriers() {
 
       <Process1
         heading={content.offer.heading}
-        steps={content.offer.items.map((item) => ({
+        steps={content.offer.items.map((item, index) => ({
           title: item.lead,
           description: isPlaceholder(item.body) ? "" : item.body,
+          icon: [MapPin, Repeat, UserRound, BadgeCheck][index],
         }))}
       />
 

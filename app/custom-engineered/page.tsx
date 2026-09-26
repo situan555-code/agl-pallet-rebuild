@@ -1,3 +1,4 @@
+import { Layers, Package, Warehouse } from "lucide-react";
 import content from "@/content/pages/custom-engineered.json";
 import { Hero3 } from "@/components/hero3";
 import { Process1 } from "@/components/process1";
@@ -18,7 +19,11 @@ export default function CustomEngineered() {
 
       <Process1
         heading={content.whereCustomPays.heading}
-        steps={content.whereCustomPays.items.map((item) => ({ title: item.lead, description: item.body }))}
+        steps={content.whereCustomPays.items.map((item, index) => ({
+          title: item.lead,
+          description: item.body,
+          icon: [Package, Warehouse, Layers][index],
+        }))}
       />
 
       <Cta4 heading={content.ctaBand.heading} description={content.ctaBand.body} button={content.ctaBand.cta} />

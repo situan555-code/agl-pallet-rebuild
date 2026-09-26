@@ -8,8 +8,10 @@
 //   numbered — 3px green top rule, display numeral (proof points)
 //   card     — bordered card, only for items that link somewhere
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
+import { IconTile } from "@/components/IconTile";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
 import { ArrowIcon } from "@/components/icons";
@@ -19,6 +21,7 @@ export interface Feature3Item {
   eyebrow?: string;
   title: string;
   description?: string;
+  icon?: LucideIcon;
   href?: string;
   cta?: { label: string; href: string };
 }
@@ -47,12 +50,13 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
   return (
     <div
       className={cn(
-        "py-10 md:py-[72px]",
+        "py-8",
         index === 0 ? "md:pr-10" : index === count - 1 ? "md:pl-10" : "md:px-10",
         index > 0 && "border-t border-brand-green/20 md:border-l md:border-t-0"
       )}
     >
-      <Heading className="text-display-kicker text-current">{item.title}</Heading>
+      {item.icon ? <IconTile icon={item.icon} /> : null}
+      <Heading className={cn("text-display-kicker text-current", item.icon && "mt-5")}>{item.title}</Heading>
       <p className="mt-5 max-w-sm text-body text-current/80">{item.description}</p>
     </div>
   );

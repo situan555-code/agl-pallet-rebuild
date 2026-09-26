@@ -17,7 +17,6 @@ export default function HowWeWork() {
       <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} />
 
       <Process1
-        className="nav:py-28"
         steps={content.timeline.map((step) => ({
           number: step.number,
           title: step.heading,
