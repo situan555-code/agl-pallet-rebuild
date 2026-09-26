@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import content from "@/content/pages/products.json";
 import { Hero3 } from "@/components/hero3";
 import { Cta4 } from "@/components/cta4";
+import { DeferredCardImage } from "@/components/DeferredCardImage";
 import { containerClass } from "@/components/Container";
-import { getBlurDataURL } from "@/lib/blur";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -31,23 +30,13 @@ export default function Products() {
 
       <section className="section-y">
         <div className={cn(containerClass, "grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3")}>
-          {content.lines.map((line) => {
+          {content.lines.map((line, index) => {
             const href = line.id === "custom-engineered" ? "/custom-engineered/" : undefined;
             const image = PRODUCT_IMAGES[line.id] ?? "/assets/product_page-stock_pallets_sidepic.jpg";
-            const blur = getBlurDataURL(image);
             const inner = (
               <>
-                <div className="relative aspect-4/3 overflow-hidden">
-                  <Image
-                    src={image}
-                    alt=""
-                    fill
-                    quality={70}
-                    sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
-                    className="object-cover"
-                    placeholder={blur ? "blur" : undefined}
-                    blurDataURL={blur}
-                  />
+                <div className="relative aspect-4/3 overflow-hidden bg-smoke">
+                  <DeferredCardImage src={image} eager={index === 0} />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-[22px] font-semibold leading-snug text-current">{line.heading}</h2>
