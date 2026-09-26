@@ -398,6 +398,14 @@ p.text-eyebrow > span[aria-hidden] {
   color: #dde9e2;
 }
 
+.surface-light p.text-eyebrow {
+  color: #131913;
+}
+
+.surface-light p.text-eyebrow > span[aria-hidden] {
+  color: #1f2a1f;
+}
+
 @media (min-width: 980px) {
   :root {
     --text-display-2: 48px;

@@ -63,6 +63,7 @@ export default function RequestAQuote() {
           />
         }
       >
+        <div className="min-h-[36rem] nav:min-h-0">
         <Suspense fallback={null}>
           <Form
             id={forms.quote.id}
@@ -73,6 +74,7 @@ export default function RequestAQuote() {
             source="/request-a-quote/"
           />
         </Suspense>
+        </div>
       </Contact2>
     </main>
   );
