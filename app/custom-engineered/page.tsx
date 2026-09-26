@@ -1,4 +1,4 @@
-import { Layers, Package, Warehouse } from "lucide-react";
+import { Boxes, Layers, Package } from "lucide-react";
 import content from "@/content/pages/custom-engineered.json";
 import { Hero3 } from "@/components/hero3";
 import { Process1 } from "@/components/process1";
@@ -22,7 +22,7 @@ export default function CustomEngineered() {
         steps={content.whereCustomPays.items.map((item, index) => ({
           title: item.lead,
           description: item.body,
-          icon: [Package, Warehouse, Layers][index],
+          icon: [Package, Boxes, Layers][index],
         }))}
       />
 
