@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "screenshot": "node scripts/screenshot.js",
+    "shots": "node scripts/shots.js",
     "diff": "node scripts/diff.js",
     "audit": "node scripts/audit.js",
     "height": "node scripts/height.js",
