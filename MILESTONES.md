@@ -1,5 +1,26 @@
 # Milestones
 
+## M18 — Tasks 1–13 and the LCP pass (not shipped)
+
+- **Date:** 2026-09-26
+- **Verify:** failed. Content gates passed. Two full mobile audits: home **98/2496** with quote **96/2662**, then home **95/2966** with quote **99/2262**. CLS 0. Axe passed. Home lab gate is now under 2800ms; every other page stays under 2500ms. Neither suite cleared every page. Not merged to `main`.
+- **Tasks 1–13:**
+  1. `npm run shots` writes full-page captures and hero scroll samples.
+  2. One content column, max-width 1280px.
+  3. Interior pages, articles, and the footer use that column.
+  4. Header logo is 29px. The bar is a moss pill after 8px of scroll.
+  5. Desktop hero video scales from about 56% to full width over one viewport.
+  6. Home sections use 112px desktop / 72px mobile top padding.
+  7. Bone and green slabs are rounded inset panels. Text-and-image rows are 4:3.
+  8. List markers are smoke icon tiles. Team rows use a green monogram.
+  9. Form fields are smoke, 52px, radius 10, with an ice focus ring.
+  10. Quote posts to `/api/forms/`. Resend rejected unverified `aglpallet.com`, so FormSubmit stays. Supplier and carrier stay not-sending.
+  11. Quote contact cards and a 28px-radius footer panel.
+  12. Network diagram centered. Closing CTA columns share a vertical center.
+  13. H2 is 48/52 desktop and 34/38 mobile. One FAQ question was rewritten.
+- **LCP changes:** duplicate poster removed; network, carousel, and parallax load near the viewport; hero text is server HTML and desktop scale is a CSS scroll timeline; below 768px the video card is 16:9 and the poster is `sizes="min(100vw, 828px)"` at quality 60; home lab LCP gate is 2800ms pending real-user data; `SpeedInsights` is on the root layout. Real-visitor target is p75 LCP under 2500ms.
+- **Branch:** `redesign/main` — **not merged to `main`**
+
 ## M17 — Home LCP attempt (not shipped)
 
 - **Date:** 2026-09-26

@@ -1,5 +1,16 @@
 # BLOCKED
 
+## Home lab gate after the 2800ms exception (2026-09-26)
+
+Owner exception is in `scripts/audit.js`: home LCP must be under 2800ms; every other page stays at 2500ms. Perf ≥ 95 and CLS ≤ 0.05 are unchanged. `@vercel/speed-insights` is on the root layout. Real-visitor target remains p75 LCP under 2500ms.
+
+Content gates passed. Two full mobile audits did not:
+
+1. `/` Perf 98 LCP 2496ms (pass). `/request-a-quote/` Perf 96 LCP 2662ms (fail). About, industries, logistics, and products passed.
+2. `/` Perf 95 LCP 2966ms (fail, over 2800ms). `/request-a-quote/` Perf 99 LCP 2262ms (pass). The other four pages passed.
+
+`sms:` link check is a warning, not a fail. Axe passed. Did not merge to `main`. Did not soften any other gate.
+
 ## Home LCP after the split (2026-09-26)
 
 Warmed mobile Lighthouse on `/` after removing the duplicate poster, deferring the network diagram, carousel, and parallax band, and taking motion off the hero. The LCP node is the hero poster image, not the description. Four runs: Perf 97 LCP 2644ms, Perf 98 LCP 2493ms, Perf 97 LCP 2641ms, Perf 97 LCP 2669ms, CLS 0. Perf clears 95. LCP does not stay under 2500ms for two runs in a row. Did not merge to `main`. Largest remaining scripts are the shared Next.js runtime, the client router, and the polyfill (see M17).
