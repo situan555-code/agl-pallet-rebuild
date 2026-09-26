@@ -214,7 +214,6 @@ function VideoCard({
           loop
           playsInline
           preload="none"
-          poster={poster}
           onPlaying={onPlaying}
         />
       )}
