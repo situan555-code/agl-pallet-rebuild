@@ -1,5 +1,11 @@
 # BLOCKED
 
+## Quote form Resend from-domain (2026-09-26)
+
+Preview POST `/api/forms/` on the task 10 deployment returned 502 `{ ok: false, fallback: true }`. Exact error: `The aglpallet.com domain is not verified. Please, add and verify your domain on https://resend.com/domains`
+
+From stayed `AGL Pallet <sales@aglpallet.com>` (`RESEND_FROM` is not set). FormSubmit stays on the quote form. Supplier and carrier stay not-sending. DNS was not changed.
+
 ## UI audit ship after task 7 (2026-09-26)
 
 `npm run verify` on `redesign/main` after tasks 1–7: schema/copy/banned-words/tokens/numbers/color/routes/axe passed. Home mobile Perf 88, LCP 3984ms (gate 2500). Other audited pages passed (LCP ≤2190ms). Isolated Lighthouse retry on `/` was worse (Perf 86, LCP 4286ms). Same home LCP miss as the task 4 ship. Did not merge to `main`. Two attempts; not a content-gate miss on the other checks.
@@ -22,4 +28,4 @@ Open items (owner-supplied; not engineering work):
 - **`{{TBD-SOCIAL-URLS}}`** — still open. Follow Us / social links omitted until resolved.
 - **Supplier inbox** — not provided. Supplier form stays "not sending yet".
 - **Carrier inbox** — not provided. Carrier form stays "not sending yet".
-- **`RESEND_API_KEY`** — set in Vercel (Production and Preview) as of 2026-09-26. D4 is unblocked for the quote form. Supplier and carrier forms stay "not sending yet" because those inboxes were not provided.
+- **`RESEND_API_KEY`** — set in Vercel (Production and Preview) as of 2026-09-26. The quote route calls Resend. `aglpallet.com` is not a verified Resend domain, so the quote form still falls back to FormSubmit. Supplier and carrier forms stay "not sending yet" because those inboxes were not provided.

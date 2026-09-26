@@ -25,3 +25,4 @@ R8.4 verify green (home LCP 2408ms / Perf 98). Merging to main.
 7 done (inset panels, text and image). Ship verify failed home LCP. Next: 8.
 8 done (markers). Next: 9.
 9 done (form fields). Next: 10.
+10 done (quote Resend with FormSubmit fallback; domain unverified). Next: 11.
