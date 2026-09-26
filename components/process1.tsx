@@ -31,7 +31,8 @@ interface Process1Props {
   className?: string;
 }
 
-function specJoin() {
+function specJoin(description: string) {
+  if (/^[—–-]/.test(description.trim())) return null;
   return <span className="sr-only"> — </span>;
 }
 
@@ -70,7 +71,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                   <ItemHeading className="text-body font-semibold text-bone">{step.title}</ItemHeading>
                   {step.description.trim() !== "" && (
                     <>
-                      {specJoin()}
+                      {specJoin(step.description)}
                       <p className="mt-1 text-body text-gray">{step.description}</p>
                     </>
                   )}
@@ -86,7 +87,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                 <ItemHeading className={cn("text-step-lg text-current", step.icon && "mt-5")}>{step.title}</ItemHeading>
                 {step.description.trim() !== "" && (
                   <>
-                    {specJoin()}
+                    {specJoin(step.description)}
                     <p className="prose-measure mt-5 text-body text-gray">{step.description}</p>
                   </>
                 )}
@@ -114,7 +115,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                   <ItemHeading className="text-step-lg text-current">{step.title}</ItemHeading>
                   {step.description.trim() !== "" && (
                     <>
-                      {specJoin()}
+                      {specJoin(step.description)}
                       <p className="prose-measure mt-5 text-body text-current/80">{step.description}</p>
                     </>
                   )}
