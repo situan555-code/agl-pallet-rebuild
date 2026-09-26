@@ -1,5 +1,9 @@
 # BLOCKED
 
+## Home lab gate after the 2800ms exception (2026-09-26) — cleared
+
+The single-run suite missed. The owner then kept the same thresholds and scored the median of 5 sequential runs. That verify passed (home median Perf 97, LCP 2666ms). Merged `redesign/main` to `main`. Real-visitor target is still p75 LCP under 2500ms.
+
 ## Home lab gate after the 2800ms exception (2026-09-26)
 
 Owner exception is in `scripts/audit.js`: home LCP must be under 2800ms; every other page stays at 2500ms. Perf ≥ 95 and CLS ≤ 0.05 are unchanged. `@vercel/speed-insights` is on the root layout. Real-visitor target remains p75 LCP under 2500ms.
