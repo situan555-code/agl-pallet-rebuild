@@ -2,7 +2,7 @@
 
 ## LCP headroom / static HTML (2026-09-26)
 
-Root `generateMetadata` no longer calls `headers()` to emit a vercel.app robots meta tag. That request-time read made every App Router page dynamic (`ƒ`) and added first-byte + JS work to the LCP graph. `proxy.ts` still sets `X-Robots-Tag: noindex, nofollow` on `*.vercel.app`. `/request-a-quote/` no longer uses `force-dynamic`; `CONTACT_TO_EMAIL` is read at build time with the same content/sales fallbacks.
+Tried dropping `headers()` from root `generateMetadata` so routes could prerender. The schema gate requires a `robots` meta noindex on `*.vercel.app` and forbids it on aglpallet.com, so the host read stayed. `proxy.ts` still sets `X-Robots-Tag`. `/request-a-quote/` no longer uses `force-dynamic`; `CONTACT_TO_EMAIL` is read at build time with the same content/sales fallbacks.
 
 Anton is `preload: false` because home LCP is the poster image and about/quote LCP is Inter text. The header logo is not `priority` so the home poster is the only `fetchpriority="high"` image.
 
