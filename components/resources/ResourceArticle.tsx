@@ -307,7 +307,12 @@ export function NextSteps() {
 function Toc({ items }: { items: { id: string; label: string }[] }) {
   return (
     <nav aria-label="On this page" className="nav:sticky nav:top-28">
-      <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">On this page</p>
+      <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">
+        <span aria-hidden="true" className="mr-2 font-bold text-current">
+          /
+        </span>
+        On this page
+      </p>
       <ol className="mt-4 space-y-2 border-l border-brand-green/20 pl-4 text-link">
         {items.map((item) => (
           <li key={item.id}>
