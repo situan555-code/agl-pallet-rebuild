@@ -1,7 +1,7 @@
 import { containerClass } from "@/components/Container";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
-import { CARD_PLACEHOLDER } from "@/lib/product-images";
+import { resolveCardPhoto } from "@/lib/product-images";
 import { cn } from "@/lib/utils";
 
 export function StaticGallery({
@@ -37,9 +37,9 @@ export function StaticGallery({
           </div>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
+          {items.map((item, index) => (
             <InteractiveCard key={item.id} id={item.id} href={item.href}>
-              <CardMedia src={item.image ?? CARD_PLACEHOLDER} />
+              <CardMedia src={resolveCardPhoto(item.image, index)} alt={item.title} />
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
                 <p className="mt-5 text-body text-current/75">{item.description}</p>

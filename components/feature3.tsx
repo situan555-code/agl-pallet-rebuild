@@ -17,7 +17,7 @@ import { Button } from "@/components/Button";
 import { ArrowIcon } from "@/components/icons";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
-import { CARD_PLACEHOLDER } from "@/lib/product-images";
+import { resolveCardPhoto } from "@/lib/product-images";
 
 export interface Feature3Item {
   id?: string;
@@ -104,7 +104,7 @@ function cardHref(item: Feature3Item) {
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
-      <CardMedia src={item.image ?? CARD_PLACEHOLDER} numeral={item.eyebrow} />
+      <CardMedia src={item.image} alt={item.title} numeral={item.eyebrow} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
         <Heading className="text-[22px] font-semibold leading-snug text-pretty text-bone">{item.title}</Heading>
         <p className="mt-5 text-body text-bone/85">{item.description}</p>
@@ -117,7 +117,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
   const href = cardHref(item);
   return (
     <InteractiveCard href={href} id={item.id} className="min-h-full">
-      <CardMedia src={item.image ?? CARD_PLACEHOLDER} />
+      <CardMedia src={item.image} alt={item.title} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
         {item.eyebrow && (
           <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">
@@ -188,8 +188,9 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
             if (variant === "divided")
               return <DividedItem key={item.title} item={item} index={index} count={features.length} Heading={Heading} />;
             if (variant === "ruled") return <RuledItem key={item.title} item={item} Heading={Heading} />;
-            if (variant === "numbered") return <NumberedItem key={item.title} item={item} Heading={Heading} />;
-            return <CardItem key={item.title} item={item} Heading={Heading} />;
+            const withPhoto = { ...item, image: resolveCardPhoto(item.image, index) };
+            if (variant === "numbered") return <NumberedItem key={item.title} item={withPhoto} Heading={Heading} />;
+            return <CardItem key={item.title} item={withPhoto} Heading={Heading} />;
           })}
         </div>
       </div>
