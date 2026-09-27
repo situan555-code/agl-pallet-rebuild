@@ -1,5 +1,10 @@
 # DECISIONS (redesign)
 
+## Home inset-reveal cards (2026-09-27)
+
+Home 01/02/03 cards and product-line cards expand in place as a moss `rounded-section` well with an ice rail and an existing-route pill. They do not use a shared-layout overlay, spring, or the navdeepsingh expandable-card layout. Action labels are existing JSON strings (quote, Services, How We Work, Read the pledge, Meet the team, product nav / line CTAs).
+
+
 ## LCP headroom / static HTML (2026-09-26)
 
 Tried dropping `headers()` from root `generateMetadata` so routes could prerender. The schema gate requires a `robots` meta noindex on `*.vercel.app` and forbids it on aglpallet.com, so the host read stayed. `proxy.ts` still sets `X-Robots-Tag`. `/request-a-quote/` no longer uses `force-dynamic`; `CONTACT_TO_EMAIL` is read at build time with the same content/sales fallbacks.

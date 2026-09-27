@@ -5,7 +5,7 @@
 // treatments:
 //   divided  — single row, vertical hairlines between columns (claims)
 //   ruled    — top hairline per item, multi-row (categories)
-//   numbered — image/placeholder + ice numeral, whole-card link
+//   numbered — image/placeholder + ice numeral, in-place inset reveal
 //   card     — bordered image card, whole-card link
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -17,6 +17,7 @@ import { Button } from "@/components/Button";
 import { ArrowIcon } from "@/components/icons";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
+import { InsetReveal, InsetRevealGroup } from "@/components/InsetReveal";
 import { CARD_PLACEHOLDER } from "@/lib/product-images";
 
 export interface Feature3Item {
@@ -102,14 +103,18 @@ function cardHref(item: Feature3Item) {
 }
 
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
+  const href = cardHref(item);
   return (
-    <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
-      <CardMedia src={item.image ?? CARD_PLACEHOLDER} numeral={item.eyebrow} />
-      <div className="flex flex-1 flex-col p-6 nav:p-8">
-        <Heading className="text-[22px] font-semibold leading-snug text-pretty text-bone">{item.title}</Heading>
-        <p className="mt-5 text-body text-bone/85">{item.description}</p>
-      </div>
-    </InteractiveCard>
+    <InsetReveal
+      id={item.id}
+      numeral={item.eyebrow}
+      heading={item.title}
+      headingAs={Heading}
+      body={item.description}
+      href={href}
+      actionLabel={item.cta?.label ?? item.title}
+      image={item.image ?? CARD_PLACEHOLDER}
+    />
   );
 }
 
@@ -172,26 +177,39 @@ const Feature3 = ({ eyebrow, heading, features, variant, columns = 3, hairline, 
             </p>
           )
         )}
-        <div
-          className={cn(
-            "grid grid-cols-1",
-            variant === "divided"
-              ? `md:grid-cols-${columns}`
-              :             variant === "card" && columns === 3
-                ? "md:grid-cols-2 lg:grid-cols-3"
-                : columnClass[columns],
-            (variant === "card" || variant === "numbered") && "items-stretch",
-            gap
-          )}
-        >
-          {features.map((item, index) => {
-            if (variant === "divided")
-              return <DividedItem key={item.title} item={item} index={index} count={features.length} Heading={Heading} />;
-            if (variant === "ruled") return <RuledItem key={item.title} item={item} Heading={Heading} />;
-            if (variant === "numbered") return <NumberedItem key={item.title} item={item} Heading={Heading} />;
-            return <CardItem key={item.title} item={item} Heading={Heading} />;
-          })}
-        </div>
+        {variant === "numbered" ? (
+          <InsetRevealGroup
+            className={cn(
+              "grid grid-cols-1 items-stretch",
+              columns === 3 ? "md:grid-cols-2 lg:grid-cols-3" : columnClass[columns],
+              gap
+            )}
+          >
+            {features.map((item) => (
+              <NumberedItem key={item.title} item={item} Heading={Heading} />
+            ))}
+          </InsetRevealGroup>
+        ) : (
+          <div
+            className={cn(
+              "grid grid-cols-1",
+              variant === "divided"
+                ? `md:grid-cols-${columns}`
+                : variant === "card" && columns === 3
+                  ? "md:grid-cols-2 lg:grid-cols-3"
+                  : columnClass[columns],
+              variant === "card" && "items-stretch",
+              gap
+            )}
+          >
+            {features.map((item, index) => {
+              if (variant === "divided")
+                return <DividedItem key={item.title} item={item} index={index} count={features.length} Heading={Heading} />;
+              if (variant === "ruled") return <RuledItem key={item.title} item={item} Heading={Heading} />;
+              return <CardItem key={item.title} item={item} Heading={Heading} />;
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

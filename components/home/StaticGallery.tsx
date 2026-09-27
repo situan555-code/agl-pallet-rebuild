@@ -1,6 +1,5 @@
 import { containerClass } from "@/components/Container";
-import { CardMedia } from "@/components/CardMedia";
-import { InteractiveCard } from "@/components/InteractiveCard";
+import { InsetReveal, InsetRevealGroup } from "@/components/InsetReveal";
 import { CARD_PLACEHOLDER } from "@/lib/product-images";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +13,7 @@ export function StaticGallery({
   eyebrow?: string;
   title: string;
   description?: string;
-  items: { id: string; title: string; description: string; href: string; image?: string }[];
+  items: { id: string; title: string; description: string; href: string; image?: string; actionLabel: string }[];
   className?: string;
 }) {
   return (
@@ -36,17 +35,20 @@ export function StaticGallery({
             )}
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <InsetRevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
-            <InteractiveCard key={item.id} id={item.id} href={item.href}>
-              <CardMedia src={item.image ?? CARD_PLACEHOLDER} />
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
-                <p className="mt-5 text-body text-current/75">{item.description}</p>
-              </div>
-            </InteractiveCard>
+            <InsetReveal
+              key={item.id}
+              id={item.id}
+              heading={item.title}
+              headingAs="h3"
+              body={item.description}
+              href={item.href}
+              actionLabel={item.actionLabel}
+              image={item.image ?? CARD_PLACEHOLDER}
+            />
           ))}
-        </div>
+        </InsetRevealGroup>
       </div>
     </section>
   );
