@@ -1,5 +1,10 @@
 # DECISIONS (redesign)
 
+## Home inset-reveal cards (2026-09-27)
+
+Home 01/02/03 cards and product-line cards stay in the grid. Closed they keep hover-lift. Open, a moss `rounded-section` well grows inside the green card (ice rail, existing-route pill). No overlay, spring, or navdeepsingh expandable-card layout. Action labels are existing JSON strings.
+
+
 ## LCP headroom / static HTML (2026-09-26)
 
 Tried dropping `headers()` from root `generateMetadata` so routes could prerender. The schema gate requires a `robots` meta noindex on `*.vercel.app` and forbids it on aglpallet.com, so the host read stayed. `proxy.ts` still sets `X-Robots-Tag`. `/request-a-quote/` no longer uses `force-dynamic`; `CONTACT_TO_EMAIL` is read at build time with the same content/sales fallbacks.

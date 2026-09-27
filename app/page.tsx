@@ -1,6 +1,7 @@
 import Image from "next/image";
 import home from "@/content/pages/home.json";
 import products from "@/content/pages/products.json";
+import site from "@/content/site.json";
 import { HeroExpand } from "@/components/HeroExpand";
 import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
@@ -11,8 +12,7 @@ import { Cta4 } from "@/components/cta4";
 import { NetworkSlot } from "@/components/home/NetworkSlot";
 import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
-import { CardMedia } from "@/components/CardMedia";
-import { InteractiveCard } from "@/components/InteractiveCard";
+import { InsetReveal, InsetRevealGroup } from "@/components/InsetReveal";
 import { CARD_PLACEHOLDER, PRODUCT_IMAGES } from "@/lib/product-images";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
@@ -20,6 +20,11 @@ import type { Metadata } from "next";
 
 const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"] as const;
 const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
+const SERVICES_LABEL = site.footer.companyNav.find((item) => item.href === "/services/")?.label ?? home.ctaBand.cta.label;
+const HOW_WE_WORK_LABEL = site.nav.find((item) => item.href === "/how-we-work/")?.label ?? home.pledge.cta.label;
+const PRODUCT_NAV = site.nav.find((item) => item.href === "/products/")?.children ?? [];
+const CAPABILITY_ACTIONS = [home.ctaBand.cta.label, home.ctaBand.cta.label, SERVICES_LABEL] as const;
+const DIFFERENTIATOR_ACTIONS = [HOW_WE_WORK_LABEL, home.pledge.cta.label, home.whoWeAre.cta.label] as const;
 const DIFFERENTIATOR_IMAGES = [
   "/assets/who_agl_is_sidepic.jpg",
   "/assets/about_page-single_point_sidepic.jpg",
@@ -46,16 +51,19 @@ export default function Home() {
       />
 
       <section className="section-rhythm">
-        <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {home.capability.cards.map((cap, index) => (
-            <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
-              <CardMedia numeral={String(index + 1).padStart(2, "0")} />
-              <div className="flex flex-1 flex-col p-6 nav:p-8">
-                <h2 className="text-[22px] font-semibold leading-snug text-current">{cap.heading}</h2>
-                <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
-              </div>
-            </InteractiveCard>
-          ))}
+        <Container>
+          <InsetRevealGroup className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {home.capability.cards.map((cap, index) => (
+              <InsetReveal
+                key={cap.heading}
+                numeral={String(index + 1).padStart(2, "0")}
+                heading={cap.heading}
+                body={cap.body}
+                href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}
+                actionLabel={CAPABILITY_ACTIONS[index] ?? home.ctaBand.cta.label}
+              />
+            ))}
+          </InsetRevealGroup>
         </Container>
       </section>
 
@@ -101,6 +109,10 @@ export default function Home() {
           description: c.body,
           href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
           image: DIFFERENTIATOR_IMAGES[index] ?? CARD_PLACEHOLDER,
+          cta: {
+            label: DIFFERENTIATOR_ACTIONS[index] ?? HOW_WE_WORK_LABEL,
+            href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
+          },
         }))}
       />
 
@@ -118,13 +130,18 @@ export default function Home() {
         eyebrow="Product lines"
         title="Specced to the load. Sourced through mills that can build it."
         description="Stock, custom, crates, dunnage, blocks, and stakes — each with multiple qualified shops behind the specs we sell."
-        items={products.lines.map((line) => ({
-          id: line.id,
-          title: line.heading,
-          description: line.copy,
-          href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
-          image: PRODUCT_IMAGES[line.id] ?? CARD_PLACEHOLDER,
-        }))}
+        items={products.lines.map((line) => {
+          const href = line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`;
+          const nav = PRODUCT_NAV.find((item) => item.href === href);
+          return {
+            id: line.id,
+            title: line.heading,
+            description: line.copy,
+            href,
+            image: PRODUCT_IMAGES[line.id] ?? CARD_PLACEHOLDER,
+            actionLabel: line.cta?.label ?? nav?.label ?? line.heading,
+          };
+        })}
       />
 
       <Feature2
