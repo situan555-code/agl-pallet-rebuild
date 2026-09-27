@@ -6,9 +6,11 @@ import Image from "next/image";
 /** Loads the photo after window load so the page H1 can stay LCP. */
 export function DeferredCardImage({
   src,
+  alt = "",
   eager = false,
 }: {
   src: string;
+  alt?: string;
   eager?: boolean;
 }) {
   const [ready, setReady] = useState(eager);
@@ -28,12 +30,12 @@ export function DeferredCardImage({
   return (
     <Image
       src={src}
-      alt=""
+      alt={alt}
       fill
       quality={50}
       sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 360px"
       className="object-cover"
-      priority={eager}
+      {...(eager ? { priority: true } : { loading: "lazy" as const })}
     />
   );
 }
