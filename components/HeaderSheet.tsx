@@ -38,7 +38,7 @@ export default function HeaderSheet({
         side="top"
         showCloseButton={false}
         aria-describedby={undefined}
-        overlayClassName="top-[4.5rem]! bg-moss/40"
+        overlayClassName="top-[4.5rem]! bg-foreground/25"
         onCloseAutoFocus={(event) => {
           event.preventDefault();
           onCloseAutoFocus?.();
@@ -49,7 +49,7 @@ export default function HeaderSheet({
         onInteractOutside={(event) => {
           if (isMenuTrigger(event)) event.preventDefault();
         }}
-        className="inset-x-4 top-[4.75rem] bottom-auto left-4 right-4 h-auto max-h-[calc(100dvh-5.75rem)] w-auto max-w-none gap-0 overflow-hidden rounded-section border border-smoke bg-moss/85 p-0 text-bone shadow-lg backdrop-blur-[16px] sm:max-w-none md:inset-x-6 md:left-6 md:right-6 data-[side=top]:inset-x-4 data-[side=top]:top-[4.75rem] data-[side=top]:h-auto data-[side=top]:border-smoke md:data-[side=top]:inset-x-6"
+        className="inset-x-4 top-[4.75rem] bottom-auto left-4 right-4 h-auto max-h-[calc(100dvh-5.75rem)] w-auto max-w-none gap-0 overflow-hidden rounded-section border border-current/15 bg-background/90 p-0 text-current shadow-lg backdrop-blur-[16px] sm:max-w-none md:inset-x-6 md:left-6 md:right-6 data-[side=top]:inset-x-4 data-[side=top]:top-[4.75rem] data-[side=top]:h-auto data-[side=top]:border-current/15 md:data-[side=top]:inset-x-6"
       >
         <SheetHeader className="sr-only">
           <SheetTitle>Menu</SheetTitle>
@@ -59,8 +59,8 @@ export default function HeaderSheet({
             <Accordion type="single" collapsible className="mt-2">
               {nav.map((item) =>
                 item.children?.length ? (
-                  <AccordionItem key={item.href} value={item.href} className="border-smoke">
-                    <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-bone hover:no-underline **:data-[slot=accordion-trigger-icon]:text-ice">
+                  <AccordionItem key={item.href} value={item.href} className="border-current/15">
+                    <AccordionTrigger className="items-center py-4 font-sans text-nav-link font-semibold normal-case tracking-normal text-current hover:no-underline **:data-[slot=accordion-trigger-icon]:text-ice">
                       {item.label}
                     </AccordionTrigger>
                     <AccordionContent className="[&_a]:no-underline">
@@ -68,7 +68,7 @@ export default function HeaderSheet({
                         groupResourceChildren(item.children).map((group) =>
                           group.items.length ? (
                             <div key={group.name} className="mb-3">
-                              <p className="px-3 text-eyebrow font-semibold uppercase tracking-wide text-ice">
+                              <p className="px-3 text-eyebrow font-semibold uppercase tracking-wide text-current/70">
                                 {group.name}
                               </p>
                               <ul className="grid gap-1">
@@ -78,7 +78,7 @@ export default function HeaderSheet({
                                       <Link
                                         href={child.href}
                                         prefetch={false}
-                                        className="block rounded-input p-3 text-sm font-medium text-bone hover:bg-smoke"
+                                        className="block rounded-input p-3 text-sm font-medium text-current hover:bg-current/8"
                                       >
                                         {child.label}
                                       </Link>
@@ -96,7 +96,7 @@ export default function HeaderSheet({
                               <Link
                                 href={item.href}
                                 prefetch={false}
-                                className="block rounded-input p-3 text-sm font-semibold text-bone hover:bg-smoke"
+                                className="block rounded-input p-3 text-sm font-semibold text-current hover:bg-current/8"
                               >
                                 {item.overviewLabel ?? item.label}
                               </Link>
@@ -108,7 +108,7 @@ export default function HeaderSheet({
                                 <Link
                                   href={child.href}
                                   prefetch={false}
-                                  className="block rounded-input p-3 text-sm font-medium text-bone hover:bg-smoke"
+                                  className="block rounded-input p-3 text-sm font-medium text-current hover:bg-current/8"
                                 >
                                   {child.label}
                                 </Link>
@@ -124,7 +124,7 @@ export default function HeaderSheet({
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="border-b border-smoke py-4 text-nav-link font-semibold text-bone"
+                      className="border-b border-current/15 py-4 text-nav-link font-semibold text-current"
                     >
                       {item.label}
                     </Link>
@@ -133,7 +133,7 @@ export default function HeaderSheet({
               )}
             </Accordion>
           </div>
-          <div className="border-t border-smoke p-4">
+          <div className="border-t border-current/15 p-4">
             <SheetClose asChild>
               <Button href={ctaHref} label={ctaLabel} variant="primary" />
             </SheetClose>

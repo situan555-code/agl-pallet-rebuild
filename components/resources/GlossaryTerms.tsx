@@ -38,7 +38,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
         />
       </label>
 
-      <nav aria-label="Glossary A to Z" className="sticky top-[75px] z-10 -mx-6 mt-10 border-y border-smoke bg-moss px-6 py-3 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+      <nav aria-label="Glossary A to Z" className="sticky top-[75px] z-10 -mx-6 mt-10 border-y border-current/15 bg-background px-6 py-3 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
         <ul className="flex flex-wrap gap-x-1 gap-y-1">
           {byLetter.map(({ letter, terms: list }) => (
             <li key={letter}>
@@ -46,7 +46,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
                 list.length > 0 ? (
                   <a
                     href={`#letter-${letter}`}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-input text-sm font-semibold text-ice hover:bg-green"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-input text-sm font-semibold text-ice hover:bg-current/8"
                   >
                     {letter}
                   </a>
@@ -79,8 +79,8 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
               <dl className="mt-6 space-y-8 nav:col-span-8 nav:col-start-5 nav:mt-0">
                 {list.map((t) => (
                   <div key={t.id} id={t.id} className="scroll-mt-40">
-                    <dt className="text-[20px] font-semibold leading-snug text-bone">{t.term}</dt>
-                    <dd className="prose-measure mt-2 text-body text-bone/85">
+                    <dt className="text-[20px] font-semibold leading-snug text-current">{t.term}</dt>
+                    <dd className="prose-measure mt-2 text-body text-current/85">
                       {t.definition}
                       {t.link ? (
                         <>

@@ -82,12 +82,12 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
               <li key={step.title} className="flex items-start gap-4">
                 <span
                   aria-hidden="true"
-                  className="flex size-12 shrink-0 items-center justify-center rounded-full bg-green text-[15px] font-semibold text-bone"
+                  className="flex size-12 shrink-0 items-center justify-center rounded-full border border-current/20 bg-transparent text-[15px] font-semibold text-current"
                 >
                   {initials(step.title)}
                 </span>
                 <div className="min-w-0">
-                  <ItemHeading className="text-body font-semibold text-bone">{step.title}</ItemHeading>
+                  <ItemHeading className="text-body font-semibold text-current">{step.title}</ItemHeading>
                   <SpecBody description={step.description} className="mt-1 text-body text-gray" />
                 </div>
               </li>
@@ -121,7 +121,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && !step.number && "mt-5")}>
                       {step.title}
                     </ItemHeading>
-                    <SpecBody description={step.description} className="prose-measure mt-5 text-body text-bone/80" />
+                    <SpecBody description={step.description} className="prose-measure mt-5 text-body text-current/80" />
                   </div>
                 </InteractiveCard>
               </li>

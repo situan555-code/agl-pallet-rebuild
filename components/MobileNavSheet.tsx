@@ -16,7 +16,7 @@ import type { NavItem } from "@/components/MobileNav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const rowClass =
-  "block w-full px-6 py-4 text-left text-nav-link font-semibold text-bone transition-colors hover:bg-bone/10 focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ice";
+  "block w-full px-6 py-4 text-left text-nav-link font-semibold text-current transition-colors hover:bg-current/8 focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring";
 
 export default function MobileNavSheet({
   open,
@@ -38,19 +38,19 @@ export default function MobileNavSheet({
       <SheetContent
         side="right"
         aria-describedby={undefined}
-        className="w-full max-w-sm gap-0 overflow-y-auto data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right border-l-0 bg-moss p-0 text-bone sm:max-w-sm *:data-[slot=sheet-close]:right-5 *:data-[slot=sheet-close]:top-5 *:data-[slot=sheet-close]:h-9 *:data-[slot=sheet-close]:w-9 *:data-[slot=sheet-close]:text-bone hover:*:data-[slot=sheet-close]:bg-bone/10"
+        className="w-full max-w-sm gap-0 overflow-y-auto data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right border-l-0 bg-background p-0 text-current sm:max-w-sm *:data-[slot=sheet-close]:right-5 *:data-[slot=sheet-close]:top-5 *:data-[slot=sheet-close]:h-9 *:data-[slot=sheet-close]:w-9 *:data-[slot=sheet-close]:text-current hover:*:data-[slot=sheet-close]:bg-current/8"
       >
         <SheetHeader className="px-6 py-5">
-          <SheetTitle className="text-bone">
+          <SheetTitle className="text-current">
             <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
           </SheetTitle>
         </SheetHeader>
         <nav aria-label="Mobile">
-          <Accordion type="single" collapsible className="border-t border-bone/20">
+          <Accordion type="single" collapsible className="border-t border-current/15">
             {navItems.map((item) =>
               item.children?.length ? (
-                <AccordionItem key={item.href} value={item.href} className="border-b border-bone/20">
-                  <AccordionTrigger className="group/mnav items-center font-sans normal-case rounded-none px-6 py-4 text-nav-link font-semibold text-bone hover:bg-bone/10 hover:no-underline focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ice **:data-[slot=accordion-trigger-icon]:hidden!">
+                <AccordionItem key={item.href} value={item.href} className="border-b border-current/15">
+                  <AccordionTrigger className="group/mnav items-center font-sans normal-case rounded-none px-6 py-4 text-nav-link font-semibold text-current hover:bg-current/8 hover:no-underline focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring **:data-[slot=accordion-trigger-icon]:hidden!">
                     {item.label}
                     <ChevronDown
                       aria-hidden="true"
@@ -62,7 +62,7 @@ export default function MobileNavSheet({
                       {[{ label: item.label, href: item.href }, ...item.children].map((child) => (
                         <li key={child.href}>
                           <SheetClose asChild>
-                            <Link href={child.href} prefetch={false} className={cn(rowClass, "pl-10 text-bone/85")}>
+                            <Link href={child.href} prefetch={false} className={cn(rowClass, "pl-10 text-current/85")}>
                               {child.label}
                             </Link>
                           </SheetClose>
@@ -72,7 +72,7 @@ export default function MobileNavSheet({
                   </AccordionContent>
                 </AccordionItem>
               ) : (
-                <div key={item.href} className="border-b border-bone/20">
+                <div key={item.href} className="border-b border-current/15">
                   <SheetClose asChild>
                     <Link href={item.href} prefetch={false} className={rowClass}>
                       {item.label}

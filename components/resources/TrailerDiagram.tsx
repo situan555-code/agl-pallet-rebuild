@@ -19,7 +19,7 @@ export function TrailerDiagram({
   return (
     <svg
       viewBox={`0 0 ${floorL} ${floorW}`}
-      className="mt-8 w-full max-w-xl rounded-card border border-smoke bg-moss text-ice"
+      className="mt-8 w-full max-w-xl rounded-card border border-current/15 bg-transparent text-ice"
       role="img"
       aria-label={`Floor pattern: ${floor.pattern}`}
     >

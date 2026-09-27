@@ -9,9 +9,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-bone text-moss hover:bg-ice",
+        primary:
+          "bg-bone text-moss hover:bg-ice in-[.surface-light]:bg-moss in-[.surface-light]:text-bone in-[.surface-light]:hover:bg-green",
         secondary:
-          "border-gray bg-transparent text-current hover:bg-smoke/40",
+          "border-current/35 bg-transparent text-current hover:bg-current/8",
       },
       size: {
         default: "h-11 gap-2 px-6",

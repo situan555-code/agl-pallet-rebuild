@@ -1,7 +1,7 @@
-// Closing CTA band. Uses Section inset-green + grain (R1.4).
+// Closing CTA. Type and a button on the page field, not a second color slab.
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { containerClass } from "@/components/Container";
 
 interface Cta4Props {
   eyebrow?: string;
@@ -14,8 +14,8 @@ interface Cta4Props {
 
 const Cta4 = ({ eyebrow, heading, description, button, features, className }: Cta4Props) => {
   return (
-    <section className={cn("section-rhythm scroll-mt-24 bg-moss", insetOuterClass, className)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "grain relative overflow-hidden bg-green py-16 text-bone nav:py-20")}>
+    <section className={cn("section-rhythm scroll-mt-24", className)}>
+      <div className={cn(containerClass, "border-t border-current/15 py-16 nav:py-20")}>
       <div className="grid items-center gap-5 nav:grid-cols-12 nav:gap-16">
         <div className="nav:col-span-7">
           {eyebrow && (
@@ -26,15 +26,15 @@ const Cta4 = ({ eyebrow, heading, description, button, features, className }: Ct
               {eyebrow}
             </p>
           )}
-          <h2 className="text-display-2 text-bone">{heading}</h2>
+          <h2 className="text-display-2 text-current">{heading}</h2>
         </div>
-        <div className="border-t border-bone/20 pt-6 nav:col-span-5 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">
-          <p className="prose-measure text-body text-bone/85">{description}</p>
+        <div className="border-t border-current/15 pt-6 nav:col-span-5 nav:border-l nav:border-t-0 nav:pl-10 nav:pt-0">
+          <p className="prose-measure text-body text-current/85">{description}</p>
           {features && features.length > 0 && (
             <ul className="mt-6 space-y-2 text-body">
               {features.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <span aria-hidden="true" className="block h-px w-4 bg-bone/60" />
+                  <span aria-hidden="true" className="block h-px w-4 bg-current/60" />
                   {item}
                 </li>
               ))}

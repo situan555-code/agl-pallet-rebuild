@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export const interactiveCardClass =
-  "hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green text-bone hover:border-ice focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice";
+  "hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-current/15 bg-transparent text-current hover:border-ring focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
 export function InteractiveCard({
   href,

@@ -116,7 +116,7 @@ const Hero1 = ({
         <div className="relative z-20 -mt-16 px-6 nav:-mt-20">
           <div className="mx-auto grid max-w-[1440px] gap-4 md:grid-cols-3">
             {capabilities.map((cap) => (
-              <article key={cap.heading} className="rounded-card bg-green px-8 py-10 text-bone nav:px-10 nav:py-12">
+              <article key={cap.heading} className="rounded-card border border-current/15 bg-transparent px-8 py-10 text-current nav:px-10 nav:py-12">
                 <h2 className="text-display-kicker text-current">{cap.heading}</h2>
                 <p className="mt-4 max-w-sm text-body text-current/75">{cap.body}</p>
               </article>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/Button";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { WhenNear } from "@/components/home/WhenNear";
 import type { ImageBandProps } from "@/components/home/load-image-band";
 import { getBlurDataURL } from "@/lib/blur";
@@ -15,8 +15,8 @@ function load() {
 function ImageBandPlaceholder({ eyebrow, heading, body, image, cta, className }: ImageBandProps) {
   const blur = getBlurDataURL(image.src);
   return (
-    <section className={cn("section-rhythm scroll-mt-24 bg-moss", insetOuterClass, className)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "relative isolate min-h-96 overflow-hidden nav:min-h-120")}>
+    <section className={cn("section-rhythm scroll-mt-24", className)}>
+      <div className={cn(insetSurfaceClass, "relative isolate min-h-96 overflow-hidden rounded-section nav:min-h-120")}>
         <div className="absolute inset-0">
           <Image
             src={image.src}
@@ -34,7 +34,7 @@ function ImageBandPlaceholder({ eyebrow, heading, body, image, cta, className }:
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-r from-moss/70 via-moss/25 to-transparent"
         />
-        <div className="relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20">
+        <div className={cn(insetPadClass, "relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20")}>
           <div className="max-w-xl">
             {eyebrow && (
               <p className="text-eyebrow font-semibold uppercase tracking-wide text-ice">

@@ -17,7 +17,7 @@ export function StaticGallery({
   className?: string;
 }) {
   return (
-    <section className={cn("section-y scroll-mt-24 overflow-hidden bg-moss text-bone", className)}>
+    <section className={cn("section-y scroll-mt-24 overflow-hidden", className)}>
       <div className={containerClass}>
         <div className="mb-8 flex flex-col gap-6 nav:mb-10 nav:flex-row nav:items-end nav:justify-between">
           <div className="max-w-2xl">

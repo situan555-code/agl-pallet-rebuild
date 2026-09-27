@@ -25,7 +25,7 @@ const Feature2 = ({ id, eyebrow, heading, paragraphs, cta, hairline, className }
               {eyebrow}
             </p>
           )}
-          <h2 className="mt-3 text-display-1 text-bone">{heading}</h2>
+          <h2 className="mt-3 text-display-1 text-current">{heading}</h2>
         </div>
         <div className="flex flex-col justify-center nav:col-span-6 nav:col-start-7">
           <div className="prose-measure space-y-4">

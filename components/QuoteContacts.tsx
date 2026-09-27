@@ -36,10 +36,10 @@ export function QuoteContacts({
         const Icon = icons[item.kind];
         return (
           <li key={item.label} className="relative">
-            <a href={item.href} className={cn(interactiveCardClass, "bg-moss p-6")}>
+            <a href={item.href} className={cn(interactiveCardClass, "p-6")}>
               <IconTile icon={Icon} />
               <p className="mt-5 text-[12px] font-semibold uppercase tracking-[0.08em] text-gray">{item.label}</p>
-              <p className="mt-2 text-[22px] font-semibold leading-snug text-bone">{item.value}</p>
+              <p className="mt-2 text-[22px] font-semibold leading-snug text-current">{item.value}</p>
               <span className="mt-4 inline-flex text-body font-semibold text-ice">{actions[item.kind]}</span>
             </a>
             <div className="absolute right-4 top-4 z-10">
