@@ -20,6 +20,7 @@ export interface Process1Step {
   description: string;
   icon?: LucideIcon;
   href?: string;
+  image?: string;
 }
 
 interface Process1Props {
@@ -97,7 +98,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
             {steps.map((step) => (
               <li key={step.title} className="h-full">
                 <InteractiveCard href={step.href ?? "/request-a-quote/"}>
-                  <CardMedia numeral={step.number} alt={step.title} />
+                  <CardMedia numeral={step.number} alt={step.title} src={step.image} />
                   <div className="flex flex-1 flex-col p-6">
                     {step.icon ? <IconTile icon={step.icon} /> : null}
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && "mt-5")}>
@@ -114,7 +115,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
             {steps.map((step) => (
               <li key={step.title} className="h-full">
                 <InteractiveCard href={step.href ?? "/request-a-quote/"}>
-                  <CardMedia numeral={step.number} alt={step.title} />
+                  <CardMedia numeral={step.number} alt={step.title} src={step.image} />
                   <div className="flex flex-1 flex-col p-6">
                     {step.icon && !step.number ? <IconTile icon={step.icon} /> : null}
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && !step.number && "mt-5")}>
