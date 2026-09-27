@@ -10,17 +10,19 @@ export function Button({
   label,
   variant = "primary",
   arrow = true,
+  className,
 }: {
   href: string;
   label: string;
   variant?: ButtonVariant;
   arrow?: boolean;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
       prefetch={false}
-      className={cn(buttonVariants({ variant, arrow }))}
+      className={cn(buttonVariants({ variant, arrow }), className)}
     >
       {label}
       {arrow ? (
