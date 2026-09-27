@@ -13,18 +13,12 @@ import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
-import { CARD_PLACEHOLDER, PRODUCT_IMAGES } from "@/lib/product-images";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"] as const;
 const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
-const DIFFERENTIATOR_IMAGES = [
-  "/assets/who_agl_is_sidepic.jpg",
-  "/assets/about_page-single_point_sidepic.jpg",
-  "/assets/why_agl_exist_sidepic.jpg",
-] as const;
 
 export const metadata: Metadata = pageMeta(
   "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
@@ -100,7 +94,6 @@ export default function Home() {
           title: c.heading,
           description: c.body,
           href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
-          image: DIFFERENTIATOR_IMAGES[index] ?? CARD_PLACEHOLDER,
         }))}
       />
 
@@ -123,7 +116,6 @@ export default function Home() {
           title: line.heading,
           description: line.copy,
           href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
-          image: PRODUCT_IMAGES[line.id] ?? CARD_PLACEHOLDER,
         }))}
       />
 
@@ -139,13 +131,12 @@ export default function Home() {
         className="section-rhythm"
         variant="card"
         columns={2}
-        features={home.partnerSplit.cards.map((c, index) => ({
+        features={home.partnerSplit.cards.map((c) => ({
           eyebrow: c.eyebrow,
           title: c.heading,
           description: c.body,
           href: c.cta.href,
           cta: c.cta,
-          image: index === 0 ? PRODUCT_IMAGES["stock-pallets"] : "/assets/home_about_photo.jpg",
         }))}
       />
 

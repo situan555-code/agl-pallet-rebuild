@@ -4,6 +4,7 @@ import { containerClass } from "@/components/Container";
 import { cn } from "@/lib/utils";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
 import { BreadcrumbJsonLd, WebApplicationJsonLd } from "@/components/JsonLd";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ArticleHeader, ResourceCta } from "@/components/resources/ResourceArticle";
 import { RichText } from "@/components/resources/RichText";
 import { STAMP_DECODER_PATH, stampFieldCopy, treatmentCodes } from "@/lib/download-source";
@@ -55,11 +56,12 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
             <p>{copy.exampleNote}</p>
 
             <figure className="pt-4">
-              <div className="flex min-h-[180px] flex-col items-center justify-center border border-dashed border-brand-green/40 px-6 py-10 text-center">
+              <PhotoPlaceholder className="rounded-card" />
+              <figcaption className="mt-3 space-y-2">
                 <p className="text-[14px] font-semibold uppercase tracking-wide text-brand-green">{copy.photo.label}</p>
-                <p className="mt-3 max-w-[48ch] text-body text-ink/80">{copy.photo.body}</p>
-              </div>
-              <figcaption className="mt-3 text-[14px] leading-relaxed text-ink/70">{copy.photo.caption}</figcaption>
+                <p className="max-w-[48ch] text-body text-ink/80">{copy.photo.body}</p>
+                <p className="text-[14px] leading-relaxed text-ink/70">{copy.photo.caption}</p>
+              </figcaption>
             </figure>
 
             <form method="get" action={`${STAMP_DECODER_PATH}#result`} aria-label={copy.form.label} className="border-t border-brand-green/15 pt-8">

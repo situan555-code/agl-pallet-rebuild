@@ -1,20 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
-import { getBlurDataURL } from "@/lib/blur";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 
 export interface Gallery4Item {
   id: string;
   title: string;
   description: string;
   href: string;
-  image: string;
 }
 
 export interface Gallery4Props {
@@ -97,7 +95,6 @@ export function Gallery4({
         <Carousel setApi={setApi} opts={{ align: "start", loop: false }} className="w-full">
           <CarouselContent className="-ml-4">
             {items.map((item) => {
-              const blur = getBlurDataURL(item.image);
               return (
                 <CarouselItem key={item.id} className="basis-[85%] pl-4 sm:basis-1/2 lg:basis-[31%]">
                   <Link
@@ -106,18 +103,7 @@ export function Gallery4({
                     prefetch={false}
                     className="hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green hover:border-ice focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice"
                   >
-                    <div className="relative aspect-4/3 overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt=""
-                        fill
-                        quality={70}
-                        sizes="(min-width: 980px) 30vw, 85vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        placeholder={blur ? "blur" : undefined}
-                        blurDataURL={blur}
-                      />
-                    </div>
+                    <PhotoPlaceholder alt={item.title} />
                     <div className="flex flex-1 flex-col p-6">
                       <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
                       <p className="mt-5 text-body text-current/75">{item.description}</p>

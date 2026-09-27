@@ -36,7 +36,6 @@ export default function CaseStudiesPage() {
           title: s.title,
           description: s.summary,
           href: s.href,
-          image: s.image,
         }))}
       />
       <Cta4 heading={data.ctaBand.heading} description={data.ctaBand.body} button={data.ctaBand.cta} />

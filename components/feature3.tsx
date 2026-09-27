@@ -5,7 +5,7 @@
 // treatments:
 //   divided  — single row, vertical hairlines between columns (claims)
 //   ruled    — top hairline per item, multi-row (categories)
-//   numbered — image/placeholder + ice numeral, whole-card link
+//   numbered — photo placeholder + numeral, whole-card link
 //   card     — bordered image card, whole-card link
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -17,7 +17,6 @@ import { Button } from "@/components/Button";
 import { ArrowIcon } from "@/components/icons";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
-import { CARD_PLACEHOLDER } from "@/lib/product-images";
 
 export interface Feature3Item {
   id?: string;
@@ -26,7 +25,6 @@ export interface Feature3Item {
   description?: string;
   icon?: LucideIcon;
   href?: string;
-  image?: string;
   cta?: { label: string; href: string };
 }
 
@@ -104,7 +102,7 @@ function cardHref(item: Feature3Item) {
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
-      <CardMedia src={item.image ?? CARD_PLACEHOLDER} numeral={item.eyebrow} />
+      <CardMedia numeral={item.eyebrow} alt={item.title} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
         <Heading className="text-[22px] font-semibold leading-snug text-pretty text-bone">{item.title}</Heading>
         <p className="mt-5 text-body text-bone/85">{item.description}</p>
@@ -117,7 +115,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
   const href = cardHref(item);
   return (
     <InteractiveCard href={href} id={item.id} className="min-h-full">
-      <CardMedia src={item.image ?? CARD_PLACEHOLDER} />
+      <CardMedia alt={item.title} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
         {item.eyebrow && (
           <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">

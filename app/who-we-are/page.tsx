@@ -8,7 +8,7 @@ import { Process1 } from "@/components/process1";
 import { Feature3 } from "@/components/feature3";
 import { About3 } from "@/components/about3";
 import { Cta4 } from "@/components/cta4";
-import { TbdImage } from "@/components/TbdImage";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -44,7 +44,7 @@ export default function WhoWeAre() {
         eyebrow={content.founderStory.eyebrow}
         heading={content.founderStory.heading}
         paragraphs={content.founderStory.paragraphs}
-        media={<TbdImage caption="Founder portrait" />}
+        media={<PhotoPlaceholder className="rounded-card" />}
       />
 
       <Process1
