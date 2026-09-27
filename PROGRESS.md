@@ -43,3 +43,4 @@ LCP headroom on `/`, `/about/`, `/request-a-quote/`. Verify passed (home 99 / 22
 H4: --hero-start 0.56 so desktop scroll-grow runs. Verify passed on the second median-of-5 (home 96 / 2712ms). Merged to main.
 H2/H5 already on prod. H3: static gutter beams after LCP dropped them. Second verify passed (home 99 / 2265ms). Merged to main.
 H3 animation loads after window load and within one viewport. Verify passed (home 96 / 2790ms). Merged to main. Live round 2: highs and mediums PASS.
+H4 mobile video: 16:9 card fully on 390; MP4 SAR uses object-fill. Verify passed (home 97 / 2562ms). Merged to main.
