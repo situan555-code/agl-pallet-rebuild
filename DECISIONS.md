@@ -2,7 +2,7 @@
 
 ## Home inset-reveal cards (2026-09-27)
 
-Home 01/02/03 cards and product-line cards expand in place as a moss `rounded-section` well with an ice rail and an existing-route pill. They do not use a shared-layout overlay, spring, or the navdeepsingh expandable-card layout. Action labels are existing JSON strings (quote, Services, How We Work, Read the pledge, Meet the team, product nav / line CTAs).
+Home 01/02/03 cards and product-line cards stay in the grid. Closed they keep hover-lift. Open, a moss `rounded-section` well grows inside the green card (ice rail, existing-route pill). No overlay, spring, or navdeepsingh expandable-card layout. Action labels are existing JSON strings.
 
 
 ## LCP headroom / static HTML (2026-09-26)

@@ -108,14 +108,12 @@ export function InsetReveal({
       id={id}
       data-inset-reveal={open ? "open" : "closed"}
       className={cn(
-        "group flex h-full flex-col text-bone",
-        open
-          ? "rounded-section bg-moss"
-          : "hover-lift overflow-hidden rounded-card border border-smoke bg-green hover:border-ice"
+        "group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green text-bone",
+        open ? "border-ice" : "hover-lift hover:border-ice"
       )}
     >
-      <CardMedia src={image} numeral={numeral} className={open ? "rounded-t-[28px]" : undefined} />
-      <div className={cn("flex flex-1 flex-col", open ? "p-3" : "p-6 nav:p-8")}>
+      <CardMedia src={image} numeral={numeral} />
+      <div className="flex flex-1 flex-col p-6 nav:p-8">
         <button
           type="button"
           aria-expanded={open}
@@ -139,7 +137,7 @@ export function InsetReveal({
           id={panelId}
           role="region"
           className={cn(
-            open && "mt-4 rounded-[18px] border-l-2 border-ice bg-green px-6 py-6 nav:px-8"
+            open && "mt-5 rounded-section border-l-2 border-ice bg-moss px-6 py-6"
           )}
         >
           {body ? (
