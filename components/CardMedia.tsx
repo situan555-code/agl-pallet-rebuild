@@ -4,10 +4,12 @@ import { CARD_PLACEHOLDER } from "@/lib/product-images";
 
 export function CardMedia({
   src = CARD_PLACEHOLDER,
+  alt = "",
   numeral,
   className,
 }: {
   src?: string;
+  alt?: string;
   numeral?: string;
   className?: string;
 }) {
@@ -26,7 +28,7 @@ export function CardMedia({
       ) : (
         <Image
           src={src}
-          alt=""
+          alt={alt}
           fill
           quality={60}
           sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 360px"

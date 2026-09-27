@@ -12,6 +12,7 @@ import { containerClass } from "@/components/Container";
 import { IconTile } from "@/components/IconTile";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CardMedia } from "@/components/CardMedia";
+import { resolveCardPhoto } from "@/lib/product-images";
 import { InteractiveCard } from "@/components/InteractiveCard";
 
 export interface Process1Step {
@@ -95,10 +96,10 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
           </ul>
         ) : layout === "grid" ? (
           <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {steps.map((step) => (
+            {steps.map((step, index) => (
               <li key={step.title} className="h-full">
                 <InteractiveCard href={step.href ?? "/request-a-quote/"}>
-                  <CardMedia src={step.image} numeral={step.number} />
+                  <CardMedia src={resolveCardPhoto(step.image, index)} alt={step.title} numeral={step.number} />
                   <div className="flex flex-1 flex-col p-6">
                     {step.icon ? <IconTile icon={step.icon} /> : null}
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && "mt-5")}>
@@ -112,10 +113,10 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
           </ul>
         ) : (
           <ol className="grid w-full grid-cols-1 gap-6 nav:grid-cols-2">
-            {steps.map((step) => (
+            {steps.map((step, index) => (
               <li key={step.title} className="h-full">
                 <InteractiveCard href={step.href ?? "/request-a-quote/"}>
-                  <CardMedia src={step.image} numeral={step.number} />
+                  <CardMedia src={resolveCardPhoto(step.image, index)} alt={step.title} numeral={step.number} />
                   <div className="flex flex-1 flex-col p-6">
                     {step.icon && !step.number ? <IconTile icon={step.icon} /> : null}
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && !step.number && "mt-5")}>

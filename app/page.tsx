@@ -13,7 +13,7 @@ import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
-import { CARD_PLACEHOLDER, PRODUCT_IMAGES } from "@/lib/product-images";
+import { CARD_PLACEHOLDER, PRODUCT_IMAGES, cardPhoto } from "@/lib/product-images";
 import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -49,7 +49,11 @@ export default function Home() {
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap, index) => (
             <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
-              <CardMedia numeral={String(index + 1).padStart(2, "0")} />
+              <CardMedia
+                src={cardPhoto(index)}
+                alt={cap.heading}
+                numeral={String(index + 1).padStart(2, "0")}
+              />
               <div className="flex flex-1 flex-col p-6 nav:p-8">
                 <h2 className="text-[22px] font-semibold leading-snug text-current">{cap.heading}</h2>
                 <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>

@@ -9,3 +9,24 @@ export const PRODUCT_IMAGES: Record<string, string> = {
 };
 
 export const CARD_PLACEHOLDER = "/assets/card-placeholder-field.png";
+
+/** Hard-light documentary stills. Natural color; not a moss grade. */
+export const CARD_PHOTOS = [
+  "/assets/card-01-deck-boards.webp",
+  "/assets/card-02-trailer-pallets.webp",
+  "/assets/card-03-steel-banding.webp",
+  "/assets/card-04-outdoor-stack.webp",
+  "/assets/card-05-tape-stamp.webp",
+  "/assets/card-06-forklift-tines.webp",
+] as const;
+
+export function cardPhoto(index: number): string {
+  const n = CARD_PHOTOS.length;
+  return CARD_PHOTOS[((index % n) + n) % n];
+}
+
+/** Keep a real photograph. Slats and the shared placeholder get a still. */
+export function resolveCardPhoto(src: string | undefined, index: number): string {
+  if (src && src !== CARD_PLACEHOLDER) return src;
+  return cardPhoto(index);
+}
