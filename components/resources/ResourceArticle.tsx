@@ -6,7 +6,8 @@ import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import hub from "@/content/resources/hub.json";
 import { cn } from "@/lib/utils";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { Button } from "@/components/Button";
+import { containerClass, insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Cta4 } from "@/components/cta4";
 import { Feature3 } from "@/components/feature3";
 import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
@@ -70,12 +71,12 @@ export function ArticleHeader({
   crumbs?: { name: string; href: string }[];
   /** Visible label for the /resources/ crumb. Guides keep the library title. */
   libraryLabel?: string;
-  variant?: "inset-dark" | "light-text";
+  variant?: "inset-dark" | "light-text" | "sheet";
 }) {
   const dark = variant === "inset-dark";
-  return (
-    <section className={cn("scroll-mt-24 bg-moss pb-0 pt-28", dark ? "text-bone" : "text-moss", insetOuterClass)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "py-16 nav:py-20", dark ? "bg-green text-bone" : "surface-light bg-bone text-moss")}>
+  const sheet = variant === "sheet";
+  const inner = (
+    <>
         <nav aria-label="Breadcrumb">
           <ol className={cn("flex flex-wrap items-center gap-2 text-link", dark ? "text-bone/75" : "text-moss/70")}>
             <li>
@@ -115,6 +116,19 @@ export function ArticleHeader({
         </p>
         <h1 className={cn("mt-3 max-w-[900px] text-display-1", dark && "display")}>{title}</h1>
         <Byline updated={updated} />
+    </>
+  );
+  if (sheet) {
+    return (
+      <section className={cn(containerClass, "scroll-mt-24 pb-2 pt-28 text-moss nav:pt-32")}>
+        {inner}
+      </section>
+    );
+  }
+  return (
+    <section className={cn("scroll-mt-24 bg-moss pb-0 pt-28", dark ? "text-bone" : "text-moss", insetOuterClass)}>
+      <div className={cn(insetSurfaceClass, insetPadClass, "py-16 nav:py-20", dark ? "bg-green text-bone" : "surface-light bg-bone text-moss")}>
+        {inner}
       </div>
     </section>
   );
@@ -133,7 +147,7 @@ export function ReadingPanel({ children }: { children: ReactNode }) {
 
 export function DirectAnswer({ text }: { text: string }) {
   return (
-    <section aria-labelledby="short-answer">
+    <section aria-labelledby="short-answer" className="article-chapter">
       <div className="grid gap-4 nav:grid-cols-12 nav:gap-16">
         <p id="short-answer" className="text-eyebrow font-semibold uppercase tracking-wide nav:col-span-3">
           <span aria-hidden="true" className="mr-2 font-bold">
@@ -296,7 +310,7 @@ export function Sources({ items, closing }: { items: ResourceSource[]; closing?:
 
 export function NextSteps() {
   return (
-    <section aria-labelledby="next-steps-h" className="border-t border-brand-green/15 pt-10">
+    <section aria-labelledby="next-steps-h" className="article-chapter scroll-mt-28 border-t border-brand-green/15 pt-10">
       <h2 id="next-steps-h" className="text-display-row text-current">
         Next steps
       </h2>
@@ -339,7 +353,7 @@ function Toc({ items }: { items: { id: string; label: string }[] }) {
   );
 }
 
-export function RelatedGuides({ slugs }: { slugs: string[] }) {
+export function RelatedGuides({ slugs, className }: { slugs: string[]; className?: string }) {
   const pillars = slugs.map(getHubPillar).filter((p): p is NonNullable<typeof p> => Boolean(p));
   if (pillars.length === 0) return null;
   return (
@@ -349,6 +363,7 @@ export function RelatedGuides({ slugs }: { slugs: string[] }) {
       hairline
       eyebrow="Keep reading"
       heading="Related guides"
+      className={className}
       features={pillars.map((p) => ({ title: p.title, href: p.href, description: firstSentence(p.directAnswer) }))}
     />
   );
@@ -358,20 +373,57 @@ export function RelatedGuides({ slugs }: { slugs: string[] }) {
  * Two-column article body: sticky contents rail on wide screens, content
  * column on the right. `toc` lists anchors in page order.
  */
-export function ArticleBody({ toc, children }: { toc: { id: string; label: string }[]; children: ReactNode }) {
+export function ArticleBody({
+  toc,
+  children,
+  ruled = true,
+}: {
+  toc: { id: string; label: string }[];
+  children: ReactNode;
+  /** Top hairline. Guide sheets rule the chapter outside this column instead. */
+  ruled?: boolean;
+}) {
   return (
-    <div className="mt-10 border-t border-brand-green/15 pt-10 nav:mt-14 nav:pt-14">
+    <div className={cn(ruled ? "mt-10 border-t border-brand-green/15 pt-10 nav:mt-14 nav:pt-14" : "pt-14 nav:pt-20")}>
       <div className="grid gap-10 nav:grid-cols-12 nav:gap-16">
         <aside className="min-w-0 nav:col-span-3">
           <Toc items={toc} />
         </aside>
-        <div className="min-w-0 space-y-14 nav:col-span-8 nav:col-start-5">{children}</div>
+        <div className="article-column min-w-0 space-y-14 nav:col-span-8 nav:col-start-5">{children}</div>
       </div>
     </div>
   );
 }
 
-export function ResourceCta({ heading, body, source }: { heading: string; body: string; source: string }) {
+export function ResourceCta({
+  heading,
+  body,
+  source,
+  tone = "band",
+}: {
+  heading: string;
+  body: string;
+  source: string;
+  /** `sheet` keeps the close on the bone article. `band` is the rounded green inset. */
+  tone?: "band" | "sheet";
+}) {
+  if (tone === "sheet") {
+    return (
+      <section aria-labelledby="guide-close" className="article-chapter mt-16 scroll-mt-28 border-t border-gray nav:mt-24">
+        <div className={cn(containerClass, "grid gap-8 py-16 nav:grid-cols-12 nav:gap-16 nav:py-24")}>
+          <h2 id="guide-close" className="text-display-2 text-moss nav:col-span-7">
+            {heading}
+          </h2>
+          <div className="nav:col-span-5">
+            <p className="prose-measure text-body text-moss/85">{body}</p>
+            <div className="mt-8">
+              <Button href={quoteHref(source)} label={hub.cta.label} variant="primary" className="bg-moss text-bone hover:bg-green" />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
   return <Cta4 heading={heading} description={body} button={{ label: hub.cta.label, href: quoteHref(source) }} />;
 }
 
@@ -405,7 +457,7 @@ export function ResourceArticle({
     ...(hasChangelog(pillar.slug) ? [{ id: "changelog", label: "Changelog" }] : []),
   ];
   return (
-    <main>
+    <main data-article-sheet className="article-sheet surface-light bg-bone text-moss">
       <BreadcrumbJsonLd
         items={[
           { name: "Home", path: "/" },
@@ -429,26 +481,30 @@ export function ResourceArticle({
         />
       )}
       {schema}
-      <ArticleHeader eyebrow={pillar.eyebrow} title={pillar.title} updated={pillar.updated} />
-      <ReadingPanel>
+      <ArticleHeader eyebrow={pillar.eyebrow} title={pillar.title} updated={pillar.updated} variant="sheet" />
+      <div className={cn(containerClass, "mt-14 border-t border-gray pt-14 nav:mt-20 nav:pt-20")}>
         <DirectAnswer text={pillar.directAnswer} />
-        <ArticleBody toc={toc}>
-          <PhotoPlaceholder className="rounded-card" />
-          {before.map((s) => (
-            <ArticleSection key={s.id} section={s} />
-          ))}
-          {extra}
-          {after.map((s) => (
-            <ArticleSection key={s.id} section={s} />
-          ))}
-          {pillar.questions && <Questions heading={pillar.questions.heading} items={pillar.questions.items} />}
-          <Sources items={pillar.sources} />
-          <NextSteps />
-          <Changelog slug={pillar.slug} />
-        </ArticleBody>
-      </ReadingPanel>
-      <RelatedGuides slugs={pillar.related} />
-      <ResourceCta heading={pillar.cta.heading} body={pillar.cta.body} source={pillar.slug} />
+      </div>
+      <figure className="article-chapter mt-16 nav:mt-24">
+        <PhotoPlaceholder className="aspect-[3/2] w-full nav:aspect-[21/9]" />
+      </figure>
+      <div className={containerClass}>
+        <ArticleBody toc={toc} ruled={false}>
+            {before.map((s) => (
+              <ArticleSection key={s.id} section={s} />
+            ))}
+            {extra}
+            {after.map((s) => (
+              <ArticleSection key={s.id} section={s} />
+            ))}
+            {pillar.questions && <Questions heading={pillar.questions.heading} items={pillar.questions.items} />}
+            <Sources items={pillar.sources} />
+            <NextSteps />
+            <Changelog slug={pillar.slug} />
+          </ArticleBody>
+      </div>
+      <RelatedGuides slugs={pillar.related} className="article-chapter mt-16 nav:mt-24" />
+      <ResourceCta heading={pillar.cta.heading} body={pillar.cta.body} source={pillar.slug} tone="sheet" />
     </main>
   );
 }

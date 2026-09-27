@@ -517,6 +517,58 @@ p.text-eyebrow > span[aria-hidden] {
   }
 }
 
+/* Guide articles are one bone sheet. The footer is a full-width moss band
+   with a square top — no inset green card and no moss gutter under the copy.
+   Chapters ease in on the way through the viewport. Reduced motion stays put. */
+body:has([data-article-sheet]) {
+  background-color: #ece8df;
+}
+
+body:has([data-article-sheet]) > footer {
+  margin-top: 0;
+  padding: 0;
+  background-color: #131913;
+  border-top: 1px solid #aeb5ae;
+}
+
+body:has([data-article-sheet]) > footer > div {
+  border-radius: 0;
+  background-color: transparent;
+}
+
+[data-article-sheet] .section-hairline,
+[data-article-sheet] .border-brand-green\/15,
+[data-article-sheet] .border-brand-green\/20 {
+  border-color: #aeb5ae;
+}
+
+[data-article-sheet] .article-column > section:first-child {
+  border-top-width: 0;
+  padding-top: 0;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-article-sheet] section[id],
+    [data-article-sheet] .article-chapter {
+      animation: article-chapter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 28%;
+    }
+  }
+}
+
+@keyframes article-chapter {
+  from {
+    opacity: 0.84;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Mobile: static 16:9 card, full container width, no scroll-grow. */
 @media (max-width: 767px) {
   .hero-spacer {
