@@ -516,3 +516,20 @@ p.text-eyebrow > span[aria-hidden] {
     border-radius: 20px;
   }
 }
+
+/* Mobile: static 16:9 card, full container width, no scroll-grow. */
+@media (max-width: 767px) {
+  .hero-spacer {
+    height: 0;
+  }
+
+  .hero-frame-slot {
+    position: static;
+  }
+
+  .hero-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    transform: none;
+  }
+}
