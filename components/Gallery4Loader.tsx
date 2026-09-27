@@ -3,12 +3,11 @@
 // The carousel chunk loads with next/dynamic only once this block is within
 // about one viewport. A top-level next/dynamic() in this file was still
 // emitted as an initial script, so the dynamic() call lives in load-gallery.
-import Image from "next/image";
 import Link from "next/link";
 import type { Gallery4Props } from "@/components/gallery4";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { containerClass } from "@/components/Container";
 import { WhenNear } from "@/components/home/WhenNear";
-import { getBlurDataURL } from "@/lib/blur";
 import { cn } from "@/lib/utils";
 
 function load() {
@@ -49,7 +48,6 @@ function GalleryPlaceholder({ eyebrow, title, description, items, className }: G
           <div className="overflow-hidden">
             <div className="flex -ml-4">
               {items.map((item) => {
-                const blur = getBlurDataURL(item.image);
                 return (
                   <div
                     key={item.id}
@@ -61,18 +59,7 @@ function GalleryPlaceholder({ eyebrow, title, description, items, className }: G
                       prefetch={false}
                       className="hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green hover:border-ice focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice"
                     >
-                      <div className="relative aspect-4/3 overflow-hidden">
-                        <Image
-                          src={item.image}
-                          alt=""
-                          fill
-                          quality={70}
-                          sizes="(min-width: 980px) 30vw, 85vw"
-                          className="object-cover"
-                          placeholder={blur ? "blur" : undefined}
-                          blurDataURL={blur}
-                        />
-                      </div>
+                      <PhotoPlaceholder alt={item.title} />
                       <div className="flex flex-1 flex-col p-6">
                         <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
                         <p className="mt-5 text-body text-current/75">{item.description}</p>

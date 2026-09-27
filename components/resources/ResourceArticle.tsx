@@ -10,6 +10,7 @@ import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/
 import { Cta4 } from "@/components/cta4";
 import { Feature3 } from "@/components/feature3";
 import { BreadcrumbJsonLd, FaqPageJsonLd, TechArticleJsonLd } from "@/components/JsonLd";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { Byline } from "@/components/resources/Byline";
 import { Changelog, hasChangelog } from "@/components/resources/Changelog";
 import { RichText, plainText } from "@/components/resources/RichText";
@@ -432,6 +433,7 @@ export function ResourceArticle({
       <ReadingPanel>
         <DirectAnswer text={pillar.directAnswer} />
         <ArticleBody toc={toc}>
+          <PhotoPlaceholder className="rounded-card" />
           {before.map((s) => (
             <ArticleSection key={s.id} section={s} />
           ))}
