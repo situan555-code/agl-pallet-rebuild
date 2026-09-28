@@ -84,7 +84,7 @@ function Chart() {
         </desc>
         {ticks.map((t) => (
           <g key={t}>
-            <line x1={m.left} x2={W - m.right} y1={y(t)} y2={y(t)} stroke="currentColor" strokeOpacity={t === yMin ? 0.35 : 0.12} className="text-ink" />
+            <line x1={m.left} x2={W - m.right} y1={y(t)} y2={y(t)} stroke="currentColor" strokeOpacity={t === yMin ? 0.35 : 0.12} className="text-current" />
             <text x={m.left - 8} y={y(t)} dy="0.32em" textAnchor="end" className="fill-ink/70 text-[12px]">
               {t}
             </text>
@@ -114,13 +114,13 @@ function Chart() {
               y2={H - m.bottom}
               stroke="currentColor"
               strokeOpacity={0.3}
-              className="pointer-events-none text-ink opacity-0 group-hover:opacity-100"
+              className="pointer-events-none text-current opacity-0 group-hover:opacity-100"
             />
             <circle cx={x(i)} cy={y(v)} r={4} className="pointer-events-none fill-brand-green opacity-0 group-hover:opacity-100" />
           </g>
         ))}
       </svg>
-      <figcaption className="mt-3 text-[14px] leading-relaxed text-ink/70">
+      <figcaption className="mt-3 text-[14px] leading-relaxed text-current/70">
         {title}. Source: {pallets.publisher}, series{" "}
         <a href={pallets.href} rel="noopener" className="font-semibold text-brand-green underline decoration-brand-green/40 underline-offset-4">
           {pallets.id}
@@ -141,7 +141,7 @@ export function PriceIndex() {
 
   return (
     <ArticleSection section={{ id: PRICE_INDEX_TOC.id, heading: "The pallet price index, 2019 to date" }}>
-      <div className="prose-measure mt-6 space-y-4 text-body text-ink/85">
+      <div className="prose-measure mt-6 space-y-4 text-body text-current/85">
         <p>
           The BLS index for wood pallets stood at {fmt(latest, 1)} in {monthLabel(latestMonth)}
           {yearAgo !== undefined && <>, {pct(latest, yearAgo)} from a year earlier</>}. It peaked at {fmt(peak[1], 1)} in{" "}
@@ -162,7 +162,7 @@ export function PriceIndex() {
           note: `Averages of monthly, not seasonally adjusted values for series [${pallets.id}](${pallets.href}) and [${lumber.id}](${lumber.href}), retrieved from FRED on ${formatDate(ppi.retrieved)}. BLS revises data up to four months after first publication; the next PPI release is scheduled for ${formatDate(ppi.nextRelease)}.`,
         }}
       />
-      <p className="prose-measure mt-6 text-body text-ink/85">
+      <p className="prose-measure mt-6 text-body text-current/85">
         {PPI_DATASET_DESCRIPTION}{" "}
         <a
           href={PPI_CSV_PATH}

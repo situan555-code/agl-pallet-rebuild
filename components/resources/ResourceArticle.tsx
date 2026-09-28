@@ -180,11 +180,11 @@ export function DataTable({ table }: { table: ResourceTable }) {
               <tr key={r} className="odd:bg-moss/4">
                 {row.map((cell, c) =>
                   c === 0 ? (
-                    <th key={c} scope="row" className="border-b border-brand-green/15 py-3 pr-6 align-top font-semibold text-ink">
+                    <th key={c} scope="row" className="border-b border-brand-green/15 py-3 pr-6 align-top font-semibold text-current">
                       <RichText text={cell} />
                     </th>
                   ) : (
-                    <td key={c} className="border-b border-brand-green/15 py-3 pr-6 align-top text-ink/85">
+                    <td key={c} className="border-b border-brand-green/15 py-3 pr-6 align-top text-current/85">
                       <RichText text={cell} />
                     </td>
                   )
@@ -195,7 +195,7 @@ export function DataTable({ table }: { table: ResourceTable }) {
         </table>
       </div>
       {table.note && (
-        <figcaption className="mt-3 text-[14px] leading-relaxed text-ink/70">
+        <figcaption className="mt-3 text-[14px] leading-relaxed text-current/70">
           <RichText text={table.note} />
         </figcaption>
       )}
@@ -207,7 +207,7 @@ function Paragraphs({ items }: { items: string[] }) {
   return (
     <>
       {items.map((p, i) => (
-        <p key={i} className="text-body text-ink/85">
+        <p key={i} className="text-body text-current/85">
           <RichText text={p} />
         </p>
       ))}
@@ -226,7 +226,7 @@ export function ArticleSection({ section, children }: { section: Pick<ResourceSe
       <div className="prose-measure mt-6 space-y-4">
         {section.paragraphs && <Paragraphs items={section.paragraphs} />}
         {section.list && (
-          <ListTag className={cn("space-y-2 pl-5 text-body text-ink/85", section.ordered ? "list-decimal" : "list-disc")}>
+          <ListTag className={cn("space-y-2 pl-5 text-body text-current/85", section.ordered ? "list-decimal" : "list-disc")}>
             {section.list.map((item, i) => (
               <li key={i} className="pl-1">
                 <RichText text={item} />
@@ -272,7 +272,7 @@ export function Sources({ items, closing }: { items: ResourceSource[]; closing?:
       <h2 id="sources-h" className="text-display-row text-current">
         Sources and further reading
       </h2>
-      <ul className="prose-measure mt-6 space-y-3 text-body text-ink/85">
+      <ul className="prose-measure mt-6 space-y-3 text-body text-current/85">
         {items.map((s) => (
           <li key={s.href}>
             <a
@@ -282,11 +282,11 @@ export function Sources({ items, closing }: { items: ResourceSource[]; closing?:
             >
               {s.label}
             </a>
-            {s.note && <span className="text-ink/70"> — {s.note}</span>}
+            {s.note && <span className="text-current/70"> — {s.note}</span>}
           </li>
         ))}
       </ul>
-      <p className="prose-measure mt-6 text-[14px] leading-relaxed text-ink/70">
+      <p className="prose-measure mt-6 text-[14px] leading-relaxed text-current/70">
         {closing ??
           "Standards bodies own their published text. This guide summarizes and links to them; buy or download the current edition from the publisher before relying on a specific clause."}
       </p>
@@ -329,7 +329,7 @@ function Toc({ items }: { items: { id: string; label: string }[] }) {
       <ol className="mt-4 space-y-2 border-l border-brand-green/20 pl-4 text-link">
         {items.map((item) => (
           <li key={item.id}>
-            <a href={`#${item.id}`} className="text-ink/80 hover:text-brand-green hover:underline">
+            <a href={`#${item.id}`} className="text-current/80 hover:text-brand-green hover:underline">
               {item.label}
             </a>
           </li>

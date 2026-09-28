@@ -36,7 +36,7 @@ export default async function CostPerTripPage(
 
   return (
     <CalculatorPage content={content}>
-      <p className="prose-measure mt-6 text-body text-ink/85">
+      <p className="prose-measure mt-6 text-body text-current/85">
         <strong className="font-semibold text-brand-green">Formula:</strong> {content.formula}
       </p>
       <CalcForm
@@ -62,7 +62,7 @@ export default async function CostPerTripPage(
         <h3 id="results-h" className="text-step-lg text-current">
           {exampleMode ? "Worked example" : "Results"}
         </h3>
-        {exampleMode && <p className="prose-measure mt-4 text-body text-ink/85">{ex.note}</p>}
+        {exampleMode && <p className="prose-measure mt-4 text-body text-current/85">{ex.note}</p>}
         {r && trips !== undefined && price !== undefined ? (
           <>
             <div className="mt-6 grid gap-8 sm:grid-cols-2">
@@ -93,7 +93,7 @@ export default async function CostPerTripPage(
             />
           </>
         ) : (
-          <p className="prose-measure mt-4 text-body text-ink/85">
+          <p className="prose-measure mt-4 text-body text-current/85">
             {price !== undefined && residual > price
               ? "Residual value is higher than the purchase price. Check the figures and calculate again."
               : "Enter a purchase price and expected trips, then calculate. Results appear here."}

@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { RichText } from "@/components/resources/RichText";
 
 const inputClass =
-  "mt-2 block h-[52px] w-full rounded-input border border-moss/25 bg-transparent px-3 text-[16px] text-moss focus-visible:border-moss focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-moss";
+  "mt-2 block h-[52px] w-full rounded-input border border-current/25 bg-transparent px-3 text-[16px] text-current focus-visible:border-current focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-current";
 
-const labelClass = "block text-[14px] font-semibold leading-snug text-moss";
+const labelClass = "block text-[14px] font-semibold leading-snug text-current";
 
 export function CalcForm({
   action,
@@ -88,7 +88,7 @@ export function NumberField({
     <label className="block min-w-0">
       <span className={labelClass}>
         {label}
-        {unit && <span className="font-normal text-ink/70"> ({unit})</span>}
+        {unit && <span className="font-normal text-current/70"> ({unit})</span>}
       </span>
       <input
         type="number"
@@ -139,7 +139,7 @@ export function ResultSummary({ label, value, detail }: { label: string; value: 
     <div className="border-l-[3px] border-brand-green pl-6">
       <p className="text-eyebrow font-semibold uppercase tracking-wide text-eyebrow-ink">{label}</p>
       <p className="mt-1 font-display text-display-numeral text-brand-green">{value}</p>
-      {detail && <div className="prose-measure mt-2 text-body text-ink/85">{detail}</div>}
+      {detail && <div className="prose-measure mt-2 text-body text-current/85">{detail}</div>}
     </div>
   );
 }
@@ -148,7 +148,7 @@ export function NoteList({ heading, items }: { heading: string; items: string[] 
   return (
     <div className="mt-8">
       <h3 className="text-step-lg text-current">{heading}</h3>
-      <ul className="prose-measure mt-4 list-disc space-y-2 pl-5 text-body text-ink/85">
+      <ul className="prose-measure mt-4 list-disc space-y-2 pl-5 text-body text-current/85">
         {items.map((item, i) => (
           <li key={i} className="pl-1">
             <RichText text={item} />
@@ -160,5 +160,5 @@ export function NoteList({ heading, items }: { heading: string; items: string[] 
 }
 
 export function Disclaimer({ text }: { text: string }) {
-  return <p className="prose-measure mt-6 text-[14px] leading-relaxed text-ink/70">{text}</p>;
+  return <p className="prose-measure mt-6 text-[14px] leading-relaxed text-current/70">{text}</p>;
 }

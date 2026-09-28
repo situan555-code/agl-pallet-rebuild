@@ -1,8 +1,12 @@
 # DECISIONS (redesign)
 
+## Theme toggle (2026-09-28)
+
+Owner replaced the sell-dark / read-light split. One user-controlled theme for every route. Default is dark (moss field). Light is one bone field. Choice persists in `localStorage` key `agl-theme` and `html` `data-field` plus `dark`/`light` class. Blocking boot script prevents a flash. Ghost sun/moon control in the header (shadcnblocks icon toggle 8, adapted). Ghost is for this control only; page CTAs stay primary/secondary.
+
 ## One field (2026-09-27)
 
-Sell pages are one moss field. Reading pages (resources, FAQ, forms, pledge, contact) are one bone field. Header and footer follow the page. Green `#1F2A1F` is no longer a section fill. Cards match the field (hairline, not a second slab). Accents flip: ice on moss, green/moss on bone. Primary button is bone-on-moss and moss-on-bone. `--card` token is moss, not smoke. No user theme toggle. Home video stays full-bleed.
+Sell pages are one moss field. Reading pages (resources, FAQ, forms, pledge, contact) are one bone field. Header and footer follow the page. Green `#1F2A1F` is no longer a section fill. Cards match the field (hairline, not a second slab). Accents flip: ice on moss, green/moss on bone. Primary button is bone-on-moss and moss-on-bone. `--card` token is moss, not smoke. Home video stays full-bleed. Superseded for routing by Theme toggle (2026-09-28): pages no longer hard-code a field.
 
 ## LCP headroom / static HTML (2026-09-26)
 

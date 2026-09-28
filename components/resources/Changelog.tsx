@@ -14,10 +14,10 @@ export function Changelog({ slug }: { slug: string }) {
       <h2 id="changelog-h" className="text-display-row text-brand-green">
         Changelog
       </h2>
-      <ul className="prose-measure mt-6 space-y-3 text-body text-ink/85">
+      <ul className="prose-measure mt-6 space-y-3 text-body text-current/85">
         {items.map((item) => (
           <li key={`${item.date}-${item.change}`}>
-            <time dateTime={item.date} className="font-semibold text-ink">
+            <time dateTime={item.date} className="font-semibold text-current">
               {formatDate(item.date)}
             </time>
             {" — "}
