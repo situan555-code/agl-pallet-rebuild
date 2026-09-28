@@ -9,7 +9,7 @@ export function QuoteCopyButton({ value }: { value: string }) {
   return (
     <button
       type="button"
-      className="relative inline-flex size-11 shrink-0 items-center justify-center rounded-full text-bone hover:text-ice"
+      className="relative inline-flex size-11 shrink-0 items-center justify-center rounded-full text-current hover:text-ice"
       aria-label={copied ? "Copied" : "Copy"}
       onClick={async () => {
         try {

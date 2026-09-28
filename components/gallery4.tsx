@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { interactiveCardClass } from "@/components/InteractiveCard";
 
 export interface Gallery4Item {
   id: string;
@@ -53,7 +54,7 @@ export function Gallery4({
   }, [api, sync]);
 
   return (
-    <section className={cn("section-y scroll-mt-24 overflow-hidden bg-moss text-bone", className)}>
+    <section className={cn("section-y scroll-mt-24 overflow-hidden", className)}>
       <div className={containerClass}>
         <div className="mb-8 flex flex-col gap-6 nav:mb-10 nav:flex-row nav:items-end nav:justify-between">
           <div className="max-w-2xl">
@@ -76,7 +77,7 @@ export function Gallery4({
               aria-label="Previous"
               disabled={!canPrev}
               onClick={() => api?.scrollPrev()}
-              className="inline-flex size-11 items-center justify-center rounded-full border border-ice bg-green text-ice hover:bg-smoke disabled:opacity-40"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-current/35 bg-transparent text-current hover:bg-current/8 disabled:opacity-40"
             >
               <ArrowLeft className="size-5" />
             </button>
@@ -85,7 +86,7 @@ export function Gallery4({
               aria-label="Next"
               disabled={!canNext}
               onClick={() => api?.scrollNext()}
-              className="inline-flex size-11 items-center justify-center rounded-full border border-ice bg-green text-ice hover:bg-smoke disabled:opacity-40"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-current/35 bg-transparent text-current hover:bg-current/8 disabled:opacity-40"
             >
               <ArrowRight className="size-5" />
             </button>
@@ -101,7 +102,7 @@ export function Gallery4({
                     id={item.id}
                     href={item.href}
                     prefetch={false}
-                    className="hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green hover:border-ice focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice"
+                    className={interactiveCardClass}
                   >
                     <PhotoPlaceholder alt={item.title} />
                     <div className="flex flex-1 flex-col p-6">

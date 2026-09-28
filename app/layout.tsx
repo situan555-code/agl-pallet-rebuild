@@ -8,6 +8,8 @@ import { OrganizationJsonLd } from "@/components/JsonLd";
 import { DeferredChrome } from "@/components/DeferredChrome";
 import { isVercelAppHost } from "@/lib/host";
 import { getSiteUrl } from "@/lib/site-url";
+import { pageField } from "@/lib/page-field";
+import { cn } from "@/lib/utils";
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata: Metadata = {
@@ -56,18 +58,24 @@ export const viewport: Viewport = {
   themeColor: "#1F2A1F",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const field = pageField((await headers()).get("x-pathname"));
   return (
-    <html lang="en" className={`${inter.variable} ${anton.variable}`}>
-      <body>
+    <html lang="en" className={`${inter.variable} ${anton.variable}`} data-field={field}>
+      <body
+        className={cn(
+          field === "light" && "surface-light",
+          field === "light" ? "bg-bone text-moss" : "bg-moss text-bone",
+        )}
+      >
         <OrganizationJsonLd />
-        <Header />
+        <Header field={field} />
         {children}
-        <Footer />
+        <Footer field={field} />
         <DeferredChrome />
       </body>
     </html>

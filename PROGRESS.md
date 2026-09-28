@@ -45,3 +45,4 @@ H2/H5 already on prod. H3: static gutter beams after LCP dropped them. Second ve
 H3 animation loads after window load and within one viewport. Verify passed (home 96 / 2790ms). Merged to main. Live round 2: highs and mediums PASS.
 H4 mobile video: 16:9 card fully on 390; MP4 SAR uses object-fill. Verify passed (home 97 / 2562ms). Merged to main.
 PH: shared bone-grain photo slot on cards and empty figures. Verify passed (home 99 / 2263ms). Merged to main.
+OF: one field — moss sell pages, bone reading pages, inverted accents. Inset color slabs removed.

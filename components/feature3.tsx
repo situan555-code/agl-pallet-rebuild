@@ -54,7 +54,7 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
       className={cn(
         "py-8",
         index === 0 ? "md:pr-10" : index === count - 1 ? "md:pl-10" : "md:px-10",
-        index > 0 && "border-t border-brand-green/20 md:border-l md:border-t-0"
+        index > 0 && "border-t border-current/15 md:border-l md:border-t-0"
       )}
     >
       {item.icon ? <IconTile icon={item.icon} /> : null}
@@ -67,7 +67,7 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
 // With href, the title becomes the link (editorial list row, no box).
 function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
-    <div id={item.id} className="group scroll-mt-24 border-t border-brand-green/15 pb-4 pt-8">
+    <div id={item.id} className="group scroll-mt-24 border-t border-current/15 pb-4 pt-8">
       {item.eyebrow && (
         <p className="mb-3 text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
       )}
@@ -104,8 +104,8 @@ function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHead
     <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
       <CardMedia numeral={item.eyebrow} alt={item.title} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
-        <Heading className="text-[22px] font-semibold leading-snug text-pretty text-bone">{item.title}</Heading>
-        <p className="mt-5 text-body text-bone/85">{item.description}</p>
+        <Heading className="text-[22px] font-semibold leading-snug text-pretty text-current">{item.title}</Heading>
+        <p className="mt-5 text-body text-current/85">{item.description}</p>
       </div>
     </InteractiveCard>
   );
@@ -128,7 +128,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
         <Heading className={cn("text-[22px] font-semibold leading-snug text-pretty text-current", item.eyebrow && "mt-3")}>
           {item.title}
         </Heading>
-        {item.description && <p className="mt-5 text-body text-bone/85">{item.description}</p>}
+        {item.description && <p className="mt-5 text-body text-current/85">{item.description}</p>}
         {item.cta && (
           <p className="mt-auto pt-8 text-body font-semibold text-ice">
             <span className="inline-flex items-center gap-2">

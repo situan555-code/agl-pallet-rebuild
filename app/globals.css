@@ -286,6 +286,11 @@
     @apply bg-moss text-bone font-sans text-body;
   }
 
+  html[data-field="light"] {
+    --color-ice: #1f2a1f;
+    --color-gray: #2e342f;
+  }
+
   h1,
   h2,
   h3,
@@ -330,7 +335,7 @@
     /* Dark default — moss ground, bone text, smoke cards, ice rings */
     --background: #131913;
     --foreground: #ece8df;
-    --card: #2e342f;
+    --card: #131913;
     --card-foreground: #ece8df;
     --popover: #2e342f;
     --popover-foreground: #ece8df;
@@ -427,6 +432,8 @@ p.text-eyebrow > span[aria-hidden] {
 }
 
 .nav-frame-inner {
+  --nav-scrolled-bg: rgb(19 25 19 / 0.85);
+  --nav-scrolled-border: #2e342f;
   border-color: transparent;
   background: transparent;
   padding-top: 0.75rem;
@@ -434,9 +441,14 @@ p.text-eyebrow > span[aria-hidden] {
   box-shadow: none;
 }
 
+html[data-field="light"] .nav-frame-inner {
+  --nav-scrolled-bg: rgb(236 232 223 / 0.92);
+  --nav-scrolled-border: #aeb5ae;
+}
+
 .nav-frame-inner:has([data-nav-menu-trigger][aria-expanded="true"]) {
-  border-color: #2e342f;
-  background: rgb(19 25 19 / 0.85);
+  border-color: var(--nav-scrolled-border);
+  background: var(--nav-scrolled-bg);
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   box-shadow: var(--shadow-md);
@@ -465,8 +477,8 @@ p.text-eyebrow > span[aria-hidden] {
 
 @keyframes nav-frame-inner {
   to {
-    border-color: #2e342f;
-    background: rgb(19 25 19 / 0.85);
+    border-color: var(--nav-scrolled-border);
+    background: var(--nav-scrolled-bg);
     padding-top: 0.625rem;
     padding-bottom: 0.625rem;
     box-shadow: var(--shadow-md);

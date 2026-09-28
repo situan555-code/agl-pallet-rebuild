@@ -6,6 +6,7 @@
 import Link from "next/link";
 import type { Gallery4Props } from "@/components/gallery4";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { interactiveCardClass } from "@/components/InteractiveCard";
 import { containerClass } from "@/components/Container";
 import { WhenNear } from "@/components/home/WhenNear";
 import { cn } from "@/lib/utils";
@@ -16,7 +17,7 @@ function load() {
 
 function GalleryPlaceholder({ eyebrow, title, description, items, className }: Gallery4Props) {
   return (
-    <section className={cn("section-y scroll-mt-24 overflow-hidden bg-moss text-bone", className)}>
+    <section className={cn("section-y scroll-mt-24 overflow-hidden", className)}>
       <div className={containerClass}>
         <div className="mb-8 flex flex-col gap-6 nav:mb-10 nav:flex-row nav:items-end nav:justify-between">
           <div className="max-w-2xl">
@@ -36,11 +37,11 @@ function GalleryPlaceholder({ eyebrow, title, description, items, className }: G
           <div className="flex gap-2">
             <span
               aria-hidden
-              className="inline-flex size-11 items-center justify-center rounded-full border border-ice bg-green"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-current/35 bg-transparent"
             />
             <span
               aria-hidden
-              className="inline-flex size-11 items-center justify-center rounded-full border border-ice bg-green"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-current/35 bg-transparent"
             />
           </div>
         </div>
@@ -57,7 +58,7 @@ function GalleryPlaceholder({ eyebrow, title, description, items, className }: G
                       id={item.id}
                       href={item.href}
                       prefetch={false}
-                      className="hover-lift group flex h-full flex-col overflow-hidden rounded-card border border-smoke bg-green hover:border-ice focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice"
+                      className={interactiveCardClass}
                     >
                       <PhotoPlaceholder alt={item.title} />
                       <div className="flex flex-1 flex-col p-6">

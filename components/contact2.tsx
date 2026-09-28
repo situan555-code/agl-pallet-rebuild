@@ -3,12 +3,11 @@
 // react-hook-form/zod form (which only console.logs) is replaced by a
 // children slot so pages pass the working components/Form.tsx (FormSubmit /
 // unresolved-destination handling). Demo copy, web link, and green-500
-// success styling removed; runs on brand green because Form.tsx is styled
-// for a dark ground.
+// success styling removed. Form fields inherit the page field.
 import type { ReactNode } from "react";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { containerClass } from "@/components/Container";
 import { CopyValue } from "@/components/CopyValue";
 
 export interface Contact2Method {
@@ -49,8 +48,8 @@ const Contact2 = ({
 }: Contact2Props) => {
   const Title = titleAs;
   return (
-    <section id={id} className={cn("section-y scroll-mt-24 bg-moss", insetOuterClass, className)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "bg-green py-16 text-bone nav:py-20")}>
+    <section id={id} className={cn("section-y scroll-mt-24", className)}>
+      <div className={containerClass}>
       <div className="flex flex-col gap-12 nav:flex-row nav:gap-16">
         <div className="flex flex-col gap-10 nav:sticky nav:top-28 nav:w-5/12 nav:self-start">
           <div className="flex flex-col">
@@ -63,16 +62,16 @@ const Contact2 = ({
             {title && (
               <Title className={cn("mt-3", titleAs === "h1" ? "text-display-1" : "text-display-2")}>{title}</Title>
             )}
-            {description && <p className="prose-measure mt-5 text-body text-bone/85">{description}</p>}
+            {description && <p className="prose-measure mt-5 text-body text-current/85">{description}</p>}
           </div>
           {methods && methods.length > 0 && (
-            <ul className="flex flex-col border-t border-bone/20">
+            <ul className="flex flex-col border-t border-current/15">
               {methods.map((method) => {
                 const Icon = icons[method.kind];
                 return (
-                  <li key={method.label} className="border-b border-bone/20">
+                  <li key={method.label} className="border-b border-current/15">
                     <div className="flex items-center gap-4 py-5">
-                      <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-bone/70" />
+                      <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-current/70" />
                       <CopyValue value={method.value} href={method.href} label={method.label} />
                     </div>
                   </li>
@@ -83,7 +82,7 @@ const Contact2 = ({
           {notes && notes.length > 0 && (
             <div className="space-y-2">
               {notes.map((note) => (
-                <p key={note} className="text-body text-bone/85">
+                <p key={note} className="text-body text-current/85">
                   {note}
                 </p>
               ))}

@@ -10,31 +10,35 @@ import { NavFrame } from "@/components/NavFrame";
 import { SearchTrigger } from "@/components/SearchTrigger";
 import type { NavItem } from "@/components/MobileNav";
 import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
+import type { PageField } from "@/lib/page-field";
 
-const LIGHT_LOGO = site.logo;
+const LOGO = {
+  dark: { src: "/assets/agl_pallet_logo-light.svg", width: 65, height: 29, alt: site.logo.alt },
+  light: { src: "/assets/agl_pallet_logo-dark.svg", width: 65, height: 29, alt: site.logo.alt },
+};
 
 function desktopChildren(item: NavItem) {
   return (item.children ?? []).filter((child) => !/ispm-15/i.test(child.href + child.label));
 }
 
-const itemClass =
-  "inline-flex h-8 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-semibold text-bone hover:bg-smoke focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ice";
-
-export function Header() {
+export function Header({ field = "dark" }: { field?: PageField }) {
   const nav = site.nav as NavItem[];
+  const logo = LOGO[field];
+  const itemClass =
+    "inline-flex h-8 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-semibold text-current hover:bg-current/8 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
   return (
-    <NavFrame>
+    <NavFrame className={field === "light" ? "text-moss" : "text-bone"}>
       <Link
         href="/"
         prefetch={false}
         className="shrink-0 border-0 bg-transparent shadow-none ring-0 outline-none hover:bg-transparent hover:ring-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ice"
       >
         <Image
-          src={LIGHT_LOGO.src}
-          width={65}
-          height={29}
-          alt={LIGHT_LOGO.alt}
+          src={logo.src}
+          width={logo.width}
+          height={logo.height}
+          alt={logo.alt}
           className="h-[29px] w-auto border-0 bg-transparent shadow-none ring-0 outline-none"
         />
       </Link>
@@ -69,14 +73,14 @@ export function Header() {
                 >
                   <div
                     className={cn(
-                      "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-card border border-smoke bg-green p-3 text-bone shadow-lg",
+                      "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-card border border-current/15 bg-background p-3 text-current shadow-lg",
                       isResources ? "w-[min(44rem,calc(100vw-3rem))]" : "w-[18rem]"
                     )}
                   >
                     <Link
                       href={item.href}
                       prefetch={false}
-                      className="mb-2 block rounded-input border-b border-smoke p-3 text-sm font-semibold hover:bg-smoke/60"
+                      className="mb-2 block rounded-input border-b border-current/15 p-3 text-sm font-semibold hover:bg-current/8"
                     >
                       {item.overviewLabel ?? item.label}
                     </Link>
@@ -85,7 +89,7 @@ export function Header() {
                         {groups.map((group) =>
                           group.items.length ? (
                             <div key={group.name}>
-                              <p className="px-3 text-eyebrow font-semibold uppercase tracking-wide text-ice">
+                              <p className="px-3 text-eyebrow font-semibold uppercase tracking-wide text-current/70">
                                 {group.name}
                               </p>
                               <ul className="mt-1">
@@ -94,7 +98,7 @@ export function Header() {
                                     <Link
                                       href={child.href}
                                       prefetch={false}
-                                      className="block rounded-input p-2 text-sm font-medium leading-snug hover:bg-smoke/60"
+                                      className="block rounded-input p-2 text-sm font-medium leading-snug hover:bg-current/8"
                                     >
                                       {child.label}
                                     </Link>
@@ -112,7 +116,7 @@ export function Header() {
                             <Link
                               href={child.href}
                               prefetch={false}
-                              className="block rounded-input p-3 text-sm font-medium leading-snug hover:bg-smoke/60"
+                              className="block rounded-input p-3 text-sm font-medium leading-snug hover:bg-current/8"
                             >
                               {child.label}
                             </Link>
@@ -124,7 +128,7 @@ export function Header() {
                       <Link
                         href={featured.href}
                         prefetch={false}
-                        className="mt-3 block rounded-card border border-ice/30 bg-moss p-4 text-sm font-semibold hover:bg-smoke"
+                        className="mt-3 block rounded-card border border-current/20 bg-transparent p-4 text-sm font-semibold hover:bg-current/8"
                       >
                         {featured.label}
                       </Link>
@@ -138,13 +142,13 @@ export function Header() {
       </nav>
 
       <div className="hidden items-center gap-2 xl:flex">
-        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-gray/40 px-3 text-nav-link font-semibold text-bone hover:bg-smoke" />
+        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current hover:bg-current/8" />
         <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
       </div>
 
       <div className="flex items-center gap-2 xl:hidden">
-        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-gray/40 px-3 text-nav-link font-semibold text-bone" />
-        <HeaderMenu nav={nav} logo={LIGHT_LOGO} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
+        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current" />
+        <HeaderMenu nav={nav} logo={logo} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
       </div>
     </NavFrame>
   );

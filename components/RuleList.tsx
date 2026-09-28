@@ -21,9 +21,9 @@ function RowInner({
 }) {
   const body = stripScaffolding(item.body);
   const titleClass =
-    "font-display text-display-row uppercase text-current transition-colors group-hover:text-bone group-focus-within:text-bone";
+    "font-display text-display-row uppercase text-current transition-colors group-hover:text-ice group-focus-within:text-ice";
   const bodyClass =
-    "text-body text-current/70 transition-colors group-hover:text-bone group-focus-within:text-bone";
+    "text-body text-current/70 transition-colors group-hover:text-current group-focus-within:text-current";
 
   if (layout === "industries") {
     return (
@@ -40,13 +40,13 @@ function RowInner({
         <h2 className={titleClass}>{item.title}</h2>
         <p className={`mt-1 ${bodyClass}`}>{body}</p>
       </div>
-      <ArrowIcon className="h-6 w-6 shrink-0 text-current transition-transform duration-200 group-hover:text-bone group-focus-within:text-bone motion-safe:group-hover:translate-x-2 motion-safe:group-focus-within:translate-x-2" />
+      <ArrowIcon className="h-6 w-6 shrink-0 text-current transition-transform duration-200 group-hover:text-ice group-focus-within:text-ice motion-safe:group-hover:translate-x-2 motion-safe:group-focus-within:translate-x-2" />
     </div>
   );
 }
 
 const rowClass =
-  "peer group w-full border-t border-brand-green/15 transition-colors first:border-t-0 hover:border-transparent hover:bg-brand-green focus-within:border-transparent focus-within:bg-brand-green peer-hover:border-transparent peer-focus-within:border-transparent";
+  "peer group w-full border-t border-current/15 transition-colors first:border-t-0 hover:border-transparent hover:bg-current/8 focus-within:border-transparent focus-within:bg-current/8 peer-hover:border-transparent peer-focus-within:border-transparent";
 
 export function RuleList({
   items,

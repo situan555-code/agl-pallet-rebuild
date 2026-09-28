@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { insetOuterClass, insetPadClass } from "@/components/Container";
 
-export function NavFrame({ children }: { children: ReactNode }) {
+export function NavFrame({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <header
       className={cn(
@@ -12,8 +12,9 @@ export function NavFrame({ children }: { children: ReactNode }) {
     >
       <div
         className={cn(
-          "nav-frame-inner flex w-full max-w-[1280px] items-center justify-between gap-2 rounded-full border text-bone",
+          "nav-frame-inner flex w-full max-w-[1280px] items-center justify-between gap-2 rounded-full border",
           insetPadClass,
+          className,
         )}
       >
         {children}

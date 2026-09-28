@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## One field (2026-09-27)
+
+Sell pages are one moss field. Reading pages (resources, FAQ, forms, pledge, contact) are one bone field. Header and footer follow the page. Green `#1F2A1F` is no longer a section fill. Cards match the field (hairline, not a second slab). Accents flip: ice on moss, green/moss on bone. Primary button is bone-on-moss and moss-on-bone. `--card` token is moss, not smoke. No user theme toggle. Home video stays full-bleed.
+
 ## LCP headroom / static HTML (2026-09-26)
 
 Tried dropping `headers()` from root `generateMetadata` so routes could prerender. The schema gate requires a `robots` meta noindex on `*.vercel.app` and forbids it on aglpallet.com, so the host read stayed. `proxy.ts` still sets `X-Robots-Tag`. `/request-a-quote/` no longer uses `force-dynamic`; `CONTACT_TO_EMAIL` is read at build time with the same content/sales fallbacks.

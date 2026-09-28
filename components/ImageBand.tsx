@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { cn } from "@/lib/utils";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { insetPadClass, insetSurfaceClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { getBlurDataURL } from "@/lib/blur";
 
@@ -28,8 +28,8 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section ref={ref} className={cn("section-rhythm scroll-mt-24 bg-moss", insetOuterClass, className)}>
-      <div className={cn(insetSurfaceClass, insetPadClass, "relative isolate min-h-96 overflow-hidden nav:min-h-120")}>
+    <section ref={ref} className={cn("section-rhythm scroll-mt-24", className)}>
+      <div className={cn(insetSurfaceClass, "relative isolate min-h-96 overflow-hidden rounded-section nav:min-h-120")}>
         <motion.div className="absolute inset-0" style={reduce ? undefined : { y }}>
           <Image
             src={image.src}
@@ -47,7 +47,7 @@ export function ImageBand({ eyebrow, heading, body, image, cta, className }: Ima
           aria-hidden="true"
           className="absolute inset-0 bg-linear-to-r from-moss/70 via-moss/25 to-transparent"
         />
-        <div className="relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20">
+        <div className={cn(insetPadClass, "relative z-10 flex min-h-96 items-center py-16 text-bone nav:min-h-120 nav:py-20")}>
           <div className="max-w-xl">
             {eyebrow && (
               <p className="text-eyebrow font-semibold uppercase tracking-wide text-ice">

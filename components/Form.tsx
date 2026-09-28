@@ -191,7 +191,7 @@ export function Form({
       <input type="hidden" name="source" value={source} />
 
       {missing.length > 0 && (
-        <div className="mb-6 rounded-input border border-gray/25 bg-smoke p-4 text-bone" role="alert">
+        <div className="mb-6 rounded-input border border-current/25 bg-transparent p-4 text-foreground" role="alert">
           <p className="flex items-center gap-2 font-semibold">
             <AlertCircle className="size-4 shrink-0 text-ice" aria-hidden />
             Please, fill in the following fields:
@@ -205,23 +205,23 @@ export function Form({
       )}
 
       {status === "success" && (
-        <p className="mb-6 rounded-input bg-bone/10 p-4 text-bone">{successMessage}</p>
+        <p className="mb-6 rounded-input bg-current/8 p-4 text-foreground">{successMessage}</p>
       )}
 
       {destination.kind === "unresolved" && !hideDestinationNotice && (
-        <p className="mb-6 rounded-input border border-bone/30 bg-bone/10 p-4 text-bone">
+        <p className="mb-6 rounded-input border border-current/25 bg-current/8 p-4 text-foreground">
           {UNRESOLVED_FORM_NOTICE}
         </p>
       )}
 
       {status === "blocked" && (
-        <p className="mb-6 rounded-input bg-bone/10 p-4 text-bone">
+        <p className="mb-6 rounded-input bg-current/8 p-4 text-foreground">
           Not sent — the destination above isn&apos;t configured yet. Call {FAILURE_PHONE}.
         </p>
       )}
 
       {sendError && (
-        <p className="mb-6 flex items-start gap-2 rounded-input border border-gray/25 bg-smoke p-4 text-bone" role="alert">
+        <p className="mb-6 flex items-start gap-2 rounded-input border border-current/25 bg-transparent p-4 text-foreground" role="alert">
           <AlertCircle className="mt-0.5 size-4 shrink-0 text-ice" aria-hidden />
           <span>
             {sendError.includes(FAILURE_PHONE) ? sendError : `${sendError} Call ${FAILURE_PHONE}.`}
@@ -241,7 +241,7 @@ export function Form({
                 <span
                   className={cn(
                     "mt-2 block text-[12px] font-semibold uppercase tracking-[0.08em]",
-                    i === step ? "text-bone" : "text-gray"
+                    i === step ? "text-foreground" : "text-gray"
                   )}
                 >
                   {s.label}
@@ -256,8 +256,8 @@ export function Form({
         {fields.map((field) => {
           const isInvalid = missing.includes(field.name);
           const inputClass = cn(
-            "w-full rounded-input border border-gray/25 bg-smoke px-4 text-body text-bone outline-hidden",
-            "focus-visible:border-ice focus-visible:ring-2 focus-visible:ring-ice",
+            "w-full rounded-input border border-current/25 bg-background px-4 text-body text-foreground outline-hidden",
+            "focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring",
             field.type === "textarea" ? "min-h-32 py-3" : "h-[52px]",
             isInvalid && "border-ice"
           );
@@ -269,7 +269,7 @@ export function Form({
 
           return (
             <label key={field.name} className={cn(wrapperClass, hidden && "hidden")}>
-              <span className="mb-2 block text-body font-semibold text-bone">
+              <span className="mb-2 block text-body font-semibold text-foreground">
                 {field.label}
                 {field.required ? null : <span className="font-normal text-gray"> (optional)</span>}
               </span>

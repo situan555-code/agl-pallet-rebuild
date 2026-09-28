@@ -28,7 +28,7 @@ export function SearchDialog({
     <div className="fixed inset-0 z-80">
       <button
         type="button"
-        className="absolute inset-0 bg-moss/70"
+        className="absolute inset-0 bg-foreground/40"
         aria-label="Close search"
         onClick={() => onOpenChange(false)}
       />
@@ -36,14 +36,14 @@ export function SearchDialog({
         role="dialog"
         aria-modal="true"
         aria-label="Search"
-        className="relative mx-auto mt-[12vh] w-[min(40rem,calc(100vw-2rem))] overflow-hidden rounded-card border border-smoke bg-green text-bone shadow-lg"
+        className="relative mx-auto mt-[12vh] w-[min(40rem,calc(100vw-2rem))] overflow-hidden rounded-card border border-current/15 bg-background text-foreground shadow-lg"
       >
         <input
           autoFocus
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search guides and glossary"
-          className="w-full border-b border-smoke bg-transparent px-4 py-3 text-body text-bone outline-none placeholder:text-gray"
+          className="w-full border-b border-current/15 bg-transparent px-4 py-3 text-body text-foreground outline-none placeholder:text-gray"
         />
         <ul className="max-h-80 overflow-y-auto p-2">
           {results.length === 0 ? (

@@ -41,7 +41,9 @@ export function proxy(request: NextRequest) {
     return withHostRobots(NextResponse.redirect(new URL(`${pathname}/`, request.url), 308), request);
   }
 
-  return withHostRobots(NextResponse.next(), request);
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+  return withHostRobots(NextResponse.next({ request: { headers: requestHeaders } }), request);
 }
 
 export const config = {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { insetOuterClass, insetPadClass, insetSurfaceClass } from "@/components/Container";
+import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { getBlurDataURL } from "@/lib/blur";
 
@@ -29,24 +29,11 @@ export function PageOpener({
   const blur = image ? getBlurDataURL(image.src) : undefined;
 
   return (
-    <section
-      className={cn(
-        "scroll-mt-24 pb-16 pt-36",
-        variant === "light-image" && cn("surface-light bg-bone text-moss", insetOuterClass),
-        variant === "light-text" && cn("surface-light bg-bone text-moss", insetOuterClass),
-        variant === "inset-dark" && cn("bg-moss pt-28", insetOuterClass)
-      )}
-    >
-      <div
-        className={cn(
-          insetSurfaceClass,
-          insetPadClass,
-          dark && "bg-green py-16 text-bone"
-        )}
-      >
+    <section className="scroll-mt-24 pb-16 pt-36">
+      <div className={cn(containerClass)}>
         {breadcrumb && breadcrumb.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-10">
-            <ol className={cn("flex flex-wrap items-center gap-2 text-link", dark ? "text-bone/75" : "text-moss/70")}>
+            <ol className="flex flex-wrap items-center gap-2 text-link text-current/70">
               {breadcrumb.map((item, i) => (
                 <li key={`${item.name}-${i}`} className="contents">
                   {i > 0 && <span aria-hidden>/</span>}
