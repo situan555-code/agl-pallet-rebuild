@@ -289,6 +289,21 @@
   html[data-field="light"] {
     --color-ice: #1f2a1f;
     --color-gray: #2e342f;
+    --background: #ece8df;
+    --foreground: #131913;
+    --card: #ece8df;
+    --card-foreground: #131913;
+    --popover: #ece8df;
+    --popover-foreground: #131913;
+    --secondary: #dde9e2;
+    --secondary-foreground: #131913;
+    --muted: #dde9e2;
+    --muted-foreground: #2e342f;
+    --accent: #dde9e2;
+    --accent-foreground: #131913;
+    --border: #aeb5ae;
+    --input: #aeb5ae;
+    --ring: #1f2a1f;
   }
 
   h1,

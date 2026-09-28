@@ -38,7 +38,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
         />
       </label>
 
-      <nav aria-label="Glossary A to Z" className="sticky top-[75px] z-10 -mx-6 mt-10 border-y border-current/15 bg-background px-6 py-3 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+      <nav aria-label="Glossary A to Z" className="sticky top-[75px] z-10 -mx-6 mt-10 border-y border-current/15 bg-transparent px-6 py-3 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
         <ul className="flex flex-wrap gap-x-1 gap-y-1">
           {byLetter.map(({ letter, terms: list }) => (
             <li key={letter}>
@@ -46,15 +46,15 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
                 list.length > 0 ? (
                   <a
                     href={`#letter-${letter}`}
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-input text-sm font-semibold text-ice hover:bg-current/8"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-input text-sm font-semibold text-current hover:bg-current/8"
                   >
                     {letter}
                   </a>
                 ) : (
-                  <span className="inline-flex h-8 w-8 items-center justify-center text-sm text-gray">{letter}</span>
+                  <span className="inline-flex h-8 w-8 items-center justify-center text-sm text-current/40">{letter}</span>
                 )
               ) : (
-                <span aria-disabled className="inline-flex h-8 w-8 items-center justify-center text-sm text-smoke">
+                <span aria-disabled className="inline-flex h-8 w-8 items-center justify-center text-sm text-current/40">
                   {letter}
                 </span>
               )}
@@ -73,7 +73,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
               aria-labelledby={`letter-${letter}-h`}
               className="scroll-mt-40 border-t border-smoke py-10 nav:grid nav:grid-cols-12 nav:gap-16"
             >
-              <h2 id={`letter-${letter}-h`} className="text-display-numeral text-ice nav:col-span-3">
+              <h2 id={`letter-${letter}-h`} className="text-display-numeral text-current nav:col-span-3">
                 {letter}
               </h2>
               <dl className="mt-6 space-y-8 nav:col-span-8 nav:col-start-5 nav:mt-0">
@@ -88,7 +88,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
                           <Link
                             href={t.link}
                             prefetch={false}
-                            className="font-semibold text-ice underline underline-offset-4"
+                            className="font-semibold text-current underline underline-offset-4"
                           >
                             Read the guide
                             <span className="sr-only">: {getHubPillar(t.link.split("/")[2])?.title}</span>

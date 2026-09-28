@@ -6,6 +6,7 @@ import site from "@/content/site.json";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
 import { HeaderMenu } from "@/components/HeaderMenu";
+import { DesktopNav } from "@/components/DesktopNav";
 import { NavFrame } from "@/components/NavFrame";
 import { SearchTrigger } from "@/components/SearchTrigger";
 import type { NavItem } from "@/components/MobileNav";
@@ -48,8 +49,7 @@ export function Header() {
         />
       </Link>
 
-      <nav className="hidden min-w-0 xl:block" aria-label="Main">
-        <ul className="flex items-center gap-0.5">
+      <DesktopNav>
           {nav.map((item, index) => {
             const children = desktopChildren(item);
             const alignEnd = index >= nav.length / 2;
@@ -72,13 +72,13 @@ export function Header() {
                 </Link>
                 <div
                   className={cn(
-                    "invisible absolute top-full z-50 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
+                    "pointer-events-none invisible absolute top-full z-50 pt-3 opacity-0 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100",
                     alignEnd ? "right-0" : "left-0"
                   )}
                 >
                   <div
                     className={cn(
-                      "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-card border border-current/15 bg-background p-3 text-current shadow-lg",
+                      "max-h-[calc(100vh-6rem)] overflow-y-auto rounded-card border border-current/15 bg-moss p-3 text-bone shadow-lg in-[.surface-light]:bg-bone in-[.surface-light]:text-moss",
                       isResources ? "w-[min(44rem,calc(100vw-3rem))]" : "w-[18rem]"
                     )}
                   >
@@ -143,8 +143,7 @@ export function Header() {
               </li>
             );
           })}
-        </ul>
-      </nav>
+      </DesktopNav>
 
       <div className="hidden items-center gap-2 xl:flex">
         <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current hover:bg-current/8" />
