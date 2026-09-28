@@ -4,17 +4,27 @@
 // (ghost icon button, sun/moon). Icons follow html[data-field] so they
 // match the blocking boot script without a hydration flash.
 import { Moon, Sun } from "lucide-react";
+import { applyTheme, THEME_STORAGE_KEY, type Theme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { useTheme } from "@/components/ThemeProvider";
+
+function nextTheme(): Theme {
+  return document.documentElement.dataset.field === "light" ? "dark" : "light";
+}
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const { toggleTheme } = useTheme();
-
   return (
     <button
       type="button"
-      onClick={toggleTheme}
+      onClick={() => {
+        const theme = nextTheme();
+        applyTheme(theme);
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, theme);
+        } catch {
+          /* private mode */
+        }
+      }}
       className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }), "size-9", className)}
       aria-label="Toggle color theme"
     >

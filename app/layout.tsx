@@ -4,7 +4,6 @@ import "./globals.css";
 import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { DeferredChrome } from "@/components/DeferredChrome";
 import { isVercelAppHost } from "@/lib/host";
@@ -68,12 +67,10 @@ export default function RootLayout({
       <body className="bg-moss text-bone" suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
         <OrganizationJsonLd />
-        <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-          <DeferredChrome />
-        </ThemeProvider>
+        <Header />
+        {children}
+        <Footer />
+        <DeferredChrome />
       </body>
     </html>
   );
