@@ -34,6 +34,8 @@ export default function WhoWeAre() {
               fill
               quality={60}
               sizes="(min-width: 980px) 38vw, calc(100vw - 80px)"
+              loading="lazy"
+              fetchPriority="low"
               className="object-cover"
             />
           </div>

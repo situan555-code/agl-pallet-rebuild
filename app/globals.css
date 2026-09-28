@@ -288,6 +288,7 @@
 
   html[data-field="light"] {
     --color-ice: #1f2a1f;
+    --color-gray: #2e342f;
   }
 
   h1,
