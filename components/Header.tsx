@@ -153,7 +153,7 @@ export function Header() {
 
       <div className="flex items-center gap-2 xl:hidden">
         <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current" />
-        <HeaderMenu nav={nav} logo={logo} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
+        <HeaderMenu nav={nav} logo={LOGO.dark} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
       </div>
     </NavFrame>
   );

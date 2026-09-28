@@ -42,7 +42,8 @@ export default function MobileNavSheet({
       >
         <SheetHeader className="px-6 py-5">
           <SheetTitle className="text-current">
-            <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
+            <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} className="logo-on-dark" />
+            <Image src="/assets/agl_pallet_logo-dark.svg" width={logo.width} height={logo.height} alt="" className="logo-on-light" />
           </SheetTitle>
         </SheetHeader>
         <nav aria-label="Mobile">
