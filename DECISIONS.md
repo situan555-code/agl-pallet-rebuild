@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Hero video scroll runway (2026-09-28)
+
+The empty moss viewport was a 100svh `.hero-spacer` after a full-size layout frame, with sticky `top` centering the video in the viewport and grow mapped to `0–100svh`. Spacer is now 28svh, grow is `0–70svh`, sticky top is 5.25rem, and the 01–03 cards sit ~80px under the frame (`md:pb-16` + 16px). Mobile stays a static 16:9 card.
+
 ## Theme toggle (2026-09-28)
 
 Owner replaced the sell-dark / read-light split. One user-controlled theme for every route. Default is dark (moss field). Light is one bone field. Choice persists in `localStorage` key `agl-theme` and `html` `data-field` plus `dark`/`light` class. Blocking boot script prevents a flash. Ghost sun/moon control in the header (shadcnblocks icon toggle 8, adapted). Ghost is for this control only; page CTAs stay primary/secondary.

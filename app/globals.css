@@ -520,10 +520,10 @@ html[data-field="dark"] .logo-on-light {
   }
 }
 
-/* Desktop hero card grows over the first viewport of scroll, matching the
-   old scroll progress (scrollY / innerHeight). view() does not advance while
-   the card is position: sticky, so the timeline is the root scroller.
-   Browsers without scroll-timeline support keep the static full-size card. */
+/* Desktop hero card grows over the first ~70svh of root scroll. A 100svh
+   spacer plus a vertically centered sticky top used to park the video in a
+   full viewport of moss after the animation had already finished.
+   Browsers without scroll-timeline keep the static full-size card. */
 .hero-spacer {
   height: 0;
 }
@@ -531,23 +531,29 @@ html[data-field="dark"] .logo-on-light {
 @supports (animation-timeline: scroll()) {
   @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
     .hero-spacer {
-      height: 100svh;
+      height: 28svh;
     }
 
     .hero-frame-slot {
       position: sticky;
-      top: calc(50svh - 0.28125 * min(100vw - 96px, 1184px));
+      top: 5.25rem;
       container-type: inline-size;
     }
 
     .hero-frame {
-      --hero-start: 0.56;
+      --hero-start: 0.55;
       transform-origin: center top;
       transform: scale(var(--hero-start));
-      border-radius: calc(28px / var(--hero-start));
+      border-radius: calc(22px / var(--hero-start));
       animation: hero-frame-grow linear both;
       animation-timeline: scroll(root block);
-      animation-range: 0% 100svh;
+      animation-range: 0 70svh;
+    }
+
+    .hero-next {
+      animation: hero-next-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
     }
   }
 }
@@ -555,11 +561,33 @@ html[data-field="dark"] .logo-on-light {
 @keyframes hero-frame-grow {
   from {
     transform: scale(var(--hero-start));
-    border-radius: calc(28px / var(--hero-start));
+    border-radius: calc(22px / var(--hero-start));
   }
   to {
     transform: scale(1);
-    border-radius: 20px;
+    border-radius: 14px;
+  }
+}
+
+@keyframes hero-next-in {
+  from {
+    opacity: 0.7;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-next {
+  padding-top: 8px;
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-next {
+    padding-top: 16px;
   }
 }
 
