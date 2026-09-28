@@ -9,6 +9,7 @@ import { HeaderMenu } from "@/components/HeaderMenu";
 import { DesktopNav } from "@/components/DesktopNav";
 import { NavFrame } from "@/components/NavFrame";
 import { SearchTrigger } from "@/components/SearchTrigger";
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { NavItem } from "@/components/MobileNav";
 import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
 
@@ -146,11 +147,13 @@ export function Header() {
       </DesktopNav>
 
       <div className="hidden items-center gap-2 xl:flex">
+        <ThemeToggle />
         <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current hover:bg-current/8" />
         <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
       </div>
 
       <div className="flex items-center gap-2 xl:hidden">
+        <ThemeToggle />
         <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current" />
         <HeaderMenu nav={nav} logo={LOGO.dark} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
       </div>

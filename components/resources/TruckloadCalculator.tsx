@@ -49,7 +49,7 @@ export function CalculatedCounts() {
   });
   return (
     <ArticleSection section={{ id: CALCULATED_TOC.id, heading: "Calculated counts, single-stacked" }}>
-      <p className="prose-measure mt-6 text-body text-ink/85">
+      <p className="prose-measure mt-6 text-body text-current/85">
         Counts below come from stated interior dimensions and the calculator&rsquo;s method, so they can be checked and reproduced. Floor
         columns are positions only. Interior height is listed because a high-cube container is taller than a standard container with the
         same floor, which changes the empty-pallet stack even when the floor count does not.
@@ -100,7 +100,7 @@ export function TruckloadCalculator({ params, path }: { params: Params; path: st
 
   return (
     <ArticleSection section={{ id: TRUCKLOAD_TOC.id, heading: "Pallets per truckload calculator" }}>
-      <p className="prose-measure mt-6 text-body text-ink/85">{TRUCKLOAD_APP_DESCRIPTION}</p>
+      <p className="prose-measure mt-6 text-body text-current/85">{TRUCKLOAD_APP_DESCRIPTION}</p>
       <CalcForm action={`${path}#truckload-results`} resetHref={`${path}#calculator`} label="Pallets per truckload calculator">
         <FieldGroup legend="Equipment">
           <SelectField name="eq" label="Trailer or container" value={eqId} options={equipment} wide />
@@ -122,7 +122,7 @@ export function TruckloadCalculator({ params, path }: { params: Params; path: st
           <NumberField name="pay" label="Payload limit" unit="lb" value={payload} min={1000} max={100000} />
         </FieldGroup>
       </CalcForm>
-      <p className="prose-measure mt-4 text-[14px] leading-relaxed text-ink/70">
+      <p className="prose-measure mt-4 text-[14px] leading-relaxed text-current/70">
         Custom dimensions apply only when “Custom” is selected. Preset: {eq.note}
       </p>
 

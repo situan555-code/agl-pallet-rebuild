@@ -27,7 +27,7 @@ export default function QuestionsIndexPage() {
         libraryLabel={questionCrumbs.resources}
       />
       <section className="pt-14 nav:pt-20">
-        <p className={`${containerClass} prose-measure text-body text-ink/85`}>
+        <p className={`${containerClass} prose-measure text-body text-current/85`}>
           <RichText text={questionIndex.intro} />
         </p>
       </section>

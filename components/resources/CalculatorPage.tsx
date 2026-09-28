@@ -111,7 +111,7 @@ export function ToolList() {
             >
               {t.title}
             </Link>
-            <p className="prose-measure mt-2 text-body text-ink/85">{t.summary}</p>
+            <p className="prose-measure mt-2 text-body text-current/85">{t.summary}</p>
           </li>
         ))}
       </ul>

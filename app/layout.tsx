@@ -4,13 +4,11 @@ import "./globals.css";
 import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { FieldProvider } from "@/components/FieldProvider";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { DeferredChrome } from "@/components/DeferredChrome";
 import { isVercelAppHost } from "@/lib/host";
 import { getSiteUrl } from "@/lib/site-url";
-import { pageField } from "@/lib/page-field";
-import { cn } from "@/lib/utils";
+import { THEME_BOOT_SCRIPT } from "@/lib/theme";
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata: Metadata = {
@@ -44,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 
   // Schema gate requires the robots meta (not only X-Robots-Tag) when Host is
-  // *.vercel.app, and forbids noindex when Host is aglpallet.com. headers()
+  // *.vercel.app, and forbids it when Host is aglpallet.com. headers()
   // keeps that host split; proxy.ts still sets the matching X-Robots-Tag.
   if (isVercelAppHost((await headers()).get("host"))) {
     metadata.robots = { index: false, follow: false };
@@ -56,30 +54,25 @@ export async function generateMetadata(): Promise<Metadata> {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1F2A1F",
+  themeColor: "#131913",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const field = pageField((await headers()).get("x-pathname"));
   return (
-    <html lang="en" className={`${inter.variable} ${anton.variable}`} data-field={field}>
-      <body
-        className={cn(
-          field === "light" && "surface-light",
-          field === "light" ? "bg-bone text-moss" : "bg-moss text-bone",
-        )}
-      >
+    <html lang="en" className={`${inter.variable} ${anton.variable} dark`} data-field="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+      </head>
+      <body className="bg-moss text-bone" suppressHydrationWarning>
         <OrganizationJsonLd />
-        <FieldProvider initialField={field}>
-          <Header />
-          {children}
-          <Footer />
-          <DeferredChrome />
-        </FieldProvider>
+        <Header />
+        {children}
+        <Footer />
+        <DeferredChrome />
       </body>
     </html>
   );

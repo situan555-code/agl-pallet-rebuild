@@ -27,13 +27,13 @@ export default function WhoWeAre() {
         heading={content.hero.heading}
         description={content.hero.paragraphs}
         image={
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
+          <div className="relative hidden aspect-4/3 w-full overflow-hidden rounded-card nav:block">
             <Image
               src="/assets/who_agl_is_sidepic.jpg"
               alt=""
               fill
               quality={60}
-              sizes="(min-width: 980px) 38vw, calc(100vw - 80px)"
+              sizes="(min-width: 980px) 38vw, 1px"
               loading="lazy"
               fetchPriority="low"
               className="object-cover"

@@ -66,17 +66,17 @@ function StampDiagram({ item }: { item: QuestionItem }) {
           </div>
           <div className="border-l border-brand-green/30 pl-4 sm:pl-6">
             <p className="font-display text-step-lg uppercase text-brand-green">{mark.facility}</p>
-            <p className="mt-1 text-[13px] text-ink/70">Country code and producer number</p>
+            <p className="mt-1 text-[13px] text-current/70">Country code and producer number</p>
             <p className="mt-4 font-display text-step-lg uppercase text-brand-green">{mark.treatment}</p>
-            <p className="mt-1 text-[13px] text-ink/70">Treatment code</p>
+            <p className="mt-1 text-[13px] text-current/70">Treatment code</p>
           </div>
         </div>
       </div>
       <figcaption className="mt-4">
-        <ol className="prose-measure list-decimal space-y-2 pl-5 text-body text-ink/85">
+        <ol className="prose-measure list-decimal space-y-2 pl-5 text-body text-current/85">
           {callouts.map((c) => (
             <li key={c.label} className="pl-1">
-              <span className="font-semibold text-ink">{c.label}. </span>
+              <span className="font-semibold text-current">{c.label}. </span>
               {c.text}
             </li>
           ))}
@@ -133,12 +133,12 @@ function SupportDiagram({ item }: { item: QuestionItem }) {
           <div key={panel.id} className="border-t border-brand-green/20 pt-4">
             <SupportSketch id={panel.id} />
             <h3 className="mt-4 text-step-lg text-current">{panel.title}</h3>
-            <p className="mt-2 text-body text-ink/85">{panel.support}</p>
+            <p className="mt-2 text-body text-current/85">{panel.support}</p>
             <p className="mt-2 text-[14px] font-semibold text-brand-green">{panel.capacity}</p>
           </div>
         ))}
       </div>
-      {item.asset.note && <figcaption className="prose-measure mt-4 text-[14px] leading-relaxed text-ink/70">{item.asset.note}</figcaption>}
+      {item.asset.note && <figcaption className="prose-measure mt-4 text-[14px] leading-relaxed text-current/70">{item.asset.note}</figcaption>}
     </figure>
   );
 }
@@ -165,7 +165,7 @@ function HeightDiagram({ item }: { item: QuestionItem }) {
               <div key={band.label} style={{ height: band.height }} className="border border-brand-green bg-brand-green/10" />
             ))}
           </div>
-          <p className="text-body text-ink/85">
+          <p className="text-body text-current/85">
             Example total <span className="font-semibold text-brand-green">{fmt(total, 2)} in</span>
           </p>
         </div>
@@ -175,7 +175,7 @@ function HeightDiagram({ item }: { item: QuestionItem }) {
               <dt className="text-[14px] font-semibold text-brand-green">
                 {band.label}: {band.detail}
               </dt>
-              <dd className="text-[14px] text-ink/70">
+              <dd className="text-[14px] text-current/70">
                 {band.label === "Stringer"
                   ? `Example stringer ${fractionIn(stringer.thickness)} × ${fractionIn(stringer.width)}, from the estimator's example list.`
                   : "Example deckboard thickness from that same list. One layer, not a stack of boards."}
@@ -184,13 +184,13 @@ function HeightDiagram({ item }: { item: QuestionItem }) {
           ))}
           {(item.asset.callouts ?? []).map((callout) => (
             <div key={callout.label}>
-              <dt className="text-[14px] font-semibold text-ink">{callout.label}</dt>
-              <dd className="text-[14px] leading-relaxed text-ink/75">{callout.text}</dd>
+              <dt className="text-[14px] font-semibold text-current">{callout.label}</dt>
+              <dd className="text-[14px] leading-relaxed text-current/75">{callout.text}</dd>
             </div>
           ))}
         </dl>
       </div>
-      {item.asset.note && <figcaption className="prose-measure mt-4 text-[14px] leading-relaxed text-ink/70">{item.asset.note}</figcaption>}
+      {item.asset.note && <figcaption className="prose-measure mt-4 text-[14px] leading-relaxed text-current/70">{item.asset.note}</figcaption>}
     </figure>
   );
 }
@@ -227,7 +227,7 @@ function EntryDiagram({ item }: { item: QuestionItem }) {
   if (!labels) throw new Error(`${item.slug} is missing entry labels`);
   return (
     <figure className="mt-6">
-      <p className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-ink/70">
+      <p className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-current/70">
         <span className="inline-flex items-center gap-2">
           <span className="block h-2.5 w-2.5 bg-brand-green" aria-hidden="true" />
           {labels.forklift}
@@ -242,7 +242,7 @@ function EntryDiagram({ item }: { item: QuestionItem }) {
           <div key={panel.id} className="border-t border-brand-green/20 pt-4">
             <EntrySketch panel={panel} />
             <h3 className="mt-4 text-step-lg text-current">{panel.title}</h3>
-            <dl className="mt-3 space-y-2 text-[14px] leading-snug text-ink/85">
+            <dl className="mt-3 space-y-2 text-[14px] leading-snug text-current/85">
               <div>
                 <dt className="font-semibold text-brand-green">{labels.forklift}</dt>
                 <dd>{panel.forklift}</dd>
@@ -259,7 +259,7 @@ function EntryDiagram({ item }: { item: QuestionItem }) {
           </div>
         ))}
       </div>
-      {item.asset.note && <figcaption className="prose-measure mt-4 text-[14px] leading-relaxed text-ink/70">{item.asset.note}</figcaption>}
+      {item.asset.note && <figcaption className="prose-measure mt-4 text-[14px] leading-relaxed text-current/70">{item.asset.note}</figcaption>}
     </figure>
   );
 }

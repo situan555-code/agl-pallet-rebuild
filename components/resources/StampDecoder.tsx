@@ -51,7 +51,7 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
 
       <div className="pb-20 pt-14 nav:pb-28 nav:pt-16">
         <div className={cn(containerClass, "nav:grid nav:grid-cols-12 nav:gap-16")}>
-          <div className="prose-measure space-y-4 text-body text-ink/85 nav:col-span-8 nav:col-start-5">
+          <div className="prose-measure space-y-4 text-body text-current/85 nav:col-span-8 nav:col-start-5">
             <p>{copy.intro}</p>
             <p>{copy.exampleNote}</p>
 
@@ -59,8 +59,8 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
               <PhotoPlaceholder className="rounded-card" />
               <figcaption className="mt-3 space-y-2">
                 <p className="text-[14px] font-semibold uppercase tracking-wide text-brand-green">{copy.photo.label}</p>
-                <p className="max-w-[48ch] text-body text-ink/80">{copy.photo.body}</p>
-                <p className="text-[14px] leading-relaxed text-ink/70">{copy.photo.caption}</p>
+                <p className="max-w-[48ch] text-body text-current/80">{copy.photo.body}</p>
+                <p className="text-[14px] leading-relaxed text-current/70">{copy.photo.caption}</p>
               </figcaption>
             </figure>
 
@@ -80,11 +80,11 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
                   aria-describedby={countryError ? "cc-help cc-error" : "cc-help"}
                   className={inputClass}
                 />
-                <p id="cc-help" className="mt-2 text-[14px] leading-relaxed text-ink/75">
+                <p id="cc-help" className="mt-2 text-[14px] leading-relaxed text-current/75">
                   <RichText text={fields.country} />
                 </p>
                 {countryError && (
-                  <p id="cc-error" role="alert" className="mt-2 border-l-2 border-brand-green pl-3 text-[14px] font-semibold leading-relaxed text-ink">
+                  <p id="cc-error" role="alert" className="mt-2 border-l-2 border-brand-green pl-3 text-[14px] font-semibold leading-relaxed text-current">
                     {countryError.message}
                   </p>
                 )}
@@ -105,11 +105,11 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
                   aria-describedby={producerError ? "producer-help producer-error" : "producer-help"}
                   className={inputClass}
                 />
-                <p id="producer-help" className="mt-2 text-[14px] leading-relaxed text-ink/75">
+                <p id="producer-help" className="mt-2 text-[14px] leading-relaxed text-current/75">
                   <RichText text={fields.producer} />
                 </p>
                 {producerError && (
-                  <p id="producer-error" role="alert" className="mt-2 border-l-2 border-brand-green pl-3 text-[14px] font-semibold leading-relaxed text-ink">
+                  <p id="producer-error" role="alert" className="mt-2 border-l-2 border-brand-green pl-3 text-[14px] font-semibold leading-relaxed text-current">
                     {producerError.message}
                   </p>
                 )}
@@ -134,18 +134,18 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
                     </option>
                   ))}
                 </select>
-                <p id="treatment-help" className="mt-2 text-[14px] leading-relaxed text-ink/75">
+                <p id="treatment-help" className="mt-2 text-[14px] leading-relaxed text-current/75">
                   <RichText text={fields.treatment} />
                 </p>
                 {treatmentError && (
-                  <p id="treatment-error" role="alert" className="mt-2 border-l-2 border-brand-green pl-3 text-[14px] font-semibold leading-relaxed text-ink">
+                  <p id="treatment-error" role="alert" className="mt-2 border-l-2 border-brand-green pl-3 text-[14px] font-semibold leading-relaxed text-current">
                     {treatmentError.message}
                   </p>
                 )}
               </div>
 
               <div className="mt-6">
-                <label htmlFor="dun" className="flex items-start gap-3 text-body text-ink">
+                <label htmlFor="dun" className="flex items-start gap-3 text-body text-current">
                   <input
                     id="dun"
                     name="dun"
@@ -156,7 +156,7 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
                   />
                   <span>{copy.form.dunLabel}</span>
                 </label>
-                <p id="dun-help" className="mt-2 text-[14px] leading-relaxed text-ink/75">
+                <p id="dun-help" className="mt-2 text-[14px] leading-relaxed text-current/75">
                   <RichText text={fields.dun} />
                 </p>
               </div>
@@ -173,25 +173,25 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
 
             <section id="result" aria-live="polite" className="scroll-mt-28 border-t border-brand-green/15 pt-8">
               <h2 className="text-display-row text-brand-green">{copy.result.heading}</h2>
-              {!result && <p className="mt-4 text-body text-ink/85">{copy.form.idle}</p>}
-              {result && !result.ok && <p className="mt-4 text-body text-ink/85">{copy.result.bad}</p>}
+              {!result && <p className="mt-4 text-body text-current/85">{copy.form.idle}</p>}
+              {result && !result.ok && <p className="mt-4 text-body text-current/85">{copy.result.bad}</p>}
               {result?.ok && result.mark && result.treatmentCode && (
-                <div className="mt-4 space-y-4 text-body text-ink/85">
+                <div className="mt-4 space-y-4 text-body text-current/85">
                   <p>{copy.result.ok}</p>
                   <div className="max-w-sm border-2 border-brand-green px-4 py-4" aria-label={copy.result.schematicLabel}>
                     <p className="text-[13px] font-semibold uppercase tracking-wide text-eyebrow-ink">IPPC symbol</p>
                     <p className="mt-3 font-display text-step-lg uppercase text-brand-green">{result.mark}</p>
-                    <p className="mt-1 text-[13px] text-ink/70">Country code, hyphen, producer number</p>
+                    <p className="mt-1 text-[13px] text-current/70">Country code, hyphen, producer number</p>
                     <p className="mt-4 font-display text-step-lg uppercase text-brand-green">{result.treatmentCode}</p>
-                    <p className="mt-1 text-[13px] text-ink/70">{result.treatmentName}</p>
+                    <p className="mt-1 text-[13px] text-current/70">{result.treatmentName}</p>
                     {result.input.dun && (
                       <>
                         <p className="mt-4 font-display text-step-lg uppercase text-brand-green">DUN</p>
-                        <p className="mt-1 text-[13px] text-ink/70">Dunnage</p>
+                        <p className="mt-1 text-[13px] text-current/70">Dunnage</p>
                       </>
                     )}
                   </div>
-                  <p className="text-[14px] leading-relaxed text-ink/70">{copy.result.schematicLabel}</p>
+                  <p className="text-[14px] leading-relaxed text-current/70">{copy.result.schematicLabel}</p>
                   <p>{copy.result.symbolNote}</p>
                   <p>
                     {result.treatmentCode} is {result.treatmentName}. {result.treatmentInvolves}

@@ -37,7 +37,7 @@ export default function GlossaryPage() {
       <ReadingPanel>
         <DirectAnswer text={pillar.directAnswer} />
         <div className="mt-10 border-t border-brand-green/15 pt-10">
-          <p className="prose-measure text-body text-moss/85">
+          <p className="prose-measure text-body text-current/85">
             {glossary.intro} {terms.length} terms.
           </p>
 

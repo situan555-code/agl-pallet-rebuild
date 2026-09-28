@@ -85,7 +85,7 @@ export function DownloadsIndexPage() {
         libraryLabel="Resources"
       />
       <section className="pt-14 nav:pt-20">
-        <p className={cn(containerClass, "prose-measure text-body text-ink/85")}>
+        <p className={cn(containerClass, "prose-measure text-body text-current/85")}>
           <RichText text={downloadsIndex.intro} />
         </p>
       </section>
@@ -124,7 +124,7 @@ export function DownloadArticle({ slug }: { slug: string }) {
         crumbs={[{ name: downloadsIndex.heading, href: DOWNLOADS_PATH }]}
       />
       <ReadingPanel>
-        <div className="prose-measure space-y-4 text-body text-moss/85">
+        <div className="prose-measure space-y-4 text-body text-current/85">
           <p>{item.figuresNote}</p>
           {item.exampleNote && <p>{item.exampleNote}</p>}
           <p>

@@ -13,6 +13,8 @@ const buttonVariants = cva(
           "bg-bone text-moss hover:bg-ice in-[.surface-light]:bg-moss in-[.surface-light]:text-bone in-[.surface-light]:hover:bg-green",
         secondary:
           "border-current/35 bg-transparent text-current hover:bg-current/8",
+        ghost:
+          "border-transparent bg-transparent text-current shadow-none hover:bg-current/8",
       },
       size: {
         default: "h-11 gap-2 px-6",

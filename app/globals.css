@@ -469,8 +469,10 @@ html[data-field="dark"] body {
 }
 
 html[data-field="light"] .nav-frame-inner {
-  --nav-scrolled-bg: rgb(236 232 223 / 0.92);
+  --nav-scrolled-bg: rgb(236 232 223 / 0.94);
   --nav-scrolled-border: #aeb5ae;
+  border-color: rgb(19 25 19 / 0.12);
+  background: rgb(236 232 223 / 0.94);
 }
 
 html[data-field="light"] .logo-on-dark,

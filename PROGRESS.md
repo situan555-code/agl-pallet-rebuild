@@ -46,3 +46,5 @@ H3 animation loads after window load and within one viewport. Verify passed (hom
 H4 mobile video: 16:9 card fully on 390; MP4 SAR uses object-fill. Verify passed (home 97 / 2562ms). Merged to main.
 PH: shared bone-grain photo slot on cards and empty figures. Verify passed (home 99 / 2263ms). Merged to main.
 OF: one field — moss sell pages, bone reading pages, inverted accents. Inset color slabs removed.
+OF: sitewide theme toggle. Default dark. localStorage `agl-theme`. Every route follows the active field.
+

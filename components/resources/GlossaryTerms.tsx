@@ -34,7 +34,7 @@ export function GlossaryTerms({ terms }: { terms: Term[] }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Filter terms"
-          className="w-full rounded-input border border-gray bg-bone px-3 py-2 text-[16px] text-moss"
+          className="w-full rounded-input border border-current/25 bg-transparent px-3 py-2 text-[16px] text-current"
         />
       </label>
 
