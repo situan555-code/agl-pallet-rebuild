@@ -531,7 +531,7 @@ html[data-field="dark"] .logo-on-light {
 @supports (animation-timeline: scroll()) {
   @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
     .hero-spacer {
-      height: 28svh;
+      height: 16svh;
     }
 
     .hero-frame-slot {

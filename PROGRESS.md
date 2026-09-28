@@ -47,5 +47,5 @@ H4 mobile video: 16:9 card fully on 390; MP4 SAR uses object-fill. Verify passed
 PH: shared bone-grain photo slot on cards and empty figures. Verify passed (home 99 / 2263ms). Merged to main.
 OF: one field — moss sell pages, bone reading pages, inverted accents. Inset color slabs removed.
 OF: sitewide theme toggle. Default dark. localStorage `agl-theme`. Every route follows the active field.
-H4: hero video spacer 28svh (was 100svh); grow over 70svh; cards 80px under the frame.
+H4: hero video spacer 16svh (was 100svh); grow over 70svh; cards 80px under the frame.
 
