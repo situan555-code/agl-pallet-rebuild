@@ -1,5 +1,3 @@
-"use client";
-
 // Floating inset pill nav. Desktop dropdowns stay CSS-only so Radix is not
 // in the first-paint bundle. Mobile sheet and search load on demand.
 import Link from "next/link";
@@ -12,7 +10,6 @@ import { NavFrame } from "@/components/NavFrame";
 import { SearchTrigger } from "@/components/SearchTrigger";
 import type { NavItem } from "@/components/MobileNav";
 import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
-import { usePageField } from "@/components/FieldProvider";
 
 const LOGO = {
   dark: { src: "/assets/agl_pallet_logo-light.svg", width: 65, height: 29, alt: site.logo.alt },
@@ -24,25 +21,30 @@ function desktopChildren(item: NavItem) {
 }
 
 export function Header() {
-  const field = usePageField();
   const nav = site.nav as NavItem[];
-  const logo = LOGO[field];
   const itemClass =
     "inline-flex h-8 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-semibold text-current hover:bg-current/8 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
   return (
-    <NavFrame className={field === "light" ? "text-moss" : "text-bone"}>
+    <NavFrame className="text-current">
       <Link
         href="/"
         prefetch={false}
         className="shrink-0 border-0 bg-transparent shadow-none ring-0 outline-none hover:bg-transparent hover:ring-0 focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-ice"
       >
         <Image
-          src={logo.src}
-          width={logo.width}
-          height={logo.height}
-          alt={logo.alt}
-          className="h-[29px] w-auto border-0 bg-transparent shadow-none ring-0 outline-none"
+          src={LOGO.dark.src}
+          width={LOGO.dark.width}
+          height={LOGO.dark.height}
+          alt={LOGO.dark.alt}
+          className="logo-on-dark h-[29px] w-auto border-0 bg-transparent shadow-none ring-0 outline-none"
+        />
+        <Image
+          src={LOGO.light.src}
+          width={LOGO.light.width}
+          height={LOGO.light.height}
+          alt=""
+          className="logo-on-light h-[29px] w-auto border-0 bg-transparent shadow-none ring-0 outline-none"
         />
       </Link>
 

@@ -1,14 +1,8 @@
 "use client";
 
-import { createContext, useContext, useLayoutEffect, type ReactNode } from "react";
+import { useLayoutEffect, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { pageField, type PageField } from "@/lib/page-field";
-
-const FieldContext = createContext<PageField>("dark");
-
-export function usePageField() {
-  return useContext(FieldContext);
-}
 
 function applyField(field: PageField) {
   const html = document.documentElement;
@@ -22,7 +16,7 @@ function applyField(field: PageField) {
   body.classList.toggle("text-bone", !light);
 }
 
-/** Keeps html/body field in sync on client navigations. Root layout does not re-render. */
+/** Root layout does not re-render on client navigations. Keep the page field on html/body. */
 export function FieldProvider({
   initialField,
   children,
@@ -36,5 +30,5 @@ export function FieldProvider({
     applyField(field);
   }, [field]);
 
-  return <FieldContext.Provider value={field}>{children}</FieldContext.Provider>;
+  return children;
 }

@@ -1,17 +1,14 @@
-"use client";
-
 import site from "@/content/site.json";
 import { Footer2 } from "@/components/footer2";
-import { usePageField } from "@/components/FieldProvider";
 
 export function Footer() {
-  const field = usePageField();
   const { footer } = site;
 
   return (
     <Footer2
       logo={{
-        src: field === "light" ? "/assets/agl_pallet_logo-dark.svg" : site.logo.src,
+        src: site.logo.src,
+        lightSrc: "/assets/agl_pallet_logo-dark.svg",
         width: site.logo.width,
         height: site.logo.height,
         alt: site.logo.alt,

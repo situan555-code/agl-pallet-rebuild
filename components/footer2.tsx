@@ -16,7 +16,7 @@ interface FooterSection {
 }
 
 interface Footer2Props {
-  logo: { src: string; width: number; height: number; alt: string };
+  logo: { src: string; lightSrc?: string; width: number; height: number; alt: string };
   description: string;
   contact: { phone: string; email: string };
   cta: FooterLink;
@@ -39,7 +39,22 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
               prefetch={false}
               className="inline-block focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
             >
-              <Image src={logo.src} width={logo.width} height={logo.height} alt={logo.alt} />
+              <Image
+                src={logo.src}
+                width={logo.width}
+                height={logo.height}
+                alt={logo.alt}
+                className="logo-on-dark h-auto w-auto"
+              />
+              {logo.lightSrc ? (
+                <Image
+                  src={logo.lightSrc}
+                  width={logo.width}
+                  height={logo.height}
+                  alt=""
+                  className="logo-on-light h-auto w-auto"
+                />
+              ) : null}
             </Link>
             <p className="mt-6 text-body text-current/80">{description}</p>
             <ul className="mt-4 space-y-3">

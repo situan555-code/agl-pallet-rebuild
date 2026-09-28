@@ -458,6 +458,11 @@ html[data-field="light"] .nav-frame-inner {
   --nav-scrolled-border: #aeb5ae;
 }
 
+html[data-field="light"] .logo-on-dark,
+html[data-field="dark"] .logo-on-light {
+  display: none;
+}
+
 .nav-frame-inner:has([data-nav-menu-trigger][aria-expanded="true"]) {
   border-color: var(--nav-scrolled-border);
   background: var(--nav-scrolled-bg);
