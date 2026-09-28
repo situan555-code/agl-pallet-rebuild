@@ -441,6 +441,18 @@ p.text-eyebrow > span[aria-hidden] {
   box-shadow: none;
 }
 
+html[data-field="light"],
+html[data-field="light"] body {
+  background-color: #ece8df;
+  color: #131913;
+}
+
+html[data-field="dark"],
+html[data-field="dark"] body {
+  background-color: #131913;
+  color: #ece8df;
+}
+
 html[data-field="light"] .nav-frame-inner {
   --nav-scrolled-bg: rgb(236 232 223 / 0.92);
   --nav-scrolled-border: #aeb5ae;

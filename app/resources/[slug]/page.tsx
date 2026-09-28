@@ -45,7 +45,7 @@ export default async function ResourcePage(props: { params: Promise<{ slug: stri
           { name: pillar.title, path: pillar.href },
         ]}
       />
-      <Hero3 eyebrow={stub.eyebrow} heading={pillar.title} description={pillar.directAnswer} />
+      <Hero3 variant="light-text" eyebrow={stub.eyebrow} heading={pillar.title} description={pillar.directAnswer} />
 
       <Feature1 eyebrow={pillar.status} heading={stub.noteHeading} paragraphs={[stub.noteBody]} cta={stub.backLink} />
 

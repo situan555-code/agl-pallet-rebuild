@@ -4,6 +4,7 @@ import "./globals.css";
 import { inter, anton } from "@/lib/fonts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FieldProvider } from "@/components/FieldProvider";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { DeferredChrome } from "@/components/DeferredChrome";
 import { isVercelAppHost } from "@/lib/host";
@@ -73,10 +74,12 @@ export default async function RootLayout({
         )}
       >
         <OrganizationJsonLd />
-        <Header field={field} />
-        {children}
-        <Footer field={field} />
-        <DeferredChrome />
+        <FieldProvider initialField={field}>
+          <Header />
+          {children}
+          <Footer />
+          <DeferredChrome />
+        </FieldProvider>
       </body>
     </html>
   );

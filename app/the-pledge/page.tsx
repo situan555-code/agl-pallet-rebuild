@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMeta(
 export default function ThePledge() {
   return (
     <main>
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
+      <Hero3 variant="light-text" eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
 
       <Feature2 heading={content.position.heading} paragraphs={content.position.paragraphs} />
     </main>

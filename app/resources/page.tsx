@@ -22,6 +22,7 @@ export default function ResourcesHub() {
         ]}
       />
       <Hero3
+        variant="light-text"
         eyebrow={hub.hero.eyebrow}
         heading={hub.hero.heading}
         description={hub.hero.directAnswer}
@@ -30,7 +31,7 @@ export default function ResourcesHub() {
       />
 
       <Feature3
-        variant="card"
+        variant="ruled"
         columns={2}
         eyebrow={hub.pillarsEyebrow}
         heading={hub.pillarsHeading}

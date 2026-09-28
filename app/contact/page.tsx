@@ -27,7 +27,7 @@ export default function Contact() {
 
   return (
     <main>
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.lede} />
+      <Hero3 variant="light-text" eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.lede} />
 
       {/* Section J1 (owner): four full-width ruled rows with green hover — kept over a card grid. */}
       <section className="section-y">

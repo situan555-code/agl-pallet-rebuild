@@ -1,8 +1,11 @@
+"use client";
+
 import site from "@/content/site.json";
 import { Footer2 } from "@/components/footer2";
-import type { PageField } from "@/lib/page-field";
+import { usePageField } from "@/components/FieldProvider";
 
-export function Footer({ field = "dark" }: { field?: PageField }) {
+export function Footer() {
+  const field = usePageField();
   const { footer } = site;
 
   return (

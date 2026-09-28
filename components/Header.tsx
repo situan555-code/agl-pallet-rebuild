@@ -1,3 +1,5 @@
+"use client";
+
 // Floating inset pill nav. Desktop dropdowns stay CSS-only so Radix is not
 // in the first-paint bundle. Mobile sheet and search load on demand.
 import Link from "next/link";
@@ -10,7 +12,7 @@ import { NavFrame } from "@/components/NavFrame";
 import { SearchTrigger } from "@/components/SearchTrigger";
 import type { NavItem } from "@/components/MobileNav";
 import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
-import type { PageField } from "@/lib/page-field";
+import { usePageField } from "@/components/FieldProvider";
 
 const LOGO = {
   dark: { src: "/assets/agl_pallet_logo-light.svg", width: 65, height: 29, alt: site.logo.alt },
@@ -21,7 +23,8 @@ function desktopChildren(item: NavItem) {
   return (item.children ?? []).filter((child) => !/ispm-15/i.test(child.href + child.label));
 }
 
-export function Header({ field = "dark" }: { field?: PageField }) {
+export function Header() {
+  const field = usePageField();
   const nav = site.nav as NavItem[];
   const logo = LOGO[field];
   const itemClass =

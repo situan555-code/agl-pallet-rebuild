@@ -141,7 +141,7 @@ export function DirectAnswer({ text }: { text: string }) {
           </span>
           Short answer
         </p>
-        <p className="max-w-[62ch] border-l-[3px] border-brand-green pl-6 text-[20px] leading-[1.6] text-moss nav:col-span-8 nav:col-start-5">
+        <p className="max-w-[62ch] border-l-[3px] border-current/40 pl-6 text-[20px] leading-[1.6] text-current nav:col-span-8 nav:col-start-5">
           <RichText text={text} />
         </p>
       </div>
@@ -169,7 +169,7 @@ export function DataTable({ table }: { table: ResourceTable }) {
           <thead>
             <tr>
               {table.columns.map((c) => (
-                <th key={c} scope="col" className="sticky top-0 border-b-2 border-brand-green bg-bone py-3 pr-6 align-bottom font-semibold text-brand-green">
+                <th key={c} scope="col" className="sticky top-0 border-b-2 border-current/40 bg-transparent py-3 pr-6 align-bottom font-semibold text-current">
                   {c}
                 </th>
               ))}
