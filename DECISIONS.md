@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Sticky story (2026-09-29)
+
+Replaced the scroll-grow hero video with a two-column sticky story. Hero copy stays above it. Beats reuse existing home.json lines (differentiators plus the same-day quote card). Media sticks at `top-24` from the `nav` breakpoint (980px). Each beat is `65vh`. Mobile stacks the video once, then the beats.
+
 ## Homepage light field (2026-09-29)
 
 Home hero had `bg-moss` / `text-bone` locked on the track, so light mode left a moss slab: moss-on-moss primary CTA, moss eyebrow, bone H1. The hero now inherits the active field. Ghost toggle uses a current-color hairline so it reads on bone and moss.

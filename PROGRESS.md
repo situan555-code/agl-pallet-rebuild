@@ -49,4 +49,5 @@ OF: one field — moss sell pages, bone reading pages, inverted accents. Inset c
 OF: sitewide theme toggle. Default dark. localStorage `agl-theme`. Every route follows the active field.
 H4: hero grow 52svh keyed ease, full at 70% of that range; spacer 12svh; cards ~60px under frame.
 H4: home hero follows the active field; ghost toggle has a hairline.
+H4: sticky story replaces the scroll-grow video. Beats are 65vh from 980px.
 
