@@ -110,7 +110,7 @@ export function StickyStory({
             );
           })}
         </div>
-        <div className="hidden nav:block">
+        <div className="hidden nav:block nav:self-stretch">
           <div className="sticky top-24">
             <Media video={video} frame={frame} />
           </div>
