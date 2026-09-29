@@ -224,8 +224,6 @@ Copy below is final draft, approved for build, pending Brock's sign-off before p
 
 ```
 
-EYEBROW: Pallets move the world. We move pallets.
-
 H1: Never one mill between you and your line.
 
 LEDE: AGL Pallet sources new, custom, and engineered pallets from a network of
@@ -478,7 +476,7 @@ IMAGE: {{TBD-PHOTO-BROCK}}
 
 EYEBROW: The people who answer
 
-H2: Seven people, and you'll know which one is yours.
+H2: Five people, and you'll know which one is yours.
 
 BODY:
 
@@ -496,11 +494,7 @@ LIST:
 
   Beau — Operations.
 
-  Colton — Finance. Why the mills get paid on time.
-
   Jeff — IT.
-
-  Nautis — Marketing.
 
 ```
 
