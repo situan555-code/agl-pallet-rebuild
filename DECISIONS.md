@@ -1,8 +1,12 @@
 # DECISIONS (redesign)
 
+## Demo product photos, Batch B (2026-09-29)
+
+Crates, dunnage, and shipping blocks now use the same demo map as Batch A. All six product-line cards on `/products/` and the home strip have warm natural-wood JPGs. Paths stay in `lib/demo-product-photos.ts`.
+
 ## Demo product photos, Batch A (2026-09-29)
 
-Three warm natural-wood JPGs are demo stand-ins only, on the stock pallets, custom & engineered, and stakes cards (`/products/` and the home product-lines strip). Paths live in `lib/demo-product-photos.ts`. Crates, dunnage, and shipping blocks stay Photo placeholders for Batch B.
+Three warm natural-wood JPGs are demo stand-ins only, on the stock pallets, custom & engineered, and stakes cards (`/products/` and the home product-lines strip). Paths live in `lib/demo-product-photos.ts`. Crates, dunnage, and shipping blocks were Photo placeholders until Batch B.
 
 ## Sticky story (2026-09-29)
 
