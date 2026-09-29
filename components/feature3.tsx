@@ -5,7 +5,7 @@
 // treatments:
 //   divided  — single row, vertical hairlines between columns (claims)
 //   ruled    — top hairline per item, multi-row (categories)
-//   numbered — photo placeholder + numeral, whole-card link
+//   numbered — photo, eyebrow in the card body, whole-card link
 //   card     — bordered image card, whole-card link
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -104,9 +104,14 @@ function cardHref(item: Feature3Item) {
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
-      <CardMedia numeral={item.eyebrow} alt={item.title} src={item.src} />
+      <CardMedia alt={item.title} src={item.src} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
-        <Heading className="text-[22px] font-semibold leading-snug text-pretty text-current">{item.title}</Heading>
+        {item.eyebrow ? (
+          <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
+        ) : null}
+        <Heading className={cn("text-[22px] font-semibold leading-snug text-pretty text-current", item.eyebrow && "mt-3")}>
+          {item.title}
+        </Heading>
         <p className="mt-5 text-body text-current/85">{item.description}</p>
       </div>
     </InteractiveCard>

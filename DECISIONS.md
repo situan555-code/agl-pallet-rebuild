@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Card numerals (2026-09-29)
+
+Capability cards and Feature3 numbered cards no longer stamp moss numerals on the photo. Differentiator and service eyebrows stay in the card body. Process step numbers on other pages are unchanged.
+
 ## Mill demo stills (2026-09-29)
 
 Product cards for stock, custom, and dunnage, plus all eight home cream Photo cards, now use mill catalog stills. Paths live in `lib/demo-product-photos.ts` and `lib/demo-home-photos.ts`. Crates, shipping blocks, and stakes stay on the warm-wood demos. Who We Are, the stamp decoder, founder TBD, the hero video, and marketing copy are unchanged. DEMO-ONLY. Replace before go-live.
