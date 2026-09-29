@@ -520,10 +520,8 @@ html[data-field="dark"] .logo-on-light {
   }
 }
 
-/* Desktop hero card grows over the first ~70svh of root scroll. A 100svh
-   spacer plus a vertically centered sticky top used to park the video in a
-   full viewport of moss after the animation had already finished.
-   Browsers without scroll-timeline keep the static full-size card. */
+/* Desktop hero grow: 0–52svh of root scroll (was 70svh). Keyed stops so the
+   middle accelerates and the last 30% holds full size while cards enter. */
 .hero-spacer {
   height: 0;
 }
@@ -531,7 +529,7 @@ html[data-field="dark"] .logo-on-light {
 @supports (animation-timeline: scroll()) {
   @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
     .hero-spacer {
-      height: 16svh;
+      height: 12svh;
     }
 
     .hero-frame-slot {
@@ -547,7 +545,7 @@ html[data-field="dark"] .logo-on-light {
       border-radius: calc(22px / var(--hero-start));
       animation: hero-frame-grow linear both;
       animation-timeline: scroll(root block);
-      animation-range: 0 70svh;
+      animation-range: 0 52svh;
     }
 
     .hero-next {
@@ -559,11 +557,24 @@ html[data-field="dark"] .logo-on-light {
 }
 
 @keyframes hero-frame-grow {
-  from {
+  0% {
     transform: scale(var(--hero-start));
     border-radius: calc(22px / var(--hero-start));
   }
-  to {
+  20% {
+    transform: scale(0.65);
+    border-radius: 32px;
+  }
+  40% {
+    transform: scale(0.826);
+    border-radius: 22px;
+  }
+  60% {
+    transform: scale(0.957);
+    border-radius: 16px;
+  }
+  70%,
+  100% {
     transform: scale(1);
     border-radius: 14px;
   }
@@ -587,7 +598,7 @@ html[data-field="dark"] .logo-on-light {
 
 @media (min-width: 768px) {
   .hero-next {
-    padding-top: 16px;
+    padding-top: 12px;
   }
 }
 
