@@ -15,6 +15,7 @@ import { Container } from "@/components/Container";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
 import { getBlurDataURL } from "@/lib/blur";
+import { DEMO_PRODUCT_PHOTOS } from "@/lib/demo-product-photos";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -142,6 +143,7 @@ export default function Home() {
           title: line.heading,
           description: line.copy,
           href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
+          src: DEMO_PRODUCT_PHOTOS[line.id],
         }))}
       />
 

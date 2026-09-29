@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Demo product photos, Batch A (2026-09-29)
+
+Three warm natural-wood JPGs are demo stand-ins only, on the stock pallets, custom & engineered, and stakes cards (`/products/` and the home product-lines strip). Paths live in `lib/demo-product-photos.ts`. Crates, dunnage, and shipping blocks stay Photo placeholders for Batch B.
+
 ## Sticky story (2026-09-29)
 
 Replaced the scroll-grow hero video with a two-column sticky story. Hero copy stays above it. Beats reuse existing home.json lines (differentiators plus the same-day quote card). Media sticks at `top-24` from the `nav` breakpoint (980px). Each beat is `65vh`. Mobile stacks the video once, then the beats.
