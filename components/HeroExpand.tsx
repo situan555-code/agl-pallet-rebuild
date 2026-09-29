@@ -57,7 +57,7 @@ export function HeroExpand({
         </div>
       </div>
 
-      <div className={cn(containerClass, "hero-frame-slot pb-8")}>
+      <div className="hero-frame-slot mx-auto w-full max-w-[1280px] px-6 pb-10 md:w-[min(92vw,1440px)] md:max-w-[1440px] md:px-0 md:pb-16">
         <div className="hero-frame relative mx-auto w-full overflow-hidden shadow-lg aspect-video rounded-section">
           <Image
             src={video.poster}
@@ -66,7 +66,7 @@ export function HeroExpand({
             priority
             fetchPriority="high"
             quality={60}
-            sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) calc(100vw - 64px), min(calc(100vw - 96px), 828px)"
+            sizes="(max-width: 767px) calc(100vw - 48px), min(92vw, 1440px)"
             className="object-cover object-center"
           />
           <LazyHeroVideo src={video.src} />

@@ -39,7 +39,7 @@ export default function Home() {
         buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
       />
 
-      <section className="section-rhythm">
+      <section className="hero-next">
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap, index) => (
             <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
