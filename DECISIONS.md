@@ -4,7 +4,7 @@
 
 Owner rejected the sticky-story opener (text stack, then video pinned beside scrolling beats). Home opens on a centered 16:9 video again: headline and the three CTAs share one viewport with the frame; the spec lede sits under that stage. Desktop scroll scales the frame from `--hero-start: 0.8` to 1 across `48svh`, matching the spacer so the stage releases when the grow finishes. The start value stays a unitless number (length/length calc is invalid in `scale()`). Mobile stays a static in-flow 16:9 card. The hero inherits the active field (no locked moss slab).
 
-Owner removed the home eyebrow "Pallets move the world. We move pallets." and the public roster entries for Nautis (Marketing) and Colton (Finance). No replacements. The who-we-are H2 still says "Seven people, and you'll know which one is yours." — heading words were left as written; the rendered roster is Brock, Brandon, Larry, Beau, Jeff.
+Owner removed the home eyebrow "Pallets move the world. We move pallets." and the public roster entries for Nautis (Marketing) and Colton (Finance). No replacements. The who-we-are H2 is "Five people, and you'll know which one is yours." Roster: Brock, Brandon, Larry, Beau, Jeff.
 
 ## Demo product photos, Batch B (2026-09-29)
 

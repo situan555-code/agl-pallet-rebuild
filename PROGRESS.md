@@ -50,7 +50,7 @@ OF: sitewide theme toggle. Default dark. localStorage `agl-theme`. Every route f
 H4: hero grow 52svh keyed ease, full at 70% of that range; spacer 12svh; cards ~60px under frame.
 H4: home hero follows the active field; ghost toggle has a hairline.
 H4: sticky story replaces the scroll-grow video. Beats are 65vh from 980px.
-H4: centered video hero restored. Eyebrow slogan and Nautis/Colton roster lines removed. Who-we-are H2 still says seven.
+H4: centered video hero restored. Eyebrow slogan and Nautis/Colton roster lines removed. Who-we-are H2 says five.
 Batch A: demo photos on stock pallets, custom & engineered, and stakes. Crates, dunnage, shipping blocks still placeholders.
 Batch B: demo photos on crates, dunnage, and shipping blocks. All six product-line cards filled.
 

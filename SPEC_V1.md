@@ -476,7 +476,7 @@ IMAGE: {{TBD-PHOTO-BROCK}}
 
 EYEBROW: The people who answer
 
-H2: Seven people, and you'll know which one is yours.
+H2: Five people, and you'll know which one is yours.
 
 BODY:
 
