@@ -55,4 +55,5 @@ Batch A: demo photos on stock pallets, custom & engineered, and stakes. Crates, 
 Batch B: demo photos on crates, dunnage, and shipping blocks. All six product-line cards filled.
 Home: DEMO-ONLY photos on the eight cream Photo cards (capability, differentiators, partners). Replace before go-live.
 Mill stills: stock, custom, dunnage, and the eight home Photo cards. Crates, blocks, and stakes unchanged.
+Card numerals: no moss overlays on capability or numbered feature photos. Eyebrows stay in the body.
 
