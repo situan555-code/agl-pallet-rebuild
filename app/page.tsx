@@ -14,6 +14,7 @@ import { Container } from "@/components/Container";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
 import { getBlurDataURL } from "@/lib/blur";
+import { DEMO_HOME_PHOTOS } from "@/lib/demo-home-photos";
 import { DEMO_PRODUCT_PHOTOS } from "@/lib/demo-product-photos";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -43,7 +44,11 @@ export default function Home() {
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap, index) => (
             <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
-              <CardMedia numeral={String(index + 1).padStart(2, "0")} />
+              <CardMedia
+                numeral={String(index + 1).padStart(2, "0")}
+                alt={cap.heading}
+                src={DEMO_HOME_PHOTOS.capabilities[index]}
+              />
               <div className="flex flex-1 flex-col p-6 nav:p-8">
                 <h2 className="text-[22px] font-semibold leading-snug text-current">{cap.heading}</h2>
                 <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
@@ -94,6 +99,7 @@ export default function Home() {
           title: c.heading,
           description: c.body,
           href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
+          src: DEMO_HOME_PHOTOS.differentiators[index],
         }))}
       />
 
@@ -132,12 +138,13 @@ export default function Home() {
         className="section-rhythm"
         variant="card"
         columns={2}
-        features={home.partnerSplit.cards.map((c) => ({
+        features={home.partnerSplit.cards.map((c, index) => ({
           eyebrow: c.eyebrow,
           title: c.heading,
           description: c.body,
           href: c.cta.href,
           cta: c.cta,
+          src: DEMO_HOME_PHOTOS.partners[index],
         }))}
       />
 
