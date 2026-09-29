@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Mill demo stills (2026-09-29)
+
+Product cards for stock, custom, and dunnage, plus all eight home cream Photo cards, now use mill catalog stills. Paths live in `lib/demo-product-photos.ts` and `lib/demo-home-photos.ts`. Crates, shipping blocks, and stakes stay on the warm-wood demos. Who We Are, the stamp decoder, founder TBD, the hero video, and marketing copy are unchanged. DEMO-ONLY. Replace before go-live.
+
 ## Demo home Photo cards (2026-09-29)
 
 Eight cream Photo cards on the home page use DEMO-ONLY industry photos: capability ×3, differentiators ×3, partner split ×2. Paths live in `lib/demo-home-photos.ts`. Replace before go-live. Who We Are, founder portraits, and the Feature1 side images stay as they were.
