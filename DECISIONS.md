@@ -2,7 +2,7 @@
 
 ## Hero video scroll runway (2026-09-28)
 
-The empty moss viewport was a 100svh `.hero-spacer` after a full-size layout frame, with sticky `top` centering the video in the viewport and grow mapped to `0–100svh`. Spacer is now 16svh, grow is `0–70svh`, sticky top is 5.25rem, and the 01–03 cards sit ~80px under the frame (`md:pb-16` + 16px). Mobile stays a static 16:9 card.
+Grow finishes at 70% of a 52svh range (was linear 0–70svh). Spacer 12svh (was 16svh). Cards sit ~60px under the frame (`md:pb-12` + 12px). Start/end scale unchanged (0.55 → 1).
 
 ## Theme toggle (2026-09-28)
 

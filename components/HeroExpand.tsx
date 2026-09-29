@@ -57,7 +57,7 @@ export function HeroExpand({
         </div>
       </div>
 
-      <div className="hero-frame-slot mx-auto w-full max-w-[1280px] px-6 pb-10 md:w-[min(92vw,1440px)] md:max-w-[1440px] md:px-0 md:pb-16">
+      <div className="hero-frame-slot mx-auto w-full max-w-[1280px] px-6 pb-10 md:w-[min(92vw,1440px)] md:max-w-[1440px] md:px-0 md:pb-12">
         <div className="hero-frame relative mx-auto w-full overflow-hidden shadow-lg aspect-video rounded-section">
           <Image
             src={video.poster}
