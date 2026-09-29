@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { containerClass } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { LazyHeroVideo } from "@/components/LazyHeroVideo";
 
 type HeroButton = {
   label: string;
@@ -14,13 +12,11 @@ export function HeroExpand({
   heading,
   description,
   buttons,
-  video,
 }: {
   eyebrow: string;
   heading: string;
   description: string;
   buttons: HeroButton[];
-  video: { src: string; poster: string };
 }) {
   const [primary, ...rest] = buttons;
 
@@ -56,23 +52,6 @@ export function HeroExpand({
           ) : null}
         </div>
       </div>
-
-      <div className="hero-frame-slot mx-auto w-full max-w-[1280px] px-6 pb-10 md:w-[min(92vw,1440px)] md:max-w-[1440px] md:px-0 md:pb-12">
-        <div className="hero-frame relative mx-auto w-full overflow-hidden shadow-lg aspect-video rounded-section">
-          <Image
-            src={video.poster}
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            quality={60}
-            sizes="(max-width: 767px) calc(100vw - 48px), min(92vw, 1440px)"
-            className="object-cover object-center"
-          />
-          <LazyHeroVideo src={video.src} />
-        </div>
-      </div>
-      <div aria-hidden="true" className="hero-spacer" />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import home from "@/content/pages/home.json";
 import products from "@/content/pages/products.json";
 import { HeroExpand } from "@/components/HeroExpand";
+import { StickyStory } from "@/components/home/StickyStory";
 import { Feature1 } from "@/components/feature1";
 import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
@@ -35,11 +36,36 @@ export default function Home() {
         eyebrow={home.hero.eyebrow}
         heading={home.hero.heading}
         description={home.hero.body}
-        video={{ src: home.hero.video, poster: home.hero.poster }}
         buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
       />
 
-      <section className="hero-next">
+      <StickyStory
+        video={{ src: home.hero.video, poster: home.hero.poster }}
+        beats={[
+          {
+            kicker: home.differentiators.cards[1].eyebrow,
+            heading: home.differentiators.cards[1].heading,
+            body: home.differentiators.cards[1].body,
+          },
+          {
+            kicker: home.differentiators.cards[0].eyebrow,
+            heading: home.differentiators.cards[0].heading,
+            body: home.differentiators.cards[0].body,
+          },
+          {
+            kicker: home.differentiators.cards[2].eyebrow,
+            heading: home.differentiators.cards[2].heading,
+            body: home.differentiators.cards[2].body,
+          },
+          {
+            kicker: "",
+            heading: home.capability.cards[0].heading,
+            body: home.capability.cards[0].body,
+          },
+        ]}
+      />
+
+      <section className="section-rhythm">
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap, index) => (
             <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
