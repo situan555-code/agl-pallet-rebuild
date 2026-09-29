@@ -25,18 +25,18 @@ export function HeroExpand({
   const [primary, ...rest] = buttons;
 
   return (
-    <div data-hero-track className="hero-track relative bg-moss text-bone">
+    <div data-hero-track className="hero-track relative">
       <div className={cn(containerClass, "pt-20 pb-3 md:pt-28 md:pb-6 nav:pt-32")}>
-        <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide text-ice">
+        <p className="mx-auto text-center text-eyebrow font-semibold uppercase tracking-wide">
           <span aria-hidden="true" className="mr-2 font-bold">
             /
           </span>
           {eyebrow}
         </p>
-        <h1 className="display mx-auto mt-3 max-w-3xl text-center text-display-1 text-bone nav:text-[56px] nav:leading-[1.08]">
+        <h1 className="display mx-auto mt-3 max-w-3xl text-center text-display-1 text-current nav:text-[56px] nav:leading-[1.08]">
           {heading}
         </h1>
-        <p className="prose-measure mx-auto mt-4 max-w-[46rem] text-pretty text-center text-body text-bone/80 md:mt-5">
+        <p className="prose-measure mx-auto mt-4 max-w-[46rem] text-pretty text-center text-body text-current/80 md:mt-5">
           {description}
         </p>
         <div className="mt-5 flex flex-col items-center gap-2.5 md:mt-8 md:gap-3">

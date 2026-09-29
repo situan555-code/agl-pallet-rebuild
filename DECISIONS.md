@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Homepage light field (2026-09-29)
+
+Home hero had `bg-moss` / `text-bone` locked on the track, so light mode left a moss slab: moss-on-moss primary CTA, moss eyebrow, bone H1. The hero now inherits the active field. Ghost toggle uses a current-color hairline so it reads on bone and moss.
+
 ## Hero video scroll runway (2026-09-28)
 
 Grow finishes at 70% of a 52svh range (was linear 0–70svh). Spacer 12svh (was 16svh). Cards sit ~60px under the frame (`md:pb-12` + 12px). Start/end scale unchanged (0.55 → 1).

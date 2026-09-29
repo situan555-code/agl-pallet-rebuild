@@ -21,7 +21,7 @@ export function StaticImageBand({
       <div className={cn(containerClass, "py-16 nav:py-20")}>
         <div className="max-w-xl">
           {eyebrow && (
-            <p className="text-eyebrow font-semibold uppercase tracking-wide text-ice">
+            <p className="text-eyebrow font-semibold uppercase tracking-wide">
               <span aria-hidden="true" className="mr-2 font-bold">
                 /
               </span>
