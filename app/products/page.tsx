@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import content from "@/content/pages/products.json";
 import { Hero3 } from "@/components/hero3";
 import { Cta4 } from "@/components/cta4";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
 import { containerClass } from "@/components/Container";
+import { DEMO_PRODUCT_PHOTOS } from "@/lib/demo-product-photos";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export default function Products() {
                 : "/request-a-quote/";
             return (
               <InteractiveCard key={line.id} id={line.id} href={href}>
-                <PhotoPlaceholder alt={line.heading} />
+                <CardMedia alt={line.heading} src={DEMO_PRODUCT_PHOTOS[line.id]} />
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-[22px] font-semibold leading-snug text-current">{line.heading}</h2>
                   <p className="mt-5 text-body text-current/75">{line.copy}</p>
