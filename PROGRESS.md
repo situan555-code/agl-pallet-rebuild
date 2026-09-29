@@ -51,4 +51,5 @@ H4: hero grow 52svh keyed ease, full at 70% of that range; spacer 12svh; cards ~
 H4: home hero follows the active field; ghost toggle has a hairline.
 H4: sticky story replaces the scroll-grow video. Beats are 65vh from 980px.
 Batch A: demo photos on stock pallets, custom & engineered, and stakes. Crates, dunnage, shipping blocks still placeholders.
+Batch B: demo photos on crates, dunnage, and shipping blocks. All six product-line cards filled.
 
