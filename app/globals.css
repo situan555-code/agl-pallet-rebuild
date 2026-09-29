@@ -520,5 +520,141 @@ html[data-field="dark"] .logo-on-light {
   }
 }
 
-/* Sticky story lives in components/home/StickyStory.tsx. The scroll-grow
-   hero frame is retired so the video is not pinned over an empty field. */
+/* Centered video hero. Desktop: the stage is one viewport (headline, framed
+   video, CTAs). The frame's layout size is the largest 16:9 that fits that
+   stage; scroll scales it from --hero-start to 1 over the same distance as
+   .hero-spacer, then the stage releases. A unitless --hero-start avoids the
+   invalid length/length calc that stopped the grow. No scroll-timeline, or
+   reduced motion: static full-size frame, no extra runway.
+   Mobile: static 16:9 card in normal flow, full slot width, no scale. */
+.hero-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 5.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.hero-copy,
+.hero-actions {
+  width: 100%;
+  flex: none;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.hero-frame-slot {
+  width: 100%;
+  padding-inline: 1.5rem;
+}
+
+.hero-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 28px;
+}
+
+.hero-spacer {
+  height: 0;
+}
+
+.hero-lede {
+  padding-top: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .hero-stage {
+    height: 100svh;
+    justify-content: center;
+    gap: 1.25rem;
+    padding-top: 6.25rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
+
+  .hero-frame-slot {
+    width: min(92vw, 1440px);
+    padding-inline: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-frame {
+    width: min(100%, 92vw, 1440px, calc((100svh - 24rem) * 16 / 9));
+  }
+
+  .hero-lede {
+    padding-top: 2.5rem;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .hero-stage {
+      position: sticky;
+      top: 0;
+    }
+
+    .hero-spacer {
+      height: 48svh;
+    }
+
+    .hero-frame {
+      --hero-start: 0.8;
+      transform-origin: center center;
+      transform: scale(var(--hero-start));
+      border-radius: calc(28px / var(--hero-start));
+      animation: hero-frame-grow linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 48svh;
+    }
+  }
+}
+
+@keyframes hero-frame-grow {
+  0% {
+    transform: scale(var(--hero-start));
+    border-radius: calc(28px / var(--hero-start));
+  }
+  60% {
+    transform: scale(0.95);
+    border-radius: 30px;
+  }
+  100% {
+    transform: scale(1);
+    border-radius: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-stage {
+    height: auto;
+    min-height: 0;
+    position: static;
+  }
+
+  .hero-frame-slot {
+    position: static;
+  }
+
+  .hero-frame {
+    width: 100%;
+    max-height: none;
+    aspect-ratio: 16 / 9;
+    transform: none;
+    border-radius: 28px;
+  }
+
+  .hero-spacer {
+    height: 0;
+  }
+}
