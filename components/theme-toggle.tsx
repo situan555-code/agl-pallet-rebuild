@@ -10,7 +10,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       type="button"
       data-theme-toggle
       className={cn(
-        "inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-transparent bg-transparent text-current shadow-none outline-hidden transition-colors select-none hover:bg-current/8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        "inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-current/25 bg-transparent text-current shadow-none outline-hidden transition-colors select-none hover:bg-current/8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className,
       )}
       aria-label="Toggle color theme"
