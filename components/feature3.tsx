@@ -26,6 +26,8 @@ export interface Feature3Item {
   icon?: LucideIcon;
   href?: string;
   cta?: { label: string; href: string };
+  /** Optional card photo. Omitted slots stay a Photo placeholder. */
+  src?: string;
 }
 
 interface Feature3Props {
@@ -102,7 +104,7 @@ function cardHref(item: Feature3Item) {
 function NumberedItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <InteractiveCard href={cardHref(item)} id={item.id} className="min-h-full">
-      <CardMedia numeral={item.eyebrow} alt={item.title} />
+      <CardMedia numeral={item.eyebrow} alt={item.title} src={item.src} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
         <Heading className="text-[22px] font-semibold leading-snug text-pretty text-current">{item.title}</Heading>
         <p className="mt-5 text-body text-current/85">{item.description}</p>
@@ -115,7 +117,7 @@ function CardItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading 
   const href = cardHref(item);
   return (
     <InteractiveCard href={href} id={item.id} className="min-h-full">
-      <CardMedia alt={item.title} />
+      <CardMedia alt={item.title} src={item.src} />
       <div className="flex flex-1 flex-col p-6 nav:p-8">
         {item.eyebrow && (
           <p className="text-eyebrow font-semibold uppercase tracking-wide text-current/70">

@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Demo home Photo cards (2026-09-29)
+
+Eight cream Photo cards on the home page use DEMO-ONLY industry photos: capability ×3, differentiators ×3, partner split ×2. Paths live in `lib/demo-home-photos.ts`. Replace before go-live. Who We Are, founder portraits, and the Feature1 side images stay as they were.
+
 ## Centered video hero (2026-09-29)
 
 Owner rejected the sticky-story opener (text stack, then video pinned beside scrolling beats). Home opens on a centered 16:9 video again: headline and the three CTAs share one viewport with the frame; the spec lede sits under that stage. Desktop scroll scales the frame from `--hero-start: 0.8` to 1 across `48svh`, matching the spacer so the stage releases when the grow finishes. The start value stays a unitless number (length/length calc is invalid in `scale()`). Mobile stays a static in-flow 16:9 card. The hero inherits the active field (no locked moss slab).

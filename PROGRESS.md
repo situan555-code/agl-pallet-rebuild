@@ -53,4 +53,5 @@ H4: sticky story replaces the scroll-grow video. Beats are 65vh from 980px.
 H4: centered video hero restored. Eyebrow slogan and Nautis/Colton roster lines removed. Who-we-are H2 says five.
 Batch A: demo photos on stock pallets, custom & engineered, and stakes. Crates, dunnage, shipping blocks still placeholders.
 Batch B: demo photos on crates, dunnage, and shipping blocks. All six product-line cards filled.
+Home: DEMO-ONLY photos on the eight cream Photo cards (capability, differentiators, partners). Replace before go-live.
 
