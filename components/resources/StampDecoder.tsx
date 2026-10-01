@@ -1,10 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { containerClass } from "@/components/Container";
 import { cn } from "@/lib/utils";
 import ispm from "@/content/resources/pillars/heat-treated-pallets-ispm-15.json";
 import { BreadcrumbJsonLd, WebApplicationJsonLd } from "@/components/JsonLd";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ArticleHeader, ResourceCta } from "@/components/resources/ResourceArticle";
 import { RichText } from "@/components/resources/RichText";
 import { STAMP_DECODER_PATH, stampFieldCopy, treatmentCodes } from "@/lib/download-source";
@@ -56,7 +56,15 @@ export function StampDecoderPage({ result }: { result: StampResult | null }) {
             <p>{copy.exampleNote}</p>
 
             <figure className="pt-4">
-              <PhotoPlaceholder className="rounded-card" />
+              {copy.photo.src ? (
+                <Image
+                  src={copy.photo.src}
+                  alt={copy.photo.alt || copy.photo.label}
+                  width={720}
+                  height={540}
+                  className="rounded-card w-full h-auto"
+                />
+              ) : null}
               <figcaption className="mt-3 space-y-2">
                 <p className="text-[14px] font-semibold uppercase tracking-wide text-brand-green">{copy.photo.label}</p>
                 <p className="max-w-[48ch] text-body text-current/80">{copy.photo.body}</p>
