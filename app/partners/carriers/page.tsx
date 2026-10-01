@@ -51,7 +51,6 @@ export default function PartnersCarriers() {
           description: isPlaceholder(item.body) ? "" : item.body,
           icon: [MapPin, Repeat, UserRound, BadgeCheck][index],
           href: item.lead.includes("dispatcher") ? "/who-we-are/" : "#carrier-form",
-          image: item.lead === "One dispatcher." ? "/assets/brandon-dispatcher.webp" : undefined,
         }))}
       />
 

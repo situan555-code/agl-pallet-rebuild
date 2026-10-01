@@ -8,7 +8,7 @@
     ]
   },
   "founderStory": {
-    "eyebrow": "From Brock Lundeen, Owner",
+    "eyebrow": "From the owner",
     "heading": "Why I built it this way",
     "paragraphs": [
       "I spent years on the buying side, and the pattern never changed: the pallet was the cheapest thing on the line and the fastest way to stop it. When supply got tight, the vendors who kept me running weren't the biggest — they were the ones who called me before I had to call them.",
@@ -23,24 +23,24 @@
     "body": "AGL runs with a small team on purpose. Sourcing, freight, and the account are three people who sit near each other, not three queues in three systems.",
     "items": [
       {
-        "lead": "Brock",
-        "body": "Owner. Commercial, supply, and the last call on anything hard."
+        "lead": "Owner",
+        "body": "Commercial, supply, and the last call on anything hard."
       },
       {
-        "lead": "Brandon",
-        "body": "Logistics. Books the freight and tracks the loads."
+        "lead": "Logistics",
+        "body": "Books the freight and tracks the loads."
       },
       {
-        "lead": "Larry",
-        "body": "Supplier Relations. Qualifies the mills and knows their machine constraints."
+        "lead": "Supplier Relations",
+        "body": "Qualifies the mills and knows their machine constraints."
       },
       {
-        "lead": "Beau",
-        "body": "Operations."
+        "lead": "Operations",
+        "body": ""
       },
       {
-        "lead": "Jeff",
-        "body": "IT."
+        "lead": "IT",
+        "body": ""
       }
     ]
   },
