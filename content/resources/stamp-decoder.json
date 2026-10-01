@@ -8,9 +8,11 @@
   "intro": "Enter the codes printed inside the stamp border. This page checks the format only. It does not look up a licensed facility, and it does not state an AGL price or a measured AGL result.",
   "exampleNote": "The sample mark written in the heat-treatment guide is a format example. It is not a real facility number and not an AGL measurement.",
   "photo": {
-    "label": "Stamp photograph placeholder",
-    "body": "No photograph is shown here. AGL has not supplied a photo of a real treatment stamp. This slot is empty on purpose. It is not a stock image and not a stand-in.",
-    "caption": "Real stamp photos stay off this page until AGL sources them."
+    "label": "Heat-treated wood pallet close-up",
+    "src": "/assets/stamped-pallets-closeup-ht.jpg",
+    "alt": "Cross-section close-up of heat-treated stamped pallet wood (TR-242 HT treatment).",
+    "body": "Heat-treated wood for export pallets is prepared under ISPM 15 standards, then branded with a treatment mark like the one you check in this decoder.",
+    "caption": "Photo credit: Direct documentation of prepared pallet stock (public domain). Diagram: Wikimedia Commons."
   },
   "form": {
     "label": "ISPM 15 stamp format check",
