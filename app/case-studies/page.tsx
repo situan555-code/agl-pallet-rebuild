@@ -3,6 +3,7 @@ import { Hero3 } from "@/components/hero3";
 import { Feature1 } from "@/components/feature1";
 import { Gallery4 } from "@/components/gallery4";
 import { Cta4 } from "@/components/cta4";
+import { OhioPlantMap } from "@/components/OhioPlantMap";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -36,6 +37,9 @@ export default function CaseStudiesPage() {
           title: s.title,
           description: s.summary,
           href: s.href,
+          visual: s.id === "multi-plant-program"
+            ? <OhioPlantMap className="aspect-[4/3] w-full overflow-hidden rounded-t-card bg-green" />
+            : undefined,
         }))}
       />
       <Cta4 heading={data.ctaBand.heading} description={data.ctaBand.body} button={data.ctaBand.cta} />

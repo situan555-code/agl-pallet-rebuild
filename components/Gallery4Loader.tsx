@@ -60,7 +60,7 @@ function GalleryPlaceholder({ eyebrow, title, description, items, className }: G
                       prefetch={false}
                       className={interactiveCardClass}
                     >
-                      <PhotoPlaceholder alt={item.title} />
+                      {item.visual ?? <PhotoPlaceholder alt={item.title} />}
                       <div className="flex flex-1 flex-col p-6">
                         <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
                         <p className="mt-5 text-body text-current/75">{item.description}</p>

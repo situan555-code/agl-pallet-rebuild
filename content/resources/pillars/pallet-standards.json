@@ -71,6 +71,7 @@
         "Ask for evidence that fits the requirement: a treatment stamp for ISPM 15, test data for a rated load, or a sample for a receiver's approval."
       ],
       "after": [
+        "AGL validates custom pallet designs against the NWPCA Pallet Design System (PDS) before finalizing specs with the mill. If your load requires a rated design, include the PDS reference number or test class in your spec.",
         "Mills build to the spec written on the order. Send the standard and the receiver's spec with a quote request so the AGL quote reflects them."
       ]
     }
