@@ -162,10 +162,9 @@ function parseLabeledBlock(blockText) {
 const SEPARATOR_RE = /^\|?\s*:?-{1,}:?\s*(\|\s*:?-{1,}:?\s*)+\|?$/;
 
 // A handful of "Replace with" cells are build instructions, not literal
-// page copy (4.8's PDS row says "Delete. No replacement." — there is
-// nothing to assert appears on the page for that row). Producer-voice
-// "Replace with" tables are rewrite instructions for banned legacy copy,
-// not customer-facing page blocks — do not require them via copy-verbatim.
+// page copy. Producer-voice "Replace with" tables are rewrite instructions
+// for banned legacy copy, not customer-facing page blocks — do not require
+// them via copy-verbatim. The Custom & engineered Copy cell is the PDS text.
 const NON_COPY_CELL_RE = /^delete\.?(\s*no replacement\.?)?$/i;
 
 // SPEC_V1.md mixed authoring annotations into product-line Copy cells.
