@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## No personal names on public pages (2026-10-01)
+
+Owner: remove every AGL person's first and last name from customer-facing pages. Team cards on `/who-we-are/` are roles only (Owner, Logistics, Supplier Relations, Operations, IT). Founder story stays first person; the eyebrow is "From the owner". Carrier offer and form success lines no longer name a dispatcher or supplier-relations contact. The dispatcher portrait is removed; that offer card uses the same empty Photo placeholder as the other freight cards. `{{TBD-PHOTO-BROCK}}` stays an unresolved token and is not rendered. SPEC_V1.md still has the named draft; this page copy is the approved public version.
+
 ## Pharmaceuticals and PDS methodology (2026-10-01)
 
 Live `/industries-served/` includes Pharmaceuticals. It is item 8 on `/industries`, after plastics and before food and beverage. The other verticals stay. Copy is brokerage voice: regulated environments, pallet integrity, cleanliness, consistency, and traceability.

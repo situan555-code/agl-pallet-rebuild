@@ -54,7 +54,7 @@ const CONTENT_DECISION_TOKENS = {
   'TBD-FOUNDER-STORY': { routes: ['/who-we-are'], note: 'build with draft copy as written (4.2 build note)' },
   'TBD-FAITH-PLACEMENT': { routes: ['/who-we-are'], note: 'placement already decided (built on /who-we-are); do not duplicate on /' },
   'TBD-VALUES': { routes: ['/who-we-are'], note: 'build the four cards as drafted' },
-  'TBD-TEAM-LIST': { routes: ['/who-we-are'], note: 'build with first names as written' },
+  'TBD-TEAM-LIST': { routes: ['/who-we-are'], note: 'roles only; no personal names (owner 2026-10-01)' },
   'TBD-PHARMA': { routes: ['/industries'], note: 'resolved 2026-10-01 — Pharmaceuticals is item 8 on /industries; do not render the token' },
   'TBD-SOCIAL-URLS': { routes: ROUTES, note: 'omit the Follow Us block entirely if unresolved — no placeholder, no empty heading' },
 };
