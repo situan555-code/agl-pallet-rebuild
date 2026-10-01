@@ -1,22 +1,21 @@
 /**
- * DEMO-ONLY stand-ins for the eight cream Photo cards on the home page.
- * Mill photography. Replace before go-live.
+ * AGL site photography for the eight cream Photo cards on the home page.
  * Order matches the cards in content/pages/home.json.
- * Freight and partner carriers share the outdoor stack still (no trucks).
+ * The same AGL photo may be reused across cards.
  */
 export const DEMO_HOME_PHOTOS = {
   capabilities: [
-    "/assets/demo-mill-four-way.jpg",
-    "/assets/demo-mill-custom-long.jpg",
-    "/assets/demo-mill-outdoor-stacks.jpg",
+    "/assets/home_about_photo.jpg",
+    "/assets/home_header_image.jpg",
+    "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
   ],
   differentiators: [
-    "/assets/demo-mill-ht-stamped.jpg",
-    "/assets/demo-mill-lumber-stacks.jpg",
-    "/assets/demo-mill-forklift-aisle.jpg",
+    "/assets/agl_home_video_poster.jpg",
+    "/assets/home_header_image.jpg",
+    "/assets/about_page-single_point_sidepic.jpg",
   ],
   partners: [
-    "/assets/demo-mill-covered-stacks.jpg",
-    "/assets/demo-mill-outdoor-stacks.jpg",
+    "/assets/about_page-single_point_sidepic.jpg",
+    "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
   ],
 } as const;

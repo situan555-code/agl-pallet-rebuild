@@ -57,7 +57,7 @@ Source comments that name `@shadcnblocks` and, in `components/process1.tsx`, the
 ## Waivers needed
 
 1. **GitHub handoff.** If the client receives this repo, root ops files above are in the zip. They do not deploy. Strip or export a client branch before a source handoff. No waiver needed for the Vercel site alone.
-2. **DEMO-ONLY photos.** Live `/` requests `/assets/demo-mill-*.jpg` and `/assets/demo-product-*.jpg` (`lib/demo-home-photos.ts`, `lib/demo-product-photos.ts`). `DECISIONS.md` says replace before go-live. Not a scaffold `/demo` route. Left in place; replacing them is a photo swap, not a fingerprint strip.
+2. **Placeholder product photos.** Home Photo cards and the product cards except crates and stakes now use AGL site photography. Crates and stakes still request `/assets/demo-product-crates.jpg` and `/assets/demo-product-stakes.jpg` (`lib/demo-product-photos.ts`). No AGL match for those two lines. Not a scaffold `/demo` route.
 3. **Canonical / OG host.** `lib/site-url.ts` forces `https://aglpallet.com`. Live meta `og:image` is `https://aglpallet.com/assets/agl_social_share.jpg`, which **404s on today’s WordPress host**. The same file is 200 on `nx7k-lab-m4.vercel.app`. Do not point canonicals at the demo host.
 
 ## Design / copy risks (not fixed)

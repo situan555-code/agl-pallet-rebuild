@@ -1,14 +1,12 @@
 /**
- * DEMO-ONLY stand-ins for the product-line cards.
- * Stock, custom, and dunnage use mill catalog stills.
- * Crates, shipping blocks, and stakes stay on the earlier warm-wood demos
- * (no mill still was a clearer match for those lines).
+ * AGL site photography for the product-line cards.
+ * Crates and stakes remain temporary placeholders (no AGL match yet).
  */
 export const DEMO_PRODUCT_PHOTOS: Partial<Record<string, string>> = {
-  "stock-pallets": "/assets/demo-mill-four-way.jpg",
-  "custom-engineered": "/assets/demo-mill-custom-long.jpg",
+  "stock-pallets": "/assets/product_page-stock_pallets_sidepic-1.jpg",
+  "custom-engineered": "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
   crates: "/assets/demo-product-crates.jpg",
-  dunnage: "/assets/demo-mill-dunnage.jpg",
-  "shipping-blocks": "/assets/demo-product-shipping-blocks.jpg",
+  dunnage: "/assets/why_agl_exist_sidepic.jpg",
+  "shipping-blocks": "/assets/who_agl_is_sidepic.jpg",
   stakes: "/assets/demo-product-stakes.jpg",
 };
