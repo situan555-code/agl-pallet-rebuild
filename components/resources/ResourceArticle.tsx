@@ -74,7 +74,7 @@ export function ArticleHeader({
 }) {
   const dark = variant === "inset-dark";
   return (
-    <section className={cn("scroll-mt-24 pt-28", dark ? "text-current" : "surface-light bg-bone text-moss")}>
+    <section className={cn("scroll-mt-24 pt-28", dark ? "text-current" : "bg-background text-foreground")}>
       <div className={cn(containerClass, "py-16 nav:py-20")}>
         <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2 text-link text-current/70">
@@ -120,10 +120,10 @@ export function ArticleHeader({
   );
 }
 
-/** Reading column. Reading pages use bone ground per design rules. */
+/** Reading column. Inherits site theme (light or dark). */
 export function ReadingPanel({ children }: { children: ReactNode }) {
   return (
-    <section className="surface-light bg-bone pb-8 pt-8 text-moss nav:pb-10 nav:pt-10">
+    <section className="bg-background pb-8 pt-8 text-foreground nav:pb-10 nav:pt-10">
       <div className={cn(containerClass, "py-10 nav:py-14")}>
         {children}
       </div>
