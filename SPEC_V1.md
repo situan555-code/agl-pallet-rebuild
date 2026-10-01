@@ -26,7 +26,7 @@ These are non-negotiable brand and legal constraints. Violating one is worse tha
 
 | 4 | **No recycled, used, or reconditioned pallets** offered as a product. |
 
-| 5 | **Claim no certifications.** No RPA, MHI, BBB, SmartWay, NWPCA, PDS, ISPM-15, or heat-treat capability claims. No badge images. |
+| 5 | **Claim no certifications.** No RPA, MHI, BBB, SmartWay, NWPCA, ISPM-15, or heat-treat capability claims. No badge images. Pallet Design System (PDS) may be named as the methodology used when an engineered spec is written. Do not claim PDS certification. |
 
 | 6 | **Never "Ohio-only."** Supplier network is growing. Public footprint is MI, IL, IN, PA, OH, WV — "the Midwest and Mid-Atlantic, and growing." Never "national" or "nationwide." |
 
@@ -200,7 +200,7 @@ Build these once and reuse. Copy varies by instance; structure does not.
 
 | `/products` | Products — Pallets, Crates, Dunnage, Blocks and Stakes | Stock pallets, custom and engineered solutions, crates, dunnage, shipping blocks, and stakes, sourced through qualified mills. |
 
-| `/industries` | Industries We Serve — AGL Pallet | Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage. |
+| `/industries` | Industries We Serve — AGL Pallet | Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage. |
 
 | `/how-we-work` | How We Work — AGL Pallet | Four steps: understand the requirement, align supply and freight, execute and communicate, keep adjusting. |
 
@@ -820,6 +820,12 @@ the load actually does — weight, whether it's racked or floor-stacked, how man
 
 it gets handled, whether it ships overseas — and then find the shop set up to build it.
 
+Pallet Design System (PDS) methodology tailors that spec to the load requirements, weight
+
+capacities, and operational conditions, from the product weight, stacking, handling, and
+
+environment, so the pallet has the strength the load needs without overbuilding.
+
 H2: Where custom usually pays for itself
 
 LIST:
@@ -838,7 +844,7 @@ LIST:
 
 ```
 
-> **Build note:** do not add PDS, Pallet Design System, engineering-certification, or load-testing claims to this page. Rule 5.
+> **Build note:** name Pallet Design System (PDS) methodology in the body above. Do not add engineering-certification, PDS-certification, or load-testing claims. Rule 5.
 
 ---
 
@@ -862,7 +868,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | Stock pallets | `#stock-pallets` | Standard footprints for recurring volume, with multiple qualified sources behind each spec so a single mill's backlog doesn't become your shortage. |
 
-| Custom & engineered | `#custom-engineered` | Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. **Links to `/custom-engineered`.** |
+| Custom & engineered | `#custom-engineered` | Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. Pallet Design System (PDS) methodology tailors that spec to the load requirements, weight capacities, and operational conditions, from the product weight, stacking, handling, and environment, so the pallet has the strength the load needs without overbuilding. **Links to `/custom-engineered`.** |
 
 | Crates | `#crates` | Custom and stock crating for equipment, components, and high-value goods that need containment beyond palletization. |
 
@@ -884,7 +890,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | "we develop pallet specifications" | "we write the spec with you" |
 
-| "Using Pallet Design System (PDS) methodology…" | **Delete. No replacement.** |
+| "Using Pallet Design System (PDS) methodology…" | Name the methodology in the Custom & engineered copy row. Do not claim PDS certification. |
 
 ---
 
@@ -920,9 +926,11 @@ LEDE: Operations where the pallet is load-bearing infrastructure, not a line ite
 
 | 7 | Plastics & packaging | High volume, fast cycles, and automated handling. |
 
-| 8 | Food & beverage | Throughput operations where a late load stops a line. |
+| 8 | Pharmaceuticals | Regulated environments where pallet integrity, cleanliness, consistency, and traceability carry compliance weight. |
 
-> **Build note:** `{{TBD-PHARMA}}` — "Pharmaceutical" is currently the second industry listed on the live site and appears in no tier of the validated ICP. It is omitted here pending Brock's answer. If he confirms it, insert as item 8 with copy: *"Regulated environments where pallet integrity, cleanliness, and traceability carry compliance weight."* Do not restore it without that answer.
+| 9 | Food & beverage | Throughput operations where a late load stops a line. |
+
+> **Build note:** `{{TBD-PHARMA}}` resolved 2026-10-01. Pharmaceuticals is item 8. Do not render the token.
 
 ---
 
@@ -1154,7 +1162,7 @@ Apply these regardless of which new pages ship. Several are live compliance prob
 
 | "12+ Years Industry Experience" | homepage stat band | Delete from company context. May only reappear attributed to Brock in his bio. |
 
-| "Using Pallet Design System (PDS) methodology" | `/products` | Delete. Unconfirmed for AGL. |
+| "Using Pallet Design System (PDS) methodology" | `/products`, `/custom-engineered` | Name the methodology when the engineered spec is described. Do not claim PDS certification. |
 
 | "Every pallet is produced under strict quality controls" | `/products` | Replace per 4.8. |
 
@@ -1216,7 +1224,7 @@ Every `{{TBD-*}}` in this document. Render them as visible placeholders in the d
 
 | `{{TBD-TEAM-LIST}}` | Who is listed, last names, headshots | Brock |
 
-| `{{TBD-PHARMA}}` | Is pharmaceutical a real target segment | Brock |
+| `{{TBD-PHARMA}}` | Resolved 2026-10-01. Pharmaceuticals is on `/industries`. Do not render the token. | — |
 
 | `{{TBD-ADDRESS}}` | North Canton street address for footer, contact, JSON-LD | Brock |
 
@@ -1242,7 +1250,7 @@ Run before calling the build done.
 
 - [ ] No certification claims and no badge images
 
-- [ ] No PDS or Pallet Design System reference
+- [ ] No PDS certification claim. Pallet Design System (PDS) methodology may be named on engineered product copy.
 
 - [ ] No recycled or reconditioned pallet offer
 

@@ -1,5 +1,11 @@
 # DECISIONS (redesign)
 
+## Pharmaceuticals and PDS methodology (2026-10-01)
+
+Live `/industries-served/` includes Pharmaceuticals. It is item 8 on `/industries`, after plastics and before food and beverage. The other verticals stay. Copy is brokerage voice: regulated environments, pallet integrity, cleanliness, consistency, and traceability.
+
+Live engineered-pallet copy names Pallet Design System (PDS) methodology. That name is now on `/products/` (custom and engineered) and `/custom-engineered/`, and on the home product strip because it reuses the product line. Scope stays what the live page states: load requirements, weight capacities, operational conditions, and an analysis of product weight, stacking, handling, and environment, for strength without overbuilding. No PDS certification claim. The banned-words scan now flags certification framing only.
+
 ## Card numerals (2026-09-29)
 
 Capability cards and Feature3 numbered cards no longer stamp moss numerals on the photo. Differentiator and service eyebrows stay in the card body. Process step numbers on other pages are unchanged.

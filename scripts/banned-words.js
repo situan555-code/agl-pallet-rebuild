@@ -49,7 +49,9 @@ const BANNED_PATTERNS = [
   { name: 'leverage-as-verb', re: /\bleverages?\b|\bleveraged\b|\bleveraging\b/i },
   { name: 'price-objection-cliche', re: /cheapest[^.?!]{0,20}(pallet|thing)[^.?!]{0,40}most expensive/i },
   { name: 'national-nationwide', re: /\bnational(ly)?\b|\bnationwide\b/i },
-  { name: 'pds-pallet-design-system', re: /\bPDS\b|\bPallet Design System\b/i },
+  // Owner 2026-10-01: naming Pallet Design System (PDS) methodology on
+  // engineered product copy is allowed. Certification framing is still banned.
+  { name: 'pds-certification-claim', re: /\b(?:certified|certification)\b[^.?!]{0,40}\b(?:PDS|Pallet Design System)\b|\b(?:PDS|Pallet Design System)\b[^.?!]{0,40}\b(?:certified|certification)\b/i },
   { name: 'certification-claim', re: /\bRPA\b|\bMHI\b|\bBBB\b|\bSmartWay\b|\bNWPCA\b|\bISPM-15\b/ },
   { name: 'bahlr-placeholder', re: /This is Bahlr website\./i },
   { name: 'warehousing-storage-inventory', re: /\bwarehousing\b|\bwarehouses?\b|\bstorage\b|\binventory\b|\bVMI\b/i },
