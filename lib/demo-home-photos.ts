@@ -5,7 +5,7 @@
 export const DEMO_HOME_PHOTOS = {
   capabilities: [
     "/assets/stock/agl-filler-pallet-tagged-01_97bd.webp",
-    "/assets/stock/agl-pallets-01_d694.webp",
+    "/assets/stock/agl-carriers-02_7e71.webp",
     "/assets/stock/agl-freight-execute-01_0e78.webp",
   ],
   differentiators: [
