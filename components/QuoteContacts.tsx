@@ -31,16 +31,28 @@ export function QuoteContacts({
   className?: string;
 }) {
   return (
-    <ul className={cn("mt-16 grid grid-cols-1 items-start gap-4 nav:grid-cols-3", className)}>
+    <ul className={cn("mt-16 grid grid-cols-1 items-stretch gap-5 nav:grid-cols-3", className)}>
       {items.map((item) => {
         const Icon = icons[item.kind];
         return (
-          <li key={item.label} className="relative">
-            <a href={item.href} className={cn(interactiveCardClass, "p-6")}>
+          <li key={item.label} className="relative h-full">
+            <a
+              href={item.href}
+              className={cn(
+                interactiveCardClass,
+                "flex h-full min-h-[11.5rem] flex-col p-7 nav:p-8"
+              )}
+            >
               <IconTile icon={Icon} />
-              <p className="mt-5 text-[12px] font-semibold uppercase tracking-[0.08em] text-gray">{item.label}</p>
-              <p className="mt-2 text-[22px] font-semibold leading-snug text-current">{item.value}</p>
-              <span className="mt-4 inline-flex text-body font-semibold text-ice">{actions[item.kind]}</span>
+              <p className="mt-6 text-[12px] font-semibold uppercase tracking-[0.08em] text-gray">
+                {item.label}
+              </p>
+              <p className="mt-2 text-[24px] font-semibold leading-snug tracking-tight text-current">
+                {item.value}
+              </p>
+              <span className="mt-auto pt-6 inline-flex text-body font-semibold text-ice">
+                {actions[item.kind]}
+              </span>
             </a>
             <div className="absolute right-4 top-4 z-10">
               <QuoteCopyButton value={item.value} />

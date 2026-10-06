@@ -2,8 +2,7 @@
 
 // Adapted from @shadcnblocks/faq3 (free). Layout kept: centered intro over a
 // single-column accordion. Demo questions/answers and the support panel
-// removed. Every item starts open (type="multiple") so answers are readable
-// and indexable without a click; buyers can still collapse them. Styled with
+// removed. Items start closed; buyers open on click. Styled with
 // TW3-compatible classes because components/ui/accordion ships TW4 variants.
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -39,7 +38,6 @@ const Faq3 = ({ id, eyebrow, heading, description, items, className }: Faq3Props
         </div>
         <Accordion
           type="multiple"
-          defaultValue={items.map((item) => item.id)}
           className="border-t border-brand-green/15 nav:col-span-8"
         >
           {items.map((item) => (
@@ -51,7 +49,7 @@ const Faq3 = ({ id, eyebrow, heading, description, items, className }: Faq3Props
                   className="ml-auto h-5 w-5 shrink-0 text-current transition-transform duration-200 group-data-[state=open]/faq:rotate-45"
                 />
               </AccordionTrigger>
-              <AccordionContent className="pb-6">
+              <AccordionContent forceMount className="pb-6 data-[state=closed]:hidden">
                 <p className="prose-measure text-body text-current/80">{item.answer}</p>
               </AccordionContent>
             </AccordionItem>

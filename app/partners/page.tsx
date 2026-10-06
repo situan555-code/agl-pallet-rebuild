@@ -22,6 +22,8 @@ export default function Partners() {
           title: c.heading,
           description: c.body,
           href: c.href,
+          src: (c as { image?: string }).image,
+          cta: { label: "Learn more", href: c.href },
         }))}
       />
     </main>
