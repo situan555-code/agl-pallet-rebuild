@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Boxes, Layers, Package } from "lucide-react";
 import content from "@/content/pages/custom-engineered.json";
 import { Hero3 } from "@/components/hero3";
@@ -15,7 +16,24 @@ export const metadata: Metadata = pageMeta(
 export default function CustomEngineered() {
   return (
     <main>
-      <Hero3 eyebrow={content.hero.eyebrow} heading={content.hero.heading} description={content.hero.body} />
+      <Hero3
+        variant="light-image"
+        eyebrow={content.hero.eyebrow}
+        heading={content.hero.heading}
+        description={content.hero.body}
+        image={
+          <div className="relative hidden aspect-4/3 w-full overflow-hidden rounded-card nav:block">
+            <Image
+              src="/assets/stock/agl-pallet-blueprint-01_a87e.webp"
+              alt="Technical blueprint of a standard stringer pallet"
+              fill
+              quality={70}
+              sizes="(min-width: 980px) 38vw, 1px"
+              className="object-cover"
+            />
+          </div>
+        }
+      />
 
       <Process1
         heading={content.whereCustomPays.heading}

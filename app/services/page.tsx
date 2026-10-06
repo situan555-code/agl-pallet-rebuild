@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 
 const SERVICE_PHOTOS: Record<string, string> = {
   "spec-sourcing": "/assets/stock/agl-pallet-01_7a54.webp",
-  "mill-qualification": "/assets/stock/agl-filler-pallet-stack-04_01bd.webp",
+  "mill-qualification": "/assets/stock/agl-mill-lumber-01_0b74.webp",
   "managed-freight": "/assets/stock/agl-carriers-02_7e71.webp",
   "program-coordination": "/assets/stock/agl-warehouse-multiplant-01_d566.webp",
 };
@@ -51,7 +51,7 @@ export default function ServicesPage() {
         eyebrow="Brokerage, not manufacturing"
         heading="We grow by coordinating more — never by owning a mill."
         body="After the lumber shock, too many brokers became competitors to the shops they used to buy from. AGL's pledge is the operating model: no plant of our own to feed."
-        image={{ src: "/assets/stock/agl-filler-pallet-stack-03_3ef4.webp", alt: "Pallet stacks ready for dispatch" }}
+        image={{ src: "/assets/stock/agl-filler-pallet-stack-04_01bd.webp", alt: "Close-up of pallet wood grain and boards" }}
         cta={{ label: "Read the pledge", href: "/the-pledge/" }}
       />
       <Feature1
@@ -64,11 +64,11 @@ export default function ServicesPage() {
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg"
-              alt=""
+              alt="Forklift beside a flatbed loaded with pallet stacks"
               fill
               quality={70}
               sizes="(min-width: 980px) 38vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[68%_78%]"
               placeholder={blur ? "blur" : undefined}
               blurDataURL={blur}
             />

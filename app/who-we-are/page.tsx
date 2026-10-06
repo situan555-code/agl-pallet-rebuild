@@ -1,4 +1,4 @@
-import { BadgeCheck, Clock, Handshake, Settings2 } from "lucide-react";
+import { ClipboardCheck, ShieldCheck, UserRoundCheck, Zap } from "lucide-react";
 import content from "@/content/pages/who-we-are.json";
 import home from "@/content/pages/home.json";
 import Image from "next/image";
@@ -77,7 +77,7 @@ export default function WhoWeAre() {
         features={content.values.cards.map((c, index) => ({
           title: c.heading,
           description: c.body,
-          icon: [Handshake, Clock, Settings2, BadgeCheck][index],
+          icon: [ShieldCheck, Zap, ClipboardCheck, UserRoundCheck][index],
         }))}
       />
 
