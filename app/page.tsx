@@ -29,7 +29,7 @@ export const metadata: Metadata = pageMeta(
 );
 
 export default function Home() {
-  const whyBlur = getBlurDataURL("/assets/why_agl_exist_sidepic.jpg");
+  const whyBlur = getBlurDataURL("/assets/stock/agl-brock-founder-01_82f1.webp");
 
   return (
     <main>
@@ -161,12 +161,12 @@ export default function Home() {
         media={
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
-              src="/assets/why_agl_exist_sidepic.jpg"
-              alt=""
+              src="/assets/stock/agl-brock-founder-01_82f1.webp"
+              alt="Brock, founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
               fill
               quality={70}
               sizes="(min-width: 980px) 38vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[center_35%]"
               placeholder={whyBlur ? "blur" : undefined}
               blurDataURL={whyBlur}
             />
