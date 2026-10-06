@@ -48,12 +48,12 @@ export default function WhoWeAre() {
         media={
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
-              src="/assets/stock/agl-filler-pallet-yard-01_a162.webp"
-              alt="Pallet yard at a partner mill"
+              src="/assets/stock/agl-brock-founder-01_82f1.webp"
+              alt="Brock, founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
               fill
               quality={70}
               sizes="(min-width: 980px) 38vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[center_35%]"
             />
           </div>
         }
