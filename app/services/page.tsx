@@ -9,6 +9,13 @@ import { getBlurDataURL } from "@/lib/blur";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
+const SERVICE_PHOTOS: Record<string, string> = {
+  "spec-sourcing": "/assets/stock/agl-pallet-01_7a54.webp",
+  "mill-qualification": "/assets/stock/agl-filler-pallet-stack-04_01bd.webp",
+  "managed-freight": "/assets/stock/agl-carriers-02_7e71.webp",
+  "program-coordination": "/assets/stock/agl-warehouse-multiplant-01_d566.webp",
+};
+
 export const metadata: Metadata = pageMeta(
   "Services — AGL Pallet",
   "Pallet sourcing, mill qualification, managed freight, and program coordination from one brokerage desk.",
@@ -29,6 +36,7 @@ export default function ServicesPage() {
           eyebrow: s.eyebrow,
           title: s.title,
           description: s.description,
+          src: SERVICE_PHOTOS[s.id],
           href:
             s.id === "spec-sourcing"
               ? "/products/"
@@ -43,7 +51,7 @@ export default function ServicesPage() {
         eyebrow="Brokerage, not manufacturing"
         heading="We grow by coordinating more — never by owning a mill."
         body="After the lumber shock, too many brokers became competitors to the shops they used to buy from. AGL's pledge is the operating model: no plant of our own to feed."
-        image={{ src: "/assets/home_about_photo.jpg", alt: "" }}
+        image={{ src: "/assets/stock/agl-filler-pallet-stack-03_3ef4.webp", alt: "Pallet stacks ready for dispatch" }}
         cta={{ label: "Read the pledge", href: "/the-pledge/" }}
       />
       <Feature1

@@ -5,15 +5,15 @@
     "body": "Operations where the pallet is load-bearing infrastructure, not a line item."
   },
   "industries": [
-    { "heading": "Building materials", "body": "Lumber, stone, roofing, and construction components. Heavy, dense, often irregular, and frequently stored outdoors." },
-    { "heading": "Chemicals & coatings", "body": "Drums, totes, and bulk containers where load stability isn't optional." },
-    { "heading": "Refractories, foundry, glass & clay", "body": "Extreme point loads and weights most standard specs aren't rated for." },
-    { "heading": "Shipping, distribution & 3PL", "body": "High throughput, multiple ship-to points, and mixed specs across sites." },
-    { "heading": "Metal fabrication & forging", "body": "Engineered skids and crates for parts that outweigh the pallet several times over." },
-    { "heading": "Energy & industrial", "body": "Oil, gas, and electrical equipment, including export crating." },
+    { "heading": "Building materials", "body": "Lumber, stone, roofing, and construction components. Heavy, dense, often irregular, and frequently stored outdoors.", "image": "/assets/stock/agl-industry-building-materials-01_ca06.webp" },
+    { "heading": "Chemicals & coatings", "body": "Drums, totes, and bulk containers where load stability isn't optional.", "image": "/assets/stock/agl-industry-chemicals-01_13de.webp" },
+    { "heading": "Refractories, foundry, glass & clay", "body": "Extreme point loads and weights most standard specs aren't rated for.", "image": "/assets/stock/agl-industry-refractories-01_f801.webp" },
+    { "heading": "Shipping, distribution & 3PL", "body": "High throughput, multiple ship-to points, and mixed specs across sites.", "image": "/assets/stock/agl-shipping-3pl-01_f433.webp" },
+    { "heading": "Metal fabrication & forging", "body": "Engineered skids and crates for parts that outweigh the pallet several times over.", "image": "/assets/stock/agl-industry-metal-fab-01_8d4c.webp" },
+    { "heading": "Energy & industrial", "body": "Oil, gas, and electrical equipment, including export crating.", "image": "/assets/stock/agl-industry-energy-01_04c9.webp" },
     { "heading": "Plastics & packaging", "body": "High volume, fast cycles, and automated handling." },
     { "heading": "Pharmaceuticals", "body": "Regulated environments where pallet integrity, cleanliness, consistency, and traceability carry compliance weight." },
-    { "heading": "Food & beverage", "body": "Throughput operations where a late load stops a line." }
+    { "heading": "Food & beverage", "body": "Throughput operations where a late load stops a line.", "image": "/assets/stock/agl-industry-food-beverage-01_dea2.webp" }
   ],
   "ctaBand": {
     "heading": "Let's talk about your pallet supply.",

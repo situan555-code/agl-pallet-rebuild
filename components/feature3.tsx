@@ -7,6 +7,7 @@
 //   ruled    — top hairline per item, multi-row (categories)
 //   numbered — photo, eyebrow in the card body, whole-card link
 //   card     — bordered image card, whole-card link
+import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -70,6 +71,17 @@ function DividedItem({ item, index, count, Heading }: { item: Feature3Item; inde
 function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading }) {
   return (
     <div id={item.id} className="group scroll-mt-24 border-t border-current/15 pb-4 pt-8">
+      {item.src && (
+        <div className="relative mb-6 aspect-video w-full overflow-hidden rounded-card">
+          <Image
+            src={item.src}
+            alt={item.title}
+            fill
+            sizes="(min-width: 980px) 45vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      )}
       {item.eyebrow && (
         <p className="mb-3 text-eyebrow font-semibold uppercase tracking-wide text-current/70">{item.eyebrow}</p>
       )}

@@ -12,6 +12,13 @@ import { isPlaceholder } from "@/lib/placeholders";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
+const CARRIER_OFFER_PHOTOS = [
+  "/assets/stock/agl-shipping-3pl-03_4801.webp",
+  "/assets/stock/agl-filler-pallet-stack-08_b566.webp",
+  "/assets/stock/agl-industry-refinery-01_dc7e.webp",
+  "/assets/stock/agl-industry-food-beverage-03_ec8c.webp",
+] as const;
+
 export const metadata: Metadata = pageMeta(
   'Haul for AGL — For Carriers',
   'AGL manages freight on every pallet order we sell. Regional lanes across the Midwest and Mid-Atlantic. Get set up as a carrier.',
@@ -49,6 +56,7 @@ export default function PartnersCarriers() {
         steps={content.offer.items.map((item, index) => ({
           title: item.lead,
           description: isPlaceholder(item.body) ? "" : item.body,
+          image: CARRIER_OFFER_PHOTOS[index],
           icon: [MapPin, Repeat, UserRound, BadgeCheck][index],
           href: item.lead.includes("dispatcher") ? "/who-we-are/" : "#carrier-form",
         }))}

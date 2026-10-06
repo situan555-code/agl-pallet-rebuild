@@ -1,22 +1,20 @@
 /**
- * Home cream Photo cards. Order matches content/pages/home.json.
- * Solid AGL matches point at site photography. Same-day quotes and
- * "hear it from us first" stay on temporary mill demos until a real shoot.
- * The same AGL photo may be reused across cards.
+ * Home cream photo cards. Order matches content/pages/home.json.
+ * All slots now use AGL stock photography.
  */
 export const DEMO_HOME_PHOTOS = {
   capabilities: [
-    "/assets/demo-mill-four-way.jpg",
-    "/assets/product_page-stock_pallets_sidepic-1.jpg",
-    "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
+    "/assets/stock/agl-filler-pallet-tagged-01_97bd.webp",
+    "/assets/stock/agl-pallets-01_d694.webp",
+    "/assets/stock/agl-freight-execute-01_0e78.webp",
   ],
   differentiators: [
-    "/assets/demo-mill-ht-stamped.jpg",
-    "/assets/get_in_touch_cta_banner_bg-1-scaled.jpg",
-    "/assets/home_header_image.jpg",
+    "/assets/stock/agl-filler-pallet-stack-02_0659.webp",
+    "/assets/stock/agl-partner-mills-01_6763.webp",
+    "/assets/stock/agl-manufacturing-forklift-01_86f4.webp",
   ],
   partners: [
-    "/assets/about_page-single_point_sidepic.jpg",
-    "/assets/product_page-engineered_pallet_solutions_sidepic-1.jpg",
+    "/assets/stock/agl-mill-lumber-01_0b74.webp",
+    "/assets/stock/agl-carriers-01_8a45.webp",
   ],
 } as const;

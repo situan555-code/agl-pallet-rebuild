@@ -8,7 +8,6 @@ import { Process1 } from "@/components/process1";
 import { Feature3 } from "@/components/feature3";
 import { About3 } from "@/components/about3";
 import { Cta4 } from "@/components/cta4";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -46,7 +45,18 @@ export default function WhoWeAre() {
         eyebrow={content.founderStory.eyebrow}
         heading={content.founderStory.heading}
         paragraphs={content.founderStory.paragraphs}
-        media={<PhotoPlaceholder className="rounded-card" />}
+        media={
+          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
+            <Image
+              src="/assets/stock/agl-filler-pallet-yard-01_a162.webp"
+              alt="Pallet yard at a partner mill"
+              fill
+              quality={70}
+              sizes="(min-width: 980px) 38vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        }
       />
 
       <Process1
