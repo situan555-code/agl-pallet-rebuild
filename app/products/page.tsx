@@ -29,7 +29,14 @@ export default function Products() {
                 : "/request-a-quote/";
             return (
               <InteractiveCard key={line.id} id={line.id} href={href}>
-                <CardMedia alt={line.heading} src={DEMO_PRODUCT_PHOTOS[line.id]} />
+                <CardMedia
+                  alt={
+                    line.id === "custom-engineered"
+                      ? "Technical blueprint of a standard stringer pallet"
+                      : line.heading
+                  }
+                  src={DEMO_PRODUCT_PHOTOS[line.id]}
+                />
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-[22px] font-semibold leading-snug text-current">{line.heading}</h2>
                   <p className="mt-5 text-body text-current/75">{line.copy}</p>
