@@ -5,6 +5,13 @@ import { Cta4 } from "@/components/cta4";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
+const HOW_WE_WORK_IMAGES = [
+  "/assets/stock/agl-geometry-wood-01_6d47.webp",
+  "/assets/stock/agl-mill-lumber-01_0b74.webp",
+  "/assets/stock/agl-freight-execute-01_0e78.webp",
+  "/assets/stock/agl-broken-pallet-01_b7dc.webp",
+] as const;
+
 export const metadata: Metadata = pageMeta(
   'How We Work — AGL Pallet',
   'Four steps: understand the requirement, align supply and freight, execute and communicate, keep adjusting.',
@@ -17,10 +24,11 @@ export default function HowWeWork() {
       <Hero3 variant="light-text" eyebrow={content.hero.eyebrow} heading={content.hero.heading} />
 
       <Process1
-        steps={content.timeline.map((step) => ({
+        steps={content.timeline.map((step, index) => ({
           number: step.number,
           title: step.heading,
           description: step.body,
+          image: HOW_WE_WORK_IMAGES[index],
           href:
             step.number === "01"
               ? "/request-a-quote/"

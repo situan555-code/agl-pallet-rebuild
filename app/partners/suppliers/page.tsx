@@ -12,6 +12,14 @@ import { QuoteContacts, type QuoteContactItem } from "@/components/QuoteContacts
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
+const SUPPLIER_OFFER_PHOTOS = [
+  "/assets/stock/agl-filler-pallet-stack-05_3e39.webp",
+  "/assets/stock/agl-filler-pallet-stack-06_bb58.webp",
+  "/assets/stock/agl-filler-pallet-stack-07_179a.webp",
+  "/assets/stock/agl-industry-building-materials-02_188a.webp",
+  "/assets/stock/agl-shipping-3pl-02_8474.webp",
+] as const;
+
 export const metadata: Metadata = pageMeta(
   'Supply Pallets to AGL — For Mills and Shops',
   'AGL is a pallet brokerage with no plant of its own. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds.',
@@ -49,6 +57,7 @@ export default function PartnersSuppliers() {
         steps={content.offer.items.map((item, index) => ({
           title: item.lead,
           description: item.body,
+          image: SUPPLIER_OFFER_PHOTOS[index],
           icon: [Repeat, BadgeCheck, ShieldCheck, Settings2, Truck][index],
           href: item.lead.includes("freight") ? "/partners/carriers/" : item.lead.includes("conflict") ? "/the-pledge/" : "#supplier-form",
         }))}
