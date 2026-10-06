@@ -96,6 +96,8 @@ export default function Home() {
           description: c.body,
           href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
           src: DEMO_HOME_PHOTOS.differentiators[index],
+          // "We've run the floor" (index 2): bias crop toward forklift / floor.
+          imageClassName: index === 2 ? "object-[center_78%]" : undefined,
         }))}
       />
 
@@ -119,6 +121,10 @@ export default function Home() {
           description: line.copy,
           href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
           src: DEMO_PRODUCT_PHOTOS[line.id],
+          alt:
+            line.id === "custom-engineered"
+              ? "Technical blueprint of a standard stringer pallet"
+              : undefined,
         }))}
       />
 

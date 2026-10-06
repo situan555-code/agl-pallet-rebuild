@@ -13,7 +13,7 @@ export function StaticGallery({
   eyebrow?: string;
   title: string;
   description?: string;
-  items: { id: string; title: string; description: string; href: string; src?: string }[];
+  items: { id: string; title: string; description: string; href: string; src?: string; alt?: string }[];
   className?: string;
 }) {
   return (
@@ -38,7 +38,7 @@ export function StaticGallery({
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <InteractiveCard key={item.id} id={item.id} href={item.href}>
-              <CardMedia alt={item.title} src={item.src} />
+              <CardMedia alt={item.alt ?? item.title} src={item.src} />
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-[22px] font-semibold leading-snug text-current">{item.title}</h3>
                 <p className="mt-5 text-body text-current/75">{item.description}</p>

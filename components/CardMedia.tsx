@@ -6,11 +6,14 @@ export function CardMedia({
   numeral,
   alt = "",
   className,
+  imageClassName,
   src,
 }: {
   numeral?: string;
   alt?: string;
   className?: string;
+  /** Extra classes on the next/image (e.g. object-bottom for a lower crop). */
+  imageClassName?: string;
   src?: string;
 }) {
   return (
@@ -23,7 +26,7 @@ export function CardMedia({
             fill
             quality={60}
             sizes="(min-width: 980px) 40vw, calc(100vw - 48px)"
-            className="object-cover"
+            className={cn("object-cover", imageClassName)}
           />
         </div>
       ) : (
