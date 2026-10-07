@@ -1,0 +1,8 @@
+{
+  "name": "agl-pallet",
+  "version": "0.1.0",
+  "private": true,
+  "description": "design-sync wrapper: re-exports the site's real components for claude.ai/design. Not a published package.",
+  "module": "./index.ts",
+  "types": "./types/index.d.ts"
+}

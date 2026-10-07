@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "baseUrl": "../..",
+    "paths": {
+      "@/*": ["./*"],
+      "next/link": ["./.design-sync/pkg/shims/next-link"],
+      "next/image": ["./.design-sync/pkg/shims/next-image"],
+      "next/navigation": ["./.design-sync/pkg/shims/next-navigation"],
+      "next/dynamic": ["./.design-sync/pkg/shims/next-dynamic"]
+    }
+  },
+  "files": ["./index.ts"]
+}

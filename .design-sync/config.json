@@ -1,0 +1,280 @@
+{
+  "projectId": "5c1c4422-62b1-426f-b5a5-58d00d009c91",
+  "shape": "package",
+  "pkg": "agl-pallet",
+  "globalName": "AGLPallet",
+  "buildCmd": "node .design-sync/pkg/build.mjs",
+  "entry": ".design-sync/pkg/index.ts",
+  "srcDir": "../../components",
+  "tsconfig": "tsconfig.json",
+  "cssEntry": "agl.css",
+  "extraFonts": [
+    "fonts/fonts.css"
+  ],
+  "docsMap": {
+    "Container": "../groups/layout.md",
+    "Section": "../groups/layout.md",
+    "SectionHeading": "../groups/layout.md",
+    "Separator": "../groups/layout.md",
+    "Button": "../groups/actions.md",
+    "CopyValue": "../groups/actions.md",
+    "QuoteCopyButton": "../groups/actions.md",
+    "ThemeToggle": "../groups/actions.md",
+    "Toggle": "../groups/actions.md",
+    "InteractiveCard": "../groups/cards-media.md",
+    "CardMedia": "../groups/cards-media.md",
+    "IconTile": "../groups/cards-media.md",
+    "PhotoPlaceholder": "../groups/cards-media.md",
+    "RuleList": "../groups/cards-media.md",
+    "QuoteContacts": "../groups/cards-media.md",
+    "Item": "../groups/cards-media.md",
+    "PageOpener": "../groups/page-sections.md",
+    "HeroExpand": "../groups/page-sections.md",
+    "ImageBand": "../groups/page-sections.md",
+    "NetworkBeam": "../groups/page-sections.md",
+    "OhioPlantMap": "../groups/page-sections.md",
+    "Hero1": "../groups/page-sections.md",
+    "Hero3": "../groups/page-sections.md",
+    "About3": "../groups/page-sections.md",
+    "Feature1": "../groups/page-sections.md",
+    "Feature2": "../groups/page-sections.md",
+    "Feature3": "../groups/page-sections.md",
+    "Process1": "../groups/page-sections.md",
+    "Faq3": "../groups/page-sections.md",
+    "Cta4": "../groups/page-sections.md",
+    "Contact2": "../groups/page-sections.md",
+    "Gallery4": "../groups/page-sections.md",
+    "Form": "../groups/forms.md",
+    "Select": "../groups/forms.md",
+    "Header": "../groups/navigation.md",
+    "Footer": "../groups/navigation.md",
+    "Footer2": "../groups/navigation.md",
+    "NavFrame": "../groups/navigation.md",
+    "NavigationMenu": "../groups/navigation.md",
+    "DropdownMenu": "../groups/navigation.md",
+    "Accordion": "../groups/disclosure-overlays.md",
+    "Sheet": "../groups/disclosure-overlays.md",
+    "Carousel": "../groups/disclosure-overlays.md",
+    "Reveal": "../groups/motion-decoration.md",
+    "BlurFade": "../groups/motion-decoration.md",
+    "AnimatedBeam": "../groups/motion-decoration.md",
+    "DotPattern": "../groups/motion-decoration.md",
+    "ArrowIcon": "../groups/icons.md",
+    "ArrowRightIcon": "../groups/icons.md",
+    "BoxesIcon": "../groups/icons.md",
+    "ChevronDownIcon": "../groups/icons.md",
+    "ChevronUpIcon": "../groups/icons.md",
+    "CloseIcon": "../groups/icons.md",
+    "EnvelopeIcon": "../groups/icons.md",
+    "FacebookIcon": "../groups/icons.md",
+    "HamburgerIcon": "../groups/icons.md",
+    "LinkedInIcon": "../groups/icons.md",
+    "MailIcon": "../groups/icons.md",
+    "MenuIcon": "../groups/icons.md",
+    "PhoneIcon": "../groups/icons.md",
+    "XIcon": "../groups/icons.md"
+  },
+  "componentSrcMap": {
+    "AccordionContent": null,
+    "AccordionItem": null,
+    "AccordionTrigger": null,
+    "CarouselContent": null,
+    "CarouselItem": null,
+    "CarouselNext": null,
+    "CarouselPrevious": null,
+    "DropdownMenuCheckboxItem": null,
+    "DropdownMenuContent": null,
+    "DropdownMenuGroup": null,
+    "DropdownMenuItem": null,
+    "DropdownMenuLabel": null,
+    "DropdownMenuPortal": null,
+    "DropdownMenuRadioGroup": null,
+    "DropdownMenuRadioItem": null,
+    "DropdownMenuSeparator": null,
+    "DropdownMenuShortcut": null,
+    "DropdownMenuSub": null,
+    "DropdownMenuSubContent": null,
+    "DropdownMenuSubTrigger": null,
+    "DropdownMenuTrigger": null,
+    "ItemActions": null,
+    "ItemContent": null,
+    "ItemDescription": null,
+    "ItemFooter": null,
+    "ItemGroup": null,
+    "ItemHeader": null,
+    "ItemMedia": null,
+    "ItemSeparator": null,
+    "ItemTitle": null,
+    "NavigationMenuContent": null,
+    "NavigationMenuIndicator": null,
+    "NavigationMenuItem": null,
+    "NavigationMenuLink": null,
+    "NavigationMenuList": null,
+    "NavigationMenuTrigger": null,
+    "NavigationMenuViewport": null,
+    "SelectContent": null,
+    "SelectGroup": null,
+    "SelectItem": null,
+    "SelectLabel": null,
+    "SelectScrollDownButton": null,
+    "SelectScrollUpButton": null,
+    "SelectSeparator": null,
+    "SelectTrigger": null,
+    "SelectValue": null,
+    "SheetClose": null,
+    "SheetContent": null,
+    "SheetDescription": null,
+    "SheetFooter": null,
+    "SheetHeader": null,
+    "SheetTitle": null,
+    "SheetTrigger": null,
+    "AlertCircle": null,
+    "ArrowLeft": null,
+    "ArrowRight": null,
+    "BadgeCheck": null,
+    "Boxes": null,
+    "Building2": null,
+    "Check": null,
+    "ChevronDown": null,
+    "ChevronLeft": null,
+    "ChevronRight": null,
+    "Clock": null,
+    "Copy": null,
+    "Factory": null,
+    "Handshake": null,
+    "Layers": null,
+    "Mail": null,
+    "MapPin": null,
+    "MessageSquare": null,
+    "Moon": null,
+    "Network": null,
+    "Package": null,
+    "Phone": null,
+    "Plus": null,
+    "Repeat": null,
+    "Settings2": null,
+    "ShieldCheck": null,
+    "Sun": null,
+    "Truck": null,
+    "UserRound": null
+  },
+  "overrides": {
+    "Feature3": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Faq3": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "PageOpener": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "HeroExpand": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "ImageBand": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "NetworkBeam": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "OhioPlantMap": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Hero1": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Hero3": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "About3": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Feature1": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Feature2": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Process1": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Cta4": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Contact2": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Gallery4": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Form": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Header": {
+      "cardMode": "single",
+      "primaryStory": "OnMoss",
+      "viewport": "1280x900"
+    },
+    "Footer": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Footer2": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "NavFrame": {
+      "cardMode": "single",
+      "primaryStory": "PillNav",
+      "viewport": "1280x900"
+    },
+    "Section": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "DropdownMenu": {
+      "cardMode": "single",
+      "viewport": "900x600"
+    },
+    "Sheet": {
+      "cardMode": "single",
+      "viewport": "900x600"
+    },
+    "Select": {
+      "cardMode": "single",
+      "viewport": "900x600"
+    },
+    "NavigationMenu": {
+      "cardMode": "single",
+      "viewport": "900x600"
+    },
+    "QuoteContacts": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    },
+    "Separator": {
+      "cardMode": "column"
+    },
+    "AnimatedBeam": {
+      "cardMode": "column"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}

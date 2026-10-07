@@ -1,0 +1,16 @@
+/* Inter + Anton, latin subset, from Google Fonts (SIL OFL 1.1).
+   The site self-hosts the same families via next/font (lib/fonts.ts). */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./inter-latin-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./anton-latin-400.woff2") format("woff2");
+}

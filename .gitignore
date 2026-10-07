@@ -46,3 +46,12 @@ next-env.d.ts
 /color-report.json
 /routes-report.json
 /build-note-leak-report.json
+
+# design-sync (staged scripts, build output, machine state)
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+.design-sync/pkg/types/
+.design-sync/pkg/agl.css
