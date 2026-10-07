@@ -1,0 +1,45 @@
+/* design-sync stylesheet input: the site's real globals.css, compiled by
+   build.mjs with the same @tailwindcss/postcss the app uses. */
+@import "../../app/globals.css";
+
+@source "../../components";
+@source "../../app";
+@source "../previews";
+
+/* Safelist: a working vocabulary for the design agent's own layout glue -
+   the brand palette and the scale steps the site itself uses. Tailwind only
+   emits classes it finds in source, so anything not listed here or used by
+   a component does not exist in the shipped CSS. */
+@source inline("{bg,text,border}-{moss,green,smoke,gray,bone,ice,background,foreground,card,muted,muted-foreground,primary,border}");
+@source inline("{bg,text,border}-{moss,green,smoke,gray,bone,ice}/{10,15,20,40,60,80}");
+@source inline("text-{display-1,display-2,display-3,display-4,display-kicker,display-row,display-numeral,step-sm,step-lg,body,eyebrow,link,nav-link,button,sm,base,lg,xl}");
+@source inline("font-{sans,display,normal,semibold,bold}");
+@source inline("rounded-{input,card,section,full,lg,md}");
+@source inline("shadow-{sm,md,lg}");
+@source inline("{,md:,lg:,nav:}{p,px,py,pt,pb,m,mx,my,mt,mb,gap,gap-x,gap-y,space-y}-{0,1,2,3,4,5,6,8,10,12,16,20,24}");
+@source inline("{,md:,lg:,nav:}grid-cols-{1,2,3,4,12}");
+@source inline("{,md:,lg:,nav:}col-span-{1,2,3,4,5,6,7,8,12}");
+@source inline("{,md:,lg:,nav:}{flex,grid,block,hidden,inline-flex,flex-col,flex-row,flex-wrap}");
+@source inline("{items,justify}-{start,center,end,between}");
+@source inline("{w,h}-full max-w-{prose,xl,2xl,3xl,4xl} mx-auto relative absolute inset-0 overflow-hidden object-cover aspect-video aspect-[4/3] uppercase tracking-tight");
+
+/* next/font sets these on <html> in the app; outside Next they are plain
+   family names backed by fonts/fonts.css. */
+:root {
+  --font-inter: "Inter";
+  --font-anton: "Anton";
+}
+
+/* The site always renders <html data-field="dark|light"> and hides the
+   unused logo variant (Header, footer2, MobileNavSheet) from that attribute.
+   Outside the site there is no data-field: default to the dark-ground logo,
+   and swap it inside a .surface-light wrapper. */
+html:not([data-field]) .logo-on-light {
+  display: none;
+}
+html:not([data-field]) .surface-light .logo-on-light {
+  display: revert;
+}
+html:not([data-field]) .surface-light .logo-on-dark {
+  display: none;
+}
