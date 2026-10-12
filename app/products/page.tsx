@@ -30,6 +30,7 @@ export default function Products() {
             return (
               <InteractiveCard key={line.id} id={line.id} href={href}>
                 <CardMedia
+                  priority={line.id === "stock-pallets"}
                   alt={
                     line.id === "custom-engineered"
                       ? "Technical blueprint of a standard stringer pallet"

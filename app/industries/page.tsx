@@ -19,7 +19,12 @@ export default function Industries() {
       <Feature3
         variant="ruled"
         columns={2}
-        features={content.industries.map((item) => ({ title: item.heading, description: item.body, src: (item as { image?: string }).image }))}
+        features={content.industries.map((item, index) => ({
+          title: item.heading,
+          description: item.body,
+          src: (item as { image?: string }).image,
+          priority: index === 0,
+        }))}
       />
 
       <Cta4 heading={content.ctaBand.heading} description={content.ctaBand.body} button={content.ctaBand.cta} />
