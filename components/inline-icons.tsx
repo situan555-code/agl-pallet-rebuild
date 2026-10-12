@@ -105,3 +105,24 @@ export function MailIcon(props: IconProps) {
     </Icon>
   );
 }
+
+// lucide-react 1.x dropped brand marks. These are the last lucide Facebook
+// and Linkedin strokes, inlined like the other footer icons so the layout
+// chunk does not import lucide-react.
+export function FacebookIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </Icon>
+  );
+}
+
+export function LinkedinIcon(props: IconProps) {
+  return (
+    <Icon {...props}>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </Icon>
+  );
+}

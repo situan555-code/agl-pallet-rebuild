@@ -1,8 +1,12 @@
 # DECISIONS (redesign)
 
+## Drop the "never own a mill" slogan (2026-10-12)
+
+Owner: remove the repeated "never own a mill / never build pallets / never own manufacturing" tagline from visitor-facing copy, meta, and SPEC_V1 section 4. Where a section still has to say what AGL is, the line is "AGL is a pallet brokerage." (suppliers: "AGL is a brokerage with no plant of its own."). `/the-pledge/` keeps the industry story and "We grow by coordinating more volume and more lanes — not by buying plants." The home pledge heading is that same growth line. No manufacturer, mill, plant, or factory claim.
+
 ## No personal names on public pages (2026-10-01)
 
-Owner: remove every AGL person's first and last name from customer-facing pages. Team cards on `/who-we-are/` are roles only (Owner, Logistics, Supplier Relations, Operations, IT). Founder story stays first person; the eyebrow is "From the owner". Carrier offer and form success lines no longer name a dispatcher or supplier-relations contact. The dispatcher portrait is removed; that offer card uses the same empty Photo placeholder as the other freight cards. `{{TBD-PHOTO-BROCK}}` stays an unresolved token and is not rendered. SPEC_V1.md still has the named draft; this page copy is the approved public version.
+Owner: remove every AGL person's first and last name from customer-facing pages. Team cards on `/who-we-are/` are roles only (Owner, Logistics, Supplier Relations, Operations, IT). Founder story stays first person; the eyebrow is "From the owner". Carrier offer and form success lines no longer name a dispatcher or supplier-relations contact. The dispatcher portrait is removed; that offer card uses the same empty Photo placeholder as the other freight cards. `{{TBD-PHOTO-BROCK}}` stays an unresolved token and is not rendered. SPEC_V1.md section 4 matches this roles-only copy. Founder alt text does not use a personal name.
 
 ## Pharmaceuticals and PDS methodology (2026-10-01)
 

@@ -138,7 +138,7 @@ Footer legal line: `© 2026 AGL Pallet LLC. All rights reserved.`
 
 **Remove the string "This is Bahlr website." — it is agency placeholder text currently live in production.**
 
-Social icons: only render the block if `{{TBD-SOCIAL-URLS}}` is resolved. Do not ship an empty "Follow Us" heading.
+Social icons: LinkedIn and Facebook, from `content/site.json` `organization.sameAs`. No "Follow Us" heading.
 
 ---
 
@@ -194,7 +194,7 @@ Build these once and reuse. Copy varies by instance; structure does not.
 
 | `/partners/carriers` | Haul for AGL — For Carriers | AGL manages freight on every pallet order we sell. Regional lanes across the Midwest and Mid-Atlantic. Get set up as a carrier. |
 
-| `/the-pledge` | The Pledge — AGL Will Never Own Manufacturing | Most large pallet brokers bought factories. AGL did not, and will not. Why that decision is structural rather than a slogan. |
+| `/the-pledge` | The Pledge — AGL Pallet | Most large pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan. |
 
 | `/custom-engineered` | Custom and Engineered Pallets, Crates and Skids — AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job. |
 
@@ -280,7 +280,7 @@ H2: One number for the spec, the pallets, and the truck.
 
 BODY:
 
-AGL is a pallet brokerage. We don't own a mill and we don't own trucks. What we own
+AGL is a pallet brokerage. What we own
 
 is the coordination: we qualify the shops that supply them well, hold more than one source
 
@@ -330,7 +330,7 @@ CARD 3 — eyebrow "03"
 
 EYEBROW: The pledge
 
-H2: We will never own a mill.
+H2: We grow by coordinating more, not by building plants.
 
 BODY:
 
@@ -342,9 +342,7 @@ left both sides wary — mills don't trust a broker who competes with them, and 
 
 don't trust a broker who became a manufacturer.
 
-AGL doesn't own manufacturing and has no intention of ever owning it. We grow by
-
-coordinating more, not by building plants. That's why good mills give us capacity,
+That's why good mills give us capacity,
 
 and it's why there's always more than one shop that can build your spec.
 
@@ -360,7 +358,7 @@ CARD 1
 
   EYEBROW: For mills & shops
 
-  H3: We buy pallets. We'll never build them.
+  H3: We buy pallets.
 
   BODY: Steady recurring volume, paid on time, from a broker with no plant of its own to feed.
 
@@ -436,7 +434,7 @@ rather than a plant.
 
 ```
 
-EYEBROW: From Brock Lundeen, Owner
+EYEBROW: From the owner
 
 H2: Why I built it this way
 
@@ -458,7 +456,7 @@ person who answers, who knows what's on the truck, and who tells me early when i
 
 isn't going to work.
 
-The other decision was structural. We don't own a mill and we never will. I've watched
+The other decision was structural. AGL is a pallet brokerage. I've watched
 
 what happens to the family shops when a broker buys a plant, and I'd rather have their
 
@@ -486,19 +484,19 @@ people who sit near each other, not three queues in three systems.
 
 LIST:
 
-  Brock — Owner. Commercial, supply, and the last call on anything hard.
+  Owner — Commercial, supply, and the last call on anything hard.
 
-  Brandon — Logistics. Books the freight and tracks the loads.
+  Logistics — Books the freight and tracks the loads.
 
-  Larry — Supplier Relations. Qualifies the mills and knows their machine constraints.
+  Supplier Relations — Qualifies the mills and knows their machine constraints.
 
-  Beau — Operations.
+  Operations
 
-  Jeff — IT.
+  IT
 
 ```
 
-> **Build note:** `{{TBD-TEAM-LIST}}` — confirm who consents to be listed, whether last names appear, and whether headshots are in scope. Roles-only is an acceptable fallback. Build with first names as written.
+> **Build note:** `{{TBD-TEAM-LIST}}` — public roster is roles only. No personal names (owner 2026-10-01).
 
 **Values** — `TrioGrid`, four cards
 
@@ -584,9 +582,9 @@ ADDRESS: {{TBD-ADDRESS}}
 
 EYEBROW: Partners
 
-H1: We don't build pallets and we don't drive trucks.
+H1: AGL is a pallet brokerage.
 
-LEDE: Which means AGL only works if the shops that supply them well and the carriers that
+LEDE: AGL only works if the shops that supply them well and the carriers that
 
 run our lanes want to work with us. Two ways in.
 
@@ -632,11 +630,11 @@ No CTA band on this page. The two cards are the CTA.
 
 EYEBROW: For mills and shops
 
-H1: We buy pallets. We'll never build them.
+H1: We buy pallets.
 
 LEDE:
 
-AGL is a brokerage with no plant of its own and no intention of ever having one. When
+AGL is a brokerage with no plant of its own. When
 
 we bring you volume, we're not building a book to move in-house in three years. We
 
@@ -662,7 +660,7 @@ LIST:
 
   before, ask us about it directly.
 
-  Zero channel conflict. — We will never own manufacturing and we will never compete
+  Zero channel conflict. — We will never compete
 
   with you for your own accounts.
 
@@ -734,7 +732,7 @@ LIST:
 
   Loads that recur. — Our customers order on a schedule, so the lanes come back.
 
-  One dispatcher. — Brandon books and tracks every load. You get a person, not a portal.
+  One dispatcher. — One person books and tracks every load — a person, not a portal.
 
   Paid on agreed terms. — {{TBD-CARRIER-TERMS}}
 
@@ -754,7 +752,7 @@ LIST:
 
 EYEBROW: The pledge
 
-H1: AGL will never own manufacturing.
+H1: AGL is a pallet brokerage.
 
 BODY:
 
@@ -780,7 +778,7 @@ H2: Our position is structural, not a slogan
 
 BODY:
 
-AGL owns no manufacturing and has no intention of acquiring any, indefinitely. We grow
+We grow
 
 by coordinating more volume and more lanes — not by buying plants. There is no roadmap
 
@@ -1084,7 +1082,7 @@ Four intakes. Each needs: a hidden `source` field recording the originating rout
 
 Submit label: `Send the spec` · Success: *"Got it. We'll come back to you the same day."*
 
-### 5.2 · `#supplier-form` → Larry (Supplier Relations) · `{{TBD-EMAIL-SUPPLIER}}`
+### 5.2 · `#supplier-form` → Supplier Relations · `{{TBD-EMAIL-SUPPLIER}}`
 
 | Field | Type | Required |
 
@@ -1110,11 +1108,11 @@ Submit label: `Send the spec` · Success: *"Got it. We'll come back to you the s
 
 | Heat treat on site | select — Yes / No / Not sure | no |
 
-Submit label: `Send it over` · Success: *"Thanks. Larry handles supplier relationships and will follow up."*
+Submit label: `Send it over` · Success: *"Thanks. Supplier relations will follow up."*
 
 > The heat-treat field is deliberate: it is how AGL finds out whether ISPM-15 is genuinely available through the network. This is an open question in brand canon. **Do not surface aggregate answers as a public capability claim** — it is internal intelligence only.
 
-### 5.3 · `#carrier-form` → Brandon (Logistics) · `{{TBD-EMAIL-CARRIER}}`
+### 5.3 · `#carrier-form` → Logistics · `{{TBD-EMAIL-CARRIER}}`
 
 | Field | Type | Required |
 
@@ -1140,7 +1138,7 @@ Submit label: `Send it over` · Success: *"Thanks. Larry handles supplier relati
 
 | Certificate of insurance | file upload, PDF/JPG/PNG, max 10MB | no |
 
-Submit label: `Get set up` · Success: *"Thanks. Brandon books our freight and will be in touch."*
+Submit label: `Get set up` · Success: *"Thanks. Our dispatcher will be in touch."*
 
 ### 5.4 · `#general-form` → `sales@aglpallet.com`
 
@@ -1174,7 +1172,7 @@ Apply these regardless of which new pages ship. Several are live compliance prob
 
 | "This is Bahlr website." | footer, all pages | Delete. |
 
-| Empty "Follow Us" heading | footer | Remove unless `{{TBD-SOCIAL-URLS}}` resolves. |
+| Empty "Follow Us" heading | footer | Do not add one. LinkedIn and Facebook icons render from `organization.sameAs`. |
 
 **Media library sweep.** Audit every image for Mavin or WRL origin. Mavin retained that IP; reuse is legal exposure, not a style issue. Flag anything uncertain rather than shipping it.
 
@@ -1234,7 +1232,7 @@ Every `{{TBD-*}}` in this document. Render them as visible placeholders in the d
 
 | `{{TBD-EMAIL-CARRIER}}` | Destination address for the carrier form | Jeff / Brock |
 
-| `{{TBD-SOCIAL-URLS}}` | LinkedIn and Facebook page URLs, once confirmed live | Nautis |
+| `{{TBD-SOCIAL-URLS}}` | Resolved. URLs live in `content/site.json` `organization.sameAs`. Render the icons. No Follow Us heading. | Nautis |
 
 ---
 

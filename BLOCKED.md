@@ -52,7 +52,7 @@ From stayed `AGL Pallet <sales@aglpallet.com>` (`RESEND_FROM` is not set). FormS
 Open items (owner-supplied; not engineering work):
 
 - **`{{TBD-ADDRESS}}`** — still open. Real address required before LocalBusiness JSON-LD can emit.
-- **`{{TBD-SOCIAL-URLS}}`** — still open. Follow Us / social links omitted until resolved.
+- **`{{TBD-SOCIAL-URLS}}`** — resolved in `content/site.json` `organization.sameAs`. Footer renders LinkedIn and Facebook icons with no Follow Us heading.
 - **Supplier inbox** — not provided. Supplier form stays "not sending yet".
 - **Carrier inbox** — not provided. Carrier form stays "not sending yet".
 - **`RESEND_API_KEY`** — set in Vercel (Production and Preview) as of 2026-09-26. The quote route calls Resend. `aglpallet.com` is not a verified Resend domain, so the quote form still falls back to FormSubmit. Supplier and carrier forms stay "not sending yet" because those inboxes were not provided.

@@ -162,7 +162,7 @@ export default function Home() {
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/stock/agl-brock-founder-01_82f1.webp"
-              alt="Brock, founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
+              alt="Founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
               fill
               quality={70}
               sizes="(min-width: 980px) 38vw, 100vw"

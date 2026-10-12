@@ -1,3 +1,4 @@
+Ship-prep: spec matches no-names roster; mill slogan dropped; footer social icons from sameAs. Verify pending.
 Redesign started. Phase 0 in progress. Model policy: Grok 4.6 High Fast default, upgrades logged here.
 R0.1 done. Next: R0.3.
 R0.3 done. Next: R0.4.

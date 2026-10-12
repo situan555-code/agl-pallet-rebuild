@@ -126,7 +126,10 @@ function parseLabeledBlock(blockText) {
         currentLabel = null;
         // fall through to label parsing below
       } else {
-        const newItem = /^(?:[A-Z0-9].+?\s+[—–]\s+\S)/.test(line);
+        // A capital-led line is a new item. Wrapped continuations in SPEC_V1
+        // start lowercase, so role-only rows (Operations, IT) stay separate
+        // blocks instead of being glued onto the previous item.
+        const newItem = /^[A-Z0-9]/.test(line);
         if (newItem || currentLabel !== 'LIST-ITEM') {
           flush();
           currentLabel = 'LIST-ITEM';
