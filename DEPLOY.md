@@ -37,31 +37,31 @@ call for it (`raw-tokens.json`/`behavior.md` capture styles and behavior,
 not performance metrics), so there is no original-site baseline to report.
 Flagging this as a gap rather than inventing numbers.
 
-**"After" (this rebuild, local production build via `next start`, most
-recent `audit-report.json`, generated 2026-09-12T23:43Z):**
+**"After" (local `next start`, mobile Lighthouse, median of 5, 4-core sandbox, 2026-10-12).** Gate is Performance ≥ 95, LCP < 2.5s on every page including home, CLS < 0.05. Home has no lab exception in this table. `scripts/audit.js` still treats home as < 2.8s; that exception is not used below.
 
-| Page | Performance | LCP | CLS | Gate (≥95 / <1.5s / <0.05) |
-|---|---|---|---|---|
-| `/` | 98 | 2499ms | 0 | LCP fails |
-| `/about/` | 94 | 2567ms | 0 | Perf + LCP fail |
-| `/industries-served/` | 98 | 2337ms | 0 | LCP fails |
-| `/logistics-process/` | 99 | 2115ms | 0 | LCP fails |
-| `/products/` | 99 | 1965ms | 0 | LCP fails |
-| `/request-a-quote/` | 98 | 2343ms | 0 | LCP fails |
+The 3.0–3.5s failures reproduced before the first-photo priority change (`npm run verify` audit):
 
-**This table is stale and should be re-generated, not trusted as current**:
-it predates the 2026-09-13 height-repair session (padding/spacing increases
-to `CTABand`, `Footer`, `TimelineSection`, `IndustryCardGrid`,
-`ContactInfoStrip`), which changed page heights and could shift LCP either
-way. Re-run `npm run audit` against a fresh `next build && next start`
-before treating these numbers as the rebuild's true current state.
+| Page | Performance | LCP | CLS | vs 2.5s gate | Run range (LCP) |
+|---|---|---|---|---|---|
+| `/` | 96 | 2789ms | 0 | LCP fails | 2481–3200ms |
+| `/about/` | 98 | 2333ms | 0 | pass | 2106–2746ms |
+| `/industries-served/` | 93 | 3273ms | 0 | Perf + LCP fail | 3140–3438ms |
+| `/logistics-process/` | 94 | 2981ms | 0 | Perf + LCP fail | 2899–3296ms |
+| `/products/` | 94 | 3047ms | 0 | Perf + LCP fail | 3032–3198ms |
+| `/request-a-quote/` | 99 | 2105ms | 0.0175 | pass | 1880–2447ms |
 
-As of the numbers actually on disk: Performance score is at or near the ≥95
-gate on 5/6 pages (only `/about/` misses it, at 94), CLS is a clean 0
-everywhere, but **LCP fails the <1.5s gate on every page** (1965-2567ms) —
-this is the one hard gate in Section E that is not met project-wide right
-now, per the most recent measurement. Not investigated or fixed this
-session — Phase 5's scope was push + deploy, not verify/repair.
+Those three page LCPs were a lazy-loaded card image. The first in-view photo is now `priority`. Re-measured on the same build server:
+
+| Page | Performance | LCP | CLS | vs 2.5s gate | Run range (LCP) |
+|---|---|---|---|---|---|
+| `/` | 93 | 3203ms | 0 | Perf + LCP fail | 2416–3468ms |
+| `/about/` | 97 | 2545ms | 0 | LCP fails (45ms) | 2108–2604ms |
+| `/industries-served/` | 98 | 2411ms | 0 | pass | 2264–2733ms |
+| `/logistics-process/` | 98 | 2410ms | 0 | pass | 2108–3052ms |
+| `/products/` | 98 | 2331ms | 0 | pass | 2032–3047ms |
+| `/request-a-quote/` | 99 | 2106ms | 0.0175 | pass | 1881–2445ms |
+
+Home LCP is the hero poster, which was already `fetchpriority="high"` and preloaded. It stays unstable in the same 2.4–3.5s band (one run under 2.5s on both passes). `/products/` and `/logistics-process/` medians pass; one or two of the five runs on each still land near 3.0s. `/about/` passed on the first pass and missed by 45ms on the second. Quote CLS stays under 0.05.
 
 ## Summary for whoever picks this up next
 
@@ -69,9 +69,7 @@ session — Phase 5's scope was push + deploy, not verify/repair.
 - Vercel: blocked on human OAuth, cannot proceed unattended. See BLOCKED.md.
 - Once Vercel access exists, deploy will use the `next build` output as-is —
   no code changes were made this session.
-- LCP is the one open Definition-of-Done gate across all 6 pages per the
-  last audit run; re-verify after the recent height-repair changes before
-  deciding whether it's still failing.
+- LCP gate for the 2026-10-12 table above is 2.5s on every page, home included. The September "under 1.5s" reading is retired.
 
 ## CLI deploy notes (2026-09-13)
 
