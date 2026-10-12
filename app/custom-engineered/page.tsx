@@ -43,7 +43,7 @@ export default function CustomEngineered() {
           icon: [Package, Boxes, Layers][index],
           image: [
             "/assets/stock/agl-filler-pallet-stack-01_6e56.webp",
-            "/assets/stock/agl-warehouse-multiplant-01_d566.webp",
+            "/assets/stock/agl-crates-02_58f6.webp",
             "/assets/stock/agl-shipping-3pl-01_f433.webp",
           ][index],
           priority: index === 0,
