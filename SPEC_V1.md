@@ -646,7 +646,7 @@ we bring you volume, we're not building a book to move in-house in three years. 
 
 don't have anywhere to move it to.
 
-BUTTON: [primary] Tell us what you build → #supplier-form
+BUTTON: [primary] Tell us what you build → #contact
 
 ```
 
@@ -720,7 +720,7 @@ Ohio and Western Pennsylvania out to manufacturing plants across the Midwest and
 
 Mid-Atlantic — regional, repeatable, and mostly the same lanes week to week.
 
-BUTTON: [primary] Get set up as a carrier → #carrier-form
+BUTTON: [primary] Get set up as a carrier → #contact
 
 ```
 
@@ -984,11 +984,11 @@ LIST (each item is a card linking to its form):
 
   I build pallets — tell us what your shop runs.
 
-    → /partners/suppliers#supplier-form
+    → /partners/suppliers#contact
 
   I haul freight — get set up as a carrier.
 
-    → /partners/carriers#carrier-form
+    → /partners/carriers#contact
 
   Something else — an existing order, a spec question, or anything that isn't the above.
 
