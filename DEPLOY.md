@@ -71,6 +71,21 @@ Home LCP is the hero poster, which was already `fetchpriority="high"` and preloa
   no code changes were made this session.
 - LCP gate for the 2026-10-12 table above is 2.5s on every page, home included. The September "under 1.5s" reading is retired.
 
+## Follow-up audit (2026-10-12, after the copy pass)
+
+Same 4-core sandbox, mobile Lighthouse, median of 5. Content gates passed (schema, copy-verbatim, build-note leak, banned words, tokens, numbers, color, routes, axe). Lighthouse did not: home, industries, and how-we-work medians are over 2.5s. The spread matches the earlier unstable band. No further image or hero rewrite in this pass.
+
+| Page | Perf | LCP | CLS | Runs (LCP) |
+|---|---|---|---|---|
+| `/` | 94 | 3123ms | 0 | 2409, 3123, 2679, 3201, 3465 |
+| `/about/` | 99 | 2108ms | 0 | 2333, 2106, 2106, 2108, 2332 |
+| `/industries-served/` | 97 | 2675ms | 0 | 3128, 2411, 2676, 2675, 2412 |
+| `/logistics-process/` | 95 | 2827ms | 0 | 3134, 3125, 2559, 2333, 2827 |
+| `/products/` | 98 | 2356ms | 0 | 3046, 2030, 3043, 2356, 2331 |
+| `/request-a-quote/` | 99 | 2256ms | 0 | 2256, 2206, 2554, 2555, 2256 |
+
+The quote page now server-renders the form. Its median still clears 2.5s, and CLS on these five runs was 0. `sms:2342860402` warns in the link check (status 0). That button is flagged unconfirmed and was left in place.
+
 ## Launch checklist (do this at cutover, not on the demo)
 
 The demo host stays `noindex`. Do not remove that block in this repo until aglpallet.com is the host being launched. DNS stays untouched.
