@@ -12,9 +12,9 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  'Who We Are — AGL Pallet',
-  'AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.',
-  '/who-we-are/',
+  "About AGL Pallet | Pallet Supplier in North Canton, Ohio",
+  "AGL Pallet is a pallet supplier that started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.",
+  "/who-we-are/",
 );
 
 export default function WhoWeAre() {

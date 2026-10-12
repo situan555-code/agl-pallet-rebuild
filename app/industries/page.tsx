@@ -6,9 +6,9 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  'Industries We Serve — AGL Pallet',
-  'Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage.',
-  '/industries/',
+  "Industrial Pallets for Chemical, Food, Metals and 3PL | AGL",
+  "Industrial pallets for building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage.",
+  "/industries/",
 );
 
 export default function Industries() {

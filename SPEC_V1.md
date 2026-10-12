@@ -26,7 +26,7 @@ These are non-negotiable brand and legal constraints. Violating one is worse tha
 
 | 4 | **No recycled, used, or reconditioned pallets** offered as a product. |
 
-| 5 | **Claim no certifications.** No RPA, MHI, BBB, SmartWay, NWPCA, ISPM-15, or heat-treat capability claims. No badge images. Pallet Design System (PDS) may be named as the methodology used when an engineered spec is written. Do not claim PDS certification. |
+| 5 | **Claim no certifications.** No RPA, MHI, BBB, SmartWay, NWPCA, ISPM-15, or heat-treat capability claims. No badge images. Do not name Pallet Design System (PDS) or claim PDS access. |
 
 | 6 | **Never "Ohio-only."** Supplier network is growing. Public footprint is MI, IL, IN, PA, OH, WV — "the Midwest and Mid-Atlantic, and growing." Never "national" or "nationwide." |
 
@@ -184,33 +184,37 @@ Build these once and reuse. Copy varies by instance; structure does not.
 
 |---|---|---|
 
-| `/` | AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers | AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order. |
+| `/` | Pallet Supplier for Manufacturers, Freight Included \| AGL | Pallet supplier for manufacturers. New, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio, with freight on every order. |
 
-| `/who-we-are` | Who We Are — AGL Pallet | AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone. |
+| `/who-we-are` | About AGL Pallet \| Pallet Supplier in North Canton, Ohio | AGL Pallet is a pallet supplier that started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone. |
 
 | `/partners` | Partners — AGL Pallet | AGL works with family-run mills and regional carriers across the Midwest and Mid-Atlantic. Two ways to work with us. |
 
-| `/partners/suppliers` | Supply Pallets to AGL — For Mills and Shops | AGL is a pallet brokerage with no plant of its own. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds. |
+| `/partners/suppliers` | Sell Pallets to a Broker That Won't Compete With You \| AGL | AGL is a pallet brokerage with no plant of its own. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds. |
 
-| `/partners/carriers` | Haul for AGL — For Carriers | AGL manages freight on every pallet order we sell. Regional lanes across the Midwest and Mid-Atlantic. Get set up as a carrier. |
+| `/partners/carriers` | Regional Dry Van and Flatbed Loads, Mill to Plant \| AGL | AGL manages freight on every pallet order we sell. Regional lanes across the Midwest and Mid-Atlantic. Get set up as a carrier. |
 
-| `/the-pledge` | The Pledge — AGL Pallet | Most large pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan. |
+| `/the-pledge` | The Pledge — AGL Pallet | Several of the largest pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan. |
 
-| `/custom-engineered` | Custom and Engineered Pallets, Crates and Skids — AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job. |
+| `/custom-engineered` | Custom Pallets, Heavy-Duty Skids and Crates \| AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job. |
 
-| `/products` | Products — Pallets, Crates, Dunnage, Blocks and Stakes | Stock pallets, custom and engineered solutions, crates, dunnage, shipping blocks, and stakes, sourced through qualified mills. |
+| `/products` | Wood Pallets, Crates and Dunnage for Manufacturers \| AGL | Wood pallets, crates, dunnage, shipping blocks, and stakes for manufacturers, sourced through qualified mills. |
 
-| `/industries` | Industries We Serve — AGL Pallet | Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage. |
+| `/industries` | Industrial Pallets for Chemical, Food, Metals and 3PL \| AGL | Industrial pallets for building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage. |
 
 | `/how-we-work` | How We Work — AGL Pallet | Four steps: understand the requirement, align supply and freight, execute and communicate, keep adjusting. |
 
 | `/contact` | Contact AGL Pallet — North Canton, Ohio | Request a quote, supply pallets to AGL, get set up as a carrier, or ask a question. 234-286-0402. |
 
-| `/request-a-quote` | Request a Quote — AGL Pallet | Send a spec and a quantity and we will come back the same day. No minimums. |
+| `/request-a-quote` | Request a Pallet Quote, Same-Day Response \| AGL Pallet | Send a spec and a quantity and we will come back the same day. No minimums. |
+
+| `/faq` | Pallet Buying FAQ: Lead Times, Minimums, 2-Way vs 4-Way | Lead times, minimums, two-way versus four-way entry, and second-source availability for buyers working with a pallet supplier. |
+
+| `/services` | Pallet Sourcing and Managed Freight Services \| AGL Pallet | Pallet sourcing, mill qualification, managed freight, and program coordination from one brokerage desk. |
 
 ### Structured data
 
-Add `Organization` + `LocalBusiness` JSON-LD on `/` only, once `{{TBD-ADDRESS}}` resolves. Fields: name `AGL Pallet LLC`, telephone `234-286-0402`, email `sales@aglpallet.com`, `areaServed` = MI, IL, IN, PA, OH, WV. **Do not add `aggregateRating`, `review`, or any certification property.**
+Add `Organization` + `LocalBusiness` JSON-LD on `/` only, once `{{TBD-ADDRESS}}` resolves. Fields: name `AGL Pallet LLC`, telephone `234-286-0402`, email `sales@aglpallet.com`, `areaServed` = OH, PA, WV, MI, IN, IL. Do not use US. **Do not add `aggregateRating`, `review`, or any certification property.**
 
 ---
 
@@ -224,11 +228,13 @@ Copy below is final draft, approved for build, pending Brock's sign-off before p
 
 ```
 
+TAGLINE: Pallets move the world. We move pallets.
+
 H1: Never one mill between you and your line.
 
-LEDE: AGL Pallet sources new, custom, and engineered pallets from a network of
+LEDE: AGL is a pallet supplier. We source new, custom, and engineered pallets from a network of
 
-family-run mills across the Midwest and Mid-Atlantic — and manages the freight on
+family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio — and manage the freight on
 
 every order. Same-day quotes. No minimums. More than one qualified source on every
 
@@ -334,7 +340,7 @@ H2: We grow by coordinating more, not by building plants.
 
 BODY:
 
-After the COVID lumber shock, a lot of pallet brokers bought factories. Volume that
+After the COVID lumber shock, several of the largest pallet brokers bought factories. Volume that
 
 had run through family mills for years quietly moved to the broker's own plants. It
 
@@ -416,7 +422,7 @@ H1: We were the ones waiting on the pallets.
 
 LEDE:
 
-AGL Pallet started on the buying side of the dock — by people who spent
+AGL Pallet is a pallet supplier that started on the buying side of the dock — by people who spent
 
 years specifying, buying, and waiting on pallets while a production schedule ran
 
@@ -756,7 +762,7 @@ H1: AGL is a pallet brokerage.
 
 BODY:
 
-After the COVID lumber shock, most of the large pallet brokers bought factories. It
+After the COVID lumber shock, several of the largest pallet brokers bought factories. It
 
 made sense on paper — control the supply, capture the margin. What happened next is
 
@@ -806,7 +812,7 @@ H1: Odd size, oversize, overweight, or nothing standard about it.
 
 BODY:
 
-Most of what we quote isn't a stock 48×40. It's a skid for a forging that runs nine
+The kinds of loads that need it: a skid for a forging that runs nine
 
 thousand pounds, a crate for an elevator assembly, cut stock to a rail spec, or a
 
@@ -817,12 +823,6 @@ A single mill will usually quote what its equipment likes to build. We start fro
 the load actually does — weight, whether it's racked or floor-stacked, how many times
 
 it gets handled, whether it ships overseas — and then find the shop set up to build it.
-
-Pallet Design System (PDS) methodology tailors that spec to the load requirements, weight
-
-capacities, and operational conditions, from the product weight, stacking, handling, and
-
-environment, so the pallet has the strength the load needs without overbuilding.
 
 H2: Where custom usually pays for itself
 
@@ -842,7 +842,7 @@ LIST:
 
 ```
 
-> **Build note:** name Pallet Design System (PDS) methodology in the body above. Do not add engineering-certification, PDS-certification, or load-testing claims. Rule 5.
+> **Build note:** do not name Pallet Design System (PDS) or claim PDS access. Rule 5.
 
 ---
 
@@ -856,7 +856,7 @@ EYEBROW: Products
 
 H1: Pallet and material handling solutions
 
-LEDE: Specced to your load, sourced through mills qualified to build it.
+LEDE: A pallet supplier for manufacturers. Specced to your load, sourced through mills qualified to build it.
 
 ```
 
@@ -866,7 +866,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | Stock pallets | `#stock-pallets` | Standard footprints for recurring volume, with multiple qualified sources behind each spec so a single mill's backlog doesn't become your shortage. |
 
-| Custom & engineered | `#custom-engineered` | Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. Pallet Design System (PDS) methodology tailors that spec to the load requirements, weight capacities, and operational conditions, from the product weight, stacking, handling, and environment, so the pallet has the strength the load needs without overbuilding. **Links to `/custom-engineered`.** |
+| Custom & engineered | `#custom-engineered` | Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. **Links to `/custom-engineered`.** |
 
 | Crates | `#crates` | Custom and stock crating for equipment, components, and high-value goods that need containment beyond palletization. |
 
@@ -888,7 +888,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | "we develop pallet specifications" | "we write the spec with you" |
 
-| "Using Pallet Design System (PDS) methodology…" | Name the methodology in the Custom & engineered copy row. Do not claim PDS certification. |
+| "Using Pallet Design System (PDS) methodology…" | Delete. Do not name PDS. |
 
 ---
 
@@ -902,7 +902,7 @@ EYEBROW: Industries
 
 H1: Where AGL works
 
-LEDE: Operations where the pallet is load-bearing infrastructure, not a line item.
+LEDE: A pallet supplier for operations where the pallet is load-bearing infrastructure, not a line item.
 
 ```
 
@@ -924,11 +924,9 @@ LEDE: Operations where the pallet is load-bearing infrastructure, not a line ite
 
 | 7 | Plastics & packaging | High volume, fast cycles, and automated handling. |
 
-| 8 | Pharmaceuticals | Regulated environments where pallet integrity, cleanliness, consistency, and traceability carry compliance weight. |
+| 8 | Food & beverage | Throughput operations where a late load stops a line. |
 
-| 9 | Food & beverage | Throughput operations where a late load stops a line. |
-
-> **Build note:** `{{TBD-PHARMA}}` resolved 2026-10-01. Pharmaceuticals is item 8. Do not render the token.
+> **Build note:** `{{TBD-PHARMA}}` removed 2026-10-12. Do not render Pharmaceuticals or the token.
 
 ---
 
@@ -1016,7 +1014,7 @@ EYEBROW: Request a quote
 
 H1: Send us a spec and a quantity.
 
-LEDE: We'll come back the same day. No minimums, and more than one qualified source
+LEDE: AGL is a pallet supplier. We'll come back the same day. No minimums, and more than one qualified source
 
 behind whatever you're buying.
 
@@ -1160,7 +1158,7 @@ Apply these regardless of which new pages ship. Several are live compliance prob
 
 | "12+ Years Industry Experience" | homepage stat band | Delete from company context. May only reappear attributed to Brock in his bio. |
 
-| "Using Pallet Design System (PDS) methodology" | `/products`, `/custom-engineered` | Name the methodology when the engineered spec is described. Do not claim PDS certification. |
+| "Using Pallet Design System (PDS) methodology" | `/products`, `/custom-engineered`, `/resources/pallet-standards` | Delete. Do not name PDS or claim PDS access. |
 
 | "Every pallet is produced under strict quality controls" | `/products` | Replace per 4.8. |
 
@@ -1222,7 +1220,7 @@ Every `{{TBD-*}}` in this document. Render them as visible placeholders in the d
 
 | `{{TBD-TEAM-LIST}}` | Who is listed, last names, headshots | Brock |
 
-| `{{TBD-PHARMA}}` | Resolved 2026-10-01. Pharmaceuticals is on `/industries`. Do not render the token. | — |
+| `{{TBD-PHARMA}}` | Removed 2026-10-12. Do not render Pharmaceuticals or the token. | — |
 
 | `{{TBD-ADDRESS}}` | North Canton street address for footer, contact, JSON-LD | Brock |
 
@@ -1248,7 +1246,7 @@ Run before calling the build done.
 
 - [ ] No certification claims and no badge images
 
-- [ ] No PDS certification claim. Pallet Design System (PDS) methodology may be named on engineered product copy.
+- [ ] No Pallet Design System (PDS) name and no PDS access claim.
 
 - [ ] No recycled or reconditioned pallet offer
 
@@ -1256,7 +1254,7 @@ Run before calling the build done.
 
 - [ ] No numbers absent from this document
 
-- [ ] No "national" or "nationwide"; footprint reads MI, IL, IN, PA, OH, WV
+- [ ] No "national" or "nationwide"; footprint reads OH, PA, WV, MI, IN, IL
 
 - [ ] No banned words from section 0
 

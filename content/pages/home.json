@@ -1,7 +1,8 @@
 {
   "hero": {
+    "tagline": "Pallets move the world. We move pallets.",
     "heading": "Never one mill between you and your line.",
-    "body": "AGL Pallet sources new, custom, and engineered pallets from a network of family-run mills across the Midwest and Mid-Atlantic — and manages the freight on every order. Same-day quotes. No minimums. More than one qualified source on every spec we sell.",
+    "body": "AGL is a pallet supplier. We source new, custom, and engineered pallets from a network of family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio — and manage the freight on every order. Same-day quotes. No minimums. More than one qualified source on every spec we sell.",
     "image": "/assets/home_header_image.jpg",
     "video": "/assets/agl_home_video.mp4",
     "poster": "/assets/agl_home_video_poster.jpg",
@@ -49,7 +50,7 @@
     "eyebrow": "The pledge",
     "heading": "We grow by coordinating more, not by building plants.",
     "paragraphs": [
-      "After the COVID lumber shock, a lot of pallet brokers bought factories. Volume that had run through family mills for years quietly moved to the broker's own plants. It left both sides wary — mills don't trust a broker who competes with them, and buyers don't trust a broker who became a manufacturer.",
+      "After the COVID lumber shock, several of the largest pallet brokers bought factories. Volume that had run through family mills for years quietly moved to the broker's own plants. It left both sides wary — mills don't trust a broker who competes with them, and buyers don't trust a broker who became a manufacturer.",
       "That's why good mills give us capacity, and it's why there's always more than one shop that can build your spec."
     ],
     "cta": { "label": "Read the pledge", "href": "/the-pledge/" }

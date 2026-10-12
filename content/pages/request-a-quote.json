@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Request a quote",
     "heading": "Send us a spec and a quantity.",
-    "body": "We'll come back the same day. No minimums, and more than one qualified source behind whatever you're buying."
+    "body": "AGL is a pallet supplier. We'll come back the same day. No minimums, and more than one qualified source behind whatever you're buying."
   },
   "contactInfo": [
     {
@@ -24,7 +24,8 @@
       "hoverIcon": "/assets/message_icon_hover.svg",
       "label": "Text",
       "value": "234-286-0402",
-      "href": "sms:2342860402"
+      "href": "sms:2342860402",
+      "note": "Unconfirmed text line."
     }
   ]
 }

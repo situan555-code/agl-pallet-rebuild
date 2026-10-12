@@ -9,9 +9,9 @@ import { DEMO_PRODUCT_PHOTOS } from "@/lib/demo-product-photos";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Products — Pallets, Crates, Dunnage, Blocks and Stakes",
+  title: "Wood Pallets, Crates and Dunnage for Manufacturers | AGL",
   description:
-    "Stock pallets, custom and engineered solutions, crates, dunnage, shipping blocks, and stakes, sourced through qualified mills.",
+    "Wood pallets, crates, dunnage, shipping blocks, and stakes for manufacturers, sourced through qualified mills.",
   alternates: { canonical: "/products/" },
 };
 

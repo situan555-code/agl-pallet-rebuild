@@ -71,6 +71,17 @@ Home LCP is the hero poster, which was already `fetchpriority="high"` and preloa
   no code changes were made this session.
 - LCP gate for the 2026-10-12 table above is 2.5s on every page, home included. The September "under 1.5s" reading is retired.
 
+## Launch checklist (do this at cutover, not on the demo)
+
+The demo host stays `noindex`. Do not remove that block in this repo until aglpallet.com is the host being launched. DNS stays untouched.
+
+1. **Redirects already in the app.** Keep them. Do not add a second set.
+   - `/about/` → `/who-we-are/`
+   - `/logistics-process/` → `/how-we-work/`
+   - `/industries-served/` → `/industries/`
+   - `/`, `/products/`, and `/request-a-quote/` keep their paths.
+2. **Remove `noindex` on aglpallet.com only.** `*.vercel.app` stays `noindex`. Shipping the demo robots header to the production host would drop the site out of Google.
+
 ## CLI deploy notes (2026-09-13)
 
 - Hobby team blocks CLI deploys when git commit author email is not a verified team seat

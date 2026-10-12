@@ -55,7 +55,7 @@ const CONTENT_DECISION_TOKENS = {
   'TBD-FAITH-PLACEMENT': { routes: ['/who-we-are'], note: 'placement already decided (built on /who-we-are); do not duplicate on /' },
   'TBD-VALUES': { routes: ['/who-we-are'], note: 'build the four cards as drafted' },
   'TBD-TEAM-LIST': { routes: ['/who-we-are'], note: 'roles only; no personal names (owner 2026-10-01)' },
-  'TBD-PHARMA': { routes: ['/industries'], note: 'resolved 2026-10-01 — Pharmaceuticals is item 8 on /industries; do not render the token' },
+  'TBD-PHARMA': { routes: ['/industries'], note: 'removed 2026-10-12 — do not render Pharmaceuticals or the token' },
   'TBD-SOCIAL-URLS': { routes: ROUTES, note: 'resolved in content/site.json organization.sameAs — render LinkedIn and Facebook icons, no Follow Us heading' },
 };
 

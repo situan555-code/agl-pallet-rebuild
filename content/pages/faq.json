@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "FAQ",
     "heading": "Questions buyers usually open with.",
-    "body": "Straight answers on pallet type, lead times, order size, and what \"second source\" means when AGL is a brokerage — not a mill."
+    "body": "Straight answers on pallet type, lead times, order size, and what \"second source\" means when AGL is a pallet supplier — a brokerage, not a mill."
   },
   "items": [
     {
@@ -20,6 +20,10 @@
     {
       "lead": "Second-source availability",
       "body": "Every spec we sell has more than one qualified shop behind it. If one mill runs behind, another that already builds the same footprint can take the volume. That is the point of a brokerage that does not own a plant: capacity is coordinated across shops, not trapped in one facility."
+    },
+    {
+      "lead": "Do you sell recycled pallets?",
+      "body": "Not currently. Everything we quote is new."
     }
   ],
   "ctaBand": {

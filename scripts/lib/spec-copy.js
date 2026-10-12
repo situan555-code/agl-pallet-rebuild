@@ -52,7 +52,7 @@ function extractFencedBlocks(text) {
   return blocks;
 }
 
-const COPY_LABELS = new Set(['EYEBROW', 'H1', 'H2', 'H3', 'LEDE', 'BODY', 'BUTTON', 'LIST-ITEM']);
+const COPY_LABELS = new Set(['EYEBROW', 'H1', 'H2', 'H3', 'LEDE', 'BODY', 'BUTTON', 'LIST-ITEM', 'TAGLINE']);
 
 function parseLabeledBlock(blockText) {
   const nonBlank = blockText.split('\n').filter((l) => l.trim() !== '');
@@ -141,7 +141,7 @@ function parseLabeledBlock(blockText) {
       }
     }
 
-    const labelMatch = line.match(/^(EYEBROW|H1|H2|H3|LEDE|BODY|IMAGE|ADDRESS|LINK):\s*(.*)$/);
+    const labelMatch = line.match(/^(EYEBROW|H1|H2|H3|LEDE|BODY|IMAGE|ADDRESS|LINK|TAGLINE):\s*(.*)$/);
     if (labelMatch) {
       flush();
       currentLabel = labelMatch[1];
@@ -167,7 +167,7 @@ const SEPARATOR_RE = /^\|?\s*:?-{1,}:?\s*(\|\s*:?-{1,}:?\s*)+\|?$/;
 // A handful of "Replace with" cells are build instructions, not literal
 // page copy. Producer-voice "Replace with" tables are rewrite instructions
 // for banned legacy copy, not customer-facing page blocks — do not require
-// them via copy-verbatim. The Custom & engineered Copy cell is the PDS text.
+// them via copy-verbatim. Product Copy cells are customer-facing sentences.
 const NON_COPY_CELL_RE = /^delete\.?(\s*no replacement\.?)?$/i;
 
 // SPEC_V1.md mixed authoring annotations into product-line Copy cells.

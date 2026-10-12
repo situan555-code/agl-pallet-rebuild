@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
   'The Pledge — AGL Pallet',
-  'Most large pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan.',
+  "Several of the largest pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan.",
   '/the-pledge/',
 );
 

@@ -1,5 +1,22 @@
 # DECISIONS (redesign)
 
+## Review follow-up (2026-10-12)
+
+Owner overrides on the 2026-10-12 copy review:
+
+- No personal names. The who-we-are team list stays roles only. Initials avatars are removed.
+- Do not restore a "never own a mill" or "no manufacturing" slogan. The leftover services heading that still said "never by owning a mill" is replaced with the existing growth line.
+- The home tagline "Pallets move the world. We move pallets." goes back above the home H1. The 2026-09-29 removal is overridden for that line only.
+- Pharmaceuticals is off `/industries` (card and meta) until it is confirmed. The 2026-10-01 decision that put it on the page is withdrawn.
+- Pallet Design System (PDS) sentences are deleted. Do not name PDS or claim PDS access.
+- Factory claim, one sentence everywhere: "Several of the largest pallet brokers bought factories."
+- Organization `areaServed` is OH, PA, WV, MI, IN, IL. Not US.
+- `/case-studies/` is noindex, out of the nav and sitemap, until a real case study is approved.
+- Download `/pdf/` routes are noindex and out of the sitemap.
+- The demo stays noindex. Launch redirects and production noindex removal are checklist items in DEPLOY.md, not changes in this pass.
+- Quote form sends (Resend, then FormSubmit). Supplier and carrier forms do not send, so they are hidden. Those pages show phone and email. The text button stays, flagged unconfirmed.
+- FAQ history in git has only the four answers shipped on 2026-09-16. The recycled question is added. Eleven older answers were not in this repo.
+
 ## Drop the "never own a mill" slogan (2026-10-12)
 
 Owner: remove the repeated "never own a mill / never build pallets / never own manufacturing" tagline from visitor-facing copy, meta, and SPEC_V1 section 4. Where a section still has to say what AGL is, the line is "AGL is a pallet brokerage." (suppliers: "AGL is a brokerage with no plant of its own."). `/the-pledge/` keeps the industry story and "We grow by coordinating more volume and more lanes — not by buying plants." The home pledge heading is that same growth line. No manufacturer, mill, plant, or factory claim.

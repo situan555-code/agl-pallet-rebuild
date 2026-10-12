@@ -1,4 +1,4 @@
-Ship-prep: no-names spec, mill slogan dropped, footer social. Content gates passed. LCP: industries/products/how-we-work medians under 2.5s after first-photo priority. Home still unstable (2.4–3.5s).
+Ship-prep follow-up: P0 claims, quote form visible, supplier/carrier forms hidden, titles, question metas, six-state areaServed. Demo stays noindex. Not merged.
 Redesign started. Phase 0 in progress. Model policy: Grok 4.6 High Fast default, upgrades logged here.
 R0.1 done. Next: R0.3.
 R0.3 done. Next: R0.4.

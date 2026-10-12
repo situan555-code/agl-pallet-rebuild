@@ -2,14 +2,14 @@
   "hero": {
     "eyebrow": "Case studies",
     "heading": "How coordination shows up on the dock.",
-    "body": "Structured examples of how AGL sources, qualifies, and delivers. Metrics and named accounts stay unpublished until verified — we don't invent manufacturer claims."
+    "body": "How AGL sources a spec, qualifies more than one shop, and books the freight."
   },
   "intro": {
     "eyebrow": "What you'll find here",
-    "heading": "Pattern recognition, not vanity numbers.",
+    "heading": "Four kinds of work.",
     "paragraphs": [
-      "Each entry below is a structural placeholder for a finished case study: the operating context, the spec problem, the sourcing approach, and the freight plan.",
-      "Until owner-approved copy lands, titles and outcomes stay unpublished. No fabricated percentages, volumes, or customer logos."
+      "Each entry covers the operating context, the spec, the sourcing approach, and the freight plan.",
+      "Food packaging, engineered oversize, multi-plant programs, and crate and dunnage."
     ]
   },
   "studies": [
@@ -44,7 +44,7 @@
   ],
   "ctaBand": {
     "heading": "Have a supply problem worth documenting?",
-    "body": "If your line needs a dual-source plan or a cleaner freight story, we'll build it quietly \u2014 and publish the write-up only when the facts are cleared.",
+    "body": "If your line needs a dual-source plan or a cleaner freight story, send a spec and a quantity.",
     "cta": {
       "label": "Request a quote",
       "href": "/request-a-quote/"

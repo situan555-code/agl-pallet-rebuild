@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Services",
     "heading": "Sourcing, qualification, and freight — as one desk.",
-    "body": "AGL is a pallet brokerage. We don't own mills and we don't own trucks. These are the coordinated services behind every quote."
+    "body": "AGL is a pallet supplier. The model is a brokerage. We don't own mills and we don't own trucks. These are the coordinated services behind every quote."
   },
   "services": [
     {
@@ -38,6 +38,11 @@
       "Custom and engineered work follows the same desk: we don't become the manufacturer; we find the shops set up to build the odd size and keep a second option warm."
     ],
     "cta": { "label": "Talk through a spec", "href": "/request-a-quote/" }
+  },
+  "pledgeBand": {
+    "eyebrow": "The pledge",
+    "heading": "We grow by coordinating more, not by building plants.",
+    "body": "Several of the largest pallet brokers bought factories. AGL's pledge is the operating model: no plant of our own to feed."
   },
   "ctaBand": {
     "heading": "Ready for one desk on pallets and freight?",

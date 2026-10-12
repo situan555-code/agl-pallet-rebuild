@@ -29,7 +29,7 @@ export function OrganizationJsonLd() {
     logo: `${url}${logo.src}`,
     telephone: footer.contact.phone,
     email: footer.contact.email,
-    areaServed: "US",
+    areaServed: ["OH", "PA", "WV", "MI", "IN", "IL"],
   };
   if (organization.sameAs.length > 0) data.sameAs = organization.sameAs;
   return <JsonLdScript data={data} />;

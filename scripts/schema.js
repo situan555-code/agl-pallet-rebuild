@@ -453,7 +453,9 @@ async function main() {
         if (org.url !== ORIGIN) fail(pagePath, `Organization url ${org.url}`);
         if (org.telephone !== site.footer.contact.phone) fail(pagePath, "Organization telephone drifted");
         if (org.email !== site.footer.contact.email) fail(pagePath, "Organization email drifted");
-        if (org.areaServed !== "US") fail(pagePath, "Organization areaServed must be US");
+        if (JSON.stringify(org.areaServed) !== JSON.stringify(["OH", "PA", "WV", "MI", "IN", "IL"])) {
+          fail(pagePath, "Organization areaServed must be OH, PA, WV, MI, IN, IL");
+        }
         if (org.address || org.streetAddress) fail(pagePath, "Organization must not include an address");
         if (!text.includes(org.name) || !text.includes(org.telephone) || !text.includes(org.email)) {
           fail(pagePath, "Organization name, phone, or email is not on the page");

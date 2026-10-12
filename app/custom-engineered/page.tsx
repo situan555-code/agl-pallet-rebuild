@@ -8,9 +8,9 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  'Custom and Engineered Pallets, Crates and Skids — AGL Pallet',
-  'Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job.',
-  '/custom-engineered/',
+  "Custom Pallets, Heavy-Duty Skids and Crates | AGL Pallet",
+  "Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job.",
+  "/custom-engineered/",
 );
 
 export default function CustomEngineered() {
@@ -41,6 +41,12 @@ export default function CustomEngineered() {
           title: item.lead,
           description: item.body,
           icon: [Package, Boxes, Layers][index],
+          image: [
+            "/assets/stock/agl-filler-pallet-stack-01_6e56.webp",
+            "/assets/stock/agl-warehouse-multiplant-01_d566.webp",
+            "/assets/stock/agl-shipping-3pl-01_f433.webp",
+          ][index],
+          priority: index === 0,
           href: "/request-a-quote/",
         }))}
       />

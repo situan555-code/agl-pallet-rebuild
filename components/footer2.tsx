@@ -107,7 +107,7 @@ const Footer2 = ({ logo, description, contact, social = [], cta, sections, copyr
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 nav:min-w-[28rem]">
             {sections.map((section) => (
               <div key={section.title}>
-                <h2 className="mb-6 text-display-4 text-current">{section.title}</h2>
+                <p className="mb-6 text-display-4 text-current">{section.title}</p>
                 <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.href} className="last:pb-2">

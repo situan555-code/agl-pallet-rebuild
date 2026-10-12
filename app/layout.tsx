@@ -14,11 +14,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadata: Metadata = {
     metadataBase: new URL(getSiteUrl()),
     title: {
-      default: "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
+      default: "Pallet Supplier for Manufacturers, Freight Included | AGL",
       template: "%s",
     },
     description:
-      "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
+      "Pallet supplier for manufacturers. New, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio, with freight on every order.",
     applicationName: "AGL Pallet",
     icons: {
       icon: [

@@ -23,8 +23,8 @@ const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"
 const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
 
 export const metadata: Metadata = pageMeta(
-  "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
-  "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
+  "Pallet Supplier for Manufacturers, Freight Included | AGL",
+  "Pallet supplier for manufacturers. New, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio, with freight on every order.",
   "/",
 );
 
@@ -34,6 +34,7 @@ export default function Home() {
   return (
     <main>
       <HeroExpand
+        tagline={home.hero.tagline}
         heading={home.hero.heading}
         description={home.hero.body}
         video={{ src: home.hero.video, poster: home.hero.poster }}
