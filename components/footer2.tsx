@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MailIcon, PhoneIcon } from "@/components/inline-icons";
+import { FacebookIcon, LinkedInIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
 import { containerClass } from "@/components/Container";
@@ -22,13 +23,14 @@ interface Footer2Props {
   cta: FooterLink;
   sections: FooterSection[];
   copyright: string;
+  social?: string[];
   className?: string;
 }
 
 const linkClass =
   "rounded-input text-link text-current/85 transition-colors hover:text-current focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
-const Footer2 = ({ logo, description, contact, cta, sections, copyright, className }: Footer2Props) => {
+const Footer2 = ({ logo, description, contact, cta, sections, copyright, social = [], className }: Footer2Props) => {
   return (
     <footer className={cn("mt-[72px] border-t border-current/15 pb-10 pt-16 nav:mt-[112px]", className)}>
       <div className={cn(containerClass, "text-current")}>
@@ -71,6 +73,27 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
                 </a>
               </li>
             </ul>
+            {social.length > 0 ? (
+              <ul className="mt-4 flex items-center gap-4">
+                {social.map((url) => {
+                  const linkedin = url.includes("linkedin.com");
+                  const Icon = linkedin ? LinkedInIcon : FacebookIcon;
+                  return (
+                    <li key={url}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={linkedin ? "AGL Pallet on LinkedIn" : "AGL Pallet on Facebook"}
+                        className={cn(linkClass, "inline-flex h-10 w-10 items-center justify-center")}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
             <div className="mt-8">
               <Button href={cta.href} label={cta.label} variant="secondary" />
             </div>

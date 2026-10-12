@@ -22,6 +22,7 @@ export function Footer() {
         { title: footer.partnersHeading, links: footer.partnersNav },
       ]}
       copyright={footer.copyright.text}
+      social={site.organization.sameAs.filter((u) => /linkedin\.com|facebook\.com/.test(u))}
     />
   );
 }

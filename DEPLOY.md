@@ -31,37 +31,24 @@ DNS for aglpallet.com untouched.
 
 ## Performance — before/after
 
-**"Before" (live aglpallet.com, WordPress + Divi): not captured.** Phase 1
-never ran Lighthouse against the live site — BRIEF.md's Phase 1 steps don't
-call for it (`raw-tokens.json`/`behavior.md` capture styles and behavior,
-not performance metrics), so there is no original-site baseline to report.
-Flagging this as a gap rather than inventing numbers.
+**"Before" (live aglpallet.com, WordPress + Divi): not captured.** No original-site Lighthouse baseline exists; none is invented here.
 
-**"After" (this rebuild, local production build via `next start`, most
-recent `audit-report.json`, generated 2026-09-12T23:43Z):**
+**"After" (this rebuild, `next build && next start`, `npm run audit`, mobile Lighthouse, median of 5 runs, 2026-10-12, branch `claude/website-launch-review-6ua1r5`).**
+Gate: Perf ≥ 95, LCP < 2500ms (home held to 2500ms pending owner confirmation of the old 2800ms exception), CLS < 0.05.
+Run on a 4-core cloud sandbox, so absolute LCP is likely slower than on the owner's machine. Two full audits shown; run 2 includes the footer social-icon change.
 
-| Page | Performance | LCP | CLS | Gate (≥95 / <1.5s / <0.05) |
+| Page | Run 1 Perf / LCP | Run 2 Perf / LCP | CLS | Gate |
 |---|---|---|---|---|
-| `/` | 98 | 2499ms | 0 | LCP fails |
-| `/about/` | 94 | 2567ms | 0 | Perf + LCP fail |
-| `/industries-served/` | 98 | 2337ms | 0 | LCP fails |
-| `/logistics-process/` | 99 | 2115ms | 0 | LCP fails |
-| `/products/` | 99 | 1965ms | 0 | LCP fails |
-| `/request-a-quote/` | 98 | 2343ms | 0 | LCP fails |
+| `/` | 95 / 2268ms | 93 / 3160ms (runs 2263–3216) | 0 | Run 1 pass, run 2 fail |
+| `/about/` | 98 / 2166ms | 98 / 2091ms | 0 | Pass |
+| `/industries-served/` | 90 / 3521ms | 90 / 3496ms | 0 | Fail |
+| `/logistics-process/` | 93 / 3156ms | 94 / 3018ms | 0 | Fail |
+| `/products/` | 94 / 3141ms | 93 / 3159ms | 0 | Fail |
+| `/request-a-quote/` | 99 / 1913ms | 99 / 1917ms | 0.0175 | Pass |
 
-**This table is stale and should be re-generated, not trusted as current**:
-it predates the 2026-09-13 height-repair session (padding/spacing increases
-to `CTABand`, `Footer`, `TimelineSection`, `IndustryCardGrid`,
-`ContactInfoStrip`), which changed page heights and could shift LCP either
-way. Re-run `npm run audit` against a fresh `next build && next start`
-before treating these numbers as the rebuild's true current state.
+axe-core: 0 serious/critical on all six pages. Link check: only warning is the `sms:` link. 
 
-As of the numbers actually on disk: Performance score is at or near the ≥95
-gate on 5/6 pages (only `/about/` misses it, at 94), CLS is a clean 0
-everywhere, but **LCP fails the <1.5s gate on every page** (1965-2567ms) —
-this is the one hard gate in Section E that is not met project-wide right
-now, per the most recent measurement. Not investigated or fixed this
-session — Phase 5's scope was push + deploy, not verify/repair.
+Other `npm run verify` gates: build + placeholder-guard, schema, build-note-leak, banned-words, tokens, numbers, color, routes all pass. **`copy-verbatim` fails** (`/who-we-are/`: 6 blocks, `/partners/carriers/`: 1 block) because the 2026-10-01 "no personal names" decision (see DECISIONS.md) removed names that SPEC_V1.md still contains. `verify` stops there, so run `npm run audit` directly for the numbers above.
 
 ## Summary for whoever picks this up next
 

@@ -119,3 +119,7 @@ Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved (2026-09-
 - Recolored live `public/assets/*.svg` fills from retired `#162619` to `#1F2A1F` instead of deleting icons the site still serves.
 - Deleted unused WordPress leftover `public/assets/mejs-controls.svg`.
 - Banned-words: also strip `!` inside HTML tags so Tailwind important / markup cannot trip the exclamation rule.
+
+## Launch review (2026-10-12)
+
+Footer now shows LinkedIn and Facebook icon links from `site.json` `sameAs`; no "Follow Us" heading. `npm run verify` stops at `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and the audit fails LCP on `/industries-served/`, `/logistics-process/`, `/products/` and, on one of two runs, `/`. Gates not softened. Lint setState-in-effect errors left (route-change/mount resets in nav, Form, search); not worth the LCP risk. DEPLOY.md table updated.
