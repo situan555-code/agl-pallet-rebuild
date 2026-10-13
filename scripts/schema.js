@@ -20,6 +20,7 @@ const ORIGIN = "https://aglpallet.com";
 const VERCEL_HOST = "nx7k-lab-m4.vercel.app";
 const SITE_HOST = "aglpallet.com";
 const PPI_CSV_PATH = "/resources/pallet-prices/ppi-csv/";
+const { enabled: LAUNCH_LITE } = require("../lib/launch-lite.json");
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const ALLOWED = {
@@ -697,8 +698,10 @@ async function main() {
       });
     }
 
-    for (const guidePath of guidePaths) {
-      if (!locs.some((loc) => pathnameOf(loc) === guidePath)) fail(guidePath, "guide missing from sitemap");
+    if (!LAUNCH_LITE) {
+      for (const guidePath of guidePaths) {
+        if (!locs.some((loc) => pathnameOf(loc) === guidePath)) fail(guidePath, "guide missing from sitemap");
+      }
     }
 
     const header = [

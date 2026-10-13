@@ -8,9 +8,9 @@ import { Button } from "@/components/Button";
 import { HeaderMenu } from "@/components/HeaderMenu";
 import { DesktopNav } from "@/components/DesktopNav";
 import { NavFrame } from "@/components/NavFrame";
-import { SearchTrigger } from "@/components/SearchTrigger";
 import { ThemeToggle } from "@/components/theme-toggle";
 import type { NavItem } from "@/components/MobileNav";
+import { navForLaunch } from "@/lib/launch";
 import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
 
 const LOGO = {
@@ -23,7 +23,7 @@ function desktopChildren(item: NavItem) {
 }
 
 export function Header() {
-  const nav = site.nav as NavItem[];
+  const nav = navForLaunch(site.nav as NavItem[]);
   const itemClass =
     "inline-flex h-8 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-semibold text-current hover:bg-current/8 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
@@ -148,13 +148,11 @@ export function Header() {
 
       <div className="hidden items-center gap-2 xl:flex">
         <ThemeToggle />
-        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current hover:bg-current/8" />
         <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
       </div>
 
       <div className="flex items-center gap-2 xl:hidden">
         <ThemeToggle />
-        <SearchTrigger className="inline-flex h-9 items-center rounded-full border border-current/25 px-3 text-nav-link font-semibold text-current" />
         <HeaderMenu nav={nav} logo={LOGO.dark} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
       </div>
     </NavFrame>

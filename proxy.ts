@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { isVercelAppHost } from "@/lib/host";
+import { isExcludedPath } from "@/lib/launch";
 
 // SPEC_V1.md §1 redirects. With skipTrailingSlashRedirect, this middleware owns
 // both the three 301s and the sitewide trailing-slash normalization (308).
@@ -31,6 +32,14 @@ export function proxy(request: NextRequest) {
     // Build from request.url so the Location keeps the trailing slash Next
     // would otherwise strip under trailingSlash + skipTrailingSlashRedirect.
     return withHostRobots(NextResponse.redirect(new URL(permanent, request.url), 301), request);
+  }
+
+  // Launch build: the page files stay in the tree. They are not routed.
+  if (isExcludedPath(pathname)) {
+    return withHostRobots(
+      new NextResponse("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } }),
+      request,
+    );
   }
 
   if (

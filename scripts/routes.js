@@ -7,7 +7,7 @@
 // next.config.mjs sets `trailingSlash: true` sitewide, so a slash-less
 // route (as section 1 writes every route) 308s to its slash form before
 // ever reaching the page. That 308 is Next's own trailing-slash
-// normalization, not a broken route — the twelve routes below are
+// normalization, not a broken route — the launch routes in the manifest are
 // unaffected by (and not part of) the three real 301 redirects section 1
 // actually cares about (/about, /logistics-process,
 // /industries-served). Harness fix, not a gate softening: a route whose

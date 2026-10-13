@@ -4,20 +4,16 @@
 // so this file is the single place that encodes that mapping. Update it
 // if SPEC_V1.md's routes or open-tokens table change.
 
+// Launch footprint. Matches the six live aglpallet.com pages. The other
+// App Router pages stay in the tree and are excluded while
+// lib/launch-lite.json enabled is true.
 const ROUTES = [
   '/',
   '/who-we-are',
-  '/partners',
-  '/partners/suppliers',
-  '/partners/carriers',
-  '/the-pledge',
-  '/custom-engineered',
-  '/products',
-  '/industries',
   '/how-we-work',
-  '/contact',
+  '/industries',
+  '/products',
   '/request-a-quote',
-  '/faq',
 ];
 
 // SPEC_V1.md section 1 redirects.
@@ -36,13 +32,7 @@ const REDIRECTS = [
 // fails if the literal placeholder is visible.
 const DOM_PLACEHOLDER_TOKENS = {
   'TBD-PHOTO-BROCK': ['/', '/who-we-are'],
-  'TBD-ADDRESS': ['/who-we-are', '/contact'],
-  'TBD-CARRIER-LANES': ['/partners/carriers'],
-  'TBD-CARRIER-EQUIPMENT': ['/partners/carriers'],
-  'TBD-CARRIER-TERMS': ['/partners/carriers'],
-  'TBD-CARRIER-INSURANCE': ['/partners/carriers'],
-  'TBD-EMAIL-SUPPLIER': ['/partners/suppliers'],
-  'TBD-EMAIL-CARRIER': ['/partners/carriers'],
+  'TBD-ADDRESS': ['/who-we-are'],
 };
 
 // Tokens from section 8 that are build-decision tracking notes, not on-page

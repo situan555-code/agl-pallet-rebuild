@@ -2,6 +2,7 @@ import content from "@/content/pages/how-we-work.json";
 import { Hero3 } from "@/components/hero3";
 import { Process1 } from "@/components/process1";
 import { Cta4 } from "@/components/cta4";
+import { launchHref } from "@/lib/launch";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -30,7 +31,7 @@ export default function HowWeWork() {
           description: step.body,
           image: HOW_WE_WORK_IMAGES[index],
           priority: index === 0,
-          href:
+          href: launchHref(
             step.number === "01"
               ? "/request-a-quote/"
               : step.number === "02"
@@ -38,6 +39,7 @@ export default function HowWeWork() {
                 : step.number === "03"
                   ? "/contact/"
                   : "/request-a-quote/",
+          ),
         }))}
       />
 

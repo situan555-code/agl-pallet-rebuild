@@ -1,5 +1,9 @@
 # DECISIONS (redesign)
 
+## Launch-lite route set (2026-10-13)
+
+The launch branch serves the six live pages: `/`, `/who-we-are/`, `/how-we-work/`, `/industries/`, `/products/`, `/request-a-quote/`. `lib/launch-lite.json` excludes the other routes from routing, nav, footer, sitemap, and search without deleting their source. Custom stays as a products card, with the custom page heading as one line on that card. Partner labels on the home page point at phone and email. The demo host stays noindex. No DNS, domain, or canonical changes. No personal names. No "never own a mill" line.
+
 ## Review follow-up (2026-10-12)
 
 Owner overrides on the 2026-10-12 copy review:

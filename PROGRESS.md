@@ -1,3 +1,4 @@
+Launch-lite branch: six-page footprint behind lib/launch-lite.json. Non-Lighthouse verify gates passed. Mobile Lighthouse median missed 2.5s on image pages (how-we-work 2577ms, later products 2582ms). Demo branch and main are untouched.
 Ship-prep follow-up: P0 claims, quote form visible, supplier/carrier forms hidden, titles, question metas, six-state areaServed. Demo stays noindex. Not merged.
 Redesign started. Phase 0 in progress. Model policy: Grok 4.6 High Fast default, upgrades logged here.
 R0.1 done. Next: R0.3.
