@@ -55,8 +55,8 @@ const CONTENT_DECISION_TOKENS = {
   'TBD-FAITH-PLACEMENT': { routes: ['/who-we-are'], note: 'placement already decided (built on /who-we-are); do not duplicate on /' },
   'TBD-VALUES': { routes: ['/who-we-are'], note: 'build the four cards as drafted' },
   'TBD-TEAM-LIST': { routes: ['/who-we-are'], note: 'roles only; no personal names (owner 2026-10-01)' },
-  'TBD-PHARMA': { routes: ['/industries'], note: 'resolved 2026-10-01 — Pharmaceuticals is item 8 on /industries; do not render the token' },
-  'TBD-SOCIAL-URLS': { routes: ROUTES, note: 'omit the Follow Us block entirely if unresolved — no placeholder, no empty heading' },
+  'TBD-PHARMA': { routes: ['/industries'], note: 'resolved 2026-10-14 — Pharmaceuticals card is on /industries. Do not render the token.' },
+  'TBD-SOCIAL-URLS': { routes: ROUTES, note: 'resolved in content/site.json organization.sameAs — render LinkedIn and Facebook icons, no Follow Us heading' },
 };
 
 module.exports = { ROUTES, REDIRECTS, DOM_PLACEHOLDER_TOKENS, CONTENT_DECISION_TOKENS };

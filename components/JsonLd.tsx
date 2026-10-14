@@ -5,8 +5,8 @@ import { getSiteUrl } from "@/lib/site-url";
 
 /**
  * Organization JSON-LD, mounted sitewide in app/layout.tsx.
- * No street address and no LocalBusiness type. sameAs lists only profiles
- * that exist today (content/site.json). See DECISIONS.md §2.
+ * Mailing address is the PO Box only. No street address and no LocalBusiness
+ * type. sameAs lists only profiles that exist today (content/site.json).
  */
 
 // Escape "<" so content can never close the <script> element early.
@@ -29,7 +29,15 @@ export function OrganizationJsonLd() {
     logo: `${url}${logo.src}`,
     telephone: footer.contact.phone,
     email: footer.contact.email,
-    areaServed: "US",
+    areaServed: ["OH", "PA", "WV", "MI", "IN", "IL"],
+    address: {
+      "@type": "PostalAddress",
+      postOfficeBoxNumber: organization.postalAddress.postOfficeBoxNumber,
+      addressLocality: organization.postalAddress.addressLocality,
+      addressRegion: organization.postalAddress.addressRegion,
+      postalCode: organization.postalAddress.postalCode,
+      addressCountry: organization.postalAddress.addressCountry,
+    },
   };
   if (organization.sameAs.length > 0) data.sameAs = organization.sameAs;
   return <JsonLdScript data={data} />;

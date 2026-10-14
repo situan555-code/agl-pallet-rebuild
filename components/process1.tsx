@@ -21,6 +21,8 @@ export interface Process1Step {
   icon?: LucideIcon;
   href?: string;
   image?: string;
+  /** Set on the first in-view photo only. */
+  priority?: boolean;
 }
 
 interface Process1Props {
@@ -29,7 +31,7 @@ interface Process1Props {
   heading?: string;
   description?: string;
   steps: Process1Step[];
-  /** grid: card tiles (supplier offer). team: monogram avatars. */
+  /** grid: card tiles (supplier offer). team: role and body, no avatar. */
   layout?: "stack" | "grid" | "team";
   hairline?: boolean;
   className?: string;
@@ -47,15 +49,6 @@ function SpecBody({ description, className }: { description: string; className?:
       <p className={className}>{visibleDescription(description)}</p>
     </>
   );
-}
-
-function initials(name: string) {
-  return name
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase() ?? "")
-    .join("");
 }
 
 const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", hairline, className }: Process1Props) => {
@@ -79,17 +72,9 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
         {layout === "team" ? (
           <ul className={cn("grid gap-8 sm:grid-cols-2", hasIntro && "nav:col-span-8")}>
             {steps.map((step) => (
-              <li key={step.title} className="flex items-start gap-4">
-                <span
-                  aria-hidden="true"
-                  className="flex size-12 shrink-0 items-center justify-center rounded-full border border-current/20 bg-transparent text-[15px] font-semibold text-current"
-                >
-                  {initials(step.title)}
-                </span>
-                <div className="min-w-0">
-                  <ItemHeading className="text-body font-semibold text-current">{step.title}</ItemHeading>
-                  <SpecBody description={step.description} className="mt-1 text-body text-gray" />
-                </div>
+              <li key={step.title}>
+                <ItemHeading className="text-body font-semibold text-current">{step.title}</ItemHeading>
+                <SpecBody description={step.description} className="mt-1 text-body text-gray" />
               </li>
             ))}
           </ul>
@@ -98,7 +83,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
             {steps.map((step) => (
               <li key={step.title} className="h-full">
                 <InteractiveCard href={step.href ?? "/request-a-quote/"}>
-                  <CardMedia numeral={step.number} alt={step.title} src={step.image} />
+                  <CardMedia numeral={step.number} alt={step.title} src={step.image} priority={step.priority} />
                   <div className="flex flex-1 flex-col p-6">
                     {step.icon ? <IconTile icon={step.icon} /> : null}
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && "mt-5")}>
@@ -115,7 +100,7 @@ const Process1 = ({ id, eyebrow, heading, description, steps, layout = "stack", 
             {steps.map((step) => (
               <li key={step.title} className="h-full">
                 <InteractiveCard href={step.href ?? "/request-a-quote/"}>
-                  <CardMedia numeral={step.number} alt={step.title} src={step.image} />
+                  <CardMedia numeral={step.number} alt={step.title} src={step.image} priority={step.priority} />
                   <div className="flex flex-1 flex-col p-6">
                     {step.icon && !step.number ? <IconTile icon={step.icon} /> : null}
                     <ItemHeading className={cn("text-[22px] font-semibold leading-snug text-current", step.icon && !step.number && "mt-5")}>

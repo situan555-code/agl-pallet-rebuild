@@ -36,6 +36,7 @@ export interface QuestionItem {
   question: string;
   eyebrow: string;
   summary: string;
+  metaDescription: string;
   parentSlug: string;
   directAnswer: string;
   published: string;
@@ -77,6 +78,10 @@ function validate(items: QuestionItem[]) {
     const count = directAnswerWordCount(item.directAnswer);
     if (count < 40 || count > 60) {
       throw new Error(`${item.slug} direct answer is ${count} words; need 40–60`);
+    }
+    const metaLen = (item.metaDescription || "").length;
+    if (metaLen < 110 || metaLen > 165) {
+      throw new Error(`${item.slug} meta description is ${metaLen} characters; aim for about 150`);
     }
     const parentHref = `/resources/${item.parentSlug}/`;
     if (!item.directAnswer.includes(parentHref)) {

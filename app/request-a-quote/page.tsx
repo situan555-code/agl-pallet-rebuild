@@ -1,29 +1,18 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import pageContent from "@/content/pages/request-a-quote.json";
 import forms from "@/content/forms.json";
 import type { FormDestination } from "@/components/Form";
-import { DeferredForm } from "@/components/DeferredForm";
+import { Form } from "@/components/Form";
 import { Contact2 } from "@/components/contact2";
 import { QuoteContacts, type QuoteContactItem } from "@/components/QuoteContacts";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Request a Quote — AGL Pallet",
-  description: "Send a spec and a quantity and we will come back the same day. No minimums.",
-  alternates: { canonical: "/request-a-quote/" },
-  openGraph: {
-    type: "article",
-    url: "/request-a-quote/",
-    title: "Request a Quote — AGL Pallet",
-    description: "Send a spec and a quantity and we will come back the same day. No minimums.",
-    images: ["/assets/agl_social_share.jpg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Request a Quote — AGL Pallet",
-    description: "Send a spec and a quantity and we will come back the same day. No minimums.",
-    images: ["/assets/agl_social_share.jpg"],
-  },
-};
+export const metadata: Metadata = pageMeta(
+  "Request a Pallet Quote, Same-Day Response | AGL Pallet",
+  "Send a spec and a quantity and we will come back the same day. No minimums.",
+  "/request-a-quote/",
+);
 
 export default function RequestAQuote() {
   const to =
@@ -38,6 +27,17 @@ export default function RequestAQuote() {
     autoresponse: forms.quote.autoresponse,
   };
 
+  const contacts: QuoteContactItem[] = pageContent.contactInfo.map((item) => ({
+    kind: (item.href.startsWith("mailto:")
+      ? "email"
+      : item.href.startsWith("sms:")
+        ? "text"
+        : "phone") as QuoteContactItem["kind"],
+    label: item.label,
+    value: item.value,
+    href: item.href,
+  }));
+
   return (
     <main>
       <Contact2
@@ -46,23 +46,10 @@ export default function RequestAQuote() {
         title={pageContent.hero.heading}
         titleAs="h1"
         description={pageContent.hero.body}
-        below={
-          <QuoteContacts
-            items={pageContent.contactInfo.map((item) => ({
-              kind: (item.href.startsWith("mailto:")
-                ? "email"
-                : item.href.startsWith("sms:")
-                  ? "text"
-                  : "phone") as QuoteContactItem["kind"],
-              label: item.label,
-              value: item.value,
-              href: item.href,
-            }))}
-          />
-        }
+        below={<QuoteContacts items={contacts} />}
       >
-        <div className="min-h-[36rem] nav:min-h-0">
-          <DeferredForm
+        <Suspense fallback={null}>
+          <Form
             id={forms.quote.id}
             fields={forms.quote.fields as never}
             destination={destination}
@@ -70,7 +57,7 @@ export default function RequestAQuote() {
             successMessage={forms.quote.successMessage}
             source="/request-a-quote/"
           />
-        </div>
+        </Suspense>
       </Contact2>
     </main>
   );

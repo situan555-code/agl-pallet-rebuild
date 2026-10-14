@@ -23,8 +23,8 @@ const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"
 const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
 
 export const metadata: Metadata = pageMeta(
-  "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
-  "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
+  "Pallet Supplier for Manufacturers, Freight Included | AGL",
+  "Pallet supplier for manufacturers. New, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio, with freight on every order.",
   "/",
 );
 
@@ -34,11 +34,25 @@ export default function Home() {
   return (
     <main>
       <HeroExpand
+        tagline={home.hero.tagline}
         heading={home.hero.heading}
         description={home.hero.body}
         video={{ src: home.hero.video, poster: home.hero.poster }}
         buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
       />
+
+      <section className="pt-8 nav:pt-12" aria-label="Proof">
+        <Container>
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {home.proof.map((item) => (
+              <li key={item} className="rounded-card bg-green px-6 py-8 sm:px-8">
+                <p className="text-[28px] font-semibold leading-tight text-ice">{item}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-[70ch] text-body text-bone">{home.serviceArea}</p>
+        </Container>
+      </section>
 
       <section className="pt-8 nav:pt-12">
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -162,7 +176,7 @@ export default function Home() {
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/stock/agl-brock-founder-01_82f1.webp"
-              alt="Brock, founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
+              alt="Founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
               fill
               quality={70}
               sizes="(min-width: 980px) 38vw, 100vw"

@@ -17,7 +17,7 @@ const SERVICE_PHOTOS: Record<string, string> = {
 };
 
 export const metadata: Metadata = pageMeta(
-  "Services — AGL Pallet",
+  "Pallet Sourcing and Managed Freight Services | AGL Pallet",
   "Pallet sourcing, mill qualification, managed freight, and program coordination from one brokerage desk.",
   "/services/",
 );
@@ -48,9 +48,9 @@ export default function ServicesPage() {
         }))}
       />
       <ImageBand
-        eyebrow="Brokerage, not manufacturing"
-        heading="We grow by coordinating more — never by owning a mill."
-        body="After the lumber shock, too many brokers became competitors to the shops they used to buy from. AGL's pledge is the operating model: no plant of our own to feed."
+        eyebrow={data.pledgeBand.eyebrow}
+        heading={data.pledgeBand.heading}
+        body={data.pledgeBand.body}
         image={{ src: "/assets/stock/agl-filler-pallet-stack-04_01bd.webp", alt: "Close-up of pallet wood grain and boards" }}
         cta={{ label: "Read the pledge", href: "/the-pledge/" }}
       />

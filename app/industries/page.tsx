@@ -6,9 +6,9 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  'Industries We Serve — AGL Pallet',
-  'Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage.',
-  '/industries/',
+  "Industrial Pallets for Chemical, Food, Metals and 3PL | AGL",
+  "Industrial pallets for building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage.",
+  "/industries/",
 );
 
 export default function Industries() {
@@ -19,7 +19,12 @@ export default function Industries() {
       <Feature3
         variant="ruled"
         columns={2}
-        features={content.industries.map((item) => ({ title: item.heading, description: item.body, src: (item as { image?: string }).image }))}
+        features={content.industries.map((item, index) => ({
+          title: item.heading,
+          description: item.body,
+          src: (item as { image?: string }).image,
+          priority: index === 0,
+        }))}
       />
 
       <Cta4 heading={content.ctaBand.heading} description={content.ctaBand.body} button={content.ctaBand.cta} />

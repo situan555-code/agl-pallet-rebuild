@@ -8,11 +8,14 @@ import { OhioPlantMap } from "@/components/OhioPlantMap";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = pageMeta(
-  "Case Studies — AGL Pallet",
-  "Structural case studies for AGL Pallet's sourcing and managed freight work. Verified metrics only — no invented manufacturer claims.",
-  "/case-studies/",
-);
+export const metadata: Metadata = {
+  ...pageMeta(
+    "Case Studies — AGL Pallet",
+    "How AGL sources a spec, qualifies more than one shop, and books the freight.",
+    "/case-studies/",
+  ),
+  robots: { index: false, follow: false },
+};
 
 export default function CaseStudiesPage() {
   return (
@@ -31,8 +34,8 @@ export default function CaseStudiesPage() {
       <Gallery4
         tone="paper"
         eyebrow="Selected work"
-        title="Programs worth the write-up — when the facts are ready."
-        description="Structural examples only. Titles and outcomes stay unpublished until approved. Brokerage story only — we don't pretend to be the mill."
+        title="Programs"
+        description="Food packaging, engineered oversize, multi-plant supply, and crate and dunnage."
         items={data.studies.map((s) => ({
           id: s.id,
           title: s.title,

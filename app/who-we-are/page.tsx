@@ -12,9 +12,9 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  'Who We Are — AGL Pallet',
-  'AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.',
-  '/who-we-are/',
+  "About AGL Pallet | Pallet Supplier in North Canton, Ohio",
+  "AGL Pallet is a pallet supplier that started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.",
+  "/who-we-are/",
 );
 
 export default function WhoWeAre() {
@@ -49,7 +49,7 @@ export default function WhoWeAre() {
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
             <Image
               src="/assets/stock/agl-brock-founder-01_82f1.webp"
-              alt="Brock, founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
+              alt="Founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
               fill
               quality={70}
               sizes="(min-width: 980px) 38vw, 100vw"

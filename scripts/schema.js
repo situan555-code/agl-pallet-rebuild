@@ -23,7 +23,8 @@ const PPI_CSV_PATH = "/resources/pallet-prices/ppi-csv/";
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const ALLOWED = {
-  Organization: ["@context", "@type", "@id", "name", "url", "logo", "telephone", "email", "areaServed", "sameAs"],
+  Organization: ["@context", "@type", "@id", "name", "url", "logo", "telephone", "email", "areaServed", "address", "sameAs"],
+  PostalAddress: ["@type", "postOfficeBoxNumber", "addressLocality", "addressRegion", "postalCode", "addressCountry"],
   TechArticle: ["@context", "@type", "headline", "description", "url", "mainEntityOfPage", "datePublished", "dateModified", "inLanguage", "author", "reviewedBy", "publisher"],
   Article: ["@context", "@type", "headline", "description", "url", "mainEntityOfPage", "datePublished", "dateModified", "inLanguage", "author", "reviewedBy", "publisher"],
   BreadcrumbList: ["@context", "@type", "itemListElement"],
@@ -453,8 +454,24 @@ async function main() {
         if (org.url !== ORIGIN) fail(pagePath, `Organization url ${org.url}`);
         if (org.telephone !== site.footer.contact.phone) fail(pagePath, "Organization telephone drifted");
         if (org.email !== site.footer.contact.email) fail(pagePath, "Organization email drifted");
-        if (org.areaServed !== "US") fail(pagePath, "Organization areaServed must be US");
-        if (org.address || org.streetAddress) fail(pagePath, "Organization must not include an address");
+        if (JSON.stringify(org.areaServed) !== JSON.stringify(["OH", "PA", "WV", "MI", "IN", "IL"])) {
+          fail(pagePath, "Organization areaServed must be OH, PA, WV, MI, IN, IL");
+        }
+        const postal = site.organization.postalAddress;
+        const addr = org.address;
+        if (!addr || addr["@type"] !== "PostalAddress") {
+          fail(pagePath, "Organization address must be the PO Box PostalAddress");
+        } else if (addr.streetAddress) {
+          fail(pagePath, "Organization must not include a street address");
+        } else if (
+          addr.postOfficeBoxNumber !== postal.postOfficeBoxNumber ||
+          addr.addressLocality !== postal.addressLocality ||
+          addr.addressRegion !== postal.addressRegion ||
+          addr.postalCode !== postal.postalCode ||
+          addr.addressCountry !== postal.addressCountry
+        ) {
+          fail(pagePath, "Organization postal address drifted from site.json");
+        }
         if (!text.includes(org.name) || !text.includes(org.telephone) || !text.includes(org.email)) {
           fail(pagePath, "Organization name, phone, or email is not on the page");
         }

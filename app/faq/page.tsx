@@ -7,8 +7,8 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  "FAQ — AGL Pallet",
-  "Two-way vs four-way pallets, lead times, minimums, and second-source availability — answered for buyers working with a pallet brokerage.",
+  "Pallet Buying FAQ: Lead Times, Minimums, 2-Way vs 4-Way",
+  "Lead times, minimums, two-way versus four-way entry, and second-source availability for buyers working with a pallet supplier.",
   "/faq/",
 );
 

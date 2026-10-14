@@ -10,11 +10,13 @@ type HeroButton = {
 };
 
 export function HeroExpand({
+  tagline,
   heading,
   description,
   buttons,
   video,
 }: {
+  tagline?: string;
   heading: string;
   description: string;
   buttons: HeroButton[];
@@ -27,6 +29,9 @@ export function HeroExpand({
       <div data-hero-track className="hero-track relative text-current">
         <div className="hero-stage">
           <div className={cn(containerClass, "hero-copy")}>
+            {tagline ? (
+              <p className="mx-auto mb-4 max-w-3xl text-center text-body text-current/80">{tagline}</p>
+            ) : null}
             <h1 className="display mx-auto max-w-4xl text-center text-display-1 text-current nav:text-[56px] nav:leading-[1.08]">
               {heading}
             </h1>

@@ -5,8 +5,8 @@ import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
-  'The Pledge — AGL Will Never Own Manufacturing',
-  'Most large pallet brokers bought factories. AGL did not, and will not. Why that decision is structural rather than a slogan.',
+  'The Pledge — AGL Pallet',
+  "Several of the largest pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan.",
   '/the-pledge/',
 );
 

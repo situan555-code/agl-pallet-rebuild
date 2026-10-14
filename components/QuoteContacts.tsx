@@ -9,6 +9,7 @@ export interface QuoteContactItem {
   label: string;
   value: string;
   href: string;
+  note?: string;
 }
 
 const icons: Record<QuoteContactItem["kind"], LucideIcon> = {
@@ -50,6 +51,7 @@ export function QuoteContacts({
               <p className="mt-2 text-[24px] font-semibold leading-snug tracking-tight text-current">
                 {item.value}
               </p>
+              {item.note ? <p className="mt-2 text-body text-gray">{item.note}</p> : null}
               <span className="mt-auto pt-6 inline-flex text-body font-semibold text-ice">
                 {actions[item.kind]}
               </span>

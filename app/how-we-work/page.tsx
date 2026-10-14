@@ -29,6 +29,7 @@ export default function HowWeWork() {
           title: step.heading,
           description: step.body,
           image: HOW_WE_WORK_IMAGES[index],
+          priority: index === 0,
           href:
             step.number === "01"
               ? "/request-a-quote/"

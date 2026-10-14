@@ -14,6 +14,7 @@ export function GET() {
       "Content-Disposition": `attachment; filename="${item.pdfFilename}"`,
       "Cache-Control": "public, max-age=86400",
       "X-Content-Type-Options": "nosniff",
+      "X-Robots-Tag": "noindex, nofollow",
     },
   });
 }

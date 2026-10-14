@@ -8,6 +8,7 @@ export function CardMedia({
   className,
   imageClassName,
   src,
+  priority = false,
 }: {
   numeral?: string;
   alt?: string;
@@ -15,6 +16,8 @@ export function CardMedia({
   /** Extra classes on the next/image (e.g. object-bottom for a lower crop). */
   imageClassName?: string;
   src?: string;
+  /** First in-view photo only. Lazy images were the mobile LCP on product and process pages. */
+  priority?: boolean;
 }) {
   return (
     <div className={cn("relative", className)}>
@@ -25,6 +28,7 @@ export function CardMedia({
             alt={alt}
             fill
             quality={60}
+            priority={priority}
             sizes="(min-width: 980px) 40vw, calc(100vw - 48px)"
             className={cn("object-cover", imageClassName)}
           />

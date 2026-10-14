@@ -1,13 +1,13 @@
 {
   "hero": {
     "eyebrow": "Partners",
-    "heading": "We don't build pallets and we don't drive trucks.",
-    "body": "Which means AGL only works if the shops that supply them well and the carriers that run our lanes want to work with us. Two ways in."
+    "heading": "AGL is a pallet brokerage.",
+    "body": "AGL only works if the shops that supply them well and the carriers that run our lanes want to work with us. Two ways in."
   },
   "cards": [
     {
       "heading": "Mills & shops",
-      "body": "You build pallets, crates, or cut stock and want steady volume from a broker with no plant of its own.",
+      "body": "You build pallets, crates, or cut stock and want steady volume from a pallet brokerage.",
       "href": "/partners/suppliers/",
       "image": "/assets/stock/agl-partner-mills-01_6763.webp"
     },

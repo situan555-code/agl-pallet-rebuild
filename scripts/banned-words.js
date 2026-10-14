@@ -99,7 +99,14 @@ function scanText(text, lineOffsetLines) {
     }
     for (const { name, re } of BANNED_PATTERNS) {
       const m = line.match(re);
-      if (m) hits.push({ rule: name, line: idx + 1, matched: m[0] });
+      if (!m) continue;
+      // A denial ("Not currently. Everything we quote is new.") is not an offer.
+      if (name === "recycled-used-reconditioned-pallet") {
+        const at = text.toLowerCase().indexOf(m[0].toLowerCase());
+        const window = text.slice(Math.max(0, at - 80), at + m[0].length + 400);
+        if (NEGATION_RE.test(window)) continue;
+      }
+      hits.push({ rule: name, line: idx + 1, matched: m[0] });
     }
     let pm;
     const re = new RegExp(PRODUCER_VERB_RE.source, 'gi');

@@ -8,6 +8,13 @@
   "organization": {
     "legalName": "AGL Pallet LLC",
     "url": "https://aglpallet.com",
+    "postalAddress": {
+      "postOfficeBoxNumber": "121",
+      "addressLocality": "Navarre",
+      "addressRegion": "OH",
+      "postalCode": "44662",
+      "addressCountry": "US"
+    },
     "sameAs": [
       "https://www.linkedin.com/company/aglpallet/",
       "https://www.facebook.com/profile.php?id=61584727225727"
@@ -159,10 +166,6 @@
       {
         "label": "Resources",
         "href": "/resources/"
-      },
-      {
-        "label": "Case studies",
-        "href": "/case-studies/"
       },
       {
         "label": "Services",

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MailIcon, PhoneIcon } from "@/components/inline-icons";
+import { FacebookIcon, LinkedinIcon, MailIcon, PhoneIcon } from "@/components/inline-icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/Button";
 import { containerClass } from "@/components/Container";
@@ -15,20 +15,32 @@ interface FooterSection {
   links: FooterLink[];
 }
 
+interface FooterSocialLink {
+  href: string;
+  label: string;
+}
+
 interface Footer2Props {
   logo: { src: string; lightSrc?: string; width: number; height: number; alt: string };
   description: string;
   contact: { phone: string; email: string };
+  social?: FooterSocialLink[];
   cta: FooterLink;
   sections: FooterSection[];
   copyright: string;
   className?: string;
 }
 
+function SocialIcon({ label }: { label: string }) {
+  if (label === "LinkedIn") return <LinkedinIcon className="h-4 w-4" />;
+  if (label === "Facebook") return <FacebookIcon className="h-4 w-4" />;
+  return null;
+}
+
 const linkClass =
   "rounded-input text-link text-current/85 transition-colors hover:text-current focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
-const Footer2 = ({ logo, description, contact, cta, sections, copyright, className }: Footer2Props) => {
+const Footer2 = ({ logo, description, contact, social = [], cta, sections, copyright, className }: Footer2Props) => {
   return (
     <footer className={cn("mt-[72px] border-t border-current/15 pb-10 pt-16 nav:mt-[112px]", className)}>
       <div className={cn(containerClass, "text-current")}>
@@ -71,6 +83,23 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
                 </a>
               </li>
             </ul>
+            {social.length > 0 ? (
+              <ul className="mt-6 flex items-center gap-3">
+                {social.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      aria-label={item.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex size-10 items-center justify-center rounded-full border border-current/20 text-current/85 transition-colors hover:text-current focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    >
+                      <SocialIcon label={item.label} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
             <div className="mt-8">
               <Button href={cta.href} label={cta.label} variant="secondary" />
             </div>
@@ -78,7 +107,7 @@ const Footer2 = ({ logo, description, contact, cta, sections, copyright, classNa
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 nav:min-w-[28rem]">
             {sections.map((section) => (
               <div key={section.title}>
-                <h2 className="mb-6 text-display-4 text-current">{section.title}</h2>
+                <p className="mb-6 text-display-4 text-current">{section.title}</p>
                 <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.href} className="last:pb-2">

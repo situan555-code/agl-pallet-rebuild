@@ -3,7 +3,6 @@ import { Feature3 } from "@/components/feature3";
 import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 import { QuestionAsset } from "@/components/resources/QuestionAssets";
 import { ArticleBody, ArticleHeader, ArticleSection, DirectAnswer, ReadingPanel, ResourceCta, Sources } from "@/components/resources/ResourceArticle";
-import { plainText } from "@/components/resources/RichText";
 import {
   QUESTIONS_PATH,
   getQuestion,
@@ -32,7 +31,7 @@ export function QuestionArticle({ item }: { item: QuestionItem }) {
       />
       <ArticleJsonLd
         headline={item.question}
-        description={plainText(item.directAnswer)}
+        description={item.metaDescription}
         path={path}
         published={item.published}
         updated={item.updated}

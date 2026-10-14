@@ -1,8 +1,43 @@
 # DECISIONS (redesign)
 
+## Facts sheet (2026-10-14)
+
+Owner facts sheet is the source of truth and overrides the 2026-10-12 pharma removal, the PDS deletion, and the unconfirmed-text flag.
+
+- Pharmaceuticals is back on `/industries` (card and meta). No personal names.
+- Home proof is "99% on-time delivery" and "12+ years industry experience". No name on either figure.
+- Home service area is Ohio, Pennsylvania, West Virginia, Michigan, Indiana, and Illinois. Organization `areaServed` stays OH, PA, WV, MI, IN, IL.
+- Organization JSON-LD carries the mailing address only: PO Box 121, Navarre, OH 44662. No street address in the footer, contact page, or schema.
+- Engineered copy may say "PDS methodology". No PDS certification, credentials, or access claim.
+- Mill-slogan lines ("never own a mill", "don't own mills", "no plant of its own", "not by building plants", "not by buying plants", "rather than a plant", "not a mill") are replaced with "AGL is a pallet brokerage."
+- The text button stays. Phone and text are both 234-286-0402. The unconfirmed note is removed.
+- Launch is six pages. The rest is phase 2. Case studies stay off the launch set.
+- Resources are credited to AGL Pallet. No bios.
+
+## Review follow-up (2026-10-12)
+
+Owner overrides on the 2026-10-12 copy review:
+
+- No personal names. The who-we-are team list stays roles only. Initials avatars are removed.
+- Do not restore a "never own a mill" or "no manufacturing" slogan. The leftover services heading that still said "never by owning a mill" is replaced with the existing growth line.
+- The home tagline "Pallets move the world. We move pallets." goes back above the home H1. The 2026-09-29 removal is overridden for that line only.
+- Pharmaceuticals is off `/industries` (card and meta) until it is confirmed. The 2026-10-01 decision that put it on the page is withdrawn.
+- Pallet Design System (PDS) sentences are deleted. Do not name PDS or claim PDS access.
+- Factory claim, one sentence everywhere: "Several of the largest pallet brokers bought factories."
+- Organization `areaServed` is OH, PA, WV, MI, IN, IL. Not US.
+- `/case-studies/` is noindex, out of the nav and sitemap, until a real case study is approved.
+- Download `/pdf/` routes are noindex and out of the sitemap.
+- The demo stays noindex. Launch redirects and production noindex removal are checklist items in DEPLOY.md, not changes in this pass.
+- Quote form sends (Resend, then FormSubmit). Supplier and carrier forms do not send, so they are hidden. Those pages show phone and email. The text button stays, flagged unconfirmed.
+- FAQ history in git has only the four answers shipped on 2026-09-16. The recycled question is added. Eleven older answers were not in this repo.
+
+## Drop the "never own a mill" slogan (2026-10-12)
+
+Owner: remove the repeated "never own a mill / never build pallets / never own manufacturing" tagline from visitor-facing copy, meta, and SPEC_V1 section 4. Where a section still has to say what AGL is, the line is "AGL is a pallet brokerage." (suppliers: "AGL is a brokerage with no plant of its own."). `/the-pledge/` keeps the industry story and "We grow by coordinating more volume and more lanes — not by buying plants." The home pledge heading is that same growth line. No manufacturer, mill, plant, or factory claim.
+
 ## No personal names on public pages (2026-10-01)
 
-Owner: remove every AGL person's first and last name from customer-facing pages. Team cards on `/who-we-are/` are roles only (Owner, Logistics, Supplier Relations, Operations, IT). Founder story stays first person; the eyebrow is "From the owner". Carrier offer and form success lines no longer name a dispatcher or supplier-relations contact. The dispatcher portrait is removed; that offer card uses the same empty Photo placeholder as the other freight cards. `{{TBD-PHOTO-BROCK}}` stays an unresolved token and is not rendered. SPEC_V1.md still has the named draft; this page copy is the approved public version.
+Owner: remove every AGL person's first and last name from customer-facing pages. Team cards on `/who-we-are/` are roles only (Owner, Logistics, Supplier Relations, Operations, IT). Founder story stays first person; the eyebrow is "From the owner". Carrier offer and form success lines no longer name a dispatcher or supplier-relations contact. The dispatcher portrait is removed; that offer card uses the same empty Photo placeholder as the other freight cards. `{{TBD-PHOTO-BROCK}}` stays an unresolved token and is not rendered. SPEC_V1.md section 4 matches this roles-only copy. Founder alt text does not use a personal name.
 
 ## Pharmaceuticals and PDS methodology (2026-10-01)
 

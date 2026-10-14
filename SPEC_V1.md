@@ -8,6 +8,8 @@
 
 **Human-readable twin:** the AGL Site Rebuild Deck artifact. This file is authoritative for implementation.
 
+**Launch scope (2026-10-14):** the public launch is six pages — `/`, `/who-we-are/`, `/how-we-work/`, `/industries/`, `/products/`, `/request-a-quote/`. The rest of this spec is phase 2. Source stays in the repo. `launch-lite` serves only those six. No personal names or bios. Resources, when served, are credited to AGL Pallet.
+
 ---
 
 ## 0 · READ FIRST — hard rules
@@ -26,7 +28,7 @@ These are non-negotiable brand and legal constraints. Violating one is worse tha
 
 | 4 | **No recycled, used, or reconditioned pallets** offered as a product. |
 
-| 5 | **Claim no certifications.** No RPA, MHI, BBB, SmartWay, NWPCA, ISPM-15, or heat-treat capability claims. No badge images. Pallet Design System (PDS) may be named as the methodology used when an engineered spec is written. Do not claim PDS certification. |
+| 5 | **Claim no certifications.** No RPA, MHI, BBB, SmartWay, NWPCA, ISPM-15, or heat-treat capability claims. No badge images. PDS may appear only as the words "PDS methodology". No PDS certification, credentials, or access claim. |
 
 | 6 | **Never "Ohio-only."** Supplier network is growing. Public footprint is MI, IL, IN, PA, OH, WV — "the Midwest and Mid-Atlantic, and growing." Never "national" or "nationwide." |
 
@@ -138,7 +140,7 @@ Footer legal line: `© 2026 AGL Pallet LLC. All rights reserved.`
 
 **Remove the string "This is Bahlr website." — it is agency placeholder text currently live in production.**
 
-Social icons: only render the block if `{{TBD-SOCIAL-URLS}}` is resolved. Do not ship an empty "Follow Us" heading.
+Social icons: LinkedIn and Facebook, from `content/site.json` `organization.sameAs`. No "Follow Us" heading.
 
 ---
 
@@ -184,33 +186,37 @@ Build these once and reuse. Copy varies by instance; structure does not.
 
 |---|---|---|
 
-| `/` | AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers | AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order. |
+| `/` | Pallet Supplier for Manufacturers, Freight Included \| AGL | Pallet supplier for manufacturers. New, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio, with freight on every order. |
 
-| `/who-we-are` | Who We Are — AGL Pallet | AGL Pallet started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone. |
+| `/who-we-are` | About AGL Pallet \| Pallet Supplier in North Canton, Ohio | AGL Pallet is a pallet supplier that started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone. |
 
 | `/partners` | Partners — AGL Pallet | AGL works with family-run mills and regional carriers across the Midwest and Mid-Atlantic. Two ways to work with us. |
 
-| `/partners/suppliers` | Supply Pallets to AGL — For Mills and Shops | AGL is a pallet brokerage with no plant of its own. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds. |
+| `/partners/suppliers` | Sell Pallets to a Broker That Won't Compete With You \| AGL | AGL is a pallet brokerage. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds. |
 
-| `/partners/carriers` | Haul for AGL — For Carriers | AGL manages freight on every pallet order we sell. Regional lanes across the Midwest and Mid-Atlantic. Get set up as a carrier. |
+| `/partners/carriers` | Regional Dry Van and Flatbed Loads, Mill to Plant \| AGL | AGL manages freight on every pallet order we sell. Regional lanes across the Midwest and Mid-Atlantic. Get set up as a carrier. |
 
-| `/the-pledge` | The Pledge — AGL Will Never Own Manufacturing | Most large pallet brokers bought factories. AGL did not, and will not. Why that decision is structural rather than a slogan. |
+| `/the-pledge` | The Pledge — AGL Pallet | Several of the largest pallet brokers bought factories. AGL is a pallet brokerage. Why that position is structural rather than a slogan. |
 
-| `/custom-engineered` | Custom and Engineered Pallets, Crates and Skids — AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job. |
+| `/custom-engineered` | Custom Pallets, Heavy-Duty Skids and Crates \| AGL Pallet | Odd-size, oversize, and heavy-duty pallet solutions. We spec to the load, then source the shop set up for the job. |
 
-| `/products` | Products — Pallets, Crates, Dunnage, Blocks and Stakes | Stock pallets, custom and engineered solutions, crates, dunnage, shipping blocks, and stakes, sourced through qualified mills. |
+| `/products` | Wood Pallets, Crates and Dunnage for Manufacturers \| AGL | Wood pallets, crates, dunnage, shipping blocks, and stakes for manufacturers, sourced through qualified mills. |
 
-| `/industries` | Industries We Serve — AGL Pallet | Construction materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage. |
+| `/industries` | Industrial Pallets for Chemical, Food, Metals and 3PL \| AGL | Industrial pallets for building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage. |
 
 | `/how-we-work` | How We Work — AGL Pallet | Four steps: understand the requirement, align supply and freight, execute and communicate, keep adjusting. |
 
 | `/contact` | Contact AGL Pallet — North Canton, Ohio | Request a quote, supply pallets to AGL, get set up as a carrier, or ask a question. 234-286-0402. |
 
-| `/request-a-quote` | Request a Quote — AGL Pallet | Send a spec and a quantity and we will come back the same day. No minimums. |
+| `/request-a-quote` | Request a Pallet Quote, Same-Day Response \| AGL Pallet | Send a spec and a quantity and we will come back the same day. No minimums. |
+
+| `/faq` | Pallet Buying FAQ: Lead Times, Minimums, 2-Way vs 4-Way | Lead times, minimums, two-way versus four-way entry, and second-source availability for buyers working with a pallet supplier. |
+
+| `/services` | Pallet Sourcing and Managed Freight Services \| AGL Pallet | Pallet sourcing, mill qualification, managed freight, and program coordination from one brokerage desk. |
 
 ### Structured data
 
-Add `Organization` + `LocalBusiness` JSON-LD on `/` only, once `{{TBD-ADDRESS}}` resolves. Fields: name `AGL Pallet LLC`, telephone `234-286-0402`, email `sales@aglpallet.com`, `areaServed` = MI, IL, IN, PA, OH, WV. **Do not add `aggregateRating`, `review`, or any certification property.**
+`Organization` JSON-LD is sitewide. Fields: name `AGL Pallet LLC`, telephone `234-286-0402`, email `sales@aglpallet.com`, `areaServed` = OH, PA, WV, MI, IN, IL. Do not use US as `areaServed`. Mailing address is the PO Box only: PO Box 121, Navarre, OH 44662. No street address. No `LocalBusiness` until a street address exists. **Do not add `aggregateRating`, `review`, or any certification property.**
 
 ---
 
@@ -224,11 +230,13 @@ Copy below is final draft, approved for build, pending Brock's sign-off before p
 
 ```
 
+TAGLINE: Pallets move the world. We move pallets.
+
 H1: Never one mill between you and your line.
 
-LEDE: AGL Pallet sources new, custom, and engineered pallets from a network of
+LEDE: AGL is a pallet supplier. We source new, custom, and engineered pallets from a network of
 
-family-run mills across the Midwest and Mid-Atlantic — and manages the freight on
+family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio — and manage the freight on
 
 every order. Same-day quotes. No minimums. More than one qualified source on every
 
@@ -246,7 +254,27 @@ BUTTONS:
 
 The three buttons are the most important element on the site. Do not collapse them into one CTA on mobile — stack them.
 
-**Capability band** — `TrioGrid`, replaces the existing "99%" and "12+" stat callouts
+**Proof** — two figures from the 2026-10-14 facts sheet. No personal name on either figure.
+
+```
+
+LIST:
+
+  99% on-time delivery
+
+  12+ years industry experience
+
+```
+
+**Service area**
+
+```
+
+BODY: Service area: Ohio, Pennsylvania, West Virginia, Michigan, Indiana, and Illinois.
+
+```
+
+**Capability band** — `TrioGrid`. These cards sit with the proof figures. They do not replace them.
 
 ```
 
@@ -280,7 +308,7 @@ H2: One number for the spec, the pallets, and the truck.
 
 BODY:
 
-AGL is a pallet brokerage. We don't own a mill and we don't own trucks. What we own
+AGL is a pallet brokerage. What we own
 
 is the coordination: we qualify the shops that supply them well, hold more than one source
 
@@ -330,11 +358,11 @@ CARD 3 — eyebrow "03"
 
 EYEBROW: The pledge
 
-H2: We will never own a mill.
+H2: AGL is a pallet brokerage.
 
 BODY:
 
-After the COVID lumber shock, a lot of pallet brokers bought factories. Volume that
+After the COVID lumber shock, several of the largest pallet brokers bought factories. Volume that
 
 had run through family mills for years quietly moved to the broker's own plants. It
 
@@ -342,9 +370,7 @@ left both sides wary — mills don't trust a broker who competes with them, and 
 
 don't trust a broker who became a manufacturer.
 
-AGL doesn't own manufacturing and has no intention of ever owning it. We grow by
-
-coordinating more, not by building plants. That's why good mills give us capacity,
+That's why good mills give us capacity,
 
 and it's why there's always more than one shop that can build your spec.
 
@@ -360,9 +386,9 @@ CARD 1
 
   EYEBROW: For mills & shops
 
-  H3: We buy pallets. We'll never build them.
+  H3: We buy pallets.
 
-  BODY: Steady recurring volume, paid on time, from a broker with no plant of its own to feed.
+  BODY: Steady recurring volume, paid on time. AGL is a pallet brokerage.
 
   BUTTON: [ghost] Supply pallets to AGL → /partners/suppliers
 
@@ -418,7 +444,7 @@ H1: We were the ones waiting on the pallets.
 
 LEDE:
 
-AGL Pallet started on the buying side of the dock — by people who spent
+AGL Pallet is a pallet supplier that started on the buying side of the dock — by people who spent
 
 years specifying, buying, and waiting on pallets while a production schedule ran
 
@@ -426,9 +452,7 @@ regardless. Capacity crunches. Material shortages. Price moves that arrived with
 
 warning and no explanation.
 
-That's the experience the company is built out of, and it's why AGL is a brokerage
-
-rather than a plant.
+That's the experience the company is built out of, and it's why AGL is a pallet brokerage.
 
 ```
 
@@ -436,7 +460,7 @@ rather than a plant.
 
 ```
 
-EYEBROW: From Brock Lundeen, Owner
+EYEBROW: From the owner
 
 H2: Why I built it this way
 
@@ -458,7 +482,7 @@ person who answers, who knows what's on the truck, and who tells me early when i
 
 isn't going to work.
 
-The other decision was structural. We don't own a mill and we never will. I've watched
+The other decision was structural. AGL is a pallet brokerage. I've watched
 
 what happens to the family shops when a broker buys a plant, and I'd rather have their
 
@@ -486,19 +510,19 @@ people who sit near each other, not three queues in three systems.
 
 LIST:
 
-  Brock — Owner. Commercial, supply, and the last call on anything hard.
+  Owner — Commercial, supply, and the last call on anything hard.
 
-  Brandon — Logistics. Books the freight and tracks the loads.
+  Logistics — Books the freight and tracks the loads.
 
-  Larry — Supplier Relations. Qualifies the mills and knows their machine constraints.
+  Supplier Relations — Qualifies the mills and knows their machine constraints.
 
-  Beau — Operations.
+  Operations
 
-  Jeff — IT.
+  IT
 
 ```
 
-> **Build note:** `{{TBD-TEAM-LIST}}` — confirm who consents to be listed, whether last names appear, and whether headshots are in scope. Roles-only is an acceptable fallback. Build with first names as written.
+> **Build note:** `{{TBD-TEAM-LIST}}` — public roster is roles only. No personal names (owner 2026-10-01).
 
 **Values** — `TrioGrid`, four cards
 
@@ -584,9 +608,9 @@ ADDRESS: {{TBD-ADDRESS}}
 
 EYEBROW: Partners
 
-H1: We don't build pallets and we don't drive trucks.
+H1: AGL is a pallet brokerage.
 
-LEDE: Which means AGL only works if the shops that supply them well and the carriers that
+LEDE: AGL only works if the shops that supply them well and the carriers that
 
 run our lanes want to work with us. Two ways in.
 
@@ -600,9 +624,7 @@ CARD 1
 
   H3: Mills & shops
 
-  BODY: You build pallets, crates, or cut stock and want steady volume from a broker
-
-  with no plant of its own.
+  BODY: You build pallets, crates, or cut stock and want steady volume from a pallet brokerage.
 
   LINK: /partners/suppliers
 
@@ -632,17 +654,15 @@ No CTA band on this page. The two cards are the CTA.
 
 EYEBROW: For mills and shops
 
-H1: We buy pallets. We'll never build them.
+H1: We buy pallets.
 
 LEDE:
 
-AGL is a brokerage with no plant of its own and no intention of ever having one. When
+AGL is a pallet brokerage. When
 
-we bring you volume, we're not building a book to move in-house in three years. We
+we bring you volume, we're not building a book to move in-house in three years.
 
-don't have anywhere to move it to.
-
-BUTTON: [primary] Tell us what you build → #supplier-form
+BUTTON: [primary] Tell us what you build → #contact
 
 ```
 
@@ -662,7 +682,7 @@ LIST:
 
   before, ask us about it directly.
 
-  Zero channel conflict. — We will never own manufacturing and we will never compete
+  Zero channel conflict. — We will never compete
 
   with you for your own accounts.
 
@@ -716,7 +736,7 @@ Ohio and Western Pennsylvania out to manufacturing plants across the Midwest and
 
 Mid-Atlantic — regional, repeatable, and mostly the same lanes week to week.
 
-BUTTON: [primary] Get set up as a carrier → #carrier-form
+BUTTON: [primary] Get set up as a carrier → #contact
 
 ```
 
@@ -734,7 +754,7 @@ LIST:
 
   Loads that recur. — Our customers order on a schedule, so the lanes come back.
 
-  One dispatcher. — Brandon books and tracks every load. You get a person, not a portal.
+  One dispatcher. — One person books and tracks every load — a person, not a portal.
 
   Paid on agreed terms. — {{TBD-CARRIER-TERMS}}
 
@@ -754,11 +774,11 @@ LIST:
 
 EYEBROW: The pledge
 
-H1: AGL will never own manufacturing.
+H1: AGL is a pallet brokerage.
 
 BODY:
 
-After the COVID lumber shock, most of the large pallet brokers bought factories. It
+After the COVID lumber shock, several of the largest pallet brokers bought factories. It
 
 made sense on paper — control the supply, capture the margin. What happened next is
 
@@ -780,9 +800,9 @@ H2: Our position is structural, not a slogan
 
 BODY:
 
-AGL owns no manufacturing and has no intention of acquiring any, indefinitely. We grow
+We grow
 
-by coordinating more volume and more lanes — not by buying plants. There is no roadmap
+by coordinating more volume and more lanes. There is no roadmap
 
 where we compete with the shops that supply us.
 
@@ -808,7 +828,7 @@ H1: Odd size, oversize, overweight, or nothing standard about it.
 
 BODY:
 
-Most of what we quote isn't a stock 48×40. It's a skid for a forging that runs nine
+The kinds of loads that need it: a skid for a forging that runs nine
 
 thousand pounds, a crate for an elevator assembly, cut stock to a rail spec, or a
 
@@ -818,13 +838,7 @@ A single mill will usually quote what its equipment likes to build. We start fro
 
 the load actually does — weight, whether it's racked or floor-stacked, how many times
 
-it gets handled, whether it ships overseas — and then find the shop set up to build it.
-
-Pallet Design System (PDS) methodology tailors that spec to the load requirements, weight
-
-capacities, and operational conditions, from the product weight, stacking, handling, and
-
-environment, so the pallet has the strength the load needs without overbuilding.
+it gets handled, whether it ships overseas — with PDS methodology, and then find the shop set up to build it.
 
 H2: Where custom usually pays for itself
 
@@ -844,7 +858,7 @@ LIST:
 
 ```
 
-> **Build note:** name Pallet Design System (PDS) methodology in the body above. Do not add engineering-certification, PDS-certification, or load-testing claims. Rule 5.
+> **Build note:** PDS may appear only as "PDS methodology". No certification, credentials, or access claim. Rule 5.
 
 ---
 
@@ -858,7 +872,7 @@ EYEBROW: Products
 
 H1: Pallet and material handling solutions
 
-LEDE: Specced to your load, sourced through mills qualified to build it.
+LEDE: A pallet supplier for manufacturers. Specced to your load, sourced through mills qualified to build it.
 
 ```
 
@@ -868,7 +882,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | Stock pallets | `#stock-pallets` | Standard footprints for recurring volume, with multiple qualified sources behind each spec so a single mill's backlog doesn't become your shortage. |
 
-| Custom & engineered | `#custom-engineered` | Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load, then source the shop set up to build it. Pallet Design System (PDS) methodology tailors that spec to the load requirements, weight capacities, and operational conditions, from the product weight, stacking, handling, and environment, so the pallet has the strength the load needs without overbuilding. **Links to `/custom-engineered`.** |
+| Custom & engineered | `#custom-engineered` | Odd-size, oversize, heavy-duty, and mixed-spec solutions. We spec the pallet to your load with PDS methodology, then source the shop set up to build it. **Links to `/custom-engineered`.** |
 
 | Crates | `#crates` | Custom and stock crating for equipment, components, and high-value goods that need containment beyond palletization. |
 
@@ -890,7 +904,7 @@ LEDE: Specced to your load, sourced through mills qualified to build it.
 
 | "we develop pallet specifications" | "we write the spec with you" |
 
-| "Using Pallet Design System (PDS) methodology…" | Name the methodology in the Custom & engineered copy row. Do not claim PDS certification. |
+| "Using Pallet Design System (PDS) methodology…" | Say "PDS methodology" only. No certification or access claim. |
 
 ---
 
@@ -904,7 +918,7 @@ EYEBROW: Industries
 
 H1: Where AGL works
 
-LEDE: Operations where the pallet is load-bearing infrastructure, not a line item.
+LEDE: A pallet supplier for operations where the pallet is load-bearing infrastructure, not a line item.
 
 ```
 
@@ -926,11 +940,11 @@ LEDE: Operations where the pallet is load-bearing infrastructure, not a line ite
 
 | 7 | Plastics & packaging | High volume, fast cycles, and automated handling. |
 
-| 8 | Pharmaceuticals | Regulated environments where pallet integrity, cleanliness, consistency, and traceability carry compliance weight. |
+| 8 | Pharmaceuticals | Regulated environments where pallet integrity, cleanliness, consistency, and traceability matter. |
 
 | 9 | Food & beverage | Throughput operations where a late load stops a line. |
 
-> **Build note:** `{{TBD-PHARMA}}` resolved 2026-10-01. Pharmaceuticals is item 8. Do not render the token.
+> **Build note:** Pharmaceuticals is confirmed (2026-10-14). Do not render `{{TBD-PHARMA}}`.
 
 ---
 
@@ -988,11 +1002,11 @@ LIST (each item is a card linking to its form):
 
   I build pallets — tell us what your shop runs.
 
-    → /partners/suppliers#supplier-form
+    → /partners/suppliers#contact
 
   I haul freight — get set up as a carrier.
 
-    → /partners/carriers#carrier-form
+    → /partners/carriers#contact
 
   Something else — an existing order, a spec question, or anything that isn't the above.
 
@@ -1018,7 +1032,7 @@ EYEBROW: Request a quote
 
 H1: Send us a spec and a quantity.
 
-LEDE: We'll come back the same day. No minimums, and more than one qualified source
+LEDE: AGL is a pallet supplier. We'll come back the same day. No minimums, and more than one qualified source
 
 behind whatever you're buying.
 
@@ -1084,7 +1098,7 @@ Four intakes. Each needs: a hidden `source` field recording the originating rout
 
 Submit label: `Send the spec` · Success: *"Got it. We'll come back to you the same day."*
 
-### 5.2 · `#supplier-form` → Larry (Supplier Relations) · `{{TBD-EMAIL-SUPPLIER}}`
+### 5.2 · `#supplier-form` → Supplier Relations · `{{TBD-EMAIL-SUPPLIER}}`
 
 | Field | Type | Required |
 
@@ -1110,11 +1124,11 @@ Submit label: `Send the spec` · Success: *"Got it. We'll come back to you the s
 
 | Heat treat on site | select — Yes / No / Not sure | no |
 
-Submit label: `Send it over` · Success: *"Thanks. Larry handles supplier relationships and will follow up."*
+Submit label: `Send it over` · Success: *"Thanks. Supplier relations will follow up."*
 
 > The heat-treat field is deliberate: it is how AGL finds out whether ISPM-15 is genuinely available through the network. This is an open question in brand canon. **Do not surface aggregate answers as a public capability claim** — it is internal intelligence only.
 
-### 5.3 · `#carrier-form` → Brandon (Logistics) · `{{TBD-EMAIL-CARRIER}}`
+### 5.3 · `#carrier-form` → Logistics · `{{TBD-EMAIL-CARRIER}}`
 
 | Field | Type | Required |
 
@@ -1140,7 +1154,7 @@ Submit label: `Send it over` · Success: *"Thanks. Larry handles supplier relati
 
 | Certificate of insurance | file upload, PDF/JPG/PNG, max 10MB | no |
 
-Submit label: `Get set up` · Success: *"Thanks. Brandon books our freight and will be in touch."*
+Submit label: `Get set up` · Success: *"Thanks. Our dispatcher will be in touch."*
 
 ### 5.4 · `#general-form` → `sales@aglpallet.com`
 
@@ -1158,11 +1172,11 @@ Apply these regardless of which new pages ship. Several are live compliance prob
 
 |---|---|---|
 
-| "99% On-Time Delivery" | homepage stat band | Delete. No source, period, or sample; company founded Jan 2026. |
+| "99% on-time delivery" | home proof | Keep. Owner facts sheet 2026-10-14. No personal name on the figure. |
 
-| "12+ Years Industry Experience" | homepage stat band | Delete from company context. May only reappear attributed to Brock in his bio. |
+| "12+ years industry experience" | home proof | Keep. Owner facts sheet 2026-10-14. No personal name on the figure. |
 
-| "Using Pallet Design System (PDS) methodology" | `/products`, `/custom-engineered` | Name the methodology when the engineered spec is described. Do not claim PDS certification. |
+| Pallet Design System credentials | `/products`, `/custom-engineered` | Say "PDS methodology" only. No certification or access claim. |
 
 | "Every pallet is produced under strict quality controls" | `/products` | Replace per 4.8. |
 
@@ -1174,7 +1188,7 @@ Apply these regardless of which new pages ship. Several are live compliance prob
 
 | "This is Bahlr website." | footer, all pages | Delete. |
 
-| Empty "Follow Us" heading | footer | Remove unless `{{TBD-SOCIAL-URLS}}` resolves. |
+| Empty "Follow Us" heading | footer | Do not add one. LinkedIn and Facebook icons render from `organization.sameAs`. |
 
 **Media library sweep.** Audit every image for Mavin or WRL origin. Mavin retained that IP; reuse is legal exposure, not a style issue. Flag anything uncertain rather than shipping it.
 
@@ -1224,9 +1238,9 @@ Every `{{TBD-*}}` in this document. Render them as visible placeholders in the d
 
 | `{{TBD-TEAM-LIST}}` | Who is listed, last names, headshots | Brock |
 
-| `{{TBD-PHARMA}}` | Resolved 2026-10-01. Pharmaceuticals is on `/industries`. Do not render the token. | — |
+| `{{TBD-PHARMA}}` | Resolved 2026-10-14. Pharmaceuticals is on `/industries`. Do not render the token. | — |
 
-| `{{TBD-ADDRESS}}` | North Canton street address for footer, contact, JSON-LD | Brock |
+| `{{TBD-ADDRESS}}` | Street address still unknown. Do not render one. Mailing address in Organization JSON-LD only: PO Box 121, Navarre, OH 44662. | Brock |
 
 | `{{TBD-PHOTO-BROCK}}` | Founder portrait. Must be new — no Mavin/WRL imagery | Nautis + Brock |
 
@@ -1234,7 +1248,7 @@ Every `{{TBD-*}}` in this document. Render them as visible placeholders in the d
 
 | `{{TBD-EMAIL-CARRIER}}` | Destination address for the carrier form | Jeff / Brock |
 
-| `{{TBD-SOCIAL-URLS}}` | LinkedIn and Facebook page URLs, once confirmed live | Nautis |
+| `{{TBD-SOCIAL-URLS}}` | Resolved. URLs live in `content/site.json` `organization.sameAs`. Render the icons. No Follow Us heading. | Nautis |
 
 ---
 
@@ -1250,7 +1264,7 @@ Run before calling the build done.
 
 - [ ] No certification claims and no badge images
 
-- [ ] No PDS certification claim. Pallet Design System (PDS) methodology may be named on engineered product copy.
+- [ ] PDS named only as "PDS methodology". No PDS certification, credentials, or access claim.
 
 - [ ] No recycled or reconditioned pallet offer
 
@@ -1258,7 +1272,7 @@ Run before calling the build done.
 
 - [ ] No numbers absent from this document
 
-- [ ] No "national" or "nationwide"; footprint reads MI, IL, IN, PA, OH, WV
+- [ ] No "national" or "nationwide"; footprint reads OH, PA, WV, MI, IN, IL
 
 - [ ] No banned words from section 0
 

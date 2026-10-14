@@ -31,6 +31,8 @@ export interface Feature3Item {
   src?: string;
   /** Optional next/image class (e.g. object-bottom). */
   imageClassName?: string;
+  /** First in-view photo only. */
+  priority?: boolean;
 }
 
 interface Feature3Props {
@@ -79,7 +81,9 @@ function RuledItem({ item, Heading }: { item: Feature3Item; Heading: ItemHeading
             src={item.src}
             alt={item.title}
             fill
-            sizes="(min-width: 980px) 45vw, 100vw"
+            quality={60}
+            priority={item.priority}
+            sizes="(min-width: 980px) 45vw, calc(100vw - 48px)"
             className="object-cover"
           />
         </div>

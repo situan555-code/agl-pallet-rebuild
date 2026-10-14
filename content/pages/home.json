@@ -1,7 +1,8 @@
 {
   "hero": {
+    "tagline": "Pallets move the world. We move pallets.",
     "heading": "Never one mill between you and your line.",
-    "body": "AGL Pallet sources new, custom, and engineered pallets from a network of family-run mills across the Midwest and Mid-Atlantic — and manages the freight on every order. Same-day quotes. No minimums. More than one qualified source on every spec we sell.",
+    "body": "AGL is a pallet supplier. We source new, custom, and engineered pallets from a network of family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio — and manage the freight on every order. Same-day quotes. No minimums. More than one qualified source on every spec we sell.",
     "image": "/assets/home_header_image.jpg",
     "video": "/assets/agl_home_video.mp4",
     "poster": "/assets/agl_home_video_poster.jpg",
@@ -11,6 +12,11 @@
       { "label": "Haul for AGL", "href": "/partners/carriers/", "variant": "ghost-light" }
     ]
   },
+  "proof": [
+    "99% on-time delivery",
+    "12+ years industry experience"
+  ],
+  "serviceArea": "Service area: Ohio, Pennsylvania, West Virginia, Michigan, Indiana, and Illinois.",
   "capability": {
     "cards": [
       { "heading": "Same-day quotes", "body": "Send a spec and a quantity before lunch, get a number back the same day." },
@@ -22,7 +28,7 @@
     "eyebrow": "What we do",
     "heading": "One number for the spec, the pallets, and the truck.",
     "paragraphs": [
-      "AGL is a pallet brokerage. We don't own a mill and we don't own trucks. What we own is the coordination: we qualify the shops that supply them well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them.",
+      "AGL is a pallet brokerage. What we own is the coordination: we qualify the shops that supply them well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them.",
       "When something moves — a spec change, a volume spike, a mill running behind — you hear it from us before it becomes your problem. That's the job."
     ]
   },
@@ -47,10 +53,10 @@
   },
   "pledge": {
     "eyebrow": "The pledge",
-    "heading": "We will never own a mill.",
+    "heading": "AGL is a pallet brokerage.",
     "paragraphs": [
-      "After the COVID lumber shock, a lot of pallet brokers bought factories. Volume that had run through family mills for years quietly moved to the broker's own plants. It left both sides wary — mills don't trust a broker who competes with them, and buyers don't trust a broker who became a manufacturer.",
-      "AGL doesn't own manufacturing and has no intention of ever owning it. We grow by coordinating more, not by building plants. That's why good mills give us capacity, and it's why there's always more than one shop that can build your spec."
+      "After the COVID lumber shock, several of the largest pallet brokers bought factories. Volume that had run through family mills for years quietly moved to the broker's own plants. It left both sides wary — mills don't trust a broker who competes with them, and buyers don't trust a broker who became a manufacturer.",
+      "That's why good mills give us capacity, and it's why there's always more than one shop that can build your spec."
     ],
     "cta": { "label": "Read the pledge", "href": "/the-pledge/" }
   },
@@ -58,8 +64,8 @@
     "cards": [
       {
         "eyebrow": "For mills & shops",
-        "heading": "We buy pallets. We'll never build them.",
-        "body": "Steady recurring volume, paid on time, from a broker with no plant of its own to feed.",
+        "heading": "We buy pallets.",
+        "body": "Steady recurring volume, paid on time. AGL is a pallet brokerage.",
         "cta": { "label": "Supply pallets to AGL", "href": "/partners/suppliers/" }
       },
       {
