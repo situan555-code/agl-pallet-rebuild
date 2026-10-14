@@ -16,6 +16,7 @@ import { InteractiveCard } from "@/components/InteractiveCard";
 import { getBlurDataURL } from "@/lib/blur";
 import { DEMO_HOME_PHOTOS } from "@/lib/demo-home-photos";
 import { DEMO_PRODUCT_PHOTOS } from "@/lib/demo-product-photos";
+import { launchHref } from "@/lib/launch";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -38,7 +39,7 @@ export default function Home() {
         heading={home.hero.heading}
         description={home.hero.body}
         video={{ src: home.hero.video, poster: home.hero.poster }}
-        buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
+        buttons={home.hero.buttons.map((b) => ({ label: b.label, href: launchHref(b.href) }))}
       />
 
       <section className="pt-8 nav:pt-12" aria-label="Proof">
@@ -57,7 +58,7 @@ export default function Home() {
       <section className="pt-8 nav:pt-12">
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap, index) => (
-            <InteractiveCard key={cap.heading} href={CAPABILITY_HREFS[index] ?? "/request-a-quote/"}>
+            <InteractiveCard key={cap.heading} href={launchHref(CAPABILITY_HREFS[index] ?? "/request-a-quote/")}>
               <CardMedia alt={cap.heading} src={DEMO_HOME_PHOTOS.capabilities[index]} />
               <div className="flex flex-1 flex-col p-6 nav:p-8">
                 <h2 className="text-[22px] font-semibold leading-snug text-current">{cap.heading}</h2>
@@ -108,7 +109,7 @@ export default function Home() {
           eyebrow: c.eyebrow,
           title: c.heading,
           description: c.body,
-          href: DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/",
+          href: launchHref(DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/"),
           src: DEMO_HOME_PHOTOS.differentiators[index],
           // "We've run the floor" (index 2): bias crop toward forklift / floor.
           imageClassName: index === 2 ? "object-[center_78%]" : undefined,
@@ -133,7 +134,7 @@ export default function Home() {
           id: line.id,
           title: line.heading,
           description: line.copy,
-          href: line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`,
+          href: launchHref(line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`),
           src: DEMO_PRODUCT_PHOTOS[line.id],
           alt:
             line.id === "custom-engineered"
@@ -143,25 +144,29 @@ export default function Home() {
       />
 
       <Feature2
+        id="pledge"
         className="section-rhythm"
         eyebrow={home.pledge.eyebrow}
         heading={home.pledge.heading}
         paragraphs={home.pledge.paragraphs}
-        cta={home.pledge.cta}
+        cta={{ ...home.pledge.cta, href: launchHref(home.pledge.cta.href) }}
       />
 
       <Feature3
         className="section-rhythm"
         variant="card"
         columns={2}
-        features={home.partnerSplit.cards.map((c, index) => ({
-          eyebrow: c.eyebrow,
-          title: c.heading,
-          description: c.body,
-          href: c.cta.href,
-          cta: c.cta,
-          src: DEMO_HOME_PHOTOS.partners[index],
-        }))}
+        features={home.partnerSplit.cards.map((c, index) => {
+          const href = launchHref(c.cta.href);
+          return {
+            eyebrow: c.eyebrow,
+            title: c.heading,
+            description: c.body,
+            href,
+            cta: { ...c.cta, href },
+            src: DEMO_HOME_PHOTOS.partners[index],
+          };
+        })}
       />
 
       <Feature1
