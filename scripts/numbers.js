@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // H0 gate 4: every numeral rendered on a built page must appear somewhere
 // in SPEC_V1.md — phone number, address, dates, and dimensions from the
-// spec pass; invented stats (the old "99%"/"12+" stat band, an invented
-// year-count, etc.) fail because their digits don't occur anywhere in the
-// spec text.
+// spec pass. Home proof "99%" and "12+" are in SPEC_V1 (facts sheet
+// 2026-10-14). Any other digit sequence still fails when it is absent
+// from the spec text.
 //
 // Numerals are compared as bare digit sequences (length >= 2, punctuation
 // stripped) rather than whole tokens, since the same figure can be

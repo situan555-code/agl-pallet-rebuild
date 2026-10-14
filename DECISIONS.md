@@ -1,5 +1,19 @@
 # DECISIONS (redesign)
 
+## Facts sheet (2026-10-14)
+
+Owner facts sheet is the source of truth and overrides the 2026-10-12 pharma removal, the PDS deletion, and the unconfirmed-text flag.
+
+- Pharmaceuticals is back on `/industries` (card and meta). No personal names.
+- Home proof is "99% on-time delivery" and "12+ years industry experience". No name on either figure.
+- Home service area is Ohio, Pennsylvania, West Virginia, Michigan, Indiana, and Illinois. Organization `areaServed` stays OH, PA, WV, MI, IN, IL.
+- Organization JSON-LD carries the mailing address only: PO Box 121, Navarre, OH 44662. No street address in the footer, contact page, or schema.
+- Engineered copy may say "PDS methodology". No PDS certification, credentials, or access claim.
+- Mill-slogan lines ("never own a mill", "don't own mills", "no plant of its own", "not by building plants", "not by buying plants", "rather than a plant", "not a mill") are replaced with "AGL is a pallet brokerage."
+- The text button stays. Phone and text are both 234-286-0402. The unconfirmed note is removed.
+- Launch is six pages. The rest is phase 2. Case studies stay off the launch set.
+- Resources are credited to AGL Pallet. No bios.
+
 ## Review follow-up (2026-10-12)
 
 Owner overrides on the 2026-10-12 copy review:

@@ -51,9 +51,9 @@ From stayed `AGL Pallet <sales@aglpallet.com>` (`RESEND_FROM` is not set). FormS
 
 Open items (owner-supplied; not engineering work):
 
-- **`{{TBD-ADDRESS}}`** — still open. Real address required before LocalBusiness JSON-LD can emit.
+- **`{{TBD-ADDRESS}}`** — street address still unknown. Organization JSON-LD uses PO Box 121, Navarre, OH 44662 only. No LocalBusiness and no street line.
 - **`{{TBD-SOCIAL-URLS}}`** — resolved in `content/site.json` `organization.sameAs`. Footer renders LinkedIn and Facebook icons with no Follow Us heading.
 - **Supplier inbox** — not provided. The supplier form is hidden. The page shows phone and email. Do not show a "not sending" message.
 - **Carrier inbox** — not provided. The carrier form is hidden. The page shows phone and email. Do not show a "not sending" message.
 - **`RESEND_API_KEY`** — set in Vercel (Production and Preview) as of 2026-09-26. The quote route calls Resend. `aglpallet.com` is not a verified Resend domain, so the quote form still falls back to FormSubmit. The quote form stays on the page.
-- **Text line** — `sms:2342860402` is still on the quote page and flagged "Unconfirmed text line." Do not treat it as a confirmed text inbox.
+- **Text line** — confirmed on the 2026-10-14 facts sheet. `sms:2342860402` stays on the quote page. The link check still warns (status 0) because `sms:` has no HTTP status.

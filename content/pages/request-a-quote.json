@@ -24,8 +24,7 @@
       "hoverIcon": "/assets/message_icon_hover.svg",
       "label": "Text",
       "value": "234-286-0402",
-      "href": "sms:2342860402",
-      "note": "Unconfirmed text line."
+      "href": "sms:2342860402"
     }
   ]
 }

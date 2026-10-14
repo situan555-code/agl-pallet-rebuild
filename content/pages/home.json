@@ -12,6 +12,11 @@
       { "label": "Haul for AGL", "href": "/partners/carriers/", "variant": "ghost-light" }
     ]
   },
+  "proof": [
+    "99% on-time delivery",
+    "12+ years industry experience"
+  ],
+  "serviceArea": "Service area: Ohio, Pennsylvania, West Virginia, Michigan, Indiana, and Illinois.",
   "capability": {
     "cards": [
       { "heading": "Same-day quotes", "body": "Send a spec and a quantity before lunch, get a number back the same day." },
@@ -48,7 +53,7 @@
   },
   "pledge": {
     "eyebrow": "The pledge",
-    "heading": "We grow by coordinating more, not by building plants.",
+    "heading": "AGL is a pallet brokerage.",
     "paragraphs": [
       "After the COVID lumber shock, several of the largest pallet brokers bought factories. Volume that had run through family mills for years quietly moved to the broker's own plants. It left both sides wary — mills don't trust a broker who competes with them, and buyers don't trust a broker who became a manufacturer.",
       "That's why good mills give us capacity, and it's why there's always more than one shop that can build your spec."
@@ -60,7 +65,7 @@
       {
         "eyebrow": "For mills & shops",
         "heading": "We buy pallets.",
-        "body": "Steady recurring volume, paid on time, from a broker with no plant of its own to feed.",
+        "body": "Steady recurring volume, paid on time. AGL is a pallet brokerage.",
         "cta": { "label": "Supply pallets to AGL", "href": "/partners/suppliers/" }
       },
       {

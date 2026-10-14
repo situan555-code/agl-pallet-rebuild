@@ -19,7 +19,7 @@ const SUPPLIER_OFFER_PHOTOS = [
 
 export const metadata: Metadata = pageMeta(
   "Sell Pallets to a Broker That Won't Compete With You | AGL",
-  "AGL is a pallet brokerage with no plant of its own. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds.",
+  "AGL is a pallet brokerage. Steady recurring volume, paid on time, and no channel conflict. Tell us what your shop builds.",
   "/partners/suppliers/",
 );
 
