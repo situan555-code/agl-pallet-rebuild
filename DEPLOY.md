@@ -84,7 +84,20 @@ Same 4-core sandbox, mobile Lighthouse, median of 5. Content gates passed (schem
 | `/products/` | 98 | 2356ms | 0 | 3046, 2030, 3043, 2356, 2331 |
 | `/request-a-quote/` | 99 | 2256ms | 0 | 2256, 2206, 2554, 2555, 2256 |
 
-The quote page now server-renders the form. Its median still clears 2.5s, and CLS on these five runs was 0. `sms:2342860402` warns in the link check (status 0). That button is flagged unconfirmed and was left in place.
+The quote page now server-renders the form. `sms:2342860402` warns in the link check (status 0). The 2026-10-14 facts sheet confirms the text line, so the button stays and the unconfirmed note is gone.
+
+## Facts-sheet audit (2026-10-14)
+
+Same sandbox, mobile Lighthouse, median of 5. Content gates passed: build, schema (PostalAddress PO Box, areaServed six states), copy-verbatim, build-note leak, banned words, tokens, numbers, color, routes, axe (0 serious/critical). `scripts/audit.js` marks home as a pass under its 2.8s exception. Against the 2.5s gate, home, industries, how-we-work, and the quote page miss. No hero rewrite in this pass.
+
+| Page | Perf | LCP | CLS | vs 2.5s | Runs (LCP) |
+|---|---|---|---|---|---|
+| `/` | 97 | 2681ms | 0 | LCP fails | 2481, 2483, 2689, 3061, 2681 |
+| `/about/` | 99 | 2211ms | 0 | pass | 2333, 2331, 2211, 2207, 2108 |
+| `/industries-served/` | 96 | 2757ms | 0 | LCP fails | 2912, 2920, 2549, 2757, 2282 |
+| `/logistics-process/` | 93 | 3130ms | 0 | Perf + LCP fail | 3131, 3141, 3130, 2283, 2898 |
+| `/products/` | 98 | 2332ms | 0 | pass | 3052, 2033, 2032, 2332, 2333 |
+| `/request-a-quote/` | 97 | 2557ms | 0 | LCP fails | 2900, 2557, 2254, 2558, 2555 |
 
 ## Launch checklist (do this at cutover, not on the demo)
 

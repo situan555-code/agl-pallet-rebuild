@@ -7,7 +7,7 @@ export function Byline({ updated }: { updated: string }) {
   if (!people) {
     return (
       <p className="mt-6 text-link text-current/70">
-        Published by the AGL Pallet brokerage desk · Updated <time dateTime={updated}>{formatDate(updated)}</time>
+        Published by AGL Pallet · Updated <time dateTime={updated}>{formatDate(updated)}</time>
       </p>
     );
   }

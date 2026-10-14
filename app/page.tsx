@@ -42,6 +42,19 @@ export default function Home() {
         buttons={home.hero.buttons.map((b) => ({ label: b.label, href: launchHref(b.href) }))}
       />
 
+      <section className="pt-8 nav:pt-12" aria-label="Proof">
+        <Container>
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {home.proof.map((item) => (
+              <li key={item} className="rounded-card bg-green px-6 py-8 sm:px-8">
+                <p className="text-[28px] font-semibold leading-tight text-ice">{item}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-[70ch] text-body text-bone">{home.serviceArea}</p>
+        </Container>
+      </section>
+
       <section className="pt-8 nav:pt-12">
         <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {home.capability.cards.map((cap, index) => (

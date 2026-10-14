@@ -36,7 +36,6 @@ export default function RequestAQuote() {
     label: item.label,
     value: item.value,
     href: item.href,
-    note: "note" in item ? item.note : undefined,
   }));
 
   return (

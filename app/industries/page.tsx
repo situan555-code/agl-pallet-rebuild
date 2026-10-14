@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = pageMeta(
   "Industrial Pallets for Chemical, Food, Metals and 3PL | AGL",
-  "Industrial pallets for building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, and food and beverage.",
+  "Industrial pallets for building materials, chemicals, refractories, 3PL and distribution, metal fabrication, energy, plastics, pharmaceuticals, and food and beverage.",
   "/industries/",
 );
 
