@@ -1,4 +1,4 @@
-import { Inter, Anton } from "next/font/google";
+import { Inter, Exo_2 } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -10,12 +10,13 @@ export const inter = Inter({
   preload: true,
 });
 
-export const anton = Anton({
+export const exo2 = Exo_2({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-anton",
+  weight: "900",
+  style: "italic",
+  variable: "--font-exo2",
   display: "optional",
   // Home LCP is the poster image. About/quote LCP is Inter text.
-  // Preloading Anton on every page contended with that first paint.
+  // Preloading the display face on every page contended with that first paint.
   preload: false,
 });
