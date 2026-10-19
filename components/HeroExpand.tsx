@@ -27,7 +27,7 @@ export function HeroExpand({
       <div data-hero-track className="hero-track relative text-current">
         <div className="hero-stage">
           <div className={cn(containerClass, "hero-copy")}>
-            <h1 className="display mx-auto max-w-4xl text-center text-display-1 text-current nav:text-[56px] nav:leading-[1.08]">
+            <h1 className="display mx-auto max-w-4xl text-center text-display-1 text-current nav:text-[56px]">
               {heading}
             </h1>
           </div>

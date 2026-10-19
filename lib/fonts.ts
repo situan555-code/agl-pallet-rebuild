@@ -16,7 +16,7 @@ export const exo2 = Exo_2({
   style: "italic",
   variable: "--font-exo2",
   display: "optional",
-  // Home LCP is the poster image. About/quote LCP is Inter text.
-  // Preloading the display face on every page contended with that first paint.
-  preload: false,
+  // One face (900 italic, latin). Preloaded so it makes the first paint;
+  // without it `optional` drops the face and hero H1s show the fallback.
+  preload: true,
 });
