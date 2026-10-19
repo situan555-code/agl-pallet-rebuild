@@ -123,3 +123,7 @@ Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved (2026-09-
 ## Launch review (2026-10-12)
 
 Footer now shows LinkedIn and Facebook icon links from `site.json` `sameAs`; no "Follow Us" heading. `npm run verify` stops at `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and the audit fails LCP on `/industries-served/`, `/logistics-process/`, `/products/` and, on one of two runs, `/`. Gates not softened. Lint setState-in-effect errors left (route-change/mount resets in nav, Form, search); not worth the LCP risk. DEPLOY.md table updated.
+
+## Merged to main with verify failing (2026-10-19)
+
+Owner said "merge" after seeing the numbers. `claude/website-launch-review-6ua1r5` went to `main` with `npm run verify` still red: `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and audit LCP on `/industries-served/`, `/logistics-process/`, `/products/` (~3.2–3.4s in the cloud sandbox). Gates were not changed. Display font is now Exo 2 Black Italic (900 italic, tracking 0, leading 0.92), preloaded with `display: swap`.
