@@ -28,3 +28,9 @@ export function hostnameFromHostHeader(hostHeader: string | null | undefined): s
 export function isVercelAppHost(hostHeader: string | null | undefined): boolean {
   return hostnameFromHostHeader(hostHeader).endsWith(".vercel.app");
 }
+
+/** Demo and local hosts: *.vercel.app, localhost, 127.0.0.1. Never aglpallet.com. */
+export function isDemoHost(hostHeader: string | null | undefined): boolean {
+  const name = hostnameFromHostHeader(hostHeader);
+  return name.endsWith(".vercel.app") || name === "localhost" || name === "127.0.0.1";
+}
