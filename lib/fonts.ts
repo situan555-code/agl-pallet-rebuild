@@ -15,8 +15,9 @@ export const exo2 = Exo_2({
   weight: "900",
   style: "italic",
   variable: "--font-exo2",
-  display: "optional",
-  // One face (900 italic, latin). Preloaded so it makes the first paint;
-  // without it `optional` drops the face and hero H1s show the fallback.
+  // swap, not optional: optional drops the face whenever it misses the first
+  // ~100ms, so cold visits showed the generic fallback instead of the brand
+  // face. One small file (900 italic, latin), preloaded to keep the swap short.
+  display: "swap",
   preload: true,
 });
