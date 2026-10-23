@@ -32,7 +32,7 @@ export function HeroExpand({
             {tagline ? (
               <p className="mx-auto mb-4 max-w-3xl text-center text-body text-current/80">{tagline}</p>
             ) : null}
-            <h1 className="display mx-auto max-w-4xl text-center text-display-1 text-current nav:text-[56px] nav:leading-[1.08]">
+            <h1 className="display mx-auto max-w-4xl text-center text-display-1 text-current nav:text-[56px]">
               {heading}
             </h1>
           </div>

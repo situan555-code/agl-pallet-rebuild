@@ -157,3 +157,31 @@ Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved (2026-09-
 - Recolored live `public/assets/*.svg` fills from retired `#162619` to `#1F2A1F` instead of deleting icons the site still serves.
 - Deleted unused WordPress leftover `public/assets/mejs-controls.svg`.
 - Banned-words: also strip `!` inside HTML tags so Tailwind important / markup cannot trip the exclamation rule.
+
+## Launch review (2026-10-12)
+
+Footer now shows LinkedIn and Facebook icon links from `site.json` `sameAs`; no "Follow Us" heading. `npm run verify` stops at `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and the audit fails LCP on `/industries-served/`, `/logistics-process/`, `/products/` and, on one of two runs, `/`. Gates not softened. Lint setState-in-effect errors left (route-change/mount resets in nav, Form, search); not worth the LCP risk. DEPLOY.md table updated.
+
+## Merged to main with verify failing (2026-10-19)
+
+Owner said "merge" after seeing the numbers. `claude/website-launch-review-6ua1r5` went to `main` with `npm run verify` still red: `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and audit LCP on `/industries-served/`, `/logistics-process/`, `/products/` (~3.2–3.4s in the cloud sandbox). Gates were not changed. Display font is now Exo 2 Black Italic (900 italic, tracking 0, leading 0.92), preloaded with `display: swap`.
+
+## BR1 Accent Lab (2026-10-19)
+
+Added internal /accent-lab/ to test accent candidates and shades of #1F2A1F on
+the home hero. Owner decisions: Exo 2 + Inter stay; the 10° slant concept is
+dropped; green becomes one tone in eleven OKLCH shades (Core = 900); nav and
+logo stay on #1F2A1F. The lab is noindex on every host and is not in the nav,
+sitemap, search index or spec manifest. Its colors are inline styles from
+content/brand/accent-lab.json, so the Palette 05 color gate is untouched and
+was not changed. Production palette is unchanged until the owner picks; see
+docs/handoff/PALETTE-PROPOSAL.md.
+
+Deviation from the brief, at the owner's request: a ghost icon button (palette
+icon) sits beside the theme toggle and links to the lab. Header renders it only
+on demo hosts (*.vercel.app, localhost) via `isDemoHost` in lib/host.ts, so it
+never shows on aglpallet.com. Fixed in the handoff component: the focus ring
+used `outline-none`, which in Tailwind 4 hides the focus-visible outline; and
+the page top padding now clears the fixed nav (pt-36, same as PageOpener).
+Gates: color, schema, banned-words, tokens, numbers, build-note-leak and routes
+pass; copy-verbatim is unchanged (who-we-are 6, partners/carriers 1).

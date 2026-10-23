@@ -60,3 +60,4 @@ Card numerals: no moss overlays on capability or numbered feature photos. Eyebro
 Pharmaceuticals on `/industries`. PDS methodology named on engineered product copy (`/products/`, `/custom-engineered/`).
 AGL site photos on solid matches only: no-minimums, freight, multi-mill, run-the-floor, partner mills, partner carriers, stock, custom. Same-day quotes, hear-it-first, crates, dunnage, shipping blocks, and stakes stay on demo files.
 
+BR1 done: /accent-lab/ live (internal, noindex). Palette change pending owner pick.

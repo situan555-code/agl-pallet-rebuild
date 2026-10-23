@@ -79,7 +79,7 @@ const Hero1 = ({
                 </span>
                 {eyebrow}
               </p>
-              <h1 className="display mt-6 max-w-[18ch] wrap-break-word text-display-1 text-bone nav:text-[56px] nav:leading-[1.08]">
+              <h1 className="display mt-6 max-w-[18ch] wrap-break-word text-display-1 text-bone nav:text-[56px]">
                 {heading}
               </h1>
               <p className="prose-measure mt-6 text-body text-bone/85">{description}</p>

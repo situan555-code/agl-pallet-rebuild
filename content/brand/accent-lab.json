@@ -1,0 +1,253 @@
+{
+  "copy": {
+    "title": "Accent Lab",
+    "description": "Internal tool for testing AGL accent colors against shades of the core green.",
+    "intro": "Pick a ground from the green scale and an accent from the library, and see them together on the AGL site. The nav bar always stays on the source-of-truth green.",
+    "truthNote": "#1F2A1F, source of truth",
+    "groundTitle": "Ground",
+    "groundHint": "Five shades of the core green. Cards sit one shade lighter, tone on tone.",
+    "coreLabel": "Core",
+    "accentTitle": "Accent",
+    "copyHex": "Copy hex",
+    "custom": "Custom",
+    "hexLabel": "Accent hex code",
+    "hexPlaceholder": "#RRGGBB",
+    "hexError": "Enter a 6-digit hex, like #B5C300",
+    "copied": "Copied",
+    "copyBlocked": "Copy is blocked here. Hex:",
+    "verdictText": "safe for text",
+    "verdictLarge": "large text and graphics only",
+    "verdictLow": "too low for text",
+    "scaleTitle": "One green, eleven shades",
+    "scaleIntro": "Every shade keeps Core’s hue (145°) and colorfulness (OKLCH chroma 0.025) and only changes lightness, in even visual steps. Core is step 900. Click a shade to copy its hex.",
+    "libraryTitle": "Accent library",
+    "libraryIntro": "88 accents in eleven families. The hue families are built from color harmony around Core’s hue, each with a soft row and a vivid row. The number under each swatch is its contrast against the selected ground; 4.5 or higher is safe for text.",
+    "customFamily": "Custom",
+    "previewLabel": "Live preview",
+    "navLabel": "Open the brand lab"
+  },
+  "logo": {
+    "src": "/assets/agl_pallet_logo-light.svg",
+    "width": 65,
+    "height": 29,
+    "alt": "AGL Pallet"
+  },
+  "green": {
+    "hue": 144.8,
+    "chroma": 0.0252,
+    "coreStep": 900,
+    "groundSteps": [
+      950,
+      900,
+      800,
+      700,
+      600
+    ],
+    "scale": [
+      {
+        "step": 50,
+        "hex": "#EAF8E9"
+      },
+      {
+        "step": 100,
+        "hex": "#D9E8D9"
+      },
+      {
+        "step": 200,
+        "hex": "#BFCEBF"
+      },
+      {
+        "step": 300,
+        "hex": "#A3B1A3"
+      },
+      {
+        "step": 400,
+        "hex": "#889587"
+      },
+      {
+        "step": 500,
+        "hex": "#6D7A6D"
+      },
+      {
+        "step": 600,
+        "hex": "#556255"
+      },
+      {
+        "step": 700,
+        "hex": "#424E42"
+      },
+      {
+        "step": 800,
+        "hex": "#303C30"
+      },
+      {
+        "step": 900,
+        "hex": "#1F2A1F"
+      },
+      {
+        "step": 950,
+        "hex": "#0F190F"
+      }
+    ]
+  },
+  "defaultAccent": {
+    "hex": "#B5C300",
+    "family": "Analogous · warm"
+  },
+  "families": [
+    {
+      "name": "Tonal green",
+      "desc": "Same hue as Core (145°), lifted in lightness and chroma",
+      "swatches": [
+        "#8EAF8E",
+        "#A6C9A6",
+        "#C0E3C0",
+        "#D3F7D3",
+        "#00A22B",
+        "#30BD44",
+        "#51D75E",
+        "#6EF278"
+      ]
+    },
+    {
+      "name": "Analogous · warm",
+      "desc": "Hue 115°, the yellow side of green: olive, pistachio, chartreuse",
+      "swatches": [
+        "#A3AA7E",
+        "#BCC397",
+        "#D6DDB0",
+        "#E9F1C3",
+        "#848F00",
+        "#9CA900",
+        "#B5C300",
+        "#CEDE00"
+      ]
+    },
+    {
+      "name": "Analogous · cool",
+      "desc": "Hue 180°, the blue side of green: sea glass, mint, teal",
+      "swatches": [
+        "#7BB1A6",
+        "#93CBBF",
+        "#ADE5D9",
+        "#C0F9ED",
+        "#009C89",
+        "#00B8A1",
+        "#00D4BB",
+        "#00F2D5"
+      ]
+    },
+    {
+      "name": "Complementary",
+      "desc": "Hue 325°, directly opposite Core: rose, orchid, berry",
+      "swatches": [
+        "#B898BA",
+        "#D2B1D3",
+        "#ECCBEE",
+        "#FEE0FF",
+        "#BF51C7",
+        "#DA6AE1",
+        "#F584FD",
+        "#FBB4FF"
+      ]
+    },
+    {
+      "name": "Split complement · violet",
+      "desc": "Hue 290°: lilac, lavender, iris",
+      "swatches": [
+        "#A39FC8",
+        "#BCB8E2",
+        "#D6D2FD",
+        "#EAE8FF",
+        "#8968F4",
+        "#9F88FF",
+        "#B6AAFF",
+        "#D0C9FF"
+      ]
+    },
+    {
+      "name": "Split complement · red",
+      "desc": "Hue 5°: blush, coral-pink, signal red",
+      "swatches": [
+        "#C6959F",
+        "#E0AEB8",
+        "#FBC8D2",
+        "#FFE3E8",
+        "#E14076",
+        "#FE5C8E",
+        "#FF91AC",
+        "#FFBCCA"
+      ]
+    },
+    {
+      "name": "Triadic · blue",
+      "desc": "Hue 250°: sky, steel, signal blue",
+      "swatches": [
+        "#88A8C9",
+        "#A1C1E4",
+        "#BADBFE",
+        "#DDEDFF",
+        "#0089EA",
+        "#3FA3FF",
+        "#7CBDFF",
+        "#AED5FF"
+      ]
+    },
+    {
+      "name": "Triadic · orange",
+      "desc": "Hue 55°: apricot, tangerine, amber",
+      "swatches": [
+        "#C39B81",
+        "#DDB499",
+        "#F8CEB2",
+        "#FFE6D5",
+        "#CA6800",
+        "#ED7B00",
+        "#FF9B51",
+        "#FFC299"
+      ]
+    },
+    {
+      "name": "Material",
+      "desc": "Colors already in a pallet yard: pine, kraft, cedar, rust, concrete",
+      "swatches": [
+        "#E7C994",
+        "#D9B27C",
+        "#C9A27A",
+        "#B9885A",
+        "#D27A48",
+        "#C8643B",
+        "#B8B4AA",
+        "#9A968C"
+      ]
+    },
+    {
+      "name": "Signal · hi-vis",
+      "desc": "Safety and wayfinding colors",
+      "swatches": [
+        "#FFE14D",
+        "#FFD100",
+        "#FFB000",
+        "#FF8A00",
+        "#FF5A36",
+        "#D7FF1F",
+        "#3DFF8B",
+        "#3DB6FF"
+      ]
+    },
+    {
+      "name": "Neutrals",
+      "desc": "Low-chroma warm and cool lights",
+      "swatches": [
+        "#F5EEE0",
+        "#EADCC5",
+        "#D8C8B6",
+        "#C4B4A8",
+        "#E5F1F7",
+        "#CFDDE6",
+        "#B6C7D3",
+        "#A2ACB7"
+      ]
+    }
+  ]
+}

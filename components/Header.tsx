@@ -9,6 +9,9 @@ import { HeaderMenu } from "@/components/HeaderMenu";
 import { DesktopNav } from "@/components/DesktopNav";
 import { NavFrame } from "@/components/NavFrame";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { BrandLabLink } from "@/components/accent-lab/BrandLabLink";
+import { headers } from "next/headers";
+import { isDemoHost } from "@/lib/host";
 import type { NavItem } from "@/components/MobileNav";
 import { navForLaunch } from "@/lib/launch";
 import { groupResourceChildren, TRUCKLOAD_HREF } from "@/lib/nav-groups";
@@ -22,8 +25,10 @@ function desktopChildren(item: NavItem) {
   return (item.children ?? []).filter((child) => !/ispm-15/i.test(child.href + child.label));
 }
 
-export function Header() {
+export async function Header() {
   const nav = navForLaunch(site.nav as NavItem[]);
+  // Brand lab shortcut on demo hosts only; aglpallet.com never shows it.
+  const showBrandLab = isDemoHost((await headers()).get("host"));
   const itemClass =
     "inline-flex h-8 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-semibold text-current hover:bg-current/8 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
@@ -148,11 +153,13 @@ export function Header() {
 
       <div className="hidden items-center gap-2 xl:flex">
         <ThemeToggle />
+        {showBrandLab ? <BrandLabLink /> : null}
         <Button href={site.ctaNav.href} label={site.ctaNav.label} variant="primary" />
       </div>
 
       <div className="flex items-center gap-2 xl:hidden">
         <ThemeToggle />
+        {showBrandLab ? <BrandLabLink /> : null}
         <HeaderMenu nav={nav} logo={LOGO.dark} ctaHref={site.ctaNav.href} ctaLabel={site.ctaNav.label} />
       </div>
     </NavFrame>
