@@ -8,8 +8,8 @@ import { Feature3 } from "@/components/feature3";
 import { StaticGallery } from "@/components/home/StaticGallery";
 import { StaticImageBand } from "@/components/home/StaticImageBand";
 import { Cta4 } from "@/components/cta4";
-import { NetworkSlot } from "@/components/home/NetworkSlot";
-import { StaticNetwork } from "@/components/home/StaticNetwork";
+import { SupplyNetwork } from "@/components/agl/supply-network/supply-network";
+import type { SupplySource } from "@/components/agl/supply-network/supply-network.types";
 import { Container } from "@/components/Container";
 import { CardMedia } from "@/components/CardMedia";
 import { InteractiveCard } from "@/components/InteractiveCard";
@@ -21,6 +21,12 @@ import type { Metadata } from "next";
 
 const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"] as const;
 const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
+
+const SUPPLY_SOURCES: SupplySource[] = [
+  { id: "mills", label: "Family-run mills", description: "Long-term regional relationships", icon: "factory" },
+  { id: "producers", label: "Qualified producers", description: "Vetted for quality and capability", icon: "building" },
+  { id: "sources", label: "Multiple sources", description: "Capacity when conditions change", icon: "layers" },
+];
 
 export const metadata: Metadata = pageMeta(
   "AGL Pallet — Pallet Sourcing and Managed Freight for Manufacturers",
@@ -73,19 +79,12 @@ export default function Home() {
         }
       />
 
-      <NetworkSlot
+      <SupplyNetwork
         className="section-rhythm"
-        mills={["Family-run mills", "Qualified shops", "More than one source"]}
-        center="AGL Pallet"
-        right="Your line"
-      >
-        <StaticNetwork
-          className="section-rhythm"
-          mills={["Family-run mills", "Qualified shops", "More than one source"]}
-          center="AGL Pallet"
-          right="Your line"
-        />
-      </NetworkSlot>
+        sources={SUPPLY_SOURCES}
+        hub={{ title: "AGL Pallet", steps: ["Source", "Coordinate", "Deliver"] }}
+        destination={{ title: "Your operation", description: "The right pallet, when you need it" }}
+      />
 
       <Feature3
         className="section-rhythm"

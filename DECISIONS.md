@@ -147,3 +147,13 @@ used `outline-none`, which in Tailwind 4 hides the focus-visible outline; and
 the page top padding now clears the fixed nav (pt-36, same as PageOpener).
 Gates: color, schema, banned-words, tokens, numbers, build-note-leak and routes
 pass; copy-verbatim is unchanged (who-we-are 6, partners/carriers 1).
+
+## Supply network diagram rebuild (2026-10-24)
+
+Replaced the AnimatedBeam diagram with `components/agl/supply-network/` (custom SVG connectors, `motion/react`, DOM-measured geometry, separate vertical layout below 1024px (900px was cramped: hub and destination touched)). Removed `NetworkBeam`, `NetworkSlot`, `DeferredNetwork`, `StaticNetwork`, `load-network`.
+
+Deviations from the owner's brief, forced by repo rules:
+- Colors: `#a8c2a8`, `#172117`, `#829b82`, `#9fb49f` are off-palette greens and fail `npm run color`. Mapped to ice `#DDE9E2` (accent, lines, dot), green `#1F2A1F` (hub), moss `#131913` (surface). Neutral white/ice alphas are kept.
+- Radii: hub uses `rounded-section` (28px), sources and destination `rounded-card` (18px), instead of 24px.
+- Copy: the new labels and descriptions (Qualified producers, Multiple sources, Your operation, the three descriptions, Source, Coordinate, Deliver; the arrows are icons because the banned-words gate flags the glyph) come from the owner's brief, not SPEC_V1. They live in `SUPPLY_SOURCES` in `app/page.tsx`, as the old labels did. The proposed section eyebrow and heading (brief §34) were not added.
+- shadcn Card and Tooltip are not installed. Nodes are plain elements with the same tokens. Tooltips (brief §28, optional) were skipped, since they would add more unreviewed copy.
