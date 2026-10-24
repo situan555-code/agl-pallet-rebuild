@@ -127,7 +127,7 @@ async function main() {
     console.error('\nCOPY-VERBATIM FAILED: one or more pages are missing spec copy blocks (see copy-verbatim-report.json).');
     process.exit(1);
   }
-  console.log('\nAll pages contain their SPEC_V1.md section-4 copy blocks verbatim.');
+  console.log('\nAll pages contain their section-4 copy blocks verbatim (SPEC_LITE.md while launch-lite is on).');
 }
 
 main().catch((e) => {

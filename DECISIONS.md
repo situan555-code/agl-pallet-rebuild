@@ -198,4 +198,5 @@ Owner: the stripped-down build makes only the claims aglpallet.com makes today. 
 - **Supplier and carrier forms kept** as form-only pages (`/partners/suppliers/`, `/partners/carriers/`), allowed through the `/partners` exclusion by `allowPaths` in `lib/launch-lite.json`. Both post to sales@aglpallet.com through FormSubmit with their own subject lines, so nothing says "not sending yet". The carrier certificate upload field is removed (it was never wired to send). Both pages are noindex and linked only from the footer.
 - **Brand lab** (`/accent-lab/`) preview now reads the live home copy.
 
-Open: `banned-words` fails on the verbatim live copy (see BLOCKED.md). Gate not changed.
+- **banned-words exception (owner, 2026-10-23):** the verbatim live copy trips `legacy-copy-*`, `elevate`, `warehousing-storage-inventory` and `producer-voice-verb`. Owner chose to allow-list the exact live paragraphs for the lite build. `scripts/lib/lite-banned-allow.json` lists 17 verbatim lines; `scripts/banned-words.js` removes them before scanning only while the launch-lite flag is on. Rules, phrase lists and all other text are unchanged, and any edit to an exempt line removes its exemption. Result: banned-words passes.
+- **Deploy:** launch-lite stays a separate Vercel preview from the `launch-lite` branch. `main` and the full demo are not touched.

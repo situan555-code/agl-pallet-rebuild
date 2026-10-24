@@ -76,7 +76,7 @@ export default function Home() {
         eyebrow={home.whoWeServe.eyebrow}
         heading={home.whoWeServe.heading}
         paragraphs={home.whoWeServe.paragraphs}
-        media={<SideImage src="/assets/stock/agl-warehouse-multiplant-01_d566.webp" />}
+        media={<SideImage src="/assets/stock/agl-industry-building-materials-02_188a.webp" />}
       />
 
       <Feature3

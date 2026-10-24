@@ -58,7 +58,9 @@ Open items (owner-supplied; not engineering work):
 - **`RESEND_API_KEY`** — set in Vercel (Production and Preview) as of 2026-09-26. The quote route calls Resend. `aglpallet.com` is not a verified Resend domain, so the quote form still falls back to FormSubmit. The quote form stays on the page.
 - **Text line** — confirmed on the 2026-10-14 facts sheet. `sms:2342860402` stays on the quote page. The link check still warns (status 0) because `sms:` has no HTTP status.
 
-## Launch-lite banned-words vs live copy (2026-10-23)
+## Launch-lite banned-words vs live copy (2026-10-23) — cleared
+
+Owner chose to allow-list these exact live paragraphs for the lite build only (2026-10-23). `scripts/lib/lite-banned-allow.json` holds the 17 verbatim lines; `scripts/banned-words.js` removes them before scanning while `lib/launch-lite.json` is enabled. No rule, phrase list or other page text was changed. Details of the original hits:
 
 `npm run banned-words` fails on the verbatim live sentences. The gate was written for the SPEC_V1 voice, where AGL is a brokerage and never a manufacturer. Hits, by rule:
 
@@ -69,4 +71,4 @@ Open items (owner-supplied; not engineering work):
 - `warehousing-storage-inventory`: "warehouse leaders", "warehousing", "storage", "warehouse storage" (live home, about, industries, logistics, products; descriptive use).
 - `producer-voice-verb`: "AGL Pallet was built from firsthand experience", "supplier network is built", "Our solutions are built", "manufacturing" as an adjective (false matches of the regex).
 
-Gate not softened. Needs a written owner call: allow-list these exact live sentences for the lite build, or reword them.
+

@@ -6,9 +6,13 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..', '..');
 
-function specPath() {
+function liteEnabled() {
   const flag = JSON.parse(fs.readFileSync(path.join(ROOT, 'lib', 'launch-lite.json'), 'utf8'));
-  return path.join(ROOT, flag.enabled === true ? 'SPEC_LITE.md' : 'SPEC_V1.md');
+  return flag.enabled === true;
 }
 
-module.exports = { specPath };
+function specPath() {
+  return path.join(ROOT, liteEnabled() ? 'SPEC_LITE.md' : 'SPEC_V1.md');
+}
+
+module.exports = { specPath, liteEnabled };

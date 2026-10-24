@@ -95,7 +95,7 @@ async function main() {
     console.error('\nNUMBERS FAILED: one or more pages render a numeral absent from SPEC_V1.md (see numbers-report.json).');
     process.exit(1);
   }
-  console.log('\nAll rendered numerals trace back to SPEC_V1.md.');
+  console.log('\nAll rendered numerals trace back to the copy source (SPEC_LITE.md while launch-lite is on).');
 }
 
 main().catch((e) => {
