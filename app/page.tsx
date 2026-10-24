@@ -1,71 +1,55 @@
 import Image from "next/image";
 import home from "@/content/pages/home.json";
-import products from "@/content/pages/products.json";
 import { HeroExpand } from "@/components/HeroExpand";
 import { Feature1 } from "@/components/feature1";
-import { Feature2 } from "@/components/feature2";
 import { Feature3 } from "@/components/feature3";
-import { StaticGallery } from "@/components/home/StaticGallery";
-import { StaticImageBand } from "@/components/home/StaticImageBand";
 import { Cta4 } from "@/components/cta4";
-import { NetworkSlot } from "@/components/home/NetworkSlot";
-import { StaticNetwork } from "@/components/home/StaticNetwork";
 import { Container } from "@/components/Container";
-import { CardMedia } from "@/components/CardMedia";
-import { InteractiveCard } from "@/components/InteractiveCard";
-import { getBlurDataURL } from "@/lib/blur";
-import { DEMO_HOME_PHOTOS } from "@/lib/demo-home-photos";
-import { DEMO_PRODUCT_PHOTOS } from "@/lib/demo-product-photos";
-import { launchHref } from "@/lib/launch";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
+import pages from "@/pages.json";
 
-const CAPABILITY_HREFS = ["/request-a-quote/", "/request-a-quote/", "/services/"] as const;
-const DIFFERENTIATOR_HREFS = ["/how-we-work/", "/the-pledge/", "/who-we-are/"] as const;
+const meta = pages.find((p) => p.path === "/")!;
+export const metadata: Metadata = pageMeta(meta.title, meta.description, "/");
 
-export const metadata: Metadata = pageMeta(
-  "Pallet Supplier for Manufacturers, Freight Included | AGL",
-  "Pallet supplier for manufacturers. New, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, managed from North Canton, Ohio, with freight on every order.",
-  "/",
-);
+const HOW_IMAGES = [
+  "/assets/stock/agl-geometry-wood-01_6d47.webp",
+  "/assets/stock/agl-partner-mills-01_6763.webp",
+  "/assets/stock/agl-freight-execute-01_0e78.webp",
+  "/assets/stock/agl-filler-pallet-stack-02_0659.webp",
+] as const;
+
+function SideImage({ src, className }: { src: string; className?: string }) {
+  return (
+    <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
+      <Image src={src} alt="" fill quality={65} sizes="(min-width: 980px) 38vw, 100vw" className={className ?? "object-cover"} />
+    </div>
+  );
+}
 
 export default function Home() {
-  const whyBlur = getBlurDataURL("/assets/stock/agl-brock-founder-01_82f1.webp");
-
   return (
     <main>
       <HeroExpand
-        tagline={home.hero.tagline}
+        tagline={home.hero.eyebrow}
         heading={home.hero.heading}
         description={home.hero.body}
         video={{ src: home.hero.video, poster: home.hero.poster }}
-        buttons={home.hero.buttons.map((b) => ({ label: b.label, href: launchHref(b.href) }))}
+        buttons={home.hero.buttons.map((b) => ({ label: b.label, href: b.href }))}
       />
 
       <section className="pt-8 nav:pt-12" aria-label="Proof">
         <Container>
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {home.proof.map((item) => (
-              <li key={item} className="rounded-card bg-green px-6 py-8 sm:px-8">
-                <p className="text-[28px] font-semibold leading-tight text-ice">{item}</p>
+              <li key={item.label} className="rounded-card bg-green px-6 py-8 sm:px-8">
+                <p className="text-ice">
+                  <span className="block text-[44px] font-semibold leading-none">{item.value}</span>{" "}
+                  <span className="mt-2 block text-[18px] font-semibold leading-snug">{item.label}</span>
+                </p>
               </li>
             ))}
           </ul>
-          <p className="mt-6 max-w-[70ch] text-body text-bone">{home.serviceArea}</p>
-        </Container>
-      </section>
-
-      <section className="pt-8 nav:pt-12">
-        <Container className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {home.capability.cards.map((cap, index) => (
-            <InteractiveCard key={cap.heading} href={launchHref(CAPABILITY_HREFS[index] ?? "/request-a-quote/")}>
-              <CardMedia alt={cap.heading} src={DEMO_HOME_PHOTOS.capabilities[index]} />
-              <div className="flex flex-1 flex-col p-6 nav:p-8">
-                <h2 className="text-[22px] font-semibold leading-snug text-current">{cap.heading}</h2>
-                <p className="mt-5 max-w-sm text-body text-current/75">{cap.body}</p>
-              </div>
-            </InteractiveCard>
-          ))}
         </Container>
       </section>
 
@@ -74,127 +58,43 @@ export default function Home() {
         eyebrow={home.whatWeDo.eyebrow}
         heading={home.whatWeDo.heading}
         paragraphs={home.whatWeDo.paragraphs}
-        media={
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
-            <Image
-              src="/assets/who_agl_is_sidepic.jpg"
-              alt=""
-              fill
-              quality={60}
-              sizes="(min-width: 980px) 38vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        }
-      />
-
-      <NetworkSlot
-        className="section-rhythm"
-        mills={["Family-run mills", "Qualified shops", "More than one source"]}
-        center="AGL Pallet"
-        right="Your line"
-      >
-        <StaticNetwork
-          className="section-rhythm"
-          mills={["Family-run mills", "Qualified shops", "More than one source"]}
-          center="AGL Pallet"
-          right="Your line"
-        />
-      </NetworkSlot>
-
-      <Feature3
-        className="section-rhythm"
-        variant="numbered"
-        features={home.differentiators.cards.map((c, index) => ({
-          eyebrow: c.eyebrow,
-          title: c.heading,
-          description: c.body,
-          href: launchHref(DIFFERENTIATOR_HREFS[index] ?? "/how-we-work/"),
-          src: DEMO_HOME_PHOTOS.differentiators[index],
-          // "We've run the floor" (index 2): bias crop toward forklift / floor.
-          imageClassName: index === 2 ? "object-[center_78%]" : undefined,
-        }))}
-      />
-
-      <StaticImageBand
-        className="section-rhythm"
-        eyebrow="How we work"
-        heading="Coordination is the product."
-        body="We qualify the shops that supply them well, hold more than one source for every spec we quote, and book the freight so the pallets land when your line needs them."
-        image={{ src: "/assets/agl_home_video_poster.jpg", alt: "" }}
-        cta={{ label: "See how we work", href: "/how-we-work/" }}
-      />
-
-      <StaticGallery
-        className="section-rhythm"
-        eyebrow="Product lines"
-        title="Specced to the load. Sourced through mills that can build it."
-        description="Stock, custom, crates, dunnage, blocks, and stakes — each with multiple qualified shops behind the specs we sell."
-        items={products.lines.map((line) => ({
-          id: line.id,
-          title: line.heading,
-          description: line.copy,
-          href: launchHref(line.id === "custom-engineered" ? "/custom-engineered/" : `/products/#${line.id}`),
-          src: DEMO_PRODUCT_PHOTOS[line.id],
-          alt:
-            line.id === "custom-engineered"
-              ? "Technical blueprint of a standard stringer pallet"
-              : undefined,
-        }))}
-      />
-
-      <Feature2
-        id="pledge"
-        className="section-rhythm"
-        eyebrow={home.pledge.eyebrow}
-        heading={home.pledge.heading}
-        paragraphs={home.pledge.paragraphs}
-        cta={{ ...home.pledge.cta, href: launchHref(home.pledge.cta.href) }}
-      />
-
-      <Feature3
-        className="section-rhythm"
-        variant="card"
-        columns={2}
-        features={home.partnerSplit.cards.map((c, index) => {
-          const href = launchHref(c.cta.href);
-          return {
-            eyebrow: c.eyebrow,
-            title: c.heading,
-            description: c.body,
-            href,
-            cta: { ...c.cta, href },
-            src: DEMO_HOME_PHOTOS.partners[index],
-          };
-        })}
+        media={<SideImage src="/assets/who_agl_is_sidepic.jpg" />}
       />
 
       <Feature1
         className="section-rhythm"
         panel
         mediaSide="left"
-        eyebrow={home.whoWeAre.eyebrow}
-        heading={home.whoWeAre.heading}
-        paragraphs={home.whoWeAre.paragraphs}
-        cta={home.whoWeAre.cta}
-        media={
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
-            <Image
-              src="/assets/stock/agl-brock-founder-01_82f1.webp"
-              alt="Founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
-              fill
-              quality={70}
-              sizes="(min-width: 980px) 38vw, 100vw"
-              className="object-cover object-[center_35%]"
-              placeholder={whyBlur ? "blur" : undefined}
-              blurDataURL={whyBlur}
-            />
-          </div>
-        }
+        eyebrow={home.whyAgl.eyebrow}
+        heading={home.whyAgl.heading}
+        paragraphs={home.whyAgl.paragraphs}
+        media={<SideImage src="/assets/stock/agl-manufacturing-forklift-01_86f4.webp" />}
+      />
+
+      <Feature1
+        className="section-rhythm"
+        eyebrow={home.whoWeServe.eyebrow}
+        heading={home.whoWeServe.heading}
+        paragraphs={home.whoWeServe.paragraphs}
+        media={<SideImage src="/assets/stock/agl-warehouse-multiplant-01_d566.webp" />}
+      />
+
+      <Feature3
+        className="section-rhythm"
+        variant="ruled"
+        columns={2}
+        eyebrow={home.howItWorks.eyebrow}
+        heading={home.howItWorks.heading}
+        features={home.howItWorks.steps.map((step, index) => ({
+          title: step.heading,
+          description: step.body,
+          src: HOW_IMAGES[index],
+        }))}
       />
 
       <Cta4
         className="section-rhythm"
+        eyebrow={home.ctaBand.eyebrow}
         heading={home.ctaBand.heading}
         description={home.ctaBand.body}
         button={home.ctaBand.cta}

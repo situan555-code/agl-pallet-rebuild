@@ -61,3 +61,4 @@ Pharmaceuticals on `/industries`. PDS methodology named on engineered product co
 AGL site photos on solid matches only: no-minimums, freight, multi-mill, run-the-floor, partner mills, partner carriers, stock, custom. Same-day quotes, hear-it-first, crates, dunnage, shipping blocks, and stakes stay on demo files.
 
 BR1 done: /accent-lab/ live (internal, noindex). Palette change pending owner pick.
+Launch-lite parity build: six live pages with verbatim live copy (SPEC_LITE.md), forms kept, supplier and carrier forms send to sales@. banned-words red on live sentences; see BLOCKED.md. Not merged to main.

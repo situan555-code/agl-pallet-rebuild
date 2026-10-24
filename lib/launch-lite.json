@@ -10,5 +10,9 @@
     "/custom-engineered",
     "/case-studies",
     "/contact"
+  ],
+  "allowPaths": [
+    "/partners/suppliers",
+    "/partners/carriers"
   ]
 }

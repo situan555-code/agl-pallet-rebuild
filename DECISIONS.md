@@ -185,3 +185,17 @@ used `outline-none`, which in Tailwind 4 hides the focus-visible outline; and
 the page top padding now clears the fixed nav (pt-36, same as PageOpener).
 Gates: color, schema, banned-words, tokens, numbers, build-note-leak and routes
 pass; copy-verbatim is unchanged (who-we-are 6, partners/carriers 1).
+
+## Launch-lite: live-site copy parity (2026-10-23)
+
+Owner: the stripped-down build makes only the claims aglpallet.com makes today. Copy is verbatim from the six live pages (fetched 2026-10-23), put into our own design as separate pages. Where the live page has no matching section the section is gone.
+
+- **Source of truth for the lite build is `SPEC_LITE.md`**, generated from the live text. `scripts/lib/spec-path.js` points `copy-verbatim` and `numbers` at it while `lib/launch-lite.json` is enabled; with the flag off they read `SPEC_V1.md` as before. `SPEC_V1.md` is not edited. The gates themselves are unchanged.
+- **Page map:** `/` = home, `/who-we-are` = about, `/how-we-work` = logistics-process, `/industries` = industries-served, `/products`, `/request-a-quote`. Titles are the live titles ("About - AGL Pallet", etc.); the home meta description is the live one, the others are the first live sentence of each page.
+- **Cut, per the owner's "cut them" answer:** the Oct 14 facts-sheet additions that the live site does not carry (six-state service area line, North Canton and January 2026, Christ-centered section, role roster, founder story, values, same-day quotes, no minimums, pledge, network diagram, mills/carriers split, stakes, custom page). Phone, text, email, 99% on-time and 12+ years stay because the live site has them. Industries is the live five (building materials, pharmaceuticals, plastics, chemicals, food and beverage).
+- **Nav and footer labels** are the live ones (About, Logistics & Process, Industries Served, Products, Contact Us; footer Services links). Footer social icons stay, with no Follow Us heading.
+- **Quote form:** single step, live field labels (Full Name, Company Name, Email Address, Phone Number, Pallet Dimensions, Estimated Pallet Quantity, Message) and "Send Message". Ship-to city and target date fields are removed. Resend first, FormSubmit fallback, unchanged.
+- **Supplier and carrier forms kept** as form-only pages (`/partners/suppliers/`, `/partners/carriers/`), allowed through the `/partners` exclusion by `allowPaths` in `lib/launch-lite.json`. Both post to sales@aglpallet.com through FormSubmit with their own subject lines, so nothing says "not sending yet". The carrier certificate upload field is removed (it was never wired to send). Both pages are noindex and linked only from the footer.
+- **Brand lab** (`/accent-lab/`) preview now reads the live home copy.
+
+Open: `banned-words` fails on the verbatim live copy (see BLOCKED.md). Gate not changed.

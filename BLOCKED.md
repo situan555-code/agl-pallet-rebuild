@@ -57,3 +57,16 @@ Open items (owner-supplied; not engineering work):
 - **Carrier inbox** — not provided. The carrier form is hidden. The page shows phone and email. Do not show a "not sending" message.
 - **`RESEND_API_KEY`** — set in Vercel (Production and Preview) as of 2026-09-26. The quote route calls Resend. `aglpallet.com` is not a verified Resend domain, so the quote form still falls back to FormSubmit. The quote form stays on the page.
 - **Text line** — confirmed on the 2026-10-14 facts sheet. `sms:2342860402` stays on the quote page. The link check still warns (status 0) because `sms:` has no HTTP status.
+
+## Launch-lite banned-words vs live copy (2026-10-23)
+
+`npm run banned-words` fails on the verbatim live sentences. The gate was written for the SPEC_V1 voice, where AGL is a brokerage and never a manufacturer. Hits, by rule:
+
+- `legacy-copy-produced-quality-controls`: "Every pallet is produced under strict quality controls" (live Products, Stock Pallets).
+- `legacy-copy-designs-pallets`: "AGL designs pallets precisely tailored" (live Products, Engineered).
+- `legacy-copy-develop-specifications`: "we develop pallet specifications" (live Products, Engineered).
+- `banned-phrase:elevate`: "used to elevate products" (live Products, Shipping Blocks; literal use).
+- `warehousing-storage-inventory`: "warehouse leaders", "warehousing", "storage", "warehouse storage" (live home, about, industries, logistics, products; descriptive use).
+- `producer-voice-verb`: "AGL Pallet was built from firsthand experience", "supplier network is built", "Our solutions are built", "manufacturing" as an adjective (false matches of the regex).
+
+Gate not softened. Needs a written owner call: allow-list these exact live sentences for the lite build, or reword them.

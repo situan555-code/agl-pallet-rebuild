@@ -1,81 +1,34 @@
 {
   "hero": {
-    "eyebrow": "Who we are",
-    "heading": "We were the ones waiting on the pallets.",
+    "heading": "Experience, Accountability, and Real-World Perspective",
+    "lead": "AGL Pallet was built to bring structure and reliability to an industry that often operates without it.",
     "paragraphs": [
-      "AGL Pallet is a pallet supplier that started on the buying side of the dock — by people who spent years specifying, buying, and waiting on pallets while a production schedule ran regardless. Capacity crunches. Material shortages. Price moves that arrived with no warning and no explanation.",
-      "That's the experience the company is built out of, and it's why AGL is a pallet brokerage."
+      "In high-volume manufacturing environments, pallet supply is often treated as a commodity — until something goes wrong. Missed deliveries, inconsistent quality, and unpredictable pricing can quickly disrupt production and shipping schedules. AGL was founded to address those challenges directly, applying operational discipline and supply chain awareness to an area that too often lacks both."
     ]
   },
-  "founderStory": {
-    "eyebrow": "From the owner",
-    "heading": "Why I built it this way",
+  "fair": {
+    "eyebrow": "Who AGL Serves",
+    "heading": "Fair-Market Sourcing. Realistic Expectations. Long-Term Partnerships.",
     "paragraphs": [
-      "I spent years on the buying side, and the pattern never changed: the pallet was the cheapest thing on the line and the fastest way to stop it. When supply got tight, the vendors who kept me running weren't the biggest — they were the ones who called me before I had to call them.",
-      "So AGL is organized around two things I couldn't get reliably as a buyer. More than one qualified shop behind every spec, so a single mill's bad week isn't my problem. And a person who answers, who knows what's on the truck, and who tells me early when it isn't going to work.",
-      "The other decision was structural. AGL is a pallet brokerage. I've watched what happens to the family shops when a broker buys a plant, and I'd rather have their capacity and their trust."
-    ],
-    "imageToken": "/assets/stock/agl-brock-founder-01_82f1.webp"
-  },
-  "team": {
-    "eyebrow": "The people who answer",
-    "heading": "Five people, and you'll know which one is yours.",
-    "body": "AGL runs with a small team on purpose. Sourcing, freight, and the account are three people who sit near each other, not three queues in three systems.",
-    "items": [
-      {
-        "lead": "Owner",
-        "body": "Commercial, supply, and the last call on anything hard."
-      },
-      {
-        "lead": "Logistics",
-        "body": "Books the freight and tracks the loads."
-      },
-      {
-        "lead": "Supplier Relations",
-        "body": "Qualifies the mills and knows their machine constraints."
-      },
-      {
-        "lead": "Operations",
-        "body": ""
-      },
-      {
-        "lead": "IT",
-        "body": ""
-      }
+      "We believe strong supplier relationships and honest communication create better outcomes for manufacturers. AGL doesn’t chase unrealistic pricing at the expense of reliability. We design pallet solutions that balance cost, quality, and long-term sustainability — protecting both production schedules and supplier partnerships.",
+      "Short-term cost cutting often leads to long-term instability. Instead of pursuing unsustainable pricing models, we focus on fair-market sourcing strategies that allow suppliers to maintain quality standards and consistent output. When suppliers are stable, our clients benefit from dependable capacity and predictable lead times."
     ]
   },
-  "values": {
-    "eyebrow": "How we operate",
-    "cards": [
-      {
-        "heading": "Trust",
-        "body": "We don't compete with our suppliers and we don't surprise our customers."
-      },
-      {
-        "heading": "Responsiveness",
-        "body": "Same-day quotes, and the bad news travels as fast as the good."
-      },
-      {
-        "heading": "Operational excellence",
-        "body": "The spec is right, the truck is booked, the paperwork matches."
-      },
-      {
-        "heading": "Accountability",
-        "body": "One name on your account. When it goes wrong, that's who calls."
-      }
-    ]
-  },
-  "faith": {
-    "eyebrow": "What we stand on",
-    "heading": "AGL is a Christ-centered company.",
+  "accountability": {
+    "eyebrow": "Single Point of Contact",
+    "heading": "One Call. Full Accountability.",
     "paragraphs": [
-      "It shapes how we deal with people more than what we sell. Mills get paid when we said we'd pay them. Customers get told what we can and can't do, including when the honest answer costs us the order. Nobody gets squeezed because we happen to have the upper hand that week.",
-      "We don't think that makes us a better vendor than anyone else, and we won't ask you to care about it. It's just who we are, and it's why the company runs the way it does."
+      "AGL Pallet serves manufacturers and distribution-focused businesses across building materials, pharmaceuticals, plastics, chemicals, and food and beverage—organizations where pallet reliability directly impacts production and shipping.",
+      "We work with owners, COOs, purchasing teams, and warehouse leaders at both regional and multinational operations that require truckload quantities on a recurring basis. If consistent pallet supply is critical to keeping your operation running, AGL is built to support you."
     ]
   },
-  "whereWeAre": {
-    "eyebrow": "North Canton, Ohio",
-    "body": "Our supplier network is centered in Eastern Ohio and Western Pennsylvania and it's growing. We serve manufacturers across Michigan, Illinois, Indiana, Pennsylvania, Ohio, and West Virginia — the Midwest and Mid-Atlantic, and expanding as new mills come on.",
-    "addressToken": "TBD-ADDRESS"
+  "ctaBand": {
+    "eyebrow": "Get In Touch",
+    "heading": "Let’s Talk About Your Pallet Needs",
+    "body": "Whether you’re sourcing pallets daily or planning for upcoming demand, AGL Pallet is ready to support your operation.",
+    "cta": {
+      "label": "Contact Us",
+      "href": "/request-a-quote/"
+    }
   }
 }

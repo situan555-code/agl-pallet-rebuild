@@ -136,13 +136,7 @@ export function Form({
   const formAction = destination.kind === "formsubmit" ? `https://formsubmit.co/${encodeURIComponent(destination.email)}` : undefined;
 
   const steps =
-    id === "quote-form"
-      ? [
-          { label: "Contact", names: ["name", "company", "email", "phone"] },
-          { label: "Pallet spec", names: ["spec", "quantity"] },
-          { label: "Delivery", names: ["shipTo", "targetDate", "notes"] },
-        ]
-      : id === "supplier-form"
+    id === "supplier-form"
         ? [
             { label: "Contact", names: ["shopName", "cityState", "contactName", "email", "phone"] },
             { label: "Shop", names: ["equipmentFit", "weeklyCapacity", "specsBuilt"] },
@@ -152,7 +146,7 @@ export function Form({
           ? [
               { label: "Contact", names: ["carrierName", "contactName", "email", "phone"] },
               { label: "Authority", names: ["mcNumber", "dotNumber", "equipmentType"] },
-              { label: "Lanes", names: ["lanes", "truckCount", "coi"] },
+              { label: "Lanes", names: ["lanes", "truckCount"] },
             ]
           : null;
   const [step, setStep] = useState(0);

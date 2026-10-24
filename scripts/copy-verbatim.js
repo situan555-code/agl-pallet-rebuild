@@ -22,7 +22,8 @@ const { ROUTES } = require('./lib/spec-manifest');
 
 const ROOT = path.join(__dirname, '..');
 const BASE_URL = process.env.COPY_VERBATIM_BASE_URL || process.env.SCREENSHOT_BASE_URL || 'http://localhost:3000';
-const SPEC_PATH = path.join(ROOT, 'SPEC_V1.md');
+const { specPath } = require('./lib/spec-path');
+const SPEC_PATH = specPath();
 const REPORT_JSON = path.join(ROOT, 'copy-verbatim-report.json');
 
 function normalize(s) {

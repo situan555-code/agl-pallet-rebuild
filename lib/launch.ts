@@ -6,6 +6,9 @@ export const LAUNCH_LITE = flag.enabled === true;
 
 export const LAUNCH_EXCLUDE_PREFIXES = flag.excludePrefixes;
 
+/** Form-only partner pages stay served inside the otherwise excluded /partners tree. */
+export const LAUNCH_ALLOW_PATHS: string[] = flag.allowPaths ?? [];
+
 const SALES_EMAIL = "mailto:sales@aglpallet.com";
 const SALES_PHONE = "tel:2342860402";
 
@@ -19,6 +22,7 @@ export function pathOnly(href: string): string {
 export function isExcludedPath(href: string): boolean {
   if (!LAUNCH_LITE) return false;
   const path = pathOnly(href);
+  if (LAUNCH_ALLOW_PATHS.includes(path)) return false;
   return LAUNCH_EXCLUDE_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 }
 
@@ -27,6 +31,7 @@ export function isExcludedPath(href: string): boolean {
 export function launchHref(href: string): string {
   if (!LAUNCH_LITE) return href;
   const path = pathOnly(href);
+  if (LAUNCH_ALLOW_PATHS.includes(path)) return href;
   if (path === "/partners/suppliers" || path.startsWith("/partners/suppliers/")) return SALES_EMAIL;
   if (path === "/partners/carriers" || path.startsWith("/partners/carriers/")) return SALES_PHONE;
   if (path === "/partners" || path.startsWith("/partners/")) return SALES_EMAIL;

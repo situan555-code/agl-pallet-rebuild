@@ -112,8 +112,8 @@ export default function AccentLab() {
   const cardLink = contrastRatio(accent, card.hex) >= 4.5 ? accent : WHITE;
 
   const heroButtons = home.hero.buttons;
-  const cards = home.capability.cards;
-  const eyebrow = home.partnerSplit.cards[1].eyebrow;
+  const cards = home.howItWorks.steps.slice(0, 3);
+  const eyebrow = home.hero.eyebrow;
 
   return (
     <main className="mx-auto w-full max-w-[1240px] px-4 pb-24 pt-36 sm:px-6">
