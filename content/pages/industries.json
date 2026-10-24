@@ -1,23 +1,45 @@
 {
   "hero": {
-    "eyebrow": "Industries",
-    "heading": "Where AGL works",
-    "body": "A pallet supplier for operations where the pallet is load-bearing infrastructure, not a line item."
+    "heading": "Serving High-Volume Manufacturing Operations",
+    "body": "Large-scale manufacturing environments demand consistency, durability, and dependable supply. In fast-paced production settings, even minor disruptions in pallet performance or availability can create costly delays across procurement, warehousing, and outbound logistics. Our solutions are built to support operations where efficiency, uptime, and structural reliability are non-negotiable."
+  },
+  "section": {
+    "heading": "Built for Demanding Industrial Environments"
   },
   "industries": [
-    { "heading": "Building materials", "body": "Lumber, stone, roofing, and construction components. Heavy, dense, often irregular, and frequently stored outdoors.", "image": "/assets/stock/agl-industry-building-materials-01_ca06.webp" },
-    { "heading": "Chemicals & coatings", "body": "Drums, totes, and bulk containers where load stability isn't optional.", "image": "/assets/stock/agl-industry-chemicals-01_13de.webp" },
-    { "heading": "Refractories, foundry, glass & clay", "body": "Extreme point loads and weights most standard specs aren't rated for.", "image": "/assets/stock/agl-industry-refractories-01_f801.webp" },
-    { "heading": "Shipping, distribution & 3PL", "body": "High throughput, multiple ship-to points, and mixed specs across sites.", "image": "/assets/stock/agl-shipping-3pl-01_f433.webp" },
-    { "heading": "Metal fabrication & forging", "body": "Engineered skids and crates for parts that outweigh the pallet several times over.", "image": "/assets/stock/agl-industry-metal-fab-01_8d4c.webp" },
-    { "heading": "Energy & industrial", "body": "Oil, gas, and electrical equipment, including export crating.", "image": "/assets/stock/agl-industry-energy-01_04c9.webp" },
-    { "heading": "Plastics & packaging", "body": "High volume, fast cycles, and automated handling.", "image": "/assets/stock/agl-industry-food-beverage-03_ec8c.webp" },
-    { "heading": "Pharmaceuticals", "body": "Regulated environments where pallet integrity, cleanliness, consistency, and traceability matter.", "image": "/assets/stock/agl-pallet-01_7a54.webp" },
-    { "heading": "Food & beverage", "body": "Throughput operations where a late load stops a line.", "image": "/assets/stock/agl-industry-food-beverage-02_e497.webp" }
+    {
+      "heading": "Building Materials",
+      "body": "Heavy, dense, and often irregular loads require pallets engineered for strength and load distribution. We support manufacturers and distributors of lumber, stone, roofing materials, and construction components with durable solutions designed to withstand demanding handling conditions and outdoor storage environments.",
+      "image": "/assets/stock/agl-industry-building-materials-01_ca06.webp"
+    },
+    {
+      "heading": "Pharmaceuticals",
+      "body": "In regulated environments where cleanliness, consistency, and traceability matter, pallet integrity plays a critical role. We help pharmaceutical manufacturers maintain compliant, dependable material handling systems that support sensitive product transport and controlled warehouse operations.",
+      "image": "/assets/stock/agl-pallet-01_7a54.webp"
+    },
+    {
+      "heading": "Plastics",
+      "body": "Plastic product manufacturers often manage high production volumes and rapid distribution cycles. Our pallet solutions are designed to support lightweight but bulk shipments, automated handling systems, and efficient stacking configurations that maximize storage density.",
+      "image": "/assets/stock/agl-industry-food-beverage-03_ec8c.webp"
+    },
+    {
+      "heading": "Chemicals",
+      "body": "Chemical manufacturers require packaging solutions capable of supporting heavy drums, containers, and bulk materials. We deliver pallets and structural components engineered for strength, stability, and performance under demanding industrial conditions.",
+      "image": "/assets/stock/agl-industry-chemicals-01_13de.webp"
+    },
+    {
+      "heading": "Food & Beverage",
+      "body": "High-throughput food and beverage operations depend on reliable material handling to maintain distribution timelines. Our solutions support consistent load performance, warehouse efficiency, and repeatable handling processes across regional supply chains.",
+      "image": "/assets/stock/agl-industry-food-beverage-02_e497.webp"
+    }
   ],
   "ctaBand": {
-    "heading": "Let's talk about your pallet supply.",
-    "body": "Send a spec and a quantity, or just call and describe the problem.",
-    "cta": { "label": "Request a quote", "href": "/request-a-quote/" }
+    "eyebrow": "Get In Touch",
+    "heading": "Let’s Talk About Your Pallet Needs",
+    "body": "Whether you’re sourcing pallets daily or planning for upcoming demand, AGL Pallet is ready to support your operation.",
+    "cta": {
+      "label": "Contact Us",
+      "href": "/request-a-quote/"
+    }
   }
 }

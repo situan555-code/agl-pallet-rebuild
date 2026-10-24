@@ -2,8 +2,7 @@ import { z } from "zod";
 
 export const QUOTE_TO = "sales@aglpallet.com";
 export const QUOTE_SUBJECT = "AGL Pallet website quote request";
-export const QUOTE_AUTORESPONSE =
-  "Thanks for reaching out to AGL Pallet. We received your spec and will come back to you the same day.";
+export const QUOTE_AUTORESPONSE = "Thanks for reaching out to AGL Pallet. We received your message.";
 export const FAILURE_PHONE = "234-286-0402";
 
 const requiredText = z.string().trim().min(1);
@@ -16,8 +15,6 @@ export const quoteSchema = z.object({
   phone: optionalText,
   spec: requiredText,
   quantity: requiredText,
-  shipTo: requiredText,
-  targetDate: optionalText,
   notes: optionalText,
 });
 

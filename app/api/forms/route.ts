@@ -73,11 +73,9 @@ export async function POST(request: Request) {
     `Company: ${quote.company}`,
     `Email: ${quote.email}`,
     `Phone: ${quote.phone || ""}`,
-    `Pallet size or spec: ${quote.spec}`,
-    `Quantity and frequency: ${quote.quantity}`,
-    `Ship-to city and state: ${quote.shipTo}`,
-    `Target date: ${quote.targetDate || ""}`,
-    `Notes: ${quote.notes || ""}`,
+    `Pallet dimensions: ${quote.spec}`,
+    `Estimated pallet quantity: ${quote.quantity}`,
+    `Message: ${quote.notes || ""}`,
     "Source: /request-a-quote/",
   ];
 

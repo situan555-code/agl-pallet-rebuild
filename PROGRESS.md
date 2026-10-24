@@ -1,4 +1,4 @@
-Facts sheet 2026-10-14: pharma restored, home proof 99% and 12+, PO Box in schema only, PDS methodology only, mill slogans replaced with the brokerage sentence. Not merged to main.
+Facts sheet 2026-10-14 on launch-lite: pharma restored, home proof 99% and 12+, PO Box in schema only, PDS methodology only. Six-page footprint stays behind lib/launch-lite.json. Not merged to main.
 Redesign started. Phase 0 in progress. Model policy: Grok 4.6 High Fast default, upgrades logged here.
 R0.1 done. Next: R0.3.
 R0.3 done. Next: R0.4.
@@ -60,3 +60,5 @@ Card numerals: no moss overlays on capability or numbered feature photos. Eyebro
 Pharmaceuticals on `/industries`. PDS methodology named on engineered product copy (`/products/`, `/custom-engineered/`).
 AGL site photos on solid matches only: no-minimums, freight, multi-mill, run-the-floor, partner mills, partner carriers, stock, custom. Same-day quotes, hear-it-first, crates, dunnage, shipping blocks, and stakes stay on demo files.
 
+BR1 done: /accent-lab/ live (internal, noindex). Palette change pending owner pick.
+Launch-lite parity build: six live pages with verbatim live copy (SPEC_LITE.md), forms kept, supplier and carrier forms send to sales@. banned-words red on live sentences; see BLOCKED.md. Not merged to main.

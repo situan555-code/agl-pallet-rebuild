@@ -19,6 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const { ensureServer } = require('./lib/devserver');
 const { ROUTES } = require('./lib/spec-manifest');
+const { liteEnabled } = require('./lib/spec-path');
 
 const ROOT = path.join(__dirname, '..');
 const BASE_URL = process.env.BANNED_WORDS_BASE_URL || process.env.SCREENSHOT_BASE_URL || 'http://localhost:3000';
@@ -89,6 +90,20 @@ function stripNoise(html) {
     .replace(/\u2019/g, "'");
 }
 
+// Launch-lite only: exact live paragraphs the owner approved (see
+// scripts/lib/lite-banned-allow.json). They are removed before scanning;
+// nothing else is exempt.
+function applyLiteAllow(text) {
+  if (!liteEnabled()) return text;
+  const { lines } = JSON.parse(fs.readFileSync(path.join(__dirname, 'lib', 'lite-banned-allow.json'), 'utf8'));
+  let out = text;
+  for (const line of lines) {
+    const decoded = line.replace(/\u2019/g, "'");
+    out = out.split(decoded).join('');
+  }
+  return out;
+}
+
 function scanText(text, lineOffsetLines) {
   const hits = [];
   lineOffsetLines.forEach((line, idx) => {
@@ -150,7 +165,7 @@ async function main() {
         continue;
       }
 
-      const cleaned = stripNoise(html);
+      const cleaned = applyLiteAllow(stripNoise(html));
       const lines = cleaned.split('\n');
       const hits = scanText(cleaned, lines);
 
@@ -182,7 +197,11 @@ async function main() {
   console.log('\nNo banned language found.');
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+module.exports = { scanText, stripNoise };
+
+if (require.main === module) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}

@@ -7,12 +7,10 @@ import { Form } from "@/components/Form";
 import { Contact2 } from "@/components/contact2";
 import { QuoteContacts, type QuoteContactItem } from "@/components/QuoteContacts";
 import { pageMeta } from "@/lib/seo";
+import pages from "@/pages.json";
 
-export const metadata: Metadata = pageMeta(
-  "Request a Pallet Quote, Same-Day Response | AGL Pallet",
-  "Send a spec and a quantity and we will come back the same day. No minimums.",
-  "/request-a-quote/",
-);
+const meta = pages.find((p) => p.path === "/request-a-quote/")!;
+export const metadata: Metadata = pageMeta(meta.title, meta.description, "/request-a-quote/");
 
 export default function RequestAQuote() {
   const to =

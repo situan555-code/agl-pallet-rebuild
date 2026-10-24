@@ -1,30 +1,31 @@
-import { ClipboardCheck, ShieldCheck, UserRoundCheck, Zap } from "lucide-react";
-import content from "@/content/pages/who-we-are.json";
-import home from "@/content/pages/home.json";
 import Image from "next/image";
+import content from "@/content/pages/who-we-are.json";
 import { Hero3 } from "@/components/hero3";
 import { Feature1 } from "@/components/feature1";
-import { Process1 } from "@/components/process1";
-import { Feature3 } from "@/components/feature3";
-import { About3 } from "@/components/about3";
 import { Cta4 } from "@/components/cta4";
 import { pageMeta } from "@/lib/seo";
 import type { Metadata } from "next";
+import pages from "@/pages.json";
 
-export const metadata: Metadata = pageMeta(
-  "About AGL Pallet | Pallet Supplier in North Canton, Ohio",
-  "AGL Pallet is a pallet supplier that started on the buying side of the dock. North Canton, Ohio. Here is how the company runs and who answers the phone.",
-  "/who-we-are/",
-);
+const meta = pages.find((p) => p.path === "/who-we-are/")!;
+export const metadata: Metadata = pageMeta(meta.title, meta.description, "/who-we-are/");
+
+function SideImage({ src }: { src: string }) {
+  return (
+    <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
+      <Image src={src} alt="" fill quality={65} sizes="(min-width: 980px) 38vw, 100vw" className="object-cover" />
+    </div>
+  );
+}
 
 export default function WhoWeAre() {
   return (
     <main>
       <Hero3
         variant="light-image"
-        eyebrow={content.hero.eyebrow}
+        eyebrow="About"
         heading={content.hero.heading}
-        description={content.hero.paragraphs}
+        description={[content.hero.lead, ...content.hero.paragraphs]}
         image={
           <div className="relative hidden aspect-4/3 w-full overflow-hidden rounded-card nav:block">
             <Image
@@ -33,8 +34,7 @@ export default function WhoWeAre() {
               fill
               quality={60}
               sizes="(min-width: 980px) 38vw, 1px"
-              loading="lazy"
-              fetchPriority="low"
+              priority
               className="object-cover"
             />
           </div>
@@ -42,61 +42,28 @@ export default function WhoWeAre() {
       />
 
       <Feature1
-        eyebrow={content.founderStory.eyebrow}
-        heading={content.founderStory.heading}
-        paragraphs={content.founderStory.paragraphs}
-        media={
-          <div className="relative aspect-4/3 w-full overflow-hidden rounded-card">
-            <Image
-              src="/assets/stock/agl-brock-founder-01_82f1.webp"
-              alt="Founder of AGL Pallet, outdoors beside stacked wooden pallets wearing an AGL Pallet polo"
-              fill
-              quality={70}
-              sizes="(min-width: 980px) 38vw, 100vw"
-              className="object-cover object-[center_35%]"
-            />
-          </div>
-        }
+        eyebrow={content.fair.eyebrow}
+        heading={content.fair.heading}
+        paragraphs={content.fair.paragraphs}
+        cta={{ label: "Request a Quote", href: "/request-a-quote/" }}
+        media={<SideImage src="/assets/stock/agl-filler-pallet-stack-02_0659.webp" />}
       />
 
-      <Process1
-        layout="team"
-        hairline
-        eyebrow={content.team.eyebrow}
-        heading={content.team.heading}
-        description={content.team.body}
-        steps={content.team.items.map((item) => ({ title: item.lead, description: item.body }))}
+      <Feature1
+        panel
+        mediaSide="left"
+        eyebrow={content.accountability.eyebrow}
+        heading={content.accountability.heading}
+        paragraphs={content.accountability.paragraphs}
+        media={<SideImage src="/assets/stock/agl-partner-mills-01_6763.webp" />}
       />
 
-      <Feature3
-        hairline
-        variant="divided"
-        columns={4}
-        eyebrow={content.values.eyebrow}
-        className="section-y"
-        features={content.values.cards.map((c, index) => ({
-          title: c.heading,
-          description: c.body,
-          icon: [ShieldCheck, Zap, ClipboardCheck, UserRoundCheck][index],
-        }))}
+      <Cta4
+        eyebrow={content.ctaBand.eyebrow}
+        heading={content.ctaBand.heading}
+        description={content.ctaBand.body}
+        button={content.ctaBand.cta}
       />
-
-      <About3
-        hairline
-        sections={[
-          {
-            label: content.faith.eyebrow,
-            title: content.faith.heading,
-            paragraphs: content.faith.paragraphs,
-          },
-          {
-            label: content.whereWeAre.eyebrow,
-            paragraphs: [content.whereWeAre.body],
-          },
-        ]}
-      />
-
-      <Cta4 heading={home.ctaBand.heading} description={home.ctaBand.body} button={home.ctaBand.cta} />
     </main>
   );
 }

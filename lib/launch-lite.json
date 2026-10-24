@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "excludePrefixes": [
+    "/resources",
+    "/blog",
+    "/partners",
+    "/the-pledge",
+    "/services",
+    "/faq",
+    "/custom-engineered",
+    "/case-studies",
+    "/contact"
+  ],
+  "allowPaths": [
+    "/partners/suppliers",
+    "/partners/carriers"
+  ]
+}

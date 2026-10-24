@@ -45,8 +45,14 @@ function SpecBody({ description, className }: { description: string; className?:
   if (description.trim() === "") return null;
   return (
     <>
-      <span className="sr-only"> — </span>
-      <p className={className}>{visibleDescription(description)}</p>
+      <span className="sr-only"> </span>
+      {visibleDescription(description)
+        .split("\n\n")
+        .map((paragraph, index) => (
+          <p key={index} className={cn(className, index > 0 && "mt-4")}>
+            {paragraph}
+          </p>
+        ))}
     </>
   );
 }

@@ -16,6 +16,13 @@ const PORT = Number(process.env.PLACEHOLDER_GUARD_PORT || 3999);
 const HOST = "127.0.0.1";
 const DEDICATED = new Set(["glossary", "pallet-prices", "pallets-per-truckload", "pallet-calculators"]);
 const MUST_404 = ["/resources/sell-recycle-pallets/"];
+const launchLite = require("../lib/launch-lite.json");
+
+function isLaunchExcluded(route) {
+  if (!launchLite.enabled) return false;
+  const path = route.length > 1 && route.endsWith("/") ? route.slice(0, -1) : route;
+  return launchLite.excludePrefixes.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
+}
 
 function collectRoutes() {
   const hub = JSON.parse(fs.readFileSync(path.join(ROOT, "content/resources/hub.json"), "utf8"));
@@ -37,12 +44,14 @@ function collectRoutes() {
       return;
     }
     if (rel === "resources/[slug]/page.tsx") {
+      if (launchLite.enabled) return;
       for (const pillar of hub.pillars) {
         if (!DEDICATED.has(pillar.slug)) routes.add(pillar.href);
       }
       return;
     }
     if (rel === "resources/questions/[slug]/page.tsx") {
+      if (launchLite.enabled) return;
       const questions = JSON.parse(fs.readFileSync(path.join(ROOT, "content/resources/questions.json"), "utf8"));
       for (const item of questions.items) routes.add(`/resources/questions/${item.slug}/`);
       return;
@@ -51,7 +60,7 @@ function collectRoutes() {
       throw new Error(`placeholder-guard: unhandled dynamic route ${rel}`);
     }
     const route = `/${rel.replace(/\/page\.tsx$/, "")}/`;
-    routes.add(route);
+    if (!isLaunchExcluded(route)) routes.add(route);
   }
 
   walk(appDir);
@@ -165,7 +174,13 @@ async function main() {
     for (const route of routes) {
       await scan(route);
     }
-    for (const route of MUST_404) {
+    const must404 = [...MUST_404];
+    if (launchLite.enabled) {
+      for (const prefix of launchLite.excludePrefixes) {
+        must404.push(prefix.endsWith("/") ? prefix : `${prefix}/`);
+      }
+    }
+    for (const route of must404) {
       await scan(route, { allow404: true });
     }
 

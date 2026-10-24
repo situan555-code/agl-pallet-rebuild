@@ -11,8 +11,11 @@ Owner facts sheet is the source of truth and overrides the 2026-10-12 pharma rem
 - Engineered copy may say "PDS methodology". No PDS certification, credentials, or access claim.
 - Mill-slogan lines ("never own a mill", "don't own mills", "no plant of its own", "not by building plants", "not by buying plants", "rather than a plant", "not a mill") are replaced with "AGL is a pallet brokerage."
 - The text button stays. Phone and text are both 234-286-0402. The unconfirmed note is removed.
-- Launch is six pages. The rest is phase 2. Case studies stay off the launch set.
 - Resources are credited to AGL Pallet. No bios.
+
+## Launch-lite route set (2026-10-13)
+
+The launch branch serves the six live pages: `/`, `/who-we-are/`, `/how-we-work/`, `/industries/`, `/products/`, `/request-a-quote/`. `lib/launch-lite.json` excludes the other routes from routing, nav, footer, sitemap, and search without deleting their source. Custom stays as a products card, with the custom page heading as one line on that card. Partner labels on the home page point at phone and email. The demo host stays noindex. No DNS, domain, or canonical changes. No personal names. No "never own a mill" line. Case studies are not a launch page.
 
 ## Review follow-up (2026-10-12)
 
@@ -154,3 +157,46 @@ Owner decisions D1–D6 in docs/01-TECHNICAL-AUDIT.md §8 are approved (2026-09-
 - Recolored live `public/assets/*.svg` fills from retired `#162619` to `#1F2A1F` instead of deleting icons the site still serves.
 - Deleted unused WordPress leftover `public/assets/mejs-controls.svg`.
 - Banned-words: also strip `!` inside HTML tags so Tailwind important / markup cannot trip the exclamation rule.
+
+## Launch review (2026-10-12)
+
+Footer now shows LinkedIn and Facebook icon links from `site.json` `sameAs`; no "Follow Us" heading. `npm run verify` stops at `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and the audit fails LCP on `/industries-served/`, `/logistics-process/`, `/products/` and, on one of two runs, `/`. Gates not softened. Lint setState-in-effect errors left (route-change/mount resets in nav, Form, search); not worth the LCP risk. DEPLOY.md table updated.
+
+## Merged to main with verify failing (2026-10-19)
+
+Owner said "merge" after seeing the numbers. `claude/website-launch-review-6ua1r5` went to `main` with `npm run verify` still red: `copy-verbatim` (names removed 2026-10-01 vs SPEC_V1.md) and audit LCP on `/industries-served/`, `/logistics-process/`, `/products/` (~3.2–3.4s in the cloud sandbox). Gates were not changed. Display font is now Exo 2 Black Italic (900 italic, tracking 0, leading 0.92), preloaded with `display: swap`.
+
+## BR1 Accent Lab (2026-10-19)
+
+Added internal /accent-lab/ to test accent candidates and shades of #1F2A1F on
+the home hero. Owner decisions: Exo 2 + Inter stay; the 10° slant concept is
+dropped; green becomes one tone in eleven OKLCH shades (Core = 900); nav and
+logo stay on #1F2A1F. The lab is noindex on every host and is not in the nav,
+sitemap, search index or spec manifest. Its colors are inline styles from
+content/brand/accent-lab.json, so the Palette 05 color gate is untouched and
+was not changed. Production palette is unchanged until the owner picks; see
+docs/handoff/PALETTE-PROPOSAL.md.
+
+Deviation from the brief, at the owner's request: a ghost icon button (palette
+icon) sits beside the theme toggle and links to the lab. Header renders it only
+on demo hosts (*.vercel.app, localhost) via `isDemoHost` in lib/host.ts, so it
+never shows on aglpallet.com. Fixed in the handoff component: the focus ring
+used `outline-none`, which in Tailwind 4 hides the focus-visible outline; and
+the page top padding now clears the fixed nav (pt-36, same as PageOpener).
+Gates: color, schema, banned-words, tokens, numbers, build-note-leak and routes
+pass; copy-verbatim is unchanged (who-we-are 6, partners/carriers 1).
+
+## Launch-lite: live-site copy parity (2026-10-23)
+
+Owner: the stripped-down build makes only the claims aglpallet.com makes today. Copy is verbatim from the six live pages (fetched 2026-10-23), put into our own design as separate pages. Where the live page has no matching section the section is gone.
+
+- **Source of truth for the lite build is `SPEC_LITE.md`**, generated from the live text. `scripts/lib/spec-path.js` points `copy-verbatim` and `numbers` at it while `lib/launch-lite.json` is enabled; with the flag off they read `SPEC_V1.md` as before. `SPEC_V1.md` is not edited. The gates themselves are unchanged.
+- **Page map:** `/` = home, `/who-we-are` = about, `/how-we-work` = logistics-process, `/industries` = industries-served, `/products`, `/request-a-quote`. Titles are the live titles ("About - AGL Pallet", etc.); the home meta description is the live one, the others are the first live sentence of each page.
+- **Cut, per the owner's "cut them" answer:** the Oct 14 facts-sheet additions that the live site does not carry (six-state service area line, North Canton and January 2026, Christ-centered section, role roster, founder story, values, same-day quotes, no minimums, pledge, network diagram, mills/carriers split, stakes, custom page). Phone, text, email, 99% on-time and 12+ years stay because the live site has them. Industries is the live five (building materials, pharmaceuticals, plastics, chemicals, food and beverage).
+- **Nav and footer labels** are the live ones (About, Logistics & Process, Industries Served, Products, Contact Us; footer Services links). Footer social icons stay, with no Follow Us heading.
+- **Quote form:** single step, live field labels (Full Name, Company Name, Email Address, Phone Number, Pallet Dimensions, Estimated Pallet Quantity, Message) and "Send Message". Ship-to city and target date fields are removed. Resend first, FormSubmit fallback, unchanged.
+- **Supplier and carrier forms kept** as form-only pages (`/partners/suppliers/`, `/partners/carriers/`), allowed through the `/partners` exclusion by `allowPaths` in `lib/launch-lite.json`. Both post to sales@aglpallet.com through FormSubmit with their own subject lines, so nothing says "not sending yet". The carrier certificate upload field is removed (it was never wired to send). Both pages are noindex and linked only from the footer.
+- **Brand lab** (`/accent-lab/`) preview now reads the live home copy.
+
+- **banned-words exception (owner, 2026-10-23):** the verbatim live copy trips `legacy-copy-*`, `elevate`, `warehousing-storage-inventory` and `producer-voice-verb`. Owner chose to allow-list the exact live paragraphs for the lite build. `scripts/lib/lite-banned-allow.json` lists 17 verbatim lines; `scripts/banned-words.js` removes them before scanning only while the launch-lite flag is on. Rules, phrase lists and all other text are unchanged, and any edit to an exempt line removes its exemption. Result: banned-words passes.
+- **Deploy:** launch-lite stays a separate Vercel preview from the `launch-lite` branch. `main` and the full demo are not touched.

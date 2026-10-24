@@ -66,35 +66,25 @@ Operator-to-operator. The reader is a purchasing manager, plant manager, or owne
 
 ## 1 · Routes
 
-Build these twelve routes.
+Launch these six routes. They match the live site's six pages. Privacy and terms pages are not in the tree, so they are not added. No personal names on these pages. No "never own a mill" line.
+
+`lib/launch-lite.json` (`enabled: true`) excludes the other App Router pages from routing, nav, footer, sitemap, and internal links. Their source stays in the repo. Section 4 copy for those pages stays here as source and is not served on the launch build.
 
 | # | Route | Page | Status |
 
 |---|---|---|---|
 
-| 01 | `/` | Home | Rewrite |
+| 01 | `/` | Home | Launch |
 
-| 02 | `/who-we-are` | Who We Are | New — replaces `/about` |
+| 02 | `/who-we-are` | Who We Are | Launch — replaces `/about` |
 
-| 03 | `/partners` | Partners hub | New |
+| 03 | `/how-we-work` | How We Work | Launch — replaces `/logistics-process` |
 
-| 04 | `/partners/suppliers` | Supply Pallets to AGL | New |
+| 04 | `/industries` | Industries | Launch — replaces `/industries-served` |
 
-| 05 | `/partners/carriers` | Haul for AGL | New |
+| 05 | `/products` | Products | Launch. Custom is a card on this page, not its own route. |
 
-| 06 | `/the-pledge` | The Pledge | New |
-
-| 07 | `/custom-engineered` | Custom & Engineered | New |
-
-| 08 | `/products` | Products | Rewrite |
-
-| 09 | `/industries` | Industries | Rewrite |
-
-| 10 | `/how-we-work` | How We Work | Rename + light edit of `/logistics-process` |
-
-| 11 | `/contact` | Contact | New |
-
-| 12 | `/request-a-quote` | Request a Quote | Keep, restyle |
+| 06 | `/request-a-quote` | Request a Quote | Launch |
 
 ### Redirects (301)
 
@@ -114,27 +104,25 @@ Primary nav, in this order:
 
 ```
 
-Products · Industries · How We Work · Who We Are · Partners · Contact
+Products · Industries · How We Work · Who We Are
 
 ```
 
-- `Products` dropdown: Stock Pallets · Custom & Engineered · Crates · Dunnage · Shipping Blocks · Stakes
+- `Products` dropdown: Stock Pallets · Custom & Engineered (`/products/#custom-engineered`) · Crates · Dunnage · Shipping Blocks · Stakes
 
-- `Partners` dropdown: For Mills & Shops · For Carriers
+- No Partners, Resources, FAQ, or Contact items. No command-menu search.
 
 - Persistent button, right of nav: **Request a Quote**
 
 ### Footer
 
-Four columns:
+Three columns:
 
-1. **AGL Pallet** — logo, the one-line descriptor (section 4.13), North Canton address `{{TBD-ADDRESS}}`, phone `234-286-0402`, email `sales@aglpallet.com`
+1. **AGL Pallet** — logo, the one-line descriptor (section 4.13), phone `234-286-0402`, email `sales@aglpallet.com`. Street address stays omitted (`{{TBD-ADDRESS}}`).
 
-2. **Products** — the six product lines
+2. **Products** — the six product lines. Custom & Engineered anchors on `/products/#custom-engineered`.
 
-3. **Company** — Who We Are · How We Work · The Pledge · Industries
-
-4. **Partners** — For Mills & Shops · For Carriers · Contact
+3. **Company** — Who We Are · How We Work · Industries
 
 Footer legal line: `© 2026 AGL Pallet LLC. All rights reserved.`
 
@@ -181,6 +169,8 @@ Build these once and reuse. Copy varies by instance; structure does not.
 ---
 
 ## 3 · SEO — title tags and meta descriptions
+
+Titles for routes outside section 1 are source copy only. The launch sitemap is the six routes in section 1. Canonicals stay on `https://aglpallet.com`. The demo host stays noindex.
 
 | Route | Title tag | Meta description |
 

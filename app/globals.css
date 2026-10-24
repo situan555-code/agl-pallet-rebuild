@@ -55,7 +55,7 @@
   --shadow-lg: 0 18px 48px rgba(19, 25, 19, 0.18);
 
   --font-sans: var(--font-inter), Helvetica, Arial, sans-serif;
-  --font-display: var(--font-anton), sans-serif;
+  --font-display: var(--font-exo2), sans-serif;
 
   --text-display-1: clamp(40px, 37px + 0.76vw, 48px);
   --text-display-1--line-height: 1.08;
@@ -76,7 +76,7 @@
   --text-step-sm--line-height: 20.8px;
   --text-step-lg: 24px;
   --text-step-lg--line-height: 32px;
-  /* Type scale: body 16/1.6. Anton only via font-display / .display.
+  /* Type scale: body 16/1.6. Exo 2 Black Italic only via font-display / .display.
      H2–H6 are Inter semibold. Hero H1s add .display. */
   --text-body: 16px;
   --text-body--line-height: 1.6;
@@ -318,8 +318,12 @@
 
   .display {
     @apply font-display uppercase;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
+    /* Exo 2 Black Italic is the only display face loaded. Ask for it exactly
+       so the browser never synthesizes a weight or slant. Tracking 0. */
+    font-weight: 900;
+    font-style: italic;
+    font-synthesis: none;
+    letter-spacing: 0;
   }
 
   /* G8: clear fixed header (~64px bar + padding) on in-page anchors */
@@ -341,7 +345,7 @@
     outline-color: #1f2a1f;
   }
   .theme {
-    --font-heading: var(--font-anton);
+    --font-heading: var(--font-exo2);
     --font-sans: var(--font-inter);
     --lp-timeline-track-height: 4px;
     --lp-timeline-track-height-active: 7px;
@@ -401,6 +405,14 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* Display leading 66/72.5 (~0.92). Doubled class so it outranks the
+   text-display-* line-height that ships alongside it. */
+@layer utilities {
+  .display.display {
+    line-height: 0.92;
   }
 }
 

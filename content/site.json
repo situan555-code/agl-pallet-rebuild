@@ -22,154 +22,68 @@
   },
   "nav": [
     {
-      "label": "Products",
-      "href": "/products/",
-      "children": [
-        {
-          "label": "Stock Pallets",
-          "href": "/products/#stock-pallets"
-        },
-        {
-          "label": "Custom & Engineered",
-          "href": "/custom-engineered/"
-        },
-        {
-          "label": "Crates",
-          "href": "/products/#crates"
-        },
-        {
-          "label": "Dunnage",
-          "href": "/products/#dunnage"
-        },
-        {
-          "label": "Shipping Blocks",
-          "href": "/products/#shipping-blocks"
-        },
-        {
-          "label": "Stakes",
-          "href": "/products/#stakes"
-        }
-      ]
-    },
-    {
-      "label": "Industries",
-      "href": "/industries/"
-    },
-    {
-      "label": "How We Work",
-      "href": "/how-we-work/"
-    },
-    {
-      "label": "Who We Are",
+      "label": "About",
       "href": "/who-we-are/"
     },
     {
-      "label": "Partners",
-      "href": "/partners/",
-      "children": [
-        {
-          "label": "For Mills & Shops",
-          "href": "/partners/suppliers/"
-        },
-        {
-          "label": "For Carriers",
-          "href": "/partners/carriers/"
-        }
-      ]
+      "label": "Logistics & Process",
+      "href": "/how-we-work/"
     },
     {
-      "label": "FAQ",
-      "href": "/faq/"
+      "label": "Industries Served",
+      "href": "/industries/"
     },
     {
-      "label": "Resources",
-      "href": "/resources/",
-      "overviewLabel": "Resource Library",
-      "children": [
-        { "label": "GMA Pallets and Grades", "href": "/resources/gma-pallets-and-grades/" },
-        { "label": "Heat-Treated Pallets and ISPM-15", "href": "/resources/heat-treated-pallets-ispm-15/" },
-        { "label": "Pallet Glossary", "href": "/resources/glossary/" },
-        { "label": "Pallet Weight and Load Capacity", "href": "/resources/pallet-weight-and-load-capacity/" },
-        { "label": "Pallet Sizes", "href": "/resources/pallet-sizes/" },
-        { "label": "Skid vs. Pallet", "href": "/resources/skid-vs-pallet/" },
-        { "label": "Pallet Prices", "href": "/resources/pallet-prices/" },
-        { "label": "Pallets per Truckload", "href": "/resources/pallets-per-truckload/" },
-        { "label": "Pallet Calculators", "href": "/resources/pallet-calculators/" },
-        { "label": "Types of Pallets", "href": "/resources/types-of-pallets/" },
-        { "label": "Pooled vs. Owned Pallets", "href": "/resources/pooled-vs-owned-pallets/" },
-        { "label": "Pallet Standards", "href": "/resources/pallet-standards/" },
-        { "label": "Pallet questions", "href": "/resources/questions/" },
-        { "label": "Downloads", "href": "/resources/downloads/" },
-        { "label": "Stamp decoder", "href": "/resources/heat-treated-pallets-ispm-15/stamp-decoder/" }
-      ]
-    },
-    {
-      "label": "Contact",
-      "href": "/contact/"
+      "label": "Products",
+      "href": "/products/"
     }
   ],
   "ctaNav": {
-    "label": "Request a Quote",
+    "label": "Contact Us",
     "href": "/request-a-quote/"
   },
   "footer": {
-    "blurb": "AGL Pallet sources new, custom, and engineered pallets from family-run mills across the Midwest and Mid-Atlantic, and manages the freight on every order.",
-    "productsHeading": "Products",
+    "blurb": "AGL Pallet works with manufacturers and high-volume operators to source, coordinate, and deliver truckload quantities of pallets—combining industry experience, trusted suppliers, and end-to-end logistics to keep production moving without unnecessary complexity.",
+    "productsHeading": "Services",
     "productsNav": [
       {
         "label": "Stock Pallets",
         "href": "/products/#stock-pallets"
       },
       {
-        "label": "Custom & Engineered",
-        "href": "/custom-engineered/"
+        "label": "Engineered Pallet Solutions",
+        "href": "/products/#engineered-pallets"
       },
       {
-        "label": "Crates",
-        "href": "/products/#crates"
-      },
-      {
-        "label": "Dunnage",
-        "href": "/products/#dunnage"
+        "label": "Crates & Dunnage",
+        "href": "/products/#crates-dunnage"
       },
       {
         "label": "Shipping Blocks",
         "href": "/products/#shipping-blocks"
-      },
-      {
-        "label": "Stakes",
-        "href": "/products/#stakes"
       }
     ],
-    "companyHeading": "Company",
+    "companyHeading": "Navigation",
     "companyNav": [
       {
-        "label": "Who We Are",
+        "label": "About",
         "href": "/who-we-are/"
       },
       {
-        "label": "How We Work",
+        "label": "Logistics & Process",
         "href": "/how-we-work/"
       },
       {
-        "label": "The Pledge",
-        "href": "/the-pledge/"
-      },
-      {
-        "label": "Industries",
+        "label": "Industries Served",
         "href": "/industries/"
       },
       {
-        "label": "FAQ",
-        "href": "/faq/"
+        "label": "Products",
+        "href": "/products/"
       },
       {
-        "label": "Resources",
-        "href": "/resources/"
-      },
-      {
-        "label": "Services",
-        "href": "/services/"
+        "label": "Contact Us",
+        "href": "/request-a-quote/"
       }
     ],
     "partnersHeading": "Partners",
@@ -181,10 +95,6 @@
       {
         "label": "For Carriers",
         "href": "/partners/carriers/"
-      },
-      {
-        "label": "Contact",
-        "href": "/contact/"
       }
     ],
     "contact": {
@@ -192,7 +102,7 @@
       "email": "sales@aglpallet.com"
     },
     "copyright": {
-      "text": "\u00a9 2026 AGL Pallet LLC. All rights reserved."
+      "text": "© 2026 AGL Pallet LLC. All rights reserved."
     }
   }
 }

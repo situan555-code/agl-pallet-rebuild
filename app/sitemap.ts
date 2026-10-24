@@ -2,8 +2,18 @@ import type { MetadataRoute } from "next";
 import hub from "@/content/resources/hub.json";
 import calculators from "@/content/resources/calculators.json";
 import { DOWNLOADS_PATH, STAMP_DECODER_PATH, downloadPath, downloads } from "@/lib/download-source";
+import { LAUNCH_LITE } from "@/lib/launch";
 import { QUESTIONS_PATH, questionPath, questions } from "@/lib/questions";
 import { getSiteUrl } from "@/lib/site-url";
+
+const LAUNCH_PAGES = [
+  "/",
+  "/who-we-are/",
+  "/how-we-work/",
+  "/industries/",
+  "/products/",
+  "/request-a-quote/",
+];
 
 // Every App Router page, with trailing slashes (next.config trailingSlash).
 // Replaces the WordPress-era public/sitemap.xml, which still listed the
@@ -31,16 +41,18 @@ const LAST_MODIFIED = new Date("2026-09-24");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const tools = calculators.tools.map((t) => t.href).filter((href) => !href.includes("#"));
-  const paths = [
-    ...PAGES,
-    ...hub.pillars.map((p) => p.href),
-    ...tools,
-    QUESTIONS_PATH,
-    ...questions.map((item) => questionPath(item.slug)),
-    DOWNLOADS_PATH,
-    ...downloads.map((item) => downloadPath(item.slug)),
-    STAMP_DECODER_PATH,
-  ];
+  const paths = LAUNCH_LITE
+    ? LAUNCH_PAGES
+    : [
+        ...PAGES,
+        ...hub.pillars.map((p) => p.href),
+        ...tools,
+        QUESTIONS_PATH,
+        ...questions.map((item) => questionPath(item.slug)),
+        DOWNLOADS_PATH,
+        ...downloads.map((item) => downloadPath(item.slug)),
+        STAMP_DECODER_PATH,
+      ];
   return paths.map((path) => ({
     url: `${getSiteUrl()}${path}`,
     lastModified: LAST_MODIFIED,

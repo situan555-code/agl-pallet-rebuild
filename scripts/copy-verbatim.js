@@ -22,7 +22,8 @@ const { ROUTES } = require('./lib/spec-manifest');
 
 const ROOT = path.join(__dirname, '..');
 const BASE_URL = process.env.COPY_VERBATIM_BASE_URL || process.env.SCREENSHOT_BASE_URL || 'http://localhost:3000';
-const SPEC_PATH = path.join(ROOT, 'SPEC_V1.md');
+const { specPath } = require('./lib/spec-path');
+const SPEC_PATH = specPath();
 const REPORT_JSON = path.join(ROOT, 'copy-verbatim-report.json');
 
 function normalize(s) {
@@ -126,7 +127,7 @@ async function main() {
     console.error('\nCOPY-VERBATIM FAILED: one or more pages are missing spec copy blocks (see copy-verbatim-report.json).');
     process.exit(1);
   }
-  console.log('\nAll pages contain their SPEC_V1.md section-4 copy blocks verbatim.');
+  console.log('\nAll pages contain their section-4 copy blocks verbatim (SPEC_LITE.md while launch-lite is on).');
 }
 
 main().catch((e) => {
